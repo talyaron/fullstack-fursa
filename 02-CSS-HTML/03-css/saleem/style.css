@@ -18,3 +18,6 @@ div{
 h6{
     font-family: "Times New Roman"
 }
+img {
+    border-radius: 50%;
+  }

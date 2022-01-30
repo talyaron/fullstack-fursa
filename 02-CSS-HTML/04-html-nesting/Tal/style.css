@@ -1,0 +1,15 @@
+.wrapper{
+    max-width:600px;
+    margin: auto;
+  
+    background-color: burlywood;
+    padding: 50px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.178);
+}
+
+.italic{
+    font-style: italic;
+    color: white;
+}
