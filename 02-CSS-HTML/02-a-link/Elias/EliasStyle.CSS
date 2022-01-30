@@ -1,0 +1,26 @@
+body{
+    background-color: rgb(129, 245, 253);
+}
+h1{
+    color: rgb(214, 42, 42);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+p{
+    color: rgb(1, 14, 92);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.big-italic{
+    color: beige;
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+.startImage{
+    width: 300px;
+}
+img{
+    width: 300px;
+
+}
