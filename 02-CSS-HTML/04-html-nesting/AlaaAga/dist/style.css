@@ -1,0 +1,36 @@
+.wrapper {
+  max-width: 600px;
+  margin: auto;
+  background-color: black;
+  padding: 50px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.178);
+}
+.wrapper body {
+  background-color: white;
+}
+.wrapper h1 {
+  color: #11b8e2;
+}
+.wrapper h2 {
+  color: #06f0dc;
+}
+.wrapper h3 {
+  color: #00e6ee;
+}
+.wrapper p {
+  color: rgba(102, 255, 0, 0.582);
+}
+.wrapper p span {
+  color: blue;
+}
+.wrapper div a {
+  color: aqua;
+}
+
+.big-italic {
+  color: beige;
+  font-size: 1.2rem;
+  font-style: italic;
+}
