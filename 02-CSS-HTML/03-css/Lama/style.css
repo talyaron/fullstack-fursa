@@ -1,0 +1,23 @@
+.pa1{
+    color: plum;
+}
+.pa2{
+    color: rosybrown;
+}
+body{
+    background-color: rgb(241, 224, 203);
+}
+.im1{
+    width: 500px;
+
+}
+.i2{
+height: 500px;
+}
+.p1{
+font-size: medium;
+}
+.p2{
+font-size: medium;
+font-style: italic;
+}

@@ -1,0 +1,20 @@
+body{
+    background-color: rgb(222, 255, 151);
+}
+
+h1{
+    text-align: center;
+    font-family: sans-serif;
+    color: blue;
+
+}
+div{
+
+    text-align: center;
+    font-size: large;
+    color: rgb(79, 120, 167);
+    font-family: "Lucida Console"
+}
+h6{
+    font-family: "Times New Roman"
+}
