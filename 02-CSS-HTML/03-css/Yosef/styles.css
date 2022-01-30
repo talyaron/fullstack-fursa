@@ -1,0 +1,23 @@
+h1{
+
+    color: #044559;
+}
+body{
+    background-color: #149894;
+    
+}
+p{
+    size: 30px;
+    color:#BEDB39;
+}
+.big-italic{
+    font-size: 2rem;
+
+}
+.imgTest{
+    width: 1000px;
+    height: auto;
+}
+.fontSize{
+    font-size: 20px;
+}
