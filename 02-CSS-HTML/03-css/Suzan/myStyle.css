@@ -1,0 +1,37 @@
+body{
+    background-color: rgb(241, 194, 135);
+}
+
+h1{
+    color: black;
+}
+
+.subTitle{
+    font-style: italic;
+    font-size: x-large;
+    color: rgb(131, 122, 122);
+}
+
+.myImage{
+    width: 400px;
+}
+
+.myImage2{
+    width: 200;
+}
+
+.p1{
+    font-size: large;
+    color: rgb(83, 77, 77);
+    font-style: italic;
+}
+
+.p2{
+    font-size: medium;
+    color: brown;
+}
+
+.note{
+    font-size: small;
+    color: black;
+}
