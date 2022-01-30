@@ -1,0 +1,16 @@
+body{
+    background-color: rgb(218, 144, 32);
+}
+h1{
+    color: rgb(197, 214, 42);
+}
+p{
+    color: rgb(166, 255, 0);
+}
+
+.big-italic{
+    color: beige;
+    font-size: 1.5rem;
+    font-style: italic;
+}
+
