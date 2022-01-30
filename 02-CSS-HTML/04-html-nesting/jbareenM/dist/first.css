@@ -1,0 +1,30 @@
+.container {
+  text-align: center;
+  background-color: #4d4bf1;
+  margin: auto;
+  padding: 10px;
+  max-width: 400px;
+  border-radius: 40px;
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
+}
+.container img {
+  border-radius: 50%;
+}
+.container h1 {
+  color: white;
+}
+.container h2 {
+  color: #caabca;
+}
+.container a img {
+  width: 40px;
+  height: 40px;
+}
+.container span {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  color: red;
+}
+
+body {
+  background-color: #7777e4;
+}
