@@ -1,7 +1,6 @@
 .wrapper {
   max-width: 600px;
   margin: auto;
-
   background-color: burlywood;
   padding: 50px;
   box-sizing: border-box;
@@ -9,7 +8,7 @@
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.178);
 }
 .wrapper h2 {
-  color: blue;
+  color: #24245a;
 }
 .wrapper p span {
   color: yellow;
@@ -17,13 +16,14 @@
 .wrapper img {
   width: 100%;
 }
-.wrapper div div {
-  background-color: thistle;
-}
 .wrapper > div {
   background-color: tomato;
   border: 5px solid black;
 }
+.wrapper div div {
+  background-color: thistle;
+}
+
 .italic {
   font-style: italic;
   color: white;
