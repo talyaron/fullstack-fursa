@@ -1,0 +1,32 @@
+h1{
+    text-align: center;
+    color: slateblue;
+}
+
+.wrapper{
+    max-width:600px;
+    margin: auto;
+  
+    padding: 50px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 6px 6px 12px slateblue;
+}
+
+.wrapper div img{
+    width: 50%;
+}
+
+.p1{
+    color: rgb(160, 70, 160);
+}
+
+.p2{
+    font-size: 1.5rem;
+    color: slateblue;
+}
+
+.p3{
+    color: slateblue;
+    font-style: italic;
+}
