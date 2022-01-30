@@ -1,0 +1,42 @@
+.wrapper{
+    max-width:600px;
+    margin: auto;
+    background-color: rgb(0, 0, 0);
+    padding: 50px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.178);
+    body{
+        background-color: hsl(0, 0%, 100%);
+    }
+    h1{
+        color: rgb(17, 184, 226);
+    }
+    h2{
+        color: rgb(6, 240, 220);
+    }
+    h3{
+        color: rgb(0, 230, 238);
+    }
+    p{
+        color: rgba(102, 255, 0, 0.582);
+    }
+    p{
+        span{
+            color: blue;
+        }
+    }
+    div{
+        a{
+            color: aqua;
+        }
+    }
+}
+
+
+.big-italic{
+    color: beige;
+    font-size: 1.2rem;
+    font-style: italic;
+}
+

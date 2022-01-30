@@ -1,0 +1,38 @@
+.wrapper {
+  max-width: 600px;
+  margin: auto;
+
+  background-color: burlywood;
+  padding: 50px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.178);
+
+  h2 {
+    color: rgb(36, 36, 90);
+  }
+  p {
+    span {
+      color: yellow;
+    }
+  }
+  img {
+    width: 100%;
+  }
+  > div {
+    background-color: tomato;
+    border: 5px solid black;
+  }
+
+  div {
+    div {
+      background-color: thistle;
+    }
+  }
+}
+
+
+.italic {
+  font-style: italic;
+  color: white;
+}

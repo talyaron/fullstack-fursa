@@ -1,0 +1,39 @@
+.container{
+    border: 5px solid green;
+    text-align: center;
+    background-color: rgb(53, 52, 102);
+    margin: auto;
+    padding: 10px;
+    max-width: 400px;
+    border-radius: 40px;
+}
+
+body{
+    background-color: rgb(192, 192, 235);
+}
+
+.whiteColor{
+    color: white;
+}
+
+.work{
+    color: rgb(151, 77, 151);
+}
+
+#gmail{
+    color: rgb(98, 100, 100);
+}
+
+.list{
+    border-top: 2px solid black;
+    width: fit-content;
+}
+
+.round_image{
+    border-radius: 50%;
+}
+
+.span{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: red;
+}

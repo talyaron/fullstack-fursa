@@ -1,0 +1,30 @@
+h1{
+    text-align: center;
+    color:  rgb(59, 41, 2);
+}
+body{
+    background-color: antiquewhite;
+
+}
+img{
+    vertical-align: center;
+    width: 400px;;
+    height: 200px;
+    align-self: center;
+    
+}
+.wrapper{
+    max-width:1000px;
+    margin: auto;
+    align-items:center;
+    box-sizing: border-box;
+    border-radius: 10px ;
+    box-shadow: 4px 4px 6px rgba(36, 24, 1, 0.178);
+    padding: 50px;
+
+}
+p{
+    font-style: italic;
+    color: rgb(59, 41, 2);
+    font-size: 20px;
+}

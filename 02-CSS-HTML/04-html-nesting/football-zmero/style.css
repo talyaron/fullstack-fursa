@@ -1,0 +1,25 @@
+.header img {
+    float: left;
+    width: 100px;
+    height: 100px;
+    background: #555;
+  }
+  
+  .header h1 {
+    position: relative;
+    top: 18px;
+    left: 10px;
+  }
+.header{
+    margin-bottom: 5rem;
+    padding: 50px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: #dedede;
+}
+.info{
+    padding: 50px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: #efe0cc;
+}
