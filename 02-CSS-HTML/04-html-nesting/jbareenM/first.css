@@ -16,7 +16,7 @@ body{
 }
 
 .work{
-    color: purple;
+    color: rgb(151, 77, 151);
 }
 
 #gmail{
@@ -30,4 +30,9 @@ body{
 
 .round_image{
     border-radius: 50%;
+}
+
+.span{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: red;
 }
