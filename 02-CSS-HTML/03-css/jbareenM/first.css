@@ -1,0 +1,22 @@
+.container{
+    border: 5px solid green;
+    text-align: center;
+    background-color: cyan;
+}
+
+._header{
+    color: rgb(74, 74, 161);
+}
+
+body{
+    background-color: rgb(192, 192, 235);
+}
+
+#name{
+    color: brown;
+    font-size: 1.2rem;
+}
+
+#gmail{
+    color: rgb(98, 100, 100);
+}
