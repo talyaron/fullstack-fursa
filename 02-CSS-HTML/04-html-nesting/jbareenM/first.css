@@ -1,0 +1,33 @@
+.container{
+    border: 5px solid green;
+    text-align: center;
+    background-color: rgb(53, 52, 102);
+    margin: auto;
+    padding: 10px;
+    max-width: 600px;
+}
+
+body{
+    background-color: rgb(192, 192, 235);
+}
+
+.whiteColor{
+    color: white;
+}
+
+.work{
+    color: purple;
+}
+
+#gmail{
+    color: rgb(98, 100, 100);
+}
+
+.list{
+    border-top: 2px solid black;
+    width: fit-content;
+}
+
+.round_image{
+    border-radius: 50%;
+}
