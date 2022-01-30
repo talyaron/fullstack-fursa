@@ -1,0 +1,44 @@
+.wrapper {
+  max-width: 1000px;
+  margin: auto;
+  align-items: center;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 4px 4px 6px rgba(36, 24, 1, 0.178);
+  padding: 50px;
+  background-color: #c4a77c;
+}
+.wrapper a {
+  color: #dfe218;
+  font-size: 20px;
+}
+.wrapper div img {
+  width: 500px;
+  height: 250px;
+  border-radius: 10px;
+  border: solid;
+  border-color: #0c0801;
+}
+.wrapper p {
+  font-style: italic;
+  color: #241901;
+  font-size: 20px;
+}
+.wrapper p span {
+  color: #6d3501;
+  font-weight: bold;
+}
+.wrapper h2 {
+  color: #3b2902;
+}
+.wrapper div div img {
+  width: 200px;
+}
+.wrapper div div p {
+  color: #3b2902;
+}
+
+h1 {
+  text-align: center;
+  color: #3b2902;
+}
