@@ -1,0 +1,39 @@
+.wrapper {
+  background-color: red;
+  border-radius: 1cm;
+  box-sizing: border-box;
+  padding: 50px;
+}
+.wrapper p {
+  background-color: black;
+  color: blanchedalmond;
+  font-style: oblique;
+}
+.wrapper p span {
+  color: yellowgreen;
+}
+.wrapper img {
+  width: 50%;
+  border: solid;
+  border-color: black;
+}
+.wrapper h1 {
+  color: blanchedalmond;
+  font-style: italic;
+  text-align: center;
+}
+.wrapper h2 {
+  color: #866161;
+  font-size: small;
+  text-align: center;
+}
+.wrapper h3 {
+  color: #5454e7;
+}
+.wrapper div {
+  border: 3px solid green;
+  padding: 10px;
+}
+.wrapper a {
+  color: yellowgreen;
+}

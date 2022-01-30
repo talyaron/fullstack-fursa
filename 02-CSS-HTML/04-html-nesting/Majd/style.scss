@@ -1,0 +1,43 @@
+.wrapper{
+    background-color: red;
+    border-radius: 1cm;
+    box-sizing: border-box;
+    padding: 50px;
+    
+    p{
+        background-color: black;
+        color: blanchedalmond;
+        font-style:oblique;
+    
+        span{
+            color: yellowgreen;
+        }
+    }
+    img{
+        width: 50%;
+        border:solid;
+        border-color: black;
+    }
+    h1{
+        color: blanchedalmond;
+        font-style: italic;
+        text-align: center;
+    }
+    h2{
+        color: rgb(134, 97, 97);
+        font-size: small;
+        text-align: center;
+    }
+    h3{
+        color:rgb(84, 84, 231)
+        
+    }
+    div{
+        border: 3px solid green;
+        padding: 10px;
+    }
+    a{
+        color: yellowgreen;
+    }
+   
+}
