@@ -1,0 +1,46 @@
+body{
+    background-color: rgb(235, 223, 223);
+}
+
+.warpper{
+    max-width:600px;
+    margin: auto;
+  
+    background-color: burlywood;
+    padding: 50px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.178);
+}
+
+.p1{
+    font-size: medium;
+    font-style: italic;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.gridContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 1fr;
+    font-style: italic;
+    border: 1.5px rgb(61, 58, 58) solid;
+    border-radius: 5px;
+}
+
+.cell{
+    padding-left: 3px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.gridItem1{
+    background: rgb(196, 158, 110);
+}
+
+.gridItem2{
+    background: rgb(235, 209, 175);
+}
