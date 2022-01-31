@@ -1,0 +1,28 @@
+.paragraph{
+    font-size: 16px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+.imageLocation{
+    position: absolute;
+    top: 15px;
+    left: 60px;
+}
+.image{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.wrapper{
+
+    margin: auto;
+  
+    background-color: whitesmoke;
+    padding: 50px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.178);
+}
+.italic{
+    font-style: italic;
+    font-size: 18px;
+    font-weight: bold;
+}

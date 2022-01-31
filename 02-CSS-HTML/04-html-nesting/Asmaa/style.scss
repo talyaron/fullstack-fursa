@@ -19,7 +19,8 @@ p {
 	position: absolute;
 	transform: translate(-50%, -50%);
 	text-align: center;
-	.backgroundphoto {
+	div {
+        img{
 		width: 450px;
 		height: 150px;
 		padding: 3px;
@@ -27,8 +28,9 @@ p {
 		transform: translate(-50%, -50%);
 		top: 13%;
 		left: 50%;
+        }
 	}
-	.photo {
+	>img {
 		width: 150px;
 		height: 150px;
 		border-radius: 50%;
