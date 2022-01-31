@@ -1,0 +1,32 @@
+.container{
+    margin: auto;
+    max-width: 75ch;
+    border:3px solid black;
+    position: relative;
+
+    .box{
+        width: fit-content;
+        height: 100px;
+        background-color: pink;
+        margin: 3px;
+        border: 2px solid grey;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+    }
+
+    .fill{
+        width: 100%;
+        height: 100%;
+        background-color: pink;
+        position: absolute;
+        opacity: .5;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    
+}
