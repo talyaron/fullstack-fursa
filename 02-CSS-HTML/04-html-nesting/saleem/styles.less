@@ -7,8 +7,9 @@ body {
   
   h1 {
     text-align: center;
+    font-size: 200px;
     font-family: sans-serif;
-    animation: color-change 2s infinite;
+    animation: color-change 5s infinite;
   }
   
   @keyframes color-change {
@@ -38,19 +39,22 @@ body {
   }
   
   .wrapper {
+      
     background-color: rgb(109, 101, 91);
     border: 17px solid;
     width: 90%;
     max-width: 1170px;
     margin-left: auto;
     margin-right: auto;
-    border: black;
+    border: rgb(0, 0, 0);
+    border-width: 4px;
+ border-style: solid;
     padding-bottom: 100%;
     font-family: "Times New Roman";
     color: rgb(255, 107, 1);
   
     div {
-      animation: changeBg 8s infinite;
+      animation: changeBg 10s infinite;
       width: 100%;
       height: 500px;
       background-size: contain;
@@ -59,7 +63,7 @@ body {
     marquee {
       background: rgb(216, 57, 57);
       height: 60px;
-      -webkit-animation: rightThenLeft 4s linear;
+      -webkit-animation: rightThenLeft 4s infinite;
     }
   }
   
