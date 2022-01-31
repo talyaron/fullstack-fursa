@@ -1,0 +1,45 @@
+.wrapper{
+    margin:auto;
+    max-width: 75ch;
+    border-radius: 10px;
+    position : relative;
+}
+.box{
+    width: 100px;
+    height: 100px;
+    background-color: pink;
+    margin: 3px;
+}
+.special{
+    background-color: red;
+    position: relative;
+    top: 20px;
+    left: 20px;
+}
+.absloute{
+    background-color: blanchedalmond;
+    position:absolute;
+    top: 0px;
+    left: 0px;
+}
+.relative{
+    background-color: aqua;
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+.img{
+    top: 200px;
+    left: 500px;
+    border-radius: 10px;
+
+}
+.font{
+    position: relative;
+    color: antiquewhite;
+    bottom: 300px;
+    left: 100px;
+    font-size: 50px;
+    opacity: 0.5;
+}
+
