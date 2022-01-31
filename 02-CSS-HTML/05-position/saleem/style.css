@@ -1,0 +1,22 @@
+.wrapper{
+    background-image: url(img.jpg);
+    font-size: 40px;
+    color: white;
+    position: relative;
+    height: 200px;
+    margin-top: 50px;
+    margin-left: 30px;
+}
+.title{
+    width: 1000px;
+    position: absolute;
+    bottom: 30px;
+}
+.text{
+    width: 1000px;
+    position: relative;
+    font-size: 20px;
+
+    bottom: 0px;
+
+}
