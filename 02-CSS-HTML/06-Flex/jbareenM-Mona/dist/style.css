@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  min-width: 90px;
+}
+.container .item {
+  width: 200px;
+  height: fit-content;
+  min-height: 100px;
+  border: 2px solid black;
+}
+.container .flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.container .flex .images {
+  flex-shrink: 0;
+  width: 80px;
+  height: 40px;
+  border: 2px solid red;
+}
