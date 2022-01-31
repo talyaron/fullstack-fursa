@@ -1,0 +1,31 @@
+.container {
+    position: relative;
+    max-width: 200px;
+    border-radius: 3px;
+    opacity: 0.6;
+}
+
+.container > img {
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
+
+}
+.inner-div {
+    position: absolute;
+    width: 200px;
+    height: 70%;
+    bottom: 0;
+    left: 0;
+}
+.inner-div > h1 {
+    font-size: 70%;
+    color: gray;
+    font-style: italic;
+}
+
+.inner-div > h2 {
+    font-size: 40%;
+    color: darkorange;
+    font-style: italic;
+}
