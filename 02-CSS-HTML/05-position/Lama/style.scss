@@ -1,0 +1,25 @@
+.wrapper{
+    margin: auto;
+    max-width: 75ch;
+    border:5px dashed black;
+    // position: relative;
+
+
+    .relative{
+        width: 600px;
+        height: 400px;
+        position: relative;
+
+     
+    }
+
+
+    div{
+        color: white;
+        position: relative;
+        bottom: 100px;
+        left: 20px;
+        font-size: large;
+        
+    }
+}
