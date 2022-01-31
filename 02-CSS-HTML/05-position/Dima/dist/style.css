@@ -1,0 +1,16 @@
+.wrapper {
+  margin: auto;
+  position: relative;
+}
+.wrapper .box {
+  position: relative;
+}
+.wrapper .box img {
+  width: 70%;
+}
+.wrapper .box .box1 {
+  position: absolute;
+  top: 0px;
+  font-weight: bold;
+  color: white;
+}
