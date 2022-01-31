@@ -2,7 +2,7 @@
     background-image: url(img.jpg);
     font-size: 40px;
     color: white;
-    position: relative;
+    position:relative;
     height: 200px;
     margin-top: 50px;
     margin-left: 30px;
@@ -10,14 +10,16 @@
 }
 .title{
     width:100%;
+    color: rgb(255, 255, 255);
     position: absolute;
-    bottom: 30px;
+    left: 0;
+    bottom: 0; 
 }
 .text{
     width: 1000px;
     position: relative;
     font-size: 20px;
 
-    bottom: 0px;
+    padding-bottom: 0px;
 
 }
