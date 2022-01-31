@@ -13,17 +13,18 @@
 .inner-div {
     position: absolute;
     width: 200px;
-    height: 70%;
-    background-color: white;
-    opacity: 0.2;
+    background-color: rgba(255, 255, 255, 0.308);
     bottom: 0;
     left: 0;
 }
+
+
 .inner-div > h1 {
     font-size: 70%;
     color:black;
     font-style: italic;
     font-weight: bold;
+    margin: 10px;
 }
 
 .inner-div > h2 {
@@ -31,4 +32,5 @@
     color: darkorange;
     font-style: italic;
     font-weight: bold;
+    margin : 10px;
 }
