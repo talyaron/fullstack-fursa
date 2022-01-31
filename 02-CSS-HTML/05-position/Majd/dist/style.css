@@ -1,0 +1,22 @@
+.wrapper {
+  margin: auto;
+  max-width: 75ch;
+  border: 3px dashed black;
+  position: relative;
+}
+.wrapper img {
+  width: 50%;
+}
+.wrapper .absloute {
+  position: absolute;
+  opacity: 0.6;
+  bottom: 30px;
+  left: 10px;
+  color: white;
+  max-width: 40ch;
+}
+.wrapper .relative {
+  position: relative;
+  top: 0px;
+  left: 0px;
+}

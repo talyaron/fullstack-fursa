@@ -14,7 +14,7 @@
   align-items: center;
 }
 .wrapper .relative {
-  background-color: rebeccapurple;
+  background-color: rgba(102, 51, 153, 0.418);
   position: relative;
   top: 20px;
   left: 20px;
