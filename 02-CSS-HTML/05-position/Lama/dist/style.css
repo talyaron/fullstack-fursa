@@ -13,5 +13,10 @@
   position: relative;
   bottom: 100px;
   left: 20px;
+}
+.wrapper .div1 {
+  font-size: x-large;
+}
+.wrapper .div2 {
   font-size: large;
 }

@@ -1,0 +1,27 @@
+.container{
+    margin: auto;
+    max-width: 75ch;
+    border:1px dashed black;
+    position: relative;
+
+    .box{
+        width: 100px;
+        height: 50px;
+        background-color: rgba(0, 0, 0, 0);
+        margin: 3px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color:black;
+    }
+
+
+    .absloute{
+        background-color: sandybrown;
+        position: absolute;
+        opacity: .6;
+        top:60px;
+        left:30px;
+        // absolute is relative to his first position parent
+    }
+}
