@@ -2,21 +2,25 @@
   margin: auto;
   max-width: 75ch;
   border: 5px dashed black;
+  position: relative;
 }
 .wrapper .relative {
-  width: 600px;
-  height: 400px;
+  width: 100%;
   position: relative;
 }
 .wrapper div {
+  background-color: rgba(173, 216, 230, 0.308);
   color: white;
-  position: relative;
-  bottom: 100px;
-  left: 20px;
 }
 .wrapper .div1 {
+  position: absolute;
+  bottom: 100px;
+  left: 20px;
   font-size: x-large;
 }
 .wrapper .div2 {
+  position: absolute;
+  bottom: 50px;
+  left: 20px;
   font-size: large;
 }

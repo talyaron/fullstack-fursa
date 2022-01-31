@@ -1,0 +1,39 @@
+.container{
+    position: relative;
+    height: 200px;
+    width: 200px;
+    margin: auto;
+    margin-top: 200px;
+
+    transform: rotate(-45deg);
+
+    .box{
+        width: 100px;
+        height: 100px;
+        position: absolute;
+    }
+
+    .blue{
+        background-color: rgb(64, 64, 228);
+        right: 0;
+    }
+
+    .black{
+        background-color: black;
+        top: 25%;
+        left: 25%;
+    }
+    .orange{
+        background-color: orange;
+        bottom: 0;
+        right: 0;
+        z-index: 1;
+    }
+
+    .Boldorange{
+        background-color: rgb(184, 72, 44);
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+    }
+}
