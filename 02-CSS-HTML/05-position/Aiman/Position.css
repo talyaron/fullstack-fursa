@@ -13,12 +13,14 @@
 .inner-div {
     position: absolute;
     width: 200px;
-    height: 40%;
-    background-color: rgba(255, 255, 255, 0.246);
     padding: 10px;
+    background-color: rgba(255, 255, 255, 0.246);
+    height: 40%;
     bottom: 0;
     left: 0;
 }
+
+
 .inner-div > h1 {
     font-size: 10px;
     color:black;
@@ -32,4 +34,5 @@
     color: darkorange;
     font-style: italic;
     font-weight: bold;
+    margin : 10px;
 }

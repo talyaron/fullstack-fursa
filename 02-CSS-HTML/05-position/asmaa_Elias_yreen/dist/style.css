@@ -1,0 +1,36 @@
+.container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 100px;
+  border: solid 1px;
+  transform: rotateY(0deg) rotate(-45deg);
+  background-color: white;
+}
+.container .s {
+  position: absolute;
+  height: 100px;
+  margin: 100px;
+  width: 100px;
+}
+.container .s4 {
+  position: absolute;
+  top: -50px;
+  left: -50px;
+  height: 50px;
+  background-color: black;
+}
+.container .s1 {
+  bottom: -100px;
+  background-color: #ffd000;
+}
+.container .s2 {
+  right: 0px;
+  bottom: -100px;
+  background-color: #ff6600;
+}
+.container .s3 {
+  left: 0px;
+  bottom: 0px;
+  background-color: #00b7ff;
+}
