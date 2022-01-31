@@ -1,0 +1,17 @@
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+}
+.flex-container .inner {
+  width: 80px;
+  height: 30px;
+  display: flex;
+  margin: 3px;
+  background-color: rgba(0, 0, 255, 0.644);
+  justify-content: center;
+  text-align: center;
+  border-radius: 3px;
+  margin-top: 3px;
+}

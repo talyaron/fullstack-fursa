@@ -1,16 +1,18 @@
-.wrapper {
+.container {
   margin: auto;
   max-width: 75ch;
   border: 3px;
   position: relative;
 }
-.wrapper .relative {
+.container .absolute {
   position: absolute;
   bottom: 0px;
   width: 100%;
-  height: 100%;
+  height: 50%;
+  font-size: 20px;
+  color: #03010f;
 }
-.wrapper .img {
+.container .img {
   width: 100%;
-  border-radius: 10px;
+  height: 100%;
 }
