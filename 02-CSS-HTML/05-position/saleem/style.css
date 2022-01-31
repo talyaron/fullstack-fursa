@@ -8,9 +8,18 @@
     margin-left: 30px;
 }
 .title{
+<<<<<<< Updated upstream
     width: 1000px;
     position: absolute;
     bottom: 30px;
+=======
+    width:100%;
+    color: rgb(0, 0, 0);
+    position: absolute;
+    left: 0;
+    bottom: 0; 
+    background-color: rgb(255, 255, 255,0.2);
+>>>>>>> Stashed changes
 }
 .text{
     width: 1000px;

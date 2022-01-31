@@ -1,33 +1,65 @@
-.wrapper{
-    margin: auto;
-    max-width: 75ch;
-    border:3px dashed black;
+.wrapper {
+  margin: auto;
+  max-width: 75ch;
+  border: 3px dashed black;
+  position: relative;
+
+  .box {
+    width: 100px;
+    height: 100px;
+    background-color: pink;
+    margin: 3px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .relative {
+    background-color: rgba(102, 51, 153, 0.418);
     position: relative;
+    top: 20px;
+    left: 20px;
+  }
 
-    .box{
-        width: 100px;
-        height: 100px;
-        background-color: pink;
-        margin: 3px;
+  .absloute {
+    background-color: sandybrown;
+    position: absolute;
+    opacity: 0.6;
+    top: 20px;
+    left: 30px;
+    // absolute is relative to his first position parent
+  }
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
+  .fixed{
+    background-color: yellowgreen;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+  }
+
+  .fab{
+    background-color: rgb(53, 50, 205);
+    position: fixed;
+    right: 60px;
+    bottom: 60px;
+    border-radius: 100px;
+    width: 60px;
+    height: 60px;
+    color: white;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover{
+        background-color: rgb(45, 17, 136);
+        cursor: pointer;
     }
 
-    .relative{
-        background-color: rgba(102, 51, 153, 0.418);
-        position: relative;
-        top:20px;
-        left:20px;
-    }
+    
+  }
 
-    .absloute{
-        background-color: sandybrown;
-        position: absolute;
-        opacity: .6;
-        top:20px;
-        left:30px;
-        // absolute is relative to his first position parent
-    }
+  .turn{
+      transform: rotate(45deg);
+  }
 }
