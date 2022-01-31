@@ -2,7 +2,6 @@
     position: relative;
     max-width: 200px;
     border-radius: 3px;
-    opacity: 0.6;
 }
 
 .container > img {
@@ -15,17 +14,21 @@
     position: absolute;
     width: 200px;
     height: 70%;
+    background-color: white;
+    opacity: 0.2;
     bottom: 0;
     left: 0;
 }
 .inner-div > h1 {
     font-size: 70%;
-    color: gray;
+    color:black;
     font-style: italic;
+    font-weight: bold;
 }
 
 .inner-div > h2 {
     font-size: 40%;
     color: darkorange;
     font-style: italic;
+    font-weight: bold;
 }
