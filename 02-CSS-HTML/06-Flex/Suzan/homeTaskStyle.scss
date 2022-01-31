@@ -1,0 +1,172 @@
+.container{
+    width: 100%;
+    display: flex;
+    //flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    //border: 2px black solid;
+    padding: 5px;
+
+    .column1{
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        //justify-content: space-evenly;
+
+        .toprow{
+            height: 4%;
+            background-color: rgb(153, 13, 13);
+            color: white;
+            padding-left: 10px;
+            font-style: oblique;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            border-radius: 5px;
+            box-shadow: 2px 2px 6px black;
+        }
+
+        .subColumn1{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            height: 96%;
+
+            .row1{
+            height: 11.5%;
+            align-items: center;
+            display: flex;
+            font-style: oblique;
+            padding-left: 10px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 6px black;
+            justify-content: space-evenly;
+
+            .squareImg{
+                width: 60px;
+                height: 60px;
+                overflow: hidden;
+                border-radius: 50%;
+                position: relative;
+                margin-left: 5px;
+
+                img{
+                    display: inline;
+                    height: 100%;
+                    width: auto;
+                    margin: 0 auto;
+                }
+            }
+
+            .txt{
+                width: 80%;
+                padding: 15px;
+            }
+        }
+
+        .odd{
+            background-color: grey;
+        }
+
+        .even{
+            background-color: rgba(128, 128, 128, 0.767);
+        }
+        }
+
+        
+    }
+
+    .column2{
+        width: 70%;
+
+        .row2{
+            height: 50%;
+            position: relative;
+        }
+
+        .top{
+            margin-left: 6px;
+            margin-right: 6px;
+            margin-bottom: 6px;
+            box-shadow: 2px 2px 6px black;
+            border-radius: 5px;
+
+            img{
+                width: 100%;
+                height: 100%;
+                border-radius: 5px;
+            }
+
+            .title{
+                background-color: rgba(168, 142, 155, 0.315);
+                position: absolute;
+                bottom: 0px;
+                width: 100%;
+                color: white;
+                border-radius: 5px;
+
+                .mainTitle{
+                    font-size: xx-large;
+                    font-weight: bold;
+                    font-style: italic;
+                    margin-left: 10px;
+                    margin-top: 7px;
+                }
+
+                .subTitle{
+                    font-size: large;
+                    font-style: italic;
+                    margin-left: 10px;
+                    margin-bottom: 5px;
+                }
+            }
+            
+        }
+
+        .bottom{
+            display: flex;
+            flex-direction: column;
+            //border: rgba(0, 0, 0, 0.753) 2px solid;
+
+            .splitRow2{
+                height: 50%;
+                //background-color: rgba(160, 157, 157, 0.418);
+                //background-color: white;
+                display: flex;
+                justify-content: space-evenly;
+                align-content: center;
+
+                .box{
+                    width: 32%;
+                    //position: relative;
+                    display: flex;
+                    flex-direction: column;
+                    margin: 2px;
+                    box-shadow: 2px 2px 6px black;
+                    border-radius: 5px;
+                    //justify-content: center;
+                    //align-content: center;
+
+                    img{
+                        width: 100%;
+                        height: 70%;
+                        border-radius: 5px;
+                    }
+
+                    .title{
+                        height: 30%;
+                        background-color: rgba(67, 133, 129, 0.438);
+                        font-size: large;
+                        font-weight: bold;
+                        font-style: italic;
+                        color: white;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                    }
+                }
+            }
+        }
+    }
+}
