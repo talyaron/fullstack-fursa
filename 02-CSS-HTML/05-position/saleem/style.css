@@ -2,24 +2,21 @@
     background-image: url(img.jpg);
     font-size: 40px;
     color: white;
-    position:relative;
+    position: relative;
     height: 200px;
     margin-top: 50px;
     margin-left: 30px;
-    width: 900px;
 }
 .title{
-    width:100%;
-    color: rgb(255, 255, 255);
+    width: 1000px;
     position: absolute;
-    left: 0;
-    bottom: 0; 
+    bottom: 30px;
 }
 .text{
     width: 1000px;
     position: relative;
     font-size: 20px;
 
-    padding-bottom: 0px;
+    bottom: 0px;
 
 }
