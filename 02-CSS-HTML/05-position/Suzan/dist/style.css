@@ -1,0 +1,18 @@
+.wrapper {
+  margin: auto;
+  max-width: 600px;
+  align-self: center;
+}
+.wrapper .box1 {
+  align-items: center;
+  position: relative;
+}
+.wrapper .box1 .box2 {
+  bottom: 200px;
+  position: absolute;
+  bottom: 5px;
+  color: #0d1cf0;
+  margin-left: 40px;
+  font-weight: bold;
+  font-size: x-large;
+}
