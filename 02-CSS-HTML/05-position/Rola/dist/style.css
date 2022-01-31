@@ -1,0 +1,23 @@
+.container {
+  margin: auto;
+  max-width: 75ch;
+  border: 1px dashed black;
+  position: relative;
+}
+.container .box {
+  width: 100px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0);
+  margin: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+.container .absloute {
+  background-color: sandybrown;
+  position: absolute;
+  opacity: 0.6;
+  top: 60px;
+  left: 30px;
+}
