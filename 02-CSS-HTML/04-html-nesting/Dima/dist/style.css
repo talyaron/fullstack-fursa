@@ -1,0 +1,27 @@
+.wrapper {
+  max-width: 600px;
+  margin: auto;
+  padding: 50px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 6px 6px 12px slateblue;
+}
+.wrapper .p1 {
+  color: #a046a0;
+}
+.wrapper .p2 {
+  font-size: 1.5rem;
+  color: slateblue;
+}
+.wrapper span .p3 {
+  color: slateblue;
+  font-style: italic;
+}
+.wrapper div img {
+  width: 50%;
+}
+
+h1 {
+  text-align: center;
+  color: slateblue;
+}
