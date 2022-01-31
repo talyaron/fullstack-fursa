@@ -1,0 +1,38 @@
+
+.header{
+    text-align:center;
+    font-weight :bold;
+
+
+}
+.container{
+    background-color: aqua;
+    margin: auto;
+    max-width: 600px;
+    box-sizing: border-box;
+    padding: 50px;
+    box-shadow: 2px 2px 6px;
+    background-color: burlywood;
+}
+.container > img {
+    width: 50%;
+    height: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius:1em;
+
+}
+.img2 {
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius:1em;
+}
+.italic{
+    font-weight: bold;
+    font-style: italic;
+
+}

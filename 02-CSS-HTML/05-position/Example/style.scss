@@ -1,0 +1,33 @@
+.wrapper{
+    margin: auto;
+    max-width: 75ch;
+    border:3px dashed black;
+    position: relative;
+
+    .box{
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+        margin: 3px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .relative{
+        background-color: rebeccapurple;
+        position: relative;
+        top:20px;
+        left:20px;
+    }
+
+    .absloute{
+        background-color: sandybrown;
+        position: absolute;
+        opacity: .6;
+        top:20px;
+        left:30px;
+        // absolute is relative to his first position parent
+    }
+}

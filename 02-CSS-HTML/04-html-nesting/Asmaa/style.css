@@ -23,7 +23,7 @@ p{
    
 }
 
-.wrapper .backgroundphoto {
+.wrapper div img {
     width: 450px;
     height: 150px;
     padding: 3px;
@@ -33,7 +33,7 @@ p{
     left:50%;
 }
 
-.wrapper .photo{
+.wrapper > img{
     width: 150px;
     height: 150px;
     border-radius: 50%;
