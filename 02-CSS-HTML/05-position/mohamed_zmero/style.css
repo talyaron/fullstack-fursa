@@ -1,0 +1,18 @@
+.wrapper{
+    position: relative;
+    max-width: 200px;
+}
+.abs{
+    position: absolute;
+    box-sizing: border-box;
+    top: 8px;
+    left: 16px;
+    color: white;
+}
+.abs2{
+    position: absolute;
+    box-sizing: border-box;
+    top: 70px;
+    left: 16px;
+    color: white;
+}
