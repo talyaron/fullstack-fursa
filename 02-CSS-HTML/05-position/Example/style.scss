@@ -1,5 +1,4 @@
 .wrapper {
-<<<<<<< Updated upstream
   margin: auto;
   max-width: 75ch;
   border: 3px dashed black;
@@ -18,17 +17,11 @@
 
   .relative {
     background-color: rgba(102, 51, 153, 0.418);
-=======
-    margin: auto;
-    max-width: 75ch;
-    border: 3px dashed black;
->>>>>>> Stashed changes
     position: relative;
     top: 20px;
     left: 20px;
   }
 
-<<<<<<< Updated upstream
   .absloute {
     background-color: sandybrown;
     position: absolute;
@@ -37,13 +30,6 @@
     left: 30px;
     // absolute is relative to his first position parent
   }
-=======
-    .box {
-        width: 100px;
-        height: 100px;
-        background-color: pink;
-        margin: 3px;
->>>>>>> Stashed changes
 
   .fixed{
     background-color: yellowgreen;
@@ -52,7 +38,6 @@
     right: 0px;
   }
 
-<<<<<<< Updated upstream
   .fab{
     background-color: rgb(53, 50, 205);
     position: fixed;
@@ -78,21 +63,3 @@
       transform: rotate(45deg);
   }
 }
-=======
-    .relative {
-        background-color: rgba(102, 51, 153, 0.418);
-        position: relative;
-        top: 20px;
-        left: 20px;
-    }
-
-    .absloute {
-        background-color: sandybrown;
-        position: absolute;
-        opacity: .6;
-        top: 20px;
-        left: 30px;
-        // absolute is relative to his first position parent
-    }
-}
->>>>>>> Stashed changes
