@@ -1,4 +1,4 @@
-.cotainer {
+.container {
   margin: auto;
   width: 200px;
   height: 200px;
@@ -6,24 +6,14 @@
   border: 2px solid black;
   background-color: brown;
 }
-.cotainer .box {
+.container .box {
   width: 100px;
   height: 100px;
   background-color: pink;
   margin: 3px;
-<<<<<<< HEAD
   display: flex;
   justify-content: center;
   align-items: center;
   color: black;
   border: 2px solid gray;
-}
-.container .absloute {
-  background-color: sandybrown;
-  position: absolute;
-  opacity: 0.6;
-  top: 60px;
-  left: 30px;
-=======
->>>>>>> main
 }
