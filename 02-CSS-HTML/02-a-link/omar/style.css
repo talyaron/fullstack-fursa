@@ -1,0 +1,28 @@
+body {
+    background-color: rgb(102, 87, 66);
+}
+
+.second-body{
+    background-color: teal;
+    color : rgb(236, 104, 27)
+}
+
+.first-header{
+    color :rgb(96, 38, 231)
+}
+
+.first-par {
+    color :rgb(233, 229, 243)
+}
+
+.second-header {
+    color :rgb(233, 229, 243)
+}
+
+.second-par{
+    color : red
+}
+
+.third-par{
+    color : yellow 
+}
