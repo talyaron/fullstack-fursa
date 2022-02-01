@@ -4,29 +4,37 @@
   flex-direction: row;
   width: 100%;
   flex-wrap: wrap;
+  margin: 1px;
 }
 .wrapper .item1 {
   flex: 1;
   display: flex;
-  flex-direction: row;
-  width: 100%;
   flex-wrap: wrap;
-  border: 2px dashed #df1c67;
+  width: 200px;
+  height: 100px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
 }
 .wrapper .item1 .item {
-  flex: 1;
-  width: 60px;
-  height: 60px;
+  display: flex;
+  width: 45%;
+  height: 45%;
   background-color: blueviolet;
   margin: 1px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
 }
 .wrapper .item2 {
   flex: 1;
   display: flex;
-  flex-direction: row;
-  width: 100%;
+  width: 200px;
+  height: 100px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
   flex-wrap: wrap;
-  border: 2px dashed #df1c67;
 }
 .wrapper .item2 .item {
   width: 100%;
@@ -36,25 +44,32 @@
 .wrapper .item3 {
   flex: 1;
   display: flex;
-  flex-direction: row;
-  width: 100%;
   flex-wrap: wrap;
-  border: 2px dashed #df1c67;
+  width: 200px;
+  height: 100px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
 }
 .wrapper .item3 .item {
-  flex: 1;
-  width: 60px;
-  height: 60px;
-  margin: 1px;
+  display: flex;
+  width: 45%;
+  height: 45%;
   background-color: #ad0c0c;
+  margin: 1px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
 }
 .wrapper .item4 {
   flex: 1;
   display: flex;
-  flex-direction: row;
-  width: 100%;
+  width: 200px;
+  height: 100px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
   flex-wrap: wrap;
-  border: 2px dashed #df1c67;
 }
 .wrapper .item4 .item {
   width: 100%;
