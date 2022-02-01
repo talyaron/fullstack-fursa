@@ -1,0 +1,49 @@
+.flex-container {
+  display: flex;
+  width: 80%;
+  border: black 2px solid;
+  justify-content: space-around;
+  align-items: center;
+}
+.flex-container .sub-container1 {
+  height: 200px;
+  width: 200px;
+  margin: 10px;
+  box-shadow: 2px 2px 6px #c22323;
+  justify-content: center;
+  align-items: center;
+}
+.flex-container .sub-container1 .title {
+  font-size: medium;
+  font-style: italic;
+  font-weight: bold;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  margin-top: 2px;
+}
+.flex-container .sub-container1 .sub-container2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.flex-container .sub-container1 .sub-container2 .item {
+  height: 70px;
+  width: 70px;
+  box-shadow: 2px 2px 6px black;
+  margin: 2px;
+}
+.flex-container .sub-container1 .item {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.flex-container .sub-container1 .item .img1 {
+  width: 150px;
+  height: 150px;
+}
+.flex-container .sub-container1 .more {
+  font-size: small;
+  margin-left: 5px;
+  margin-top: 5px;
+}
