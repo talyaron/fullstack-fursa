@@ -1,0 +1,15 @@
+.wrapper {
+   // border: 2px dashed black;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+  
+.item {
+    width: 50px;
+    //flex:1;
+    height: 40px;
+    background-color: rgb(205, 50, 192);
+    margin: 1px;
+    }
+}

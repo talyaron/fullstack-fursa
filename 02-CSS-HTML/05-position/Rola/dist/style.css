@@ -6,17 +6,6 @@
   transform: rotate(-45deg);
 }
 .container .box {
-<<<<<<< Updated upstream
-  width: 100px;
-  height: 100px;
-  background-color: pink;
-  margin: 3px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: black;
-  border: 2px solid gray;
-=======
   position: absolute;
   width: 100px;
   height: 100px;
@@ -42,5 +31,4 @@
   background-color: brown;
   top: 0;
   right: 0;
->>>>>>> Stashed changes
 }
