@@ -8,6 +8,7 @@
 
 #placeholder-content {
   height: fit-content;
+  border-top: 3px solid dimgray;
 }
 
 #placeholder-footer {
@@ -127,7 +128,7 @@ body {
   justify-content: center;
   flex-direction: row;
   border-left: 1px solid #d6d9dc;
-  border-bottom: 3px solid #0000008a;
+  border-bottom: 3px dotted #0000008a;
 }
 
 .nav-area {
@@ -180,6 +181,11 @@ input {
 .header__menu__item {
   color: black;
   padding: 10px 5px;
+}
+.header__menu__item:hover {
+  color: #369ab3;
+  padding: 10px 5px;
+  background-color: rgba(128, 128, 128, 0.568);
 }
 
 .btn {
