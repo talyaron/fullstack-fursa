@@ -2,9 +2,12 @@
     display:flex;
     margin-top:10px ;
     background-color:rgb(201, 199, 198);
+    max-width: 100%;
+    max-height: 100%;
+
     .left{
         flex-direction: column;
-       // flex:40%;
+        flex:40%;
         //flex-wrap: wrap;
         display: flex;
 
