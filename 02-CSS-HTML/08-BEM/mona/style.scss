@@ -43,7 +43,7 @@ html,body{
             
         }
         &_btn{
-            background-color: rgb(175, 73, 5);
+            background-color: #f26d21 ;
             color: white;
             padding:8px 8px 8px 8px;
             margin-left: 10px;
@@ -71,15 +71,22 @@ html,body{
         display: flex;
         flex-direction: column;
         width: 50%;
-        background-color: rgb(115, 117, 115);
-
+        background-color:#f6f7f9
+        ;
+        h1{
+            margin: 20px;
+            font-style: bold;
+        }
         p{
-            margin:3px ;
+            margin:20px ;
             font-size: 1.5rem;
+            color:#444444
+            ;
 
         }
         .btn{
-            
+                width:30%;
+                margin:20px;
                 display: inline-block;
                 padding: 15px 25px;
                 font-size: 24px;
@@ -87,12 +94,16 @@ html,body{
                 text-align: center;
                 text-decoration: none;
                 outline: none;
-                color: #fff;
-                background-color: #4CAF50;
+                background-color: #f26d21
+                ;
+                color: white;
+                font-weight: bold;
+                border-radius: 8px;
+                font-size: 1rem;
+                 padding:8px 8px 8px 8px;
                 border: none;
-                border-radius: 15px;
-                box-shadow: 0 9px #999;
-                .button:hover {background-color: #3e8e41}
+               
+                .button:hover {background-color: #f5f8f5}
 
             
               
@@ -101,10 +112,13 @@ html,body{
 
     }
 .right{
-    position: relative;left: -15px;  
+    position: relative;
+    left: -30px;  
+    top:40px;
+    width:50%;
   
    img{
-      width: 100%;
+      width: 110%;
       height: 100%;
       border-radius: 8px;
       box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
@@ -116,6 +130,48 @@ html,body{
    }
     
 }
+}
+.section2{
+    padding: 80px;
+    display: flex;
+    margin: 10px;
+    .section-left{
+    
+        width:50%;
+        img{
+           width:100%;
+        }
+    }
+    .section-right{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        top:30px;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+
+
+        .up{
+            display: flex;
+            justify-content: space-between;
+            margin: 1rem;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            .textup{
+                display: flex;
+                flex-direction: column;
+            }
+
+            img{
+                width:30%;
+            }
+
+        }
+        .down{
+
+        }
+
+    }
+    
 }
 
 
