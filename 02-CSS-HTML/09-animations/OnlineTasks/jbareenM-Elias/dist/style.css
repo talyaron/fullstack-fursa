@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.stadium {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+.stadium img {
+  width: 100%;
+  height: 100%;
+}
+.stadium .ball {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  position: absolute;
+  left: 50vw;
+  animation-name: animate;
+  animation-duration: 5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 2;
+  animation-direction: alternate;
+}
+.stadium .ball img {
+  width: 100%;
+  height: 100%;
+}
+.stadium .player {
+  position: absolute;
+  left: 0;
+  top: 50vh;
+}
+.stadium .player img {
+  width: 100px;
+  height: 100px;
+}
+
+@keyframes animate {
+  0% {
+    top: 40vh;
+    left: 90vw;
+    transform: rotate(0deg);
+  }
+  50% {
+    top: 20vh;
+    left: 50vw;
+    transform: rotate(1800deg);
+  }
+  100% {
+    top: 40vh;
+    left: 10vw;
+    transform: rotate(360deg);
+  }
+}
