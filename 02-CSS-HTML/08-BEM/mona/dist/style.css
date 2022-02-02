@@ -36,7 +36,7 @@ html, body {
   padding: 10px 8px;
 }
 .header_rightmenu_btn {
-  background-color: #af4905;
+  background-color: #f26d21;
   color: white;
   padding: 8px 8px 8px 8px;
   margin-left: 10px;
@@ -61,13 +61,20 @@ html, body {
   display: flex;
   flex-direction: column;
   width: 50%;
-  background-color: #737573;
+  background-color: #f6f7f9;
+}
+.bottom .left h1 {
+  margin: 20px;
+  font-style: bold;
 }
 .bottom .left p {
-  margin: 3px;
+  margin: 20px;
   font-size: 1.5rem;
+  color: #444444;
 }
 .bottom .left .btn {
+  width: 30%;
+  margin: 20px;
   display: inline-block;
   padding: 15px 25px;
   font-size: 24px;
@@ -75,26 +82,63 @@ html, body {
   text-align: center;
   text-decoration: none;
   outline: none;
-  color: #fff;
-  background-color: #4CAF50;
+  background-color: #f26d21;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  font-size: 1rem;
+  padding: 8px 8px 8px 8px;
   border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;
 }
 .bottom .left .btn .button:hover {
-  background-color: #3e8e41;
+  background-color: #f5f8f5;
 }
 .bottom .left .btn:hover {
   background-color: #3e8e41;
 }
 .bottom .right {
   position: relative;
-  left: -15px;
+  left: -30px;
+  top: 40px;
+  width: 50%;
 }
 .bottom .right img {
-  width: 100%;
+  width: 110%;
   height: 100%;
   border-radius: 8px;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   margin-left: 5px;
+}
+
+.section2 {
+  padding: 80px;
+  display: flex;
+  margin: 10px;
+}
+.section2 .section-left {
+  width: 50%;
+}
+.section2 .section-left img {
+  width: 100%;
+}
+.section2 .section-right {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  top: 30px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.section2 .section-right .up {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.section2 .section-right .up .textup {
+  display: flex;
+  flex-direction: column;
+}
+.section2 .section-right .up img {
+  width: 30%;
 }
