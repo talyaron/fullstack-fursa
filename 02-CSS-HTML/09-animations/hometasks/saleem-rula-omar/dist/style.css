@@ -62,13 +62,14 @@ h6 {
   margin-bottom: 16px;
   width: 298px;
   border-radius: 3px;
+  background-color: burlywood;
 }
 
 .panel > h2 {
   background-color: fafafb;
   margin: 0;
   padding: 12px 15px;
-  color: #535a60;
+  color: #0f0f0f;
   font-size: 15px;
   font-weight: 400;
   border-bottom: 1px solid #d6d9dc;
