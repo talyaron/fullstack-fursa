@@ -1,0 +1,30 @@
+body {
+  margin: 0px;
+}
+
+html {
+  font-size: 20px;
+}
+
+h1 {
+  font: 50px;
+}
+
+.wrapper {
+  margin: auto;
+  background-color: wheat;
+  height: 60vh;
+  width: 55ch;
+  padding: 20px;
+}
+.wrapper .image {
+  width: 100%;
+}
+
+p {
+  font-size: 0.8rem;
+}
+
+div {
+  font-size: 2rem;
+}

@@ -1,0 +1,23 @@
+.wrapper {
+  margin: auto;
+  height: 60vh;
+  width: 60vw;
+  position: relative;
+  overflow: auto;
+}
+.wrapper img {
+  height: 100%;
+  width: 100%;
+}
+.wrapper .text {
+  top: 10%;
+  left: 10%;
+  position: absolute;
+  color: white;
+}
+.wrapper .text p {
+  font-size: 3vw;
+}
+.wrapper .text h1 {
+  font-size: 6vw;
+}

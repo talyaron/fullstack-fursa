@@ -1,13 +1,25 @@
 .wrapper {
   border: 2px dashed black;
   display: flex;
-  width: 100%;
+  flex-direction: row;
   flex-wrap: wrap;
+  width: 100%;
 }
+<<<<<<< Updated upstream
 .wrapper .item {
   max-width: 200px;
   flex: 1;
   height: 100px;
   background-color: yellowgreen;
   margin: 1px;
+=======
+.wrapper .item1 {
+  display: flex;
+  width: 100px;
+  height: 100%;
+  background-color: #c42121;
+  margin: 3px;
+  text-align: center;
+  justify-content: center;
+>>>>>>> Stashed changes
 }
