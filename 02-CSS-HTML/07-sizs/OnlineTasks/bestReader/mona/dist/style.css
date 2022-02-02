@@ -5,6 +5,7 @@ html {
 .wrapper {
   margin: auto;
   width: 70ch;
+  min-width: 50ch;
   background-color: burlywood;
 }
 .wrapper img {
