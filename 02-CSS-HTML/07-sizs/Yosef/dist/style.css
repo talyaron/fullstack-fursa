@@ -1,0 +1,24 @@
+body {
+  margin: 0px;
+}
+
+html {
+  font-size: 20px;
+}
+
+
+.wrapper {
+  margin: auto;
+  background-color: wheat;
+  height: 100vh;
+  width: 100vh;
+  padding: 20px;
+}
+.wrapper .image {
+  width: 100vh;
+  height: auto;
+}
+
+h1 {
+  font-size: 2rem;
+}
