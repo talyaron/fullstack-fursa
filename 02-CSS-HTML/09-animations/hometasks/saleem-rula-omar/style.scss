@@ -8,6 +8,7 @@
 
 #placeholder-content {
     height: fit-content;
+    border-top: 3px solid rgb(105, 105, 105); ;
 }
 
 #placeholder-footer {
@@ -68,6 +69,7 @@ h6{
     width: 298px;
     border-radius: 3px;
     background-color: burlywood;
+  
 }
 
 .panel > h2 {
@@ -127,7 +129,7 @@ body {
     justify-content: center;
     flex-direction: row;
     border-left: 1px solid #d6d9dc;
-    border-bottom: 3px solid #0000008a;
+    border-bottom: 3px dotted  #0000008a;
 }
 .nav-area {
     padding-top: 24px;
