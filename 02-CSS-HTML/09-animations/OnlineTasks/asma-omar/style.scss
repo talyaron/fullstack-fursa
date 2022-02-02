@@ -1,0 +1,48 @@
+.human{
+    //background-color: rgb(221, 69, 221);
+    width: 200px;
+    height: 200px;
+    //border-radius: 50px;
+    position: relative;
+    //left:50vw;
+    animation-name:move;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+
+}
+
+
+
+@keyframes move{
+
+
+    0%{
+        top:50vh;
+        left:10vw;
+        background-image: url("1.jpg");
+    } 
+    25%{
+        top:50vh;
+        left:20vw;
+        background-image: url("2.jpg");
+  
+    }
+    50%{
+        top:50vh;
+        left:30vw;
+        background-image: url("3.jpg");
+
+    }
+    75%{
+        top:50vh;
+        left:40vw;
+        background-image: url("4.jpg");
+    }
+    100%{
+        top:50vh;
+        left:50vw;
+        background-image: url("5.jpg");
+
+    }
+}
