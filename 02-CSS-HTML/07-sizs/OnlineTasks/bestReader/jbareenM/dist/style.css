@@ -1,0 +1,12 @@
+.container {
+  border: 2px solid black;
+  margin: auto;
+  width: 80vw;
+}
+.container .blogHeader img {
+  width: 100%;
+}
+.container .content {
+  margin: 4px;
+  font-size: 2vw;
+}
