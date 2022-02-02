@@ -1,0 +1,16 @@
+html {
+  font-size: 15px;
+}
+
+.wrapper {
+  width: 100%;
+}
+.wrapper img {
+  width: 100%;
+}
+.wrapper h1 {
+  font-size: 2vw;
+}
+.wrapper h2 {
+  font-size: 1vw;
+}
