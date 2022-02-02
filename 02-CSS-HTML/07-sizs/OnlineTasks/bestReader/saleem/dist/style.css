@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 50px;
+}
+
+body {
+  font-family: "Noto Sans", sans-serif;
+  color: #001219;
+  background-color: #e9d8a6;
+}
+
+img {
+  max-width: 50vw;
+  height: auto;
+}
+
+h1 {
+  font-family: "Nanum Gothic", sans-serif;
+}
+
+h2, h3, h4 {
+  font-family: "Nanum Gothic", sans-serif;
+}
+
+.logo a {
+  font-family: "Dongle", sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  background-color: #fff;
+  box-shadow: 1px 3px 4px 0 rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 5px;
+  width: 100%;
+  z-index: 3;
+}
+
+.header .logo {
+  color: #ca6702;
+  display: block;
+  float: left;
+  font-size: 0.7rem;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+.blog {
+  width: 75%;
+  margin: 100px 50px;
+  padding: 10px;
+}
+
+.blog h3,
+.content h4 {
+  font-size: 2rem;
+  margin: 5px;
+  padding: 5px;
+}
+
+.blog p {
+  line-height: 1.5em;
+  letter-spacing: 1px;
+  padding: 3px;
+  font-size: 0.5rem;
+}
