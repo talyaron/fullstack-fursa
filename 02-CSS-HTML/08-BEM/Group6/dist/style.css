@@ -2,7 +2,7 @@ html, body {
   margin: 0px;
 }
 
-.wrapper .header {
+.header {
   background-color: black;
   width: 100%;
   display: flex;
@@ -12,7 +12,7 @@ html, body {
   flex-wrap: wrap;
   align-content: center;
 }
-.wrapper .header .signIn {
+.header .signIn {
   display: flex;
   align-content: center;
   border: 0.5px solid white;
@@ -22,34 +22,34 @@ html, body {
   justify-content: space-around;
   align-items: center;
 }
-.wrapper .header .signIn img {
+.header .signIn img {
   width: 20%;
   height: 80%;
   border-radius: 50%;
 }
-.wrapper .header .signIn p {
+.header .signIn p {
   color: white;
   font-size: 1rem;
 }
-.wrapper .header__menu {
+.header__menu {
   display: flex;
   margin-left: 20px;
 }
-.wrapper .header__menu__item {
+.header__menu__item {
   color: white;
   font-size: 1rem;
   font-weight: bold;
   padding: 10px 5px;
   margin-left: 15px;
 }
-.wrapper .header input {
+.header input {
   position: relative;
   height: 80%;
   width: 15%;
   margin-right: 20px;
   top: 1.5px;
 }
-.wrapper .header .logo {
+.header .logo {
   position: relative;
   background-image: url(https://logos-world.net/wp-content/uploads/2021/07/BBC-New-Logo-700x394.png);
   width: 7%;
@@ -58,36 +58,60 @@ html, body {
   background-size: cover;
   margin-left: 15px;
 }
+
+.wrapper {
+  margin: auto;
+  width: 80%;
+}
+.wrapper .title {
+  font-size: 2rem;
+  font-weight: bold;
+  font-style: italic;
+  margin-top: 20px;
+}
 .wrapper .toprow {
   display: flex;
   height: 47%;
-  width: 90%;
 }
 .wrapper .toprow .left {
   display: flex;
   position: relative;
   width: 50%;
+  margin: 5px;
 }
 .wrapper .toprow .left img {
   width: 100%;
   height: 100%;
 }
+.wrapper .toprow .left img:hover {
+  box-shadow: 2x 2px 6px rgba(0, 0, 0, 0.205);
+  opacity: 0.9;
+}
 .wrapper .toprow .left p {
   position: absolute;
-  bottom: -50px;
+  bottom: 0px;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.582);
   color: white;
-  font-size: 5rem;
+  font-size: x-large;
 }
 .wrapper .toprow .right {
   display: flex;
   position: relative;
+  width: 50%;
 }
 .wrapper .toprow .right .innerRow {
   display: flex;
   flex-direction: column;
   height: 50%;
+}
+.wrapper .toprow .right .innerRow .box {
+  margin: 5px;
+  position: relative;
+}
+.wrapper .toprow .right .innerRow .box:hover {
+  box-shadow: 2x 2px 6px rgba(0, 0, 0, 0.205);
+  opacity: 0.9;
 }
 .wrapper .toprow .right .innerRow .box img {
   width: 100%;
@@ -95,9 +119,33 @@ html, body {
 }
 .wrapper .toprow .right .innerRow .box p {
   position: absolute;
-  bottom: -50px;
+  bottom: 0px;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.582);
   color: white;
-  font-size: 2rem;
+  font-size: x-large;
+}
+.wrapper .bottomrow {
+  display: flex;
+  justify-content: space-between;
+}
+.wrapper .bottomrow .box {
+  margin: 5px;
+  position: relative;
+}
+.wrapper .bottomrow .box:hover {
+  box-shadow: 2x 2px 6px rgba(0, 0, 0, 0.205);
+  opacity: 0.9;
+}
+.wrapper .bottomrow .box img {
+  width: 100%;
+  height: 100%;
+}
+.wrapper .bottomrow .box p {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.582);
+  color: white;
+  font-size: x-large;
 }
