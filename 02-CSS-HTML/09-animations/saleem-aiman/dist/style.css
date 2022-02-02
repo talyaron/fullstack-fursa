@@ -36,7 +36,7 @@ img {
   /*   animation-fill-mode: backwards; */
   /*   animation-fill-mode: backwards; */
   /*   animation-play-state: runnign; */
-  animation: fly 4s linear infinite;
+  animation: fly 4s linear;
 }
 
 /* Utilizar apenas transform e opacity nas animações */
