@@ -1,0 +1,16 @@
+html {
+  font-size: 15px;
+}
+
+.wrapper {
+  width: 50vw;
+  height: 50vh;
+  margin: auto;
+}
+.wrapper .image {
+  height: 100%;
+  width: 100%;
+}
+.wrapper .title {
+  font-size: 2rem;
+}
