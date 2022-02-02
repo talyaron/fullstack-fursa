@@ -72,13 +72,13 @@ html, body{
 }
 
 .content{
-   // display: flex;
-   // flex-direction: column;
+    //display: flex;
+    //flex-direction: column;
     .content__row1{
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
-       // flex: 1;
+        //flex: 1;
         margin: 20px 200px 0px 200px;
         //padding: 10px;
         .content__box {
