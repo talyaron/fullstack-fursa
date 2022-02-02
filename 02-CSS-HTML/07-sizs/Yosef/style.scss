@@ -1,0 +1,28 @@
+body{
+    margin: 0px;
+}
+html{
+    font-size: 20px;
+}
+h1{
+    font: 50px;
+}
+.wrapper{
+    margin: auto;
+    background-color: wheat;
+    height: 60vh; //100vh = 100% view height
+    width: 55ch;
+    padding: 20px;
+
+    .image{
+        width: 100%;
+    }
+}
+
+p{
+    font-size: 0.8rem; //REM is relative to the font-size in html
+}
+
+div{
+    font-size: 2rem;
+}
