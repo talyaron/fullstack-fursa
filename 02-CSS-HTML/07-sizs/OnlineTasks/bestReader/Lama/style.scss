@@ -1,16 +1,12 @@
-body{
-    margin: 0px;
-}
+
 html{
     font-size: 15px;
 }
 .wrapper{
     margin: auto;
     background-color: rgb(224, 203, 238);
-    // height: 10px;
     height: 80vh; 
     width: 50vw;
-    // padding: 20px;
 
     .img{
         width: 100%;
@@ -18,18 +14,18 @@ html{
 
     }
     h1{
-        font-size: 2rem;
+        font-size: 2vw;
         padding: 10px;
         font-weight: bold;
     }
 
     h2{
-        font-size: 1.5rem;
+        font-size: 1.5vw;
         padding: 20px;
     }
 
     p{
         padding: 10px;
-        font-size: 1.4rem;
+        font-size: 1.5vw;
     }
 }
