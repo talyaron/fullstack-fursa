@@ -1,0 +1,51 @@
+.circle{
+    background-color: purple;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    position: relative;
+    left:50vw;
+
+    animation-name:move;
+    animation-duration: 10s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-direction:alternate;
+    animation-timing-function:ease-in;
+
+}
+
+@keyframes move{
+    // from{
+    //     top:50vh;
+    //     background-color: purple;
+    //     border-radius: 50px;
+    // } 
+    // to{
+    //     top:-30vh;
+    //     background-color: yellow;
+    //     border-radius: 5px;
+    // }
+
+    0%{
+        top:50vh;
+        left:50vw;
+        background-color: #800080;
+        border-radius: 50px;
+        transform: rotate(0deg);
+    } 
+    50%{
+        top:50vh;
+        left:0vw;
+        background-color: rgb(10, 255, 51);
+        border-radius: 50px;
+        transform: rotate(720deg);
+    }
+    100%{
+        top:-30vh;
+        left:90vw;
+        background-color: yellow;
+        border-radius: 5px;
+        transform: rotate(1440deg);
+    }
+}
