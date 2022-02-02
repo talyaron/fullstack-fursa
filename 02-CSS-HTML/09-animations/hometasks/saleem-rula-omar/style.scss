@@ -38,6 +38,10 @@ nav a.current {
     padding-left: 8px;
     line-height: 31px;
 }
+nav a.current:hover { 
+    // transform: scale(2.5);
+    background-color: rgb(179, 243, 243);
+ }
 
 h1 {
     margin: 0;
