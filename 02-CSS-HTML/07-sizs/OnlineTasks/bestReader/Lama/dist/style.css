@@ -8,20 +8,22 @@ html {
   height: 80vh;
   width: 50vw;
 }
-.wrapper .img {
+
+.img {
   width: 100%;
   height: 30vh;
 }
-.wrapper h1 {
-  font-size: 2vw;
+
+.div2 {
   padding: 10px;
+}
+.div2 h1 {
+  font-size: 3rem;
   font-weight: bold;
 }
-.wrapper h2 {
-  font-size: 1.5vw;
-  padding: 20px;
+.div2 h2 {
+  font-size: 2rem;
 }
-.wrapper p {
-  padding: 10px;
-  font-size: 1.5vw;
+.div2 p {
+  font-size: 2rem;
 }
