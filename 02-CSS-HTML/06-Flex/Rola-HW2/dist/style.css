@@ -1,0 +1,84 @@
+.wrapper {
+  display: flex;
+  margin-top: 10px;
+  background-color: #c9c7c6;
+}
+.wrapper .left {
+  flex-direction: column;
+  display: flex;
+}
+.wrapper .left .box {
+  display: flex;
+  background-color: grey;
+  width: 300px;
+  height: 100px;
+}
+.wrapper .left .box .box-img {
+  display: flex;
+  justify-content: center;
+  flex: 20%;
+}
+.wrapper .left .box .box-img img {
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  align-self: center;
+}
+.wrapper .left .box .box-text {
+  flex: 80%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.wrapper .left .box1 {
+  display: flex;
+  background-color: #3a3737;
+  width: 300px;
+  height: 100px;
+}
+.wrapper .left .box1 .box-img {
+  display: flex;
+  justify-content: center;
+  flex: 20%;
+}
+.wrapper .left .box1 .box-img img {
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  align-self: center;
+}
+.wrapper .left .box1 .box-text {
+  flex: 80%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.wrapper .right {
+  display: flex;
+  flex-direction: column;
+  flex: 60%;
+}
+.wrapper .right .up {
+  position: relative;
+}
+.wrapper .right .up .title {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 60px;
+}
+.wrapper .right .down {
+  display: flex;
+  flex-wrap: wrap;
+}
+.wrapper .right .down .box-right {
+  background-color: white;
+  flex: 33%;
+  margin-left: 1px;
+}
+.wrapper .right .down .box-right img {
+  width: 100%;
+  border-radius: 3px;
+  width: 90%;
+  height: 80%;
+}
