@@ -7,7 +7,7 @@
 }
 
 #placeholder-content {
-    height: 800px;
+    height: fit-content;
 }
 
 #placeholder-footer {
@@ -20,6 +20,12 @@ html {
 }
 
 header {
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: space-between;
+    //padding: 10px;
+    box-sizing: border-box;
+
     position: fixed;
     top: 0;
     width: 100%;
@@ -38,6 +44,10 @@ nav a.current {
     padding-left: 8px;
     line-height: 31px;
 }
+nav a.current:hover { 
+    // transform: scale(2.5);
+    background-color: rgb(179, 243, 243);
+ }
 
 h1 {
     margin: 0;
@@ -45,8 +55,8 @@ h1 {
     font-weight: 400;
 }
 h6{
-    top: 0;
-
+    padding-top: 0;
+    font-size: 20px;
     margin-top: 0;
     font-weight: 400;
 }
@@ -57,13 +67,14 @@ h6{
     margin-bottom: 16px;
     width: 298px;
     border-radius: 3px;
+    background-color: burlywood;
 }
 
 .panel > h2 {
     background-color: fafafb;
     margin: 0;
     padding: 12px 15px;
-    color: rgb(83, 90, 96);
+    color: rgb(15, 15, 15);
     font-size: 15px;
     font-weight: 400;
     border-bottom: 1px solid rgb(214, 217, 220);
@@ -108,7 +119,16 @@ body {
     flex-direction: row;
     border-left: 1px solid #d6d9dc;
 }
-
+.question-area{
+    padding: 24px;
+    flex: 1 1 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+    border-left: 1px solid #d6d9dc;
+    border-bottom: 3px solid #0000008a;
+}
 .nav-area {
     padding-top: 24px;
 }
@@ -126,4 +146,65 @@ nav {
 
 .footer-area {
     padding: 24px;
+}
+html, body{
+    margin: 0px;
+}
+input{
+    width:500px;
+}
+.header{
+    
+
+    .headerleft{
+        display: flex;
+        width: 100%;
+    }
+    .headerright{
+        display: flex;
+        .header__menu{
+            padding-left:20px;
+        }
+
+    }
+
+    &__right{
+        display: flex;
+        align-items: center;
+        //margin-left:60px;
+    }
+    
+
+    &__left{
+        display: flex;
+        align-items: center;
+       // margin-left:60px;
+    }
+
+
+    &__menu{
+        display: flex;
+
+        &__item{
+            color:rgb(0, 0, 0);
+            padding: 10px 5px;
+           // margin-left: 40px;
+
+        }
+    }
+
+}
+
+.btn{
+    background-color: rgb(124, 133, 212);
+    border-radius: 5px;
+    padding: 10px 20px;
+    width: fit-content;
+    margin-left: 10px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.205);
+    color: white;
+
+    &--header{
+        background-color: rgb(187, 187, 187);
+    }
 }
