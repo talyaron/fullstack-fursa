@@ -18,6 +18,18 @@
     
     }
 
+    .img1{
+      
+        //left:50vw;
+        animation-name:move;
+        animation-duration: 4s;
+        animation-delay: 2s;
+        //animation-fill-mode: forwards;
+        animation-iteration-count:1;
+        animation-direction:alternate;
+        animation-timing-function:ease-in;
+    }
+
 }
 @keyframes move{
     0%{
