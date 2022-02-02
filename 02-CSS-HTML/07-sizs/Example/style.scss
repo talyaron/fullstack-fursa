@@ -1,0 +1,30 @@
+body{
+    margin: 0px;
+}
+html{
+    font-size: 15px;
+}
+.wrapper{
+    margin: auto;
+    background-color: wheat;
+    // height: 10px;
+    height: 50vh; //100vh = 100% view height
+    // width: 50vw; //100vw = 100% view width
+    width: 55ch;
+    padding: 20px;
+}
+
+p{
+    font-size: 0.8rem; //REM is relative to the font-size in html
+}
+
+div{
+    font-size: 2rem;
+}
+
+.box{
+    height: 40%;
+    width: 40%; // precentage from the parent
+    background-color: teal;
+   
+}
