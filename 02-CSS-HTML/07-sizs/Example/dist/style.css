@@ -1,0 +1,29 @@
+body {
+  margin: 0px;
+}
+
+html {
+  font-size: 15px;
+}
+
+.wrapper {
+  margin: auto;
+  background-color: wheat;
+  height: 50vh;
+  width: 55ch;
+  padding: 20px;
+}
+
+p {
+  font-size: 0.8rem;
+}
+
+div {
+  font-size: 2rem;
+}
+
+.box {
+  height: 40%;
+  width: 40%;
+  background-color: teal;
+}
