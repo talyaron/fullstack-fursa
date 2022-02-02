@@ -39,6 +39,10 @@ nav a.current {
   line-height: 31px;
 }
 
+nav a.current:hover {
+  background-color: #b3f3f3;
+}
+
 h1 {
   margin: 0;
   font-size: 27px;
