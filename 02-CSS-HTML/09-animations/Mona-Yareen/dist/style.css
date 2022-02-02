@@ -1,0 +1,59 @@
+.circle {
+  width: 100px;
+  height: 100px;
+  background-color: cornflowerblue;
+  border-radius: 50px;
+  position: relative;
+  animation-name: move;
+  animation-duration: 10s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-timing-function: ease-out;
+}
+.circle img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+}
+
+.person {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  animation-name: personmove;
+  animation-duration: 8s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-timing-function: linear;
+}
+.person img {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes move {
+  0% {
+    top: 100vh;
+    left: 0vw;
+  }
+  50% {
+    left: 60vw;
+    top: 40vh;
+  }
+  100% {
+    top: -30vh;
+    left: 80vw;
+  }
+}
+@keyframes personmove {
+  0% {
+    top: 100vh;
+    left: 0vw;
+  }
+  100% {
+    top: 100vh;
+    left: 80vw;
+  }
+}

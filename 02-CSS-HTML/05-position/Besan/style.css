@@ -1,0 +1,25 @@
+
+.box{
+    position: relative;
+    display: inline-block; 
+}
+.box .text{
+    position: absolute;
+    z-index: 999;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 40%; 
+    text-align: center;
+    width: 60%; 
+
+.box{}
+.box .title{
+        position: absolute;
+        z-index: 999;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        top: 40%; 
+        text-align: center;
+        width: 60%; 
