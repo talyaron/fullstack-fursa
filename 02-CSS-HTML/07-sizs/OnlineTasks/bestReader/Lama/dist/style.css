@@ -1,7 +1,3 @@
-body {
-  margin: 0px;
-}
-
 html {
   font-size: 15px;
 }
@@ -17,15 +13,15 @@ html {
   height: 30vh;
 }
 .wrapper h1 {
-  font-size: 2rem;
+  font-size: 2vw;
   padding: 10px;
   font-weight: bold;
 }
 .wrapper h2 {
-  font-size: 1.5rem;
+  font-size: 1.5vw;
   padding: 20px;
 }
 .wrapper p {
   padding: 10px;
-  font-size: 1.4rem;
+  font-size: 1.5vw;
 }
