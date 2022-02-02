@@ -21,6 +21,9 @@
   flex-direction: column;
   flex: 1 0 300px;
 }
+.wrapper .ContentWrapper .LeftWrapper .LeftWrapper:hover {
+  background-color: #706565;
+}
 .wrapper .ContentWrapper .LeftWrapper .headerleft {
   background-color: red;
   color: white;
@@ -76,9 +79,12 @@
   border-radius: 30px;
   margin: 15px;
 }
-.wrapper .ContentWrapper .LeftWrapper .leftcontent .leftTextBottom {
-  color: #3b13ec;
-  font-size: 10px;
+.wrapper .ContentWrapper .LeftWrapper .leftcontent .ItemLeft .leftimage:hover {
+  transform: scale(2.5);
+}
+.wrapper .ContentWrapper .LeftWrapper .leftcontent .ItemLeft:hover {
+  background-color: #6c6570;
+  cursor: pointer;
 }
 .wrapper .ContentWrapper .RightWrapper {
   display: flex;
@@ -106,6 +112,10 @@
   width: 100%;
   height: 150px;
 }
+.wrapper .ContentWrapper .RightWrapper .FooterRight .ItemFooter .footerimage:hover {
+  transform: scale(1.5);
+  cursor: pointer;
+}
 .wrapper .ContentWrapper .RightWrapper .FooterRight .ItemFooter .footerTextBottom {
   color: #3b13ec;
   font-size: 20px;
@@ -125,6 +135,10 @@
   width: 100%;
   height: 100%;
   object-fit: fill;
+}
+.wrapper .ContentWrapper .RightWrapper .headerRight .rightImg:hover {
+  background-color: #706565;
+  cursor: pointer;
 }
 .wrapper .ContentWrapper .RightWrapper .headerRight .headerimgText {
   position: absolute;
