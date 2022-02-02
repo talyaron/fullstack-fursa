@@ -1,0 +1,29 @@
+.wrapper {
+  display: flex;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+}
+.wrapper img {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  animation-name: move;
+  animation-duration: 4s;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in;
+}
+
+@keyframes move {
+  0% {
+    top: 30vh;
+    transform: rotate(0deg);
+  }
+  100% {
+    top: 30vh;
+    width: 0px;
+    height: 0px;
+    transform: rotate(1440deg);
+  }
+}
