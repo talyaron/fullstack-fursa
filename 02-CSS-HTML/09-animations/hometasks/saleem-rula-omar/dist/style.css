@@ -182,6 +182,11 @@ input {
   color: black;
   padding: 10px 5px;
 }
+.header__menu__item:hover {
+  color: #369ab3;
+  padding: 10px 5px;
+  background-color: rgba(128, 128, 128, 0.568);
+}
 
 .btn {
   background-color: #7c85d4;
