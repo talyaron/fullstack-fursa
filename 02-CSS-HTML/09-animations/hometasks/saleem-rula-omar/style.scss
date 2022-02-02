@@ -7,7 +7,7 @@
 }
 
 #placeholder-content {
-    height: 800px;
+    height: fit-content;
 }
 
 #placeholder-footer {
@@ -45,8 +45,8 @@ h1 {
     font-weight: 400;
 }
 h6{
-    top: 0;
-
+    padding-top: 0;
+    font-size: 20px;
     margin-top: 0;
     font-weight: 400;
 }
@@ -108,7 +108,16 @@ body {
     flex-direction: row;
     border-left: 1px solid #d6d9dc;
 }
-
+.question-area{
+    padding: 24px;
+    flex: 1 1 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+    border-left: 1px solid #d6d9dc;
+    border-bottom: 3px solid #0000008a;
+}
 .nav-area {
     padding-top: 24px;
 }
