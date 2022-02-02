@@ -1,0 +1,29 @@
+.wrapper {
+    display: flex;
+    // flex-direction: column;
+    width: 100%;
+    flex-wrap: wrap;
+
+    .box {
+        width: max-content;
+        flex-wrap: wrap;
+        height: 400px;
+        flex: 1;
+        background-color: rgb(212, 197, 167);
+        margin: 3px;
+        border-radius: 10px;
+        display: flex;
+        
+    }
+    .box2 {
+
+        width: 50%;
+        height: 100px;
+        flex-direction: row;
+        display: grid;
+        grid-template-columns: repeat(auto-fill,minmax(100px, 2fr))
+        background-color: rgb(231, 153, 116);
+        margin: 3px;
+        border-radius: 10px;
+    }
+}

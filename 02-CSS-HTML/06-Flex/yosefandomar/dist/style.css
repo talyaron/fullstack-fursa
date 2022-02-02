@@ -1,0 +1,24 @@
+.wrapper {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.wrapper .box {
+  width: max-content;
+  flex-wrap: wrap;
+  height: 400px;
+  flex: 1;
+  background-color: #d4c5a7;
+  margin: 3px;
+  border-radius: 10px;
+  display: flex;
+}
+.wrapper .box2 {
+  width: 50%;
+  height: 100px;
+  flex-direction: row;
+  flex: 1 1 120px;
+  background-color: #e79974;
+  margin: 3px;
+  border-radius: 10px;
+}

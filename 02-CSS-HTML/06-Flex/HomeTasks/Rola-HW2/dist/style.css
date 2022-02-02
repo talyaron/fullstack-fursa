@@ -2,9 +2,12 @@
   display: flex;
   margin-top: 10px;
   background-color: #c9c7c6;
+  max-width: 100%;
+  max-height: 100%;
 }
 .wrapper .left {
   flex-direction: column;
+  flex: 40%;
   display: flex;
 }
 .wrapper .left .box {
