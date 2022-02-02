@@ -1,0 +1,138 @@
+.wrapper{
+    display: flex;
+    //justify-content: center;
+
+    .background{
+        width: 40vw;
+        height: 60vh;
+        background-color: rgb(5, 5, 34);
+        position: relative;
+
+        animation-name: openBox1;
+        animation-duration: 2s;
+        animation-iteration-count: 1;
+
+        img{
+            width: 50%;
+            position: absolute;
+            left: 5%;
+            top: 10%;
+            transform: rotate(15deg);
+
+            animation-name: fade2;
+                animation-duration: 3s;
+                animation-iteration-count: 0.5s;
+                animation-timing-function: ease-in;
+        }
+
+        .details{
+            width: 30vw;
+            height: 40vh;
+            background-color: #9e7649;
+            position: relative;
+            left: 70%;
+            top: 16%;
+
+            display: flex;
+            justify-content: center;
+
+            animation-name: openBox2;
+            animation-duration: 2s;
+            animation-iteration-count: 1;
+
+            p{
+                font-size: large;
+                font-style: italic;
+                width: 85%;
+
+                animation-name: fade2;
+                animation-duration: 3s;
+                animation-iteration-count: 0.5s;
+                animation-timing-function: ease-in;
+            }
+            
+
+            .btnLeft{
+                width: 35%;
+                height: 15%;
+                background-color: rgba(30, 34, 30, 0.432);
+                position: absolute;
+                bottom: 5%;
+                left: 5%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 5px;
+
+                animation-name: fade;
+                animation-duration: 3s;
+                animation-iteration-count: 1;
+                animation-timing-function: ease-in;
+
+            }
+            .btnRight{
+                width: 35%;
+                height: 15%;
+                background-color: rgba(30, 34, 30, 0.432);
+                position: absolute;
+                bottom: 5%;
+                right: 5%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 5px;
+
+                animation-name: fade;
+                animation-duration: 3s;
+                animation-iteration-count: 1;
+                animation-timing-function: ease-in;
+
+            }
+        }
+    }
+}
+
+@keyframes openBox1 {
+    0%{
+        width: 0%;
+    }
+
+    100%{
+        width: 40vw;
+    }
+}
+
+@keyframes openBox2 {
+    0%{
+        width: 0%;
+    }
+
+    100%{
+        width: 30vw;
+    }
+}
+
+@keyframes fade {
+    0%{
+        opacity: 0;
+        bottom: -25px;
+    }
+    33%{
+        opacity: 0;
+        bottom: -25px;
+    }
+    100%{
+        opacity: 1;
+        bottom: 5%;
+    }
+}
+
+@keyframes fade2 {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+    
+}
