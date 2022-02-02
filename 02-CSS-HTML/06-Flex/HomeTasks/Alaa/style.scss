@@ -1,0 +1,104 @@
+.wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  
+    .left {
+      flex: 40%;
+      box-shadow: 2px 2px 2px gray;
+      background-color:white;
+      border-radius: 5px;
+      
+      h1 {
+        font-size: 30%;
+      }
+  
+      .title {
+        background-color: red;
+        padding: 1px;
+        h2 {
+          font-size: 20%;
+          color: white;
+        }
+      }
+      .corespondent {
+        display: flex;
+        flex-direction: row;
+        .left-div {
+          flex: 20%;
+          display: flex;
+          background-color: rgb(80, 76, 76);
+          justify-content: center;
+  
+          img {
+            width: 30%;
+            height: 50%;
+            align-self: center;
+            border-radius: 10px;
+          }
+        }
+        .right-div {
+          flex: 70%;
+          background-color: rgb(80, 76, 76);
+          padding: 3px;
+          font-size: 20%;
+          color: white;
+          h3 {
+            font-family: sans-serif;
+            font-style: italic;
+            font-size: 10%;
+            color: white;
+          }
+          h4 {
+            font-family: sans-serif;
+            font-style: italic;
+            font-size: 10%;
+            color: white;
+          }
+        }
+      }
+    }
+  
+    .right {
+      flex: 60%;
+      background-color: blueviolet;
+      flex-direction: column;
+    
+      box-shadow: 2px 2px 2px gray;
+      border-radius: 10px;
+      .box-up {
+        width: 100%;
+        position: relative;
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 10px;
+        }
+        .right_title {
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          color: white;
+          font-family: sans-serif;
+          font-style: italic;
+        }
+  
+      }
+      .box-down {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        .boxes{
+          width: 33%;
+          display: flex;
+          flex-direction: column;
+          img {
+            width :100%;
+          }
+        }
+  
+      }
+    }
+  
+  }
+  
