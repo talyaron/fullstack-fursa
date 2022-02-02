@@ -2,7 +2,7 @@ html, body {
   margin: 0px;
 }
 
-.header {
+.wrapper .header {
   background-color: black;
   width: 100%;
   display: flex;
@@ -12,7 +12,7 @@ html, body {
   flex-wrap: wrap;
   align-content: center;
 }
-.header .signIn {
+.wrapper .header .signIn {
   display: flex;
   align-content: center;
   border: 0.5px solid white;
@@ -22,34 +22,34 @@ html, body {
   justify-content: space-around;
   align-items: center;
 }
-.header .signIn img {
+.wrapper .header .signIn img {
   width: 20%;
   height: 80%;
   border-radius: 50%;
 }
-.header .signIn p {
+.wrapper .header .signIn p {
   color: white;
   font-size: 1rem;
 }
-.header__menu {
+.wrapper .header__menu {
   display: flex;
   margin-left: 20px;
 }
-.header__menu__item {
+.wrapper .header__menu__item {
   color: white;
   font-size: 1rem;
   font-weight: bold;
   padding: 10px 5px;
   margin-left: 15px;
 }
-.header input {
+.wrapper .header input {
   position: relative;
   height: 80%;
   width: 15%;
   margin-right: 20px;
   top: 1.5px;
 }
-.header .logo {
+.wrapper .header .logo {
   position: relative;
   background-image: url(https://logos-world.net/wp-content/uploads/2021/07/BBC-New-Logo-700x394.png);
   width: 7%;
@@ -57,4 +57,47 @@ html, body {
   top: -3px;
   background-size: cover;
   margin-left: 15px;
+}
+.wrapper .toprow {
+  display: flex;
+  height: 47%;
+  width: 90%;
+}
+.wrapper .toprow .left {
+  display: flex;
+  position: relative;
+  width: 50%;
+}
+.wrapper .toprow .left img {
+  width: 100%;
+  height: 100%;
+}
+.wrapper .toprow .left p {
+  position: absolute;
+  bottom: -50px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.582);
+  color: white;
+  font-size: 5rem;
+}
+.wrapper .toprow .right {
+  display: flex;
+  position: relative;
+}
+.wrapper .toprow .right .innerRow {
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+}
+.wrapper .toprow .right .innerRow .box img {
+  width: 100%;
+  height: 100%;
+}
+.wrapper .toprow .right .innerRow .box p {
+  position: absolute;
+  bottom: -50px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.582);
+  color: white;
+  font-size: 2rem;
 }
