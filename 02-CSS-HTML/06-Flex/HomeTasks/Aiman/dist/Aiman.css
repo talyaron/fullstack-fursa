@@ -1,0 +1,94 @@
+.wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.wrapper .left {
+  flex: 40%;
+  box-shadow: 2px 2px 2px gray;
+  background-color: white;
+  border-radius: 5px;
+}
+.wrapper .left h1 {
+  font-size: 30%;
+}
+.wrapper .left .title {
+  background-color: red;
+  padding: 1px;
+}
+.wrapper .left .title h2 {
+  font-size: 20%;
+  color: white;
+}
+.wrapper .left .corespondent {
+  display: flex;
+  flex-direction: row;
+}
+.wrapper .left .corespondent .left-div {
+  flex: 20%;
+  display: flex;
+  background-color: #504c4c;
+  justify-content: center;
+}
+.wrapper .left .corespondent .left-div img {
+  width: 30%;
+  height: 50%;
+  align-self: center;
+  border-radius: 10px;
+}
+.wrapper .left .corespondent .right-div {
+  flex: 70%;
+  background-color: #504c4c;
+  padding: 3px;
+  font-size: 20%;
+  color: white;
+}
+.wrapper .left .corespondent .right-div h3 {
+  font-family: sans-serif;
+  font-style: italic;
+  font-size: 10%;
+  color: white;
+}
+.wrapper .left .corespondent .right-div h4 {
+  font-family: sans-serif;
+  font-style: italic;
+  font-size: 10%;
+  color: white;
+}
+.wrapper .right {
+  flex: 60%;
+  background-color: blueviolet;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 2px 2px 2px gray;
+  border-radius: 10px;
+}
+.wrapper .right .box-up {
+  width: 100%;
+}
+.wrapper .right .box-up img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+.wrapper .right .box-up .right_title {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  color: white;
+  font-family: sans-serif;
+  font-style: italic;
+}
+.wrapper .right .box-down {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.wrapper .right .box-down .boxes {
+  flex: 33%;
+  display: flex;
+  flex-direction: column;
+}
+.wrapper .right .box-down .boxes img {
+  width: 100%;
+}

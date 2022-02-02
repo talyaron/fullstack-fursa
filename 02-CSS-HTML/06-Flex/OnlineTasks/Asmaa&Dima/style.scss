@@ -1,0 +1,140 @@
+.wrapper{
+    display: flex;
+    flex-wrap: wrap;
+<<<<<<< Updated upstream
+    margin: 1px;
+=======
+    //flex: 1;
+    width: 100%;
+    margin: 1px;
+    
+>>>>>>> Stashed changes
+
+    .item1{
+        margin: 5px;
+        display: flex;
+        flex-wrap: wrap;
+        width: 200px;
+<<<<<<< Updated upstream
+        height: 100px;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        .item{
+            display: flex;
+            width: 45%;
+            height: 45%;
+            background-color: blueviolet;
+            margin: 1px;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+=======
+        height: 200px;
+        flex:1;
+        //flex: 25%;
+        justify-content: center;
+        text-align: center;
+        .item{
+            
+            flex: 50%;
+            background-color: blueviolet;
+            //border: 1px dashed black;
+>>>>>>> Stashed changes
+        }
+    }
+
+    .item2{
+        margin: 5px;
+        display: flex;
+<<<<<<< Updated upstream
+        width: 200px;
+        height: 100px;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        flex-wrap: wrap;
+=======
+        //flex-wrap: wrap;
+        //max-width: 200px;
+        //height: 200px;
+        flex:1;
+        //flex: 25%;
+        width: 200px;
+        height: 200px;
+        justify-content: center;
+        text-align: center;
+
+>>>>>>> Stashed changes
+        .item{
+            width: 100%;
+         //   height: 100%;
+            background-color: rgb(12, 173, 111);
+        }
+    }
+    .item3{
+        margin: 5px;
+        display: flex;
+<<<<<<< Updated upstream
+        flex-wrap: wrap;
+        width: 200px;
+        height: 100px;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        .item{
+            display: flex;
+            width: 45%;
+            height: 45%;
+            background-color: rgb(173, 12, 12);            
+            margin: 1px;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+=======
+        //flex-wrap: wrap;
+        //max-width: 200px;
+        //height: 200px;
+        flex:1;
+        //flex: 25%;
+        width: 200px;
+        height: 200px;
+        justify-content: center;
+        text-align: center;
+        .item{
+            flex: 50%;
+            background-color: rgb(17, 238, 146);
+           //border: 1px dashed black;
+            
+>>>>>>> Stashed changes
+        }
+    }
+    .item4{
+        margin: 5px;
+        display: flex;
+<<<<<<< Updated upstream
+        width: 200px;
+        height: 100px;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        flex-wrap: wrap;
+=======
+        //flex-direction: row;
+        //flex-wrap: wrap;
+       // max-width: 200px;
+        //height: 200px;
+        flex:1;
+        //flex: 25%;
+        width: 200px;
+        height: 200px;
+        justify-content: center;
+        text-align: center;
+>>>>>>> Stashed changes
+        .item{
+            width: 100%;
+          //  height: 100%;
+            background-color: rgb(173, 170, 12);
+        }
+    }
+}
