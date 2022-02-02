@@ -6,7 +6,7 @@
 .wrapper .left {
   flex: 40%;
   box-shadow: 2px 2px 2px gray;
-  background-color: gray;
+  background-color: white;
   border-radius: 5px;
 }
 .wrapper .left h1 {
@@ -58,20 +58,37 @@
 .wrapper .right {
   flex: 60%;
   background-color: blueviolet;
+  flex-direction: column;
   position: relative;
   box-shadow: 2px 2px 2px gray;
   border-radius: 10px;
 }
-.wrapper .right img {
+.wrapper .right .box-up {
+  width: 100%;
+}
+.wrapper .right .box-up img {
   width: 100%;
   height: 100%;
   border-radius: 10px;
 }
-.wrapper .right .right_title {
+.wrapper .right .box-up .right_title {
   position: absolute;
   left: 0;
   bottom: 0;
   color: white;
   font-family: sans-serif;
   font-style: italic;
+}
+.wrapper .right .box-down {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.wrapper .right .box-down .boxes {
+  flex: 33%;
+  display: flex;
+  flex-direction: column;
+}
+.wrapper .right .box-down .boxes img {
+  width: 100%;
 }
