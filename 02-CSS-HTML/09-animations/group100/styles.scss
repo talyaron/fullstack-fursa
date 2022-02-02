@@ -1,0 +1,52 @@
+body{
+    background-image: url(https://i.pinimg.com/originals/3e/86/0d/3e860d2e061e24f4309a98a3bc16028a.jpg);
+}
+.animation {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    border-radius: 50px;
+
+    animation-name: move;
+    animation-duration: 10s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes move {
+    0% {
+        top: 30vh;
+        left: 90vw;
+        border-radius: 50px;
+        transform: rotate(0deg);
+        background-image: url(https://cdn1.iconfinder.com/data/icons/angry-icons-by-femfoyou/501/redbird.png);
+        background-size: 100px;
+        background-repeat: no-repeat;
+
+    }
+
+    50% {
+        top: 30vh;
+        left: 0vw;
+        border-radius: 50px;
+        transform: rotate(720deg);
+        background-image: url(https://cdn1.iconfinder.com/data/icons/angry-icons-by-femfoyou/496/bluebird.png);
+        background-size: 100px;
+        background-repeat: no-repeat;
+    }
+
+    100% {
+        top: -30vh;
+        left: 90vw;
+        border-radius: 5px;
+        transform: rotate(1440deg);
+        background-image: url(https://cdn1.iconfinder.com/data/icons/angry-icons-by-femfoyou/512/blackbird.png);
+        background-size: 100px;
+        background-repeat: no-repeat;
+    }
+
+
+
+}
