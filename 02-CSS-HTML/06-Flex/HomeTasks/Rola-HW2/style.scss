@@ -1,75 +1,114 @@
 .wrapper{
     display:flex;
     margin-top:10px ;
-    background-color:rgb(201, 199, 198);
+    background-color:white; 
     max-width: 100%;
-    max-height: 100%;
+    max-height: 100%; 
 
     .left{
         flex-direction: column;
-        flex:40%;
+        flex:30%;
         //flex-wrap: wrap;
         display: flex;
 
-        .box{
-            display:flex;
-            background-color:grey;
-            width: 300px;
-            height: 100px;
-            .box-img{
-                display:flex;
-                justify-content:center;
-                flex:20%;
-
-                img{
-                    width:80%;
-                    height:80%;
-                    border-radius: 50%;
-                    align-self:center;
-                }
-
-            }
-            .box-text{
-                flex:80%;
-                align-items:center;
-                display:flex;
-                justify-content:center;
-            }
-
+        .toprow{
+            height: 3%;
+            align-items: center;
+            background-color: rgb(153, 13, 13);
+            color: white;
+            padding-left: 9px;
+            display: flex;
+            box-shadow: 2px 2px 6px black;
         }
-        .box1{
-            display:flex;
-            background-color:rgb(58, 55, 55);
-            width: 300px;
-            height: 100px;
-            .box-img{
-                display:flex;
-                justify-content:center;
-                flex:20%;
 
-                img{
-                    width:80%;
-                    height:80%;
-                    border-radius: 50%;
-                    align-self:center;
+        .sub{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            height: 97%;    
+            .box{
+                display:flex;
+                background-color:grey;
+                width: 100%;
+                height: 100px;
+                align-items: center;
+                margin-right: 0px;
+                border-radius: 2px;
+                box-shadow: 2px 2px 6px rgb(70, 64, 64);
+                justify-content: space-evenly;
+    
+                .box-img{
+                    display:flex;
+                    justify-content:center;
+                    flex:20%;
+    
+                    img{
+                        width:80%;
+                        height:80%;
+                        border-radius: 50%;
+                        align-self:center;
+                        
+                    }
+    
                 }
-
+                .box-text{
+                    flex:80%;
+                    align-items:center;
+                    display:flex;
+                    justify-content:center;
+                }
+    
             }
-            .box-text{
-                flex:80%;
-                align-items:center;
+            .box1{
                 display:flex;
-                justify-content:center;
+                background-color:rgb(58, 55, 55);
+                width: 100%;
+                height: 100px;
+                align-items: center;
+                //margin-right: 6px;
+                border-radius: 2px;
+                box-shadow: 2px 2px 6px rgb(70, 64, 64);
+                justify-content: space-evenly;
+                .box-img{
+                    display:flex;
+                    justify-content:center;
+                    flex:20%;
+                    
+    
+                    img{
+                        width:80%;
+                        height:80%;
+                        border-radius: 50%;
+                        align-self:center;
+                    }
+    
+                }
+                .box-text{
+                    flex:80%;
+                    align-items:center;
+                    display:flex;
+                    justify-content:center;
+                }
+    
             }
-
         }
+
+
+
     }
 .right{
     display:flex;
     flex-direction: column;
-    flex:60%;
-    .up{
+    flex:70%;
+    .up{  
         position: relative;
+        box-shadow: 2px 2px 6px rgb(255, 255, 255);
+        border-radius: 3px;
+        img{
+            width: 100%;
+            height: 100%;
+            border-radius: 0px;
+        }
         .title{
             position: absolute;
             bottom: 20px;
@@ -92,6 +131,14 @@
                 border-radius:3px;
                 width:90%;
                 height:80%;
+            }
+            .title{
+                align-items: center;
+                justify-content: center;
+                font-weight: bold;
+                color: rgb(17, 15, 15);
+                display: flex;
+
             }
 
         }
