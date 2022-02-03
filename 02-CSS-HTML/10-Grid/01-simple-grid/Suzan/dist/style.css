@@ -1,0 +1,21 @@
+.wrapper {
+  display: grid;
+  background-color: burlywood;
+  grid-template-rows: repeat(2, 300px);
+  gap: 20px;
+  width: 800px;
+  margin: auto;
+}
+.wrapper .row .item {
+  background-color: crimson;
+}
+.wrapper .top {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  column-gap: 20px;
+}
+.wrapper .bottom {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  column-gap: 20px;
+}
