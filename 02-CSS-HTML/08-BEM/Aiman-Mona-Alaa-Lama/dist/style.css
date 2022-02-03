@@ -1,6 +1,7 @@
 html,
 body {
   margin: 0px;
+  font-family: sans-serif;
 }
 
 .header {
@@ -32,6 +33,9 @@ body {
 .header_menu_item {
   padding: 10px 8px;
   cursor: pointer;
+}
+.header_menu_item:hover {
+  color: #4a9bec;
 }
 .header_right {
   display: flex;
@@ -85,6 +89,7 @@ body {
   width: 50%;
   background-color: #f6f7f9;
   flex-wrap: wrap;
+  position: relative;
 }
 .bottom .left h1 {
   margin-top: 0;
@@ -96,6 +101,7 @@ body {
   max-height: 344px;
   text-align: left;
   font-weight: 700;
+  margin-left: 1rem;
 }
 .bottom p {
   margin: 20px;
@@ -105,7 +111,9 @@ body {
 .bottom .btn {
   width: 30%;
   margin: 20px;
-  display: inline-block;
+  display: flex;
+  position: absolute;
+  justify-content: center;
   padding: 15px 25px;
   font-size: 24px;
   cursor: pointer;
@@ -119,12 +127,16 @@ body {
   font-size: 1rem;
   padding: 8px 8px 8px 8px;
   border: none;
+  height: 7%;
+  align-items: center;
+  left: 10px;
+  bottom: 10px;
 }
 .bottom .btn .button:hover {
   background-color: #f5f8f5;
 }
 .bottom .btn:hover {
-  background-color: #3e8e41;
+  background-color: #00aeff;
 }
 
 .right {
@@ -152,6 +164,7 @@ body {
 }
 .section2 .section-left img {
   width: 100%;
+  border-radius: 10px;
 }
 .section2 .section-right {
   position: relative;
@@ -162,6 +175,7 @@ body {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   width: 70%;
   height: fit-content;
+  border-radius: 8px;
 }
 .section2 .section-right .up {
   display: flex;
@@ -204,6 +218,10 @@ body {
 }
 .section2 .section-right .down .down-down h3 {
   text-decoration: underline;
+}
+.section2 .section-right .down .down-down h3:hover {
+  color: #008cba;
+  cursor: pointer;
 }
 
 .section3 {

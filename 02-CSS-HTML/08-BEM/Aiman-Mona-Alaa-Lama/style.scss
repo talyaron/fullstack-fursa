@@ -1,6 +1,7 @@
 html,
 body {
   margin: 0px;
+  font-family: sans-serif;
 }
 
 .header {
@@ -10,7 +11,7 @@ body {
   flex-wrap: wrap;
   padding: 10px;
   box-sizing: border-box;
-  background-color:white;
+  background-color: white;
   border-bottom: solid rgb(182, 178, 178) 3px;
   //border: black dashed;
   position: fixed;
@@ -32,6 +33,9 @@ body {
     &_item {
       padding: 10px 8px;
       cursor: pointer;
+      &:hover {
+        color: #4a9bec;
+      }
     }
   }
   &_right {
@@ -56,9 +60,8 @@ body {
       font-weight: bold;
       border-radius: 8px;
       font-size: 1rem;
-      &:hover{
+      &:hover {
         background-color: rgb(10, 151, 233);
-
       }
     }
   }
@@ -78,7 +81,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   font-weight: bold;
-  margin:0.3rem;
+  margin: 0.3rem;
   position: relative;
   top: 70px;
 
@@ -88,16 +91,18 @@ body {
     width: 50%;
     background-color: #f6f7f9;
     flex-wrap: wrap;
+    position: relative;
     h1 {
-    margin-top:0;
-    padding-top: 76px;
-    margin-bottom: 7px;
-    max-width: 850px;
-    line-height: 60px;
-    font-size: 48px;
-    max-height: 344px;
-    text-align: left;
-    font-weight: 700;
+      margin-top: 0;
+      padding-top: 76px;
+      margin-bottom: 7px;
+      max-width: 850px;
+      line-height: 60px;
+      font-size: 48px;
+      max-height: 344px;
+      text-align: left;
+      font-weight: 700;
+      margin-left: 1rem;
     }
   }
   p {
@@ -108,7 +113,9 @@ body {
   .btn {
     width: 30%;
     margin: 20px;
-    display: inline-block;
+    display: flex;
+    position: absolute;
+    justify-content: center;
     padding: 15px 25px;
     font-size: 24px;
     cursor: pointer;
@@ -122,13 +129,16 @@ body {
     font-size: 1rem;
     padding: 8px 8px 8px 8px;
     border: none;
-
+    height: 7%;
+    align-items: center;
+    left: 10px;
+    bottom: 10px;
     .button:hover {
       background-color: #f5f8f5;
     }
   }
   .btn:hover {
-    background-color: #3e8e41;
+    background-color: rgb(0, 174, 255);
   }
 }
 .right {
@@ -136,15 +146,11 @@ body {
   left: -30px;
   top: 0.8rem;
   width: 50%;
-  &:hover {
-  }
-
   img {
     width: 110%;
     height: 100%;
     border-radius: 8px;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-
     margin-left: 5px;
   }
 }
@@ -158,6 +164,7 @@ body {
     width: 50%;
     img {
       width: 100%;
+      border-radius: 10px;
     }
   }
   .section-right {
@@ -169,6 +176,7 @@ body {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     width: 70%;
     height: fit-content;
+    border-radius: 8px;
 
     .up {
       display: flex;
@@ -213,6 +221,10 @@ body {
         margin: 1rem;
         h3 {
           text-decoration: underline;
+          &:hover {
+            color: #008cba;
+            cursor: pointer;
+          }
         }
       }
     }
@@ -223,7 +235,6 @@ body {
   flex-wrap: wrap;
   background-color: #f6f7f9;
   position: relative;
-
   .div-left {
     display: flex;
     flex-direction: column;
