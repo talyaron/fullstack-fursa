@@ -13,6 +13,15 @@ body {
     border-bottom: 1px solid;
     justify-content: space-between;
 
+    &__white {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2vh;
+        margin-left: 4vh;
+        margin-right: 4vh;
+
+    }
+
     &__left {
         display: flex;
         align-items: center;
@@ -82,6 +91,7 @@ body {
                 color: blue;
             }
         }
+
     }
 
     .logo {
@@ -111,12 +121,10 @@ body {
             text-align: center;
 
             &--signup {
-                background-color: #000000;
+                background-color: #04AA6D;
             }
         }
     }
 
-
-}
 
 }
