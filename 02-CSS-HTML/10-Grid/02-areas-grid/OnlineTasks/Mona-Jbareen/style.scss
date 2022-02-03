@@ -5,9 +5,9 @@ body{
 
     display: grid;
     background-color:black;
-    grid-template-columns: repeat(6, 200px);
-  //  grid-template-rows: repeat(6, 150px);
-  grid-template-rows: auto 150px auto 150px auto auto;
+    grid-template-columns: repeat(6, 15vw);
+  //  grid-template-rows: repeat(6, 150p%);
+  grid-template-rows: auto 25vh auto 25vh auto auto;
     row-gap: 20px;
     column-gap: 2px;
 
@@ -19,11 +19,11 @@ body{
 
         }
         img:hover{
-            width: 240px;
-            height: 150px;
+            transform: scale(1.2);
             z-index: 1;
             opacity: 0.9;
             cursor: pointer;
+            
         }
 
         
