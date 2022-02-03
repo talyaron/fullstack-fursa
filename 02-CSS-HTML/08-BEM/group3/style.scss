@@ -1,6 +1,6 @@
 <<<<<<< Updated upstream
 html, body{
-    margin: 0px;
+    margin: 0px ;
     font-size: 15px;
 }
 .header{
@@ -85,6 +85,54 @@ html, body{
 =======
     &__right{
 
+<<<<<<< Updated upstream:02-CSS-HTML/08-BEM/group3/style.scss
+=======
+
+.content{
+    //display: flex;
+    //flex-direction: column;
+    .content__row1{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        
+        //flex: 1;
+        margin: 20px 200px 0px 200px;
+        //padding: 10px;
+        .content__box {
+            
+            flex: 1;       
+            //position: relative;           
+            .title{
+               // border: 1px solid rgba(0, 0, 0, 0.8);
+                width: 90%;
+                //width: 30vw;
+                //height: 30vh;
+                //position:absolute;
+                //top: 10%; ///////////****///
+                //left: 25%;/////******/ 
+                h1{
+                    font-size:2.5vw;
+                    //font-size:50px;
+                }
+                h2{
+                    font-size:1.5vw;
+                   //font-size:30px;
+                }
+            } 
+            img{
+               // width: 100%;
+               // height: 100%;
+                  width: 40vw;
+                //  height: 600px;
+            } 
+        }
+            .text{
+                text-align: left;
+                font-size: 25px;
+                margin: 0 20% 0 20%;
+            }
+>>>>>>> Stashed changes:02-CSS-HTML/08-BEM/yosef-asma-mhmd/style.scss
     }
 >>>>>>> Stashed changes
 }
