@@ -1,5 +1,6 @@
 .wrapper{
-    display: grid;
+    display:grid;
+    // grid-column-gap: 50px;
     background-color: wheat;
     grid-template-columns: repeat(5, 1fr);
     // grid-template-columns:auto auto auto auto auto auto;
@@ -7,6 +8,11 @@
     grid-template-rows: repeat(10, 100px);
     row-gap: 20px;
     column-gap: 2px;
+
+    grid-template-columns: auto 100px auto auto;
+    grid-template-rows: repeat(10,100px);
+    grid-column: auto;
+    gap: 20px;
 
     .item{
         background-color: purple;

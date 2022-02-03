@@ -1,0 +1,70 @@
+body {
+  background-color: black;
+}
+
+.wrapper {
+  margin-left: 20vh;
+  margin-right: 20vh;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: 10, 10vh;
+  row-gap: 10vh;
+  column-gap: 10vh;
+}
+.wrapper .logo {
+  top: 0px;
+  left: 0px;
+}
+.wrapper .main_grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  row-gap: 10vh;
+  column-gap: 2vh;
+  margin-bottom: 10vh;
+}
+.wrapper .main_grid .item {
+  background-color: white;
+  color: white;
+  height: 10vh;
+}
+.wrapper .main_grid .item .img {
+  width: 100%;
+}
+.wrapper .main_grid .item .img:hover {
+  transform: scale(1.5);
+}
+
+.font {
+  color: white;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  margin-top: 50px;
+}
+
+.item {
+  position: relative;
+  display: block;
+  flex: 1 1 0px;
+  transition: transform 500ms;
+}
+
+.container .item:focus,
+.container .item:hover {
+  transform: scale(1.5);
+  z-index: 1;
+}
+
+body {
+  overflow: hidden;
+}
+
+.item img {
+  display: block;
+  max-width: 100%;
+}
+
+.item:hover ~ .item {
+  transform: translateX(25%);
+}
