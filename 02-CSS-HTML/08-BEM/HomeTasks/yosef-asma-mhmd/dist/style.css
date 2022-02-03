@@ -13,6 +13,7 @@ html, body {
   box-sizing: border-box;
 }
 .header__right {
+  margin-right: 10vw;
   display: flex;
   align-items: center;
 }
@@ -120,7 +121,7 @@ html, body {
   cursor: pointer;
 }
 .header .logo {
-  margin-left: 3vw;
+  margin-left: 15vw;
   background-image: url(https://blog.hubspot.com/hubfs/assets/hubspot.com/web-team/WBZ/Blog%202021/Images/Logos/HubSpot%20Logo.svg);
   width: 100px;
   height: 40px;
