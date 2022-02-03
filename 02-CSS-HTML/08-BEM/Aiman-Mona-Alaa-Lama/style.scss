@@ -13,7 +13,6 @@ body {
   box-sizing: border-box;
   background-color: white;
   border-bottom: solid rgb(182, 178, 178) 3px;
-  //border: black dashed;
   position: fixed;
   top: 0;
   z-index: 1;
@@ -59,6 +58,7 @@ body {
       margin-left: 10px;
       font-weight: bold;
       border-radius: 8px;
+      cursor: pointer;
       font-size: 1rem;
       &:hover {
         background-color: rgb(10, 151, 233);
@@ -72,10 +72,11 @@ body {
     background-size: cover;
     margin-right: 10px;
     padding: 5px 5px 5px 5px;
-    transition:0.4s;
+    transition: transform 1s;
+    transform-origin: right center;
+    transform-style: preserve-3d;
     &:hover {
-      transform: scale(1.1);
-      transform:rotate(1turn);
+      transform: translateX(-100%) rotateY(-180deg);
     }
   }
 }
@@ -94,6 +95,7 @@ body {
     background-color: #f6f7f9;
     flex-wrap: wrap;
     position: relative;
+
     h1 {
       margin-top: 0;
       padding-top: 76px;
@@ -145,21 +147,21 @@ body {
 }
 .right {
   position: relative;
-  left: -30px;
+  left: -40px;
   top: 0.8rem;
   width: 50%;
-  overflow:hidden;
+  top: 40px;
 
   img {
     transition: 0.3s;
     width: 110%;
-    height: 100%;
     border-radius: 8px;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     margin-left: 5px;
+    //    background-image: url(https://zoom.us/docs/image/Hybrid_Workforce_Animated_Hero_Banner.gif);
 
-    &:hover{
-      transform:scale(1.2);
+    &:hover {
+      transform: scale(1.1);
     }
   }
 }
@@ -184,7 +186,7 @@ body {
     left: 30px;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     width: 70%;
-    height:fit-content;
+    height: fit-content;
     border-radius: 8px;
 
     .up {
@@ -215,7 +217,7 @@ body {
       img {
         width: 50%;
         transition: 0.3s;
-        &:hover{
+        &:hover {
           transform: scale(1.3);
         }
       }
@@ -274,7 +276,7 @@ body {
       font-size: 36px;
       font-weight: 700;
       line-height: 48px;
-      span{
+      span {
         color: #5ba6f1;
       }
     }
@@ -305,11 +307,12 @@ body {
       display: flex;
       list-style-type: none;
       height: fit-content;
+      flex-wrap: wrap;
       li {
         background: #4a9bec;
         text-align: center;
         padding: 2em 1em;
-        width: 30%;
+        width: 24%;
         margin: 0 auto 5em auto;
         border-radius: 1em;
         transition: 0.3;
@@ -320,9 +323,21 @@ body {
           border: 5px solid #5ba6f1;
           border-radius: 50%;
           margin-top: -4.5em;
+          border-left-color: transparent;
+          animation-name: spin;
+          animation-duration: 1s;
+          animation-direction: alternate;
         }
         &:hover {
           transform: scale(1.3);
+        }
+        @keyframes spin {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
         }
       }
     }
