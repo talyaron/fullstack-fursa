@@ -37,3 +37,34 @@ body {
   color: white;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
+
+.container {
+  display: flex;
+  margin-top: 50px;
+}
+
+.item {
+  position: relative;
+  display: block;
+  flex: 1 1 0px;
+  transition: transform 500ms;
+}
+
+.container .item:focus,
+.container .item:hover {
+  transform: scale(1.5);
+  z-index: 1;
+}
+
+body {
+  overflow: hidden;
+}
+
+.item img {
+  display: block;
+  max-width: 100%;
+}
+
+.item:hover ~ .item {
+  transform: translateX(25%);
+}
