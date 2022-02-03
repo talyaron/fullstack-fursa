@@ -70,9 +70,11 @@ body {
   background-size: cover;
   margin-right: 10px;
   padding: 5px 5px 5px 5px;
+  transition: 0.4s;
 }
 .header .logo:hover {
   transform: scale(1.1);
+  transform: rotate(1turn);
 }
 
 .bottom {
@@ -144,13 +146,18 @@ body {
   left: -30px;
   top: 0.8rem;
   width: 50%;
+  overflow: hidden;
 }
 .right img {
+  transition: 0.3s;
   width: 110%;
   height: 100%;
   border-radius: 8px;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   margin-left: 5px;
+}
+.right img:hover {
+  transform: scale(1.2);
 }
 
 .section2 {
@@ -183,6 +190,7 @@ body {
   margin: 1rem;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  overflow: hidden;
 }
 .section2 .section-right .up .textup {
   display: flex;
@@ -202,6 +210,10 @@ body {
 }
 .section2 .section-right .up img {
   width: 50%;
+  transition: 0.3s;
+}
+.section2 .section-right .up img:hover {
+  transform: scale(1.3);
 }
 .section2 .section-right .down {
   color: white;
@@ -256,6 +268,9 @@ body {
   font-size: 36px;
   font-weight: 700;
   line-height: 48px;
+}
+.section3 .div-left h3 span {
+  color: #5ba6f1;
 }
 .section3 .div-left p {
   display: block;
