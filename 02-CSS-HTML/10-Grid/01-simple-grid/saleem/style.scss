@@ -1,11 +1,21 @@
 .wrapper{
+    padding-top: 30px;
+    display: grid;
+    background-color: wheat;
+    grid-template-columns: auto  auto ;
+    
+    gap: 0px;
+}
+
+.cell{
     background-image: url(img.jpg);
     font-size: 40px;
     color: white;
     position: relative;
     height: 200px;
-    margin-top: 50px;
-    margin-left: 30px;
+    margin-top: 100px;
+    margin-left: 10px;
+    width:90vh;
 }
 .title{
     width: 1000px;
@@ -21,7 +31,7 @@
 
 }
 .text{
-    width: 1000px;
+    width:100vh;
     position: relative;
     font-size: 20px;
 
