@@ -1,0 +1,58 @@
+.wrapper {
+  display: grid;
+  grid-template-rows: 50px 100px 50px 100px 50px 100px;
+}
+.wrapper .item1 {
+  background-color: black;
+  color: white;
+}
+.wrapper .item1 .title {
+  font-size: 20px;
+}
+.wrapper .item2 {
+  background-color: black;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+.wrapper .item2 .child img {
+  height: 100px;
+}
+.wrapper .item2 .child img:hover {
+  transform: scale(1.5);
+}
+.wrapper .item3 {
+  background-color: black;
+  color: white;
+}
+.wrapper .item3 .title {
+  font-size: 20px;
+}
+.wrapper .item4 {
+  background-color: black;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+.wrapper .item4 .child img {
+  height: 100px;
+}
+.wrapper .item4 .child img:hover {
+  transform: scale(1.5);
+}
+.wrapper .item5 {
+  background-color: black;
+  color: white;
+}
+.wrapper .item5 .title {
+  font-size: 20px;
+}
+.wrapper .item6 {
+  background-color: black;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+.wrapper .item6 .child img {
+  height: 100px;
+}
+.wrapper .item6 .child img:hover {
+  transform: scale(1.5);
+}

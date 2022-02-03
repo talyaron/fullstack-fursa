@@ -1,0 +1,29 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 30% auto;
+  grid-template-rows: repeat(3, 200px);
+  gap: 10px;
+}
+.wrapper .item1 {
+  background-color: purple;
+}
+.wrapper .item2 {
+  background-color: #cf3996;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 5px;
+}
+.wrapper .item2 .item5 {
+  margin: 5px;
+  background-color: #2c123b;
+}
+.wrapper .item2 .item6 {
+  margin: 5px;
+  background-color: #362135;
+}
+.wrapper .item3 {
+  background-color: #a041a0;
+}
+.wrapper .item4 {
+  background-color: #bd94bb;
+}
