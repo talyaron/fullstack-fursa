@@ -29,6 +29,9 @@ body {
 .wrapper .main_grid .item .img {
   width: 100%;
 }
+.wrapper .main_grid .item .img:hover {
+  transform: scale(1.5);
+}
 
 .font {
   color: white;
