@@ -104,3 +104,13 @@ body {
 .header__right .btn--signup {
   background-color: #04AA6D;
 }
+
+.photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4vh;
+}
+.photo img {
+  margin: auto;
+}
