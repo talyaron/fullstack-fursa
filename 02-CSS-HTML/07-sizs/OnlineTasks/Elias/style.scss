@@ -1,0 +1,35 @@
+body{
+    margin: 0px;
+}
+html{
+    font-size: 15px;
+}
+.wrapper{
+    margin: auto;
+    background-color: rgb(224, 203, 238);
+    // height: 10px;
+    height: 80vh; 
+    width: 50vw;
+    // padding: 20px;
+
+    .img{
+        width: 100%;
+        height: 30vh;
+
+    }
+    h1{
+        font-size: 2rem;
+        padding: 10px;
+        font-weight: bold;
+    }
+
+    h2{
+        font-size: 1.3rem;
+        padding: 20px;
+    }
+
+    p{
+        padding: 10px;
+        font-size: 1.4rem;
+    }
+}
