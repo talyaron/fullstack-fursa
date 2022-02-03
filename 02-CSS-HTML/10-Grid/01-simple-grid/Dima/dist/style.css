@@ -1,0 +1,22 @@
+.wrapper {
+  display: grid;
+  background-color: rgba(123, 118, 128, 0.404);
+  grid-template-columns: auto auto auto;
+  grid-template-rows: repeat(9, 150px);
+  row-gap: 20px;
+  column-gap: 10px;
+  width: 60vw;
+  margin: auto;
+}
+.wrapper .item {
+  background-color: cadetblue;
+}
+.wrapper .color1 {
+  background-color: cornsilk;
+}
+.wrapper .color2 {
+  background-color: darkgrey;
+}
+.wrapper .color3 {
+  background-color: darkseagreen;
+}

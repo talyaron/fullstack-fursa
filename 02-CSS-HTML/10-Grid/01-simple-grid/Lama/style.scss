@@ -1,0 +1,22 @@
+.wrapper{
+    display: grid;
+    margin: 50px;
+    background-color: rgba(139, 174, 180, 0.877);
+    grid-template-columns:  auto auto auto;
+    grid-template-rows: repeat(5, 70px);
+    padding: 20px;
+    gap: 30px;
+
+    .item{
+        background-color: rgba(82, 39, 82, 0.712);
+       
+    }
+
+    .a{
+        background-color: rgba(124, 68, 139, 0.541);
+    }
+    .b{
+        background-color: rgba(180, 106, 201, 0.671);
+    }
+
+}
