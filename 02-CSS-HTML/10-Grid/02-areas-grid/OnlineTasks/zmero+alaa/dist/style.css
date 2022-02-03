@@ -1,0 +1,24 @@
+html,
+body {
+  background-color: #161c2d;
+}
+
+.grid {
+  display: grid;
+  grid-template-rows: repeat(6, 16vh);
+  grid-template-columns: repeat(5, 35vh);
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+.grid__item {
+  background-color: inherit;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+}
+.grid .a {
+  grid-column: 1/span 5;
+  color: white;
+}
+.grid .b img {
+  height: 100%;
+  width: 50%;
+}
