@@ -5,6 +5,10 @@
   grid-template-rows: repeat(10, 100px);
   row-gap: 20px;
   column-gap: 2px;
+  grid-template-columns: auto 100px auto auto;
+  grid-template-rows: repeat(10, 100px);
+  grid-column: auto;
+  gap: 20px;
 }
 .wrapper .item {
   background-color: purple;
