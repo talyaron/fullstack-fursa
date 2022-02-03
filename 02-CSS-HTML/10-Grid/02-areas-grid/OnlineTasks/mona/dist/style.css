@@ -1,0 +1,23 @@
+.wrapper {
+  display: grid;
+  background-color: wheat;
+  grid-template-columns: auto auto;
+  grid-template-rows: repeat(10, 100px);
+  row-gap: 20px;
+  column-gap: 2px;
+}
+.wrapper .item {
+  background-color: #866404;
+}
+.wrapper .upright {
+  display: grid;
+  background-color: wheat;
+  grid-template-columns: auto auto;
+  grid-template-rows: repeat(2, 40px);
+  row-gap: 2px;
+  column-gap: 2px;
+  grid-row: 1/2;
+}
+.wrapper .upright .square {
+  background-color: salmon;
+}
