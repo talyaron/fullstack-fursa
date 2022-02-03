@@ -1,0 +1,12 @@
+.container{
+    display: grid;
+    grid-template-columns: auto 100px auto auto;
+    grid-template-rows: repeat(10, 100px);
+    gap: 20px;
+
+    .item{
+        border: 2px solid black;
+        background-color: blue;
+        height: 100px;
+    }
+}
