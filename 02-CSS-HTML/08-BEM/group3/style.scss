@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 html, body{
     margin: 0px;
     font-size: 15px;
@@ -30,10 +31,22 @@ html, body{
             padding: 10px 5px;
             font-size: 1.5rem;
             margin-right: 20px;
+=======
+.header {
+    display:flex;
+    justify-content:space-between;
+
+    &__left{
+        display: flex;
+        
+      
+        &__item{
+>>>>>>> Stashed changes
 
         }
     }
 
+<<<<<<< Updated upstream
     .logo{
         margin-left: 300px;
         background-image: url(https://blog.hubspot.com/hubfs/assets/hubspot.com/web-team/WBZ/Blog%202021/Images/Logos/HubSpot%20Logo.svg);
@@ -69,4 +82,9 @@ html, body{
 }
 .image{
     width: 40px;
+=======
+    &__right{
+
+    }
+>>>>>>> Stashed changes
 }

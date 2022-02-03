@@ -9,8 +9,8 @@ html {
   width: 100%;
 }
 .wrapper h1 {
-  font-size: 2vw;
+  font-size: 1rem;
 }
 .wrapper h2 {
-  font-size: 1vw;
+  font-size: 0.5rem;
 }

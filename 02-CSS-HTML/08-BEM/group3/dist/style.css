@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 html, body {
   margin: 0px;
   font-size: 15px;
@@ -63,4 +64,12 @@ html, body {
 
 .image {
   width: 40px;
+=======
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+.header__left {
+  display: flex;
+>>>>>>> Stashed changes
 }
