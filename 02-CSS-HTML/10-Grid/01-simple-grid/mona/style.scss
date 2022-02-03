@@ -1,0 +1,17 @@
+.wrapper{
+
+    display: grid;
+    background-color: hsl(40, 92%, 60%);
+    grid-template-columns: auto auto auto;
+    grid-template-rows: repeat(10, 100px);
+    gap: 10px;
+   
+
+
+    .item{
+        background-color: rgb(134, 100, 4);
+        color: white;
+    }
+
+
+}

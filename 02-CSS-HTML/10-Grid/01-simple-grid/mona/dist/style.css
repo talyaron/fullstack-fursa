@@ -1,0 +1,11 @@
+.wrapper {
+  display: grid;
+  background-color: #f7b83b;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: repeat(10, 100px);
+  gap: 10px;
+}
+.wrapper .item {
+  background-color: #866404;
+  color: white;
+}
