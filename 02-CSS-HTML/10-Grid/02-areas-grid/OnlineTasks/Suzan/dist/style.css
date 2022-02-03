@@ -1,0 +1,24 @@
+.wrapper {
+  display: grid;
+  background-color: wheat;
+  grid-template-rows: repeat(3, 225px);
+  grid-template-columns: repeat(3, 100px);
+  row-gap: 10px;
+  column-gap: 20px;
+  width: 40%;
+}
+.wrapper .item {
+  background-color: crimson;
+}
+.wrapper .topright {
+  grid-row: 1/span 2;
+  grid-column: 3/span 2;
+}
+.wrapper .bottomright {
+  grid-row: 3/span 2;
+  grid-column: 1/span 2;
+}
+.wrapper .bottomleft {
+  grid-row: 3/span 2;
+  grid-column: 3/span 2;
+}

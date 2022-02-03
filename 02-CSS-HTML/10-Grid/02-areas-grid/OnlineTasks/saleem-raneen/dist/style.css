@@ -1,0 +1,48 @@
+body {
+  text-align: center;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, 100px);
+  column-gap: 100px;
+  width: 100%;
+  height: 250;
+  grid-template-areas: "hd" "main main main main main main";
+}
+
+.cell {
+  background-color: red;
+  font-size: 40px;
+  color: white;
+  position: relative;
+  height: 200px;
+  margin-top: 20px;
+  margin-left: 30px;
+  width: 18vh;
+  grid-area: main;
+}
+.cell:hover {
+  transform: scale(1.1);
+}
+
+.title {
+  width: 100%;
+  position: absolute;
+  bottom: 30px;
+  width: 100%;
+  color: black;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(255, 5, 5, 0.671);
+  grid-area: hd;
+}
+
+.text {
+  width: 100%;
+  position: relative;
+  font-size: 20px;
+  background-color: rgba(5, 255, 80, 0.671);
+  bottom: 0px;
+}

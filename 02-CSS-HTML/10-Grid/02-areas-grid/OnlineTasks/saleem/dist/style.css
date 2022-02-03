@@ -1,0 +1,63 @@
+body {
+  text-align: center;
+}
+
+.wrapper {
+  padding-top: 30px;
+  display: grid;
+  background-color: wheat;
+  grid-template-columns: auto auto;
+  column-gap: 10px;
+  row-gap: 20px;
+}
+
+.insidewrapper {
+  padding-top: 30px;
+  display: grid;
+  background-color: wheat;
+  grid-template-columns: auto auto;
+  column-gap: 10px;
+  row-gap: 3px;
+}
+
+.insidecell {
+  background-image: url(img.jpg);
+  font-size: 40px;
+  color: white;
+  position: relative;
+  height: 200px;
+  margin-top: 20px;
+  margin-left: 10px;
+  width: 20vh;
+}
+
+.cell {
+  background-image: url(img.jpg);
+  font-size: 40px;
+  color: white;
+  position: relative;
+  height: 200px;
+  margin-top: 200px;
+  margin-left: 10px;
+  width: 90vh;
+}
+
+.title {
+  width: 1000px;
+  position: absolute;
+  bottom: 30px;
+  width: 100%;
+  color: black;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(255, 5, 5, 0.671);
+}
+
+.text {
+  width: 100%;
+  position: relative;
+  font-size: 20px;
+  background-color: rgba(5, 255, 80, 0.671);
+  bottom: 0px;
+}

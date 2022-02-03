@@ -1,0 +1,22 @@
+.wrapper{
+    display: grid;
+    // background-color: wheat;
+    grid-template-columns: 40% 40%;
+    grid-template-rows: repeat(10, 400px);
+    gap: 20px;
+    .wrapper1{
+        grid-template-columns: 20% 20%;
+    grid-template-rows: repeat(10, 400px);
+    }
+    .item{
+        // background-color: purple; 
+        img{
+            width: 100px;
+            height: 150px;
+        }
+    }
+
+    .green{
+        background-color: green;
+    }
+}
