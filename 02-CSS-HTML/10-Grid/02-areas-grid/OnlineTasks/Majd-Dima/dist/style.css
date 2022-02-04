@@ -1,0 +1,38 @@
+body {
+  background-color: #161515;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(6, 15vh);
+  background-color: rgba(29, 26, 26, 0.699);
+  width: 80vw;
+  row-gap: 30px;
+  margin: auto;
+  align-items: center;
+}
+.wrapper .title {
+  font-size: 4rem;
+  font-style: italic;
+  font-weight: bold;
+  color: white;
+}
+.wrapper .images {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 30px;
+}
+.wrapper .images .image {
+  position: relative;
+  background-color: blanchedalmond;
+  height: 15vh;
+}
+.wrapper .images .image img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.wrapper .images .image:hover {
+  transform: scale(1.2);
+}
