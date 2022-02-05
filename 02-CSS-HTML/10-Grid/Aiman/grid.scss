@@ -1,16 +1,35 @@
+h1 {
+    font-size: 1.5em;
+    font-family: sans-serif;
+    color:red;
+
+}
 .grid{
     display:grid;
-    grid-template-columns: auto auto auto;
-    grid-template-rows:repeat(10 , 30px);
+    grid-template-columns: repeat(10 , 1fr);
     gap: 20px;
+    padding:10px;
+    background-color: hsl(219, 65%, 65%);
     
-    .item{
-        background-color: aqua;
+    div {
+        color: white;
+        font-size: 1.2em;
+        font-family: sans-serif;
+        background-image: url(https://i0.wp.com/therunneronline.com/wp-content/uploads/2021/10/SquidGameReviewImage.jpeg?fit=675%2C900&ssl=1);
+        background-size:cover;
+        height:30vh;
+        text-align: center;
+        border-radius : 10px;
+        align-items: center;
+        &:hover {
+            transform:scale(1.2);
+        }
     }
+}
+@media only screen and (max-width: 800px) {
+    .grid {
+        grid-template-columns: repeat(2 , 1fr);
+        grid-template-rows: repeat(5 , 1fr);
 
-    .item2{
-        background-color:purple;
     }
-
-
 }
