@@ -1,3 +1,6 @@
+body {
+    background-color: black;
+}
 h1 {
     font-size: 1.5em;
     font-family: sans-serif;
@@ -9,7 +12,7 @@ h1 {
     grid-template-columns: repeat(10 , 1fr);
     gap: 20px;
     padding:10px;
-    background-color: hsl(219, 65%, 65%);
+    background-color: black;
     
     div {
         color: white;

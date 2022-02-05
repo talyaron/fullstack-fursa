@@ -1,3 +1,7 @@
+body {
+  background-color: black;
+}
+
 h1 {
   font-size: 1.5em;
   font-family: sans-serif;
@@ -9,7 +13,7 @@ h1 {
   grid-template-columns: repeat(10, 1fr);
   gap: 20px;
   padding: 10px;
-  background-color: #6c94e0;
+  background-color: black;
 }
 .grid div {
   color: white;
