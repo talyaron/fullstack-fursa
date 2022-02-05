@@ -1,0 +1,12 @@
+.grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: repeat(10, 30px);
+  gap: 20px;
+}
+.grid .item {
+  background-color: aqua;
+}
+.grid .item2 {
+  background-color: purple;
+}

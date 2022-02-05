@@ -1,0 +1,16 @@
+.grid{
+    display:grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows:repeat(10 , 30px);
+    gap: 20px;
+    
+    .item{
+        background-color: aqua;
+    }
+
+    .item2{
+        background-color:purple;
+    }
+
+
+}
