@@ -1,0 +1,37 @@
+.wrapper {
+  display: grid;
+  background-color: wheat;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: auto auto;
+  grid-template-rows: repeat(10, 1200px);
+  row-gap: 20px;
+  column-gap: 2px;
+}
+.wrapper .item {
+  color: white;
+  display: grid;
+  background-color: #0a005f;
+  grid-template-columns: auto auto;
+  grid-template-rows: repeat(2, 600px);
+  row-gap: 20px;
+  column-gap: 2px;
+}
+.wrapper .item .compo {
+  background-color: #135f00;
+  row-gap: 20px;
+  column-gap: 2px;
+}
+.wrapper .item .compo .cobo6 {
+  display: grid;
+  background-color: #5f0000;
+  grid-template-columns: auto;
+  grid-template-rows: repeat(1, 100px);
+}
+.wrapper .item .compo .cobo6 .pic {
+  background-image: url(https://www.cherryvalleyorganics.com/wp-content/uploads/img_0670-e1549660940338.jpg);
+}
+.wrapper .togrid {
+  grid-row: 1/1;
+  grid-column: 1/1;
+  background-size: contain;
+}
