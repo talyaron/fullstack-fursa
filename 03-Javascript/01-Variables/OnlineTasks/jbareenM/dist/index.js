@@ -10,3 +10,6 @@ var secondDetails = {
 };
 secondDetails.age = 23;
 console.log("secondDetails:", secondDetails);
+for (var key in details) {
+    console.log(details[key]);
+}
