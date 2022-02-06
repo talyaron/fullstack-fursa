@@ -9,5 +9,5 @@ obj.name = "Ahmad";
 obj.email = "hallomi.omar@gmail.com";
 obj.age = 18;
 obj.phone = 2568;
-obj.work = " Footballer";
+obj.work = " Footbaler";
 console.log(obj);
