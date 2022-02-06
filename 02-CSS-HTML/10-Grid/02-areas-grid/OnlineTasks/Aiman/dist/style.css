@@ -1,0 +1,22 @@
+.wrapper {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 100px);
+  row-gap: 20px;
+  column-gap: 20px;
+}
+.wrapper .green {
+  background-color: green;
+}
+.wrapper .grid1 {
+  grid-row: 1/2;
+  background-size: contain;
+  background-image: url(https://www.cherryvalleyorganics.com/wp-content/uploads/img_0670-e1549660940338.jpg);
+}
+.wrapper .grid1 .inner-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 50px);
+  grid-template-rows: repeat(2, 50px);
+  row-gap: 20px;
+  column-gap: 20px;
+}
