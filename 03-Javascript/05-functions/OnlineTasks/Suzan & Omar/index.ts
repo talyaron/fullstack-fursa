@@ -8,13 +8,14 @@ function addStudent(arr:Array<Student>, student:Student):Array<Student>{
     const newArray = Object.assign([], arr);
     const newStudent = Object.assign({}, student);
 
-    const returnArray = Object.assign(newArray, newStudent);
+    newArray.push(newStudent)
 
-    return returnArray;
+    return newArray;
 }
 
 const arr:Array<Student> = [{firstName:'Suzan', lastName:'Kassabry', age:25}, {firstName:'Omar', lastName:'Hallomi', age:26}]
 const s:Student = {firstName:'Ahmad', lastName:'Zoabi', age:25}
+
 
 const new_array = addStudent(arr,s);
 

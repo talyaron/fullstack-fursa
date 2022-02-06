@@ -1,8 +1,8 @@
 function addStudent(arr, student) {
     var newArray = Object.assign([], arr);
     var newStudent = Object.assign({}, student);
-    var returnArray = Object.assign(newArray, newStudent);
-    return returnArray;
+    newArray.push(newStudent);
+    return newArray;
 }
 var arr = [{ firstName: 'Suzan', lastName: 'Kassabry', age: 25 }, { firstName: 'Omar', lastName: 'Hallomi', age: 26 }];
 var s = { firstName: 'Ahmad', lastName: 'Zoabi', age: 25 };
