@@ -1,0 +1,44 @@
+.wrapper{
+    display: grid;
+    background-color:rgb(43, 42, 41) ;
+    grid-template-columns: repeat(5, 1fr);
+    // grid-template-columns:auto auto auto auto auto auto;
+    // grid-template-columns: 100px 200px 400px 50px;
+    grid-template-rows: repeat(10, 100px);
+    row-gap: 2px;
+    column-gap: 2px;
+
+    .item{
+         background-color: purple;
+         color: white;
+         img{
+             width: 100%;
+             height: 100%;
+             background-size: cover; 
+
+            }
+            img:hover{
+                width: 100px;
+                height: 150px;
+                z-index: 1;
+                opacity: 0.9;
+                cursor: pointer;
+            }
+
+         }
+
+       
+
+    }
+
+
+    .green{
+        background-color: green;
+    }
+    .gaps {
+        background-color: rgb(43, 42, 41);
+    }
+
+
+    
+} 
