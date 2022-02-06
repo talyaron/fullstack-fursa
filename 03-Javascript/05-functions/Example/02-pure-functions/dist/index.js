@@ -29,3 +29,7 @@ for (var i in arr2) {
     arr2[i] += 10;
 }
 console.log(arr3);
+var j = myFunction(4, 3); // Function is called, return value will end up in x
+function myFunction(a, b) {
+    return a * b; // Function returns the product of a and b
+}
