@@ -1,15 +1,20 @@
 .wrapper {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     
     //gap: 5px;
   
+<<<<<<< Updated upstream:02-CSS-HTML/11-Responsive/raneen-besan/style.scss
     .article {      
+=======
+    article {
+>>>>>>> Stashed changes:02-CSS-HTML/11-Responsive/raneen-besan-asmaa/style.scss
       img {
         width: 100%;
       }
     }
     .first{
+<<<<<<< Updated upstream:02-CSS-HTML/11-Responsive/raneen-besan/style.scss
         grid-column: 1 / 3;
         grid-row: 1 / 3;
        
@@ -18,6 +23,12 @@
 
    
   
+=======
+        grid-column: 1/4;
+        grid-row: 1/3;
+    }
+  }
+>>>>>>> Stashed changes:02-CSS-HTML/11-Responsive/raneen-besan-asmaa/style.scss
   @media only screen and (max-width: 1600px) {
     .wrapper {
       grid-template-columns: repeat(3, 1fr);
@@ -43,6 +54,7 @@
     .wrapper {
       grid-template-columns: repeat(1, 1fr);
     }
+<<<<<<< Updated upstream:02-CSS-HTML/11-Responsive/raneen-besan/style.scss
     .first{
       grid-column: 1 / 2;
       grid-row: 1 / 2;
@@ -50,3 +62,7 @@
   }
   
 
+=======
+  }
+  
+>>>>>>> Stashed changes:02-CSS-HTML/11-Responsive/raneen-besan-asmaa/style.scss
