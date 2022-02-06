@@ -1,0 +1,1 @@
+create an object about yourself, and with a loop print all the values
