@@ -20,6 +20,7 @@ h1 {
   background-size: contain;
   width: 10vh;
   display: inline-block;
+  transition: 0.3s;
 }
 .logo-class h1 {
   color: white;
