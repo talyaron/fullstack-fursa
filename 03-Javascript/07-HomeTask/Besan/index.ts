@@ -32,8 +32,8 @@ function sortBy(arr:Array<items>, sortby: string): Array<items>
 
 const arr:Array<items>=[
     {name: 'Guitar', id: 1, price: 800 } , {name: 'Piano', id: 2, price: 15000 }, 
-    {name: 'Elec-Guitar', id: 3, price: 3000 }, {name: 'Cello', id: 4, price: 9000 }
-    {name: 'Violin ', id: 5, price: 5000}
+    {name: 'Elec-Guitar', id: 3, price: 3000 }, {name: 'Cello', id: 4, price: 9000 },
+    {name: 'Violin ', id: 5, price: 5000},
     {name: 'Accoustic-guitar', id: 6, price: 1800}
 ];
 
