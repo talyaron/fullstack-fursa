@@ -1,5 +1,3 @@
-const obj = {name : 'Yosef', LastName : 'Zoubi',
-Age : 25, location : 'Nazareth', Hobbies : 'online games'}
+const obj = {name : 'Yosef', LastName : 'Zoubi', Age : 25, location : 'Nazareth', Hobbies : 'online games'}
 
-for(let key in obj)
-    console.log(key, ':', obj[key]);
+for(let key in obj) console.log(key, ':', obj[key]);
