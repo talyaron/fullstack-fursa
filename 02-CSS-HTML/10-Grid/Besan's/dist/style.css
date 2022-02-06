@@ -1,0 +1,16 @@
+.wrapper {
+  display: grid;
+  background-color: wheat;
+  grid-template-columns: auto 100px auto auto;
+  grid-template-rows: repeat(10, 100px);
+  gap: 20px;
+}
+.wrapper .item {
+  background-color: purple;
+}
+.wrapper .green {
+  background-color: green;
+}
+.wrapper .red {
+  background-color: red;
+}
