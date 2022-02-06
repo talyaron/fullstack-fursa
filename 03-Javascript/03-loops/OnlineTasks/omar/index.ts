@@ -15,6 +15,6 @@ interface Personal {
    };
 
 
-   for(var elm of details){
-    console.log(elm)
+   for(var key in details){
+    console.log(details[key])
 }
