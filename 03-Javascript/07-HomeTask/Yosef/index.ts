@@ -5,7 +5,7 @@ interface Food {
 }
 
 
-const CarArr: Array<Cars> =
+const FoodArr: Array<Food> =
     [
         { name: "Fish", price: 200, id: 1 },
         { name: "Chicken", price: 100, id: 2 },
@@ -16,8 +16,8 @@ const CarArr: Array<Cars> =
         { name: "Lasanga", price: 150, id: 7 }
     ]
 
-function SortByType(arr: Array<Food>, type: string): Array<Food> {
-    const newArr = Object.assign([], arr);
+function priceSort(foods: Array<Food>, type: string): Array<Food> {
+    const newArr = Object.assign([], foods);
     if (type == "price") {
         newArr.sort((a, b) => {
             return a.price - b.price;
@@ -32,47 +32,37 @@ function SortByType(arr: Array<Food>, type: string): Array<Food> {
     return newArr;
 }
 
-console.log("Sorting the Food by thier price")
-console.log(SortByType(CarArr, "price"))
-console.log("Sorting the Food by thier name")
-console.log(SortByType(CarArr, "name"))
 
 
-function FilterByPrice(arr: Array<Food>, from: number, to: number): Array<Food> {
-    const FilterArr = arr.filter((a: Food) => {
+
+function FilterByPrice(foods: Array<Food>, from: number, to: number): Array<Food> {
+    const FilterArr = foods.filter((a: Food) => {
         if (a.price >= from && a.price <= to)
             return a;
     })
     return FilterArr;
 }
 
-console.log("Sorting the prices in range 200 and 700")
-console.log(FilterByPrice(CarArr, 200, 700))
-
-function ToUpperCaseNames(arr: Array<Food>) {
-    const uppercased = arr.map((a: Food) => {
+function ToUpperCaseNames(foods: Array<Food>) {
+    const uppercased = foods.map((a: Food) => {
         a.name = a.name.toUpperCase();
         return a;
     })
     return uppercased;
 }
 
-console.log("Names to uppercase")
-console.log(ToUpperCaseNames(CarArr))
 
-function DeleteItemById(arr: Array<Food>, id: number) {
-    const Deleted = arr.map((a: Food) => {
+function DeleteItemById(foods: Array<Food>, id: number) {
+    const Deleted = foods.map((a: Food) => {
         if (a.id != id)
             return a;
     })
     return Deleted;
 }
 
-console.log("Delete item with id equals to 5")
-console.log(DeleteItemById(CarArr, 5))
 
-function UpdateNewPrice(arr: Array<Food>, id: number , NewPrice : number) {
-    const NewArr = arr.map((a: Food) => {
+function UpdateNewPrice(foods: Array<Food>, id: number , NewPrice : number) {
+    const NewArr = foods.map((a: Food) => {
         if (a.id == id)
             a.price = NewPrice;
             return a
@@ -80,5 +70,15 @@ function UpdateNewPrice(arr: Array<Food>, id: number , NewPrice : number) {
     return NewArr;
 }
 
+console.log("Sorting the Food by thier price")
+console.log(priceSort(FoodArr, "price"))
+console.log("Sorting the Food by thier name")
+console.log(priceSort(FoodArr, "name"))
+console.log("Sorting the prices in range 200 and 700")
+console.log(FilterByPrice(FoodArr, 200, 700))
+console.log("Names to uppercase")
+console.log(ToUpperCaseNames(FoodArr))
+console.log("Delete item with id equals to 5")
+console.log(DeleteItemById(FoodArr, 5))
 console.log("update the price of id 3 to 400")
-console.log(UpdateNewPrice(CarArr, 3 , 400))
+console.log(UpdateNewPrice(FoodArr, 3 , 400))
