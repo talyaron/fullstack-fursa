@@ -6,7 +6,7 @@ interface Game {
   date: Date;
   team1: teams;
   team2: teams;
-  winner: string | undefined;
+  winner: teams | undefined;
   setWinner(winner: teams);
 }
 
