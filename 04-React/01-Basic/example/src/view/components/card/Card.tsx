@@ -1,8 +1,15 @@
-function Card() {
+import { isPropertySignature } from "typescript";
+
+interface CardProp {
+  title: string;
+  place:string;
+}
+
+function Card(prop: CardProp) {
   return (
     <div className="card">
-      <h3>Card title44353454</h3>
-      <p> This is a card</p>
+      <h3>{prop.title}</h3>
+      <p>Lives in: {prop.place}</p>
     </div>
   );
 }
