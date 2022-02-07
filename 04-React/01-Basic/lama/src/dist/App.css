@@ -1,6 +1,6 @@
-
-$mainColor:rgb(53, 85, 73);
-@import 'view/components/card/Card.scss';
+.card {
+  background-color: #355549;
+}
 
 .App {
   text-align: center;
@@ -16,7 +16,6 @@ $mainColor:rgb(53, 85, 73);
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
