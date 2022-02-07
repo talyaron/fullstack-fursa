@@ -3,10 +3,11 @@ enum teams{
 }
 
 interface Game {
+  setFaster(Ronaldo: players);
   date: Date;
   team1: teams;
   team2: teams;
-  winner: string | undefined;
+  winner: teams | undefined;
   setWinner(winner: teams);
 }
 
@@ -28,6 +29,9 @@ const schaninBitarJs: Game = {
       console.error(err);
     }
   },
+  setFaster: function (Ronaldo: players) {
+    throw new Error("Function not implemented.");
+  }
 };
 
 console.log(schaninBitarJs);
