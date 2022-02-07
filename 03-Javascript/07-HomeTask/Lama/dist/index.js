@@ -7,23 +7,51 @@ var arr = [
 arr.forEach(function (item) {
     console.log(item);
 });
-var filterprice = arr.filter(function (item) {
-    return item.price < 100 && item.price > 50;
-});
-var sortByPrice = arr.sort(function (a, b) {
-    return b.price - a.price;
-});
+// const filterprice:Array<Item> = arr.filter((item:Item)=>{
+//     return item.price<100 && item.price>50;
+// })
+function filterprice(arr) {
+    var filteredArr = Object.assign([], arr);
+    var filterByPrice = filteredArr.filter(function (item) { return item.price < 100 && item.price > 50; });
+    return filterByPrice;
+}
+// const sortByPrice:Array<Item> = arr.sort((a:Item, b:Item)=>{
+//     return b.price - a.price;
+// })
+function sortByPrice(arr) {
+    var sortedArr = Object.assign([], arr);
+    var sortByPrice = sortedArr.sort(function (a, b) { return b.price - a.price; });
+    return sortByPrice;
+}
 var uppercase = arr.map(function (item) {
     var s = item.name.toUpperCase();
     item.name = s;
     return item;
 });
-var deleteitembyid = arr.filter(function (item) {
-    var arr = Object.assign([], item);
+function Touppercase(arr) {
+    var uppercaseArr = Object.assign([], arr);
+    var Touppercase = uppercaseArr.map(function (item) {
+        var s = item.name.toUpperCase();
+        item.name = s;
+        return item;
+    });
+    return Touppercase;
+}
+function deleteitembyid(arr) {
+    var newArr = Object.assign([], arr);
     var givenid = 2;
-    return item.id != givenid;
-});
-console.log(filterprice);
-console.log(sortByPrice);
+    var deleteitembyid = newArr.filter(function (item) {
+        return item.id != givenid;
+    });
+    return deleteitembyid;
+}
+// const deleteitembyid:Array<Item> = arr.filter((item:Item)=>{
+//     const arr:Array<Item>=Object.assign([],item)
+//     const givenid=2;
+//     return item.id!=givenid;
+// })
+console.log(filterprice(arr));
+console.log(sortByPrice(arr));
 console.log(uppercase);
-console.log(deleteitembyid);
+console.log(Touppercase(arr));
+console.log(deleteitembyid(arr));

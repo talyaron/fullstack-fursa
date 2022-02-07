@@ -48,7 +48,7 @@ class Games {
     this.team2 = team2;
   }
 
-  setWinner(winner: teams) {
+  setWinner(winner: teams) {  
     try {
       if (winner !== this.team1 && winner !== this.team2)
         throw new Error("The winner is not from the compiting teams");
