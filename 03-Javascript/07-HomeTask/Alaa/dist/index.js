@@ -16,9 +16,7 @@ var __spreadArrays = (this && this.__spreadArrays) || function () {
             r[k] = a[j];
     return r;
 };
-var arr = [
-    { name: "kinder", price: 230, id: 1111 },
-];
+var arr = [{ name: "kinder", price: 230, id: 1111 }];
 var list = ["iphone", "air pods", "scren"];
 // added to the array
 for (var i = 0; i < 3; i++) {
