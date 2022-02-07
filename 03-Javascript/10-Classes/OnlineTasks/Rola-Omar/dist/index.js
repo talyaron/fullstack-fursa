@@ -30,9 +30,17 @@ var third = new Games(teams.valencia, teams.sevilla);
 third.settheWinner(teams.sevilla);
 var fourth = new Games(teams.valencia, teams.barcelona);
 fourth.settheWinner(teams.valencia);
+// function addTeams(t1, t2) {
+//   const array = [];
+//   array.push(t1,t2)
+//   for (let i in array)
+//     console.log("The match winner of game " + i + " is " + array[i].winner)
+// }
+// addTeams(new Games(teams.realmadrid,teams.barcelona))
 var array = [];
 array.push(First);
 array.push(second);
 array.push(third);
 array.push(fourth);
-console.log(array);
+for (var i in array)
+    console.log("The match winner of game " + i + " is " + array[i].winner);
