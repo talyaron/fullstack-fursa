@@ -50,8 +50,7 @@ function nameToUpperClass(arr) {
 }
 function deleteItem(arr, id) {
     var newArray = arr.filter(function (a) {
-        if (a.id != id)
-            return a;
+        return a.id !== id;
     });
     return newArray;
 }
