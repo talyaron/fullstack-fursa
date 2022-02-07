@@ -63,13 +63,18 @@ var Game = /** @class */ (function () {
     return Game;
 }());
 var arr = [];
-var game = new Game("Real Madrid", "Barcelona", new Date('12-03-2022'));
+var game = new Game("Real Madrid", "Barcelona", new Date("03-12-2022"));
 arr.push(game);
-var game1 = new Game("Chelsea", "Manchester United", new Date('12-03-2022'));
+var game1 = new Game("Chelsea", "Manchester United", new Date("03-08-2022"));
 arr.push(game1);
-var game2 = new Game("Valencia", "Liverpool", new Date('12-03-2022'));
+var game2 = new Game("Valencia", "Liverpool", new Date("03-13-2022"));
 arr.push(game2);
-var game3 = new Game("Machester City", "Barcelona", new Date('12-03-2022'));
+var game3 = new Game("Machester City", "Barcelona", new Date("03-02-2022"));
 arr.push(game3);
-function filter_by_date() {
+function filter_by_date(arr) {
+    return arr.sort(function (game1, game2) { return game1.getdate.getTime() - game2.getdate.getTime(); });
 }
+console.log(filter_by_date(arr));
+// for(var a in arr){
+//     this.document.createElement("div").innerHTML = arr[a].toString();
+// }
