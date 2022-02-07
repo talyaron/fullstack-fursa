@@ -3,6 +3,7 @@ enum teams{
 }
 
 interface Game {
+  setFaster(Ronaldo: players);
   date: Date;
   team1: teams;
   team2: teams;
