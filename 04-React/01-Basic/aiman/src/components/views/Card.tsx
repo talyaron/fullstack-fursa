@@ -7,7 +7,7 @@ interface CardProp {
 
 function Card(prop: CardProp) {
   return (
-    <div className="card">
+    <div  className="card">
       <img src={prop.src} alt="" />
       <p> {prop.title}</p>
     </div>
