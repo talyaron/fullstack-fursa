@@ -68,10 +68,12 @@ var travle = /** @class */ (function () {
     return travle;
 }());
 var arr = [new travle("dima", new Date('02-02-2022'), country.Holand, country.Israle, 800, country.assda),
-    new travle("dima", new Date('02-02-2022'), country.Holand, country.Israle, 800, undefined),
-    new travle("dima", new Date('02-02-2022'), country.Holand, country.Israle, 750, country.Turkish),
-    new travle("dima", new Date('02-02-2022'), country.Holand, country.Israle, 900, country.Turkish),
-    new travle("dima", new Date('02-02-2022'), country.Holand, country.Israle, 1800, country.Turkish),
-    new travle("dima", new Date('02-02-2022'), country.Holand, country.Israle, 800, country.Turkish),
-    new travle("dima", new Date('02-02-2022'), country.Holand, country.Israle, 8000, country.Turkish),
-    new travle("dima", new Date('02-02-2022'), country.Holand, country.Israle, 1500, country.Turkish)];
+    new travle("dima", new Date('02-02-2022'), country.Holand, country.Israle, 800),
+    new travle("dima", new Date('02-02-2022'), country.Holand, country.Israle, 750),
+    new travle("dima", new Date('02-02-2022'), country.Holand, country.Israle, 900),
+    new travle("dima", new Date('02-02-2022'), country.Holand, country.Israle, 1800),
+    new travle("dima", new Date('02-02-2022'), country.Holand, country.Israle, 800),
+    new travle("dima", new Date('02-02-2022'), country.Holand, country.Israle, 8000),
+    new travle("dima", new Date('02-02-2022'), country.Holand, country.Israle, 1500)];
+arr[3].setMiddleStation(country.Holand);
+console.log(arr[3]);
