@@ -30,3 +30,17 @@ var mapArray = items.map(function (it) {
     return it;
 });
 console.log("changing name to uppercase", mapArray);
+function removeItem(arr, id) {
+    return arr.filter(function (it) {
+        return it.itemId != id;
+    });
+}
+function updatePrice(arr, id, price) {
+    var newArary = arr.map(function (it) {
+        if (it.itemId == id) {
+            it.price = price;
+        }
+        return it;
+    });
+    return newArary;
+}
