@@ -29,6 +29,9 @@ const schaninBitarJs: Game = {
       console.error(err);
     }
   },
+  setFaster: function (Ronaldo: players) {
+    throw new Error("Function not implemented.");
+  }
 };
 
 console.log(schaninBitarJs);
