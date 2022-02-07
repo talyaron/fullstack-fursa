@@ -12,13 +12,13 @@ class travle {
     price: number;
     middleStation:country | undefined;
 
-    constructor (name:String ,date : Date ,From: country,To: country,price: number){
+    constructor (name:string ,date : Date ,From: country,To: country,price: number){
         this.name = name;
         this.date = date;
         this.To=To;
         this.From=From;
         this.price=price;
-        middleStation=undefined;
+        this.middleStation=undefined;
 
 
     }
@@ -49,19 +49,19 @@ class travle {
         return this.date;
     }
     get comeFrom():country{
-        return from;
+        return this.From;
     }
     get goTo():country{
-        return to;
+        return this.To;
     }
     get getPrice():number{
-        return price;
+        return this.price;
     }
 
 }
 
 const arr : Array<travle> = [new travle("dima", new Date ('02-02-2022'),country.Holand,country.Israle,800,country.assda),
-new travle("dima", new Date ('02-02-2022'),country.Holand,country.Israle,800,country.asdff),
+new travle("dima", new Date ('02-02-2022'),country.Holand,country.Israle,800,undefined),
 new travle("dima", new Date ('02-02-2022'),country.Holand,country.Israle,750,country.Turkish),
 new travle("dima", new Date ('02-02-2022'),country.Holand,country.Israle,900,country.Turkish),
 new travle("dima", new Date ('02-02-2022'),country.Holand,country.Israle,1800,country.Turkish),
