@@ -69,7 +69,7 @@ function nameToUpperClass(arr: Array<cars>): Array<cars> {
 
 function deleteItem(arr: Array<cars>, id: string): Array<cars> {
     const newArray = arr.filter((a: cars) => {
-        if (a.id != id) return a;
+        return a.id !== id;
     })
     return newArray;
 }
