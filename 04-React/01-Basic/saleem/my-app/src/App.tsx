@@ -1,12 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.scss';
-import Card from './view/components/card/Card';
-
-const text="hii all";
+import './App.css';
 
 function App() {
- 
   return (
     <div className="App">
       <header className="App-header">
@@ -14,12 +10,7 @@ function App() {
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <Card />
-        <p>
-          the text  is {text}
-        </p>
-      
-        <a  
+        <a
           className="App-link"
           href="https://reactjs.org"
           target="_blank"
