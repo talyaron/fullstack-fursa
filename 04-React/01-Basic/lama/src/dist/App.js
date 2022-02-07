@@ -3,6 +3,7 @@ exports.__esModule = true;
 var react_1 = require("react");
 var logo_svg_1 = require("./logo.svg");
 require("./App.scss");
+var Card_1 = require("./view/components/card/Card");
 var text = "hii all";
 function App() {
     return (react_1["default"].createElement("div", { className: "App" },
@@ -12,6 +13,7 @@ function App() {
                 "Edit ",
                 react_1["default"].createElement("code", null, "src/App.tsx"),
                 " and save to reload."),
+            react_1["default"].createElement(Card_1["default"], null),
             react_1["default"].createElement("p", null,
                 "the text  is ",
                 text),
