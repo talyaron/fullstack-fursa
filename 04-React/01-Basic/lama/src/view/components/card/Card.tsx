@@ -1,12 +1,20 @@
+
+
+// interface CardProp{
+//     img:imag
+//     title:string;
+// }
+
 function Card(){
     return(
         <div className="card">
-            <h2>welcome to react</h2>
-            <p>this is a card</p>
-
+      
+            <img className="img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz97sFA8bVy0qpoKmtnjhKFvvNDVvl7AjIRg&usqp=CAU" alt="" />
+            <h2>Shoes</h2>
         </div>
     );
 
 }
+
 
 export default Card;
