@@ -17,6 +17,9 @@ var schaninBitarJs = {
         catch (err) {
             console.error(err);
         }
+    },
+    setFaster: function (Ronaldo) {
+        throw new Error("Function not implemented.");
     }
 };
 console.log(schaninBitarJs);

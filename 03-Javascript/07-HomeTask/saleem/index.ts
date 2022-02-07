@@ -47,6 +47,26 @@ const mapArray:Array<item> = items.map((it:item)=>{
 
 console.log("changing name to uppercase",mapArray);
 
+function removeItem(arr:Array<item>,id:number):Array<item>
+{
+  return arr.filter((it:item)=>{
+    return it.itemId!= id;
+  })
+
+}
+
+function updatePrice(arr:Array<item>,id:number,price:number):Array<item>
+{
+  var newArary:Array<item> = arr.map((it:item)=>{
+    if(it.itemId == id)
+    {
+      it.price = price;
+    }
+    return it;
+  });
+  return newArary;
+  
+}
 
 
 
