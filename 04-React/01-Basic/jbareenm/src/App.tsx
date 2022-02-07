@@ -1,19 +1,13 @@
 import React from 'react';
 import logo from './logo.svg';
-import './dist/App.css';
+import './App.scss';
+// import Card from './view/components/Card/dist/Card';
 
 function App() {
-  const clicked = 10;
-  function handleSubmit(e:any) {
-    e.preventDefault();
-    alert('You clicked submit.');
-  }
   return (
     <div className="App">
-      <p>number of times clicked {clicked}</p>
-      <form onSubmit={handleSubmit}>
-        <button type="submit">Submit</button>
-      </form>
+      {/* <Card /> */}
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum porro delectus magnam tempora fuga. Debitis, culpa et dolor veniam voluptatibus natus nobis reiciendis perspiciatis. Expedita, alias. Quam voluptatem nobis asperiores.</p>
     </div>
   );
 }

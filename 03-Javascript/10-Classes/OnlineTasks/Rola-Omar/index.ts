@@ -57,3 +57,4 @@ const array = [];
 array.push(First); array.push(second); array.push(third); array.push(fourth);
 for (let i in array)
   console.log("The match winner of game " + i + " is " + array[i].winner)
+  

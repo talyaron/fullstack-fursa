@@ -1,7 +1,3 @@
-
-$mainColor:rgb(53, 85, 73);
-@import 'view/components/card/Card.scss';
-
 .App {
   text-align: center;
 }
