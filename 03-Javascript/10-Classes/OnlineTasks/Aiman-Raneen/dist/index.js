@@ -75,6 +75,9 @@ function filter_by_date(arr) {
     return arr.sort(function (game1, game2) { return game1.getdate.getTime() - game2.getdate.getTime(); });
 }
 console.log(filter_by_date(arr));
-// for(var a in arr){
-//     this.document.createElement("div").innerHTML = arr[a].toString();
-// }
+for (var a in arr) {
+    var element = this.document.createElement("div");
+    element.style.cssText = 'font-weight:bold; font-size :2em ;color:red;';
+    element.innerHTML = JSON.stringify(arr[a]);
+    this.document.body.appendChild(element);
+}

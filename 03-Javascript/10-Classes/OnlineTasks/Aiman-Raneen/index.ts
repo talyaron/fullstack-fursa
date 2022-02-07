@@ -58,6 +58,11 @@ function filter_by_date(arr: Array<Game>): Array<Game> {
 
 console.log(filter_by_date(arr));
 
-// for(var a in arr){
-//     this.document.createElement("div").innerHTML = arr[a].toString();
-// }
+ for(var a in arr){
+   var element = this.document.createElement("div");
+   element.style.cssText = 'font-weight:bold; font-size :2em ;color:red;'
+   element.innerHTML = JSON.stringify(arr[a]);
+   this.document.body.appendChild(element);
+
+     
+ }
