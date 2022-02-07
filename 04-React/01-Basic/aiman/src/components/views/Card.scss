@@ -1,0 +1,19 @@
+.card{
+    position: relative;
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+       // position: relative;
+        width:40vh;
+        height:60vh;
+        border-radius: 1rem;
+    }
+    p {
+        position: absolute;
+        bottom: 0;
+        color: white;
+        text-align: center;
+    }
+}
