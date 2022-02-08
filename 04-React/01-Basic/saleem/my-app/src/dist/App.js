@@ -10,7 +10,7 @@ function App() {
             react_1["default"].createElement("p", null,
                 "Edit ",
                 react_1["default"].createElement("code", null, "src/App.tsx"),
-                " and save to reload."),
-            react_1["default"].createElement("a", { className: "App-link", href: "https://reactjs.org", target: "_blank", rel: "noopener noreferrer" }, "Learn React"))));
+                " and save to reload. wish you luck"),
+            react_1["default"].createElement("a", { className: "App-link", href: "https://reactjs.org", target: "_blank", rel: "noopener noreferrer" }, "Learn React hi"))));
 }
 exports["default"] = App;

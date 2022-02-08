@@ -1,15 +1,21 @@
 interface CardProp {
-  title: string;
-  place:string;
+  name: string;
+  width:number;
+  height:number;
+  thick:number;
+  cardImg:string;
   
 }
 
 function Card(prop: CardProp) {
   return (
     <div className="card">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQxRq9GpCZAc2XhYAxfCD5WKHzbJToninLQw&usqp=CAU" alt="" />
-      <h3>{prop.title}</h3>
-      <p>Lives in: {prop.place}</p>
+      <img src={prop.cardImg} alt="" />
+      <h3>{prop.name}</h3>
+      <p>width is: {prop.width}</p>
+      <p>height is: {prop.height}</p>
+      <p>thickness  is: {prop.thick}</p>
+
     </div>
   );
 }
