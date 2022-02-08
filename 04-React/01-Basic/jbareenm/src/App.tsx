@@ -1,7 +1,7 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.scss';
 import Card from './view/components/Card/Card';
+import Blog from './view/components/hubSpotBlog/Blog';
 
 interface gucci{
   url: string;
@@ -17,11 +17,12 @@ const content:Array<gucci> = [
 function App() {
   return (
     <div className="App">
-      {content.map((element, index) => {
+      <Blog />
+      {/* {content.map((element, index) => {
         return(
           <Card key={index} url={element.url} data={element.data} />
         );
-      })}
+      })} */}
     </div>
   );
 }
