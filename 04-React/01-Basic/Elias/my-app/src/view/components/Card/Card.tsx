@@ -2,7 +2,7 @@ import './Card.scss';
 
 interface gucci{
     url: string;
-    data: string;
+    name: string;
   }
 
 function Card(props:gucci) {
@@ -10,13 +10,14 @@ function Card(props:gucci) {
         e.preventDefault();
         alert('You clicked submit.');
     }
-    console.log(props.url)
     return (
         <div className="card">
             <img className='imgHeader' src={props.url} />
-            <p className='content'>{props.data}</p>
+            <p className='content'>
+            <h2>{props.name}</h2>
+            </p>
             <form onSubmit={handleSubmit}>
-                <button className='buyButton' type="submit">Buy</button>
+                <button className='buyButton' type="submit">Add to Cart</button>
             </form>
         </div>
     );
