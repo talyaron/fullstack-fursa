@@ -1,0 +1,207 @@
+// .headerConatiner{
+//     display: flex;
+//     width: 100%;
+//     justify-content: space-between;
+//     padding: 10px;
+//     border: 2px solid brown;
+
+//     .leftHeader{
+//         border: 2px solid black;
+//         display: flex;
+        
+//         .headerMenu{
+//             display: flex;
+//             margin-left: 50px;
+
+//             .menuItem{
+//                 margin-left: 10px;
+//             }
+//         }
+//     }
+
+//     .rightHeader{
+//         border: 2px solid green;
+//         width: 200px;
+//     }
+// }
+
+html, body{
+    margin: 0px;
+    font-size: 15px;
+}
+.header{
+    font-family: sans-serif;
+    background-color: white;
+    box-shadow: 2px 2px 10px  rgba(109, 109, 109, 0.8);
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    box-sizing: border-box;
+
+    &__right{
+        margin-right: 10vw;
+        display: flex;
+        align-items: center;
+
+        .search{
+            margin-right: 10px;
+
+            &:hover{
+                color: rgb(48, 175, 197);
+                cursor: default;
+            }
+
+            &:hover .hiddenSearch {
+                display: block;
+            }
+
+
+            .hiddenSearch {
+                display: none;
+                position: absolute;
+                width: 100%;
+                left: 0;
+                height: fit-content;
+                text-align: center;
+                box-shadow: 10px 10px 10px rgba(109, 109, 109, 0.8);
+
+                .blankHeaderSearch{
+                    height: 10px;
+                    background-color: rgba(255, 255, 255, 0);
+                }
+
+                .hiddenDataSearch {
+                    display: flex;
+                    position: relative;
+                    flex-wrap: wrap;
+                    background-color: rgb(234, 248, 248);
+                    .hiddenBlockSearch {
+                        width: 100%;
+                        max-width: 400px;
+                        padding: 5px;
+                        color: black;
+                        margin: auto;
+                        input{
+                            width: 100%;
+                        }
+                    }
+
+                    .hiddenBlockSearch:hover{
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+
+    &__left{
+        display: flex;
+        align-items: center;
+    }
+
+    &__menu{
+        margin-left: 50px;
+        display: flex;
+
+        &__item{
+            font-size: 1.1rem;
+            margin-right: 10px;
+            padding: 5px;
+            &:hover{
+                color: rgb(48, 175, 197);
+                border-radius: 25px;
+                cursor: default;
+            }
+
+            &:hover .hidden {
+                display: block;
+            }
+
+
+            .hidden {
+                display: none;
+                position: absolute;
+                width: 100%;
+                left: 0;
+                // margin-top: 20px;
+                height: fit-content;
+                text-align: center;
+                box-shadow: 10px 10px 10px rgba(109, 109, 109, 0.8);
+
+                .blankHeader{
+                    height: 20px;
+                    background-color: rgba(255, 255, 255, 0);
+                }
+
+                .hiddenData {
+                    display: flex;
+                    flex-wrap: wrap;
+                    background-color: rgb(234, 248, 248);
+                    // height: 80%;
+                    .hiddenBlock {
+                        width: 45%;
+                        max-width: 300px;
+                        height: 48%;
+                        border: 1px solid rgb(90, 86, 86);
+                        border-radius: 10px;
+                        padding: 5px;
+                        background-color: white;
+                        color: black;
+                        margin: 5px;
+
+                        img{
+                            width: 40px;
+                            height: 40px;
+                            border-radius: 50%;
+                        }
+
+                        p{
+                            font-size: 0.8rem;
+                        }
+                    }
+
+                    .hiddenBlock:hover{
+                        cursor: pointer;
+                    }
+                }
+            }
+
+        }
+    }
+
+    .logo{
+        margin-left: 15vw;
+        background-image: url(https://blog.hubspot.com/hubfs/assets/hubspot.com/web-team/WBZ/Blog%202021/Images/Logos/HubSpot%20Logo.svg);
+        width: 100px;
+        height: 40px;
+        background-size: 100%;
+        margin-top: 10px;
+        background-repeat: no-repeat;
+    }
+}
+
+/*.btn{
+    background-color: teal;
+    border-radius: 5px;
+    padding: 10px 20px;
+    width: fit-content;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.205);
+    color: white;
+
+    &:hover{
+        box-shadow: 2x 2px 6px rgba(0, 0, 0, 0.205);
+        opacity: 0.9;
+    }
+
+    &--danger{
+        background-color: red;
+    }
+
+    &--header{
+        background-color: rgb(187, 187, 187);
+    }
+}*/
+.image{
+    width: 40px;
+}
+
