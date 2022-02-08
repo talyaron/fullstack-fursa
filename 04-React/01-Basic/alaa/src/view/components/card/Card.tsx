@@ -8,12 +8,14 @@ interface CardProp {
 
 function Card(prop: CardProp) {
   return (
+  <div className="warpper">
     <div className="card">
       <h3>name : {prop.name}</h3>
       <p>price : {prop.price}</p>
       <p>quantity : {prop.quantity}</p>
       <p>description : {prop.description}</p>
       <img src={prop.Url} alt="" />
+    </div>
     </div>
   );
 }
