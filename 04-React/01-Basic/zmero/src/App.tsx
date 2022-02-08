@@ -1,25 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-const counter = 35;
+import './App.scss';
+
+import Navbar from './view/components/menu/menu';
+import SearchBar from './view/components/search/search';
+import Explore from './view/components/explore/explore';
+
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <p>{counter}</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Navbar></Navbar>
       </header>
+
+      <SearchBar></SearchBar>
+      <Explore></Explore>
     </div>
   );
 }
