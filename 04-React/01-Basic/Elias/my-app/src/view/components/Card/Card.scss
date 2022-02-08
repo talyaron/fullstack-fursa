@@ -1,0 +1,23 @@
+.card {
+    text-align: center;
+    border: 2px solid black;
+    background-color: #d6d6d6;
+    padding: 10px;
+    margin-top: 10px;
+    color: black;
+    font-weight: 900;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 25vmax;
+
+    .imgHeader{
+      width: 100%;
+      height: 75%;
+      border: 2px solid black;
+    }
+
+    .buyButton{
+      background-color: rgba(0, 0, 0, 0.568);
+      color: white;
+      padding: 10px;
+    }
+  }

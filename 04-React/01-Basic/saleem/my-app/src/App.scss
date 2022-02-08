@@ -1,3 +1,8 @@
+$mainColor:rgb(21, 87, 109);
+$borderRadius:10px;
+
+@import 'view/components/card/Card.scss';
+
 .App {
   text-align: center;
 }
