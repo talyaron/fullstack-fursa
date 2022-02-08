@@ -1,5 +1,3 @@
-import { isPropertySignature } from "typescript";
-
 interface CardProp {
   title: string;
   place:string;
