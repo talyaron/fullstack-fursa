@@ -1,9 +1,10 @@
-$mainColor:rgb(21, 87, 109);
+$mainColor:rgb(185, 109, 9);
 $borderRadius:10px;
-$padding:20px;
+$cardwidth:20%;
+$cardlength:50%;
+
 
 @import 'view/components/card/Card.scss';
-
 .App {
   text-align: center;
 }
@@ -11,19 +12,23 @@ $padding:20px;
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+  
+background: url(logo.png);
+
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
+    
   }
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: rgba(73, 48, 24, 1);
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
