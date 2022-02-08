@@ -3,6 +3,7 @@ exports.__esModule = true;
 var react_1 = require("react");
 var logo_svg_1 = require("./logo.svg");
 require("./App.css");
+var counter = 20;
 function App() {
     return (react_1["default"].createElement("div", { className: "App" },
         react_1["default"].createElement("header", { className: "App-header" },

@@ -1,16 +1,22 @@
-import '.Card/scss'
+import './Card.scss';
 
-function Card() {
-    const clicked = 10;
+interface gucci{
+    url: string;
+    data: string;
+  }
+
+function Card(props:gucci) {
     function handleSubmit(e: any) {
         e.preventDefault();
         alert('You clicked submit.');
     }
+    console.log(props.url)
     return (
         <div className="card">
-            <p>number of times clicked {clicked}</p>
+            <img className='imgHeader' src={props.url} />
+            <p className='content'>{props.data}</p>
             <form onSubmit={handleSubmit}>
-                <button type="submit">Submit</button>
+                <button className='buyButton' type="submit">Buy</button>
             </form>
         </div>
     );

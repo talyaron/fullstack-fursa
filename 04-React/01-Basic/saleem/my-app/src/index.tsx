@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+<<<<<<< Updated upstream
 import './index.scss';
+=======
+import './index.css';
+>>>>>>> Stashed changes
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
