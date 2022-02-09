@@ -26,15 +26,26 @@ function Card(prop: CardProp) {
 
   function MyCard(prop: MyCardProp) {
     const [randomName, setRandomName] = useState('Suzan')
+    const [randomColor, setRandomColor] = useState('white')
     const names = ['Suzan1', 'Mona1', 'Tal1', 'Suzan2', 'Mona2', 'Tal2']
+
+    function getRandomColor() {
+      var letters = '0123456789ABCDEF';
+      var color = '#';
+      for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
 
     function handleClick(){
       setRandomName(names[Math.floor(Math.random()*names.length)])
+      setRandomColor(getRandomColor())
     }
 
     const {image, title} = prop.info
       return (
-        <div className="myCard">
+        <div className="myCard" style={{backgroundColor:randomColor}}>
             <img src={image} alt="" />
             <h5>{title}</h5>
             <button onClick={handleClick}> 
