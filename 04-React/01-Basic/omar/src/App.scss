@@ -1,11 +1,25 @@
 $mainColor:rgb(21, 87, 109);
 $borderRadius:10px;
-$padding:20px;
-
-@import 'view/components/card/Card.scss';
+$padding:100%;
+// @import 'view/components/first-page/GymFitLogo.scss';
 
 .App {
   text-align: center;
+}
+
+.ImageCon {
+  display: flex;
+}
+
+.AppTitle{
+  font-size: 50px;
+}
+
+.subTitle{
+  font-style: italic;
+  font-weight: bold;
+  font-size: medium;
+  color: red
 }
 
 .App-logo {
@@ -41,9 +55,4 @@ $padding:20px;
   to {
     transform: rotate(360deg);
   }
-}
-
-button{
-  padding: 10px 20px;
-  font-size: 2rem;
 }
