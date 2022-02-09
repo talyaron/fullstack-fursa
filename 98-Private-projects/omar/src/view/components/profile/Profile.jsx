@@ -8,6 +8,7 @@ import GoogleIcon from '@mui/icons-material/Google';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import React, {useState} from "react"
 import Dialog from '../dialog/Dialog'
+import Dial from '../dial/Dial'
 
 function ProfileButton() {
     const [open, setOpen] = React.useState(false);
@@ -36,8 +37,9 @@ function ProfileButton() {
             <br></br>
             <br></br>
             <Button size="large" variant="outlined" startIcon={<LoginIcon/>}> Allready have account ? login ! </Button>
-            <br></br>
-            <br></br>
+            {/* <br></br>
+            <br></br> */}
+            <Dial /> 
             <div className = 'profileButton'> 
                 <Button size="large" variant="contained" startIcon={<FitnessCenterIcon/>}> Plan</Button>
                 <Button  size="large" variant="contained" startIcon={<BarChartIcon/>}> Charts</Button>
