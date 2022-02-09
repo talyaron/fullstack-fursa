@@ -6,13 +6,12 @@ interface AssignmentProp {
   }
   
   function Assignment(prop: AssignmentProp) {
-    const {month, day, time,background} = prop;
     return (
       <div className="calendar">
-      <div className="month background">{month}</div>
-      <div className="day">{day}</div>
-      <div className="date">{time}<span className="date-after">th</span></div>
-      <div className="time background">{background}</div>
+      <div className="month background">{prop.month}</div>
+      <div className="day">{prop.day}</div>
+      <div className="date">{prop.time}<span className="date-after">th</span></div>
+      <div className="time background">{prop.background}</div>
       
     </div>
     );
