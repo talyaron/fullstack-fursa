@@ -32,7 +32,7 @@ function Card(prop: CardProp) {
   return (
     <div className="card">
       <img src={img} alt={place} />
-      <h3>{name}</h3>
+      <h3 style={{backgroundColor:'red'}}>{name}</h3>
       <p>Lives in: {place}</p>
       <button onClick={handleAddCounter}>{counter}</button>
       <button onClick={handleAddCounter2}>Counter2: {counter2}</button>
