@@ -5,26 +5,25 @@ interface WoodProp{
 }
 function Wood(prop:WoodProp){
     const [searchtxt,setsearchtxt]=useState('')
-    const [blur,setblur]=useState('')
-    const [focus,setfocus]=useState('')
+    const [color,setcolor]=useState('rgb(196,196,196)')
 
 
     function searchandler(ev:any){
         setsearchtxt(ev.target.value)
     }
     function focusFunc(){
-        setblur('rgb(196,196,196)')
+        setcolor('yellow')
 
     }
     function blurFunction(){
-        setfocus('yellow')
+        setcolor('rgb(196,196,196)')
 
     }
     return(
     <div className="wood">
         <div className="wood_title">
         <img src={prop.title} alt="" />
-        <input onKeyUp={searchandler} type="search" onFocus={focusFunc} onBlur={blurFunction} 
+        <input onKeyUp={searchandler} type="search" onFocus={focusFunc} onBlur={blurFunction} style={{backgroundColor:color}} 
         
         />
         

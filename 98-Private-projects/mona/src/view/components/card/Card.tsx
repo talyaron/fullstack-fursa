@@ -1,4 +1,6 @@
 import {useState} from 'react'
+import './Card.scss'
+
 interface CardProp {
   wood:{
   name: string,
@@ -15,7 +17,7 @@ function Card(prop: CardProp) {
   const {name,width,height,thick,cardImg}=prop.wood;
   const[text,setText]=useState('')
   const [isLiked,setlike]=useState('like')
-  const [color,setcolor]=useState('yellow')
+  const [color,setcolor]=useState('')
 
    
 
@@ -26,6 +28,7 @@ function Card(prop: CardProp) {
 
   function handlertxt(eve:any)
   {
+    
     setText(eve.target.value);
  }
 
@@ -39,17 +42,23 @@ function Card(prop: CardProp) {
     if(isLiked=='like')
     {
       setlike('unlike')
+      
     }
   }
-  function handlecolor(ev:any)
+  function handlerMouseOver(ev:any)
   {
     
-     setcolor("red")
+     setcolor("rgb(196,196,196)")
      
+  }
+  function handlerMouseOut()
+  {
+    setcolor('rgb(185, 109, 9)')
   }
 
   return (
-    <div id='card' className="card" onMouseOver={handlecolor}  >
+    <div id='card' className="card" onMouseOver={handlerMouseOver} onMouseOut={handlerMouseOut} style={{backgroundColor:color}} 
+    >
            
 
       <img src={cardImg} alt="" />
@@ -58,7 +67,7 @@ function Card(prop: CardProp) {
       <h1>height is: {height}</h1>
       <h1>thickness is: {thick}</h1>
       <p>you {isLiked} this type</p>
-      <button onClick={handlerbtn} >
+      <button   onClick={handlerbtn}  >
         {isLiked}
       </button>
       <p>{text}</p>
