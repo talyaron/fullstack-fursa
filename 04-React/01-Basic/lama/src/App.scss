@@ -1,6 +1,8 @@
 
 $mainColor:rgb(53, 85, 73);
 @import 'view/components/card/Card.scss';
+@import 'view/components/signUp/index.scss';
+
 
 .App {
   text-align: center;
@@ -18,7 +20,7 @@ $mainColor:rgb(53, 85, 73);
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #bdae99;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
