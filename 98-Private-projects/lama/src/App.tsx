@@ -4,10 +4,11 @@ import './App.scss';
 // import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
-import Card from './view/components/card/Card';
+import Card from './view/components/Card/Card';
 import SignUp from './view/components/signUp/index'
 import Homepage from './view/components/homepage/index' 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import ProfileButton from './view/components/signIn/index';
 
 // const students:Array<Place> = [{name:'Saleem', place:'Mashad'},{name:'Mona',place:"Nazereth"}];
 // interface Place{
@@ -27,8 +28,9 @@ function App() {
 
 {/*         
         <SignUp /> */}
+<ProfileButton />
+        {/* <Homepage /> */}
 
-        <Homepage />
 
         {/* {students.map((student, index)=>{
         return <Card key={index} title={student.name} place={student.place} />

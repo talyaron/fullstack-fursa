@@ -9,9 +9,18 @@ div{
     height: 100vh;
     width: 100vw;
     .h{
+      font-size: large;
      margin: 50px;
         text-align: left;
     }
+
+    // .listdiv{
+    //   background-color: rgb(131, 116, 98);
+    //   border-radius: 5px;
+    //   margin: 5px;
+    //   padding: 5px;
+    //   width: 20vw;
+    // }
 
   
 
@@ -49,6 +58,20 @@ div{
           color: #4a9bec;
         }
       }
+      &_btn {
+      background-color: #f26d21;
+      color: white;
+      padding: 8px 8px 8px 8px;
+      margin-left: 10px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      &:hover {
+        background-color: rgb(10, 151, 233);
+      }
+    }
+
     }
     &_right {
       display: flex;
