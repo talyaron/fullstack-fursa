@@ -10,10 +10,13 @@ interface CardProp {
 
 function Card(prop: CardProp) {
   const { name, img } = prop.info;
-  const [text, settext] = useState('');
+  let [text, settext] = useState('');
   function showName(e: any) {
       try {
-        let text=name;
+        if(text=='')
+          text=name;
+        else
+          text='';
         settext(text)
       } catch (error) {
           console.error(error)
