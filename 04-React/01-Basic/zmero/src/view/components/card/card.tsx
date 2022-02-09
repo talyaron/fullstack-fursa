@@ -10,6 +10,8 @@ interface CardProp {
 function Card(prop: CardProp) {
     const { name, place, img } = prop.info;
     const [color, setColor] = useState('red');
+    const arrOfNames: Array<string> = ['A', 'B', 'C', 'D', 'E'];
+    const [randomName, setName] = useState(arrOfNames[0]);
     function changeColor() {
         var letters = '0123456789ABCDEF';
         var newColor = '#';
@@ -19,6 +21,10 @@ function Card(prop: CardProp) {
         setColor(newColor);
 
     }
+    function changeName() {
+        let newNum = Math.floor(Math.random() * 5)
+        setName(arrOfNames[newNum])
+    }
 
 
     return (
@@ -27,6 +33,7 @@ function Card(prop: CardProp) {
             <h3>{name}</h3>
             <p>Lives in: {place}</p>
             <div style={{ backgroundColor: color }} onClick={changeColor}>click on me</div>
+            <div onClick={changeName}>{randomName}</div>
         </div>
     );
 }
