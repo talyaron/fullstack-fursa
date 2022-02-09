@@ -6,10 +6,10 @@ interface ClassRoom{
     teacher:string;
 }
 
-const arr = [{name:'class 1A', teacher:'Suzan Kassabry'}, {name:'class 1A', teacher:'Suzan Kassabry'},
-{name:'class 1A', teacher:'Suzan Kassabry'}, {name:'class 1A', teacher:'Suzan Kassabry'},
-{name:'class 1A', teacher:'Suzan Kassabry'}, {name:'class 1A', teacher:'Suzan Kassabry'}, 
-{name:'class 1A', teacher:'Suzan Kassabry'}, {name:'class 1A', teacher:'Suzan Kassabry'}];
+const arr = [{name:'class 1A', teacher:'Suzan Kassabry'}, {name:'class 1B', teacher:'Suzan Kassabry'},
+{name:'class 2A', teacher:'Suzan Kassabry'}, {name:'class 2B', teacher:'Suzan Kassabry'},
+{name:'class 3A', teacher:'Suzan Kassabry'}, {name:'class 3B', teacher:'Suzan Kassabry'}, 
+{name:'class 4A', teacher:'Suzan Kassabry'}, {name:'class 4B', teacher:'Suzan Kassabry'}];
 
 function ClassContainer() {
     return(

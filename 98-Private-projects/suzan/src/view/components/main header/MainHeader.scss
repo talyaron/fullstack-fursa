@@ -18,18 +18,35 @@
             font-size: medium;
             
         }
+
+        img{
+            height: 50px;
+            width: 100px;
+            margin-right: 100px;
+        }
     }
 
     &__right{
         display: flex;
         width: 30%;
         align-items: center;
+        position: relative;
 
         p{
             color: black;
             margin: 10px;
             padding: 5px;
             font-size: medium;
+
+        }
+
+        img{
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            position: absolute;
+            right: 30px;
+            margin-right: 10px;
         }
     }
 
