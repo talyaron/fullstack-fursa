@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 import Card from './view/components/Card/Card';
 
 const family:Array<people>=[{name:'lama',age:23,height:160,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW7YyasYGZnpjhxWhoiiPcqvEQYRVG8GObcg&usqp=CAU'},{name:'lama',age:23,height:160,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW7YyasYGZnpjhxWhoiiPcqvEQYRVG8GObcg&usqp=CAU'}]
