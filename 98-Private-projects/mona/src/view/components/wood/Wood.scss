@@ -1,0 +1,17 @@
+.wood{
+ margin-top: 10%;
+ margin-bottom: 2%;
+    &_title{
+        display: flex;
+        flex-direction: row;
+        
+        img{
+            
+            height:10vh;
+           
+        }
+        input{
+            height:10%;
+        }
+    }
+}
