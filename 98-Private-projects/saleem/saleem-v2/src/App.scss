@@ -2,7 +2,7 @@ $mainColor:rgb(21, 87, 109);
 $borderRadius:10px;
 $padding:20px;
 
-@import 'view/components/card/Card.scss';
+@import './view/components/assignment/Assignment.scss';
 
 .App {
   text-align: center;
@@ -41,9 +41,4 @@ $padding:20px;
   to {
     transform: rotate(360deg);
   }
-}
-
-button{
-  padding: 10px 20px;
-  font-size: 2rem;
 }
