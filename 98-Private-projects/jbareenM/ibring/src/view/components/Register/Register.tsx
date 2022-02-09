@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import './Register.scss';
+import logo from "../../logoAndPhotos/ibring.jpg";
 
 function Register() {
     return (
         <div className="RegisterPage">
             <div className="RegisterLogo">
-                <img src="../../logoAndPhotos/ibring.jpg" alt="" />
+                <img src={logo} alt="" />
             </div>
             <div className="registerContent">
                 <label className="letsSignUp">let's sign up</label>

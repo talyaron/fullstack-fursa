@@ -44,7 +44,7 @@ function Card(prop: CardProp) {
     }
   }
 
-  function handelRightClick(ev:any){
+  function handelRightClick(ev: any) {
     try {
       console.log(ev.type)
     } catch (error) {
@@ -52,7 +52,7 @@ function Card(prop: CardProp) {
     }
   }
 
-  function handleInput(ev:any){
+  function handleInput(ev: any) {
     try {
       console.log(ev.target.value)
       setText(ev.target.value);
@@ -72,8 +72,10 @@ function Card(prop: CardProp) {
       {/* <p>Lives in: {place}</p> */}
       <button onClick={handleAddCounter}>{counter}</button>
       <button onClick={handleAddCounter2}>Counter2: {counter2}</button>
-      <input type="text" id='someId' onKeyUp={handleInput}/>
-      <label>{text}</label>
+      <input type="text" id='someId' onKeyUp={handleInput} />
+      <div>
+        <label>the text: {text}</label>
+      </div>
     </div>
   );
 }
