@@ -23,8 +23,6 @@ function ProfileButton() {
                 <Button  size="large" variant="contained" startIcon={<BarChartIcon/>}> Charts</Button>
                 <Button size="large" variant="contained" startIcon={<AccountCircleIcon/>}> profile</Button>
             </div>
-            
-            
         </div>
         
     );
