@@ -16,15 +16,19 @@ function Card(prop: CardProp) {
   }
 
   interface MyCardProp {
+    info:{
       image: string;
       title: string;
+    };
+      
   }
 
   function MyCard(prop: MyCardProp) {
+    const {image, title} = prop.info
       return (
         <div className="myCard">
-            <img src={prop.image} alt="" />
-            <h5>{prop.title}</h5>
+            <img src={image} alt="" />
+            <h5>{title}</h5>
         </div>
       );
   }
