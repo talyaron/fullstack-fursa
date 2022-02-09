@@ -7,6 +7,21 @@ $padding:100%;
   text-align: center;
 }
 
+.ImageCon {
+  display: flex;
+}
+
+.AppTitle{
+  font-size: 50px;
+}
+
+.subTitle{
+  font-style: italic;
+  font-weight: bold;
+  font-size: medium;
+  color: red
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
