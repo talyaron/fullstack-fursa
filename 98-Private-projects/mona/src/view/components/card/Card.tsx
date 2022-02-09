@@ -10,33 +10,59 @@ interface CardProp {
 }
 
 function Card(prop: CardProp) {
-  const [randomname,setrandomName]=useState('suzan')
-  const names:Array<string>=['mona',"suzan","Tal","suzan2",'mona2','Tal2'];
+  //onst [randomname,setrandomName]=useState('suzan')
+  //const names:Array<string>=['mona',"suzan","Tal","suzan2",'mona2','Tal2'];
   const {name,width,height,thick,cardImg}=prop.wood;
   const[text,setText]=useState('')
-  function handler(eve:any){
-    setrandomName(names[Math.floor(Math.random()*names.length)])
+  const [isLiked,setlike]=useState('like')
+  const [color,setcolor]=useState('yellow')
+
+   
+
+ // function handler(eve:any){
+   // setrandomName(names[Math.floor(Math.random()*names.length)])
   
-  }
+  //}
+
   function handlertxt(eve:any)
   {
     setText(eve.target.value);
+ }
 
-  }
-  return (
-    <div id='card' className="card" >
+  function handlerbtn(eve:any)
+  {
+    
+    if(isLiked=='unlike'){
+      setlike('like')
       
+    }
+    if(isLiked=='like')
+    {
+      setlike('unlike')
+    }
+  }
+  function handlecolor(ev:any)
+  {
+    
+     setcolor("red")
+     
+  }
+
+  return (
+    <div id='card' className="card" onMouseOver={handlecolor}  >
+           
+
       <img src={cardImg} alt="" />
       <h3>{name}</h3>
-      <p>width is: {width}</p>
-      <p>height is: {height}</p>
-      <p>thickness  is: {thick}</p>
-      <p>{randomname}</p>
-      <button onClick={handler} >
-        {randomname}
+      <h1>width is: {width}</h1>
+      <h1>height is: {height}</h1>
+      <h1>thickness is: {thick}</h1>
+      <p>you {isLiked} this type</p>
+      <button onClick={handlerbtn} >
+        {isLiked}
       </button>
       <p>{text}</p>
-      <input onKeyUp={handlertxt}></input>
+      
 
     </div>
   );

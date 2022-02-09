@@ -1,17 +1,30 @@
 .wood{
- margin-top: 10%;
- margin-bottom: 2%;
+ margin-top: 5px;
+ height:20%;
+
     &_title{
         display: flex;
-        flex-direction: row;
+        position: relative;
+        margin: 10px;
+
+        
         
         img{
+            position: absolute;
+            height:100%;
+            padding: 2px;
             
-            height:10vh;
            
         }
         input{
-            height:10%;
+            height:60%;
+            background-color: rgb(196,196,196);
+            border-radius: 30px;
+           
+           
         }
+    }
+    p{
+        color: yellow;
     }
 }

@@ -22,12 +22,14 @@ function App() {
     <div className="App">
       <header className='App-header'>
         <img  src="https://cdn3.iconfinder.com/data/icons/farming-gardening-2/512/firewood-wood-farm-farming-512.png" alt="" />
-        <h1>Wood Raw Material</h1>
+        <h1 >Wood Raw Material</h1>
         <img src="https://cdn4.iconfinder.com/data/icons/shopping-21/64/shopping-06-512.png" alt="" />
       </header>
-      
-      <div className="App-body">
+      <div className='searching'>
       <Wood title={woodLogo} ></Wood>
+      </div>
+      <div className="App-body">
+      
       {woods.map((wood, index)=>{
         const{name,width,height,thick,cardImg}=wood;
         return <Card key={index} wood={{name,width,height,thick,cardImg}}/>

@@ -4,6 +4,7 @@ $cardwidth:20vw;
 $cardlength:20%;
 
 
+
 @import 'view/components/card/Card.scss';
 @import 'view/components/wood/Wood.scss';
 @import 'view/components/products/Products.scss';
@@ -50,12 +51,17 @@ background: url(logo.png);
   background-color: rgba(73, 48, 24, 1);
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: rgb(209, 189, 9);
+}
+.searching{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .App-link {
@@ -63,6 +69,7 @@ background: url(logo.png);
 }
 .button{
   width: 100%;
+  
 }
 
 @keyframes App-logo-spin {

@@ -3,16 +3,32 @@
 .card{
     background-color: $mainColor;
     border-radius: $borderRadius;
-    margin: 5px;
+    color: white;
+    margin:5px;
     width: $cardwidth;
-    height: $cardlength;
+    box-shadow: 2px 2px 2px 2px rgb(61, 59, 55);
+    
     img{
         width: 50%;
         height: 30%;
         margin-top: 20%;
     }
+    p{
+        color: rgb(2, 34, 63);
+        font-size: 1rem;
+
+    }
+    h1{
+        font-size: 1rem;
+    }
+  
     
 }
 .button{
-    height:20%
+    height:20%;
+    background-color: rgb(155, 94, 34);
+    
+}
+.input{
+    width:100%
 }
