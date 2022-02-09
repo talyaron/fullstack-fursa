@@ -1,6 +1,6 @@
 $mainColor:rgb(185, 109, 9);
 $borderRadius:10px;
-$cardwidth:20%;
+$cardwidth:20vw;
 $cardlength:20%;
 
 
@@ -60,6 +60,9 @@ background: url(logo.png);
 
 .App-link {
   color: #61dafb;
+}
+.button{
+  width: 100%;
 }
 
 @keyframes App-logo-spin {

@@ -26,7 +26,7 @@ function App() {
         <img src="https://cdn4.iconfinder.com/data/icons/shopping-21/64/shopping-06-512.png" alt="" />
       </header>
       
-      <body className="App-body">
+      <div className="App-body">
       <Wood title={woodLogo} ></Wood>
       {woods.map((wood, index)=>{
         const{name,width,height,thick,cardImg}=wood;
@@ -35,7 +35,7 @@ function App() {
       })}
             
 
-      </body>
+      </div>
     
     </div>
   );
