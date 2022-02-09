@@ -1,7 +1,8 @@
 $mainColor:rgb(21, 87, 109);
 $borderRadius:10px;
+$padding:20px;
 
-@import 'view/components/card/Card.scss';
+@import './view/components/assignment/Assignment.scss';
 
 .App {
   text-align: center;
