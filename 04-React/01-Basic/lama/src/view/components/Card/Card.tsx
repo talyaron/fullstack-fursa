@@ -1,3 +1,7 @@
+
+// import './Card.scss';
+import{useState} from'react';
+
 interface CardProp{
     info: {
         name:string;

@@ -3,7 +3,8 @@ import logo from './logo.svg';
 import './App.scss';
 import Card from './view/components/Card/Card';
 
-const family:Array<people>=[{name:'lama',age:23,height:160,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW7YyasYGZnpjhxWhoiiPcqvEQYRVG8GObcg&usqp=CAU'},{name:'lama',age:23,height:160,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW7YyasYGZnpjhxWhoiiPcqvEQYRVG8GObcg&usqp=CAU'}]
+const family:Array<people>=[{name:'lama',age:23,height:160,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzq26b5cx_aUDvPE01vcyYi9w6LPvjaiXpCA&usqp=CAU'},
+{name:'lama',age:23,height:160,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzq26b5cx_aUDvPE01vcyYi9w6LPvjaiXpCA&usqp=CAU'}]
 
 interface people{
   name:string;
