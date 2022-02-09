@@ -28,6 +28,7 @@ function Card(prop: CardProp) {
     const [randomName, setRandomName] = useState('Suzan')
     const [randomColor, setRandomColor] = useState('white')
     const names = ['Suzan1', 'Mona1', 'Tal1', 'Suzan2', 'Mona2', 'Tal2']
+    const [text, setText] = useState('')
 
     function getRandomColor() {
       var letters = '0123456789ABCDEF';
@@ -43,6 +44,10 @@ function Card(prop: CardProp) {
       setRandomColor(getRandomColor())
     }
 
+    function handleText(ev:any){
+      setText(ev.target.value)
+    }
+
     const {image, title} = prop.info
       return (
         <div className="myCard" style={{backgroundColor:randomColor}}>
@@ -51,6 +56,8 @@ function Card(prop: CardProp) {
             <button onClick={handleClick}> 
               {randomName}
             </button>
+            <p className="input">{text}</p>
+            <input type="text" onKeyUp={handleText} />
         </div>
       );
   }
