@@ -23,7 +23,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         {arr.map((card, index) => {
-          return <Card key={index} src={card.src} title={card.title} />;
+          const {title , src} = card;
+          return <Card key={index} info = {{title , src}} />;
         })}
       </header>
     </div>

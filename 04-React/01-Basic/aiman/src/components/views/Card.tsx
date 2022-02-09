@@ -1,15 +1,20 @@
 import '../views/Card.scss'
 import { isPropertySignature } from "typescript";
 interface CardProp {
-  src:string;
-  title: string;
+
+  info : {
+    src:string;
+    title: string;
+  }
+ 
 }
 
 function Card(prop: CardProp) {
-  return (
+  const {src , title} = prop.info;
+  return (  
     <div  className="card">
-      <img src={prop.src} alt="" />
-      <p> {prop.title}</p>
+      <img src={src} alt="" />
+      <p> {title}</p>
     </div>
     )
   
