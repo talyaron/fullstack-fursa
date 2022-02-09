@@ -13,11 +13,14 @@ function Card(prop: CardProp) {
   const [randomname,setrandomName]=useState('suzan')
   const names:Array<string>=['mona',"suzan","Tal","suzan2",'mona2','Tal2'];
   const {name,width,height,thick,cardImg}=prop.wood;
+  const[text,setText]=useState('')
   function handler(eve:any){
     setrandomName(names[Math.floor(Math.random()*names.length)])
-    
-   
-   
+  
+  }
+  function handlertxt(eve:any)
+  {
+    setText(eve.target.value);
 
   }
   return (
@@ -32,6 +35,8 @@ function Card(prop: CardProp) {
       <button onClick={handler} >
         {randomname}
       </button>
+      <p>{text}</p>
+      <input onKeyUp={handlertxt}></input>
 
     </div>
   );
