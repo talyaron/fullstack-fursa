@@ -8,14 +8,17 @@ interface AssignmentP {
   background:string;
 }
 const assignments:Array<AssignmentP> = [ {month:'December',day:"Thursday" ,time:8 ,background:"10:00 EST  15:00 GMT"},
-{month:'november',day:"friday" ,time:8 ,background:"08:30 EST  12:00 GMT"}];
+{month:'november',day:"friday" ,time:5 ,background:"08:30 EST  12:00 GMT"},
+{month:'november',day:"monday" ,time:23 ,background:"09:30 EST  5:00 GMT"}];
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
 
-      {assignments.map((as, index)=>{return <assignment month={as.month} day={as.day} time={as.time} background={as.background} />
+      {assignments.map((as, index)=>{
+        const {month, day, time,background} = as;
+        return <Assignment month={month} day={day} time={time} background={background} />
       })}
       </header>
     </div>
