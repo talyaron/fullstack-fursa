@@ -8,7 +8,7 @@ import GoogleIcon from '@mui/icons-material/Google';
 import BarChartIcon from '@mui/icons-material/BarChart';
 function ProfileButton() {
     return (
-        <div className = 'profileButton'> 
+        <div className = 'signUpField'> 
             <Button size="large" variant="outlined" startIcon={<GoogleIcon/>}> Sign Up with Google</Button>
             <br></br>
             <br></br>
