@@ -1,7 +1,8 @@
 
-$mainColor:rgb(53, 85, 73);
-@import 'view/components/card/Card.scss';
-@import 'view/components/signUp/index.scss';
+
+@import 'view-components-bar/Bar.scss';
+
+
 
 
 .App {
@@ -20,7 +21,7 @@ $mainColor:rgb(53, 85, 73);
 }
 
 .App-header {
-  background-color: #bdae99;
+  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

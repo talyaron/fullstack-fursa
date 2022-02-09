@@ -1,9 +1,19 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.scss';
+// import { Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 
 import Card from './view/components/card/Card';
+import SignUp from './view/components/signUp/index'
+import Homepage from './view/components/homepage/index' 
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
+// const students:Array<Place> = [{name:'Saleem', place:'Mashad'},{name:'Mona',place:"Nazereth"}];
+// interface Place{
+//   name:string;
+//   place:string
+// }
 const text="hii all";
 
 function App() {
@@ -11,9 +21,18 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        {/* <Card />
         <Card />
-        <Card />
-        <Card />
+        <Card /> */}
+
+{/*         
+        <SignUp /> */}
+
+        <Homepage />
+
+        {/* {students.map((student, index)=>{
+        return <Card key={index} title={student.name} place={student.place} />
+      })} */}
      
       </header>
     </div>
