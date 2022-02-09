@@ -18,6 +18,7 @@ function Card(prop: CardProp) {
   const[text,setText]=useState('')
   const [isLiked,setlike]=useState('like')
   const [color,setcolor]=useState('')
+  const [image,setImg]=useState('https://cdn2.iconfinder.com/data/icons/unigrid-human-vol-2/57/011_yes_like_agree_vote_thumbs-up_thumbs-512.png')
 
    
 
@@ -35,14 +36,15 @@ function Card(prop: CardProp) {
   function handlerbtn(eve:any)
   {
     
-    if(isLiked=='unlike'){
+    if(isLiked==='unlike'){
       setlike('like')
+      setImg('https://cdn2.iconfinder.com/data/icons/unigrid-human-vol-2/57/011_yes_like_agree_vote_thumbs-up_thumbs-512.png')
       
     }
-    if(isLiked=='like')
+    if(isLiked==='like')
     {
       setlike('unlike')
-      
+      setImg('https://cdn0.iconfinder.com/data/icons/interface-line-4/48/Dislike_unlike_thumb_down-512.png')
     }
   }
   function handlerMouseOver(ev:any)
@@ -68,7 +70,8 @@ function Card(prop: CardProp) {
       <h1>thickness is: {thick}</h1>
       <p>you {isLiked} this type</p>
       <button   onClick={handlerbtn}  >
-        {isLiked}
+        <img src={image} alt="" />
+        
       </button>
       <p>{text}</p>
       
