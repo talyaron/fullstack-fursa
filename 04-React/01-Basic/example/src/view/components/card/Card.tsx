@@ -1,13 +1,19 @@
 interface CardProp {
-  title: string;
-  place:string;
+  info: {
+    name: string;
+    place: string;
+    img: string;
+  };
 }
 
 function Card(prop: CardProp) {
+  const {name, place, img} = prop.info;
+  
   return (
     <div className="card">
-      <h3>{prop.title}</h3>
-      <p>Lives in: {prop.place}</p>
+      <img src={img} alt={place} />
+      <h3>{name}</h3>
+      <p>Lives in: {place}</p>
     </div>
   );
 }
