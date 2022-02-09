@@ -7,11 +7,10 @@ interface CardProp {
     title: string;
   };
 }
-
+let tempText: string = "";
 function Card(prop: CardProp) {
   const { src, title } = prop.info;
   const [text, setText] = useState("");
-  let tempText: string = "";
   function handleChange(eve: any) {
     console.log(eve.target.value);
     tempText = eve.target.value;
@@ -21,7 +20,7 @@ function Card(prop: CardProp) {
     <div className="card">
       <img src={src} alt="" />
       <p> {title}</p>
-      <h1> {text} </h1>
+      <h1> {tempText} </h1>
       <input className="input" onChange={handleChange} id="in"></input>
     </div>
   );
