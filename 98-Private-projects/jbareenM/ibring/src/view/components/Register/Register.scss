@@ -84,5 +84,23 @@
                 background-color: rgba(128, 128, 128, 0.151);
             }
         }
+
+        .orSplit{
+            margin-top: 10px;
+            display: flex;
+
+            .orWord{
+                color: grey;
+                width: 20vw;
+                font-size: 1rem;
+            }
+        }
+        .orSplit:before,
+        .orSplit:after {
+            content: "";
+            flex: 1 1;
+            border-bottom: 1px solid rgba(151, 148, 148, 0.658);
+            margin: auto;
+        }
     }
 }
