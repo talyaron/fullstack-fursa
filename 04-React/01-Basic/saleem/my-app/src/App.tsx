@@ -1,25 +1,21 @@
+import { useState } from 'react';
 import './App.scss';
 
-import Assignment from './view/components/assignment/Assignment';
-interface AssignmentP {
-  month:string;
-  day:string;
-  time:number;
-  background:string;
-}
-const assignments:Array<AssignmentP> = [ {month:'December',day:"Thursday" ,time:8 ,background:"10:00 EST  15:00 GMT"},
-{month:'november',day:"friday" ,time:5 ,background:"08:30 EST  12:00 GMT"},
-{month:'november',day:"monday" ,time:23 ,background:"09:30 EST  5:00 GMT"}];
+const names:Array<string> = [ 'saleem','laila','alex','omar','daniel','lana','ibrahim'];
 
 function App() {
+  const [name, setName] = useState(names[Math.floor(Math.random() *7)
+  ]);
+  function handleChangeName() {
+
+    setName(names[Math.floor(Math.random() *7)]);
+    
+  }
   return (
     <div className="App">
       <header className="App-header">
-
-      {assignments.map((as, index)=>{
-        const {month, day, time,background} = as;
-        return <Assignment month={month} day={day} time={time} background={background} />
-      })}
+      <button onClick={handleChangeName}>change name</button>
+      <div className="name" >{name}</div>
       </header>
     </div>
     
