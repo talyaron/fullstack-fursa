@@ -16,7 +16,11 @@ const content: Array<gucci> = [
 
 function App() {
 
+  const persons: Array<string> = ["jbareen", "alaa", "yosef"];
+
   const [color, setColor] = useState(Math.floor(Math.random() * 16777215).toString(16));
+
+  const [number, setNumber] = useState(0);
 
   function handleChangeColor() {
     let tempColor = color;
@@ -24,6 +28,10 @@ function App() {
     tempColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
     setColor(tempColor);
     console.log('after:', tempColor);
+  }
+
+  function handleChangeName() {
+    setNumber(Math.floor(Math.random() * persons.length));
   }
 
   return (
@@ -36,6 +44,8 @@ function App() {
           <Card key={index} url={element.url} data={element.data} />
         );
       })} */}
+      <button onClick={handleChangeName}>change name</button>
+      <label onClick={handleChangeName}>{persons[number]}</label>
     </div>
   );
 }

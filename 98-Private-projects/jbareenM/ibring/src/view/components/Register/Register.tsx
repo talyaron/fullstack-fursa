@@ -5,7 +5,7 @@ function Register() {
     return (
         <div className="RegisterPage">
             <div className="RegisterLogo">
-                ibring
+                <img src="../../logoAndPhotos/ibring.jpg" alt="" />
             </div>
             <div className="registerContent">
                 <label className="letsSignUp">let's sign up</label>
@@ -27,7 +27,12 @@ function Register() {
                     <div className="orWord">or</div>
                 </div>
 
-
+                <form className='loginWithEmailAndPass' action="">
+                    <input className='EmailRegistered' placeholder="Email" type="email" required />
+                    <input className='passRegistered' placeholder="Password" type="password" required />
+                    <label className='haveAccount'>Already have an Account? <span>Sign in here</span></label>
+                    <input className='submitEmailAndPass' type="submit" value="sign up" />
+                </form>
             </div>
         </div>
     );
