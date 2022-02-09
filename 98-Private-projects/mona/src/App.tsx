@@ -29,7 +29,8 @@ function App() {
       <body className="App-body">
       <Wood title={woodLogo} ></Wood>
       {woods.map((wood, index)=>{
-        return <Card key={index} name={wood.name} width={wood.width} height={wood.height} thick={wood.thick}  cardImg={wood.cardImg}/>
+        const{name,width,height,thick,cardImg}=wood;
+        return <Card key={index} wood={{name,width,height,thick,cardImg}}/>
         
       })}
             
