@@ -53,7 +53,7 @@ function Card(prop: CardProp) {
   function handleInput(ev:any){
     try {
       console.log(ev.target.value)
-    } catch (error) {--
+    } catch (error) {
       console.error(error)
     }
   }

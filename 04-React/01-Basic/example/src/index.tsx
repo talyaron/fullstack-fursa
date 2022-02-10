@@ -1,34 +1,22 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-import './index.scss';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>,
-//   document.getElementById('root')
-// );
-
-
-
 import { render } from "react-dom";
 import {
   BrowserRouter,
   Routes,
   Route
 } from "react-router-dom";
-// import your route components too
+import App from "./App";
+import Expenses from "./view/pages/expenses/Expenses";
+import Invoices from "./view/pages/Invoices/Invoices";
 
+const rootElement = document.getElementById("root");
 render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<App />}>
-       </Route>
+      <Route path="/" element={<App />} />
+      <Route path="expenses" element={<Expenses />} />
+      <Route path="invoices" element={<Invoices />} />
     </Routes>
   </BrowserRouter>,
-  document.getElementById("root")
+  rootElement
 );
 
-reportWebVitals();
