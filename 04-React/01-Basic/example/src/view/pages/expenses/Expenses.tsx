@@ -6,7 +6,7 @@ function Expenses(){
     return(
         <div>
             <Nav />
-            <h1>Expenses</h1>
+            <h1>Expenses!</h1>
             <Link to='/invoices'>Invoices</Link>
         </div>
     )
