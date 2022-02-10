@@ -1,3 +1,7 @@
+&_add{
+    background-color: rgb(116, 104, 138);
+    width:100%;
+}
 .card{
     position: relative;
     margin: 1rem;
@@ -7,6 +11,9 @@
     height: 50vh;
     width: 50vw;
     margin: auto;
+
+   
+
     img {
         position: relative;
         width:40vh;
