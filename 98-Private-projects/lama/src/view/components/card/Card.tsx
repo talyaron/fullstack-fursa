@@ -10,13 +10,28 @@
 //     place:string;
 //   }
 
-function Card(){
+interface CardProp {
+    info:{
+    name:string;
+    age:number;
+    img:string;
+    }
+  }
+
+
+function Card(prop:CardProp){
+    const {name,age,img}=prop.info;
     return(
         <div className="card">
-      
-            <img className="img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz97sFA8bVy0qpoKmtnjhKFvvNDVvl7AjIRg&usqp=CAU" alt="" />
-            <h2>Shoes</h2>
-        </div>
+        <img src={img} alt="" />
+        <h5>name is :{name} age is: {age}</h5>
+       
+        {/* <p>{name}</p> */}
+         
+  
+        {/* <img className="img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz97sFA8bVy0qpoKmtnjhKFvvNDVvl7AjIRg&usqp=CAU" alt="" />
+        <h2>Shoes</h2> */}
+    </div>
 
 
 /* <div className="card">

@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import './index.scss';
 // import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -40,6 +40,7 @@ render(
       </Route>
     </Routes>
   </BrowserRouter>,
+    // document.getElementById("root")
   rootElement
 );
 

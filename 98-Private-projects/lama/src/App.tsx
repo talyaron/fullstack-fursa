@@ -8,6 +8,8 @@ import Card from './view/components/card/Card';
 import SignUp from './view/components/signUp/index'
 import Homepage from './view/components/homepage/index' 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import ProfileButton from './view/components/signIn/index';
+
 
 // const students:Array<Place> = [{name:'Saleem', place:'Mashad'},{name:'Mona',place:"Nazereth"}];
 // interface Place{
