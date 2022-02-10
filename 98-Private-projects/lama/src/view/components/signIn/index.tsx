@@ -26,8 +26,8 @@ function ProfileButton() {
             <br></br>
             <div className = 'signin'> 
                 {/* <Button size="medium" variant="contained" startIcon={<FitnessCenterIcon/>}> Plan</Button> */}
-                <Button  size="small" variant="contained" startIcon={<BarChartIcon/>}> Charts</Button>
-                <Button size="small" variant="contained" startIcon={<AccountCircleIcon/>}> profile</Button>
+                {/* <Button  size="small" variant="contained" startIcon={<BarChartIcon/>}> Charts</Button>
+                <Button size="small" variant="contained" startIcon={<AccountCircleIcon/>}> profile</Button> */}
             </div>
         </div>
         

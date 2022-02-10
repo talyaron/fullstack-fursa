@@ -70,7 +70,7 @@ function Card(prop:CardProp){
             <p>age is: {age}</p>
             <p>height is: {height}</p>
             <h1 className='names'>{names}</h1>
-            <div>{inputtext}</div>
+          
            <br />
             {/* <form onSubmit={changename}> */}
                 <button onClick={changename} className='btn' type="submit">change name</button>
@@ -79,7 +79,8 @@ function Card(prop:CardProp){
                 <button className='btn' type="submit">change color</button>
             </form> */}
             <button onClick={handleColor}>change color</button>
-            <input onClick={handletext}></input>
+            <input onChange={handletext}></input>
+            <div>{inputtext}</div>
         </div>
     );
 }

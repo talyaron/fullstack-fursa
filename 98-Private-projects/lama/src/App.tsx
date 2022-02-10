@@ -28,8 +28,8 @@ function App() {
 
 {/*         
         <SignUp /> */}
-<ProfileButton />
-        {/* <Homepage /> */}
+{/* <ProfileButton /> */}
+        <Homepage />
 
 
         {/* {students.map((student, index)=>{
