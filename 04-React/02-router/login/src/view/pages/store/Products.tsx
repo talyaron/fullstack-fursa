@@ -14,7 +14,9 @@ function Products(prop:ProductProp){
 
     return(
          <Link to={`/store/${id}`}>
-      <div className="product">{name} </div>
+      <div className="product">{name} 
+      <img src={image}></img>
+      </div>
     </Link>
     );
 }

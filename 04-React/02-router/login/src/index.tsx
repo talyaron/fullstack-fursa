@@ -7,6 +7,8 @@ import {
 import App from "./App";
 import HomePage from "./view/pages/homepage/HomePage";
 import Store from "./view/pages/store/Store";
+import Product from "./view/pages/product/Product";
+
 
 
 const rootElement = document.getElementById("root");
@@ -16,6 +18,7 @@ render(
       <Route path="/" element={<App />} />
       <Route path="homepage" element={<HomePage />} />
       <Route path="store" element={<Store />} />
+      <Route path=":productId" element={<Product />} />
 
     </Routes>
   </BrowserRouter>,
