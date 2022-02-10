@@ -22,5 +22,5 @@
   },
   "include": [
     "src"
-, "../../../98-Private-projects/suzan/src/view/components/main header/mainHeader.tsx"  ]
+  ]
 }
