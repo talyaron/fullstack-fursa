@@ -57,6 +57,7 @@ function App() {
     <div className='wrapper'>
       <SideBarMenu items={items} card={card} />
     </div>
+    
   );
 }
 
