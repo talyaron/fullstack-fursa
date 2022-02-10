@@ -6,6 +6,15 @@
   height: 40vmin;
   pointer-events: none;
 }
+button {
+  width:30vw;
+  height:30vh;
+  font-weight: bold;
+  background-color:rgb(84, 146, 226);
+  border-radius: 10px;
+  font-size: 2rem;;
+
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
