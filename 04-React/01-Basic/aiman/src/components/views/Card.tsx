@@ -6,6 +6,7 @@ interface CardProp {
     src: string;
     title: string;
   };
+  
 }
 let tempText: string = "";
 function Card(prop: CardProp) {
