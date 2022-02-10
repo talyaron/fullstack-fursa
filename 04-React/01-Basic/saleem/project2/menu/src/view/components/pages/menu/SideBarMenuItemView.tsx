@@ -1,5 +1,6 @@
-import { SideBarMenuItem } from "../types/types.d";
-import { classNames } from '../util/classes';
+import { Link } from "react-router-dom";
+import { SideBarMenuItem } from "../../../../types/types.d";
+import { classNames } from '../../../../util/classes';
 
 import './SideBarMenuItem.scss';
 interface SideBarMenuItemViewProps {
@@ -11,6 +12,7 @@ export default function SideBarMenuItemView({ item, isOpen }: SideBarMenuItemVie
     return <div className='SideBarMenuItemView'>
         <a href={item.url}>
             <div className={classNames('ItemContent', isOpen ? '' : 'collapsed')}>
+            
                 <div className='icon'>
                     <item.icon size='32' />
                 </div>

@@ -1,4 +1,4 @@
-import { SideBarMenu } from "./components/SideBarMenu";
+import { SideBarMenu } from "./view/components/pages/menu/SideBarMenu";
 import { SideBarMenuCard, SideBarMenuItem } from "./types/types.d";
 import {
   FcAdvertising,
@@ -8,7 +8,7 @@ import {
   FcInfo,
 } from 'react-icons/fc';
 
-import profileImage from './images/saleem.jpg';
+import profileImage from './view/images/saleem.jpg';
 
 import './App.css';
 

@@ -1,5 +1,5 @@
-import { SideBarMenuCard } from "../types/types.d";
-import { classNames } from '../util/classes';
+import { SideBarMenuCard } from "../../../../types/types.d";
+import { classNames } from '../../../../util/classes';
 
 import './SideBarMenuCardView.scss';
 interface SideBarMenuCardViewProps {
