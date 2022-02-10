@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Homepage from "./components/views/Homepage";
 import Cardlist from "./components/views/Cardlist";
+import Card from "./components/views/Card";
 ReactDOM.render(
   <Router>
     <Routes>
@@ -16,8 +17,10 @@ ReactDOM.render(
       
       <Route path="/cardlist" element={<Cardlist />}>
         {" "}
+      <Route path = "" ></Route>
+
       </Route>
-     
+
     </Routes>
   </Router>,
   document.getElementById("root")
