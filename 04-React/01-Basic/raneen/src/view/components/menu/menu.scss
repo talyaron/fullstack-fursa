@@ -1,0 +1,103 @@
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    height: 8.6vh;
+    border-style: solid;
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
+    z-index: 0;
+
+    &__box {
+        display: flex;
+        width: 90%;
+        height: 100%;
+    }
+
+    &__left {
+        display: flex;
+        //height: 100%;
+        width: 70%;
+
+        img {
+          //  height: 10px;
+            width: auto;
+            max-height: 100%;
+            max-width: 100%;
+            //align-items: flex-start;
+            align-items:center;
+            margin-top: 3vh;
+            overflow: hidden;
+            transform: scale(2.0);
+            margin-right: 3vw;
+           // margin: auto;
+        }
+
+        a {
+            color: black;
+            text-align: center;
+            padding: 20px 24px;
+            text-decoration: none;
+            font-size: 15px;
+            font-family: Inter;
+
+            &:hover {
+                //background-color: #2a945b;
+                font-size: 20px;
+                color: #2a945b;
+            }
+        }
+    }
+
+    &__right {
+        display: flex;
+        //height: 100%;
+        width: 30%;
+
+        &__signin {
+            background-color: #000804;
+            border: none;
+            border-radius: 12px;
+            margin-top: 1.5vh;
+            margin-bottom: 1.5vh;
+            padding: 12px 24px;
+            text-align: center;
+            color: white;
+            font-size: 14px;
+            white-space: nowrap;
+            font-weight: bold;
+        }
+
+        &__signup {
+            background-color: #010e04;
+            border: none;
+            border-radius: 12px;
+            margin-right: 2vw;
+            margin-top: 1.5vh;
+            margin-bottom: 1.5vh;
+            text-align: center;
+            color: rgb(255, 251, 251);
+            font-size: 14px;
+            padding: 12px 24px;
+            white-space: nowrap;
+            //font-family: Inter, Tajawal, sans-serif;
+            font-weight: bold;
+        }
+
+        a {
+            color: black;
+            text-align: center;
+            padding: 20px 24px;
+            text-decoration: none;
+            font-size: 15px;
+            font-family: Inter;
+
+            &:hover {
+                //background-color: #2a945b;
+                font-size: 20px;
+                color: #2a945b;
+            }
+        }
+
+    }
+}

@@ -1,5 +1,11 @@
 .card{
-    background-color: $mainColor;
+   // background-color:
     border-radius: $borderRadius;
     margin: 5px;
+   
+    .img{
+        width: 20vw;
+    }
+    
+    
 }

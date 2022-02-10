@@ -1,7 +1,5 @@
-$mainColor:rgb(21, 87, 109);
-$borderRadius:10px;
+@import 'view/components/menu/menu.scss';
 
-@import 'view/components/card/Card.scss';
 
 .App {
   text-align: center;
@@ -19,12 +17,12 @@ $borderRadius:10px;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  //background-color: #282c34;
+  //min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  //justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -37,6 +35,7 @@ $borderRadius:10px;
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
