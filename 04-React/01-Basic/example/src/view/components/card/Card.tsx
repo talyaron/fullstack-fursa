@@ -59,11 +59,7 @@ function Card(prop: CardProp) {
   }
 
   return (
-<<<<<<< Updated upstream
     <div className="card" onMouseOver={handleMouseOver} onContextMenu={handelRightClick}>
-=======
-    <div  className="card">
->>>>>>> Stashed changes
       <img src={img} alt={place} />
       <h3 style={{ backgroundColor: "red" }}>{name}</h3>
       <p>
