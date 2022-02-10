@@ -5,8 +5,8 @@ import Card from './view/components/card/Card';
 import Mainbar from './view/components/menu/menu';
 
 
-const clothes:Array<item> = [{name:'coat', price:500,img:'https://media.dior.com/couture/ecommerce/media/catalog/product/9/X/1586461506_841M55A3332_X1700_E01_GHC.jpg?imwidth=800'}
-,{name:'shirt',price:200, img:'https://img.mytheresa.com/1088/1088/66/jpeg/catalog/product/4c/P00533289.jpg'}];
+const clothes:Array<item> = [{name:'WOOL BLEND HIGH NECK COAT', price:500,img:'https://static.zara.net/photos///2022/V/0/1/p/2096/289/802/2/w/830/2096289802_1_1_1.jpg?ts=1637256490476'}
+,{name:'COAT WITH DETACHABLE FAUX FUR DETAIL ON THE COLLAR',price:200, img:'https://static.zara.net/photos///2022/V/0/1/p/2179/289/704/2/w/1126/2179289704_1_1_1.jpg?ts=1640000139595'}];
 interface item{
   name:string;
   price:number;
@@ -28,7 +28,7 @@ function App() {
      
       {clothes.map((item1, index)=>{
         const {name,price,img}= item1;
-        return <Card key={index} info ={{name,price,img}} />
+        return <Card key={index} info ={{name,price,img} } />
       })}
       </header>
       

@@ -31,12 +31,17 @@ function Card(prop: CardProp) {
     setColor(getRandomColor());
     
   }
+function handleAdd(){
+  alert("added to favourites")
+  
+}
 
   return (
     <div style = {{backgroundColor:color}} className="card" onClick={handleAddCounter}>
       <img src={img} alt={name} />
       <h3>{name}</h3>
       <p>Price: {price}</p>
+      <button  className="card_add" type="button" onClick={handleAdd}>add to favourites</button>
     </div>
   );
 } 

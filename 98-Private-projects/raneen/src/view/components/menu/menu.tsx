@@ -8,6 +8,7 @@ function menu() {
             <div className="navbar__left">
                 <img src='https://static.dezeen.com/uploads/2019/02/new-zara-logo-hero-1.jpg' alt="Logo" />
                 <a href="#home">Explore</a>
+            
 
             </div>
             <div className="navbar__right">
