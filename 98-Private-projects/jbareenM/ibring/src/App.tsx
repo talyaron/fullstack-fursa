@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import Register from './view/components/Register/Register';
+import Register from './view/pages/Register/Register';
 
 function App() {
   return (
