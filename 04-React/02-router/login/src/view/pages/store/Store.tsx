@@ -2,7 +2,6 @@ import React from "react";
 import {Outlet} from 'react-router-dom'
 import {ProductProp} from "./Products";
 //components
-import Product from "../product/Product";
 import Products from "./Products";
 
 

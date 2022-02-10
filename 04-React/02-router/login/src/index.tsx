@@ -17,9 +17,10 @@ render(
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="homepage" element={<HomePage />} />
-      <Route path="store" element={<Store />} />
-      <Route path=":productId" element={<Product />} />
-
+      <Route path="store" element={<Store />} >
+        <Route path=":productId" element={<Product />} />
+     
+</Route>
     </Routes>
   </BrowserRouter>,
   rootElement
