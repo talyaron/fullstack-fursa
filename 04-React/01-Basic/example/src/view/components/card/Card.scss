@@ -3,4 +3,9 @@
     border-radius: $borderRadius;
     margin: 5px;
     padding: $padding;
+    width: 20vw;
+    
+    img{
+        width: 100%;
+    }
 }
