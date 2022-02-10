@@ -7,6 +7,8 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Homepage from "./components/views/Homepage";
 import Cardlist from "./components/views/Cardlist";
 import Card from "./components/views/Card";
+import CardDetails from "./components/views/CardDetails";
+
 ReactDOM.render(
   <Router>
     <Routes>
@@ -14,13 +16,11 @@ ReactDOM.render(
       <Route path="/homepage" element={<Homepage />}>
         {" "}
       </Route>
-      
+
       <Route path="/cardlist" element={<Cardlist />}>
         {" "}
-      <Route path = "" ></Route>
-
+        <Route path=":cardid" element={<CardDetails />}></Route>
       </Route>
-
     </Routes>
   </Router>,
   document.getElementById("root")
