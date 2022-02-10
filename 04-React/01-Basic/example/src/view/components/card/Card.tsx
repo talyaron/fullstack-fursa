@@ -4,13 +4,6 @@ interface CardProp {
 }
 
 function Card(prop: CardProp) {
-<<<<<<< HEAD
-  return (
-    <div className="card">
-      hi
-      <h3>{prop.title}</h3>
-      <p>Lives in: {prop.place}</p>
-=======
   const { name, place, img } = prop.info;
 
   //state
@@ -72,7 +65,6 @@ function Card(prop: CardProp) {
       <button onClick={handleAddCounter}>{counter}</button>
       <button onClick={handleAddCounter2}>Counter2: {counter2}</button>
       <input type="text" id='someId' onKeyUp={handleInput}/>
->>>>>>> tal
     </div>
   );
 }
