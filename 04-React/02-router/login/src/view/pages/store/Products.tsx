@@ -1,10 +1,21 @@
 import { Link } from "react-router-dom";
-import "./Product.scss";
+import "./Products.scss";
 //component
-function Products(){
+export interface ProductProp{
+    
+    id:number;
+    name:string;
+    image:string;
+    price:number;
+    
+}
+function Products(prop:ProductProp){
+    const {id,name,image,price}=prop;
+
     return(
-        <link>
-        </link>
+         <Link to={`/store/${id}`}>
+      <div className="product">{name} </div>
+    </Link>
     );
 }
 export default Products;

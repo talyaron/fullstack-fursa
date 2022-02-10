@@ -16,7 +16,7 @@ const Login = () =>{
                 Password <br />
                 <input type="password" />
             </div><br />
-            <Link to="/HomePage">Login</Link>
+            <Link to="/Store">Login</Link>
             {/* <input type="button" value="Login" /> */}
         </div>
     )
