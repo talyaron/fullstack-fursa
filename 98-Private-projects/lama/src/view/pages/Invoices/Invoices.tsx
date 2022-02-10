@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 
 //components
-import Nav from '../../components/nav/Nav'
+import Nav from '../../components/nav/Nav';
 
 function Invoices(){
     return(
