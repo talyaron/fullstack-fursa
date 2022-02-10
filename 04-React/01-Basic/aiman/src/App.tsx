@@ -2,6 +2,7 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.scss";
 import Card from "./components/views/Card";
+import { useState } from "react";
 interface Cards {
   title: string;
   src: string;
@@ -19,12 +20,16 @@ const arr: Array<Cards> = [
 ];
 
 function App() {
+  
   return (
     <div className="App">
       <header className="App-header">
-        {arr.map((card, index) => {
-          return <Card key={index} src={card.src} title={card.title} />;
-        })}
+      
+        {
+          arr.map((card, index) => {
+            const { title, src } = card;
+            return <Card key={index} info={{ title, src }} />;
+          })}
       </header>
     </div>
   );
