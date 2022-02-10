@@ -21,11 +21,29 @@ interface Cards {
   ];
 
 function CardDetails() {
-    const {id} = useParams();
-
-    
-  return <div>
-      
+    const {cardid} = useParams();
+    console.log(cardid);
+    function findCard(id:string| undefined, arr:Array<Cards|any>):Cards|undefined {
+        const card:Cards  = arr.find(c => c.id === id);
+        if(card) {
+            return card;
+        }else {
+            return undefined;
+        }
+    }
+    const card  = findCard(cardid , arr);
+    let title:string , src:string ,id:string ;
+    if(card) {
+     title = card.title;
+     src = card.src;
+     id = card.id;
+    }else{
+        title = "";
+        src = "";
+        id = "";
+    }
+  return <div className="card_details">
+    {card && <Card info = {{title , src , id}}/> }
   </div>;
 }
 
