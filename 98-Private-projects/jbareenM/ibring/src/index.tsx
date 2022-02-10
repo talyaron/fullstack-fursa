@@ -18,12 +18,13 @@ import {
 ReactDOM.render((
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<App />} />
       <Route path="/expenses" element={<Expenses />} />
       <Route path="invoices" element={<Invoices />} />
       <Route path="store" element={<Store />} >
         <Route path=":productId" element={<Product />} />
       </Route>
+
+      <Route path="/" element={<App />} />
     </Routes>
   </BrowserRouter>),
   document.getElementById('root')
