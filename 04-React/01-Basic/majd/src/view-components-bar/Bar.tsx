@@ -11,7 +11,7 @@ function Bar(prop: BarProp) {
  
   
     return (
-       <button className="ibar"> <div> <img src={prop.subtitle} alt="" /></div> <p> {prop.title} </p> </button>
+       <button className="ibar">  <p> {prop.title} </p> </button>
     );
   }
   
