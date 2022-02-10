@@ -4,38 +4,46 @@ import img2 from './2.jpg';
 import img3 from './3.jpg';
 import img4 from './4.jpg';
 import img5 from './5.jpg';
+import { useState } from 'react';
 
-function Recipes(){
+function Recipes() {
 
-    function HandleImage(ev:any){
-        
+    const [color, setBackgroundColor] = useState('#e6d0de');
+
+    function HandleImage(ev: any) {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        setBackgroundColor(color);
     }
 
-    return(
+    return (
         <div className="recipes">
             <h2 className='title'>Recipes</h2>
             <div className="row1">
                 <div className="item">
-                    <div className='itemImg'><img src={img1} alt="" /></div>
-                    <div className='title'><p>recipe 1</p></div>
+                    <div className='itemImg' onClick={HandleImage}><img src={img1} alt="" /></div>
+                    <div className='title' style={{ backgroundColor: color }}><p>recipe 1</p></div>
                 </div>
                 <div className="item">
-                    <div className='itemImg'><img src={img2} alt="" /></div>
-                    <div className='title'><p>recipe 2</p></div>
+                    <div className='itemImg' onClick={HandleImage}><img src={img2} alt="" /></div>
+                    <div className='title' style={{ backgroundColor: color }}><p>recipe 2</p></div>
                 </div>
                 <div className="item">
-                    <div className='itemImg'><img src={img3} alt="" /></div>
-                    <div className='title'><p>recipe 3</p></div>
+                    <div className='itemImg' onClick={HandleImage}><img src={img3} alt="" /></div>
+                    <div className='title' style={{ backgroundColor: color }}><p>recipe 3</p></div>
                 </div>
             </div>
             <div className="row2">
                 <div className="item">
-                    <div className='itemImg'><img src={img4} alt="" /></div>
-                    <div className='title'><p>recipe 4</p></div>
+                    <div className='itemImg' onClick={HandleImage}><img src={img4} alt="" /></div>
+                    <div className='title' style={{ backgroundColor: color }}><p>recipe 4</p></div>
                 </div>
                 <div className="item">
                     <div className='itemImg' onClick={HandleImage}><img src={img5} alt="" /></div>
-                    <div className='title'><p>recipe 5</p></div>
+                    <div className='title' style={{ backgroundColor: color }}><p>recipe 5</p></div>
                 </div>
             </div>
             <div className="add"><img src={addIcon} alt="" /></div>
