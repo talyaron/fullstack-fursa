@@ -9,13 +9,16 @@ import App from "./App";
 //import Reservation from "./view/pages/reservations/Reservations";
 import Store from './views/pages/store/store'
 //import Invoices from "./view/pages/explore/explore";
+import Product from "./views/pages/product/product";
 
 const rootElement = document.getElementById("root");
 render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />} />
-      <Route path="Store" element={<Store />} />
+      <Route path="Store" element={<Store />}>
+        <Route path=":productId" element={<Product />} />
+      </Route>
     </Routes>
   </BrowserRouter>,
   rootElement

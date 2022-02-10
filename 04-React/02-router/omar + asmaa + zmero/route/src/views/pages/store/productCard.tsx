@@ -9,9 +9,14 @@ export interface ProductProps {
 }
 
 function ProductCard(props: ProductProps) {
-    const { name, id } = props;
+    const { name, id, img } = props;
     return (
-        <div></div>
+        <Link to={`/store/${id}`}>
+            <div className="card">
+                <img src={img}></img>
+                <span className="card__Title">{name}</span>
+            </div>
+        </Link>
     );
 }
 export default ProductCard
