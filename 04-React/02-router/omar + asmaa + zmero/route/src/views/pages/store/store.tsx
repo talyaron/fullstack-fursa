@@ -1,6 +1,7 @@
 import React from 'react'
 import './store.scss';
 import { Link } from 'react-router-dom';
+import ProductCard from './productCard'
 
 
 function Store() {
