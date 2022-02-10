@@ -8,10 +8,7 @@ interface BarProp {
 function Bar(prop: BarProp) {
     return (
       <div className="bar">
-        <button>
-        <p>{prop.title}</p>
-        <p>{prop.subtitle}</p>
-        </button>
+        <
       </div>
     );
   }

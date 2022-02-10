@@ -1,18 +1,17 @@
 import { isPropertySignature } from "typescript";
+import {useState} from 'react';
 
 interface BarProp {
     title: string;
     subtitle: string;
   }
+ 
 
 function Bar(prop: BarProp) {
+ 
+  
     return (
-      <div className="bar">
-        <button>
-        <p>{prop.title}</p>
-        <p>{prop.subtitle}</p>
-        </button>
-      </div>
+       <button className="ibar"> <div> <img src={prop.subtitle} alt="" /></div> <p> {prop.title} </p> </button>
     );
   }
   
