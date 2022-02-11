@@ -1,5 +1,9 @@
 import './Card.scss';
 import { useState } from "react";
+import React from 'react'
+
+import { Link } from 'react-router-dom';
+
 
 interface CardProp {
   info: {
@@ -26,7 +30,10 @@ function Card(prop: CardProp) {
   return (
     <div className="card">
       <img onClick={showName} src={img} alt="" />
-      <h4 className="name"> {text}</h4>
+      
+      <Link to={`/${text}`}> 
+        <h4 className="name"> {text}</h4>
+      </Link>
     </div>
 
   );

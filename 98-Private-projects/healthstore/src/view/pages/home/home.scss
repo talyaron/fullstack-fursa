@@ -1,0 +1,26 @@
+.home {
+    text-align: center;
+    background-color: #282c34;
+    min-height: 200vh;
+  }
+  
+  
+  .App-header {
+    background-color: #282c34;
+    color: white;
+    padding-top: 30px;
+    .row{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin: 60px;
+      //width: 90vw;
+      .text{
+        position: absolute;
+        top: -50px;
+        right: 24vw;
+      }
+    }
+  }
