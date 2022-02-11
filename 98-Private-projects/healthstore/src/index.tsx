@@ -6,9 +6,9 @@ import {
   Route
 } from "react-router-dom";
 import App from "./App";
-import Products from "./view/pages/products/products";
-import Vitamins from "./view/pages/vitamins";
-import Cosmatics from './view/pages/home/cosmatics';
+import Vitamins from "./view/pages/vitamins/vitamins";
+import Product from "./view/pages/product/product";
+import Cosmatics from './view/pages/cosmatics';
 import SugerFree from './view/pages/sugerfree';
 
 
@@ -17,8 +17,9 @@ render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />} />
-      <Route path="products" element={<Products />}/>
-      <Route path="vitamins" element={<Vitamins />}/>
+      <Route path="vitamins" element={<Vitamins />}>
+        <Route path=":productId" element={<Product />} />
+        </Route>
       <Route path="cosmatics" element={<Cosmatics />}/>
       <Route path="sugerfree" element={<SugerFree />}/>
     </Routes>
