@@ -5,7 +5,6 @@ import Card from './view/components/card/Card';
 
 import Bar from './view/components/productBar/bar';
 import Header from './view/components/header/header';
-import Login from './view/components/logIn/logIn';
 
 interface product {
   name: string;
