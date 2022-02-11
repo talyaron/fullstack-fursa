@@ -17,8 +17,8 @@ render(
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="Store" element={<Store />}>
-        <Route path=":productId" element={<Product />} />
       </Route>
+      <Route path="store/:productId" element={<Product />} />
     </Routes>
   </BrowserRouter>,
   rootElement
