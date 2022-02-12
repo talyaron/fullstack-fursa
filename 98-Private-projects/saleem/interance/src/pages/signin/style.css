@@ -1,0 +1,42 @@
+#page-login{
+    width: 100vw;
+    height: 100vh;
+}
+
+#page-login main{
+
+    text-align: center;
+   ;
+     
+     
+ }
+
+@media(min-width:700px){
+     #page-login main{
+
+        text-align: center;
+        margin: 0 auto;
+         padding: 3.2rem 0;
+         max-width: 740px;
+         
+         
+     }
+     input{
+         width: 100%;
+
+     }
+
+     button{
+         margin-top: 10px;
+         width: 30%;
+     }
+     button:hover{
+        margin-top: 10px;
+        width: 30%;
+        background-color: #8257e5;
+        color :#fafafa; 
+    }
+
+}
+
+
