@@ -3,6 +3,7 @@ import logo from './logo.svg';
 //import './App.scss';
 //pages
 import Home from './view/pages/home/home';
+//import Nav from './view/components/nav/Nav';
 
 function App() {
   return (

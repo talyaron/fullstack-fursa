@@ -1,0 +1,54 @@
+nav{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    
+    a{
+        padding: 10px;
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+    }
+
+    .fa {
+        padding: 10px;
+        padding-bottom: 15px;
+        font-size: 20px;
+        max-width: 20px;
+        max-height: 13px;
+        text-align: center;
+        text-decoration: none;
+        margin: 5px 2px;
+
+
+      }     
+    .fa-facebook {
+     /*   background: #3B5998;
+        color: white;
+        border-radius: 40%;*/
+        position: absolute;
+        right: 45px;
+    }
+    .fa-instagram {
+    /*    background: rgb(167, 60, 126);
+        color: white;
+        border-radius: 40%;*/
+        position: absolute;
+        right: 0px;
+    }
+    .fa-phone {
+        /*    background: rgb(167, 60, 126);
+            color: white;
+            border-radius: 40%;*/
+            position: absolute;
+            right: 90px;
+        }
+    .fa-car {
+        /*    background: rgb(167, 60, 126);
+            color: white;
+            border-radius: 40%;*/
+            position: absolute;
+            right: 135px;
+        }
+
+}
