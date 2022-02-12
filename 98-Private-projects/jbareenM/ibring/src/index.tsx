@@ -7,6 +7,10 @@ import Invoices from "./view/pages/Invoices/Invoices";
 import Store from './view/pages/store/Store';
 import Product from "./view/pages/product/Product";
 
+import Register from './view/pages/Register/Register';
+import ListForm from './view/pages/ListForm/ListForm';
+import Greetings from './view/pages/Greetings/Greetings';
+
 import reportWebVitals from './reportWebVitals';
 
 import {
@@ -18,6 +22,10 @@ import {
 ReactDOM.render((
   <BrowserRouter>
     <Routes>
+      <Route path="/register" element={<Register />} />
+      <Route path="/ListForm" element={<ListForm />} />
+      <Route path="/greetings" element={<Greetings />} />
+
       <Route path="/expenses" element={<Expenses />} />
       <Route path="invoices" element={<Invoices />} />
       <Route path="store" element={<Store />} >
