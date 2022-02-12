@@ -1,11 +1,6 @@
-import { useState } from "react";
-
 interface CardProp {
-  info: {
-    name: string;
-    place: string;
-    img: string;
-  };
+  title: string;
+  place:string;
 }
 
 function Card(prop: CardProp) {

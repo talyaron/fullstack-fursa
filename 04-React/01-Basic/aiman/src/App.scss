@@ -1,7 +1,22 @@
 .App {
   text-align: center;
+  margin: 1rem;
+  display: flex;
+  justify-content: space-between;
 }
 
+.nav {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height :10vh;
+  background-color: #61dafb;
+  justify-content:space-between;
+  border-radius:1rem;
+  align-items:center;
+  padding:1rem;
+
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
