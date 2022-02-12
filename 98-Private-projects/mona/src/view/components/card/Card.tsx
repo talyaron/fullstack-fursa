@@ -1,7 +1,8 @@
 import {useState} from 'react'
 import './Card.scss'
+import { Link } from "react-router-dom";
 
-interface CardProp {
+export interface CardProp {
   wood:{
   name: string,
   width:number,
@@ -62,20 +63,20 @@ function Card(prop: CardProp) {
     <div id='card' className="card" onMouseOver={handlerMouseOver} onMouseOut={handlerMouseOut} style={{backgroundColor:color}} 
     >
            
-
+     
+           <Link to={`/order/${name}`}>order {name}</Link>
       <img src={cardImg} alt="" />
+      
       <h3>{name}</h3>
       <h1>width is: {width}</h1>
       <h1>height is: {height}</h1>
       <h1>thickness is: {thick}</h1>
       <p>you {isLiked} this type</p>
-      <button   onClick={handlerbtn}  >
+      <button  onClick={handlerbtn}  >
         <img src={image} alt="" />
-        
       </button>
       <p>{text}</p>
-      
-
+  
     </div>
   );
 }

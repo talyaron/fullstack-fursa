@@ -12,6 +12,7 @@ $cardlength:20%;
 .App {
   text-align: center;
   background-color: rgba(73, 48, 24, 1);
+  width: 100%;
 
 }
 
@@ -19,7 +20,7 @@ $cardlength:20%;
   height: 40vmin;
   pointer-events: none;
   
-background: url(logo.png);
+background: url(woodlogo.png);
 
 }
 
@@ -48,7 +49,8 @@ background: url(logo.png);
   }
 }
 .App-body {
-  background-color: rgba(73, 48, 24, 1);
+ 
+ 
   min-height: 100vh;
   display: flex;
   flex-direction: row;
@@ -57,6 +59,9 @@ background: url(logo.png);
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: rgb(209, 189, 9);
+  img{
+    width: 50%;
+  }
 }
 .searching{
   display: flex;
@@ -71,9 +76,7 @@ background: url(logo.png);
   width: 100%;
   
 }
-h1{
-  color: white;
-}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
