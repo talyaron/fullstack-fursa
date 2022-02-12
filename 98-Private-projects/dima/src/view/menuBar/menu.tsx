@@ -1,13 +1,12 @@
+import React from 'react';
 import {Link} from 'react-router-dom';
 import menuImg from './menu.png';
 import searchIcon from './search.jpg';
 import userIcon from './user.png';
 import logo from './logo.png';
-import * as React from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import LogIn from '../logIn/LogIn';
 
 
 function Bagemenu() {
@@ -58,8 +57,10 @@ function Bagemenu() {
                         'aria-labelledby': 'basic-button',
                     }}
                 >
-                    <MenuItem onClick={handleClose}>Profile</MenuItem>
-                    <MenuItem onClick={handleClose1}>Logout</MenuItem>
+                    <MenuItem onClick={handleClose1}>Profile</MenuItem>
+                    <MenuItem>
+                        <Link to="/LogIn"> Logout</Link>
+                    </MenuItem>
                 </Menu>
             </div>
         </div>

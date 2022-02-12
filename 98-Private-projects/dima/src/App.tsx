@@ -1,6 +1,5 @@
 import './App.scss';
-
-//components
+import React from 'react';
 import Bagemenu from './view/menuBar/menu';
 import Profile from './view/profile/Profile';
 import Recipes from './view/recipes/Recipes';
