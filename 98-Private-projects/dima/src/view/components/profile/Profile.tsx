@@ -11,7 +11,7 @@ interface profileInfo {
 
 function Profile(prop: profileInfo) {
     const { name, phone, email } = prop.info;
-
+    
     return (
         <div className="profile">
             <img src={edit} alt="" />
