@@ -5,19 +5,20 @@
   .App-header {
     //background-color: #282c34;
     color: rgb(12, 70, 35);
-    padding-top: 30px;
+    padding-top: 20px;
     .row{
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: center;
       position: relative;
-      margin: 60px;
+      margin: 5rem;
       //width: 90vw;
       .text{
         position: absolute;
         top: -50px;
-        right: 24vw;
+        right: 15rem;
+        font-size: 24px;
       }
     }
   }
