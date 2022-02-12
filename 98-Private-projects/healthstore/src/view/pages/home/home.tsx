@@ -28,7 +28,9 @@ function Home() {
     <div className="home">
       <Nav />
       <header className="App-header">
-        <div><h1 className="text">Welcome to Our HealthStore</h1></div>
+        <div className="header-image">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpiP6yQIxMJZVc5ZRsXbNCgN78klhQjnTlWgckriJ1w1OtluBuOC1P6Re4yZNepW-DEg&usqp=CAU"/>       
+        </div>
         <div className="row">
         <h3 className="text"> מוצרים</h3>
         {row1.map((item, index)=>{
