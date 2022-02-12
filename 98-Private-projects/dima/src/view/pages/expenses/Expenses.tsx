@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
 
-import Nav from '../../components/nav/Nav'
+import Nav from '../../nav/Nav'
 
 function Expenses(){
     return(

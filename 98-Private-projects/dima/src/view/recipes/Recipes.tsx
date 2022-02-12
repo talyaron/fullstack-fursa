@@ -8,17 +8,6 @@ import { useState } from 'react';
 
 function Recipes() {
 
-    const [color, setBackgroundColor] = useState('#e6d0de');
-
-    function HandleImage(ev: any) {
-        var letters = '0123456789ABCDEF';
-        var color = '#';
-        for (var i = 0; i < 6; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
-        }
-        setBackgroundColor(color);
-    }
-
     return (
         <div className="recipes">
             <h2 className='title'>Recipes</h2>

@@ -7,7 +7,7 @@
     height: 7vh;
     justify-content: center;
     align-items: center;
-    gap: 200px;
+    gap: 180px;
 
     &__left{
         display: flex;
@@ -57,11 +57,9 @@
     }
 
     &__right{
-        width: 20%;
         img{
             width: 30px;
             height: 30px;
         }
     }
-
 }

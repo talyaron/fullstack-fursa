@@ -1,9 +1,9 @@
 import './App.scss';
 
 //components
-import Bagemenu from './view/components/menuBar/menu';
-import Profile from './view/components/profile/Profile';
-import Recipes from './view/components/recipes/Recipes';
+import Bagemenu from './view/menuBar/menu';
+import Profile from './view/profile/Profile';
+import Recipes from './view/recipes/Recipes';
 
 const userInfo:Array<info> = [{name:"Dima Abbas",phone:"0525041028",email:"dimaabbas25@gmail.com"}];
 
