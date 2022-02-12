@@ -14,6 +14,8 @@ import Expenses from "./view/pages/expenses/Expenses";
 import Invoices from "./view/pages/Invoices/Invoices";
 import Store from './view/pages/store/Store';
 import Product from "./view/pages/product/Product";
+import HomePage from "./view/pages/homepage/index";
+import SignIn from "./view/pages/signIn/index";
 
 // ReactDOM.render(
 //   <React.StrictMode>
@@ -37,7 +39,11 @@ render(
       <Route path="invoices" element={<Invoices />} />
       <Route path="store" element={<Store />} >
         <Route path=":productId" element={<Product />} />
+     
       </Route>
+      <Route path="homepage" element={<HomePage />} />
+      <Route path="signIn" element={<SignIn />} />
+      <Route path="product/:productId" element={<Product />} />
     </Routes>
   </BrowserRouter>,
     // document.getElementById("root")

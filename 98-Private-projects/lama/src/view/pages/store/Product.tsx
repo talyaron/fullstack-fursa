@@ -4,12 +4,13 @@ import "./Product.scss";
 export interface ProductProps {
   name: string;
   id: number;
+  img:string;
 }
 const Product = (props: ProductProps) => {
-  const { name, id } = props;
+  const { name, id,img } = props;
 
   return (
-    <Link to={`/store/${id}`}>
+    <Link to={`/product/${id}`}>
       <div className="product">{name}</div>
     </Link>
   );

@@ -2,10 +2,16 @@
 html, body{
     margin: 0px;
     font-size: 15px;
+    background-color: rgb(189, 171, 148);
+    color: white;
 }
 
 
 div{
+  // margin-right: 50px;
+  justify-content: center;
+  text-align: center;
+ 
     height: 100vh;
     width: 100vw;
     .h{
@@ -38,8 +44,10 @@ div{
       flex-wrap: wrap;
       padding: 2px;
       font-weight: bold;
+
     }
     &_menu {
+      width: 30%;
       display: flex;
       margin-left: 20px;
       color: rgb(172, 167, 167);

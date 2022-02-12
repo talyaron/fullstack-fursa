@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import './index.scss';
+
 function SignUp(){
 
     return(
@@ -14,7 +17,10 @@ function SignUp(){
         <p>Confirm password</p>
         <input type="text" />
 <br />
-        <button>submit</button>
+<br />
+<Link to={`/signIn`}>
+   <button>submit</button>
+   </Link>
 </div>
         
     );

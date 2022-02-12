@@ -6,7 +6,8 @@ import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import LoginIcon from '@mui/icons-material/Login';
 import GoogleIcon from '@mui/icons-material/Google';
 import BarChartIcon from '@mui/icons-material/BarChart';
-function ProfileButton() {
+import { Link } from "react-router-dom";
+function SignIn() {
     return (
         <div className = 'signin'> 
         <h3>Our Farm</h3>
@@ -21,7 +22,9 @@ function ProfileButton() {
             <Button size="small" variant="outlined" startIcon={<FacebookOutlinedIcon/>}> Sign Up with Facebook</Button>
             <br></br>
             <br></br>
-            <Button size="small" variant="outlined" startIcon={<LoginIcon/>}> Allready have account ? login </Button>
+            <Link to={`/homepage`}>
+            <Button size="small" variant="outlined" startIcon={<LoginIcon/>}> login </Button>
+            </Link>
             <br></br>
             <br></br>
             <div className = 'signin'> 
@@ -34,4 +37,4 @@ function ProfileButton() {
     );
   }
 
-  export default ProfileButton;
+  export default SignIn;

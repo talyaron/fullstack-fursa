@@ -5,10 +5,10 @@ import './App.scss';
 import { NavigationContainer } from '@react-navigation/native';
 
 import Card from './view/components/card/Card';
-import SignUp from './view/components/signUp/index'
-import Homepage from './view/components/homepage/index' 
+import SignUp from './view/pages/signUp/index'
+import Homepage from './view/pages/homepage/index' 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import ProfileButton from './view/components/signIn/index';
+import ProfileButton from './view/pages/signIn/index';
 
 
 // const students:Array<Place> = [{name:'Saleem', place:'Mashad'},{name:'Mona',place:"Nazereth"}];
@@ -27,10 +27,10 @@ function App() {
         <Card />
         <Card /> */}
 
-{/*         
-        <SignUp /> */}
+        
+        <SignUp />
 
-        <Homepage />
+        {/* <Homepage /> */}
 
         {/* {students.map((student, index)=>{
         return <Card key={index} title={student.name} place={student.place} />
