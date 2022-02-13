@@ -5,6 +5,7 @@ import './App.scss';
 //components
 import Card from './view/components/card/Card';
 import MyCard from './view/components/card/Card';
+import { title } from 'process';
 
 // const students:Array<Place> = [{name:'Saleem', place:'Mashad'},{name:'Mona',place:"Nazereth"}];
 // interface Place{
@@ -24,8 +25,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        
       {boxes.map((box1, index)=>{
-        return <MyCard key={index} image={box1.image} title={box1.title} />
+        const {image, title} = box1
+        return <MyCard key={index} info = {box1} />
       })
         // <MyCard image={box.image} title={box.title} />
       /* {students.map((student, index)=>{
