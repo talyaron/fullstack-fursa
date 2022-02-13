@@ -1,0 +1,58 @@
+.mainTemplate{
+   
+    .mainHeader{
+        height: 10vh;
+    }
+
+    .mainContent{
+        
+        .marginTitleNormal{
+            margin-top: 50px;
+        }
+
+        .typeList{
+            max-width: 700px;
+
+            width: 70vw;
+            display: flex;
+            flex-wrap: wrap;
+            height: fit-content;
+            background-color: #E9E8FC;
+            padding: 15px;
+            border-radius: 20px;
+            justify-content: center;
+
+            .imgDiv{
+                width: 30%;
+                height: 100%;
+                border: 2px solid black;
+            }
+
+            .dataContainer{
+                margin-left: 10px;
+                width: 60%;
+                display: flex;
+                flex-wrap: wrap;
+                .Title{
+                    left: 0;
+                }
+
+                .data{
+                    color: black;
+                    text-align: left;
+                    font-weight: 300;
+                    color: rgb(73, 71, 71);
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 700px){
+    .mainTemplate{
+        
+        .mainContent{
+           
+        }
+    }
+}
