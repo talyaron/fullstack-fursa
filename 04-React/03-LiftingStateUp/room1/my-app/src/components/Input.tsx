@@ -3,25 +3,25 @@ import { useState } from "react";
 import "../components/Input.scss";
 
 interface Arr_state {
-    setArr:any;
-    arr:any;
+  setArr: any;
+  arr: any;
 }
-function Input(prop:Arr_state) {
+function Input(prop: Arr_state) {
   const [Sentance, setSentance] = useState("");
-  const {arr ,setArr} = prop;
+  const { arr, setArr } = prop;
   function handleChange(e: any) {
     setSentance(e.target.value);
   }
   function handelClick() {
     if (Sentance) {
-      setArr([...arr , { value: Sentance}]);
+      setArr([...arr, { value: Sentance }]);
       console.log(Sentance);
-      setSentance('');
     }
+    setSentance("");
   }
   return (
     <div>
-      <input onChange={handleChange} type="text" />
+      <input value={Sentance} onChange={handleChange} type="text" />
       <button onClick={handelClick}>Send</button>
     </div>
   );
