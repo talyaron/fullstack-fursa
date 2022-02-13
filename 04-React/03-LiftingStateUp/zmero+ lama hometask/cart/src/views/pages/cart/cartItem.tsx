@@ -1,6 +1,4 @@
-import React from 'react';
-import { Link } from "react-router-dom";
-import "./productCard.scss";
+import React from 'react'
 
 export interface ProductProps {
     name: string;
@@ -10,20 +8,21 @@ export interface ProductProps {
     setcartItems: any;
 }
 
-function ProductCard(props: ProductProps) {
+export default function CartItem(props: ProductProps) {
     const { name, id, img } = props;
     const { cartItems, setcartItems } = props;
-    function add_item() {
+    function remove_item() {
         let copy = Object.assign([], cartItems);
-        copy.push({ name: name, id: id, img: img })
-        setcartItems(copy)
+        setcartItems(copy.filter((element: any) => {
+            if (element.id != id)
+                return element
+        }))
     }
     return (
         <div className="card">
             <img src={img}></img>
             <span className="card__Title">{name}</span>
-            <button onClick={add_item}>add</button>
+            <button onClick={remove_item}>remove</button>
         </div>
-    );
+    )
 }
-export default ProductCard
