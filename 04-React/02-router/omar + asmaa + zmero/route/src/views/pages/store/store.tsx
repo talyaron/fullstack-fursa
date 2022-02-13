@@ -15,7 +15,7 @@ function Store() {
                     return <ProductCard key={i} name={product.name} id={product.id} img={product.img} />
                 })}
             </div>
-            <Outlet></Outlet>
+
         </div >
     )
 }
