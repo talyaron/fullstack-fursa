@@ -2,8 +2,13 @@ import '../MainTemplate/MainTemplate.scss'
 import './ListForm.scss'
 
 import camera from '../../logoAndPhotos/camera.jpg';
+import { useLocation } from 'react-router-dom';
 
 function ListForm() {
+
+    const {state}:any = useLocation();
+
+    console.log(state);
 
     function handleMeetForm(ev:any){
         ev.preventDefault();

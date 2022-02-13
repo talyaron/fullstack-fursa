@@ -1,17 +1,20 @@
 import { useState } from 'react';
 import './Greetings.scss';
+// import { Location } from "history";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
-function Greetings() {
-    const [user, setUser] = useState("Liora");
+function Greetings(props:any) {
     const nav = useNavigate();
+    const {state}:any = useLocation();
+
+    console.log(state);
 
     function hanleLetsStart(ev: any) {
         ev.preventDefault();
-        console.log(user);
-        // <Link to='/ListForm' />
-        nav('/ListForm');
+        nav('/ListForm', {
+            state: state
+        });
     }
 
     return (
@@ -21,7 +24,7 @@ function Greetings() {
             <div className="imgGreeting">Template img</div>
 
             <form onSubmit={hanleLetsStart} className="userGreeting">
-                <label>Hi {user}</label>
+                <label>Hi {state.email.toString().split('@')[0]}</label>
                 <p>Let's make a sharing bring list!</p>
                 <input className='letsStart' type="submit" value="Let's start!" />
             </form>
