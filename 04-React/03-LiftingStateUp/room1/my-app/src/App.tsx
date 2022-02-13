@@ -9,9 +9,9 @@ function App() {
   
   return (
     <div className="App">
-      <div className="App_messages">
-      {arr.map((message, id) => {return <Message key={id} value={message.value} />})}
-      <Input arr={arr} setArr={setArr} />
+      <div className="App__messages">
+         {arr.map((message, id) => {return <Message key={id} value={message.value} />})}
+         <Input arr={arr} setArr={setArr} />
       </div>
     </div>
   );

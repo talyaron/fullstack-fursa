@@ -1,4 +1,5 @@
 import '../components/Input.scss'
+import '../components/Message.scss'
 interface Msg {
   value : string;
 }

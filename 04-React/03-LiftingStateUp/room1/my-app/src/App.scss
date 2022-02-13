@@ -1,11 +1,13 @@
 .App {
-  text-align: center;
+
   display: flex;
   flex-direction: column;
   margin: 0;
-  &_messages {
+  position: relative;
+  .App__messages {
+    
   }
-}
+} 
 
 .App-logo {
   height: 40vmin;
