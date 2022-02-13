@@ -1,35 +1,38 @@
-import React from 'react'
-import { useState } from 'react'
-import '../components/Input.scss';
-
-
-
-
+import React from "react";
+import { useState } from "react";
+import "../components/Input.scss";
 
 function Input() {
-    const [Sentance,setSentance]=useState('');
-const [Arrinput, SetArrinput] = useState<
-Array<{value: string}>>([])
+  const [Sentance, setSentance] = useState("");
+  const [Arrinput, SetArrinput] = useState<Array<{ value: string }>>([]);
 
-function handleChange(e:any){
+  function handleChange(e: any) {
     setSentance(e.target.value);
-}
+  }
 
+  function handleSubmit(ev: any) {
+    ev.preventDefault();
 
-function handelClick(){
-    if(Sentance){
-        SetArrinput((Arrinput) => [...Arrinput, {value: Sentance }])
-
+    if (Sentance) {
+      SetArrinput([...Arrinput, { value: Sentance }]);
+      setSentance('');
+      ev.target.reset()
     }
     console.log(Arrinput);
-
-} 
+  }
   return (
-    <div><div className='ResMessage'>{Arrinput.map((elemnent,index)=>{return<div key={index}>{elemnent.value}</div>})}</div>
-        <input  onChange={handleChange} type="text" />
-    <button onClick={handelClick}>Send</button>
+    <div>
+      <div className="ResMessage">
+        {Arrinput.map((elemnent, index) => {
+          return <div key={index}>{elemnent.value}</div>;
+        })}
+      </div>
+      <form onSubmit={handleSubmit}>
+        <input onChange={handleChange} type="text" defaultValue={Sentance} />
+        <button type="submit">Send</button>
+      </form>
     </div>
-  )
+  );
 }
 
 export default Input;
