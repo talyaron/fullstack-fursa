@@ -31,7 +31,7 @@ function TypeList() {
         {
             imgUrl: "https://s3-alpha-sig.figma.com/img/697c/fdd9/43724849ea5ca7e754b304927de585fd?Expires=1645401600&Signature=bvRJF5OId0mW-vyZU--rcxR7VXSeO8oVR2~vFPh~jflk1g1ARA8YJtlNCWEOzJjJwEeXl9eAy-PhbWGHH69xpn6Po39U1VlC0xO64T6m~B1UHNA6DagVsZyvArlQVT8ehjT17L6ao3rqDh~87Or5Bzi2HcBx9b79mOuoPg63iMvB8zGS4ShCNFxdCLhuU2qE-s~OdNFJWZdboYCL-OhtO8aPEhjTOcBYbfM2JDSa6s7x2jo6iZP3eXp47fHNfeejlDtzb6vGTC8gwtT5L3wIz7mPriqoVO60Rq6WzmWOt~UWt3eCiUSyEgV3eZbDtysADIh8uNRNj6cVw-XzFYvnVQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
             title: "Smart list",
-            data: "Let IB ring make a pefect list for you",
+            data: "Let IBring make a pefect list for you",
             redirectTo: "/ListForm"
         },
     ]);
