@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import './index.scss';
 // import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -12,13 +12,20 @@ import {
 import App from "./App";
 import Expenses from "./view/pages/expenses/Expenses";
 import Invoices from "./view/pages/Invoices/Invoices";
+<<<<<<< HEAD
+import Store from './view/pages/store/Store';
+import Product from "./view/pages/product/Product";
+import HomePage from "./view/pages/homepage/index";
+import SignIn from "./view/pages/signIn/index";
+=======
+>>>>>>> tal
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <App />
+//   </React.StrictMode>,
+//   document.getElementById('root')
+// );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
@@ -33,8 +40,21 @@ render(
       <Route path="/" element={<App />} />
       <Route path="expenses" element={<Expenses />} />
       <Route path="invoices" element={<Invoices />} />
+<<<<<<< HEAD
+      <Route path="store" element={<Store />} >
+        <Route path=":productId" element={<Product />} />
+     
+      </Route>
+      <Route path="homepage" element={<HomePage />} />
+      <Route path="signIn" element={<SignIn />} />
+      <Route path="product/:productId" element={<Product />} />
     </Routes>
   </BrowserRouter>,
+    // document.getElementById("root")
+=======
+    </Routes>
+  </BrowserRouter>,
+>>>>>>> tal
   rootElement
 );
 

@@ -1,7 +1,8 @@
-
+$borderRadius:10px;
+$padding:20px;
 $mainColor:rgb(53, 85, 73);
 @import 'view/components/card/Card.scss';
-@import 'view/components/signUp/index.scss';
+@import 'view/pages/signUp/index.scss';
 
 
 .App {
@@ -42,3 +43,8 @@ $mainColor:rgb(53, 85, 73);
     transform: rotate(360deg);
   }
 }
+
+// button{
+//   padding: 10px 20px;
+//   font-size: 2rem;
+// }
