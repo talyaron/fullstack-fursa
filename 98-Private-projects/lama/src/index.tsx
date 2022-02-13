@@ -12,13 +12,10 @@ import {
 import App from "./App";
 import Expenses from "./view/pages/expenses/Expenses";
 import Invoices from "./view/pages/Invoices/Invoices";
-<<<<<<< HEAD
 import Store from './view/pages/store/Store';
 import Product from "./view/pages/product/Product";
 import HomePage from "./view/pages/homepage/index";
 import SignIn from "./view/pages/signIn/index";
-=======
->>>>>>> tal
 
 // ReactDOM.render(
 //   <React.StrictMode>
@@ -40,7 +37,6 @@ render(
       <Route path="/" element={<App />} />
       <Route path="expenses" element={<Expenses />} />
       <Route path="invoices" element={<Invoices />} />
-<<<<<<< HEAD
       <Route path="store" element={<Store />} >
         <Route path=":productId" element={<Product />} />
      
@@ -51,10 +47,6 @@ render(
     </Routes>
   </BrowserRouter>,
     // document.getElementById("root")
-=======
-    </Routes>
-  </BrowserRouter>,
->>>>>>> tal
   rootElement
 );
 
