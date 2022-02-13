@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import './Greetings.scss';
-// import { Location } from "history";
 
 import { Link, useLocation, useNavigate } from "react-router-dom";
 

@@ -10,7 +10,7 @@ import Product from "./view/pages/product/Product";
 import Register from './view/pages/Register/Register';
 import ListForm from './view/pages/ListForm/ListForm';
 import Greetings from './view/pages/Greetings/Greetings';
-
+import TypeList from './view/pages/TypeList/TypeList';
 import reportWebVitals from './reportWebVitals';
 
 import {
@@ -22,6 +22,7 @@ import {
 ReactDOM.render((
   <BrowserRouter>
     <Routes>
+      <Route path="/TypeList" element={<TypeList />} />
       <Route path="/register" element={<Register />} />
       <Route path="/ListForm" element={<ListForm />} />
       <Route path="/greetings" element={<Greetings />} />
