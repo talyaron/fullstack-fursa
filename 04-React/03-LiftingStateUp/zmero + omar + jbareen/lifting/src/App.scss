@@ -16,15 +16,21 @@
     flex-direction: column;
     justify-content: center;
     width: 50%;
+    max-width: 660px;
+    margin:auto;
 
-    .messageid1 {
-      color: blueviolet;
-      text-align: left;
+    .messageidone {
+     background-color: green;
+     padding: 20px;
+     border-radius: 5px;
     }
 
-    .messageid2 {
-      color: red;
-      text-align: right;
+    .messageidtwo {
+      background-color: wheat;
+      padding: 20px;
+      border-radius: 5px;
+      position: relative;
+      left:50px;
     }
   }
 }

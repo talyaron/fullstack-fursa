@@ -5,7 +5,7 @@ import './App.scss';
 import Message from './view/component/message/message'
 
 interface MessageProp {
-  id: number;
+  id: string;
   text: string;
   from: string;
   to: string;
@@ -23,8 +23,8 @@ function App() {
   return (
     <div className="App">
       <div className="messageContainer">
-        <Message id={1} setGeneralChat={setGeneralChat} generalChat={generalChat} from="omar" date={new Date()}></Message>
-        <Message id={2} setGeneralChat={setGeneralChat} generalChat={generalChat} from="mohamed" date={new Date()}></Message>
+        <Message id={'one'} setGeneralChat={setGeneralChat} generalChat={generalChat} from="omar" date={new Date()}></Message>
+        <Message id={'two'} setGeneralChat={setGeneralChat} generalChat={generalChat} from="mohamed" date={new Date()}></Message>
       </div>
       <div className="allmessages">
         {generalChat.map((element, index) => {

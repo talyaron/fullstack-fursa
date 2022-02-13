@@ -5,7 +5,7 @@ import { useState } from 'react';
 interface MessageProp {
     setGeneralChat: any;
     generalChat: any;
-    id: number;
+    id: string;
     from: string;
     date?: Date;
 }
