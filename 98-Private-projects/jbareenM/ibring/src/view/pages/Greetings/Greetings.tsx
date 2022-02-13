@@ -23,7 +23,7 @@ function Greetings(props:any) {
             <div className="imgGreeting">Template img</div>
 
             <form onSubmit={hanleLetsStart} className="userGreeting">
-                <label>Hi {state.email.toString().split('@')[0]}</label>
+                <label>Hi {state?.email.toString().split('@')[0]}</label>
                 <p>Let's make a sharing bring list!</p>
                 <input className='letsStart' type="submit" value="Let's start!" />
             </form>
