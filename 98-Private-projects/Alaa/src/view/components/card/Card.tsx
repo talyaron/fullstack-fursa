@@ -6,7 +6,6 @@ interface CardProp {
 
     name: string;
     price: number;
-    quantity: number;
     description: string;
     Url: string
   };
@@ -18,7 +17,28 @@ interface CardProp {
 
 
 function Card(prop: CardProp) {
-  const { name, price, quantity, description, Url } = prop.info;
+
+  const [counter, setCounter] = useState(0); // useState(initial value);
+  let counter2 = 0;
+
+  function handleAddCounter() {
+    let tempCounter = counter;
+    tempCounter++;
+
+    if(tempCounter>=7)
+      tempCounter=7;
+    setCounter(tempCounter);
+  }
+  function handleRemveCounter() {
+    let tempCounter = counter;
+    tempCounter--;
+    if(tempCounter<0){
+        tempCounter=0;
+      }
+      setCounter(tempCounter);
+  }
+
+  const { name, price, description, Url } = prop.info;
   const [color, setColor] = useState('red');
   function generateRandomColor() {
     var letters = '0123456789ABCDEF';
@@ -42,14 +62,15 @@ const [mytext, setmytext] = useState('hi , alaa wants to write me');
   return (
 
       <div className="card"  style={{ backgroundColor: color }} onClick={generateRandomColor} >
-        <div style={{ backgroundColor: color }} onClick={generateRandomColor} > click on me</div>
-        <h3>name : {name}</h3>
-        <p>price : {price}</p>
-        <p>quantity : {quantity}</p>
-        <p>description : {description}</p>
+     
         <img src={Url} alt="" />
-        <input onKeyUp={moveInput}></input>
-            <div>{mytext}</div>
+        <h3>{name}</h3>
+        <p>Price : {price}</p>
+        <p><button onClick={handleRemveCounter}>-</button>  {counter} <button onClick={handleAddCounter}>+</button> </p>
+        {/* <p>description : {description}</p> */}
+        
+        {/* <input onKeyUp={moveInput}></input> */}
+            {/* <div>{mytext}</div> */}
 
       </div>
   );
