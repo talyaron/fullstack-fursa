@@ -1,10 +1,12 @@
 import { useState } from "react";
 
 interface texinput{
-    setTextArray ?:any;
-    arr:Array<string>;
+    setTextArray:any;
+    textArray:Array<string>;
 }
 function Textinput(prop:texinput){
+    const {setTextArray,textArray} = prop;
+
     let [mytext, setmytext] = useState('');
     function moveInput(e: any) {
         try {
@@ -18,10 +20,9 @@ function Textinput(prop:texinput){
     }
     function addToArray(){
         
-        let tmp = prop.arr;
-        tmp.push(mytext);
-        prop.setTextArray(tmp);
-        console.log(tmp);
+        setTextArray([...textArray, mytext]);
+       
+       
       }
       return (<><input type="text" onKeyUp={moveInput}></input><button onClick={addToArray}>add text</button></>)
 
