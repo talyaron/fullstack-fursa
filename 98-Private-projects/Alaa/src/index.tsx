@@ -25,7 +25,10 @@ render(
       <Route path="signUp" element={<SignUp />} />
       <Route path="AboutUs" element={<AboutUs />} />
       <Route path="HomePage" element={<HomePage />} />
-      <Route path="App" element={<App />} />
+      <Route path="App" element={<App />} >
+      {/* <Route></Route> */}
+      </Route>
+      
 
       {/* <Route path="invoices" element={<Invoices />} /> */}
     </Routes>
