@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import Input from "./components/Input";
-import "./App.css";
+import "./App.scss";
 import { useState } from "react";
 import Message from "./components/Message";
 function App() {
@@ -9,8 +9,10 @@ function App() {
   
   return (
     <div className="App">
+      <div className="App_messages">
       {arr.map((message, id) => {return <Message key={id} value={message.value} />})}
       <Input arr={arr} setArr={setArr} />
+      </div>
     </div>
   );
 }

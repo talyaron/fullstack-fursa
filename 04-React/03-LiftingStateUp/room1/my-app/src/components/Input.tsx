@@ -20,7 +20,7 @@ function Input(prop: Arr_state) {
     setSentance("");
   }
   return (
-    <div>
+    <div className="div-class">
       <input value={Sentance} onChange={handleChange} type="text" />
       <button onClick={handelClick}>Send</button>
     </div>
