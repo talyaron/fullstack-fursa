@@ -3,13 +3,15 @@ import{useState} from'react';
 import useCollapse from 'react-collapsed';
 
 
+//to do side menu
+//
+
 interface list{
         catInlList: string;
     
   }
 
 function ViewList() {
-   
     const listContent:Array<list>=[{catInlList:"Essentials"},{catInlList:"Clothes"},{catInlList:"Care"},{catInlList:"Accessories"}];
     const [showResults, setShowResults] = useState(false);
     function showSingMessage(e:any){

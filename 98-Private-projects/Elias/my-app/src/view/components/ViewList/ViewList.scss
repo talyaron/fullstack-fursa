@@ -4,6 +4,7 @@
     .header {
         width: 50vm;
         background-color: #7572FC;
+        border-radius: 10px;
         padding: 6px;
         cursor: pointer;
         color: #ffffff;
@@ -15,6 +16,7 @@
 }
 .content {
     padding: 6px;
+    border-radius: 10px;
     background-color: #adaaf3;
     &:hover {
         background-color: #adaaf3;
