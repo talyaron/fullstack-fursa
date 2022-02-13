@@ -1,0 +1,16 @@
+.store {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+        color: blueviolet;
+        margin-bottom: 4rem;
+    }
+
+    &__product {
+        display: flex;
+        flex-direction: row;
+    }
+}

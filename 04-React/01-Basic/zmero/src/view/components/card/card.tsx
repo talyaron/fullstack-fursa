@@ -25,6 +25,14 @@ function Card(prop: CardProp) {
         let newNum = Math.floor(Math.random() * 5)
         setName(arrOfNames[newNum])
     }
+    const [mytext, setmytext] = useState('hi , alaa wants to write me');
+    function moveInput(e: any) {
+        try {
+            setmytext(e.target.value)
+        } catch (error) {
+            console.error(error)
+        }
+    }
 
 
     return (
@@ -34,6 +42,8 @@ function Card(prop: CardProp) {
             <p>Lives in: {place}</p>
             <div style={{ backgroundColor: color }} onClick={changeColor}>click on me</div>
             <div onClick={changeName}>{randomName}</div>
+            <input onKeyUp={moveInput}></input>
+            <div>{mytext}</div>
         </div>
     );
 }
