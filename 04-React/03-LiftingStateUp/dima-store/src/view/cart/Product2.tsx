@@ -5,9 +5,12 @@ export default function Product(prop: productProp) {
     const { name, price , productsList, setList } = prop;
 
     function handleClick(){
-        console.log(name);
-        const newArr = productsList.pop({name,price});
-        setList(newArr);
+        let newArr = Object.assign([], productsList);
+        setList(newArr.filter((product : any) =>{
+            if(product.name != name) {
+                return product;
+            }
+        }))
     }
 
     return (

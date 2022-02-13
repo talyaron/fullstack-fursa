@@ -15,9 +15,7 @@ export default function Product(prop: productProp) {
         <div className='Item'>
             <p><span>Item name : </span> {name}</p>
             <p><span>Item price : </span> {price}</p>
-            {/* <Link to={{ pathname: '/Cart', state: "Hiiiiiiii" }}> */}
             <button onClick={handleClick}>Add</button>
-            {/* </Link> */}
         </div>
     )
 }

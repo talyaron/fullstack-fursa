@@ -7,20 +7,14 @@ interface listProp{
     setList:any;
 }
 
-export default function Cart(prop:any){
-    //const {productsList, setList} = prop;
-    //console.log(productsList);
-    // console.log(productsList);
-    const location = useLocation();
-    console.log(location.state);
-    //const {query} = useLocation();
+export default function Cart(prop:listProp){
+    const {productsList, setList} = prop;
 
     return(
-        <div></div>
-        // <div className='cart'>
-        //     {productsList.map((item:productProp, index:number) =>
-        //         {return <Product2 key={index} name={item.name} price={item.price} productsList={productsList} setList={setList}/>}
-        //     )}
-        // </div>
+        <div className='cart'>
+            {productsList.map((item:productProp, index:number) =>
+                {return <Product2 key={index} name={item.name} price={item.price} productsList={productsList} setList={setList}/>}
+            )}
+        </div>
     );
 }

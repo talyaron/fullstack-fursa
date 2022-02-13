@@ -25,21 +25,17 @@ const store: Array<productProp> = [
     { name: "Coca-Cola", price: 7 }];
 
 export default function Store(prop: listProp) {
-    //const [productsList, setList] = useState([]);
     const { productsList, setList } = prop;
-    //const nav = useNavigate();
-    function handleCart() {
-        //nav('/Cart',{state:{productsList:productsList, setList:setList, str:"aaa"}});
-        <Link to={{pathname: "/Cart" , state : "aaaa"}} />
-
-    }
 
     return (
         <div className='store'>
-            {store.map((item, index) => { return <Product key={index} name={item.name} price={item.price} productsList={productsList} setList={setList} /> }
+            {store.map((item, index) => { 
+                return <Product key={index} name={item.name} price={item.price} productsList={productsList} setList={setList} /> }
             )}
-            <button onClick={handleCart}>Cart</button>
-            {/* <button onClick={handleCart}>Cart</button> */}
+
+            <Link to='/Cart'>
+                <button>Cart</button>
+            </Link>
         </div>
 
     );
