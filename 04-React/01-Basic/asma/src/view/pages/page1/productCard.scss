@@ -1,0 +1,27 @@
+.card {
+    &__item{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        &__title{
+            font-size: 20px;
+            color: rgb(12, 70, 35);
+       }
+        img {
+            max-width: 12rem;
+            max-height: 12rem;
+            margin: 3px;
+        }
+
+        button{
+            max-width: 8rem;
+            max-height: 8rem;
+
+        }
+    }
+
+    a {
+        text-decoration: none;
+    } 
+}
