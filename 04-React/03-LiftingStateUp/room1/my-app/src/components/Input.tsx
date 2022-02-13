@@ -1,35 +1,30 @@
-import React from 'react'
-import { useState } from 'react'
-import '../components/Input.scss';
+import React from "react";
+import { useState } from "react";
+import "../components/Input.scss";
 
-
-
-
-
-function Input() {
-    const [Sentance,setSentance]=useState('');
-const [Arrinput, SetArrinput] = useState<
-Array<{value: string}>>([])
-
-function handleChange(e:any){
-    setSentance(e.target.value);
+interface Arr_state {
+    setArr:any;
+    arr:any;
 }
-
-
-function handelClick(){
-    if(Sentance){
-        SetArrinput((Arrinput) => [...Arrinput, {value: Sentance }])
-
+function Input(prop:Arr_state) {
+  const [Sentance, setSentance] = useState("");
+  const {arr ,setArr} = prop;
+  function handleChange(e: any) {
+    setSentance(e.target.value);
+  }
+  function handelClick() {
+    if (Sentance) {
+      setArr([...arr , { value: Sentance}]);
+      console.log(Sentance);
+      setSentance('');
     }
-    console.log(Arrinput);
-
-} 
+  }
   return (
-    <div><div className='ResMessage'>{Arrinput.map((elemnent,index)=>{return<div key={index}>{elemnent.value}</div>})}</div>
-        <input  onChange={handleChange} type="text" />
-    <button onClick={handelClick}>Send</button>
+    <div>
+      <input onChange={handleChange} type="text" />
+      <button onClick={handelClick}>Send</button>
     </div>
-  )
+  );
 }
 
 export default Input;
