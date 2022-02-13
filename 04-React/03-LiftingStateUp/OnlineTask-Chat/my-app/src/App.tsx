@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
+
 import './App.css';
 import Chat from './view/components/chat/Chat'
 import Mass from './view/components/chat/Mass'
@@ -39,16 +39,17 @@ const chats:Array<string>=["hello"]
 
 
 function App() {
-  const [chats, setChats] = React.useState(["item 1", "item 2", "item 3"]);    
+  const [chats, setChats] = React.useState([]);    
   return (
     <div className="App">
       <header className="App-header">
-        <h1>{chats}</h1>
+        <div className="container">
       {chats.map((chat, index)=>{
         
         return <Chat key={index} inChat={chat} chats={chats} setChats={setChats} />
       })}
-      <Mass></Mass>
+      </div>
+      <Mass  chats={chats} setChats={setChats}></Mass>
       </header>
     </div>
   );

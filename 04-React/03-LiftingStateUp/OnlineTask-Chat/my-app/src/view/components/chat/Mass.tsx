@@ -4,24 +4,29 @@ import Chat from "./Chat";
 
 
 interface chat {
-    inChat:string;
     chats:any;
     setChats:any;
 }
 
-function setMass(){
-    return(
-        chats
-    );
-}
 
-function Mass() {
-    
+
+function Mass(props:chat) {
+     const [message,setmessage]=useState('')
+     const {chats,setChats}=props;
+    function setMass(eve:any){
+    eve.preventDefault()
+      let copy=Object.assign([],chats);
+      copy.push(message);
+      setChats(copy);
+      eve.target[0].value=''
+      
+
+    }
     return(
-        <div>
-            <input  type="text"  />
-            <button onClick={setMass}>chat!</button>
-        </div>
+        <form onSubmit={setMass}>
+            <input  type="text" id="msninput" onKeyUp={(eve:any)=>{setmessage(eve.target.value)}} />
+            <button type="submit">send</button>
+        </form>
     );
 }
 export default Mass;
