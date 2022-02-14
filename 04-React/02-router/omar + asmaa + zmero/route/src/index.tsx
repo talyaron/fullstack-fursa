@@ -16,7 +16,8 @@ render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />} />
-      <Route path="store" element={<Store />}/>
+      <Route path="Store" element={<Store />}>
+      </Route>
       <Route path="store/:productId" element={<Product />} />
     </Routes>
   </BrowserRouter>,
