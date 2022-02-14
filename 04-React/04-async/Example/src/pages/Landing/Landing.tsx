@@ -1,13 +1,24 @@
 import React, { useState, useEffect } from "react";
-
 import "./style.css";
+import Ajv from "ajv";
+const ajv = Ajv();
 
-import logoImg from "../../assets/images/icon.svg";
-import landingImg from "../../assets/images/landing.svg";
-import studyIcon from "../../assets/images/icons/SignUp.svg";
-import logIn from "../../assets/images/icons/login-ico.png";
-import purpleHeartIcon from "../../assets/images/icons/purple-heart.svg";
-import { Link } from "react-router-dom";
+const albumsSchema = {
+  type: "object",
+  properties: {
+    id: { type: "integer" },
+    title: { type: "string" },
+    userId: { type: "integer" },
+  },
+  required: ["id", "title","userId"],
+  additionalProperties: false,
+};
+
+const dataSchema = {
+  type: "array",
+  items: albumsSchema,
+};
+const validate = ajv.compile(dataSchema);
 
 interface LandingProps {
   setCounter: any;
@@ -23,7 +34,10 @@ export default function Landing(props: LandingProps) {
 
     getAlbums().then((albumsDB: any) => {
       setAlbums(albumsDB);
-      console.log(albumsDB)
+      console.log(albumsDB);
+     
+    }).catch(err=>{
+      console.log(err)
     });
   }, []);
 
@@ -33,10 +47,13 @@ export default function Landing(props: LandingProps) {
 
   function getAlbums() {
     return new Promise((resolve, reject) => {
-      fetch(`https://jsonplaceholder.typicode.com/albums`)
+      fetch(`https://jsonplaceholder.typicode.com/albus`)
         .then((response) => response.json())
-        .then((json) => {
-          resolve(json);
+        .then((albumsDB) => {
+          const valid = validate(albumsDB);
+          console.log(valid);
+          if (valid) resolve(albumsDB)
+          else reject(validate.errors);
         })
         .catch((err) => {
           reject(err);
@@ -50,10 +67,12 @@ export default function Landing(props: LandingProps) {
       <h1>Albums</h1>
       <button onClick={handleCounter}>{counter}</button>
       <div className="albums">
-        {albums.map((album:any, i) => {
-          return <div key={album.id} className="album">
-            <h3>{album.title}</h3>
-          </div>;
+        {albums.map((album: any, i) => {
+          return (
+            <div key={album.id} className="album">
+              <h3>{album.title}</h3>
+            </div>
+          );
         })}
       </div>
     </div>
