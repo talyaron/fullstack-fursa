@@ -6,11 +6,11 @@ const ajv = Ajv();
 const cityWeather = {
     type: "object",
     properties: {
-      current: { type: "object", temperature :{type : "number"} },
-      location: { type: "object", name :{type : "string"} },
+      current: { type: "object"},
+      location: { type: "object"},
     },
     required: ["current", "location"],
-    //additionalProperties: false,
+    additionalProperties: false,
 };
 
 
@@ -21,10 +21,14 @@ interface cityProp{
     city:any;
 }
 
+interface weather {
+  current: { temperature: number; };
+  location: { name: string };
+}
 
 export default function City(prop:cityProp){
     const{city, setCity} = prop;
-    const [weatherInfo, setWeatherInfo] = useState();
+    const [weatherInfo, setWeatherInfo] = useState<weather>();
 
     useEffect(() => {
         console.log("use effect");
@@ -56,6 +60,10 @@ export default function City(prop:cityProp){
 
     return(
         <div>
+          <div>
+            <p>temperature : {weatherInfo?.current.temperature}</p>
+            <p>name : {weatherInfo?.location.name}</p>
+          </div>
           <Nav city={city} setCity={setCity}/>
         </div>
     );
