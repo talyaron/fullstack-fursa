@@ -19,28 +19,41 @@ import {
   Route
 } from "react-router-dom";
 
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import allReducers from './reducers/allReducers';
+import thunk from 'redux-thunk';
+import { Provider } from 'react-redux';
 
-const store = createStore(allReducers);
+declare global {
+  interface Window {
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+  }
+}
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(allReducers, composeEnhancers(
+  applyMiddleware(thunk)
+));
 
 ReactDOM.render((
-  <BrowserRouter>
-    <Routes>
-      <Route path="/TypeList" element={<TypeList />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/ListForm" element={<ListForm />} />
-      <Route path="/greetings" element={<Greetings />} />
+  <Provider store={store}>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/TypeList" element={<TypeList />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/ListForm" element={<ListForm />} />
+        <Route path="/greetings" element={<Greetings />} />
 
-      <Route path="/expenses" element={<Expenses />} />
-      <Route path="invoices" element={<Invoices />} />
-      <Route path="store" element={<Store />} >
-        <Route path=":productId" element={<Product />} />
-      </Route>
+        <Route path="/expenses" element={<Expenses />} />
+        <Route path="invoices" element={<Invoices />} />
+        <Route path="store" element={<Store />} >
+          <Route path=":productId" element={<Product />} />
+        </Route>
 
-      <Route path="/" element={<App />} />
-    </Routes>
-  </BrowserRouter>),
+        <Route path="/" element={<App />} />
+      </Routes>
+    </BrowserRouter>
+  </Provider>),
   document.getElementById('root')
 );
 
