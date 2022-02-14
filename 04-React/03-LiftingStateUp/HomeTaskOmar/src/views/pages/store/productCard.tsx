@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./productCard.scss";
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
-import AddIcon from '@mui/icons-material/Add';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import Alert from '@mui/material/Alert';
 export interface ProductProps {
     name: string;
@@ -26,7 +26,7 @@ function ProductCard(props: ProductProps) {
       <div className="card">
         <img src={img}></img>
         <span className="card__Title">{name}</span>
-        <Button sx={{fontSize:18}}onClick={add_item} variant="contained" startIcon={<AddIcon />}>
+        <Button sx={{fontSize:18}}onClick={add_item} variant="contained" startIcon={<AddShoppingCartIcon />}>
           Add to cart
         </Button>
         

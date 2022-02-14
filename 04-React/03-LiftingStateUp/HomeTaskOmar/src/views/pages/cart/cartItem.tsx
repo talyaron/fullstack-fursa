@@ -19,6 +19,7 @@ export default function CartItem(props: ProductProps) {
             if (element.id != id)
                 return element
         }))
+        alert(props.name + " have been removed  from the cart");
     }
     return (
       <div className="card">

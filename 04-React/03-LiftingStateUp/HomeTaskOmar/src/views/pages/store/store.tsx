@@ -41,7 +41,7 @@ function Store(prop: cartprop) {
         </div>
         <br></br> <br></br> <br></br> <br></br>
         <Link to="/Cart">
-          <Button sx={{fontSize:20 ,textDecoration: 'none', }} variant="contained" startIcon={<ShoppingCartIcon />}>
+          <Button sx={{fontSize:20 , textDecoration: 'none' , height:50}} variant="outlined" startIcon={<ShoppingCartIcon />}>
             Check Your Cart{" "}
           </Button>
         </Link>
