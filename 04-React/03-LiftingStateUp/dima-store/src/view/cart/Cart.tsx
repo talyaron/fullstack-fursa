@@ -1,6 +1,6 @@
-import Product2 from './Product2';
+import './Cart.scss';
+import Product2 from '../cart/Product2';
 import { productProp } from "../store/Store";
-import { useLocation } from 'react-router-dom';
 
 interface listProp{
     productsList:any;
