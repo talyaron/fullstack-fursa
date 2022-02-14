@@ -1,0 +1,18 @@
+.warpper{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    .card{
+       
+        max-block-size: 2fr;
+        background-color: blue;
+        border-radius: 1rem;
+        margin: 5px;
+        img {
+        border-radius: 1rem;
+    }
+        
+    }
+}
+
+  
