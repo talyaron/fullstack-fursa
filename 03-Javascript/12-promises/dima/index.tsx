@@ -9,9 +9,9 @@ function getAlbum(albumNumber: number) {
             resolve(json)
         })
 
-        // .catch(err => {
-        //     reject(err)
-        // })
+        .catch(err => {
+            reject(err)
+        })
     })
 }
 

@@ -7,10 +7,9 @@ function getAlbum(albumNumber) {
                 reject("album not found");
             }
             resolve(json);
+        })["catch"](function (err) {
+            reject(err);
         });
-        // .catch(err => {
-        //     reject(err)
-        // })
     });
 }
 getAlbum(101).then(function (json) {
