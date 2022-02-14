@@ -2,12 +2,40 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
+import Expenses from "./view/pages/expenses/Expenses";
+import Invoices from "./view/pages/Invoices/Invoices";
+import Store from './view/pages/store/Store';
+import Product from "./view/pages/product/Product";
+
+import Register from './view/pages/Register/Register';
+import ListForm from './view/pages/ListForm/ListForm';
+import Greetings from './view/pages/Greetings/Greetings';
+import TypeList from './view/pages/TypeList/TypeList';
 import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
+
+ReactDOM.render((
+  <BrowserRouter>
+    <Routes>
+      <Route path="/TypeList" element={<TypeList />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/ListForm" element={<ListForm />} />
+      <Route path="/greetings" element={<Greetings />} />
+
+      <Route path="/expenses" element={<Expenses />} />
+      <Route path="invoices" element={<Invoices />} />
+      <Route path="store" element={<Store />} >
+        <Route path=":productId" element={<Product />} />
+      </Route>
+
+      <Route path="/" element={<App />} />
+    </Routes>
+  </BrowserRouter>),
   document.getElementById('root')
 );
 

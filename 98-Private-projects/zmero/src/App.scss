@@ -1,7 +1,7 @@
-@import 'view/components/menu/menu.scss';
-@import 'view/components/search/search.scss';
-@import 'view/components/explore/explore.scss';
-@import 'view/components/restaurantCard/restaurantCard.scss';
+html,
+body {
+  margin: 0;
+}
 
 .App {
   text-align: center;
