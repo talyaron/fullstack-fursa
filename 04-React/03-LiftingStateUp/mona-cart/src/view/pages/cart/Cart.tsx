@@ -5,7 +5,7 @@ interface cartProps{
 
 function Cart(props:cartProps){
     return(
-        <div></div>
+        <div>cc</div>
     );
 
 }

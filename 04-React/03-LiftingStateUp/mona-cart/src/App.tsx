@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Store from './view/pages/store/Store';
 import Cart from './view/pages/cart/Cart';
 import {
   BrowserRouter,
   Routes,
-  Route
+  Route,
+  Link
 } from "react-router-dom";
 function App() {
   const [products,setProducts]=useState([]);
+  
+  return (
+    <div className="App">
+      <Link to='/Store'>store</Link>
+    </div>
+   
+  );
   <BrowserRouter>
   <Routes>
     <Route path="/" element={<Store products={products} setProducts={setProducts} />} />
@@ -17,14 +24,6 @@ function App() {
 
   </Routes>
 </BrowserRouter>
-  return (
-    <div className="App">
-    
-      <header className="App-header">
-      
-      </header>
-    </div>
-  );
 }
 
 export default App;
