@@ -10,7 +10,7 @@ function Store(){
     const[products,setProduct]=useState([])
     return (
     <div >
-      <h1>Store</h1>
+      <h1>Store2</h1>
      
       {storeProducts.map((product, i)=>{
 
