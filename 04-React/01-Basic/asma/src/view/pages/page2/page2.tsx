@@ -1,4 +1,5 @@
 import {Link} from 'react-router-dom';
+import "./page2.scss";
 
 
 interface CardProp {
@@ -20,9 +21,9 @@ function Page2(prop: CardProp){
         <div>
             <h1>Selected Products</h1>
             {state.map((product:Product) => {
-                return  (<li>{product.name} {product.count} </li>)
+                return  (<li><span>Product Name: </span>{product.name} <span> Amount: </span> {product.count} </li>)
             })}
-            <Link to='/page1'>Click to go to page1!</Link>
+            <Link to='/page1'>Click to go back to  products page!</Link>
         </div>
     )
 }

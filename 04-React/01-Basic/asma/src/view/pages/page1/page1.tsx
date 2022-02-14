@@ -25,7 +25,7 @@ function Page1(prop: CardProp){
             {products.map((product: ProductProps, i) => {
                 return <ProductCard key={i} name={product.name} id={product.id} img={product.img} setState={setState} state={state} />
             })}     
-            <Link to='/page2'>Click to go to page2!</Link>
+            <Link to='/page2'>Click to go to  selected products page!</Link>
         </div>
     )
 }
