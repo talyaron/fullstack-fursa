@@ -9,8 +9,8 @@ const cityWeather = {
       current: { type: "object", temperature :{type : "number"} },
       location: { type: "object", name :{type : "string"} },
     },
-    required: ["current"],
-    additionalProperties: false,
+    required: ["current", "location"],
+    //additionalProperties: false,
 };
 
 
@@ -24,14 +24,14 @@ interface cityProp{
 
 export default function City(prop:cityProp){
     const{city, setCity} = prop;
-    const [weatherInfo, setWeatherInfo] = useState({});
+    const [weatherInfo, setWeatherInfo] = useState();
 
     useEffect(() => {
         console.log("use effect");
     
         getWeather().then((weatherDB: any) => {
             setWeatherInfo(weatherDB);
-          console.log(weatherDB);
+            console.log(weatherInfo);
          
         }).catch(err=>{
           console.log(err)
@@ -56,10 +56,7 @@ export default function City(prop:cityProp){
 
     return(
         <div>
-            <p>{weatherInfo.location.name}</p>
-            <p>weatherInfo.current.temperature</p>
-
-            <Nav city={city} setCity={setCity}/>
+          <Nav city={city} setCity={setCity}/>
         </div>
     );
 }

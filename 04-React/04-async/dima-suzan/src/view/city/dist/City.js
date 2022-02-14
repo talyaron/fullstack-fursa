@@ -10,18 +10,17 @@ var cityWeather = {
         current: { type: "object", temperature: { type: "number" } },
         location: { type: "object", name: { type: "string" } }
     },
-    required: ["current"],
-    additionalProperties: false
+    required: ["current", "location"]
 };
 var validate = ajv.compile(cityWeather);
 function City(prop) {
     var city = prop.city, setCity = prop.setCity;
-    var _a = react_1.useState({}), weatherInfo = _a[0], setWeatherInfo = _a[1];
+    var _a = react_1.useState(), weatherInfo = _a[0], setWeatherInfo = _a[1];
     react_1.useEffect(function () {
         console.log("use effect");
         getWeather().then(function (weatherDB) {
             setWeatherInfo(weatherDB);
-            console.log(weatherDB);
+            console.log(weatherInfo);
         })["catch"](function (err) {
             console.log(err);
         });
@@ -43,8 +42,6 @@ function City(prop) {
         });
     }
     return (react_1["default"].createElement("div", null,
-        react_1["default"].createElement("p", null, weatherInfo.location.name),
-        react_1["default"].createElement("p", null, "weatherInfo.current.temperature"),
         react_1["default"].createElement(Nav_1["default"], { city: city, setCity: setCity })));
 }
 exports["default"] = City;
