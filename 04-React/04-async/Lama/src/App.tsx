@@ -1,27 +1,40 @@
-import {useState} from "react";
-
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Landing  from "./pages/Landing/Landing";
-import Signup from "./pages/signup";
-import { Signin } from "./pages/signin";
-import Nav from './components/Nav'
-
-import "./assets/styles/global.css";
-
-
+import React, { useState, useEffect } from 'react';
+import logo from './logo.svg';
+import './App.scss';
+import Index from'./view/components/Index';
 function App() {
+  const [api, setAPI] = useState([]);
 
-  const [counter, setCounter]= useState(0)
+  function getAPI() {
+    return new Promise((resolve, reject) => {
+      fetch(`https://jsonplaceholder.typicode.com/posts`)
+        .then((response) => response.json())
+        .then((json) => {
+          resolve(json);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
+  useEffect(() => {
+    console.log("use effect");
+
+    getAPI().then((e: any) => {
+      setAPI(e);
+      console.log(e);
+    });
+  }, []);
+
 
   return (
-    <Router>
-      <Nav />
-      <Routes>
-        <Route path="/" element={<Landing counter={counter} setCounter={setCounter} />} />
-        <Route path="/main/signUp" element={<Signup  counter={counter} setCounter={setCounter} />} />
-        <Route path="/main/signIn" element={<Signin />} />
-      </Routes>
-    </Router>
+    <div className="App">
+      <div className="App__photos">
+        {api.map((e: any) => {
+          return <Index key={e.id} title={e.title} body={e.body}></Index>
+        })}
+      </div>
+    </div>
   );
 }
 

@@ -1,19 +1,31 @@
 "use strict";
 exports.__esModule = true;
 var react_1 = require("react");
-var react_router_dom_1 = require("react-router-dom");
-var Landing_1 = require("./pages/Landing/Landing");
-var signup_1 = require("./pages/signup");
-var signin_1 = require("./pages/signin");
-var Nav_1 = require("./components/Nav");
-require("./assets/styles/global.css");
+require("./App.scss");
+var Index_1 = require("./view/components/Index");
 function App() {
-    var _a = react_1.useState(0), counter = _a[0], setCounter = _a[1];
-    return (React.createElement(react_router_dom_1.BrowserRouter, null,
-        React.createElement(Nav_1["default"], null),
-        React.createElement(react_router_dom_1.Routes, null,
-            React.createElement(react_router_dom_1.Route, { path: "/", element: React.createElement(Landing_1["default"], { counter: counter, setCounter: setCounter }) }),
-            React.createElement(react_router_dom_1.Route, { path: "/main/signUp", element: React.createElement(signup_1["default"], { counter: counter, setCounter: setCounter }) }),
-            React.createElement(react_router_dom_1.Route, { path: "/main/signIn", element: React.createElement(signin_1.Signin, null) }))));
+    var _a = react_1.useState([]), api = _a[0], setAPI = _a[1];
+    function getAPI() {
+        return new Promise(function (resolve, reject) {
+            fetch("https://jsonplaceholder.typicode.com/posts")
+                .then(function (response) { return response.json(); })
+                .then(function (json) {
+                resolve(json);
+            })["catch"](function (err) {
+                reject(err);
+            });
+        });
+    }
+    react_1.useEffect(function () {
+        console.log("use effect");
+        getAPI().then(function (e) {
+            setAPI(e);
+            console.log(e);
+        });
+    }, []);
+    return (react_1["default"].createElement("div", { className: "App" },
+        react_1["default"].createElement("div", { className: "App__photos" }, api.map(function (e) {
+            return react_1["default"].createElement(Index_1["default"], { key: e.id, title: e.title, body: e.body });
+        }))));
 }
 exports["default"] = App;
