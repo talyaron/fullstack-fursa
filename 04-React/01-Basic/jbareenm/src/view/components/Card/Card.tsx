@@ -1,25 +1,83 @@
-import './Card.scss';
+import { useState } from "react";
 
-interface gucci{
-    url: string;
-    data: string;
+interface CardProp {
+  info: {
+    name: string;
+    place: string;
+    img: string;
+  };
+}
+
+function Card(prop: CardProp) {
+  const { name, place, img } = prop.info;
+
+  //state
+  const [counter, setCounter] = useState(0); // useState(initial value);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  let counter2 = 0;
+
+  const [text, setText] = useState("");
+
+  function handleAddCounter() {
+    let tempCounter = counter;
+    console.log("before:", tempCounter);
+    tempCounter++;
+
+    setCounter(tempCounter);
+    console.log("after:", tempCounter);
   }
 
-function Card(props:gucci) {
-    function handleSubmit(e: any) {
-        e.preventDefault();
-        alert('You clicked submit.');
+  function handleAddCounter2() {
+    counter2++;
+    console.log(counter2);
+  }
+
+  function handleMouseOver(ev: any) {
+    // console.log(ev)
+    try {
+      // console.log(ev.pageX, ev.pageY);
+      if (ev.pageX && ev.pageY) {
+        setMousePosition({ x: ev.pageX, y: ev.pageY });
+      }
+    } catch (err) {
+      console.error(err)
     }
-    console.log(props.url)
-    return (
-        <div className="card">
-            <img className='imgHeader' src={props.url} />
-            <p className='content'>{props.data}</p>
-            <form onSubmit={handleSubmit}>
-                <button className='buyButton' type="submit">Buy</button>
-            </form>
-        </div>
-    );
+  }
+
+  function handelRightClick(ev: any) {
+    try {
+      console.log(ev.type)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  function handleInput(ev: any) {
+    try {
+      console.log(ev.target.value)
+      setText(ev.target.value);
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  return (
+    <div className="card" onMouseOver={handleMouseOver} onContextMenu={handelRightClick}>
+      {/* <img src={img} alt={place} /> */}
+      {/* <h3 style={{ backgroundColor: "red" }}>{name}</h3> */}
+      <p>
+        {/* <span>X: {mousePosition.x}</span> */}
+        {/* <span>; Y: {mousePosition.y}</span> */}
+      </p>
+      {/* <p>Lives in: {place}</p> */}
+      <button onClick={handleAddCounter}>{counter}</button>
+      <button onClick={handleAddCounter2}>Counter2: {counter2}</button>
+      <input type="text" id='someId' onKeyUp={handleInput} />
+      <div>
+        <label>the text: {text}</label>
+      </div>
+    </div>
+  );
 }
 
 export default Card;
