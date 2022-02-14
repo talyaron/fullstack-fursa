@@ -1,3 +1,14 @@
+.card {
+  background-color: #053033;
+  border-radius: 10px;
+  margin: 5px;
+  padding: 20px;
+  width: 20vw;
+}
+.card img {
+  width: 100%;
+}
+
 .App {
   text-align: center;
 }
@@ -12,7 +23,6 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
