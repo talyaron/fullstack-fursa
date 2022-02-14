@@ -1,8 +1,6 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 import "./productCard.scss";
 import Button from '@mui/material/Button';
-import DeleteIcon from '@mui/icons-material/Delete';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import Alert from '@mui/material/Alert';
 export interface ProductProps {

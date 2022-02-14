@@ -1,7 +1,6 @@
 import React from 'react'
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
-import AddIcon from '@mui/icons-material/Add';
 export interface ProductProps {
     name: string;
     id: number;
