@@ -19,6 +19,7 @@ function getPost(postNumber) {
         }, 1000);
     });
 }
+;
 getPost(2)
     .then(function (json) {
     console.log(json);
