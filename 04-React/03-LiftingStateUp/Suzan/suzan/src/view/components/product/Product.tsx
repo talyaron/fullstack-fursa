@@ -3,23 +3,23 @@ import { useState } from "react";
 
 
 interface ProductProps {
-    generalCart: any;
-    setGeneralCart: any;
+    cart: any;
+    setCart: any;
     name:string
 }
 
 function Product(prop:ProductProps) {
 
-    const {generalCart, setGeneralCart} = prop;
+    const {cart, setCart} = prop;
     const name = prop.name;
 
     function addToCart() {
-        const copy = Object.assign([], generalCart);
+        const copy = Object.assign([], cart);
 
-        if (setGeneralCart){
+        if (setCart){
             if(!copy.includes(name)){
                 copy.push(name)
-                setGeneralCart(copy);
+                setCart(copy);
             }
         }
     }
@@ -28,7 +28,7 @@ function Product(prop:ProductProps) {
         
         <div className="container">
             <p>{prop.name}</p>
-            <button onClick={addToCart}>add</button>
+            <button onClick={addToCart}>Add</button>
         </div>
     );
 }

@@ -6,16 +6,25 @@
     align-content: center;
     align-items: center;
 
-    // box-shadow: 2px 2px 6px black;
-    border: 0.5px black solid;
+    box-shadow: 1px 1px 3px black;
+    // border: 0.5px black solid;
+    border-radius: 3px;
 
-    margin: 2px;
+    margin: 5px;
+    background-color: beige;
 
     p{
         padding-left: 10px;
+        font-size: large;
     }
 
     button{
-        height: 30px;
+        // height: 30px;
+        // background-color: rgb(243, 231, 161);
+        // border: 0.5px black solid;
+        // border-radius: 3px;
+        margin-right: 5px;
+        // display: inline-block;
+        font-style: italic;
     }
 }
