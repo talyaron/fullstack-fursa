@@ -1,6 +1,7 @@
 "use strict";
 exports.__esModule = true;
 var react_1 = require("react");
+//import newCard '../../components/newCard/productCard';
 //import "./style.css";
 function Data() {
     var _a = react_1.useState([]), albums = _a[0], setAlbums = _a[1];

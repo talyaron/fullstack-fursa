@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+//import newCard '../../components/newCard/productCard';
 //import "./style.css";
 
 
