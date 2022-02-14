@@ -17,7 +17,6 @@ const Barr = () => {
   return (
     <div className= "badge bg-primary text-wrap">
       <h1> {getTabName(id,bar)} </h1>
-   
 
       </div>
   )
