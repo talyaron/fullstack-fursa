@@ -13,17 +13,19 @@ function App() {
   
   return (
     <div className="App">
-      <Link to='/Store'>store</Link>
+    
     </div>
-   
-  );
-  <BrowserRouter>
-  <Routes>
-    <Route path="/" element={<Store products={products} setProducts={setProducts} />} />
-    <Route path="cart" element={<Cart products={products} setProducts={setProducts} />} />
 
-  </Routes>
-</BrowserRouter>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Store products={products} setProducts={setProducts} />} />
+      <Route path="cart" element={<Cart products={products} setProducts={setProducts} />} />
+  
+    </Routes>
+  </BrowserRouter>
+  );
+ 
+
 }
 
 export default App;
