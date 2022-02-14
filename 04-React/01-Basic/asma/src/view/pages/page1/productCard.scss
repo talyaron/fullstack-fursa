@@ -1,7 +1,12 @@
 .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px;
+
     &__item{
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         
         &__title{
@@ -17,7 +22,11 @@
         button{
             max-width: 8rem;
             max-height: 8rem;
+            margin: 15px;
 
+        }
+        button:hover{
+            background-color: rgba(40, 40, 110, 0.645);
         }
     }
 

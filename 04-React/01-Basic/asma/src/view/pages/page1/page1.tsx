@@ -19,22 +19,12 @@ interface CardProp {
 function Page1(prop: CardProp){
     const {setState,state} = prop;
 
-  /*  function handleAdd() {
-       const tmp ="newItem";
-       console.log(state);
-       setState([...state,tmp]);
-      }*/
-
-
     return(
         <div>
-            <h1>Products</h1>
-        
+            <h1>Products</h1>        
             {products.map((product: ProductProps, i) => {
                 return <ProductCard key={i} name={product.name} id={product.id} img={product.img} setState={setState} state={state} />
-            })} 
-                    
-    
+            })}     
             <Link to='/page2'>Click to go to page2!</Link>
         </div>
     )

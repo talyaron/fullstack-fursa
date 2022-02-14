@@ -8,8 +8,15 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Page1 from "./view/pages/page1/page1";
 import Page2 from "./view/pages/page2/page2";
 
+
+interface Product{
+  name: string;
+  count: number;
+  id: number;
+}
+
 function App() {
-  const [state, setState] = useState([]);
+  const [state, setState] = useState<Array<Product>>([]);
 
   return(
     <BrowserRouter>
