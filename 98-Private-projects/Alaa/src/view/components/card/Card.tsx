@@ -1,30 +1,32 @@
 import '../card/Card.scss'
 import { useState } from "react";
-
-interface CardProp {
-  info: {
-
-    name: string;
-    price: number;
-    description: string;
-    Url: string
-  };
-}
+// import Cart from './view/pages/cart/Cart';
 
 
+interface product {
+  id:number;
+  name: string;
+  price: number;
+  quantity: number;
+  description: string;
+  Url: string;
+  productsCart:any;
+  setproductsCart:any;
+  }
 
 
 
 
-function Card(prop: CardProp) {
+
+function Card(prop: product) {
 
   const [counter, setCounter] = useState(0); // useState(initial value);
-  let counter2 = 0;
 
   function handleAddCounter() {
     let tempCounter = counter;
     tempCounter++;
-
+    if(tempCounter==1)
+      prop.setproductsCart.push(prop);
     if(tempCounter>=7)
       tempCounter=7;
     setCounter(tempCounter);
@@ -38,7 +40,7 @@ function Card(prop: CardProp) {
       setCounter(tempCounter);
   }
 
-  const { name, price, description, Url } = prop.info;
+  const {id, name, price,quantity, description,  Url,productsCart,setproductsCart } = prop;
   const [color, setColor] = useState('red');
   function generateRandomColor() {
     var letters = '0123456789ABCDEF';

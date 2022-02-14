@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import logo from './logo.svg';
 import './App.scss';
-import Store from './views/pages/store/store'
+import Store from './views/pages/store/store/store'
 import Cart from './views/pages/cart/cart'
 
 
