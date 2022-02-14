@@ -20,7 +20,7 @@ function getPost(postNumber: number) {
       }
     }, 1000);
   });
-}
+};
 
 getPost(2)
   .then((json) => {
