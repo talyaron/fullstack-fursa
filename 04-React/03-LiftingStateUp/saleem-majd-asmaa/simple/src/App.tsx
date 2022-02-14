@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div className="App">
-      <Texinput setTextArray={settextArray} arr={textArray} ></Texinput>
+      <Texinput setTextArray={settextArray} textArray={textArray} ></Texinput>
       <div>
         {textArray.map((item, index)=>{
           
