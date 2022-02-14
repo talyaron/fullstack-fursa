@@ -1,8 +1,6 @@
 import { useState } from "react";
 
 interface CardProp {
-  setGeneralCounter:any;
-  genralCounter:any;
   info: {
     name: string;
     place: string;
@@ -12,7 +10,6 @@ interface CardProp {
 
 function Card(prop: CardProp) {
   const { name, place, img } = prop.info;
-  const {setGeneralCounter,genralCounter} = prop;
 
   //state
   const [counter, setCounter] = useState(0); // useState(initial value);
@@ -25,8 +22,6 @@ function Card(prop: CardProp) {
     tempCounter++;
 
     setCounter(tempCounter);
-    // if(setGeneralCounter) setGeneralCounter(tempCounter);
-    if(setGeneralCounter) setGeneralCounter(genralCounter + 1);
     console.log("after:", tempCounter);
   }
 
