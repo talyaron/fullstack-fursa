@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './search.scss'
 
 function search() {
     return (
