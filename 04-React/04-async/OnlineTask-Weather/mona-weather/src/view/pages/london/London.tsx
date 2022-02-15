@@ -6,9 +6,12 @@ interface LondonProps{
 }
 function London(props:LondonProps)
 {
+    const {weather,setWeather}=props
+    console.log(weather);
+
     return(
         <div className="london">
-           
+         heeeeeelllo
         </div>
     );
 }

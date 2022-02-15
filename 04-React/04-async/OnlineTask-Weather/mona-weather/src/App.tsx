@@ -15,6 +15,7 @@ import London from "./view/pages/london/London";
 import NewYork from "./view/pages/newYork/NewYork";
 import TelAviv from './view/pages/telAviv/TelAviv';
 import Ajv from "ajv";
+import Cities from './view/pages/cities/Cities';
 const ajv = Ajv();
 
 const weatherSchema = {
@@ -65,8 +66,10 @@ function App() {
         });
     });
   }
-  <BrowserRouter>
-    <Routes>
+  
+  return (
+    <BrowserRouter>
+  <Routes>
      <Route path="/" element={<App/>} />
       <Route path="london" element={<London weather={weather} setWeather={setWeather}  />} />
       <Route path="newYork" element={<NewYork weather={weather} setWeather={setWeather}  />} />
@@ -74,16 +77,6 @@ function App() {
 
     </Routes>
   </BrowserRouter>
-  return (
-    <div className="App">
-      <header className="App-header">
-        {/* <Link to="/london">london <button>aaa</button></Link>
-        <Link to="/newYork">NewYork</Link>
-        <Link to="/telAviv">London</Link> */}
-        
-
-      </header>
-    </div>
   );
 }
 
