@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Product, {productProp} from '../../components/product/Product' 
 
 interface storeProps{
@@ -7,7 +8,7 @@ interface storeProps{
     setProducts:any;
 }
 
-const storeProducts=[{name:"kinder"}, {name:"kinder"}]
+const storeProducts=[{name:"oreo"}, {name:"kinder"}]
 
 function Store(props:storeProps){
     const {products,setProducts}=props;
@@ -19,8 +20,11 @@ function Store(props:storeProps){
 
           return  <Product key={i} name={product.name} product={products} setProduct={setProducts} />
       })}
-      
-  </div>);
+      <Link to='/cart'>
+      <button>Cart</button>
+      </Link>
+  </div>
+  );
 
 }
 

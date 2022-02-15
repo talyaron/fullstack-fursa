@@ -13,18 +13,23 @@ export interface productProp{
      const {product,setProduct,name}=prop;
      function removeHandler()
      {
-         let copy=Object.assign([],product);
-         copy.pop({name});
-         setProduct(copy);
+         let copy=Object.assign([],product)
+        setProduct( copy.filter((product:any)=>{
+             if(product.name!=name){
+                 return product;
+             }
+
+         }))
+       
  
  
      }
      return(
          <div>
              {prop.name}
-             <Link to="/cart">
+           
              <button onClick={removeHandler}>remove</button>
-             </Link>
+             
          </div>
      );
  }

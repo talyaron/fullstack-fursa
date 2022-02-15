@@ -13,17 +13,16 @@ function App() {
   const [products,setProducts]=useState([]);
   
   return (
-    <div className="App">
     
-    </div>
+       <BrowserRouter>
 
-    <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<Store products={products} setProducts={setProducts} />} />
-      <Route path="cart" element={<Cart products={products} setProducts={setProducts} />} />
+       <Routes>
+         <Route path="/" element={<Store products={products} setProducts={setProducts} />} />
+         <Route path="cart" element={<Cart products={products} setProducts={setProducts} />} />
+       </Routes>
+       
+     </BrowserRouter>
   
-    </Routes>
-  </BrowserRouter>
   );
  
 
