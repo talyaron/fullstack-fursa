@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Nav from "../nav/Nav";
 import Ajv from "ajv";
+
+import './City.scss';
+
 const ajv = Ajv();
 
 const cityWeather = {
@@ -27,7 +30,7 @@ interface cityProp{
 }
 
 interface weather {
-  current: { temperature: number; };
+  current: { temperature: number; weather_descriptions: string; wind_speed:number; feelslike:number; weather_icons:string;};
   location: { name: string };
 }
 
@@ -45,14 +48,14 @@ export default function City(prop:cityProp){
         }).catch(err=>{
           console.error(err)
         });
-      }, []);
+      }, [city]);
     
     function getWeather() {
         return new Promise((resolve, reject) => {
           
           //dima: 01e604a29a583534ad0abe72cf45b4f7
-          //suzan: bea7927e966b10f8e3f33df231779c2a
-          fetch(`http://api.weatherstack.com/current?access_key=01e604a29a583534ad0abe72cf45b4f7&query=${city}`)
+          //suzan: e219bf9a8bf80b11b554c4eb69e8d64c
+          fetch(`http://api.weatherstack.com/current?access_key=e219bf9a8bf80b11b554c4eb69e8d64c&query=${city}`)
             .then((response) => response.json())
             .then((weatherDB) => {
               // resolve(weatherDB)
@@ -68,11 +71,15 @@ export default function City(prop:cityProp){
       }
 
     return(
-        <div>
-          <div>
-            <p>{city}</p>
-            {/* <p>temperature : {weatherInfo?.current.temperature}</p>
-            <p>name : {weatherInfo?.location.name}</p> */}
+        <div className="city">
+          <h1>{weatherInfo?.location.name}</h1>
+          <div className="city__weather">
+            <img src={weatherInfo?.current.weather_icons} alt="" />
+            <p><span>temperature: </span>{weatherInfo?.current.temperature}</p>
+            <p><span>feelslike: </span>{weatherInfo?.current.feelslike}</p>
+            <p><span>weather discription: </span>{weatherInfo?.current.weather_descriptions}</p>
+            <p><span>wind speed: </span>{weatherInfo?.current.wind_speed}</p>
+            
           </div>
           <Nav city={city} setCity={setCity}/>
         </div>
