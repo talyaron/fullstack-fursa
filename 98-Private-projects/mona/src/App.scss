@@ -1,7 +1,8 @@
 $mainColor:rgb(185, 109, 9);
 $borderRadius:10px;
-$cardwidth:20%;
+$cardwidth:20vw;
 $cardlength:20%;
+
 
 
 @import 'view/components/card/Card.scss';
@@ -11,6 +12,7 @@ $cardlength:20%;
 .App {
   text-align: center;
   background-color: rgba(73, 48, 24, 1);
+  width: 100%;
 
 }
 
@@ -18,7 +20,7 @@ $cardlength:20%;
   height: 40vmin;
   pointer-events: none;
   
-background: url(logo.png);
+background: url(woodlogo.png);
 
 }
 
@@ -47,19 +49,32 @@ background: url(logo.png);
   }
 }
 .App-body {
-  background-color: rgba(73, 48, 24, 1);
+ 
+ 
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: rgb(209, 189, 9);
+  img{
+    width: 50%;
+  }
+}
+.searching{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .App-link {
   color: #61dafb;
+}
+.button{
+  width: 100%;
+  
 }
 
 @keyframes App-logo-spin {

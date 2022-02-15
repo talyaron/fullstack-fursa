@@ -1,0 +1,76 @@
+.container {
+  width: 100%;
+  display: flex;
+  height: inherit;
+}
+.container .right {
+  width: 70%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.container .right .title {
+  background-color: rgba(139, 139, 139, 0.575);
+  position: absolute;
+  top: 250px;
+  left: 10px;
+  width: 100%;
+  height: 100px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.container .right img {
+  width: 100%;
+  height: 40%;
+  position: absolute;
+  left: 10px;
+}
+.container .right .right2 {
+  width: 100%;
+}
+.container .left {
+  width: 30%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  border: 5px;
+  position: relative;
+}
+.container .left .firstrow {
+  background-color: red;
+  text-align: center;
+}
+.container .left img {
+  width: 75px;
+  height: 75px;
+  position: absolute;
+  bottom: 18px;
+  left: 5px;
+  border-radius: 40px;
+}
+.container .left .row {
+  background-color: #424040;
+  border-radius: 5px;
+  border: 3px groove black;
+  height: 100px;
+  position: relative;
+}
+.container .left .row .rowTxt {
+  position: absolute;
+  left: 90px;
+  top: 10px;
+}
+.container .left .row .rowTxt .txt1 {
+  font-size: 14px;
+  font-style: italic;
+  font-weight: bold;
+  color: blanchedalmond;
+}
+.container .left .row .rowTxt .txt2 {
+  font-size: 14px;
+  font-style: italic;
+  color: blanchedalmond;
+}
