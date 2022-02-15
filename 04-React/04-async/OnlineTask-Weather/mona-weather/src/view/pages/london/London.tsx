@@ -11,7 +11,7 @@ function London(props:LondonProps)
 
     return(
         <div className="london">
-         heeeeeelllo
+         lndon
         </div>
     );
 }

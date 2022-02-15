@@ -8,7 +8,7 @@ function NewYork(props:NewYorkProps)
 {
     return(
         <div>
-
+                    newYork
         </div>
     );
 }

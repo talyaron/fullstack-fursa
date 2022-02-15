@@ -70,7 +70,7 @@ function App() {
   return (
     <BrowserRouter>
   <Routes>
-     <Route path="/" element={<App/>} />
+     <Route path="/" element={<Cities/>} />
       <Route path="london" element={<London weather={weather} setWeather={setWeather}  />} />
       <Route path="newYork" element={<NewYork weather={weather} setWeather={setWeather}  />} />
       <Route path="telAviv" element={<TelAviv weather={weather} setWeather={setWeather}  />} />
