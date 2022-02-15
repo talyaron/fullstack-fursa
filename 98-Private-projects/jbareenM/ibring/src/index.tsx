@@ -19,6 +19,11 @@ import {
   Route
 } from "react-router-dom";
 
+import { createStore } from 'redux';
+import allReducers from './reducers/allReducers';
+
+const store = createStore(allReducers);
+
 ReactDOM.render((
   <BrowserRouter>
     <Routes>
