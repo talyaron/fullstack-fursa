@@ -1,11 +1,7 @@
 
 
-interface TelAvivProps{
-    weather:any;
-    setWeather:any;
-}
 
-function TelAviv(props:TelAvivProps)
+function TelAviv()
 {
     return(
         <div>

@@ -1,17 +1,12 @@
 import './Lonodon.scss'
 
-interface LondonProps{
-    weather:any;
-    setWeather:any;
-}
-function London(props:LondonProps)
+function London()
 {
-    const {weather,setWeather}=props
-   
+    
 
     return(
         <div className="london">
-            {weather.current.temperature}
+           
         </div>
     );
 }

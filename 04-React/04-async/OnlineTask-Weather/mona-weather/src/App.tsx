@@ -71,9 +71,9 @@ function App() {
     <BrowserRouter>
   <Routes>
      <Route path="/" element={<Cities/>} />
-      <Route path="london" element={<London weather={weather} setWeather={setWeather}  />} />
-      <Route path="newYork" element={<NewYork weather={weather} setWeather={setWeather}  />} />
-      <Route path="telAviv" element={<TelAviv weather={weather} setWeather={setWeather}  />} />
+      <Route path="london" element={<London   />} />
+      <Route path="newYork" element={<NewYork  />} />
+      <Route path="telAviv" element={<TelAviv />} />
 
     </Routes>
   </BrowserRouter>

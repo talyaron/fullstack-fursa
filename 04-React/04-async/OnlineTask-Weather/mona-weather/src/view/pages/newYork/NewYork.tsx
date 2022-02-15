@@ -1,10 +1,7 @@
 
-interface NewYorkProps{
-    weather:any;
-    setWeather:any;
-}
 
-function NewYork(props:NewYorkProps)
+
+function NewYork()
 {
     return(
         <div>
