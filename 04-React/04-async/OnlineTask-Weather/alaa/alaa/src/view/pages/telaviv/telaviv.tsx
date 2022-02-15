@@ -54,7 +54,7 @@ function TelAviv() {
         
         <div>
             <Menu></Menu>
-            <div className='city' >
+            <div className='telaviv' >
             <h1>the current weather in TelAviv</h1>
                 {telaviv}</div>
 

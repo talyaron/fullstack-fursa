@@ -54,7 +54,7 @@ function NewYork() {
         <div>
               <Menu></Menu>
            
-            <div className='city' >
+            <div className='newYork' >
             <h1>the current weather in NewYork</h1>
                 {newyork}</div>
             </div>

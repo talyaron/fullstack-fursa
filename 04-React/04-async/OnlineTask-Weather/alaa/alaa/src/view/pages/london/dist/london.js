@@ -47,7 +47,7 @@ function London() {
     }
     return (react_1["default"].createElement("div", null,
         react_1["default"].createElement(menu_1["default"], null),
-        react_1["default"].createElement("div", { className: 'city' },
+        react_1["default"].createElement("div", { className: 'london' },
             react_1["default"].createElement("h1", null, "the current weather in London"),
             london)));
 }

@@ -50,7 +50,7 @@ function London() {
     return (
         <div>
               <Menu></Menu>
-              <div className='city' >
+              <div className='london' >
               <h1>the current weather in London</h1>
                   {london}</div>
             </div>
