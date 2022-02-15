@@ -1,5 +1,7 @@
 import {Link} from 'react-router-dom';
 
+import './Nav.scss';
+
 interface cityProp{
     setCity:any;
     city:any;
@@ -19,7 +21,7 @@ export default function Nav(prop:cityProp){
     }
 
     return(
-        <div>
+        <div className='nav'>
             <Link to="/NewYork">
                 <button onClick={handleCity1}>New York</button>
             </Link>
