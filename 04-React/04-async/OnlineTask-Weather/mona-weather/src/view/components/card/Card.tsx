@@ -8,8 +8,9 @@ const weatherSchema = {
     properties: {
       current: { type: "object",
       temperature:{type:"number"}},
+      location:{type:"object"},
     },
-    required: ["current"],
+    required: ["current","location"],
     additionalProperties: false,
   };
   
@@ -23,10 +24,15 @@ const weatherSchema = {
   interface CardProps{
       cityName:string;
   }
+  interface weatherArr{
+    current:any;
+    location:any;
+    city:any;
+  }
 function Card(props: CardProps)
 {
     const {cityName}=props;
-    const [weather, setWeather] = useState({});
+    const [weather, setWeather] = useState<weatherArr>();
 
   useEffect(() => {
     
@@ -56,7 +62,8 @@ function Card(props: CardProps)
   }
     return(
         <div>
-               
+             <p> temperature: {weather?.current.temperature}</p>
+             <p>location:{weather?.location.name}</p>
         </div>
     );
 
