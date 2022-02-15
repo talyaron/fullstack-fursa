@@ -7,7 +7,7 @@ function London()
 
     return(
         <div className="london">
-           <Card cityName={'London'}></Card>
+           <Card cityName={'London'}/>
         </div>
     );
 }

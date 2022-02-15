@@ -1,11 +1,12 @@
 
 
+import Card from '../../components/card/Card';
 
 function TelAviv()
 {
     return(
         <div>
-           telAviv
+            <Card cityName={'Tel Aviv'}/>
         </div>
     );
 }

@@ -56,7 +56,7 @@ function Card(props: CardProps)
   }
     return(
         <div>
-         {weather}
+                   
         </div>
     );
 

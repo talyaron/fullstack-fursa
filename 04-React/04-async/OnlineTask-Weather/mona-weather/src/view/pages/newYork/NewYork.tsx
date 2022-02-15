@@ -1,11 +1,13 @@
 
+import Card from '../../components/card/Card';
 
 
 function NewYork()
 {
     return(
         <div>
-                    newYork
+        <Card cityName={'New York'}/>
+
         </div>
     );
 }
