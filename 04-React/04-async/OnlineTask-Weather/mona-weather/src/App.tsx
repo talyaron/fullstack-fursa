@@ -29,11 +29,8 @@ const weatherSchema = {
 };
 
 
-const dataSchema = {
-  type: "array",
-  items: weatherSchema,
-};
-const validate = ajv.compile(dataSchema);
+
+const validate = ajv.compile(weatherSchema);
 
 
 
@@ -42,7 +39,7 @@ function App() {
 
   useEffect(() => {
     
-    getWeather('London').then((weatherDB: any) => {
+    getWeather('New York').then((weatherDB: any) => {
       setWeather(weatherDB);
       console.log(weatherDB);
      
@@ -53,7 +50,7 @@ function App() {
   }, []);
   function getWeather(cityName:string) {
     return new Promise((resolve, reject) => {
-      fetch(`http://api.weatherstack.com/current?access_key=c5b7804e5d20cb19bd8239fc79235b93&query=${cityName}`)
+      fetch(`http://api.weatherstack.com/current?access_key=d619498db69ef21f1475f9b54cda6417&query=${cityName}`)
         .then((response) => response.json())
         .then((weatherDB) => {
           const valid = validate(weatherDB);
