@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import './App.css';
-import Store from './view/pages/store/Store';
-import Cart from './view/pages/cart/Cart';
 import {
   BrowserRouter,
   Routes,
   Route,
   Link
 } from "react-router-dom";
+import './App.css';
+import Store from './view/pages/store/Store';
+import Cart from './view/pages/cart/Cart';
+
 function App() {
   const [products,setProducts]=useState([]);
   

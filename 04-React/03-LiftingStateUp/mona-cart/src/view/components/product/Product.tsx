@@ -13,11 +13,9 @@ function Product(prop:productProp){
    
     function addHandler()
     {
-        const copy=[... product, {name}];
-        setProduct(copy)
-        // let copy=Object.assign([],product);
-        // copy.push({name});
-        // setProduct(copy);
+         let copy=Object.assign([],product);
+         copy.push({name});
+         setProduct(copy);
        
 
 
