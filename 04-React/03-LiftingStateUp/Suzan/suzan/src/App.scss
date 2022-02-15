@@ -1,8 +1,4 @@
-$mainColor:rgb(21, 87, 109);
-$borderRadius:10px;
-
-@import 'view/components/card/Card.scss';
-@import 'view/pages/store/Store.scss';
+@import './view/components/product/Product.scss';
 
 .App {
   text-align: center;
@@ -40,5 +36,22 @@ $borderRadius:10px;
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+.wrapper{
+  display:flex;
+
+  &__products{
+    width: 50%;
+  }
+
+  &__cart{
+    width: 50%;
+
+    &__item{
+      border: 0.5px black solid;
+      width: 100px;
+    }
   }
 }
