@@ -1,5 +1,5 @@
 import Ajv from "ajv";
-
+import './Card.scss'
 import {useState,useEffect} from 'react'
 const ajv = Ajv();
 
@@ -61,9 +61,10 @@ function Card(props: CardProps)
     });
   }
     return(
-        <div>
-             <p> temperature: {weather?.current.temperature}</p>
-             <p>location:{weather?.location.name}</p>
+        <div className="card">
+             <p><span >location:    </span>{weather?.location.name}</p>
+             <p><span >temperature:    </span>{weather?.current.temperature}</p>
+          
         </div>
     );
 
