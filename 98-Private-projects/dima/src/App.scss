@@ -1,0 +1,33 @@
+@import 'view/menuBar/menu.scss';
+@import 'view/profile/Profile.scss';
+@import 'view/recipes/recipes.scss';
+
+
+
+.App {
+  margin: auto;
+  .wrapper1{
+    width: 100vw;
+    display: flex;
+  }
+
+  .wrapper2{
+    margin: auto;
+    display: grid;
+    width: 80vw;
+    //height: 80vh
+    grid-template-columns: repeat(4,1fr);
+    margin-top: 30px;
+    column-gap: 20px;
+
+    .profile{
+      grid-column: 1 / 2;
+    }
+    .recipes{
+      grid-column: 2 / 5;
+      //display: grid;
+      border : 2px solid rgb(181, 115, 157);
+      color: rgb(181, 115, 157);
+    }
+  }
+}

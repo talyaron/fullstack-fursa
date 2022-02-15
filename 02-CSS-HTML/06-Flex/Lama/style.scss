@@ -1,0 +1,27 @@
+.wrapper {
+    border: 2px dashed black;
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+  
+    .felx {
+        color: white;
+     flex:1;
+     text-align: center;
+      height: 100px;
+      background-color: black;
+      margin: 3px;
+
+    
+    }
+
+    .abc{
+        background-color: red;
+ 
+      }
+    }
+
+
+
+  
+  
