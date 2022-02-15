@@ -1,5 +1,4 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import {Link} from 'react-router-dom';
 
 interface cityProp{
     setCity:any;
@@ -10,10 +9,10 @@ export default function Nav(prop:cityProp){
     const{city,setCity} = prop;
 
     function handleCity1(){
-        setCity("NewYork");
+        setCity("New York");
     }
     function handleCity2(){
-        setCity("TelAviv");
+        setCity("Tel Aviv");
     }
     function handleCity3(){
         setCity("London");
