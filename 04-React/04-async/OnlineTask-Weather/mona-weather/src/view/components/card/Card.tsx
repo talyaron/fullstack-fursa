@@ -20,13 +20,17 @@ const weatherSchema = {
   };
   const validate = ajv.compile(dataSchema);
 
-function Card()
+  interface CardProps{
+      cityName:string;
+  }
+function Card(props: CardProps)
 {
+    const {cityName}=props;
     const [weather, setWeather] = useState({});
 
   useEffect(() => {
     
-    getWeather('New York').then((weatherDB: any) => {
+    getWeather(cityName).then((weatherDB: any) => {
       setWeather(weatherDB);
       console.log(weatherDB);
      
@@ -52,7 +56,7 @@ function Card()
   }
     return(
         <div>
-
+         {weather}
         </div>
     );
 
