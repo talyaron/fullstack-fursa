@@ -42,7 +42,7 @@ function App() {
 
   useEffect(() => {
     
-    getWeather('London').then((weatherDB: any) => {
+    getWeather('New York').then((weatherDB: any) => {
       setWeather(weatherDB);
       console.log(weatherDB);
      
