@@ -2,35 +2,27 @@ import React from "react";
 import { useState } from "react";
 import "../components/Input.scss";
 
-function Input() {
+interface Arr_state {
+    setArr:any;
+    arr:any;
+}
+function Input(prop:Arr_state) {
   const [Sentance, setSentance] = useState("");
-  const [Arrinput, SetArrinput] = useState<Array<{ value: string }>>([]);
-
+  const {arr ,setArr} = prop;
   function handleChange(e: any) {
     setSentance(e.target.value);
   }
-
-  function handleSubmit(ev: any) {
-    ev.preventDefault();
-
+  function handelClick() {
     if (Sentance) {
-      SetArrinput([...Arrinput, { value: Sentance }]);
+      setArr([...arr , { value: Sentance}]);
+      console.log(Sentance);
       setSentance('');
-      ev.target.reset()
     }
-    console.log(Arrinput);
   }
   return (
     <div>
-      <div className="ResMessage">
-        {Arrinput.map((elemnent, index) => {
-          return <div key={index}>{elemnent.value}</div>;
-        })}
-      </div>
-      <form onSubmit={handleSubmit}>
-        <input onChange={handleChange} type="text" defaultValue={Sentance} />
-        <button type="submit">Send</button>
-      </form>
+      <input onChange={handleChange} type="text" />
+      <button onClick={handelClick}>Send</button>
     </div>
   );
 }

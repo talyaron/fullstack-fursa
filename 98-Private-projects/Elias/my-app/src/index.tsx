@@ -2,12 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+import Signup from './view/Pages/Signup/Signup';
+
+
+
+ReactDOM.render((
+  <BrowserRouter>
+    <Routes>
+    <Route path="/Signup" element={<Signup/>} />
+      <Route path="/" element={<App />}/>
+    </Routes>
+  </BrowserRouter>),
   document.getElementById('root')
 );
 
