@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import City from './view/city/City';
 
 function App() {
-  const [city, setCity] = useState("NewYork");
+  const [city, setCity] = useState("New York");
 
   return (
     <Router>

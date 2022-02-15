@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.scss';
+import { Link } from 'react-router-dom';
 
 //components
 import Card from './view/components/card/Card';
@@ -35,6 +36,9 @@ function App() {
         return <Card key={index} title={student.name} place={student.place} />
       })} */}
       </header>
+
+      <Link to='/page1'>go to page 1</Link>
+      <Link to='/page2'>go to page 2</Link>
     </div>
   );
 }
