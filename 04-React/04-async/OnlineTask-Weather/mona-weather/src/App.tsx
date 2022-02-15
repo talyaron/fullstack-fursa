@@ -29,8 +29,11 @@ const weatherSchema = {
 };
 
 
-
-const validate = ajv.compile(weatherSchema);
+const dataSchema = {
+  type: "object",
+  items: weatherSchema,
+};
+const validate = ajv.compile(dataSchema);
 
 
 
@@ -39,7 +42,7 @@ function App() {
 
   useEffect(() => {
     
-    getWeather('New York').then((weatherDB: any) => {
+    getWeather('London').then((weatherDB: any) => {
       setWeather(weatherDB);
       console.log(weatherDB);
      
