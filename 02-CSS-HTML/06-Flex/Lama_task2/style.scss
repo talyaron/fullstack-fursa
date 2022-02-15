@@ -1,0 +1,94 @@
+.wrapper {
+    margin: auto;
+    display: flex; 
+    height: 700px;
+    position: relative;
+
+    .wrapper_a {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        width: 33%;
+
+        .div1 {
+            font-size: x-large;
+          background-color: rgb(233, 24, 2);
+            height: 40px;
+        }
+
+
+        .box{
+            position: relative;
+            display: flex;
+       
+            flex-wrap: wrap ;
+            color: white;
+            flex: 1;
+            height: 70px;
+            background-color: rgba(17, 16, 16, 0.616);
+            margin: 3px;
+                 align-items: center;
+          text-align: center;
+         justify-content: center;
+            .fab{
+                background-color: rgb(53, 50, 205);
+                position: absolute;
+                left: 10px;
+                border-radius: 80px;
+                width: 80px;
+                height: 50px;
+                font-size: 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                &:hover{
+                    background-color: rgb(45, 17, 136);
+                    cursor: pointer;
+                }
+            
+                
+              }
+    
+        }
+    }
+
+    .wrapper_b {
+        display: flex;
+        flex-direction: column;
+        margin: 3px;
+        position: relative;
+
+
+
+        .img1{
+            position: relative;
+            width: 1000px;
+            height: 350px;
+
+        }
+        .div1{
+            position: relative;
+            color: white;
+            font-weight: bold;
+            font-size: x-large;
+            text-align: center;
+            background-color: rgba(158, 218, 212, 0.473);
+
+            bottom: 50px;
+        }
+        .wrapper_c{
+            position: relative;
+            flex-direction: row;
+            .img2{
+              
+                position: relative;
+                top: 0%;
+                height: 150px;
+                width: 330px;
+           
+          }
+
+        }
+
+    }
+}
