@@ -19,11 +19,24 @@ function Card(prop: CardProp) {
         setText(randomValue);
     }
 
+    const [inputText, setInputText] = useState("Input Text");
+
+    function HandleText(ev:any){
+        try{
+            setInputText(ev.target.value);
+        }catch(err){
+            console.error(err);
+        }
+    }
+
     return (
         <div className="card">
             <img src={link} />
             <h3>{text}</h3>
             <button onClick={HandleClick}>Change title</button>
+
+            <div>{inputText}</div>
+            <input type="text" onInput={HandleText}/>
         </div>
     );
 }
