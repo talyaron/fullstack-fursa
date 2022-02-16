@@ -1,55 +1,23 @@
 import './Store.scss';
 import Item from '../../components/Item/Item';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import {
-    BrowserRouter,
-    Routes,
-    Route
-} from "react-router-dom";
-import Card from '../Card/Card';
+import { Link } from 'react-router-dom';
 
-interface myState {
-    cardItems: any;
-    // setCardItems: React.Dispatch<React.SetStateAction<never[]>>;
+interface ItemsIF {
+    name: string;
+    price: number;
 }
 
-function Store() {
-    const nav = useNavigate();
-
-    const [storeItems, setStoreItems] = useState([
-        { name: "a", price: 10 },
-        { name: "b", price: 10 },
-        { name: "c", price: 10 },
-        { name: "d", price: 10 },
-    ]);
-
-    const [cardItems, setCardItems] = useState([]);
-
-    function handleCart(ev: any) {
-        ev.preventDefault();
-        // <Route path='/card'>
-        //     <Card cardItems={cardItems} setCardItems={setCardItems} />
-        // </Route>
-        const myState:myState = {
-            cardItems: cardItems,
-            // setCardItems: setCardItems
-        };
-
-        nav('/card', {
-            state: myState
-        });
-    }
+function Store(props: any) {
+    const { cardItems, setCardItems, storeItems } = props;
 
     return (
         <div className="cardContainer">
-            {storeItems.map((item, index) => {
+            {storeItems.map((item: ItemsIF, index: number) => {
                 return (
                     <Item key={index} info={item} cardItems={cardItems} setCardItems={setCardItems} />
                 );
             })}
-
-            <button onClick={handleCart}>Cart</button>
+            <Link to="/card"><button>Cart</button></Link>
         </div>
     );
 }
