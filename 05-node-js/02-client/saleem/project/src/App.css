@@ -1,97 +1,38 @@
-.ApiAccess img
-{
-  width: 500px;
-  height: 400px;
-  margin-left: 24rem;
-  margin-top: 3%;
-}
-.SearchMainDiv input
-{
-  width: 15rem;
-  height:2rem;
+.App {
   text-align: center;
-  margin-left: 31rem;
-  margin-top: 4%;
 }
-.btn{
-	background-color: blue;
-	text-align: center;
-	font-size: large;
-	font-weight: 200;
-	color: #c9dbe9;
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
 }
-.box::after{
-  content: "";
-  display: block;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 11;
-  transform: translate3d(0,0,0);
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }
-body{
-  background-color: rgb(163, 77, 77);
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  flex-wrap: wrap;
-  height: 100vh;
-  width: 100vw;
-  font-family: "Jost", sans-serif;
-}
-html{
-  font-size: 100%;
-  height: 100%;
-}
-html{
-  background-color: rgb(194, 80, 80);
-}
-.box
-{
-  background-color: rgb(180, 180, 209);
-  width: 300px;
-  height: 600px;
-}
-.box input
-{
-  margin-top: 5%;
-  margin-left: 14%;
-  border-radius: 25px;
-  height: 50px;
-  padding: 20px;
-  width: 10rem;
-  height: 25px;
-  margin-bottom: 25%;
-}
-.temp,.tempmin_max
-{
-  text-align: center;
-  font-weight: 100;
-}
-.location
-{
-  font-weight: 800;
-  text-align: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
-#clouds{
-	padding: 100px 0;
-	background: rgb(180, 180, 209);
-	background: -webkit-linear-gradient(top, #c9dbe9 0%, #fff 100%);
-	background: -linear-gradient(top, #c9dbe9 0%, #fff 100%);
-	background: -moz-linear-gradient(top, #c9dbe9 0%, #fff 100%);
+.App-link {
+  color: #61dafb;
 }
 
-/*Time to finalise the cloud shape*/
-.cloud {
-	width: 200px; height: 60px;
-	background: #fff;
-	
-	border-radius: 200px;
-	-moz-border-radius: 200px;
-	-webkit-border-radius: 200px;
-	
-	position: relative; 
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
-
