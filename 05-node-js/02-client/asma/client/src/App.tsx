@@ -3,7 +3,7 @@
 //components
 //import Card from './view/components/card/Card';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Page1 from "./view/pages/page1/page1";
 import Page2 from "./view/pages/page2/page2";
@@ -16,8 +16,17 @@ interface Product{
 }
 
 function App() {
-  const [state, setState] = useState<Array<Product>>([]);
-
+  
+const [state, setState] = useState<Array<Product>>([]);
+ /* useEffect(()=>{
+   fetch('/get-all-users').then(res=>res.json()).then(data=>{
+      console.log(data)
+      setPpls(data);
+      
+    })
+  },[])
+  const [ppls,setPpls ] = useState([])*/
+  
   return(
     <BrowserRouter>
       <Routes>

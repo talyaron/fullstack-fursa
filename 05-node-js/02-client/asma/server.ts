@@ -9,7 +9,6 @@ const port = 4000;
 
 app.use(express.static('client/build'));
 
-
 //data
 
 app.get('/get-all-users', (req, res) => {
