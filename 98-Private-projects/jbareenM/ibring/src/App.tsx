@@ -1,10 +1,20 @@
 import React from 'react';
 import './App.scss';
+import Register from './view/pages/Register/Register';
+import MainTemplate from './view/pages/MainTemplate/MainTemplate';
+import ListForm from './view/pages/ListForm/ListForm';
+import { useDispatch, useSelector } from 'react-redux';
+import { increment, decrement } from './actions/Actions'
 
 function App() {
+  const counter: any = useSelector<any>(state => state.counterReducer);
+  const dispatch = useDispatch();
   return (
     <div className="App">
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed commodi deserunt nostrum temporibus quos, reiciendis quam natus facilis consequatur mollitia, rerum, inventore non sunt explicabo quia totam veritatis expedita tempore.
+      {/* <ListForm /> */}
+      <h1>Counter: {counter}</h1>
+      <button onClick={() => dispatch(increment(5))}>+</button>
+      <button onClick={() => dispatch(decrement())}>-</button>
     </div>
   );
 }

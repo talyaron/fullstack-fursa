@@ -1,0 +1,19 @@
+.card{    
+    img{
+        width: 15rem;
+        height: 15rem;
+        min-width: 10rem;
+        min-height: 10rem;
+        margin-top: 15px;
+    }
+    img:hover{
+        transform: scale(1.1);
+    }
+    .name{
+        color: rgb(6, 77, 71);
+        font-size: 18px;
+    }
+    .name:hover{
+        color: rgb(149, 190, 168);
+    }
+}
