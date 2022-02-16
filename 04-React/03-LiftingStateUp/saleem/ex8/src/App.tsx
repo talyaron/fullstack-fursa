@@ -4,6 +4,7 @@ import './App.css';
 import SHOPPING_DATA from './data';
 import Header from './components/header/header.component';
 import HeroMessage from './components/hero/hero.component';
+import Item from './components/item/Item';
 
 function App() {
 
@@ -46,33 +47,13 @@ function App() {
           <div className="row">
             {
               data.map((item, index) => (
-                <div key={item.id} className="col-12 col-sm-12 col-md-4 col-lg-4 pb-2 pt-2">
-                  <div className="card" style={{ width: "18rem" }}>
-                    <img src="https://picsum.photos/seed/450/300" className="card-img-top" alt="cartItem" />
-                    <div className="card-body">
-                      <h5 className="card-title">{item.title}</h5>
-                      <p className="card-text">{item.price}$</p>
-                      {
-                        item.cart === false ?
-
-                          <button className="btn btn-dark" data-id={index} onClick={(event) => addToCart(event)}>Add to Cart</button>
-                          :
-
-                          <button className="btn btn-danger" data-id={index} onClick={(event) => removeFromCart(event)}>Remove from cart</button>
-
-                      }
-
-                    </div>
-                  </div>
-                </div>
+             <Item index={index} add={addToCart} remove={removeFromCart} id={item.id} title={item.title} price={item.price} incart={item.cart}  ></Item>
               ))
             }
 
           </div>
         </div>
-        <footer className="py-5 bg-dark">
-          <div className="container"><p className="m-0 text-center text-white">Copyright © Mahith Madwesh 2021</p></div>
-        </footer>
+        
       </div>
   
   );
