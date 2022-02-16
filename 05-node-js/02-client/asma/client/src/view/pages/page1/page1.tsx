@@ -14,14 +14,23 @@ state:''}
 interface CardProp {
     setState:any;
     state:any;
+    title:Array<Title>;
   }
 
+
+interface Title {
+    txt:string
+  }
+ // <h1>{title[0].txt}</h1> 
 function Page1(prop: CardProp){
-    const {setState,state} = prop;
+    const {title,setState,state} = prop;
 
     return(
         <div>
-            <h1>Products</h1>        
+            {title.map((text: Title, i) => {
+                return <h1>{text.txt}</h1> 
+            })}  
+
             {products.map((product: ProductProps, i) => {
                 return <ProductCard key={i} name={product.name} id={product.id} img={product.img} setState={setState} state={state} />
             })}     

@@ -15,23 +15,27 @@ interface Product{
   id: number;
 }
 
+interface Title {
+  txt:string
+}
+
 function App() {
   
 const [state, setState] = useState<Array<Product>>([]);
- /* useEffect(()=>{
+  useEffect(()=>{
    fetch('/get-all-users').then(res=>res.json()).then(data=>{
-      console.log(data)
-      setPpls(data);
+      console.log(data[0].txt)
+      setTitle(data);
       
     })
   },[])
-  const [ppls,setPpls ] = useState([])*/
+  const [title,setTitle ] = useState<Array<Title>>([])
   
   return(
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Page1 setState={setState} state={state}  />} />
-        <Route path="page1" element={<Page1 setState={setState} state={state} />} />
+        <Route path="/" element={<Page1 title={title} setState={setState} state={state}  />} />
+        <Route path="page1" element={<Page1 title={title} setState={setState} state={state} />} />
         <Route path="page2" element={<Page2 setState={setState} state={state} />} />
       </Routes>
     </BrowserRouter>
