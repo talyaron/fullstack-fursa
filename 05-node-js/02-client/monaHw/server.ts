@@ -5,7 +5,13 @@ const app = express();
 const port = 4000;
 
 
-console.log('Hi all 2tre');
+
+
+app.get('/get-wood-type', (req, res) => {
+  const woods = [{type:'pine wood', height:70,width:70,thick:70}, {type:'insulation', height:70,width:70,thick:70},{type:'multyLayer', height:70,width:70,thick:70}];
+
+  res.send(woods)
+})
 
 const x = 6;
 console.log(x*4);
