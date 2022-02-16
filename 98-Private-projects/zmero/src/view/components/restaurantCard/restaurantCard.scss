@@ -1,17 +1,34 @@
 .restaurantCard {
     border: .0625rem solid #d8d9db;
 
-    img {
-        max-width: 16rem;
+    &:hover {
+        transform: translateY(-1rem)
     }
 
-    h3 {}
+    img {
+        max-width: 16rem;
+
+    }
+
+    &__title {
+        h3 {
+            display: inline-block;
+            text-overflow: ellipsis;
+            overflow: hidden !important;
+            white-space: nowrap;
+            width: 16rem;
+            opacity: 0.9;
+        }
+    }
+
 
     &__booking {
         display: flex;
         align-items: center;
         justify-content: center;
         margin: auto;
+
+
 
         img {
             box-sizing: border-box;
@@ -37,4 +54,12 @@
             padding: 0.25rem 1rem
         }
     }
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+    text-decoration: none;
+    color: inherit;
 }
