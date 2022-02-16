@@ -1,3 +1,5 @@
+// declare function require(name:string);
+
 const express = require('express');
 const app = express();
 const port = 3000;
@@ -10,13 +12,16 @@ const port = 3000;
 
 app.use(express.static('public'));
 
+
 //data
 
-app.get('/getadat/all-users', (req, res) => {
-  res.send('Hello World!')
+app.get('/get-all-users', (req, res) => {
+  const users = [{id:1, name:'John'}, {id:2, name:'Mary'}];
+
+  res.send(users)
 })
 
-app.get('/all',(req,res)=>{
+app.get('/',(req,res)=>{
   console.log(req);
   res.send('Hello World! all');
 })
