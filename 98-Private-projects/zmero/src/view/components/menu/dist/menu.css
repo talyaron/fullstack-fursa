@@ -1,0 +1,139 @@
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  height: 4rem;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
+  z-index: 0;
+}
+.navbar__box {
+  display: flex;
+  max-width: 90%;
+  height: 100%;
+}
+.navbar__left {
+  display: flex;
+  width: 70%;
+}
+.navbar__left img {
+  height: auto;
+  width: auto;
+  max-height: 100%;
+  max-width: 100%;
+  align-items: flex-start;
+  overflow: hidden;
+  transform: scale(2);
+  margin-right: 3vw;
+  animation: fadeIn 1s infinite alternate;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    animation: spin;
+  }
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.navbar__left a {
+  color: black;
+  text-align: center;
+  padding: 20px 24px;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: Inter;
+}
+.navbar__left a:hover {
+  font-size: 20px;
+  color: #2a945b;
+}
+.navbar__right {
+  display: flex;
+  width: 30%;
+}
+.navbar__right__signin {
+  background-color: #2a945b;
+  border: none;
+  border-radius: 12px;
+  margin-top: 1.5vh;
+  margin-bottom: 1.5vh;
+  padding: 12px 24px;
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  white-space: nowrap;
+  font-weight: bold;
+}
+.navbar__right__signup {
+  background-color: #dff2e4;
+  border: none;
+  border-radius: 12px;
+  margin-right: 2vw;
+  margin-top: 1.5vh;
+  margin-bottom: 1.5vh;
+  text-align: center;
+  color: black;
+  font-size: 14px;
+  padding: 12px 24px;
+  white-space: nowrap;
+  font-weight: bold;
+}
+.navbar__right__search {
+  transform: scale(0.5);
+}
+
+.Modal {
+  position: absolute;
+  background: white;
+  top: 5rem;
+  left: 0rem;
+  right: 0rem;
+}
+.Modal__header__closebtn {
+  float: right;
+  overflow: hidden;
+  position: relative;
+  border: none;
+  padding: 0;
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  background: transparent;
+  color: #1da1f2;
+  font: inherit;
+  text-indent: 100%;
+  cursor: pointer;
+}
+.Modal__header__closebtn:focus {
+  outline: solid 0 transparent;
+  box-shadow: 0 0 0 2px #8ed0f9;
+}
+.Modal__header__closebtn:hover {
+  background: rgba(29, 161, 142, 0.1);
+}
+.Modal__header__closebtn:before, .Modal__header__closebtn:after {
+  position: absolute;
+  top: 0%;
+  left: calc(50% - .0625em);
+  width: 0.125em;
+  height: 70%;
+  border-radius: 0.125em;
+  transform: rotate(45deg);
+  background: currentcolor;
+  content: "";
+}
+.Modal__header__closebtn:after {
+  transform: rotate(-45deg);
+}
+.Modal .searchDiv {
+  background-image: none;
+}
+.Modal .searchDiv__title {
+  color: black;
+}
