@@ -1,6 +1,10 @@
-console.log('Hi all 2tre');
+declare function require(name: string);
 
-const x = 3;
-console.log(x * 4);
-console.log(process.env.USER);
+const express = require('express');
+const app = express();
+const port = 3000;
 
+app.use(express.static('public'));
+app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`)
+})

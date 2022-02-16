@@ -1,4 +1,7 @@
-console.log('Hi all 2tre');
-var x = 3;
-console.log(x * 4);
-console.log(process.env.USER);
+var express = require('express');
+var app = express();
+var port = 3000;
+app.use(express.static('public'));
+app.listen(port, function () {
+    console.log("Example app listening on port " + port);
+});
