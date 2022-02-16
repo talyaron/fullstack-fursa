@@ -1,17 +1,11 @@
 import {Link} from 'react-router-dom';
-import "./page2.scss";
+import ProductCard from './productCard'
 
 
 interface CardProp {
     setState:any;
     state:any;
 }
-
-interface Product{
-    name: string;
-    count: number;
-    id: number;
-  }
 
 function Page2(prop: CardProp){
     const {setState,state} = prop;
@@ -20,10 +14,8 @@ function Page2(prop: CardProp){
     return(
         <div>
             <h1>Selected Products</h1>
-            {state.map((product:Product) => {
-                return  (<li><span>Product Name: </span>{product.name} <span> Amount: </span> {product.count} </li>)
-            })}
-            <Link to='/page1'>Click to go back to  products page!</Link>
+            <ProductCard setState={setState} state={state} />
+            <Link to='/page1'>Go back to Store!</Link>
         </div>
     )
 }
