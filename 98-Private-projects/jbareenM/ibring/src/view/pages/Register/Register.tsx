@@ -1,21 +1,34 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Register.scss';
 import '../MainTemplate/MainTemplate';
 import logo from "../../logoAndPhotos/ibring.jpg";
 import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { signIn } from '../../../actions/Actions';
+
+interface actionIF {
+    type: string;
+    payload: boolean;
+}
 
 function Register() {
+    const loggedReducer = useSelector<any>(state => state.loggedReducer);
+    const dispatch = useDispatch();
+    useEffect(() => {
+        console.log({ "Logged": loggedReducer });
+    }, [loggedReducer]);
+
     const nav = useNavigate();
 
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
 
-
-
     function handleEmailPassLogin(e: any) {
         e.preventDefault();
         console.log({ email })
         console.log({ pass })
+
+        dispatch(signIn());
 
         nav('/greetings', {
             state: {

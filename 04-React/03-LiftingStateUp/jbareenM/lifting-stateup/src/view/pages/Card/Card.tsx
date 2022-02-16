@@ -1,37 +1,36 @@
 import './Card.scss';
-import Item from '../../components/Item/Item';
-import { useLocation } from 'react-router-dom';
-import { useState } from 'react';
-import { render } from '@testing-library/react';
+import { Link } from 'react-router-dom';
 
-interface myState {
-    cardItems: any;
-    setCardItems: React.Dispatch<React.SetStateAction<never[]>>;
-}
+interface ItemsIF {
+    name: string;
+    price: number;
+  }
 
-function Card() {
+function Card(props: any) {
+    const { cardItems, setCardItems } = props;
 
-    const {state}:any = useLocation();
-    console.log(state.cardItems);
-
-    // const { cardItems, setCardItems } = props;
-
-    function handleRemove(ev: any) {
+    function handleRemove(ev: any, item: ItemsIF) {
         ev.preventDefault();
-        // state.setCardItems([state.cardItems[0]]);
+        const copyItems: Array<ItemsIF> = Object.assign([], cardItems);
+        const filtered: Array<ItemsIF> = copyItems.filter((card: ItemsIF) => {
+            return card !== item;
+        });
+        setCardItems(filtered);
     }
 
     return (
         <div className="cardContainer">
-            {state.cardItems.map((item: any, index: any) => {
+            {cardItems.map((item: ItemsIF, index: number) => {
                 return (
-                    <div key={index}>
+                    <form key={index} onSubmit={(ev: any) => handleRemove(ev, item)}>
                         <label>{item.name}</label>
                         <label>{item.price}</label>
-                        <button onClick={handleRemove}>remove</button>
-                    </div>
+                        <input type="submit" value="remove from cart" />
+                    </form>
                 );
             })}
+
+            <Link to='/store'><button>store</button></Link>
         </div>
     );
 }
