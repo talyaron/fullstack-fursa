@@ -1,8 +1,8 @@
 {
-  "name": "example",
+  "name": "omar",
   "version": "1.0.0",
   "description": "",
-  "main": "./dist/index.js",
+  "main": "server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
