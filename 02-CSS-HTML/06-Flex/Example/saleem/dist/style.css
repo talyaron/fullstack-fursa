@@ -1,0 +1,6 @@
+.flex-container {
+  border: 2px dashed black;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,18 @@
+.nav{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    
+    a{
+        padding: 10px;
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+    }
+    .icons{
+        position: absolute;
+        right: 0px;
+        margin-top: 10px;
+    }
+
+}

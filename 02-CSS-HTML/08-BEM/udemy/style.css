@@ -1,0 +1,294 @@
+
+body{
+    font-family: Jazz LET, fantasy;
+    font-stretch: expanded;
+    text-shadow: 2px 2px #48c2a7;
+    line-height: 15px;
+}
+
+h1,p{
+    font-family: 'Courier New', Courier, monospace;
+}
+.header{
+    background-color: lightpink;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 0;
+    animation-name: example;
+    animation-duration:  20s ;
+
+}
+@keyframes example {
+  0%   {background-color: red;}
+  25%  {background-color: yellow;}
+  50%  {background-color: blue;}
+  100% {background-color: green;}
+}
+
+.header__left{
+    display: flex;
+    align-items: center;
+}
+
+.header__menu{
+    display: flex;
+    margin-left: 20px;
+
+}
+.element{
+    padding: 10px 5px;
+    text-align: center;
+}
+
+.header__right{
+    display: flex;
+    align-items: center;
+}
+
+
+
+.logo{
+    background-image: url('udemy.jpg');
+    width: 100px;
+    height: 40px;
+    background-size: cover;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+input{
+    width: 60%;
+      height: 25px;
+      margin: 0 auto;
+      border: auto;
+      border-radius: 10px;
+      text-align:center;
+}
+
+
+.btn{
+    background-color: teal;
+    border-radius: 5px;
+    padding: 10px 20px;
+    width: fit-content;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.205);
+    color: white;
+    
+}
+
+
+    .btn:hover {
+        background-color: #2e362f; /* Green */
+         
+      }
+
+    .btn--header{
+        background-color: rgb(187, 187, 187);
+    }
+
+    a{
+        text-decoration: none;    
+    }
+
+    .a_menue{
+        background-color: rgb(184, 207, 221);
+    }
+    
+    a:hover{
+        background-color: rgb(184, 207, 221);
+    }
+
+    /* .navbar {
+        overflow: hidden;
+        background-color: #333;
+        font-family: Arial, Helvetica, sans-serif;
+      } */
+      
+      .navbar a {
+        float: left;
+        font-size: 16px;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      
+      .dropdown {
+        float: left;
+        /* overflow: hidden; */
+        align-items: center;
+      
+        
+
+      }
+      
+      .dropdown .dropbtn {
+        cursor: pointer;
+        font-size: 16px;  
+        border: none;
+        outline: none;
+        color: white;
+        padding: 14px 16px;
+        background-color: inherit;
+        font-family: inherit;
+        margin: 0;
+        
+      }
+      
+   
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+      }
+      
+      .dropdown-content a {
+        float: none;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+      }
+      
+      .dropdown-content a:hover {
+        background-color: #ddd;
+      }
+      
+      .show {
+        display: block;
+      }
+
+      /* .container{
+          background-image: url('udemy1.jpg');
+          display: none;
+      } */
+
+      @media(min-width:468px){
+        .container-1{
+          display:flex;
+          /*
+          align-items:flex-start;
+          align-items:flex-end;
+          align-items:center;
+          
+          flex-direction:column;
+          */
+        }
+        
+        .container-2{
+          display:flex;  
+          /*
+          justify-content:flex-start;
+          justify-content:flex-end;
+          justify-content:center;
+          justify-content:space-around;
+          */
+          justify-content:space-between;
+        }
+      }
+      
+      .container-3{
+        display:flex;  
+        flex-wrap:wrap;
+        justify-content:space-between;
+      }
+      
+      .container-1 div, .container-2 div, .container-3 div{
+        border:1px #ccc solid;
+        padding:10px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+      }
+      
+      .box-1{
+        flex:2;
+        order:2;
+      }
+      
+      .box-2{
+        flex:1;
+        order:1;
+      }
+      
+      .box-3{
+        flex:1;
+        order: 3;
+      }
+      
+      .container-2-box{
+        flex-basis: 27%;  
+      }
+      
+      .container-3-box{
+        flex-basis:12%;
+      }
+
+      img:hover {
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+      }
+
+/* 
+      body {
+        text-align:left;
+      } */
+      
+      #container {
+        color:rgb(34, 12, 29);
+        text-transform: uppercase;
+        font-size:36px;
+        font-weight:bold;
+        padding-top:200px;  
+        position:fixed;
+        width:100%;
+        bottom:45%;
+        display:block;
+      }
+      
+      #flip {
+        height:50px;
+        overflow:hidden;
+      }
+      
+      #flip > div > div {
+        color:#fff;
+        padding:4px 12px;
+        height:45px;
+        margin-bottom:45px;
+        display:inline-block;
+      }
+      
+      #flip div:first-child {
+        animation: show 5s linear infinite;
+      }
+      
+      #flip div div {
+        background:#42c58a;
+      }
+      #flip div:first-child div {
+        background:#4ec7f3;
+      }
+      #flip div:last-child div {
+        background:#DC143C;
+      }
+      
+      @keyframes show {
+        0% {margin-top:-270px;}
+        5% {margin-top:-180px;}
+        33% {margin-top:-180px;}
+        38% {margin-top:-90px;}
+        66% {margin-top:-90px;}
+        71% {margin-top:0px;}
+        99.99% {margin-top:0px;}
+        100% {margin-top:-270px;}
+      }
+      
+     
+
+      

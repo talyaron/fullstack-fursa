@@ -1,15 +1,14 @@
-.Item {
+.Item{
     border: 1px solid gray;
     display: flex;
     color: blue;
     column-gap: 30px;
     margin: auto;
     height: 19.5%;
-
-    span {
+    
+    span{
         font-weight: bold;
     }
-
     button{
         background-color: cornflowerblue;
         margin-top: 15px;
