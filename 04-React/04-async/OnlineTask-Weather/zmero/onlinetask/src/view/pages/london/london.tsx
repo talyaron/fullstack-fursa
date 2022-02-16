@@ -63,7 +63,7 @@ function London() {
             <div className="background">
                 <div className="badget">
                     <div className="date">{strDate}</div>
-                    <div className="name">Tel Aviv<sup>IL</sup></div>
+                    <div className="name">London<sup>UK</sup></div>
                     <div className="temp">{london}<sup>°C</sup></div>
                 </div>
             </div>

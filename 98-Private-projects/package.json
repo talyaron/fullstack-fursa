@@ -2,10 +2,13 @@
   "dependencies": {
     "sass": "^1.49.7"
 <<<<<<< HEAD
+<<<<<<< HEAD
   },
   "devDependencies": {
     "@types/react-dom": "^17.0.11"
 =======
 >>>>>>> jbareenM
+=======
+>>>>>>> saleem
   }
 }
