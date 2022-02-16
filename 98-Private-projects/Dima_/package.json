@@ -1,8 +1,9 @@
 {
-  "name": "dimaa",
+  "name": "dima_",
   "version": "1.0.0",
   "description": "",
-  "main": "./dist/server.ts",
+  "proxy": "http:/localhost:4000",
+  "main": "server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,5 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.18"
   }
 }
