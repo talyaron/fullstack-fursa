@@ -5,13 +5,12 @@ body {
 
 .App {
   text-align: center;
-
-  .background {
-    background: linear-gradient(rgba(0, 0, 0, .3), rgba(0, 0, 0, .418)), url(https://i.ibb.co/R9hwSbx/bg.jpg);
-    background-size: cover;
-    height: 91.2vh;
-    background-position: 50%;
-  }
+}
+.App .background {
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.418)), url(https://i.ibb.co/R9hwSbx/bg.jpg);
+  background-size: cover;
+  height: 91.2vh;
+  background-position: 50%;
 }
 
 .App-logo {
@@ -24,7 +23,6 @@ body {
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -44,7 +42,6 @@ body {
   from {
     transform: rotate(0deg);
   }
-
   to {
     transform: rotate(360deg);
   }

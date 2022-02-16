@@ -2,14 +2,16 @@ import React from 'react'
 import { useState, useEffect } from "react";
 import './newyork.scss'
 import Ajv from "ajv";
+import Menu from '../../components/menu/menu'
 const ajv = new Ajv();
+
 const weatherschema = {
     type: "object",
     properties: {
         current: {
             type: "object",
             properties: {
-                temperature: { type: 'number' }
+                temp_c: { type: 'number' }
             }
         },
     },
@@ -20,13 +22,21 @@ const weatherschema = {
 const validate = ajv.compile(weatherschema);
 
 function NewYork() {
-    const [newyork, setNewyork] = useState([]);
+    const [newyork, setNewYork] = useState(0);
+    let newDate = new Date()
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let day = days[newDate.getDay()];
+    let strDate = 'o Y m d'
+        .replace('Y', "" + newDate.getFullYear())
+        .replace('m', "" + newDate.getMonth() + 1)
+        .replace('d', "" + newDate.getDate())
+        .replace('o', day);
     useEffect(() => {
         console.log("use effect");
 
         getData().then((e: any) => {
-            setNewyork(e);
-            console.log(e);
+            setNewYork(e.current.temp_c);
+            console.log(e.current.temp_c);
             console.log(newyork)
 
         }).catch(err => {
@@ -35,7 +45,7 @@ function NewYork() {
     }, []);
     function getData() {
         return new Promise((resolve, reject) => {
-            fetch(`http://api.weatherstack.com/current?access_key=c5b7804e5d20cb19bd8239fc79235b93&query=New20%York`)
+            fetch(`http://api.weatherapi.com/v1/current.json?key=91901e4c18864d49872135614221502&q=new york&aqi=no`)
                 .then((response) => response.json())
                 .then((e) => {
                     const valid = validate(e);
@@ -49,7 +59,16 @@ function NewYork() {
         });
     }
     return (
-        <div>{}</div>
+        <div className="main">
+            <Menu></Menu>
+            <div className="background">
+                <div className="badget">
+                    <div className="date">{strDate}</div>
+                    <div className="name">New York<sup>US</sup></div>
+                    <div className="temp">{newyork}<sup>°C</sup></div>
+                </div>
+            </div>
+        </div>
     )
 }
 
