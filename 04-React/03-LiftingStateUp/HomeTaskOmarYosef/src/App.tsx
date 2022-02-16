@@ -12,8 +12,6 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Store cartItems={cartItems} setcartItems={setcartItems} />} />
-        <Route path="Store" element={<Store cartItems={cartItems} setcartItems={setcartItems} />}>
-        </Route>
         <Route path="Cart" element={<Cart cartItems={cartItems} setcartItems={setcartItems} />} />
       </Routes>
     </BrowserRouter>

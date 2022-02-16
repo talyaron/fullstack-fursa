@@ -13,7 +13,8 @@ function Header() {
       <div className='header-left'>   <a className="active" href="#home">Home</a>
       </div>
       <div className="header-right">
-      <a href="#contact">To The Cart</a>
+      <a href="#contact"></a>
+      <Link to="/cart">To The Cart</Link>
         <a href="#contact">Requests</a>
         <a href="#about">Profile</a>
         <a href="#contact">Settings</a>

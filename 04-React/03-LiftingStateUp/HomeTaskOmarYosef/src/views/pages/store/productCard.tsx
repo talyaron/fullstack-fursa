@@ -22,7 +22,7 @@ function ProductCard(props: ProductProps) {
     }
     return (
       <div className="card">
-        <img src={img}></img>
+        <img className="image" src={img}></img>
         <span className="card__Title">{name}</span>
         <Button sx={{fontSize:18}}onClick={add_item} variant="contained" startIcon={<AddShoppingCartIcon />}>
           Add to cart

@@ -24,4 +24,3 @@ render(
   </BrowserRouter>,
   rootElement
 );
-

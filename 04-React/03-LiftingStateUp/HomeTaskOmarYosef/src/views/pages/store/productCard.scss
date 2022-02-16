@@ -3,10 +3,12 @@
     flex-direction: column;
     align-items: center;
     text-decoration: none;
-
+    
     img {
         width: 15rem;
         height: 15rem;
+        flex-wrap:wrap ;
+        background-color: red;
     }
 
     &__Title {
