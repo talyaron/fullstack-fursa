@@ -1,8 +1,8 @@
-// declare function require(name:string);
+declare function require(name:string);
 
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = 4000;
 
 
 //routes for data
@@ -10,7 +10,7 @@ const port = 3000;
 
 //static files
 
-app.use(express.static('public'));
+app.use(express.static('client/build'));
 
 
 //data
