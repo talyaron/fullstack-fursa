@@ -2,18 +2,18 @@
   "name": "example",
   "version": "1.0.0",
   "description": "",
-  "main": "./dist/server.ts",
+  "main": "server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "@types/node": "^17.0.18",
-    "typescript": "^4.5.5"
-  },
   "dependencies": {
     "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "ts-node": "^10.5.0",
+    "typescript": "^4.5.5"
   }
 }
