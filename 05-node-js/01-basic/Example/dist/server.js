@@ -1,17 +1,19 @@
-var express = require('express');
-var app = express();
-var port = 3000;
+// declare function require(name:string);
+const express = require('express');
+const app = express();
+const port = 3000;
 //routes for data
 //static files
 app.use(express.static('public'));
 //data
-app.get('/getadat/all-users', function (req, res) {
-    res.send('Hello World!');
+app.get('/get-all-users', (req, res) => {
+    const users = [{ id: 1, name: 'John' }, { id: 2, name: 'Mary' }];
+    res.send(users);
 });
-app.get('/all', function (req, res) {
+app.get('/', (req, res) => {
     console.log(req);
     res.send('Hello World! all');
 });
-app.listen(port, function () {
-    console.log("Example app listening on port " + port);
+app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`);
 });
