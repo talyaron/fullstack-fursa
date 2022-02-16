@@ -1,13 +1,39 @@
+
+
 .card{
-    background-color: $mainColor;
-    border-radius: $borderRadius;
-    margin: 5px;
-    width: $cardwidth;
-    height: $cardlength;
+    background-color:rgb(185, 109, 9);
+    border-radius: 10px;
+    color: white;
+    margin:5px;
+   width: 20vw;
+    box-shadow: 2px 2px 2px 2px rgb(61, 59, 55);
+    
     img{
         width: 50%;
         height: 30%;
         margin-top: 20%;
     }
+    p{
+        color: rgb(2, 34, 63);
+        font-size: 1rem;
+
+    }
+    h1{
+        font-size: 1rem;
+    }
+  
     
+}
+.button{
+    width:100px;
+    height:40%;
+    position: relative;
+    img{
+        position: absolute;
+        
+    }
+    
+}
+.input{
+    width:100%
 }
