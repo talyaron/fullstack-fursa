@@ -61,8 +61,8 @@ function London() {
             react_1["default"].createElement("div", { className: "badget" },
                 react_1["default"].createElement("div", { className: "date" }, strDate),
                 react_1["default"].createElement("div", { className: "name" },
-                    "Tel Aviv",
-                    react_1["default"].createElement("sup", null, "IL")),
+                    "London",
+                    react_1["default"].createElement("sup", null, "UK")),
                 react_1["default"].createElement("div", { className: "temp" },
                     london,
                     react_1["default"].createElement("sup", null, "\u00B0C"))))));
