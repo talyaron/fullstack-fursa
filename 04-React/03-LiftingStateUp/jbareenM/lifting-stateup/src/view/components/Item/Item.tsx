@@ -1,5 +1,10 @@
 import './Item.scss';
 
+interface ItemsIF {
+    name: string;
+    price: number;
+}
+
 function Item(props: any) {
     const { info, cardItems, setCardItems } = props;
     
