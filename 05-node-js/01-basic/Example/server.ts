@@ -1,3 +1,5 @@
+declare function require(name:string);
+
 const express = require('express');
 const app = express();
 const port = 3000;
@@ -9,6 +11,7 @@ const port = 3000;
 //static files
 
 app.use(express.static('public'));
+
 
 //data
 
