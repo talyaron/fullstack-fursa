@@ -1,0 +1,21 @@
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
+}
+.nav a {
+  padding: 1.5rem;
+  text-decoration: none;
+  font-family: Inter;
+  color: black;
+  font-size: 15px;
+  font-family: Inter;
+}
+.nav a:hover {
+  color: #766d96;
+}
+.nav img {
+  margin-right: 3rem;
+}
