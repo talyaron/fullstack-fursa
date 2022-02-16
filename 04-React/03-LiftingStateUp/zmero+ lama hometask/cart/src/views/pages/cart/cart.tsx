@@ -12,12 +12,11 @@ interface productprop {
     id: number;
 }
 
-
 function Cart(prop: cartprop) {
     console.log(prop.cartItems)
     return (
         <div>
-            <Link to="/store"> To Cart</Link>
+            <Link to="/"> To Store</Link>
             <div>
                 {prop.cartItems.map((product: productprop) => {
                     return <CartItem key={product.id} name={product.name} id={product.id} img={product.img} cartItems={prop.cartItems} setcartItems={prop.setcartItems} />

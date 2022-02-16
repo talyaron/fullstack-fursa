@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import {useState} from 'react';
+=======
+import {useState, useEffect} from 'react';
+>>>>>>> zmero
 import './App.scss';
 
 //components
@@ -18,10 +22,31 @@ interface Place{
 }
 
 function App() {
+<<<<<<< HEAD
+=======
+
+  useEffect(()=>{
+    fetch('/get-all-users').then(res=>res.json()).then(data=>{
+      
+      console.log(data)
+      setPpls(data);
+      
+    })
+  },[])
+const [ppls,setPpls ] = useState([])
+>>>>>>> zmero
   const [genralCounter, setGeneralCounter] = useState(0)
   return (
     <div className="App">
       <header className="App-header">
+<<<<<<< HEAD
+=======
+        {ppls.map((ppl:any,index)=>{
+          return <p key={index}>{ppl.name}</p>
+        })}
+      
+    
+>>>>>>> zmero
         <h1>Number of counts:{genralCounter}</h1>
       {students.map((student, index)=>{
         const {name, place, img} = student; //deconstractor 
