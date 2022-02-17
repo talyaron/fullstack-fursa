@@ -1,98 +1,50 @@
-import './signUp.scss';
-import React, { useState } from 'react';
-import { Link } from "react-router-dom";
-import FormControl, { useFormControl } from '@mui/material/FormControl';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import Box from '@mui/material/Box';
-import FormHelperText from '@mui/material/FormHelperText';
-
-
-
+import React from 'react'
+import { Grid, Paper, Avatar, Typography, TextField, Button } from '@material-ui/core'
+import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import { Link } from 'react-router-dom';
 const signUp = () => {
-    function handelSubmit(ev:any){
+    const paperStyle = { padding: '30px 20px', width: 300, margin: "20px auto" }
+    const headerStyle = { margin: 0 }
+    const avatarStyle = { backgroundColor: '#1bbd7e' }
+    const marginTop = { marginTop: 5 }
+    function handelSubmit(){
 
     }
-    function MyFormHelperText() {
-        const { focused } = useFormControl() || {};
-      
-        const helperText = React.useMemo(() => {
-          if (focused) {
-            return 'please add your uosername';
-          }
-      
-          return 'username';
-        }, [focused]);
-      
-        return <FormHelperText>{helperText}</FormHelperText>;
-      }
     return (
-        <div className='warpper'>
-
-            <div>
-                <div >
-                    <h1> Sign Up</h1>
-                </div>   
-                  <br /><br />
-                  <form onSubmit={handelSubmit}>
-                {/* <div>
-                    Username  
-                    <input type="text" required />
-                </div> */}
-
-    
-                <div>
-                    <Box component="form" noValidate autoComplete="off">
-      <FormControl sx={{ width: '25ch' }}>
-        <OutlinedInput placeholder="Please enter text" />
-        <MyFormHelperText />
-      </FormControl>
-    </Box>
-    <Box component="form" noValidate autoComplete="off">
-      <FormControl sx={{ width: '25ch' }}>
-        <OutlinedInput placeholder="Please enter text" />
-        <MyFormHelperText />
-      </FormControl>
-    </Box>
-                </div>
-                <div>
-                <br />
-                    Username  
-                    <input type="text"  required/>
-                </div>
-                <div>
-                <br />
-                    Username  
-                    <input type="text" required />
-                </div>
-                <div>
-                <br />
-                    Password  
-                    <input type="password" required />
-                </div>
-                <div>
-                <br />
-                    re-Password  
-                    <input type="password" required />
-                </div>
-                <div>
-                <br />
-                    Byer/seler  
-                    <input type="radio" id="html" name="fav_language" value="HTML" />
-                    <label>Byer</label>
-                    <input type="radio" id="html" name="fav_language" value="HTML" />
-                    <label>S</label>
-                </div>
-
-                <Link type='submit' to="/Group">signUp</Link>
-                <br />
+        <Grid>
+            <Paper elevation={20} style={paperStyle}>
+                <Grid>
+                    <Avatar style={avatarStyle}>
+                        <AddCircleOutlineOutlinedIcon />
+                    </Avatar>
+                    <h2 style={headerStyle}>Sign Up</h2>
+                    </Grid>
+                <form onSubmit={handelSubmit}>
+                    <TextField fullWidth label='Name' required placeholder="Enter your name" />
+                    <TextField fullWidth label='Email' required placeholder="Enter your email" />
+                    <FormControl component="fieldset" required style={marginTop}>
+                        <FormLabel component="legend">Gender</FormLabel>
+                        <RadioGroup aria-label="gender"  name="gender" style={{ display: 'initial' }}>
+                            <FormControlLabel value="female" control={<Radio />} label="Female" />
+                            <FormControlLabel value="male" control={<Radio />} label="Male" />
+                        </RadioGroup>
+                    </FormControl>
+                    <TextField fullWidth label='Phone Number' required placeholder="Enter your phone number" />
+                    <TextField fullWidth label='Password' required placeholder="Enter your password"/>
+                    <TextField fullWidth label='Confirm Password' required placeholder="Confirm your password"/>
+                    <Link to="/Group">
+                    <Button type='submit'  variant='contained' color='primary'>Sign up</Button>
+                    </Link>
                 </form>
-                <Link to="/HomePage">cancle</Link>
-
-                 
-            </div>
-        </div>
-    )
+            </Paper>
+        </Grid>
+    ) 
 }
-
 
 export default signUp;
