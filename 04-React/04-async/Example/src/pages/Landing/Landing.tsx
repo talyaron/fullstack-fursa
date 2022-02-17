@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
 import Ajv from "ajv";
-const ajv = Ajv();
 
+const ajv = Ajv();
 const albumsSchema = {
   type: "object",
   properties: {

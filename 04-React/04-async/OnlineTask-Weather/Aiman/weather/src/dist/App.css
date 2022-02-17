@@ -1,8 +1,14 @@
 .App {
+  text-align: center;
+}
+.App nav {
   display: flex;
-  flex-direction: column;
-  margin: 0;
-  position: relative;
+  gap: 1rem;
+  justify-content: space-between;
+  padding: 0.5rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin: 0.5rem;
 }
 
 .App-logo {
@@ -15,7 +21,6 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
