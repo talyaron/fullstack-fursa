@@ -28,16 +28,16 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function createData(name: string, calories: number, fat: number, carbs: number, protein: number) {
-  return { name, calories, fat, carbs, protein };
+function createData(name: string, city: string, age: number) {
+  return { name, city, age};
 }
 
 const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
+  createData('Majd Nassar','Araba',25),
+  createData('Alaa ali aga', 'Sakhnin',25),
+  createData('cristiano ronaldo','Portugal',37),
+  createData('mohammad salah','Egybt',28),
+  createData('karim benzema', 'france',33)
 ];
 
 export default function Mygroups() {
@@ -46,11 +46,9 @@ export default function Mygroups() {
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Dessert (100g serving)</StyledTableCell>
-            <StyledTableCell align="right">Calories</StyledTableCell>
-            <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>
+            <StyledTableCell>FULL NAME</StyledTableCell>
+            <StyledTableCell align="right">CITY</StyledTableCell>
+            <StyledTableCell align="right">AGE</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -59,10 +57,8 @@ export default function Mygroups() {
               <StyledTableCell component="th" scope="row">
                 {row.name}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.calories}</StyledTableCell>
-              <StyledTableCell align="right">{row.fat}</StyledTableCell>
-              <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-              <StyledTableCell align="right">{row.protein}</StyledTableCell>
+              <StyledTableCell align="right">{row.city}</StyledTableCell>
+              <StyledTableCell align="right">{row.age}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
