@@ -16,12 +16,13 @@ function Input(prop:Arr_state) {
     if (Sentance) {
       setArr([...arr , { value: Sentance}]);
       console.log(Sentance);
-      setSentance('');
+
     }
+    setSentance("");
   }
   return (
     <div>
-      <input onChange={handleChange} type="text" />
+      <input value={Sentance} onChange={handleChange} type="text" />
       <button onClick={handelClick}>Send</button>
     </div>
   );

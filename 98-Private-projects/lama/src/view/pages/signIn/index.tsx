@@ -7,10 +7,12 @@ import LoginIcon from '@mui/icons-material/Login';
 import GoogleIcon from '@mui/icons-material/Google';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import { Link } from "react-router-dom";
+import './index.scss';
+
 function SignIn() {
     return (
         <div className = 'signin'> 
-        <h3>Our Farm</h3>
+        <img className="icon" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkwQXPGGUkeJfNF9_zBIWGlYeatiFav_Cemw&usqp=CAU" alt="" />
         <p>Email</p>
         <input type="text" />
         <p>Password</p>

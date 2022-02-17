@@ -1,0 +1,55 @@
+.Card {
+    display: flex;
+    flex-direction: column;
+    // flex-wrap: wrap;
+
+    border: .0625rem solid #d8d9db;
+    // background-color: rgba(250, 235, 215, 0.562);
+    border-radius: 10px;
+    margin: 5px;
+    height: 40vh;
+    flex: 1;
+    // padding: $padding;
+    width: 20vw;
+
+    &:hover {
+        transform: translateY(-1rem)
+    }
+
+    img {
+        box-sizing: border-box;
+        width: 90%;
+        height: 30vh;
+
+
+    }
+
+    &__title {
+        h3 {
+            display: inline-block;
+            text-overflow: ellipsis;
+            overflow: hidden !important;
+            white-space: nowrap;
+            width: 16rem;
+            opacity: 0.9;
+        }
+    }
+
+
+    &__desc {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+
+    }
+
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+    text-decoration: none;
+    color: inherit;
+}

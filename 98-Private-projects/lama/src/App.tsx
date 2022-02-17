@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.scss';
 // import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
+import Header from './view/components/header/header';
 
 import Card from './view/components/card/Card';
 import SignUp from './view/pages/signUp/index'
@@ -27,10 +28,10 @@ function App() {
         <Card />
         <Card /> */}
 
-        
-        <SignUp />
+        <Header />
+        {/* <SignUp /> */}
 
-        {/* <Homepage /> */}
+        <Homepage />
 
         {/* {students.map((student, index)=>{
         return <Card key={index} title={student.name} place={student.place} />

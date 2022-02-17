@@ -24,8 +24,13 @@ function Card(prop:CardProp){
     return(
         <div className="card">
         <img src={img} alt="" />
-        <h5>name is :{name} age is: {age}</h5>
-       
+        <div>
+
+        <h5>name is :{name} </h5>
+        </div>
+        <div>
+        <h5>age is: {age}</h5>
+        </div>
         {/* <p>{name}</p> */}
          
   

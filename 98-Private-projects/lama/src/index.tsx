@@ -16,6 +16,8 @@ import Store from './view/pages/store/Store';
 import Product from "./view/pages/product/Product";
 import HomePage from "./view/pages/homepage/index";
 import SignIn from "./view/pages/signIn/index";
+import SignUp from "./view/pages/signUp/index";
+import Trainers from "./view/pages/trainers/trainers";
 
 // ReactDOM.render(
 //   <React.StrictMode>
@@ -43,6 +45,8 @@ render(
       </Route>
       <Route path="homepage" element={<HomePage />} />
       <Route path="signIn" element={<SignIn />} />
+      <Route path="signUp" element={<SignUp />} />
+      <Route path="trainers" element={<Trainers />} />
       <Route path="product/:productId" element={<Product />} />
     </Routes>
   </BrowserRouter>,
