@@ -11,7 +11,7 @@ interface CardProp {
 }
 
 function Card(prop: CardProp) {
-  const { name, place, img } = prop.info;
+  const { name, place, img } = prop.info; 
   const {setGeneralCounter,genralCounter} = prop;
 
   //state

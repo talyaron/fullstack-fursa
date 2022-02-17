@@ -1,0 +1,16 @@
+.card {
+  width: 100%;
+  font-size: 0.7em;
+  background-color: white;
+  border-radius: 0.3rem;
+  img {
+    width: inherit;
+    height: inherit;
+    border-top-left-radius: 0.3rem;
+    border-top-right-radius: 0.3rem;
+    object-fit: cover;
+  }
+  &:hover {
+      transform: scale(1.2);
+  }
+}
