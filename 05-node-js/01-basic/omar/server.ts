@@ -14,6 +14,7 @@ console.log(dirPath)
 app.use(express.static(dirPath));
 
 
+
 //data
 
 app.get('/get-all-users', (req, res) => {

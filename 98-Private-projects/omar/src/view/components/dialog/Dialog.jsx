@@ -1,38 +1,40 @@
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
+import * as React from 'react';
+import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import { blueGrey, green, purple, red } from '@mui/material/colors';
 
-const DialogComp = ({open, handleClose, title, content, onConfirm}) => {
-    const handleAgree = () => {
-        onConfirm();
-        handleClose();
-    }
-    return (
-    <Dialog
-    open={open}
-    onClose={handleClose}
-    aria-labelledby="alert-dialog-title"
-    aria-describedby="alert-dialog-description"
-  >
-    <DialogTitle id="alert-dialog-title">
+
+
+const ColorButton = styled(Button)(({ theme }) => ({
+  color: theme.palette.getContrastText(red[500]),
+  backgroundColor: blueGrey[500],
+  '&:focus': {
+    boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',
+    backgroundColor: 'green',
+  },
+  '&:active': {
+    boxShadow: 'none',
+    backgroundColor: '#0062cc',
+    borderColor: '#005cbf',
+  },
+  '&:hover': {
+    backgroundColor: green[700],
+  },
+}));
+
+
+
+export default function CustomizedButtons({title,style}) {
+  return (
+    <ColorButton
+    sx={{
+      width: 150,
+      fontSize: 20,
+    }}
+      variant="contained"
+    >
       {title}
-    </DialogTitle>
-    <DialogContent>
-      <DialogContentText id="alert-dialog-description">
-        {content}
-      </DialogContentText>
-    </DialogContent>
-    <DialogActions>
-      <Button onClick={handleClose}>Disagree</Button>
-      <Button onClick={handleAgree} autoFocus>
-        Agree
-      </Button>
-    </DialogActions>
-  </Dialog>
-  )
+    </ColorButton>
+  );
 }
-
-export default DialogComp

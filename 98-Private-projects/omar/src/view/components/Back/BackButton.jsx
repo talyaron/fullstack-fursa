@@ -7,10 +7,20 @@ import Stack from '@mui/material/Stack';
 
 function BackButton() {
     return (
-        <div className = 'BackButton'> 
-            <Button size="large" variant="contained" startIcon={<ArrowCircleLeftIcon/>}> back</Button>
-        </div>
-        
+      <div className="BackButton">
+        <Button
+          sx={{
+            width: 150,
+            fontSize: 20,
+          }}
+          size="large"
+          variant="contained"
+          startIcon={<ArrowCircleLeftIcon />}
+        >
+          {" "}
+          back
+        </Button>
+      </div>
     );
   }
 
