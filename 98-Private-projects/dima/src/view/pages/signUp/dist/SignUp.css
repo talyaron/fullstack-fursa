@@ -1,0 +1,21 @@
+.SignUpBox {
+  margin-top: 40px;
+  border: 5px solid #b5739d;
+  margin: auto;
+  margin-top: 50px;
+  color: #b5739d;
+  font-style: italic;
+  width: 30vw;
+  text-align: center;
+}
+.SignUpBox form input {
+  background-color: #e6d0de;
+  color: #b5739d;
+  height: 20px;
+  width: 250px;
+  border-radius: 10px;
+  border: solid;
+}
+.SignUpBox form p {
+  margin-left: -100px;
+}

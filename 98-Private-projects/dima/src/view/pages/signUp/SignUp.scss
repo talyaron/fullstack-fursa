@@ -1,0 +1,24 @@
+.SignUpBox{
+    margin-top: 40px;
+    border: 5px solid rgb(181, 115, 157);
+    margin: auto;
+    margin-top: 50px;
+    color: rgb(181, 115, 157);
+    font-style: italic;
+    width: 30vw;
+    //height: ;
+    text-align: center;
+    form{
+        input{
+            background-color: rgb(230, 208, 222);
+            color: rgb(181, 115, 157);
+            height: 20px;
+            width: 250px;
+            border-radius: 10px;
+            border: solid;
+        }
+        p{
+            margin-left: -100px;
+        }
+    }
+}

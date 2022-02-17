@@ -1,0 +1,42 @@
+.LogInBox {
+  margin-top: 40px;
+  border: 5px solid #b5739d;
+  margin: auto;
+  margin-top: 70px;
+  color: #b5739d;
+  font-style: italic;
+  width: 30vw;
+  height: 70vh;
+  text-align: center;
+}
+.LogInBox .wrapper {
+  margin-top: 30px;
+}
+.LogInBox .wrapper input {
+  background-color: #e6d0de;
+  color: #b5739d;
+  height: 20px;
+  width: 250px;
+  border-radius: 10px;
+  border: solid;
+}
+.LogInBox .wrapper h1 {
+  font-size: 2.5rem;
+}
+.LogInBox .wrapper span {
+  font-weight: bold;
+}
+.LogInBox .wrapper .Button {
+  margin: auto;
+  text-align: center;
+  justify-content: center;
+  border: 2px solid #b5739d;
+  background-color: #e6d0de;
+  border-radius: 10px;
+  width: 80px;
+  height: 20px;
+}
+.LogInBox .wrapper p {
+  font-size: 1.2rem;
+  text-align: center;
+}

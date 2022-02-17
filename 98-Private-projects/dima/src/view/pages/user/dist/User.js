@@ -6,7 +6,7 @@ var Profile_1 = require("../../components/profile/Profile");
 var Recipes_1 = require("../../components/recipes/Recipes");
 var userInfo = [{ name: "Dima Abbas", phone: "0525041028", email: "dimaabbas25@gmail.com" }];
 function User() {
-    return (React.createElement("div", { className: "App" },
+    return (React.createElement("div", { className: "User" },
         React.createElement("div", { className: "wrapper1" },
             React.createElement(menu_1["default"], null)),
         React.createElement("div", { className: "wrapper2" },

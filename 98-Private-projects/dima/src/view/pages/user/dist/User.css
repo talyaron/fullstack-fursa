@@ -1,0 +1,23 @@
+.User {
+  margin: auto;
+}
+.User .wrapper1 {
+  width: 100vw;
+  display: flex;
+}
+.User .wrapper2 {
+  margin: auto;
+  display: grid;
+  width: 80vw;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 30px;
+  column-gap: 20px;
+}
+.User .wrapper2 .profile {
+  grid-column: 1/2;
+}
+.User .wrapper2 .recipes {
+  grid-column: 2/5;
+  border: 2px solid #b5739d;
+  color: #b5739d;
+}

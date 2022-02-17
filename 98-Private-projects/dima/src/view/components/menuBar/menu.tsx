@@ -7,7 +7,7 @@ import logo from './logo.png';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-
+import './menu.scss';
 
 function Bagemenu() {
 
@@ -59,7 +59,7 @@ function Bagemenu() {
                 >
                     <MenuItem onClick={handleClose1}>Profile</MenuItem>
                     <MenuItem>
-                        <Link to="/LogIn"> Logout</Link>
+                        <Link to="/"> Logout</Link>
                     </MenuItem>
                 </Menu>
             </div>

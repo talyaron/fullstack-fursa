@@ -1,5 +1,6 @@
 import edit from './edit.png';
 import chief from './chief.jpg';
+import './Profile.scss';
 
 interface profileInfo {
     info: {
