@@ -11,12 +11,35 @@ interface actionIF {
     payload: boolean;
 }
 
+interface userIF {
+    email: string;
+    pass: string;
+}
+
 function Register() {
     const loggedReducer = useSelector<any>(state => state.loggedReducer);
     const dispatch = useDispatch();
+    const [allUsers, setAllUsers] = useState<Array<userIF>>([]);
+    const [user, setUser] = useState<userIF>();
     useEffect(() => {
         console.log({ "Logged": loggedReducer });
     }, [loggedReducer]);
+
+    function isUser(query: string) {
+        return new Promise((resolve, reject) => {
+            fetch(`/is-users?${query}`)
+                .then(r => r.json())
+                .then(data => {
+                    if (data.ok) {
+                        setUser(data.user);
+                        resolve(true);
+                    } else {
+                        resolve(false);
+                    }
+                })
+                .catch(err => reject(err))
+        })
+    }
 
     const nav = useNavigate();
 
@@ -28,13 +51,26 @@ function Register() {
         console.log({ email })
         console.log({ pass })
 
-        dispatch(signIn());
+        // const found = users.find(user => (user.email === email && user.pass === pass));
 
-        nav('/greetings', {
-            state: {
-                email: email
-            }
-        })
+        isUser(`email=${email}&pass=${pass}`)
+            .then((json) => {
+                console.log("isUer:", json);
+                if (json) {
+                    dispatch(signIn());
+
+                    nav('/greetings', {
+                        state: {
+                            email: email
+                        }
+                    })
+                }else{
+                    console.log("user doesn't exists!");
+                }
+            })
+            .catch((err) => {
+                console.error(err);
+            });
     }
 
     return (
