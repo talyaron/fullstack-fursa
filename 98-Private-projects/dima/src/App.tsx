@@ -1,35 +1,18 @@
-import './App.scss';
-import React from 'react';
-import Bagemenu from './view/menuBar/menu';
-import Profile from './view/profile/Profile';
-import Recipes from './view/recipes/Recipes';
+import { render } from "react-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import LogIn from './view/pages/logIn/LogIn';
+import User from './view/pages/user/User';
 
-const userInfo:Array<info> = [{name:"Dima Abbas",phone:"0525041028",email:"dimaabbas25@gmail.com"}];
-
-interface info{
-  name:string;
-  phone:string;
-  email:string;
-}
-
-function App() {
-  return (
-    <div className="App">
-      <div className="wrapper1">
-        <Bagemenu />
-      </div>
-      <div className="wrapper2"> 
-        <div className="profile">
-          {userInfo.map((user, index) => {
-            const{name,phone,email} = user
-            return <Profile key={index} info={{name,phone,email}}/>})}
-        </div>
-        <div className="recipes">
-          <Recipes />
-        </div>
-      </div>
-    </div>
+function App(){
+  return(
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LogIn />} />
+        <Route path="User" element={<User />} />
+      </Routes>
+    </BrowserRouter>
   );
+  
 }
 
 export default App;
