@@ -20,13 +20,15 @@ interface stateIF {
 
 function List() {
     const loggedReducer = useSelector<any>(state => state.loggedReducer);
-    const listReducer:any = useSelector<any>(state => state.listFormReducer.list);
+    const listReducer: any = useSelector<any>(state => state.listFormReducer.list);
     const dispatch = useDispatch();
     const nav = useNavigate();
+    const [list, setList] = useState<Array<any>>([]);
 
     useEffect(() => {
         console.log({ "Logged": loggedReducer });
         console.log({ "List": listReducer })
+        setList([listReducer]);
     }, [loggedReducer, listReducer]);
     return (
         <div className="mainTemplate">
@@ -35,31 +37,34 @@ function List() {
             </div>
             <div className="mainContent">
                 <label className='templateTitle marginTitleNormal'>groupName: {listReducer?.groupName}</label>
-                <div className="listForm">
-                    <div className="rowList">
-                        <label>date: <span>{listReducer?.date}</span></label>
-                    </div>
-                    <div className="rowList">
-                        <label>groupName: <span>{listReducer?.groupName}</span></label>
-                    </div>
-                    <div className="rowList">
-                        <label>meetType: <span>{listReducer?.meetType}</span></label>
-                    </div>
-                    <div className="rowList">
-                        <label>time: <span>{listReducer?.time}</span></label>
-                    </div>
-                    <div className="rowList">
-                        <label>reminder: <span>{listReducer?.reminder}</span></label>
-                    </div>
-                    <div className="rowList">
-                        <label>place: <span>{listReducer?.place}</span></label>
-                    </div>
-                    <div className="rowList">
-                        <label>fewWords: <span>{listReducer?.fewWords}</span></label>
-                    </div>
-                </div>
+                {list.map((elem, index) => {
+                    return (
+                        <div key={index} className="listForm">
+                            <div className="rowList">
+                                <label>date: <span>{elem.date}</span></label>
+                            </div>
+                            <div className="rowList">
+                                <label>groupName: <span>{elem.groupName}</span></label>
+                            </div>
+                            <div className="rowList">
+                                <label>meetType: <span>{elem.meetType}</span></label>
+                            </div>
+                            <div className="rowList">
+                                <label>time: <span>{elem.time}</span></label>
+                            </div>
+                            <div className="rowList">
+                                <label>reminder: <span>{elem.reminder}</span></label>
+                            </div>
+                            <div className="rowList">
+                                <label>place: <span>{elem.place}</span></label>
+                            </div>
+                            <div className="rowList">
+                                <label>fewWords: <span>{elem.fewWords}</span></label>
+                            </div>
+                        </div>
+                    );
+                })}
             </div>
-
         </div>
     );
 }
