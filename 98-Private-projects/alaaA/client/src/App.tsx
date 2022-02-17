@@ -12,6 +12,8 @@ import SignUp from "./view/pages/signUp/signUp";
 import AboutUs from "./view/pages/AboutUs/aboutUs";
 // import Cart from "./view/pages/cart/cart";
 import Store from "./view/pages/store/store";
+import Mygroups from './view/pages/mygroups/mygroups';
+
 
 interface product {
   id:number;
@@ -37,6 +39,7 @@ return(
     <Route path="AboutUs" element={<AboutUs />} />
     <Route path="HomePage" element={<HomePage />} />
     <Route path="Store" element={<Store />} />
+    <Route path="mygroups" element={<Mygroups />} />
     {/* <Route></Route> */}
     {/* </Route> */}
     
