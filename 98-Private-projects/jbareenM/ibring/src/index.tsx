@@ -12,6 +12,7 @@ import ListForm from './view/pages/ListForm/ListForm';
 import Greetings from './view/pages/Greetings/Greetings';
 import TypeList from './view/pages/TypeList/TypeList';
 import Login from './view/pages/Login/Login';
+import List from './view/pages/List/List';
 
 import reportWebVitals from './reportWebVitals';
 
@@ -41,6 +42,7 @@ ReactDOM.render((
   <Provider store={store}>
     <BrowserRouter>
       <Routes>
+        <Route path="/list" element={<List />} />
         <Route path="/login" element={<Login />} />
         <Route path="/TypeList" element={<TypeList />} />
         <Route path="/register" element={<Register />} />

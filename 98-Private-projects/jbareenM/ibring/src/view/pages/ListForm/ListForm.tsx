@@ -2,10 +2,11 @@ import '../MainTemplate/MainTemplate.scss'
 import './ListForm.scss'
 import { useEffect, useState } from 'react';
 import camera from '../../logoAndPhotos/camera.jpg';
-import { useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { listFormAction } from '../../../actions/Actions';
 
-interface listFormIF{
+interface listFormIF {
     groupName: string;
     meetType: string;
     date: Date;
@@ -18,14 +19,25 @@ interface listFormIF{
 function ListForm() {
     const loggedReducer = useSelector<any>(state => state.loggedReducer);
     const dispatch = useDispatch();
+    const nav = useNavigate();
 
     function handleMeetForm(ev: any) {
         ev.preventDefault();
         const form = ev.target;
-        console.log(form);
+        const obj: any = {};
+        for (let i = 0; i < form.length; i++) {
+            // console.log(form[i].value, form[i].name, form[i].type);
+            if (form[i].type !== "submit") {
+                obj[form[i].name] = form[i].value;
+            }
+        }
+        setListForm(obj);
+
+        dispatch(listFormAction(obj));
+        nav('/typeList');
     }
 
-    const [listForm, setListForm] = useState<Array<listFormIF>>([]);
+    const [listForm, setListForm] = useState<listFormIF>();
 
     useEffect(() => {
         console.log({ "Logged": loggedReducer });
@@ -42,7 +54,7 @@ function ListForm() {
                     <input className='templateInput' name='meetType' placeholder="Meet type" type="text" required />
                     <input className='templateInput' name='date' placeholder="Date" type="Date" required />
                     <input className='templateInput' name='time' placeholder="Time" type="Time" required />
-                    <select className='templateInput'>
+                    <select name='reminder' className='templateInput'>
                         <option value="" disabled selected>Reminder</option>
                         <option value="test">test</option>
                     </select>
