@@ -25,10 +25,15 @@ function Register() {
         console.log({ "Logged": loggedReducer });
     }, [loggedReducer]);
 
-    function isUser(query: string) {
+    function signUp() {
         return new Promise((resolve, reject) => {
-            fetch(`/is-users?${query}`)
-                .then(r => r.json())
+            fetch('/user/signUp', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email: email.toLowerCase(), pass: pass })
+            }).then(r => r.json())
                 .then(data => {
                     if (data.ok) {
                         setUser(data.user);
@@ -46,25 +51,21 @@ function Register() {
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
 
-    function handleEmailPassLogin(e: any) {
+    function handleEmailPassSignUp(e: any) {
         e.preventDefault();
         console.log({ email })
         console.log({ pass })
 
         // const found = users.find(user => (user.email === email && user.pass === pass));
 
-        isUser(`email=${email}&pass=${pass}`)
+        signUp()
             .then((json) => {
                 console.log("isUer:", json);
                 if (json) {
                     dispatch(signIn());
 
-                    nav('/greetings', {
-                        state: {
-                            email: email
-                        }
-                    })
-                }else{
+                    nav('/greetings');
+                } else {
                     console.log("user doesn't exists!");
                 }
             })
@@ -98,7 +99,7 @@ function Register() {
                     <div className="orWord">or</div>
                 </div>
 
-                <form onSubmit={handleEmailPassLogin} className='loginWithEmailAndPass' >
+                <form onSubmit={handleEmailPassSignUp} className='loginWithEmailAndPass' >
                     <input className='templateInput EmailRegistered' placeholder="Email" type="email" required onKeyUp={(ev: any) => { setEmail(ev.target.value) }} />
                     <input className='templateInput passRegistered' placeholder="Password" type="password" required onKeyUp={(ev: any) => { setPass(ev.target.value) }} />
                     <label className='haveAccount'>Already have an Account? <span>Sign in here</span></label>

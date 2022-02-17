@@ -10,7 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.2"
+    "cookie-parser": "^1.4.6",
+    "crypto": "^1.0.1",
+    "express": "^4.17.2",
+    "mongoose": "^6.2.2"
   },
   "devDependencies": {
     "@types/node": "^17.0.18"

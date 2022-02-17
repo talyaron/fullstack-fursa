@@ -1,39 +1,29 @@
 const express = require("express");
 const app = express();
+const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
 
-const port = 3001;
+const userRouter = require("./Routes/userRoutes");
 
 app.use(express.static("ibring/build"));
+app.use(express.json());
 
-interface userIF {
-    email: string;
-    pass: string;
-}
+mongoose.connect("mongodb+srv://jbareenM:IBring-Web-App@cluster0.sqzq0.mongodb.net/test", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+});
+const db = mongoose.connection;
 
-const users: Array<userIF> = [
-    { email: "a@a", pass: "1" },
-    { email: "b@a", pass: "1" }
-];
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", () => {
+  console.log("connected to DB!");
+});
+
+app.use("/user", userRouter);
 
 app.get("/", (req, res) => {
     res.send("hello world!");
 });
 
-app.get("/is-users", (req, res) => {
-    const { email, pass } = req.query;
-    const found = users.find(user => (user.email === email && user.pass === pass));
-    if (found) {
-        res.send({ ok: true, user: found });
-    }
-    else {
-        res.send({ ok: false, user: found });
-    }
-})
-
-app.get("/get-users", (req, res) => {
-    res.send({ ok: true, users: users });
-})
-
-app.listen(port, () => {
-    console.log(`app is listening to port ${port}`);
-})
+const port = process.env.PORT || 3001;
+app.listen(port, () => console.log(`Server running on port ${port} 🔥`));

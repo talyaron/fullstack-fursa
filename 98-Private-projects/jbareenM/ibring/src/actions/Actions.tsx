@@ -1,20 +1,24 @@
-export const increment = (num:number = 1) => {
+export const increment = (num: number = 1) => {
     return {
         type: 'increment',
         payload: num
     }
 }
 
-export const decrement = (num:number = 1) => {
+export const decrement = (num: number = 1) => {
     return {
         type: 'decrement',
         payload: num
     }
 }
 
-export const signIn = (status:boolean = false) => {
+interface payloadIF {
+    status: boolean;
+    user?: object;
+}
+export const signIn = (payload: payloadIF = { status: false, user: undefined }) => {
     return {
         type: 'signIn',
-        payload: status
+        payload: payload
     }
 }
