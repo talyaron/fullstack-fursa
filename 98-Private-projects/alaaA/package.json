@@ -6,6 +6,7 @@
   "version": "1.0.0",
   "main": "server.ts",
   "dependencies": {
+    "@material-ui/core": "^4.12.3",
     "acorn": "^8.7.0",
     "acorn-walk": "^8.2.0",
     "arg": "^4.1.3",
