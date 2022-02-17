@@ -10,7 +10,8 @@ import HomePage from "./view/pages/homePage/homePage";
 import Login from "./view/pages/logIn/logIn";
 import SignUp from "./view/pages/signUp/signUp";
 import AboutUs from "./view/pages/AboutUs/aboutUs";
-// import Cart from "./view/pages/cart/cart";
+import Group from "./view/pages/Groups/group";
+import CreateGroup from "./view/pages/CreateGroup/createGroup";
 import Store from "./view/pages/store/store";
 import Mygroups from './view/pages/mygroups/mygroups';
 
@@ -37,6 +38,8 @@ return(
     <Route path="Login" element={<HomePage />} />
     <Route path="signUp" element={<SignUp />} />
     <Route path="AboutUs" element={<AboutUs />} />
+    <Route path="Group" element={<Group />} />
+    <Route path="CreateGroup" element={<CreateGroup />} />
     <Route path="HomePage" element={<HomePage />} />
     <Route path="Store" element={<Store />} />
     <Route path="mygroups" element={<Mygroups />} />

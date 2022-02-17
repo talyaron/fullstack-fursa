@@ -7,7 +7,8 @@ var homePage_1 = require("./view/pages/homePage/homePage");
 var logIn_1 = require("./view/pages/logIn/logIn");
 var signUp_1 = require("./view/pages/signUp/signUp");
 var aboutUs_1 = require("./view/pages/AboutUs/aboutUs");
-// import Cart from "./view/pages/cart/cart";
+var group_1 = require("./view/pages/Groups/group");
+var createGroup_1 = require("./view/pages/CreateGroup/createGroup");
 var store_1 = require("./view/pages/store/store");
 var mygroups_1 = require("./view/pages/mygroups/mygroups");
 function App() {
@@ -19,6 +20,8 @@ function App() {
             react_1["default"].createElement(react_router_dom_1.Route, { path: "Login", element: react_1["default"].createElement(homePage_1["default"], null) }),
             react_1["default"].createElement(react_router_dom_1.Route, { path: "signUp", element: react_1["default"].createElement(signUp_1["default"], null) }),
             react_1["default"].createElement(react_router_dom_1.Route, { path: "AboutUs", element: react_1["default"].createElement(aboutUs_1["default"], null) }),
+            react_1["default"].createElement(react_router_dom_1.Route, { path: "Group", element: react_1["default"].createElement(group_1["default"], null) }),
+            react_1["default"].createElement(react_router_dom_1.Route, { path: "CreateGroup", element: react_1["default"].createElement(createGroup_1["default"], null) }),
             react_1["default"].createElement(react_router_dom_1.Route, { path: "HomePage", element: react_1["default"].createElement(homePage_1["default"], null) }),
             react_1["default"].createElement(react_router_dom_1.Route, { path: "Store", element: react_1["default"].createElement(store_1["default"], null) }),
             react_1["default"].createElement(react_router_dom_1.Route, { path: "mygroups", element: react_1["default"].createElement(mygroups_1["default"], null) }))));
