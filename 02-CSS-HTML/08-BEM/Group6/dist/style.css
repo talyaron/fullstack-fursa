@@ -1,0 +1,151 @@
+html, body {
+  margin: 0px;
+}
+
+.header {
+  background-color: black;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: 7vh;
+  padding: 2px;
+  flex-wrap: wrap;
+  align-content: center;
+}
+.header .signIn {
+  display: flex;
+  align-content: center;
+  border: 0.5px solid white;
+  height: 100%;
+  width: 10vw;
+  margin-right: 1px;
+  justify-content: space-around;
+  align-items: center;
+}
+.header .signIn img {
+  width: 20%;
+  height: 80%;
+  border-radius: 50%;
+}
+.header .signIn p {
+  color: white;
+  font-size: 1rem;
+}
+.header__menu {
+  display: flex;
+  margin-left: 20px;
+}
+.header__menu__item {
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px 5px;
+  margin-left: 15px;
+}
+.header input {
+  position: relative;
+  height: 80%;
+  width: 15%;
+  margin-right: 20px;
+  top: 1.5px;
+}
+.header .logo {
+  position: relative;
+  background-image: url(https://logos-world.net/wp-content/uploads/2021/07/BBC-New-Logo-700x394.png);
+  width: 7%;
+  height: 90%;
+  top: -3px;
+  background-size: cover;
+  margin-left: 15px;
+}
+
+.wrapper {
+  margin: auto;
+  width: 80%;
+}
+.wrapper .title {
+  font-size: 2rem;
+  font-weight: bold;
+  font-style: italic;
+  margin-top: 20px;
+}
+.wrapper .toprow {
+  display: flex;
+  height: 47%;
+}
+.wrapper .toprow .left {
+  display: flex;
+  position: relative;
+  width: 50%;
+  margin: 5px;
+}
+.wrapper .toprow .left img {
+  width: 100%;
+  height: 100%;
+}
+.wrapper .toprow .left img:hover {
+  box-shadow: 2x 2px 6px rgba(0, 0, 0, 0.205);
+  opacity: 0.9;
+}
+.wrapper .toprow .left p {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.582);
+  color: white;
+  font-size: x-large;
+}
+.wrapper .toprow .right {
+  display: flex;
+  position: relative;
+  width: 50%;
+}
+.wrapper .toprow .right .innerRow {
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+}
+.wrapper .toprow .right .innerRow .box {
+  margin: 5px;
+  position: relative;
+}
+.wrapper .toprow .right .innerRow .box:hover {
+  box-shadow: 2x 2px 6px rgba(0, 0, 0, 0.205);
+  opacity: 0.9;
+}
+.wrapper .toprow .right .innerRow .box img {
+  width: 100%;
+  height: 100%;
+}
+.wrapper .toprow .right .innerRow .box p {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.582);
+  color: white;
+  font-size: x-large;
+}
+.wrapper .bottomrow {
+  display: flex;
+  justify-content: space-between;
+}
+.wrapper .bottomrow .box {
+  margin: 5px;
+  position: relative;
+}
+.wrapper .bottomrow .box:hover {
+  box-shadow: 2x 2px 6px rgba(0, 0, 0, 0.205);
+  opacity: 0.9;
+}
+.wrapper .bottomrow .box img {
+  width: 100%;
+  height: 100%;
+}
+.wrapper .bottomrow .box p {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.582);
+  color: white;
+  font-size: x-large;
+}

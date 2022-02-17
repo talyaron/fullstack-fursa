@@ -1,0 +1,30 @@
+.wood{
+ margin-top: 5px;
+ height:20%;
+
+    &_title{
+        display: flex;
+        position: relative;
+        margin: 10px;
+
+        
+        
+        img{
+            position: absolute;
+            height:100%;
+            padding: 2px;
+            
+           
+        }
+        input{
+            height:60%;
+            
+            border-radius: 30px;
+           
+           
+        }
+    }
+    p{
+        color: yellow;
+    }
+}
