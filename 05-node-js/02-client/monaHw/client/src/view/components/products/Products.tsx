@@ -1,6 +1,8 @@
 interface ProductsProp{
     name:string;
-    img:string;
+    length:number;
+    
+   
 }
 function Products(prop:ProductsProp){
     return(
