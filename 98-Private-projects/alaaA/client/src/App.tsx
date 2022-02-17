@@ -13,6 +13,8 @@ import AboutUs from "./view/pages/AboutUs/aboutUs";
 import Group from "./view/pages/Groups/group";
 import CreateGroup from "./view/pages/CreateGroup/createGroup";
 import Store from "./view/pages/store/store";
+import Mygroups from './view/pages/mygroups/mygroups';
+
 
 interface product {
   id:number;
@@ -40,6 +42,7 @@ return(
     <Route path="CreateGroup" element={<CreateGroup />} />
     <Route path="HomePage" element={<HomePage />} />
     <Route path="Store" element={<Store />} />
+    <Route path="mygroups" element={<Mygroups />} />
     {/* <Route></Route> */}
     {/* </Route> */}
     

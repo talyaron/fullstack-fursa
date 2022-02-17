@@ -11,7 +11,7 @@ interface Item{
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="mb-2">
         {bar.map((item,index)=>{
           return <Bar key={index} title = {item.title} subtitle = {item.subtitle}/>
         })}
