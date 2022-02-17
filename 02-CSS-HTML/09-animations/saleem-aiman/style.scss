@@ -1,0 +1,80 @@
+body {
+    display: flex;
+    justify-content: center;
+    
+  }
+  .ocean {
+    background: url("https://i.pinimg.com/736x/31/0d/4a/310d4a2f36b4fe4a07a31f5f7759a4d3--background-hd-wallpaper-mario-party.jpg") center center no-repeat;
+    height: 100vh; 
+    width: 100vw;
+    max-height: 500px;
+    max-width: 1000px;
+    overflow: hidden;
+    position: relative;
+    
+  }
+  img {
+    
+    width: 30%;
+   
+  }
+  .sunny {
+      left: 0;
+      bottom: 10px;
+    margin-top: 260px;
+    width: 200px;
+    height: 200px;
+    transform: scaleX(1);
+    position: absolute;
+  
+  /*   animation-name: fly; */
+  /*   animation-duration: 2s; */
+  /*   animation-timing-function: ease-in-out; */
+  /*   animation-timing-function: cubic-bezier(0.68, -0.6, 0.32, 1.6); */
+  /*   animation-delay: 1s; */
+  /*   animation-iteration-count: infinite; */
+  /*   animation-direction: alternate; */
+  /*   animation-fill-mode: backwards; */
+  /*   animation-fill-mode: backwards; */
+  /*   animation-play-state: runnign; */
+  
+    animation: fly 4s linear;
+   
+  }
+  
+  /* Utilizar apenas transform e opacity nas animações */
+  /* Quando se tem apenas os keyframes 0% e 100%, é possivel substitui-los por: from e to*/
+  @keyframes fly {
+      0%{
+          left: 0%;
+    }
+
+    
+    25%{
+       bottom: 20%;
+       left: 20%;;
+
+    }
+    50%{
+        bottom: 0%;
+        left: 40%;;
+ 
+     }
+     75%{
+        bottom: 30%;
+        left: 60%;
+ 
+     }
+     80%{
+        left: 80%;
+        bottom: 0%;
+     }
+     90%{
+        bottom: 0%;
+        left: 90%;
+     }
+      100%{
+        
+        }
+  }
+   
