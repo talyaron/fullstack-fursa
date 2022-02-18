@@ -10,11 +10,13 @@ function User() {
         React.createElement("div", { className: "wrapper1" },
             React.createElement(menu_1["default"], null)),
         React.createElement("div", { className: "wrapper2" },
-            React.createElement("div", { className: "profile" }, userInfo.map(function (user, index) {
-                var name = user.name, phone = user.phone, email = user.email;
-                return React.createElement(Profile_1["default"], { key: index, info: { name: name, phone: phone, email: email } });
-            })),
-            React.createElement("div", { className: "recipes" },
-                React.createElement(Recipes_1["default"], null)))));
+            React.createElement("img", { className: "image", src: "https://img.freepik.com/free-photo/purple-marble-texture-natural-pattern-with-high-resolution-background-design-art-work_38607-277.jpg?w=996", alt: "" }),
+            React.createElement("div", { className: 'content' },
+                React.createElement("div", { className: "profile" }, userInfo.map(function (user, index) {
+                    var name = user.name, phone = user.phone, email = user.email;
+                    return React.createElement(Profile_1["default"], { key: index, info: { name: name, phone: phone, email: email } });
+                })),
+                React.createElement("div", { className: "recipes" },
+                    React.createElement(Recipes_1["default"], null))))));
 }
 exports["default"] = User;

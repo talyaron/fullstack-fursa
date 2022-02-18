@@ -18,14 +18,17 @@ export default function User() {
         <Bagemenu />
       </div>
       <div className="wrapper2">
-        <div className="profile">
-          {userInfo.map((user, index) => {
-            const { name, phone, email } = user
-            return <Profile key={index} info={{ name, phone, email }} />
-          })}
-        </div>
-        <div className="recipes">
-          <Recipes />
+        <img className="image" src="https://img.freepik.com/free-photo/purple-marble-texture-natural-pattern-with-high-resolution-background-design-art-work_38607-277.jpg?w=996" alt="" />
+        <div className='content'>
+          <div className="profile">
+            {userInfo.map((user, index) => {
+              const { name, phone, email } = user
+              return <Profile key={index} info={{ name, phone, email }} />
+            })}
+          </div>
+          <div className="recipes">
+            <Recipes />
+          </div>
         </div>
       </div>
     </div>

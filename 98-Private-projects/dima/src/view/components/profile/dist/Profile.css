@@ -1,0 +1,25 @@
+.profile {
+  margin: auto;
+  border: 2px solid #b5739d;
+  color: #b5739d;
+  font-size: 1.2rem;
+  font-style: italic;
+}
+.profile .Edit {
+  float: right;
+  padding-right: 7px;
+  margin-top: 10px;
+}
+.profile img {
+  width: 20px;
+  height: 20px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.profile span {
+  font-weight: bold;
+}
+.profile .profileImg img {
+  width: 70%;
+  height: 70%;
+}

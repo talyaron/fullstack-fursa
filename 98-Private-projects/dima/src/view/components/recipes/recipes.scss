@@ -3,11 +3,13 @@
     grid-template-rows: repeat(6);
     margin: auto;
     align-items: center;
-    //border : 2px solid rgb(181, 115, 157);
-    //color: rgb(181, 115, 157);
     font-size: 1.2rem;
     font-style: italic;
     row-gap: 10px;
+
+    .title1{
+        padding-left: 12px;
+    }
 
     .row1 {
         width: 60vw;
@@ -80,15 +82,9 @@
         }
     }
 
-    .add {
-        grid-row: 6 / 6;
-        height: 5vh;
-        width: 5vw;
-        img {
-            width: 60%;
-            height: 70%;
-            //margin-right: 10px;
-            margin-bottom: 10px;
-        }
+    .add{
+        padding-right: 7px;
+        margin-bottom: 7px;
     }
+
 }

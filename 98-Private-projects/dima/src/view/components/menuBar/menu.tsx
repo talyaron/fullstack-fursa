@@ -1,12 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import menuImg from './menu.png';
-import searchIcon from './search.jpg';
-import userIcon from './user.png';
-import logo from './logo.png';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import SearchIcon from '@mui/icons-material/Search';
+import MenuIcon from '@mui/icons-material/Menu';
+import PersonIcon from '@mui/icons-material/Person';
 import './menu.scss';
 
 function Bagemenu() {
@@ -19,7 +18,6 @@ function Bagemenu() {
     };
     const handleClose = () => {
         setAnchorEl(null);
-        <Link to='/invoices'>Invoices</Link>
     };
 
     const handleClose1 = () => {
@@ -29,13 +27,13 @@ function Bagemenu() {
     return (
         <div className="menu">
             <div className="menu__left">
-                <img src={menuImg} alt="logo" />
-                <div className="logo">
-                    <img src={logo} alt="Logo" />
+                <MenuIcon sx={{fontSize:40, color:'#b5739d', paddingTop:-30}}/>
+                <div className='logo'>
+                    <img src="https://thumbs.dreamstime.com/z/woman-enjoy-making-foods-girl-cooking-food-continuous-one-line-drawing-vector-illustration-kitchen-people-design-female-dinner-160458109.jpg" alt="" />
                 </div>
                 <div className="searchbox">
-                    <img src={searchIcon} />
                     <input type="text" placeholder="search for a recipe" />
+                    <SearchIcon sx={{ fontSize:30, color:'#b5739d'}}/>
                 </div>
             </div>
             <div className="menu__right">
@@ -46,7 +44,7 @@ function Bagemenu() {
                     aria-expanded={open ? 'true' : undefined}
                     onClick={handleClick}
                 >
-                    <img src={userIcon} />
+                    <PersonIcon sx={{fontSize:40, color:'#b5739d'}}/>
                 </Button>
                 <Menu
                     id="basic-menu"
