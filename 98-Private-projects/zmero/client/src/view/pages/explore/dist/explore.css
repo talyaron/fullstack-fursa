@@ -1,0 +1,97 @@
+.exploremain {
+  max-width: 80rem;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.exploremain__location {
+  border-bottom: 0.0625rem solid #d8d9db;
+  display: flex;
+  align-items: center;
+}
+.exploremain__location h5 {
+  text-align: left;
+  opacity: 0.8;
+}
+.exploremain__location__get {
+  display: flex;
+  align-items: center;
+}
+.exploremain__location__get img {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-left: 1rem;
+}
+.exploremain__location__get h5 {
+  color: #2a945b;
+}
+.exploremain__location__get h5:hover {
+  text-decoration: underline;
+}
+.exploremain__popular {
+  width: 100%;
+}
+.exploremain__popular header {
+  opacity: 0.8;
+  display: flex;
+  border-bottom: 0.0625rem solid #d8d9db;
+  padding-top: 2rem;
+  justify-content: space-between;
+}
+.exploremain__popular__view {
+  display: flex;
+  padding: 1.7rem 1rem 1rem 1rem;
+  color: #2a945b;
+  font-weight: 550;
+  margin-left: auto;
+  align-items: center;
+}
+.exploremain__popular__grid {
+  width: 100%;
+  padding-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+}
+.exploremain__restaurateurs {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  border-radius: 4px;
+}
+.exploremain__restaurateurs__background {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  margin: auto;
+  background-size: cover;
+  flex-direction: column;
+  background-image: url(//cdn.otstatic.com/cfe/7/images/restaurateurs-join-us-mobile-643fc3.jpg);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  height: 35vh;
+  width: 90%;
+  border-radius: 4px;
+}
+.exploremain__restaurateurs__background__color {
+  background-color: rgba(45, 51, 63, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+.exploremain__restaurateurs__background h2 {
+  color: white;
+  z-index: 0;
+}
+
+@media only screen and (max-width: 800px) {
+  .exploremain__popular__grid {
+    grid-template-columns: repeat(1, 16rem);
+    grid-template-rows: repeat(5, 1fr);
+    display: flex;
+    flex-direction: column;
+  }
+}

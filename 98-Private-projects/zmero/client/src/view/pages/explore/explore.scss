@@ -86,6 +86,7 @@
             background-repeat: no-repeat;
             height: 35vh;
             width: 90%;
+            border-radius: 4px;
 
             &__color {
                 background-color: rgba(45, 51, 63, .7);
@@ -100,7 +101,7 @@
 
             h2 {
                 color: white;
-                z-index: 1;
+                z-index: 0;
             }
         }
 

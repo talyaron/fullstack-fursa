@@ -8,7 +8,7 @@
   background-position: 50%;
   align-items: center;
   justify-content: space-around;
-  z-index: 1;
+  z-index: 3;
 }
 .searchDiv__title {
   color: white;

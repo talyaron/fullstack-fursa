@@ -1,16 +1,18 @@
 .navbar {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   width: 100%;
   height: 4rem;
+  background-color: white;
   box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
-  z-index: 0;
+  position: sticky;
+  top: 0;
 }
 .navbar__box {
   display: flex;
-  max-width: 90%;
+  width: 90%;
   height: 100%;
+  justify-content: space-between;
 }
 .navbar__bar {
   display: none;
@@ -20,7 +22,7 @@
 }
 .navbar__left__logo {
   display: flex;
-  max-width: 10%;
+  max-width: 20%;
 }
 .navbar__left__logo img {
   height: auto;
@@ -73,6 +75,7 @@
   white-space: nowrap;
   font-weight: bold;
   border: 2px solid #2a945b;
+  transition-duration: 0.4s;
 }
 .navbar__right__signin:hover {
   color: #2a945b;
@@ -92,6 +95,8 @@
   padding: 12px 24px;
   white-space: nowrap;
   font-weight: bold;
+  border: 2px solid #dff2e4;
+  transition-duration: 0.4s;
 }
 .navbar__right__signup:hover {
   color: #381753;
@@ -154,12 +159,13 @@
 
 .signModal {
   margin: auto;
-  margin-top: 4rem;
+  margin-top: 5rem;
   width: 70%;
   background: white;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 3;
 }
 .signModal__content {
   width: 100%;
@@ -218,17 +224,34 @@
     justify-content: center;
     align-items: center;
   }
+  .navbar__left {
+    width: 100%;
+  }
   .navbar__left a {
     display: none;
   }
   .navbar__left__logo {
-    max-width: 100%;
+    width: 100%;
     justify-content: center;
+    max-width: 100%;
   }
   .navbar__right__signin {
     display: none;
   }
   .navbar__right__signup {
     display: none;
+  }
+
+  .signModal__content__left {
+    display: none;
+  }
+  .signModal__content__leftUp {
+    display: none;
+  }
+  .signModal__content__right {
+    width: 100%;
+  }
+  .signModal__content__rightUp {
+    width: 100%;
   }
 }

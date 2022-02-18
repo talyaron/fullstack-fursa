@@ -21,16 +21,29 @@ function Menu() {
     var _a = react_2.useState(false), modalSearchIsOpen = _a[0], setSearchModal = _a[1];
     var _b = react_2.useState(false), modalSignInsOpen = _b[0], setSignINModal = _b[1];
     var _c = react_2.useState(false), modalSignUpModal = _c[0], setSignUpModal = _c[1];
+    var _d = react_2.useState(1), navbarindex = _d[0], setNavbarindex = _d[1];
     function openSearchModal(bool) {
+        if (bool == false)
+            setNavbarindex(1);
+        else
+            setNavbarindex(0);
         setSearchModal(bool);
     }
     function openSignInModal(bool) {
+        if (bool == false)
+            setNavbarindex(1);
+        else
+            setNavbarindex(0);
         setSignINModal(bool);
     }
     function openSignUpModal(bool) {
+        if (bool == false)
+            setNavbarindex(1);
+        else
+            setNavbarindex(0);
         setSignUpModal(bool);
     }
-    return (react_1["default"].createElement("div", { className: "navbar" },
+    return (react_1["default"].createElement("div", { className: "navbar", style: { zIndex: navbarindex } },
         react_1["default"].createElement("div", { className: "navbar__box" },
             react_1["default"].createElement("div", { className: "navbar__left" },
                 react_1["default"].createElement("div", { className: "navbar__bar" },

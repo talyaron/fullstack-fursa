@@ -1,17 +1,20 @@
 .navbar {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     width: 100%;
     height: 4rem;
+    background-color: white;
     //border-style: solid;
     box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
-    z-index: 0;
+    position: sticky;
+    top: 0;
 
     &__box {
         display: flex;
-        max-width: 90%;
+        width: 90%;
         height: 100%;
+
+        justify-content: space-between;
     }
 
     &__bar {
@@ -24,7 +27,7 @@
         //height: 100%;
         &__logo {
             display: flex;
-            max-width: 10%;
+            max-width: 20%;
 
             img {
                 height: auto;
@@ -87,6 +90,7 @@
             white-space: nowrap;
             font-weight: bold;
             border: 2px solid #2a945b;
+            transition-duration: 0.4s;
 
             &:hover {
                 color: #2a945b;
@@ -110,6 +114,8 @@
             white-space: nowrap;
             //font-family: Inter, Tajawal, sans-serif;
             font-weight: bold;
+            border: 2px solid #dff2e4;
+            transition-duration: 0.4s;
 
             &:hover {
                 color: #381753;
@@ -192,12 +198,13 @@
 
 .signModal {
     margin: auto;
-    margin-top: 4rem;
+    margin-top: 5rem;
     width: 70%;
     background: white;
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 3;
 
     &__content {
         width: 100%;
@@ -270,15 +277,17 @@
         }
 
         &__left {
+            width: 100%;
+
             a {
                 display: none;
             }
 
             &__logo {
-                max-width: 100%;
+                width: 100%;
                 justify-content: center;
+                max-width: 100%;
 
-                img {}
             }
         }
 
@@ -290,6 +299,26 @@
 
             &__signup {
                 display: none;
+            }
+        }
+    }
+
+    .signModal {
+        &__content {
+            &__left {
+                display: none;
+            }
+
+            &__leftUp {
+                display: none;
+            }
+
+            &__right {
+                width: 100%;
+            }
+
+            &__rightUp {
+                width: 100%;
             }
         }
     }

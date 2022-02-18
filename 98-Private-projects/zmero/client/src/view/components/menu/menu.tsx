@@ -16,22 +16,33 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 
+
 Modal.setAppElement('#root')
 function Menu() {
     const [modalSearchIsOpen, setSearchModal] = useState(false);
     const [modalSignInsOpen, setSignINModal] = useState(false);
     const [modalSignUpModal, setSignUpModal] = useState(false);
+    const [navbarindex, setNavbarindex] = useState(1);
     function openSearchModal(bool: boolean) {
+        if (bool == false)
+            setNavbarindex(1)
+        else setNavbarindex(0)
         setSearchModal(bool);
     }
     function openSignInModal(bool: boolean) {
+        if (bool == false)
+            setNavbarindex(1)
+        else setNavbarindex(0)
         setSignINModal(bool);
     }
     function openSignUpModal(bool: boolean) {
+        if (bool == false)
+            setNavbarindex(1)
+        else setNavbarindex(0)
         setSignUpModal(bool);
     }
     return (
-        <div className="navbar">
+        <div className="navbar" style={{ zIndex: navbarindex }}>
             <div className="navbar__box">
                 <div className="navbar__left">
                     <div className="navbar__bar">

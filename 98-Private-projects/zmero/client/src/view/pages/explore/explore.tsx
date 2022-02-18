@@ -53,7 +53,7 @@ function Explore() {
                 <div className="exploremain__restaurateurs">
                     <div className="exploremain__restaurateurs__background">
                         <div className="exploremain__restaurateurs__background__color"></div>
-                        <h2>Restaurateurs join us</h2>
+                        <h2>Restaurateurs Join Us</h2>
                     </div>
                 </div>
             </div>

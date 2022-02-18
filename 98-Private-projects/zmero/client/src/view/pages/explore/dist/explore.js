@@ -37,6 +37,6 @@ function Explore() {
             react_1["default"].createElement("div", { className: "exploremain__restaurateurs" },
                 react_1["default"].createElement("div", { className: "exploremain__restaurateurs__background" },
                     react_1["default"].createElement("div", { className: "exploremain__restaurateurs__background__color" }),
-                    react_1["default"].createElement("h2", null, "Restaurateurs join us"))))));
+                    react_1["default"].createElement("h2", null, "Restaurateurs Join Us"))))));
 }
 exports["default"] = Explore;
