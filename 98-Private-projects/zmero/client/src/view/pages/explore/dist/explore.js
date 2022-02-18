@@ -4,6 +4,7 @@ var react_1 = require("react");
 var restaurantCard_1 = require("../../components/restaurantCard/restaurantCard");
 var search_1 = require("../../components/search/search");
 var menu_1 = require("../../components/menu/menu");
+var footer_1 = require("../../components/footer/footer");
 var location_svg_1 = require("./location.svg");
 require("./explore.scss");
 function Explore() {
@@ -37,6 +38,9 @@ function Explore() {
             react_1["default"].createElement("div", { className: "exploremain__restaurateurs" },
                 react_1["default"].createElement("div", { className: "exploremain__restaurateurs__background" },
                     react_1["default"].createElement("div", { className: "exploremain__restaurateurs__background__color" }),
-                    react_1["default"].createElement("h2", null, "Restaurateurs Join Us"))))));
+                    react_1["default"].createElement("h2", null, "Restaurateurs Join Us"),
+                    react_1["default"].createElement("h3", null, " Join More Than XXX Restaurants which fill seats and manage reservations"),
+                    react_1["default"].createElement("button", { className: "exploremain__restaurateurs__background__btn" }, "Learn More")))),
+        react_1["default"].createElement(footer_1["default"], null)));
 }
 exports["default"] = Explore;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Card from '../../components/restaurantCard/restaurantCard';
 import Search from '../../components/search/search'
 import Navbar from '../../components/menu/menu';
+import Footer from '../../components/footer/footer';
 import Location from './location.svg'
 
 import './explore.scss'
@@ -54,9 +55,12 @@ function Explore() {
                     <div className="exploremain__restaurateurs__background">
                         <div className="exploremain__restaurateurs__background__color"></div>
                         <h2>Restaurateurs Join Us</h2>
+                        <h3> Join More Than XXX Restaurants which fill seats and manage reservations</h3>
+                        <button className="exploremain__restaurateurs__background__btn">Learn More</button>
                     </div>
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 }

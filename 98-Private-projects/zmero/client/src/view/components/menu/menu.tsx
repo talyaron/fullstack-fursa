@@ -24,19 +24,19 @@ function Menu() {
     const [modalSignUpModal, setSignUpModal] = useState(false);
     const [navbarindex, setNavbarindex] = useState(1);
     function openSearchModal(bool: boolean) {
-        if (bool == false)
+        if (bool === false)
             setNavbarindex(1)
         else setNavbarindex(0)
         setSearchModal(bool);
     }
     function openSignInModal(bool: boolean) {
-        if (bool == false)
+        if (bool === false)
             setNavbarindex(1)
         else setNavbarindex(0)
         setSignINModal(bool);
     }
     function openSignUpModal(bool: boolean) {
-        if (bool == false)
+        if (bool === false)
             setNavbarindex(1)
         else setNavbarindex(0)
         setSignUpModal(bool);

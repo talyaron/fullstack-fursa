@@ -23,21 +23,21 @@ function Menu() {
     var _c = react_2.useState(false), modalSignUpModal = _c[0], setSignUpModal = _c[1];
     var _d = react_2.useState(1), navbarindex = _d[0], setNavbarindex = _d[1];
     function openSearchModal(bool) {
-        if (bool == false)
+        if (bool === false)
             setNavbarindex(1);
         else
             setNavbarindex(0);
         setSearchModal(bool);
     }
     function openSignInModal(bool) {
-        if (bool == false)
+        if (bool === false)
             setNavbarindex(1);
         else
             setNavbarindex(0);
         setSignINModal(bool);
     }
     function openSignUpModal(bool) {
-        if (bool == false)
+        if (bool === false)
             setNavbarindex(1);
         else
             setNavbarindex(0);
