@@ -1,5 +1,5 @@
 
-import  './index.scss';
+import  './homepage.scss';
 import * as React from 'react';
 // import React from 'react';
 // import { Text, View } from 'react-native';
@@ -63,7 +63,6 @@ function changename(e: any) {
     return (
         <div className='maindiv'>
             <h3 className="h">Welcome to "    "</h3>
-            <br />
             <h4 className="h">About us</h4>
             {/* <Link to='/invoices'>Invoices</Link> */}
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni deleniti deserunt, accusamus distinctio et minus similique! Officia quae, alias natus optio temporibus saepe voluptates in nostrum reiciendis vitae, facilis ex.</p>
@@ -76,30 +75,13 @@ function changename(e: any) {
 <button onClick={changename} className='btn' type="submit">click to see all the horses names</button>
 {/* <button onClick={showhorse} className='btn' type="submit">click to see all the horses</button> */}
 
-  {horses.map((horses,index)=>{
+  {/* {horses.map((horses,index)=>{
          const {name,age,img}=horses;
          return <Card key={index} info={{name,age,img}}/>
-        })}
+        })} */}
         {/* </div> */}
-
-<div className="header">
-            <div className="header_left">
-        {/* <div className="logo"></div> */}
-        <div className="header_menu">
-          <div className="header_menu_item">home</div>
-          <div className="header_menu_item">menu</div>
-          <div className="header_menu_item">profile</div>
-          
-        </div>
-      </div>
-      {/* <div className="header_right">
-        <div className="header_rightmenu">
-          <div className="header_rightmenu_item">JOIN A MEETING</div>
-       
-        </div>
-      </div> */}
-        </div>
-        </div>
+   
+            </div>
 
    
 

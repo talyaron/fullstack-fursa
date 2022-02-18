@@ -1,35 +1,30 @@
 .mainheader{
+    position: relative;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    // flex-wrap: wrap;
+    // // justify-content: center;
     // align-items: center;
-    // gap: 180px;
+    gap: 180px;
     width: 100vw;
     height: 4rem;
-    //border-style: solid;
-    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
-    z-index: 0;
-
-    &__box {
-        display: flex;
-        max-width: 90%;
-        height: 100%;
-    }
+    border-style: solid;
+    background-color: #3635347c;
 
     &__left {
-      
+        position: absolute;
+        left: 0%;
         display: flex;
-        //height: 100%;
-        width: 60%;
-
+        width: 50%;
+        height: 3rem;
+        justify-content: left;
 
         a {
             color: black;
             text-align: center;
             padding: 20px 24px;
-            text-decoration: none;
             font-size: 15px;
             font-family: Inter;
+            height: 4rem;
 
             &:hover {
                 //background-color: #2a945b;
@@ -40,13 +35,19 @@
     }
 
     &__right {
+        position: absolute;
+        right: 0%;
+         width: 10%;
+        height: 3rem;
+        // justify-content: left;
         display: flex;
-        height: 100%;
-        width: 30%;
+        margin-top: 10px;
+  
 
         img{
             width: 30px;
             height: 30px;
+            border-radius: 50px;
         }
 
         #basic-menu{
@@ -62,7 +63,7 @@
 
 
 .menu{
-    background-color: rgb(230, 208, 222);
+  //  background-color: rgb(230, 208, 222);
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -78,57 +79,21 @@
         width: 80%;
         height: 100%;
         margin-left: 10px;
-        margin-top: 10px;
+        margin-top: 20px;
 
-        .searchbox{
-            display: flex;
-            width: 50%;
-            justify-content: center;
-            gap: 20px;
-
-            img{
-                width: 30px;
-                height: 30px;
-            }
-
-            input{
-                width: 60%;
-                height: 60%;
-                border-color: rgb(181, 115, 157);
-                border-radius: 15px;
-                color: rgb(181, 115, 157);
-            }
-
-        }
-        .logo{
-            width: 20%;
-            margin-top: -20px;
-            margin-bottom: -5px;
-            img{
-                width: 100%;
-                height: 100%;
-                &:hover{
-                    width : 150%;
-                    height: 150%;
-                }
-            }
-        }
+   
         img{
+            margin-top: 20px;
             width: 3%;
             height: 70%;
         }
     }
 
-    &__right{
-        img{
-            width: 30px;
-            height: 30px;
-        }
-    }
+
 }
 
 #basic-menu{
     width: 10vw;
-    height: 30vh;
+    height: 20vh;
 
 }

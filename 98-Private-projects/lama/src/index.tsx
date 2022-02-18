@@ -12,12 +12,14 @@ import {
 import App from "./App";
 import Expenses from "./view/pages/expenses/Expenses";
 import Invoices from "./view/pages/Invoices/Invoices";
-import Store from './view/pages/store/Store';
-import Product from "./view/pages/product/Product";
-import HomePage from "./view/pages/homepage/index";
-import SignIn from "./view/pages/signIn/index";
-import SignUp from "./view/pages/signUp/index";
+import HomePage from "./view/pages/homepage/homepage";
+import SignIn from "./view/pages/signIn/signin";
+import SignUp from "./view/pages/signUp/signup";
 import Trainers from "./view/pages/trainers/trainers";
+import Horses from "./view/pages/horses/horses";
+import Courses from "./view/pages/courses/courses";
+import Course from "./view/pages/course/course";
+
 
 // ReactDOM.render(
 //   <React.StrictMode>
@@ -39,15 +41,17 @@ render(
       <Route path="/" element={<App />} />
       <Route path="expenses" element={<Expenses />} />
       <Route path="invoices" element={<Invoices />} />
-      <Route path="store" element={<Store />} >
-        <Route path=":productId" element={<Product />} />
+      <Route path="courses" element={<Courses />} >
+        <Route path=":courseId" element={<Course />} />
      
       </Route>
       <Route path="homepage" element={<HomePage />} />
       <Route path="signIn" element={<SignIn />} />
       <Route path="signUp" element={<SignUp />} />
       <Route path="trainers" element={<Trainers />} />
-      <Route path="product/:productId" element={<Product />} />
+      <Route path="horses" element={<Horses />} />
+      <Route path="courses" element={<Courses />} />
+      <Route path="course/:courseId" element={<Course />} />
     </Routes>
   </BrowserRouter>,
     // document.getElementById("root")

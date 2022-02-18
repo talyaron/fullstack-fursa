@@ -43,27 +43,29 @@ function Header() {
         setAnchorEl(null);
     };
     return (React.createElement("div", { className: "mainheader" },
-        React.createElement("div", { className: "mainheader__box" },
-            React.createElement("div", { className: "mainheader__left" },
-                React.createElement(react_router_dom_1.Link, { to: "/" }, "HomePage"),
-                React.createElement(react_router_dom_1.Link, { to: "/" }, "Our Horses"),
-                React.createElement(react_router_dom_1.Link, { to: "/trainers" }, "Our trainers")),
-            React.createElement("div", { className: "mainheader__right" },
-                React.createElement(Button_1["default"], { id: "basic-button", "aria-controls": open ? 'basic-menu' : undefined, "aria-haspopup": "true", "aria-expanded": open ? 'true' : undefined, onClick: handleClick },
-                    React.createElement("img", { src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfyK_uZ7ZiiOIKc2i9NOiwn3fzsWWzc96ojA&usqp=CAU" })),
-                React.createElement(Menu_1["default"], { id: "basic-menu", anchorEl: anchorEl, open: open, onClose: handleClose, MenuListProps: {
-                        'aria-labelledby': 'basic-button'
-                    } },
-                    React.createElement(MenuItem_1["default"], null,
-                        React.createElement(react_router_dom_1.Link, { to: "/SignIn" }, " SignIn"),
-                        "  "),
-                    React.createElement(MenuItem_1["default"], null,
-                        "   ",
-                        React.createElement(react_router_dom_1.Link, { to: "/SignUp" }, " SignUp"),
-                        "   "),
-                    React.createElement(MenuItem_1["default"], null,
-                        "  ",
-                        React.createElement(react_router_dom_1.Link, { to: "/" }, " Logout")),
-                    React.createElement(MenuItem_1["default"], { onClick: handleClose1 }, "Close"))))));
+        React.createElement("div", { className: "mainheader__left" },
+            React.createElement(react_router_dom_1.Link, { to: "/" }, "HomePage"),
+            React.createElement(react_router_dom_1.Link, { to: "/horses" }, "Our Horses"),
+            React.createElement(react_router_dom_1.Link, { to: "/trainers" }, "Our trainers"),
+            React.createElement(react_router_dom_1.Link, { to: "/courses" }, "Our Courses")),
+        React.createElement("div", { className: "mainheader__right" },
+            React.createElement(Button_1["default"], { id: "basic-button", "aria-controls": open ? 'basic-menu' : undefined, "aria-haspopup": "true", "aria-expanded": open ? 'true' : undefined, onClick: handleClick },
+                React.createElement("img", { src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfyK_uZ7ZiiOIKc2i9NOiwn3fzsWWzc96ojA&usqp=CAU" })),
+            React.createElement(Menu_1["default"], { id: "basic-menu", anchorEl: anchorEl, open: open, onClose: handleClose, MenuListProps: {
+                    'aria-labelledby': 'basic-button'
+                } },
+                React.createElement(MenuItem_1["default"], null,
+                    React.createElement(react_router_dom_1.Link, { to: "/SignIn" }, " SignIn"),
+                    "  "),
+                React.createElement(MenuItem_1["default"], null,
+                    "   ",
+                    React.createElement(react_router_dom_1.Link, { to: "/SignUp" }, " SignUp"),
+                    "   "),
+                React.createElement(MenuItem_1["default"], null,
+                    "  ",
+                    React.createElement(react_router_dom_1.Link, { to: "/SignIn" }, " Logout")),
+                React.createElement(MenuItem_1["default"], { onClick: handleClose1 }, "Close"))))
+    // </div>
+    );
 }
 exports["default"] = Header;

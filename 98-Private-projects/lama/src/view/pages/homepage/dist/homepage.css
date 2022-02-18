@@ -1,11 +1,7 @@
-html, body {
-  margin: 0px;
-  font-size: 15px;
-}
-
 div {
   justify-content: center;
   text-align: center;
+  color: black;
   height: 100vh;
   width: 100vw;
 }

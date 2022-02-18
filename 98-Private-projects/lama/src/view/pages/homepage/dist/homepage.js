@@ -1,8 +1,7 @@
 "use strict";
 exports.__esModule = true;
-require("./index.scss");
+require("./homepage.scss");
 var React = require("react");
-var Card_1 = require("../../components/card/Card");
 var react_1 = require("react");
 // const Tab = createBottomTabNavigator();
 // function MyTabs() {
@@ -44,15 +43,10 @@ function Homepage() {
     }
     return (React.createElement("div", { className: 'maindiv' },
         React.createElement("h3", { className: "h" }, "Welcome to \"    \""),
-        React.createElement("br", null),
         React.createElement("h4", { className: "h" }, "About us"),
         React.createElement("p", null, "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni deleniti deserunt, accusamus distinctio et minus similique! Officia quae, alias natus optio temporibus saepe voluptates in nostrum reiciendis vitae, facilis ex."),
         React.createElement("br", null),
         React.createElement("h3", { className: 'names' }, names),
-        React.createElement("button", { onClick: changename, className: 'btn', type: "submit" }, "click to see all the horses names"),
-        horses.map(function (horses, index) {
-            var name = horses.name, age = horses.age, img = horses.img;
-            return React.createElement(Card_1["default"], { key: index, info: { name: name, age: age, img: img } });
-        })));
+        React.createElement("button", { onClick: changename, className: 'btn', type: "submit" }, "click to see all the horses names")));
 }
 exports["default"] = Homepage;

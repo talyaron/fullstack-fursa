@@ -1,12 +1,14 @@
 $borderRadius:10px;
 $padding:20px;
 // $mainColor:rgb(53, 85, 73);
-@import 'view/components/card/Card.scss';
-@import 'view/pages/signUp/index.scss';
+// @import 'view/components/card/Card.scss';
+// @import 'view/pages/signUp/signup.scss';
+// @import 'view/pages/signIn/index.scss';
 
 
 .App {
   text-align: center;
+  background-color: white;
 }
 
 .App-logo {
@@ -21,7 +23,7 @@ $padding:20px;
 }
 
 .App-header {
-  background-color: #bdae99;
+  // background-color: #bdae99;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -44,7 +46,8 @@ $padding:20px;
   }
 }
 
-// button{
-//   padding: 10px 20px;
-//   font-size: 2rem;
-// }
+button{
+  // width: 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+}

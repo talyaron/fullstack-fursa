@@ -58,17 +58,20 @@ function Header() {
 
     return (
         <div className="mainheader">
-            <div className="mainheader__box">
+            {/* <div className="mainheader__box"> */}
                 <div className="mainheader__left">
                 
                     <Link to="/">
                         HomePage
                     </Link>
-                    <Link to="/">
+                    <Link to="/horses">
                         Our Horses
                     </Link>
                     <Link to="/trainers">
                     Our trainers
+                    </Link>
+                    <Link to="/courses">
+                    Our Courses
                     </Link>
                 </div>
                 <div className="mainheader__right">
@@ -95,14 +98,14 @@ function Header() {
                         <Link to="/SignIn"> SignIn</Link>  </MenuItem>
                       
                         <MenuItem>   <Link to="/SignUp"> SignUp</Link>   </MenuItem>
-                        <MenuItem>  <Link to="/"> Logout</Link>
+                        <MenuItem>  <Link to="/SignIn"> Logout</Link>
                     </MenuItem>
                     <MenuItem onClick={handleClose1}>Close</MenuItem>
                 </Menu>
             </div>
             </div>
      
-        </div>
+        // </div>
 
    
 

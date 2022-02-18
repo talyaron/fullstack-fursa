@@ -14,9 +14,10 @@ function Card(prop: cardProp) {
             <div className="Card">
                 <img src={prop.image}></img>
                 {/* <div className="Card__title"> */}
-                    <h3>{prop.name}</h3>
+                    {prop.name}
                 {/* </div>
                 <div className="Card__desc"> */}
+                <br />
                          {prop.desc}
         
                 {/* </div> */}

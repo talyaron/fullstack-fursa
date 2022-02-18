@@ -6,10 +6,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import Header from './view/components/header/header';
 
 import Card from './view/components/card/Card';
-import SignUp from './view/pages/signUp/index'
-import Homepage from './view/pages/homepage/index' 
+import SignUp from './view/pages/signUp/signup'
+import Homepage from './view/pages/homepage/homepage'; 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import ProfileButton from './view/pages/signIn/index';
+import ProfileButton from './view/pages/signIn/signin';
 
 
 // const students:Array<Place> = [{name:'Saleem', place:'Mashad'},{name:'Mona',place:"Nazereth"}];
@@ -29,6 +29,7 @@ function App() {
         <Card /> */}
 
         <Header />
+     
         {/* <SignUp /> */}
 
         <Homepage />

@@ -4,10 +4,26 @@
 .signup{
     font-size: small;
     // background-color: rgb(149, 127, 155);
+
+    .txtfield{
+        width:20vw;
+        height:10vh;
+    }
     
 }
 
 p{
     // background-color: aqua;
     font-size: small;
+}
+
+
+button{
+    width: 10px;
+}
+
+.avatar{
+    position: relative;
+    left: 50%;
+    background-color: 'secondary.main';
 }

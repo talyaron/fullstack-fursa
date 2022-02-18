@@ -1,0 +1,21 @@
+.signup {
+  font-size: small;
+}
+.signup .txtfield {
+  width: 20vw;
+  height: 10vh;
+}
+
+p {
+  font-size: small;
+}
+
+button {
+  width: 10px;
+}
+
+.avatar {
+  position: relative;
+  left: 50%;
+  background-color: "secondary.main";
+}

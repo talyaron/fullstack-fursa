@@ -9,6 +9,7 @@
 //     title: string;
 //     place:string;
 //   }
+import './Card.scss';
 
 interface CardProp {
     info:{
@@ -24,13 +25,12 @@ function Card(prop:CardProp){
     return(
         <div className="card">
         <img src={img} alt="" />
-        <div>
+      
 
-        <h5>name is :{name} </h5>
-        </div>
-        <div>
-        <h5>age is: {age}</h5>
-        </div>
+        <p>name is :{name} </p>
+     
+        <p>age is: {age}</p>
+      
         {/* <p>{name}</p> */}
          
   
