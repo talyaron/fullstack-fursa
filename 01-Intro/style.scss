@@ -1,0 +1,30 @@
+.wrapper{
+    margin:auto;
+    max-width: 75ch;
+    border: 3px dashed black;
+    position : relative;
+    .box{
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+        margin: 3px;
+    }
+    .special{
+        background-color: red;
+        position: relative;
+        top: 20px;
+        left: 20px;
+    }
+    .absloute{
+        background-color: blanchedalmond;
+        position:absolute;
+        top: 0px;
+        left: 0px;
+    }
+    .relative{
+        background-color: aqua;
+        position: relative;
+        top: 0px;
+        left: 0px;
+    }
+}
