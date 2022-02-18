@@ -5,6 +5,8 @@ import Login from "./components/Login";
 import { timeStamp } from "console";
 import { BrowserRouter as Router, Routes , Route, Link } from "react-router-dom";
 import Mainpage from "./components/Mainpage";
+import Nearevents from "./components/Nearevents";
+
 document.title = "Travelers";
 const mainpage: boolean = false;
 function App() {
@@ -14,6 +16,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Login/>} ></Route>
         <Route path="/mainpage" element={<Mainpage/>}></Route>
+        <Route path="/nearevents" element={<Nearevents/>}></Route>
+
       </Routes>
       </Router>
     </div>

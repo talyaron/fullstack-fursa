@@ -1,0 +1,29 @@
+.header {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  height: 8vh;
+  width: 100vw;
+  column-gap: 2rem;
+  text-align: center;
+  align-items: center;
+}
+.header .menu-icon > .line {
+  background-color: black;
+  height: 0.3vh;
+  margin: 0.3rem;
+  cursor: pointer;
+  width: 5vw;
+  display: block;
+}
+.header img {
+  width: 30%;
+  height: 80%;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-left: 12vw;
+}
+.header h3 {
+  font-size: 1.5em;
+  font-style: inherit;
+  font-family: sans-serif;
+}

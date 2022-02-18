@@ -5,12 +5,14 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import Login from "./components/Login";
 import Mainpage from "./components/Mainpage";
+import Nearevents from "./components/Nearevents";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 ReactDOM.render(
   <Router>
     <Routes>
       <Route path="/" element={<Login />}></Route>
       <Route path="/mainpage" element={<Mainpage />}></Route>
+      <Route path="/nearevents" element={<Nearevents/>}></Route>
     </Routes>
   </Router>,
 
