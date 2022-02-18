@@ -21,9 +21,8 @@
 
   function priceFilter(arr: Array<item>, from: number, to: number): Array<item> {
     const newArray = arr.filter((item: item) => {
-        if (item.price >= from && item.price <= to){
-            return item;
-          }
+        return item.price >= from && item.price <= to
+        
         })
     return newArray;
    }
@@ -38,9 +37,7 @@
 
    function deleteFilter(arr: Array<item>, id: number): Array<item> {
     const newArray = arr.filter((item: item) => {
-        if (item.id != id){
-            return item;
-          }
+        return item.id != id
         })
     return newArray;
    }

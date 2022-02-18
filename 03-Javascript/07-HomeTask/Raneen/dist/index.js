@@ -14,9 +14,7 @@ function priceSort(arr, type) {
 }
 function priceFilter(arr, from, to) {
     var newArray = arr.filter(function (item) {
-        if (item.price >= from && item.price <= to) {
-            return item;
-        }
+        return item.price >= from && item.price <= to;
     });
     return newArray;
 }
@@ -29,9 +27,7 @@ function toUpperCase(arr) {
 }
 function deleteFilter(arr, id) {
     var newArray = arr.filter(function (item) {
-        if (item.id != id) {
-            return item;
-        }
+        return item.id != id;
     });
     return newArray;
 }

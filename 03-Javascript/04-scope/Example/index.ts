@@ -1,5 +1,5 @@
-//global variable are bad habbit!!!!!!!!!!
-//beacuse of the conflicts and errors it may cause
+// global variable are bad habbit!!!!!!!!!!
+// beacuse of the conflicts and errors it may cause
 
 // for (var i = 0; i<5;i++){
    
