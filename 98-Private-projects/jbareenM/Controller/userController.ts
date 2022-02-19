@@ -13,7 +13,8 @@ exports.Login = async (req, res) => {
         } else {
             const hashPassword = crypto.createHash('sha256').update(pass).digest('base64');
             if (hashPassword === _user.password) {
-                res.send({ ok: true, message: "login successfully!" });
+                const curretUser = {email: _user.email};
+                res.send({ ok: true, user: curretUser, message: "login successfully!" });
             }
             else {
                 res.send({ ok: false, message: "wrong email or password!" });

@@ -6,6 +6,11 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { signIn } from '../../../actions/Actions';
 
+import { LoginFetch } from '../../../redux';
+import { connect } from 'react-redux';
+import { RootState } from '../../../redux/store';
+import { UserState } from '../../../redux/reducers/userReducer';
+
 interface actionIF {
     type: string;
     payload: boolean;
@@ -21,37 +26,21 @@ interface payloadIF {
     user?: object;
 }
 
+// function Login(props: any) {
 function Login() {
-    const loggedReducer = useSelector<any>(state => state.loggedReducer);
+    const userLogin = useSelector<RootState, UserState>(state => state.user);
     const dispatch = useDispatch();
-    const [allUsers, setAllUsers] = useState<Array<userIF>>([]);
-    const [user, setUser] = useState<userIF>();
-    useEffect(() => {
-        console.log({ "Logged": loggedReducer });
-    }, [loggedReducer]);
 
-    function LoginFetch() {
-        return new Promise((resolve, reject) => {
-            fetch('/user/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ email: email.toLowerCase(), pass: pass })
-            }).then(r => r.json())
-                .then(data => {
-                    if (data.ok) {
-                        setUser(data.user);
-                        resolve(true);
-                    } else {
-                        resolve(false);
-                    }
-                })
-                .catch(err => reject(err))
-        })
-    }
-
+    const { userInfo } = userLogin;
     const nav = useNavigate();
+
+    useEffect(() => {
+        if (userInfo != undefined && userInfo.email){
+            nav('/greetings');
+        }
+    }, [userInfo])
+
+    
 
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
@@ -61,25 +50,13 @@ function Login() {
         console.log({ email })
         console.log({ pass })
 
-        LoginFetch()
-            .then((json) => {
-                console.log("isUer:", json);
-                if (json) {
-                    const _user: payloadIF = {
-                        status: true,
-                        user: { email: email }
-                    }
+        dispatch(LoginFetch({ email: email, pass: pass }));
 
-                    dispatch(signIn(_user));
+        // props.LoginFetch({ email: email, pass: pass });
+        // console.log(props.userData.status)
 
-                    nav('/greetings');
-                } else {
-                    console.log("user doesn't exists!");
-                }
-            })
-            .catch((err) => {
-                console.error(err);
-            });
+        // if(props.userData.status)
+        //     nav('/greetings');
     }
 
     return (
@@ -102,3 +79,22 @@ function Login() {
 }
 
 export default Login;
+
+// function mapStateToProps(state: any) {
+//     return {
+//         userData: state.user
+//     }
+// }
+
+// function mapDispatchToProps(dispatch: any) {
+//     return {
+//         LoginFetch: (userInfo: any) => {
+//             dispatch(LoginFetch(userInfo))
+//         }
+//     }
+// }
+
+// export default connect(
+//     mapStateToProps,
+//     mapDispatchToProps
+// )(Login);
