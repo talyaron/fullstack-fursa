@@ -1,13 +1,15 @@
 import {useState} from 'react'
 import './Card.scss'
 import { Link } from "react-router-dom";
+import BasicRating from '../rating/Rating';
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 
 export interface CardProp {
   wood:{
   name: string,
-  width:number,
-  height:number,
-  thick:number,
+  
   cardImg:string
   };
 }
@@ -15,7 +17,7 @@ export interface CardProp {
 function Card(prop: CardProp) {
   //onst [randomname,setrandomName]=useState('suzan')
   //const names:Array<string>=['mona',"suzan","Tal","suzan2",'mona2','Tal2'];
-  const {name,width,height,thick,cardImg}=prop.wood;
+  const {name,cardImg}=prop.wood;
   const[text,setText]=useState('')
   const [isLiked,setlike]=useState('like')
   const [color,setcolor]=useState('')
@@ -64,19 +66,27 @@ function Card(prop: CardProp) {
     >
            
      
-           <Link to={`/order/${name}`}>order {name}</Link>
+       
       <img src={cardImg} alt="" />
       
       <h3>{name}</h3>
-      <h1>width is: {width}</h1>
-      <h1>height is: {height}</h1>
-      <h1>thickness is: {thick}</h1>
-      <p>you {isLiked} this type</p>
+     <BasicRating></BasicRating>
+    <Box sx={{ '& button': { m: 1 } }}>
+      <div>
+        <Button variant="contained"style={{backgroundColor: 'rgb(47, 143, 90)'}}size="medium"><Link to={`/order/${name}`} style={{color:'white'}}>
+          order
+       </Link>
+       </Button>
+     
+      </div>
+      </Box>
+    
+      {/* <p>you {isLiked} this type</p>
       <button  onClick={handlerbtn}  >
         <img src={image} alt="" />
-      </button>
+      </button> */}
       <p>{text}</p>
-  
+      
     </div>
   );
 }

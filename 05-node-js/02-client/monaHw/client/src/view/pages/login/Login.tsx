@@ -9,16 +9,16 @@ import Navbar from '../../components/navbar/Navbar';
 import {useState,useEffect} from 'react';
 function Login(){
 
-    const [wood,setWood]=useState([]);
-    useEffect(()=>{
-        fetch('/get-wood-type').then(res=>res.json()).then(data=>{
+    // const [wood,setWood]=useState([]);
+    // useEffect(()=>{
+    //     fetch('/get-wood-type').then(res=>res.json()).then(data=>{
           
-          console.log(data);
-          setWood(data);
+    //       console.log(data);
+    //       setWood(data);
           
-        })
-      },[]);
-      console.log(wood)
+    //     })
+    //   },[]);
+    //   console.log(wood)
     return(
       
         <div className="wrapper">
@@ -29,9 +29,9 @@ function Login(){
         <TextField id="outlined-basic" label="Name" variant="outlined"  color="warning"   sx={{margin:'5px'}} />
         <TextField id="outlined-basic" label="Phone Number" variant="outlined" color="warning" sx={{margin:'5px'}}/>
         <TextField id="outlined-basic" label="Location" variant="outlined" color="warning" sx={{margin:'5px'} } />
-        <Button variant="contained" size='medium'  color="secondary" sx={{m:1,width:'20%',marginLeft:'40%'}}>
+        <Button variant="contained" size='medium'  style={{backgroundColor: 'rgb(47, 143, 90)'}} sx={{m:1,width:'20%',marginLeft:'40%'}}>
         
-        <Link to="/store">login</Link>
+        <Link to="/store" color='white'>login</Link>
         </Button>
         </Box>
         </div>

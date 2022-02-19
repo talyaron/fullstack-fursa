@@ -1,4 +1,17 @@
-.products
-{
-    background-color: $mainColor
-}
+
+   
+    .products{
+         display: grid;
+        grid-template-columns: repeat(5,1fr);
+        row-gap: 20px;
+        column-gap: 2px;
+        margin: 15px;
+        box-shadow: 2px 2px 10px rgba(128, 128, 128, 0.514);
+
+        .item{
+            margin: auto;
+            font-size: 1rem;
+            
+        }
+      
+    }
