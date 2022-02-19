@@ -9,6 +9,7 @@ var TableContainer_1 = require("@mui/material/TableContainer");
 var TableHead_1 = require("@mui/material/TableHead");
 var TableRow_1 = require("@mui/material/TableRow");
 var Paper_1 = require("@mui/material/Paper");
+var header_1 = require("../../components/header/header");
 var StyledTableCell = styles_1.styled(TableCell_1["default"])(function (_a) {
     var _b;
     var theme = _a.theme;
@@ -45,16 +46,19 @@ var rows = [
     createData('karim benzema', 'france', 33)
 ];
 function Mygroups() {
-    return (React.createElement(TableContainer_1["default"], { component: Paper_1["default"] },
-        React.createElement(Table_1["default"], { sx: { minWidth: 700 }, "aria-label": "customized table" },
-            React.createElement(TableHead_1["default"], null,
-                React.createElement(TableRow_1["default"], null,
-                    React.createElement(StyledTableCell, null, "FULL NAME"),
-                    React.createElement(StyledTableCell, { align: "right" }, "CITY"),
-                    React.createElement(StyledTableCell, { align: "right" }, "AGE"))),
-            React.createElement(TableBody_1["default"], null, rows.map(function (row) { return (React.createElement(StyledTableRow, { key: row.name },
-                React.createElement(StyledTableCell, { component: "th", scope: "row" }, row.name),
-                React.createElement(StyledTableCell, { align: "right" }, row.city),
-                React.createElement(StyledTableCell, { align: "right" }, row.age))); })))));
+    return (React.createElement("div", null,
+        React.createElement(header_1["default"], null),
+        React.createElement(TableContainer_1["default"], { component: Paper_1["default"] },
+            React.createElement(Table_1["default"], { sx: { minWidth: 300 }, "aria-label": "customized table" },
+                React.createElement(TableHead_1["default"], null,
+                    React.createElement(TableRow_1["default"], null,
+                        React.createElement(StyledTableCell, { align: "center" }, "FULL NAME"),
+                        React.createElement(StyledTableCell, { align: "center" }, "CITY"),
+                        React.createElement(StyledTableCell, { align: "center" }, "AGE"),
+                        React.createElement(StyledTableCell, { align: "center" }, "ACTIONS"))),
+                React.createElement(TableBody_1["default"], null, rows.map(function (row) { return (React.createElement(StyledTableRow, { key: row.name },
+                    React.createElement(StyledTableCell, { align: "center", component: "th", scope: "row" }, row.name),
+                    React.createElement(StyledTableCell, { align: "center" }, row.city),
+                    React.createElement(StyledTableCell, { align: "center" }, row.age))); }))))));
 }
 exports["default"] = Mygroups;

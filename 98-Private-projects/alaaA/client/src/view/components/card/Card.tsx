@@ -12,15 +12,17 @@ interface product {
   Url: string;
   productsCart:any;
   setproductsCart:any;
+  // counter:number;
   }
 
 
 
 
 
-function Card(prop: product) {
+function Card(prop: any) {
 
   const [counter, setCounter] = useState(0); // useState(initial value);
+  // const [q,setQ] = useState(0);
 
   function handleAddCounter() {
     let tempCounter = counter;
@@ -42,15 +44,7 @@ function Card(prop: product) {
 
   const {id, name, price,quantity, description,  Url,productsCart,setproductsCart } = prop;
   const [color, setColor] = useState('red');
-  
-const [mytext, setmytext] = useState('hi , alaa wants to write me');
-    function moveInput(e: any) {
-        try {
-            setmytext(e.target.value)
-        } catch (error) {
-            console.error(error)
-        }
-    }
+
 
 
   return (

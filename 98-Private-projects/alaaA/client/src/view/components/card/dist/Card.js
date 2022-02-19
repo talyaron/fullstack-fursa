@@ -4,6 +4,7 @@ require("../card/Card.scss");
 var react_1 = require("react");
 function Card(prop) {
     var _a = react_1.useState(0), counter = _a[0], setCounter = _a[1]; // useState(initial value);
+    // const [q,setQ] = useState(0);
     function handleAddCounter() {
         var tempCounter = counter;
         tempCounter++;
@@ -23,15 +24,6 @@ function Card(prop) {
     }
     var id = prop.id, name = prop.name, price = prop.price, quantity = prop.quantity, description = prop.description, Url = prop.Url, productsCart = prop.productsCart, setproductsCart = prop.setproductsCart;
     var _b = react_1.useState('red'), color = _b[0], setColor = _b[1];
-    var _c = react_1.useState('hi , alaa wants to write me'), mytext = _c[0], setmytext = _c[1];
-    function moveInput(e) {
-        try {
-            setmytext(e.target.value);
-        }
-        catch (error) {
-            console.error(error);
-        }
-    }
     return (React.createElement("div", { className: "card", style: { backgroundColor: color } },
         React.createElement("img", { src: Url, alt: "" }),
         React.createElement("h3", null, name),

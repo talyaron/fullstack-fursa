@@ -14,7 +14,7 @@ var signUp = function () {
     var headerStyle = { margin: 0 };
     var avatarStyle = { backgroundColor: '#1bbd7e' };
     var marginTop = { marginTop: 5 };
-    function handelSubmit() {
+    function handelLink() {
     }
     return (react_1["default"].createElement(core_1.Grid, null,
         react_1["default"].createElement(core_1.Paper, { elevation: 20, style: paperStyle },
@@ -22,7 +22,7 @@ var signUp = function () {
                 react_1["default"].createElement(core_1.Avatar, { style: avatarStyle },
                     react_1["default"].createElement(AddCircleOutlineOutlined_1["default"], null)),
                 react_1["default"].createElement("h2", { style: headerStyle }, "Sign Up")),
-            react_1["default"].createElement("form", { onSubmit: handelSubmit },
+            react_1["default"].createElement("form", { onSubmit: handelLink },
                 react_1["default"].createElement(core_1.TextField, { fullWidth: true, label: 'Name', required: true, placeholder: "Enter your name" }),
                 react_1["default"].createElement(core_1.TextField, { fullWidth: true, label: 'Email', required: true, placeholder: "Enter your email" }),
                 react_1["default"].createElement(FormControl_1["default"], { component: "fieldset", required: true, style: marginTop },
@@ -31,9 +31,10 @@ var signUp = function () {
                         react_1["default"].createElement(FormControlLabel_1["default"], { value: "female", control: react_1["default"].createElement(Radio_1["default"], null), label: "Female" }),
                         react_1["default"].createElement(FormControlLabel_1["default"], { value: "male", control: react_1["default"].createElement(Radio_1["default"], null), label: "Male" }))),
                 react_1["default"].createElement(core_1.TextField, { fullWidth: true, label: 'Phone Number', required: true, placeholder: "Enter your phone number" }),
-                react_1["default"].createElement(core_1.TextField, { fullWidth: true, label: 'Password', required: true, placeholder: "Enter your password" }),
-                react_1["default"].createElement(core_1.TextField, { fullWidth: true, label: 'Confirm Password', required: true, placeholder: "Confirm your password" }),
-                react_1["default"].createElement(react_router_dom_1.Link, { to: "/Group" },
-                    react_1["default"].createElement(core_1.Button, { type: 'submit', variant: 'contained', color: 'primary' }, "Sign up"))))));
+                react_1["default"].createElement(core_1.TextField, { fullWidth: true, type: "password", label: 'Password', required: true, placeholder: "Enter your password" }),
+                react_1["default"].createElement(core_1.TextField, { fullWidth: true, type: "password", label: 'Confirm Password', required: true, placeholder: "Confirm your password" }),
+                react_1["default"].createElement(core_1.Button, { type: 'submit', onClick: handelLink, variant: 'contained', color: 'primary' }, " Sign up"),
+                react_1["default"].createElement("br", null),
+                react_1["default"].createElement(react_router_dom_1.Link, { to: "/HomePage" }, "Cancel")))));
 };
 exports["default"] = signUp;

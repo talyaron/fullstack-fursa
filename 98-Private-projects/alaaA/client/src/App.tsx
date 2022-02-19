@@ -14,6 +14,7 @@ import Group from "./view/pages/Groups/group";
 import CreateGroup from "./view/pages/CreateGroup/createGroup";
 import Store from "./view/pages/store/store";
 import Mygroups from './view/pages/mygroups/mygroups';
+import Cart from './view/components/Cart/Cart'
 
 
 interface product {
@@ -34,7 +35,7 @@ return(
   <Routes>
     <Route path="/" element={<HomePage/>} />
     <Route path="Login" element={<Login />}></Route>
-    {/* <Route path="Cart" element={<Cart id={0} name={""} price={0} quantity={0} description={""} Url={""} productsCart={[]} setproductsCart={[]} />} /> */}
+    <Route path="Cart" element={<Cart />} />
     <Route path="Login" element={<HomePage />} />
     <Route path="signUp" element={<SignUp />} />
     <Route path="AboutUs" element={<AboutUs />} />

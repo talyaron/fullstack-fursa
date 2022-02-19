@@ -11,12 +11,14 @@ var group_1 = require("./view/pages/Groups/group");
 var createGroup_1 = require("./view/pages/CreateGroup/createGroup");
 var store_1 = require("./view/pages/store/store");
 var mygroups_1 = require("./view/pages/mygroups/mygroups");
+var Cart_1 = require("./view/components/Cart/Cart");
 function App() {
     var _a = react_1.useState([]), productsCart = _a[0], setproductsCart = _a[1];
     return (react_1["default"].createElement(react_router_dom_1.BrowserRouter, null,
         react_1["default"].createElement(react_router_dom_1.Routes, null,
             react_1["default"].createElement(react_router_dom_1.Route, { path: "/", element: react_1["default"].createElement(homePage_1["default"], null) }),
             react_1["default"].createElement(react_router_dom_1.Route, { path: "Login", element: react_1["default"].createElement(logIn_1["default"], null) }),
+            react_1["default"].createElement(react_router_dom_1.Route, { path: "Cart", element: react_1["default"].createElement(Cart_1["default"], null) }),
             react_1["default"].createElement(react_router_dom_1.Route, { path: "Login", element: react_1["default"].createElement(homePage_1["default"], null) }),
             react_1["default"].createElement(react_router_dom_1.Route, { path: "signUp", element: react_1["default"].createElement(signUp_1["default"], null) }),
             react_1["default"].createElement(react_router_dom_1.Route, { path: "AboutUs", element: react_1["default"].createElement(aboutUs_1["default"], null) }),

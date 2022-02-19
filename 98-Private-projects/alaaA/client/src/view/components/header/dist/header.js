@@ -10,6 +10,7 @@ function Header() {
             react_1["default"].createElement("a", { className: "active", href: "#home" }, "Home")),
         react_1["default"].createElement("div", { className: "header-right" },
             react_1["default"].createElement("a", { href: "#contact" }),
+            react_1["default"].createElement(react_router_dom_1.Link, { to: "/Cart" }, "To The Cart"),
             react_1["default"].createElement("a", { href: "#contact" }, "Requests"),
             react_1["default"].createElement("a", { href: "#about" }, "Profile"),
             react_1["default"].createElement("a", { href: "#contact" }, "Settings"),

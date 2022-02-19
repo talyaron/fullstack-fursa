@@ -13,7 +13,7 @@ var group = function () {
                 "welcome to your groups ",
                 react_1["default"].createElement("br", null),
                 react_1["default"].createElement("br", null),
-                react_1["default"].createElement(react_router_dom_1.Link, { to: "/" }, "Your GROUPs "),
+                react_1["default"].createElement(react_router_dom_1.Link, { to: "/mygroups" }, "Your GROUPs "),
                 react_1["default"].createElement("br", null),
                 react_1["default"].createElement(react_router_dom_1.Link, { to: "/CreateGroup" }, "create GROUP"),
                 react_1["default"].createElement("br", null),
