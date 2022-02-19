@@ -1,4 +1,4 @@
-import { FETCH_USER_REQUEST, FETCH_USER_SUCCESS, FETCH_USER_FAILURE, USER_LOGOUT } from "../types/UserType";
+import { userTypes } from "../types/UserType";
 import { AnyAction } from 'redux';
 import { ThunkAction, ThunkDispatch } from "redux-thunk";
 import { RootState } from "../store";
@@ -15,20 +15,20 @@ interface userIF {
 
 export function fetchUserRequest() {
     const action: userAction = {
-        type: FETCH_USER_REQUEST
+        type: userTypes.FETCH_USER_REQUEST
     }
     return action;
 }
 export function fetchUserSuccess(user: userIF) {
     const action: userAction = {
-        type: FETCH_USER_SUCCESS,
+        type: userTypes.FETCH_USER_SUCCESS,
         payload: user
     }
     return action;
 }
 export function fetchUserFailure(error: string) {
     const action: userAction = {
-        type: FETCH_USER_FAILURE,
+        type: userTypes.FETCH_USER_FAILURE,
         payload: error
     }
     return action;
@@ -64,7 +64,7 @@ export function LogOut(userInfo: userIF): ThunkAction<Promise<void>, RootState, 
     return async (dispatch: ThunkDispatch<RootState, unknown, AnyAction>): Promise<void> => {
         try {
             dispatch({
-                type: USER_LOGOUT
+                type: userTypes.USER_LOGOUT
             });
             const response = await fetch('/user/logout');
             const data = await response.json();

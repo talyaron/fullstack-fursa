@@ -5,14 +5,16 @@ import thunk from 'redux-thunk';
 import rootReducers from "./compinedReducer";
 
 const userInfoFromLocalStorage = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')!) : undefined;
+const listInfoFromLocalStorage = localStorage.getItem('listInfo') ? JSON.parse(localStorage.getItem('listInfo')!) : undefined;
 
-const initialUserState = {
-    user: { userInfo: userInfoFromLocalStorage }
+const initialState = {
+    user: { userInfo: userInfoFromLocalStorage },
+    list: {listInfo: listInfoFromLocalStorage }
 } as {}
 
-console.log({ initialUserState: initialUserState })
+console.log({ initialState: initialState })
 
-const store = createStore(rootReducers, initialUserState, composeWithDevTools(
+const store = createStore(rootReducers, initialState, composeWithDevTools(
     applyMiddleware(thunk)
 ));
 

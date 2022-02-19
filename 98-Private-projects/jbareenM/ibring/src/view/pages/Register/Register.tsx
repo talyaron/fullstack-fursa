@@ -5,6 +5,7 @@ import logo from "../../logoAndPhotos/ibring.jpg";
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { signIn } from '../../../actions/Actions';
+import { LoginFetch } from '../../../redux';
 
 interface actionIF {
     type: string;
@@ -62,8 +63,8 @@ function Register() {
             .then((json) => {
                 console.log("isUer:", json);
                 if (json) {
-                    dispatch(signIn());
-
+                    
+                    dispatch(LoginFetch({ email: email, pass: pass }));
                     nav('/greetings');
                 } else {
                     console.log("user doesn't exists!");

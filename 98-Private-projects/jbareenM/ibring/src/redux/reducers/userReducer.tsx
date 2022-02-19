@@ -1,5 +1,4 @@
-import { NULL } from "sass";
-import { FETCH_USER_REQUEST, FETCH_USER_SUCCESS, FETCH_USER_FAILURE, USER_LOGOUT } from "../types/UserType";
+import { userTypes } from "../types/UserType";
 
 export interface UserState {
     loading?: boolean,
@@ -37,19 +36,19 @@ const initialUserState: UserState = {
 
 export function userLoginReducer(state: UserState = initialUserState, action: userAction) {
     switch (action.type) {
-        case FETCH_USER_REQUEST:
+        case userTypes.FETCH_USER_REQUEST:
             return { loading: true };
-        case FETCH_USER_SUCCESS:
+        case userTypes.FETCH_USER_SUCCESS:
             return {
                 loading: false,
                 userInfo: action.payload
             };
-        case FETCH_USER_FAILURE:
+        case userTypes.FETCH_USER_FAILURE:
             return {
                 loading: false,
                 error: action.payload
             };
-        case USER_LOGOUT:
+        case userTypes.USER_LOGOUT:
             return {};
         default:
             return state;
@@ -58,7 +57,7 @@ export function userLoginReducer(state: UserState = initialUserState, action: us
 
 function userReducer(state: stateReducer = initialState, action: userAction) {
     switch (action.type) {
-        case FETCH_USER_REQUEST:
+        case userTypes.FETCH_USER_REQUEST:
             return {
                 ...state,
                 loading: true,
@@ -66,7 +65,7 @@ function userReducer(state: stateReducer = initialState, action: userAction) {
                 error: "",
                 status: false
             }
-        case FETCH_USER_SUCCESS:
+        case userTypes.FETCH_USER_SUCCESS:
             return {
                 ...state,
                 loading: false,
@@ -74,7 +73,7 @@ function userReducer(state: stateReducer = initialState, action: userAction) {
                 error: "",
                 status: true
             }
-        case FETCH_USER_FAILURE:
+        case userTypes.FETCH_USER_FAILURE:
             return {
                 ...state,
                 loading: false,

@@ -7,7 +7,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { signIn } from '../../../actions/Actions';
 
 import { LoginFetch } from '../../../redux';
-import { connect } from 'react-redux';
 import { RootState } from '../../../redux/store';
 import { UserState } from '../../../redux/reducers/userReducer';
 

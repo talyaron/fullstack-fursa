@@ -1,12 +1,19 @@
 import '../MainTemplate/MainTemplate.scss'
 import './ListForm.scss'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import camera from '../../logoAndPhotos/camera.jpg';
+import sentImg from '../../logoAndPhotos/sentImage.jpg';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { listFormAction } from '../../../actions/Actions';
+import { RootState } from '../../../redux/store';
+import { UserState } from '../../../redux/reducers/userReducer';
+import { fetchListRequest, fetchListFailure, fetchListSuccess } from '../../../redux';
+import { ListState } from '../../../redux/reducers/listReducer';
+
+//URL.createObjectURL(selectedImage)
 
 interface listFormIF {
+    imgURL: any;
     groupName: string;
     meetType: string;
     date: Date;
@@ -17,8 +24,18 @@ interface listFormIF {
 }
 
 function ListForm() {
-    const loggedReducer = useSelector<any>(state => state.loggedReducer);
+    const userLogin = useSelector<RootState, UserState>(state => state.user);
+    const _list = useSelector<RootState, ListState>(state => state.list);
     const dispatch = useDispatch();
+    const { listInfo } = _list;
+    const [selectedImage, setSelectedImage] = useState("");
+
+    // useEffect(() => {
+    //     if (listInfo != undefined) {
+    //         nav('/typeList');
+    //     }
+    // }, [listInfo]);
+
     const nav = useNavigate();
 
     function handleMeetForm(ev: any) {
@@ -26,26 +43,51 @@ function ListForm() {
         const form = ev.target;
         const obj: any = {};
         for (let i = 0; i < form.length; i++) {
-            // console.log(form[i].value, form[i].name, form[i].type);
             if (form[i].type !== "submit") {
                 obj[form[i].name] = form[i].value;
             }
         }
+        if (selectedFile) {
+            obj["imgURL"] = sentImg;
+        }
+        dispatch(fetchListRequest());
         setListForm(obj);
+        dispatch(fetchListSuccess(obj));
+        localStorage.setItem('listInfo', JSON.stringify(obj));
 
-        dispatch(listFormAction(obj));
         nav('/typeList');
     }
-
     const [listForm, setListForm] = useState<listFormIF>();
 
+    const [selectedFile, setSelectedFile] = useState()
+    const [preview, setPreview] = useState("")
+
+    // create a preview as a side effect, whenever selected file is changed
     useEffect(() => {
-        console.log({ "Logged": loggedReducer });
-    }, [loggedReducer]);
+        if (!selectedFile) {
+            setPreview("undefined")
+            return
+        }
+        const objectUrl = URL.createObjectURL(selectedFile)
+        setPreview(objectUrl)
+        return () => URL.revokeObjectURL(objectUrl)
+    }, [selectedFile])
+
+    function onSelectFile(e: any) {
+        if (!e.target.files || e.target.files.length === 0) {
+            setSelectedFile(undefined)
+            return
+        }
+        setSelectedFile(e.target.files[0])
+    }
+
     return (
         <div className="mainTemplate">
             <div className="mainHeader">
                 <img className='toDo' src={camera} />
+                <div>
+                    <input type='file' onChange={onSelectFile} />
+                </div>
             </div>
             <div className="mainContent">
                 <label className='templateTitle marginTitleNormal'>Please fill the meet form</label>
