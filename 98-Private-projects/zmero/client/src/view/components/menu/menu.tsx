@@ -23,6 +23,8 @@ function Menu() {
     const [modalSignInsOpen, setSignINModal] = useState(false);
     const [modalSignUpModal, setSignUpModal] = useState(false);
     const [navbarindex, setNavbarindex] = useState(1);
+    const [loginState, setLoginState] = useState({})
+    const [sigupState, setSigupnState] = useState({})
     function openSearchModal(bool: boolean) {
         if (bool === false)
             setNavbarindex(1)
@@ -40,6 +42,30 @@ function Menu() {
             setNavbarindex(1)
         else setNavbarindex(0)
         setSignUpModal(bool);
+    }
+    function onChangeLogIn(e: any) {
+        setLoginState({
+            ...loginState,
+            [e.target.name]: e.target.value,
+        })
+
+    }
+    function handleLogin(e: any) {
+        e.preventDefault();
+
+        console.log(loginState)
+    }
+    function onChangeSignup(e: any) {
+        setSigupnState({
+            ...sigupState,
+            [e.target.name]: e.target.value,
+        })
+
+    }
+    function handleSignup(e: any) {
+        e.preventDefault();
+
+        console.log(sigupState)
     }
     return (
         <div className="navbar" style={{ zIndex: navbarindex }}>
@@ -89,9 +115,11 @@ function Menu() {
                             <h3>Sign In</h3>
                         </div>
                         <div className="signModal__content__right__middle">
-                            <TextField style={{ width: '50%' }} id="standard-basic" label="Account" variant="standard" />
-                            <TextField id="standard-basic" style={{ width: '50%' }} label="Password" variant="standard" />
-                            <Button variant="contained" style={{ width: '50%', margin: '1rem' }} >Sign in</Button>
+                            <form onSubmit={handleLogin}>
+                                <TextField required style={{ width: '50%' }} id="login__account" label="Account" name="user" variant="standard" onChange={onChangeLogIn} />
+                                <TextField required id="login__password" style={{ width: '50%' }} label="Password" name="password" type="password" variant="standard" onChange={onChangeLogIn} />
+                                <Button variant="contained" type="submit" style={{ width: '50%', margin: '1rem' }} >Sign in</Button>
+                            </form>
                         </div>
                         <div className="signModal__content__right__bottom"></div>
                     </div>
@@ -107,25 +135,32 @@ function Menu() {
                             <h3>Sign up</h3>
                         </div>
                         <div className="signModal__content__right__middle">
-                            <TextField style={{ width: '50%' }} id="standard-basic" label="Full Name" variant="standard" />
-                            <TextField id="standard-basic" style={{ width: '50%' }} label="Email" variant="standard" />
-                            <TextField id="standard-basic" style={{ width: '50%' }} label="Password" variant="standard" />
-                            <TextField id="standard-basic" style={{ width: '50%' }} label="Phone" variant="standard" />
-                            <FormControl style={{ width: '50%', marginTop: '1rem' }} size="small" >
-                                <InputLabel id="region" >Region</InputLabel>
-                                <Select MenuProps={{
-                                    disableScrollLock: true,
-                                }}
-                                    labelId="demo-simple-select-label"
-                                    id="demo-simple-select"
-                                    label="Region"
-                                >
-                                    <MenuItem value={10}>Israel</MenuItem>
-                                    <MenuItem value={20}>USA</MenuItem>
-                                    <MenuItem value={30}>UK</MenuItem>
-                                </Select>
-                            </FormControl>
-                            <Button variant="contained" style={{ width: '50%', margin: '1rem' }} >Register</Button>
+                            <form onSubmit={handleSignup}>
+                                <TextField required name="fName" style={{ width: '50%' }} label="First Name" variant="standard" onChange={onChangeSignup} />
+                                <TextField required name="lName" style={{ width: '50%' }} label="Last Name" variant="standard" onChange={onChangeSignup} />
+                                <TextField required name="email" style={{ width: '50%' }} label="Email" variant="standard" onChange={onChangeSignup} />
+                                <TextField required name="password" style={{ width: '50%' }} label="Password" type="password" variant="standard" onChange={onChangeSignup} />
+                                <TextField required name="phone" style={{ width: '50%' }} label="Phone" variant="standard" onChange={onChangeSignup} />
+                                <FormControl style={{ width: '50%', marginTop: '1rem' }} size="small" >
+                                    <InputLabel id="region"  >Region</InputLabel>
+                                    <Select MenuProps={{
+                                        disableScrollLock: true,
+                                    }}
+                                        required
+                                        name="region"
+                                        defaultValue=''
+                                        labelId="region"
+                                        id="demo-simple-select"
+                                        label="Region"
+                                        onChange={onChangeSignup}
+                                    >
+                                        <MenuItem value='Israel'>Israel</MenuItem>
+                                        <MenuItem value='USA'>USA</MenuItem>
+                                        <MenuItem value='UK'>UK</MenuItem>
+                                    </Select>
+                                </FormControl>
+                                <Button variant="contained" style={{ width: '50%', margin: '1rem' }} type="submit">Register</Button>
+                            </form>
                         </div>
                     </div>
                 </div>

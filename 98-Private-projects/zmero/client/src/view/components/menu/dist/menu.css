@@ -211,6 +211,9 @@
 }
 .signModal__content__right__middle {
   width: 100%;
+}
+.signModal__content__right__middle form {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
