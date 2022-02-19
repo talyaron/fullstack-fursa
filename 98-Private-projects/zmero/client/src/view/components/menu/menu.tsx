@@ -11,6 +11,9 @@ import Button from '@mui/material/Button';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 import Select from '@mui/material/Select';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
@@ -116,9 +119,12 @@ function Menu() {
                         </div>
                         <div className="signModal__content__right__middle">
                             <form onSubmit={handleLogin}>
-                                <TextField required style={{ width: '50%' }} id="login__account" label="Account" name="user" variant="standard" onChange={onChangeLogIn} />
-                                <TextField required id="login__password" style={{ width: '50%' }} label="Password" name="password" type="password" variant="standard" onChange={onChangeLogIn} />
-                                <Button variant="contained" type="submit" style={{ width: '50%', margin: '1rem' }} >Sign in</Button>
+                                <TextField required id="login__account" label="Account" name="user" variant="standard" onChange={onChangeLogIn} />
+                                <TextField required id="login__password" label="Password" name="password" type="password" variant="standard" onChange={onChangeLogIn} />
+                                <FormGroup>
+                                    <FormControlLabel control={<Checkbox defaultChecked />} label="Remember me" />
+                                </FormGroup>
+                                <Button variant="contained" type="submit" style={{ marginTop: '1rem' }} >Sign in</Button>
                             </form>
                         </div>
                         <div className="signModal__content__right__bottom"></div>
@@ -136,12 +142,12 @@ function Menu() {
                         </div>
                         <div className="signModal__content__right__middle">
                             <form onSubmit={handleSignup}>
-                                <TextField required name="fName" style={{ width: '50%' }} label="First Name" variant="standard" onChange={onChangeSignup} />
-                                <TextField required name="lName" style={{ width: '50%' }} label="Last Name" variant="standard" onChange={onChangeSignup} />
-                                <TextField required name="email" style={{ width: '50%' }} label="Email" variant="standard" onChange={onChangeSignup} />
-                                <TextField required name="password" style={{ width: '50%' }} label="Password" type="password" variant="standard" onChange={onChangeSignup} />
-                                <TextField required name="phone" style={{ width: '50%' }} label="Phone" variant="standard" onChange={onChangeSignup} />
-                                <FormControl style={{ width: '50%', marginTop: '1rem' }} size="small" >
+                                <TextField required name="fName" label="First Name" variant="standard" onChange={onChangeSignup} />
+                                <TextField required name="lName" label="Last Name" variant="standard" onChange={onChangeSignup} />
+                                <TextField required name="email" label="Email" variant="standard" onChange={onChangeSignup} />
+                                <TextField required name="password" label="Password" type="password" variant="standard" onChange={onChangeSignup} />
+                                <TextField required name="phone" label="Phone" variant="standard" onChange={onChangeSignup} />
+                                <FormControl style={{ marginTop: '1rem' }} size="small" >
                                     <InputLabel id="region"  >Region</InputLabel>
                                     <Select MenuProps={{
                                         disableScrollLock: true,
@@ -159,7 +165,7 @@ function Menu() {
                                         <MenuItem value='UK'>UK</MenuItem>
                                     </Select>
                                 </FormControl>
-                                <Button variant="contained" style={{ width: '50%', margin: '1rem' }} type="submit">Register</Button>
+                                <Button variant="contained" style={{ marginTop: '1rem' }} type="submit">Register</Button>
                             </form>
                         </div>
                     </div>

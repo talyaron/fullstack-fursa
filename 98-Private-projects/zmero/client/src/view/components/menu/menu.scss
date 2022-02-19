@@ -62,8 +62,9 @@
             text-align: center;
             padding: 20px 24px;
             text-decoration: none;
-            font-size: 15px;
+            //font-size: 15px;
             font-family: Inter;
+
 
             &:hover {
                 //background-color: #2a945b;
@@ -234,7 +235,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: flex-start;
+            align-items: center;
             //padding: 1rem 2rem;
             width: 50%;
 
@@ -254,14 +255,13 @@
             }
 
             &__middle {
-                width: 100%;
+                // width: 60%;
 
                 form {
                     width: 100%;
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
-                    align-items: center;
                     overflow: hidden;
                 }
             }

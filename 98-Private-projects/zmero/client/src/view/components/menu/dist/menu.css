@@ -52,7 +52,6 @@
   text-align: center;
   padding: 20px 24px;
   text-decoration: none;
-  font-size: 15px;
   font-family: Inter;
 }
 .navbar__left a:hover {
@@ -193,7 +192,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   width: 50%;
 }
 .signModal__content__right__title {
@@ -209,15 +208,11 @@
   padding: 0.3rem;
   background-color: #2a945b;
 }
-.signModal__content__right__middle {
-  width: 100%;
-}
 .signModal__content__right__middle form {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   overflow: hidden;
 }
 

@@ -24,6 +24,9 @@ var Button_1 = require("@mui/material/Button");
 var InputLabel_1 = require("@mui/material/InputLabel");
 var MenuItem_1 = require("@mui/material/MenuItem");
 var FormControl_1 = require("@mui/material/FormControl");
+var FormGroup_1 = require("@mui/material/FormGroup");
+var FormControlLabel_1 = require("@mui/material/FormControlLabel");
+var Checkbox_1 = require("@mui/material/Checkbox");
 var Select_1 = require("@mui/material/Select");
 var react_fontawesome_1 = require("@fortawesome/react-fontawesome");
 var free_solid_svg_icons_1 = require("@fortawesome/free-solid-svg-icons");
@@ -102,9 +105,11 @@ function Menu() {
                         react_1["default"].createElement("h3", null, "Sign In")),
                     react_1["default"].createElement("div", { className: "signModal__content__right__middle" },
                         react_1["default"].createElement("form", { onSubmit: handleLogin },
-                            react_1["default"].createElement(TextField_1["default"], { required: true, style: { width: '50%' }, id: "login__account", label: "Account", name: "user", variant: "standard", onChange: onChangeLogIn }),
-                            react_1["default"].createElement(TextField_1["default"], { required: true, id: "login__password", style: { width: '50%' }, label: "Password", name: "password", type: "password", variant: "standard", onChange: onChangeLogIn }),
-                            react_1["default"].createElement(Button_1["default"], { variant: "contained", type: "submit", style: { width: '50%', margin: '1rem' } }, "Sign in"))),
+                            react_1["default"].createElement(TextField_1["default"], { required: true, id: "login__account", label: "Account", name: "user", variant: "standard", onChange: onChangeLogIn }),
+                            react_1["default"].createElement(TextField_1["default"], { required: true, id: "login__password", label: "Password", name: "password", type: "password", variant: "standard", onChange: onChangeLogIn }),
+                            react_1["default"].createElement(FormGroup_1["default"], null,
+                                react_1["default"].createElement(FormControlLabel_1["default"], { control: react_1["default"].createElement(Checkbox_1["default"], { defaultChecked: true }), label: "Remember me" })),
+                            react_1["default"].createElement(Button_1["default"], { variant: "contained", type: "submit", style: { marginTop: '1rem' } }, "Sign in"))),
                     react_1["default"].createElement("div", { className: "signModal__content__right__bottom" })))),
         react_1["default"].createElement(react_modal_1["default"], { className: "signModal", isOpen: modalSignUpModal, onRequestClose: function () { return openSignUpModal(false); } },
             react_1["default"].createElement("div", { className: "signModal__content" },
@@ -114,12 +119,12 @@ function Menu() {
                         react_1["default"].createElement("h3", null, "Sign up")),
                     react_1["default"].createElement("div", { className: "signModal__content__right__middle" },
                         react_1["default"].createElement("form", { onSubmit: handleSignup },
-                            react_1["default"].createElement(TextField_1["default"], { required: true, name: "fName", style: { width: '50%' }, label: "First Name", variant: "standard", onChange: onChangeSignup }),
-                            react_1["default"].createElement(TextField_1["default"], { required: true, name: "lName", style: { width: '50%' }, label: "Last Name", variant: "standard", onChange: onChangeSignup }),
-                            react_1["default"].createElement(TextField_1["default"], { required: true, name: "email", style: { width: '50%' }, label: "Email", variant: "standard", onChange: onChangeSignup }),
-                            react_1["default"].createElement(TextField_1["default"], { required: true, name: "password", style: { width: '50%' }, label: "Password", type: "password", variant: "standard", onChange: onChangeSignup }),
-                            react_1["default"].createElement(TextField_1["default"], { required: true, name: "phone", style: { width: '50%' }, label: "Phone", variant: "standard", onChange: onChangeSignup }),
-                            react_1["default"].createElement(FormControl_1["default"], { style: { width: '50%', marginTop: '1rem' }, size: "small" },
+                            react_1["default"].createElement(TextField_1["default"], { required: true, name: "fName", label: "First Name", variant: "standard", onChange: onChangeSignup }),
+                            react_1["default"].createElement(TextField_1["default"], { required: true, name: "lName", label: "Last Name", variant: "standard", onChange: onChangeSignup }),
+                            react_1["default"].createElement(TextField_1["default"], { required: true, name: "email", label: "Email", variant: "standard", onChange: onChangeSignup }),
+                            react_1["default"].createElement(TextField_1["default"], { required: true, name: "password", label: "Password", type: "password", variant: "standard", onChange: onChangeSignup }),
+                            react_1["default"].createElement(TextField_1["default"], { required: true, name: "phone", label: "Phone", variant: "standard", onChange: onChangeSignup }),
+                            react_1["default"].createElement(FormControl_1["default"], { style: { marginTop: '1rem' }, size: "small" },
                                 react_1["default"].createElement(InputLabel_1["default"], { id: "region" }, "Region"),
                                 react_1["default"].createElement(Select_1["default"], { MenuProps: {
                                         disableScrollLock: true
@@ -127,6 +132,6 @@ function Menu() {
                                     react_1["default"].createElement(MenuItem_1["default"], { value: 'Israel' }, "Israel"),
                                     react_1["default"].createElement(MenuItem_1["default"], { value: 'USA' }, "USA"),
                                     react_1["default"].createElement(MenuItem_1["default"], { value: 'UK' }, "UK"))),
-                            react_1["default"].createElement(Button_1["default"], { variant: "contained", style: { width: '50%', margin: '1rem' }, type: "submit" }, "Register"))))))));
+                            react_1["default"].createElement(Button_1["default"], { variant: "contained", style: { marginTop: '1rem' }, type: "submit" }, "Register"))))))));
 }
 exports["default"] = Menu;
