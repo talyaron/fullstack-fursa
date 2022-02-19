@@ -1,7 +1,6 @@
 .mainheader {
   position: relative;
   display: flex;
-  gap: 180px;
   width: 100vw;
   height: 4rem;
   border-style: solid;

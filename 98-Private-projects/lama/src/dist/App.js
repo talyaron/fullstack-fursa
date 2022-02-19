@@ -3,6 +3,8 @@ exports.__esModule = true;
 var react_1 = require("react");
 require("./App.scss");
 var header_1 = require("./view/components/header/header");
+// import Card from './view/components/card/Card';
+// import SignUp from './view/pages/signUp/signup'
 var homepage_1 = require("./view/pages/homepage/homepage");
 // const students:Array<Place> = [{name:'Saleem', place:'Mashad'},{name:'Mona',place:"Nazereth"}];
 // interface Place{

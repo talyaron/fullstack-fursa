@@ -1,0 +1,11 @@
+.calbtn {
+  width: 8vw;
+  height: 5vh;
+  position: absolute;
+  top: 40%;
+  left: 700px;
+}
+
+.courses {
+  width: 15vw;
+}

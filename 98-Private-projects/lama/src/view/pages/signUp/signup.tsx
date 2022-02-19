@@ -22,14 +22,14 @@ function SignUp(){
 <Avatar className='avatar'>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h5" className="typ">
             Sign up
           </Typography>
        
             {/* <h2>Sign Up</h2> */}
 {/* <Grid> */}
 
-<form>
+<form className="signupform">
 
             <TextField
             className="txtfield"
@@ -76,7 +76,7 @@ function SignUp(){
 <br />
 <br />
 <Link to={`/signIn`}>
-   <button>submit</button>
+   <button className='subbtn'>submit</button>
    </Link>
    </form>
 </div>

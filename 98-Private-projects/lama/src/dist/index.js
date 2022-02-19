@@ -17,6 +17,7 @@ var trainers_1 = require("./view/pages/trainers/trainers");
 var horses_1 = require("./view/pages/horses/horses");
 var courses_1 = require("./view/pages/courses/courses");
 var course_1 = require("./view/pages/course/course");
+var calender_1 = require("./view/pages/coursescalender/calender");
 // ReactDOM.render(
 //   <React.StrictMode>
 //     <App />
@@ -41,6 +42,7 @@ react_dom_1.render(react_1["default"].createElement(react_router_dom_1.BrowserRo
         react_1["default"].createElement(react_router_dom_1.Route, { path: "trainers", element: react_1["default"].createElement(trainers_1["default"], null) }),
         react_1["default"].createElement(react_router_dom_1.Route, { path: "horses", element: react_1["default"].createElement(horses_1["default"], null) }),
         react_1["default"].createElement(react_router_dom_1.Route, { path: "courses", element: react_1["default"].createElement(courses_1["default"], null) }),
+        react_1["default"].createElement(react_router_dom_1.Route, { path: "calender", element: react_1["default"].createElement(calender_1["default"], null) }),
         react_1["default"].createElement(react_router_dom_1.Route, { path: "course/:courseId", element: react_1["default"].createElement(course_1["default"], null) }))), 
 // document.getElementById("root")
 rootElement);

@@ -3,6 +3,7 @@
   display: grid;
   grid-template-rows: auto auto auto;
   grid-template-columns: repeat(2, auto);
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   margin: auto;
   text-align: center;
   justify-content: center;

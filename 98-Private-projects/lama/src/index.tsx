@@ -19,6 +19,7 @@ import Trainers from "./view/pages/trainers/trainers";
 import Horses from "./view/pages/horses/horses";
 import Courses from "./view/pages/courses/courses";
 import Course from "./view/pages/course/course";
+import Calender from "./view/pages/coursescalender/calender";
 
 
 // ReactDOM.render(
@@ -51,6 +52,7 @@ render(
       <Route path="trainers" element={<Trainers />} />
       <Route path="horses" element={<Horses />} />
       <Route path="courses" element={<Courses />} />
+      <Route path="calender" element={<Calender />} />
       <Route path="course/:courseId" element={<Course />} />
     </Routes>
   </BrowserRouter>,

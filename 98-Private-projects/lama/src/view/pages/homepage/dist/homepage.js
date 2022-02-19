@@ -42,11 +42,11 @@ function Homepage() {
         Setname(nameInArr);
     }
     return (React.createElement("div", { className: 'maindiv' },
-        React.createElement("h3", { className: "h" }, "Welcome to \"    \""),
-        React.createElement("h4", { className: "h" }, "About us"),
+        React.createElement("h3", { className: "h" }, "Welcome to our farm"),
         React.createElement("p", null, "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni deleniti deserunt, accusamus distinctio et minus similique! Officia quae, alias natus optio temporibus saepe voluptates in nostrum reiciendis vitae, facilis ex."),
-        React.createElement("br", null),
-        React.createElement("h3", { className: 'names' }, names),
-        React.createElement("button", { onClick: changename, className: 'btn', type: "submit" }, "click to see all the horses names")));
+        React.createElement("h3", null, names),
+        React.createElement("button", { onClick: changename, className: 'btn', type: "submit" }, "click to see all the horses names"),
+        React.createElement("div", { className: "ani" },
+            React.createElement("div", { className: 'animation' }))));
 }
 exports["default"] = Homepage;

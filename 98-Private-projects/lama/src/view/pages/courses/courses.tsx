@@ -1,5 +1,6 @@
 
-import  './course.scss';
+// import  './course.scss';
+import './courses.scss';
 import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Card from '../../components/trainersCard/card';
@@ -14,7 +15,7 @@ import {coursesProps} from './course';
 import Course from "./course";
 
 
-const courses = [{id:1,name:'course1'}, {id:2,name:'course2'},{id:3,name:'course3'}];
+const courses = [{id:1,name:'group lessons'}, {id:2,name:'private lessons'},{id:3,name:'single lesson'}];
 
 function Courses() {
 
@@ -25,10 +26,22 @@ function Courses() {
         <div className="maindiv">
      <Header />
             <h3>Courses and private lessons</h3>
+            {/* <div className='calbtn'> */}
+ <Link to={`/calender`}>
+    < button className='calbtn'>
+   Register </button>
+ </Link>
+     {/* </div> */}
+     {/* <Link to={`/calender`}>Register 
+ </Link> */}
+      {/* <div className="course"></div> */}
+   
             <div className="courses">
-      {courses.map((course:coursesProps, i)=>{
+    {courses.map((course:coursesProps, i)=>{
           return <Course key={i} name={course.name} id={course.id} />
       })}
+   
+  
       <Outlet />
   </div>;
        

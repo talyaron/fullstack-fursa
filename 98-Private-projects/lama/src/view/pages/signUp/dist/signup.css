@@ -1,21 +1,23 @@
 .signup {
   font-size: small;
+  margin-top: 20px;
+  justify-content: center;
+  border-style: double;
+  border-width: 10px;
+  width: 30vw;
+  height: 70vh;
+  border-color: black;
+  position: relative;
+  left: 500px;
 }
-.signup .txtfield {
+.signup .avatar {
+  position: relative;
+  left: 45%;
+  background-color: "secondary.main";
+}
+.signup .signupform .txtfield {
   width: 20vw;
   height: 10vh;
-}
-
-p {
-  font-size: small;
-}
-
-button {
-  width: 10px;
-}
-
-.avatar {
   position: relative;
-  left: 50%;
-  background-color: "secondary.main";
+  text-align: center;
 }
