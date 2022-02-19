@@ -8,6 +8,7 @@ var MenuItem_1 = require("@mui/material/MenuItem");
 var Search_1 = require("@mui/icons-material/Search");
 var Menu_2 = require("@mui/icons-material/Menu");
 var Person_1 = require("@mui/icons-material/Person");
+var logo_jpg_1 = require("../../logo.jpg");
 require("./menu.scss");
 function Bagemenu() {
     var _a = react_1["default"].useState(null), anchorEl = _a[0], setAnchorEl = _a[1];
@@ -25,7 +26,8 @@ function Bagemenu() {
         react_1["default"].createElement("div", { className: "menu__left" },
             react_1["default"].createElement(Menu_2["default"], { sx: { fontSize: 40, color: '#b5739d', paddingTop: -30 } }),
             react_1["default"].createElement("div", { className: 'logo' },
-                react_1["default"].createElement("img", { src: "https://thumbs.dreamstime.com/z/woman-enjoy-making-foods-girl-cooking-food-continuous-one-line-drawing-vector-illustration-kitchen-people-design-female-dinner-160458109.jpg", alt: "" })),
+                react_1["default"].createElement(react_router_dom_1.Link, { to: '/MainScreen' },
+                    react_1["default"].createElement("img", { src: logo_jpg_1["default"], alt: "" }))),
             react_1["default"].createElement("div", { className: "searchbox" },
                 react_1["default"].createElement("input", { type: "text", placeholder: "search for a recipe" }),
                 react_1["default"].createElement(Search_1["default"], { sx: { fontSize: 30, color: '#b5739d' } }))),
@@ -35,7 +37,8 @@ function Bagemenu() {
             react_1["default"].createElement(Menu_1["default"], { id: "basic-menu", anchorEl: anchorEl, open: open, onClose: handleClose, MenuListProps: {
                     'aria-labelledby': 'basic-button'
                 } },
-                react_1["default"].createElement(MenuItem_1["default"], { onClick: handleClose1 }, "Profile"),
+                react_1["default"].createElement(MenuItem_1["default"], { onClick: handleClose1 },
+                    react_1["default"].createElement(react_router_dom_1.Link, { to: "/User" }, " Profile")),
                 react_1["default"].createElement(MenuItem_1["default"], null,
                     react_1["default"].createElement(react_router_dom_1.Link, { to: "/" }, " Logout"))))));
 }

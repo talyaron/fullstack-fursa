@@ -4,13 +4,14 @@ require("./User.scss");
 var menu_1 = require("../../components/menuBar/menu");
 var Profile_1 = require("../../components/profile/Profile");
 var Recipes_1 = require("../../components/recipes/Recipes");
+var background_jpg_1 = require("../../background.jpg");
 var userInfo = [{ name: "Dima Abbas", phone: "0525041028", email: "dimaabbas25@gmail.com" }];
 function User() {
     return (React.createElement("div", { className: "User" },
         React.createElement("div", { className: "wrapper1" },
             React.createElement(menu_1["default"], null)),
         React.createElement("div", { className: "wrapper2" },
-            React.createElement("img", { className: "image", src: "https://img.freepik.com/free-photo/purple-marble-texture-natural-pattern-with-high-resolution-background-design-art-work_38607-277.jpg?w=996", alt: "" }),
+            React.createElement("img", { className: "image", src: background_jpg_1["default"], alt: "" }),
             React.createElement("div", { className: 'content' },
                 React.createElement("div", { className: "profile" }, userInfo.map(function (user, index) {
                     var name = user.name, phone = user.phone, email = user.email;

@@ -5,14 +5,16 @@ require("./SignUp.scss");
 var App_1 = require("../../../App");
 var ArrowBackSharp_1 = require("@mui/icons-material/ArrowBackSharp");
 var react_router_dom_1 = require("react-router-dom");
+var background_jpg_1 = require("../../background.jpg");
+var logo_jpg_1 = require("../../logo.jpg");
 function SignUp() {
     return (React.createElement("div", { className: "wrapper" },
-        React.createElement("img", { className: "image", src: "https://img.freepik.com/free-photo/purple-marble-texture-natural-pattern-with-high-resolution-background-design-art-work_38607-277.jpg?w=996", alt: "" }),
+        React.createElement("img", { className: "image", src: background_jpg_1["default"], alt: "" }),
         React.createElement("div", { className: "SignUpBox" },
             React.createElement(react_router_dom_1.Link, { to: '/' },
                 React.createElement(ArrowBackSharp_1["default"], null)),
             React.createElement("div", { className: "content" },
-                React.createElement("img", { className: "logo", src: "https://i.etsystatic.com/25426477/c/1724/1370/88/206/il/33fb1e/3155023191/il_340x270.3155023191_710b.jpg", alt: "" }),
+                React.createElement("img", { className: "logo", src: logo_jpg_1["default"], alt: "" }),
                 React.createElement("h1", null, "Create Your Account"),
                 React.createElement(material_1.Box, { component: "form", sx: { '& .MuiTextField-root': { m: 1 } } },
                     React.createElement(App_1.CssTextField, { label: "Name", focused: true, id: "custom-css-outlined-input", defaultValue: "", size: "small" }),

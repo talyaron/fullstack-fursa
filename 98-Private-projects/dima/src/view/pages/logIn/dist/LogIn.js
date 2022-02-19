@@ -4,11 +4,13 @@ require("./LogIn.scss");
 var material_1 = require("@mui/material");
 var react_router_dom_1 = require("react-router-dom");
 var App_1 = require("../../../App");
+var background_jpg_1 = require("../../background.jpg");
+var logo_jpg_1 = require("../../logo.jpg");
 function LogIn() {
     return (React.createElement("div", { className: "wrapper" },
-        React.createElement("img", { className: "image", src: "https://img.freepik.com/free-photo/purple-marble-texture-natural-pattern-with-high-resolution-background-design-art-work_38607-277.jpg?w=996", alt: "" }),
+        React.createElement("img", { className: "image", src: background_jpg_1["default"], alt: "" }),
         React.createElement("div", { className: 'LogInBox' },
-            React.createElement("img", { className: "logo", src: "https://i.etsystatic.com/25426477/c/1724/1370/88/206/il/33fb1e/3155023191/il_340x270.3155023191_710b.jpg", alt: "" }),
+            React.createElement("img", { className: "logo", src: logo_jpg_1["default"], alt: "" }),
             React.createElement("h1", null,
                 "Welcome ",
                 React.createElement("br", null),

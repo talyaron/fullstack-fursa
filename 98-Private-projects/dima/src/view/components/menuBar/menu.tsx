@@ -6,6 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
 import PersonIcon from '@mui/icons-material/Person';
+import logo from '../../logo.jpg';
 import './menu.scss';
 
 function Bagemenu() {
@@ -29,7 +30,9 @@ function Bagemenu() {
             <div className="menu__left">
                 <MenuIcon sx={{fontSize:40, color:'#b5739d', paddingTop:-30}}/>
                 <div className='logo'>
-                    <img src="https://thumbs.dreamstime.com/z/woman-enjoy-making-foods-girl-cooking-food-continuous-one-line-drawing-vector-illustration-kitchen-people-design-female-dinner-160458109.jpg" alt="" />
+                    <Link to='/MainScreen'>
+                        <img src={logo} alt="" />
+                    </Link>
                 </div>
                 <div className="searchbox">
                     <input type="text" placeholder="search for a recipe" />
@@ -55,7 +58,9 @@ function Bagemenu() {
                         'aria-labelledby': 'basic-button',
                     }}
                 >
-                    <MenuItem onClick={handleClose1}>Profile</MenuItem>
+                    <MenuItem onClick={handleClose1}>
+                        <Link to="/User"> Profile</Link>
+                    </MenuItem>
                     <MenuItem>
                         <Link to="/"> Logout</Link>
                     </MenuItem>
