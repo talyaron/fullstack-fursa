@@ -15,6 +15,7 @@ import Login from './view/pages/login/Login';
 import Store from "./view/pages/store/Store";
 import Order from "./view/pages/order/Order";
 import Cart from "./view/pages/cart/Cart";
+import Rawmaterial from "./view/pages/rawmaterial/Rawmaterial";
 
 function App() {
   const [product, setProduct] = useState([])
@@ -24,6 +25,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="login" element={<Login />} />
+        <Route path="rawmaterial" element={<Rawmaterial />} />
+
         <Route path="store" element={<Store />} >
           <Route path=":productId" element={<Product />} />
         </Route>
