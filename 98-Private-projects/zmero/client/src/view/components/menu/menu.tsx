@@ -93,7 +93,7 @@ function Menu() {
                 <div className="navbar__right">
                     <button className="navbar__right__signup" type="button" onClick={() => openSignUpModal(true)}><span>Not Registered Yet?</span></button>
                     <button className="navbar__right__signin" type="button" onClick={() => openSignInModal(true)}>Sign in</button>
-                    <img onClick={() => openSearchModal(true)} className="navbar__right__search" src="https://img.icons8.com/material-outlined/48/000000/search--v1.png" alt="search_icon" />
+                    <img onClick={() => openSearchModal(true)} className="navbar__right__search" src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.png" alt="search_icon" />
                 </div>
             </div>
             <Modal className="Modal" isOpen={modalSearchIsOpen} onRequestClose={() => openSearchModal(false)}>

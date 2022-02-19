@@ -103,7 +103,7 @@ function Explore() {
                 react_1["default"].createElement("div", { className: "exploremain__restaurateurs__background" },
                     react_1["default"].createElement("div", { className: "exploremain__restaurateurs__background__color" }),
                     react_1["default"].createElement("h2", null, "Restaurateurs Join Us"),
-                    react_1["default"].createElement("h3", null, " Join More Than XXX Restaurants which fill seats and manage reservations"),
+                    react_1["default"].createElement("h3", null, " Join More Than X Restaurants which fill seats and manage reservations"),
                     react_1["default"].createElement("button", { className: "exploremain__restaurateurs__background__btn" }, "Learn More")))),
         react_1["default"].createElement(footer_1["default"], null)));
 }

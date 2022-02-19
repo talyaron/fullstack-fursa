@@ -87,7 +87,7 @@ function Menu() {
                 react_1["default"].createElement("button", { className: "navbar__right__signup", type: "button", onClick: function () { return openSignUpModal(true); } },
                     react_1["default"].createElement("span", null, "Not Registered Yet?")),
                 react_1["default"].createElement("button", { className: "navbar__right__signin", type: "button", onClick: function () { return openSignInModal(true); } }, "Sign in"),
-                react_1["default"].createElement("img", { onClick: function () { return openSearchModal(true); }, className: "navbar__right__search", src: "https://img.icons8.com/material-outlined/48/000000/search--v1.png", alt: "search_icon" }))),
+                react_1["default"].createElement("img", { onClick: function () { return openSearchModal(true); }, className: "navbar__right__search", src: "https://img.icons8.com/ios-glyphs/30/000000/search--v1.png", alt: "search_icon" }))),
         react_1["default"].createElement(react_modal_1["default"], { className: "Modal", isOpen: modalSearchIsOpen, onRequestClose: function () { return openSearchModal(false); } },
             react_1["default"].createElement("div", { className: "Modal__header" },
                 react_1["default"].createElement("button", { className: "Modal__header__closebtn", onClick: function () { return openSearchModal(false); } })),
