@@ -87,7 +87,7 @@ function Mainpage() {
           </div>
         </div>
       </div>
-    <div className="div_list">
+    
       <div className="div_h">
         <h1>Right now at </h1>
         <a href="">See all</a>
@@ -103,9 +103,9 @@ function Mainpage() {
             />
           );
         })}
-      </div>
+     
 
-      <div className="div_h">
+      {/* <div className="div_h">
         <h1>Popular travelers</h1>
         <a href="">See all</a>
       </div>
@@ -119,7 +119,7 @@ function Mainpage() {
             />
           );
         })}
-      </div>
+      </div> */}
       </div>
       <Bottombar />
     </div>

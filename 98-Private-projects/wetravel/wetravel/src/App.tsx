@@ -3,15 +3,18 @@ import logo from "./logo.svg";
 import "./App.css";
 import Login from "./components/Login";
 import { timeStamp } from "console";
-import { BrowserRouter as Router, Routes , Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Mainpage from "./components/Mainpage";
 import Nearevents from "./components/Nearevents";
 
+
 document.title = "Travelers";
-const mainpage: boolean = false;
+
 function App() {
+
   return (
     <div className="App">
+
       <Router>
       <Routes>
         <Route path='/' element={<Login/>} ></Route>
@@ -20,6 +23,7 @@ function App() {
 
       </Routes>
       </Router>
+
     </div>
   );
 }
