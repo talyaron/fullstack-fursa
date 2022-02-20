@@ -15,8 +15,10 @@ const group = () =>{
           
             <div>
             welcome to your groups <br /><br />
+            
             <Link to="/mygroups">Your GROUPs </Link>
             <br />
+
             <Link to="/CreateGroup">create GROUP</Link>
             <br />
             <Link to="/Store" > to Store</Link>
