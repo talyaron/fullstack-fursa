@@ -5,6 +5,8 @@
         min-width: 10rem;
         min-height: 10rem;
         margin-top: 15px;
+        border-radius: 7%;
+        margin: 2px;
     }
     img:hover{
         transform: scale(1.1);
@@ -14,6 +16,6 @@
         font-size: 18px;
     }
     .name:hover{
-        color: rgb(149, 190, 168);
+        color: rgb(19, 41, 29);
     }
 }

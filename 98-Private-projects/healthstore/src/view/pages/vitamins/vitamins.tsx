@@ -1,12 +1,8 @@
-import React from 'react'
 import './vitamins.scss';
-import { Link } from 'react-router-dom';
 import ProductCard from './productCard'
 import { ProductProps } from './productCard';
 import { Outlet } from 'react-router-dom'
 
-//components
-import Nav from '../../components/nav/Nav'; 
 
 const products = [{ id: 1, name: 'Vitamin D', img: 'https://img.mako.co.il/2016/03/14/shutterstock_59410978_i.jpg' },
 { id: 2, name: 'Chlorella', img: 'https://eatwell.co.il/wp-content/uploads/2017/12/Chlorella-eatwell-123.jpg' }, 
@@ -16,7 +12,6 @@ const products = [{ id: 1, name: 'Vitamin D', img: 'https://img.mako.co.il/2016/
 function Vitamins(){
     return(
         <div>
-             <Nav />
             <div className="vitamins">
                 <h1>Vitamins and Supplements</h1>
                 <div className="vitamins__product">

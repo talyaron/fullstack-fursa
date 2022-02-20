@@ -29,13 +29,11 @@ function Card(prop: CardProp) {
 
   return (
     <div className="card">
-      <img onClick={showName} src={img} alt="" />
-      
+      <img onClick={showName} src={img} alt="" />   
       <Link to={`/${text}`}> 
         <h4 className="name"> {text}</h4>
       </Link>
     </div>
-
   );
 }
 
