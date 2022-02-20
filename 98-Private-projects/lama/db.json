@@ -1,9 +1,22 @@
 {
-  "posts": [
+  "courses": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "type": "group lessons",
+      "participants": "10",
+      "cost" : "1000"
+    },
+    {
+      "id": 2,
+      "type": "private lessons",
+      "participants": "1",
+      "cost" : "1200"
+    },
+    {
+      "id": 3,
+      "type": "single lesson",
+      "participants": "1",
+      "cost" : "100"
     }
   ],
   "comments": [

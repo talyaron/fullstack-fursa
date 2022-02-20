@@ -28,10 +28,16 @@ function SignIn() {
             {/* <Button className='btn' size="small" variant="outlined" startIcon={<FacebookOutlinedIcon/>}> Sign Up with Facebook</Button>
             <br></br>
             <br></br> */}
+                   
+            <Link to={`/data`}>
+            <Button className='btn' size="small" variant="outlined" startIcon={<LoginIcon/>}> admin </Button>
+            </Link>
+            <br></br>
             <Link to={`/`}>
             <Button className='btn' size="small" variant="outlined" startIcon={<LoginIcon/>}> login </Button>
             </Link>
             <br></br>
+        
          
         </div>
         

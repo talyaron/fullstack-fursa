@@ -10,8 +10,6 @@ import {
   Route
 } from "react-router-dom";
 import App from "./App";
-import Expenses from "./view/pages/expenses/Expenses";
-import Invoices from "./view/pages/Invoices/Invoices";
 import HomePage from "./view/pages/homepage/homepage";
 import SignIn from "./view/pages/signIn/signin";
 import SignUp from "./view/pages/signUp/signup";
@@ -20,6 +18,7 @@ import Horses from "./view/pages/horses/horses";
 import Courses from "./view/pages/courses/courses";
 import Course from "./view/pages/course/course";
 import Calender from "./view/pages/coursescalender/calender";
+import Data from "./view/pages/data/data";
 
 
 // ReactDOM.render(
@@ -40,8 +39,6 @@ render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />} />
-      <Route path="expenses" element={<Expenses />} />
-      <Route path="invoices" element={<Invoices />} />
       <Route path="courses" element={<Courses />} >
         <Route path=":courseId" element={<Course />} />
      
@@ -52,6 +49,7 @@ render(
       <Route path="trainers" element={<Trainers />} />
       <Route path="horses" element={<Horses />} />
       <Route path="courses" element={<Courses />} />
+      <Route path="data" element={<Data />} />
       <Route path="calender" element={<Calender />} />
       <Route path="course/:courseId" element={<Course />} />
     </Routes>
