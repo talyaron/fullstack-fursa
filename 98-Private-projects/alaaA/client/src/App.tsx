@@ -14,6 +14,7 @@ import Group from "./view/pages/Groups/group";
 import CreateGroup from "./view/pages/CreateGroup/createGroup";
 import Store from "./view/pages/store/store";
 import Mygroups from './view/pages/mygroups/mygroups';
+import Profile from './view/pages/profile/profile';
 
 
 interface product {
@@ -43,6 +44,7 @@ return(
     <Route path="HomePage" element={<HomePage />} />
     <Route path="Store" element={<Store />} />
     <Route path="mygroups" element={<Mygroups />} />
+    <Route path="profile" element={<Profile />} />
     {/* <Route></Route> */}
     {/* </Route> */}
     
