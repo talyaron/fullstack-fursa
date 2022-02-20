@@ -24,6 +24,7 @@ function Nav() {
           <Button href="Cupping Therapy">Cupping Therapy</Button>
           <Button href="Facial Treatment">Facial Treatment</Button>
           <Button href="Hopi Candles">Hopi Candles</Button>
+          <Button href="Calendar">Calender</Button>
         </ButtonGroup>
 
         <div className="icons">

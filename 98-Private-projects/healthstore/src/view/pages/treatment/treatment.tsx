@@ -21,7 +21,7 @@ function Treatment(props: TreatmentInt){
                 <h1>{name}</h1>
                 <img src={img}></img>
                 <p>{text}</p>
-                <Button variant="contained" startIcon={<EventNoteTwoToneIcon />} >Book Appointment</Button>
+                <Button href="/calendar" variant="contained" startIcon={<EventNoteTwoToneIcon />} >Book Appointment</Button>
             </div >
         </div>
     )

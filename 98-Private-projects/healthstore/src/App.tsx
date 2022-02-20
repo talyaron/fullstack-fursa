@@ -9,6 +9,7 @@ import SugerFree from './view/pages/sugerfree/sugerfree';
 import { ProductInt } from "./view/pages/product/product";
 import Treatment from "./view/pages/treatment/treatment";
 import {TreatmentInt} from "./view/pages/treatment/treatment";
+import CalendarFun from "./view/pages/calendar/calendar";
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
         <Route path="cupping%20therapy" element={<Treatment id={cupping.id} name={cupping.name} img={cupping.img} text={cupping.text} />} />
         <Route path="facial%20treatment" element={<Treatment id={facial.id} name={facial.name} img={facial.img} text={facial.text} />} />
         <Route path="hopi%20candles" element={<Treatment id={candles.id} name={candles.name} img={candles.img} text={candles.text} />} />
+        <Route path="calendar" element={<CalendarFun />} />
       </Routes>
     </BrowserRouter>
   );
