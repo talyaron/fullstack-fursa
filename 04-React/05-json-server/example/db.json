@@ -5,14 +5,16 @@
       "title": "json-server",
       "author": "typicode"
     },
-    [
-      {
-        "name": "Tal"
-      },
-      {
-        "name": "John"
-      }
-    ]
+    {
+      "author": "best ever author",
+      "title": "good book",
+      "id": 2,
+      "readers": [
+        "Jame",
+        "bob",
+        "alis"
+      ]
+    }
   ],
   "comments": [
     {
