@@ -19,7 +19,7 @@ function SignIn() {
         React.createElement(Button_1["default"], { className: 'btn', size: "small", variant: "outlined", startIcon: React.createElement(Google_1["default"], null) }, " Google"),
         React.createElement("br", null),
         React.createElement("br", null),
-        React.createElement(react_router_dom_1.Link, { to: "/data" },
+        React.createElement(react_router_dom_1.Link, { to: "/adminpage" },
             React.createElement(Button_1["default"], { className: 'btn', size: "small", variant: "outlined", startIcon: React.createElement(Login_1["default"], null) }, " admin ")),
         React.createElement("br", null),
         React.createElement(react_router_dom_1.Link, { to: "/" },

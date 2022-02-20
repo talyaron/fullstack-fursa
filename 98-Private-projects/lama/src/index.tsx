@@ -19,7 +19,8 @@ import Courses from "./view/pages/courses/courses";
 import Course from "./view/pages/course/course";
 import Calender from "./view/pages/coursescalender/calender";
 import Data from "./view/pages/data/data";
-
+import AdminCourses from "./view/pages/adminCourses/admincourses";
+import AdminPage from "./view/pages/AdminPage/adminpage";
 
 // ReactDOM.render(
 //   <React.StrictMode>
@@ -49,7 +50,9 @@ render(
       <Route path="trainers" element={<Trainers />} />
       <Route path="horses" element={<Horses />} />
       <Route path="courses" element={<Courses />} />
-      <Route path="data" element={<Data />} />
+      <Route path="data" element={<Data />} /> 
+      <Route path="adminpage" element={<AdminPage />} /> 
+      <Route path="admincourses" element={<AdminCourses />} /> 
       <Route path="calender" element={<Calender />} />
       <Route path="course/:courseId" element={<Course />} />
     </Routes>

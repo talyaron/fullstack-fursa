@@ -29,7 +29,7 @@ function SignIn() {
             <br></br>
             <br></br> */}
                    
-            <Link to={`/data`}>
+            <Link to={`/adminpage`}>
             <Button className='btn' size="small" variant="outlined" startIcon={<LoginIcon/>}> admin </Button>
             </Link>
             <br></br>
