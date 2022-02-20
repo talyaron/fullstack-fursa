@@ -7,6 +7,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import Header from '../../components/header/header';
+
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -29,7 +31,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 function createData(name: string, city: string, age: number) {
-  return { name, city, age};
+  return { name, city, age };
 }
 
 const rows = [
@@ -42,27 +44,31 @@ const rows = [
 
 export default function Mygroups() {
   return (
+    <div>
+    <Header></Header>
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 700 }} aria-label="customized table">
+      <Table sx={{ minWidth: 300 }} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>FULL NAME</StyledTableCell>
-            <StyledTableCell align="right">CITY</StyledTableCell>
-            <StyledTableCell align="right">AGE</StyledTableCell>
+            <StyledTableCell align="center">FULL NAME</StyledTableCell>
+            <StyledTableCell align="center">CITY</StyledTableCell>
+            <StyledTableCell align="center">AGE</StyledTableCell>
+            <StyledTableCell align="center">ACTIONS</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
             <StyledTableRow key={row.name}>
-              <StyledTableCell component="th" scope="row">
+              <StyledTableCell align="center" component="th" scope="row">
                 {row.name}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.city}</StyledTableCell>
-              <StyledTableCell align="right">{row.age}</StyledTableCell>
+              <StyledTableCell align="center">{row.city}</StyledTableCell>
+              <StyledTableCell align="center">{row.age}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
       </Table>
     </TableContainer>
+    </div>
   );
 }

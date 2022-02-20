@@ -19,6 +19,8 @@ var Login = function () {
             "Password ",
             react_1["default"].createElement("br", null),
             react_1["default"].createElement("input", { type: "password" }),
+            react_1["default"].createElement("br", null),
+            react_1["default"].createElement("br", null),
             react_1["default"].createElement(react_router_dom_1.Link, { to: "/Group" }, "Login"),
             react_1["default"].createElement("br", null),
             react_1["default"].createElement(react_router_dom_1.Link, { to: "/HomePage" }, "cancle"))));
