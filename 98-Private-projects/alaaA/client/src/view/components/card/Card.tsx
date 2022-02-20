@@ -55,10 +55,6 @@ function Card(prop: any) {
         <h3>{name}</h3>
         <p>Price : {price}</p>
         <p><button onClick={handleRemveCounter}>-</button>  {counter} <button onClick={handleAddCounter}>+</button> </p>
-        {/* <p>description : {description}</p> */}
-        
-        {/* <input onKeyUp={moveInput}></input> */}
-            {/* <div>{mytext}</div> */}
 
       </div>
   );
