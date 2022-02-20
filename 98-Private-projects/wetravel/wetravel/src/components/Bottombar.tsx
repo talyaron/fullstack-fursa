@@ -2,22 +2,23 @@ import * as React from "react";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import Explore from "@mui/icons-material/Explore";
-import RestoreIcon from "@mui/icons-material/Restore";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import EventIcon from "@mui/icons-material/Event";
 import MessageIcon from "@mui/icons-material/Message";
 import "../components/Bottombar.scss";
-import { height } from "@mui/system";
-function Bottombar() {
-  const [value, setValue] = React.useState("recents");
-  const [color, setColor] = React.useState("#D0D0D0");
+import { useNavigate } from "react-router-dom";
+export interface data {
+  name: string;
+}
+function Bottombar(prop: data) {
+  const [value, setValue] = React.useState("explore");
+  const [color, setColor] = React.useState('');
+  const navigate = useNavigate();
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
 
   return (
-    
     <div className="bottombar">
       <BottomNavigation
         sx={{
@@ -41,14 +42,20 @@ function Bottombar() {
       >
         <BottomNavigationAction
           label="Explore"
-          value="folder"
+          value="explore"
+          onClick={() => {
+            navigate("/");
+          }}
           style={{ color: color }}
           icon={<Explore />}
         />
         <BottomNavigationAction
           label="Events"
           value="events"
-          style={{ color:color }}
+          onClick={() => {
+            navigate("/events");
+          }}
+          style={{ color: color }}
           icon={<EventIcon />}
         />
         <BottomNavigationAction

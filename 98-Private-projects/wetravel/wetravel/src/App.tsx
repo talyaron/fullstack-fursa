@@ -9,7 +9,6 @@ import { CounterState, State } from "./reducers/rootReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { increments, decrements } from "./actions/actions";
 
-document.title = "Travelers";
 
 function App() {
   const counter = useSelector((state: State) => state.counter);
@@ -19,23 +18,15 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Router>
-
+      <Router>
         <Routes>
           <Route path="/" element={<Login />}></Route>
           <Route path="/mainpage" element={<Mainpage />}></Route>
         </Routes>
-      </Router> */}
-
-      <button onClick={() => dispatch(increments())}>Add</button>
-      {counter.count}
-      <button onClick={() => dispatch(decrements())}> Minus</button>
+      </Router>
     </div>
   );
 }
-function mapStateToProps(state: CounterState) {
-  return {
-    counter: state.count,
-  };
-}
+
+
 export default App;

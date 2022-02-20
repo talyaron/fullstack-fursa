@@ -6,22 +6,28 @@ import reportWebVitals from "./reportWebVitals";
 import Login from "./components/Login";
 import Mainpage from "./components/Mainpage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { createStore } from "redux";
-import  reducers  from "../src/reducers/rootReducer";
+import { createStore, compose } from "redux";
+import reducers from "../src/reducers/rootReducer";
 import { Provider } from "react-redux";
-import { increments, decrements } from "./actions/actions";
-const store = createStore(reducers);
+
+declare global {
+  interface Window {
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+  }
+}
+document.title = "Travelers";
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducers, composeEnhancers());
 ReactDOM.render(
   <Provider store={store}>
-    <App />
-    {/* <Router>
+    <Router>
       <Routes>
         <Route path="/" element={<Login />}></Route>
         <Route path="/mainpage" element={<Mainpage />}></Route>
       </Routes>
-    </Router> */}
+    </Router>
   </Provider>,
-
   document.getElementById("root")
 );
 //Store secc
