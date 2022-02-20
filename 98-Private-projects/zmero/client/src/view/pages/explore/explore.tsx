@@ -7,6 +7,7 @@ import Location from './location.svg'
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import axios from 'axios';
 
 import './explore.scss'
 interface cardProp {
@@ -14,14 +15,16 @@ interface cardProp {
     name: string;
     image: string;
     booking: number;
+    region: string;
+    stars: number;
 }
 
 
 
 function Explore() {
-    const [famousRestaurants, setFamousRestaurant] = useState([{ id: 0, name: "", image: "", booking: 0 }]);
-    const [trendingRestaurants, setTrendingRestaurant] = useState([{ id: 0, name: "", image: "", booking: 0 }]);
-    const [seaRestaurants, setSeaRestaurant] = useState([{ id: 0, name: "", image: "", booking: 0 }]);
+    const [famousRestaurants, setFamousRestaurant] = useState([{ id: 0, name: "", image: "", booking: 0, region: "", stars: 0 }]);
+    const [trendingRestaurants, setTrendingRestaurant] = useState([{ id: 0, name: "", image: "", booking: 0, region: "", stars: 0 }]);
+    const [seaRestaurants, setSeaRestaurant] = useState([{ id: 0, name: "", image: "", booking: 0, region: "", stars: 0 }]);
     const [userRegion, setUserRegion] = useState('Israel');
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -30,10 +33,21 @@ function Explore() {
     };
     const handleClose = (e: any) => {
         setAnchorEl(null);
-        console.log(e.target);
-        setUserRegion(e.target.dataset.myValue)
+        if (Object.keys(e.currentTarget.dataset).length != 0) {
+            setUserRegion(e.target.dataset.myValue)
+            const newRegion = e.target.dataset.myValue
+            axios.get('http://localhost:3004/Restaurants').then(({ data }) => setFamousRestaurant(data.filter((rest: cardProp) => {
+                if (rest.region === newRegion)
+                    return rest;
+
+            })));
+        }
     };
     useEffect(() => {
+        axios.get('http://localhost:3004/Restaurants').then(({ data }) => setFamousRestaurant(data.filter((rest: cardProp) => {
+            if (rest.region === userRegion)
+                return rest;
+        })));
 
     }, []);
     return (
@@ -82,7 +96,7 @@ function Explore() {
                     </header>
                     <div className="exploremain__popular__grid">
                         {famousRestaurants.map((rest, index) => {
-                            return <Card key={index} id={rest.id} name={rest.name} image={rest.image} booking={rest.booking}></Card>
+                            return <Card key={index} id={rest.id} name={rest.name} image={rest.image} booking={rest.booking} stars={rest.stars} region={rest.region}></Card>
                         })}
                     </div>
                 </div>
@@ -93,7 +107,7 @@ function Explore() {
                     </header>
                     <div className="exploremain__popular__grid">
                         {trendingRestaurants.map((rest, index) => {
-                            return <Card key={index} id={rest.id} name={rest.name} image={rest.image} booking={rest.booking}></Card>
+                            return <Card key={index} id={rest.id} name={rest.name} image={rest.image} booking={rest.booking} stars={rest.stars} region={rest.region}></Card>
                         })}
                     </div>
                 </div>
@@ -104,7 +118,7 @@ function Explore() {
                     </header>
                     <div className="exploremain__popular__grid">
                         {seaRestaurants.map((rest, index) => {
-                            return <Card key={index} id={rest.id} name={rest.name} image={rest.image} booking={rest.booking}></Card>
+                            return <Card key={index} id={rest.id} name={rest.name} image={rest.image} booking={rest.booking} stars={rest.stars} region={rest.region}></Card>
                         })}
                     </div>
                 </div>

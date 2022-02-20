@@ -1,12 +1,14 @@
 .restaurantCard {
     border: .0625rem solid #d8d9db;
+    max-width: 13rem;
 
     &:hover {
-        transform: translateY(-1rem)
+        transform: translateY(-0.4rem);
+        transition-duration: 0.6s;
     }
 
     img {
-        max-width: 16rem;
+        max-width: 13rem;
 
     }
 
@@ -16,7 +18,7 @@
             text-overflow: ellipsis;
             overflow: hidden !important;
             white-space: nowrap;
-            width: 16rem;
+            width: 13rem;
             opacity: 0.9;
         }
     }
@@ -51,7 +53,12 @@
             color: #2a945b;
             border: .0625rem solid #2a945b;
             font-size: 16px;
-            padding: 0.25rem 1rem
+            padding: 0.25rem 1rem;
+            z-index: 1;
+
+            &:hover {
+                background-color: rgb(0, 0, 0, .06);
+            }
         }
     }
 }
@@ -62,4 +69,5 @@ a:focus,
 a:active {
     text-decoration: none;
     color: inherit;
+
 }
