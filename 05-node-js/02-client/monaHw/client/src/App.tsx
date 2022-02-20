@@ -16,6 +16,7 @@ import Store from "./view/pages/store/Store";
 import Order from "./view/pages/order/Order";
 import Cart from "./view/pages/cart/Cart";
 import Rawmaterial from "./view/pages/rawmaterial/Rawmaterial";
+import HomePage  from './view/pages/admin/homePage/Hompage';
 
 function App() {
   const [product, setProduct] = useState([])
@@ -25,6 +26,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="login" element={<Login />} />
+        <Route path="homepage" element={<HomePage />} />
+
         <Route path="rawmaterial" element={<Rawmaterial />} />
 
         <Route path="store" element={<Store />} >

@@ -9,15 +9,15 @@ import Button from '@mui/material/Button';
 export interface CardProp {
   wood:{
   name: string,
-  
-  cardImg:string
+  imgurl:string,
+  price:number
   };
 }
 
 function Card(prop: CardProp) {
   //onst [randomname,setrandomName]=useState('suzan')
   //const names:Array<string>=['mona',"suzan","Tal","suzan2",'mona2','Tal2'];
-  const {name,cardImg}=prop.wood;
+  const {name,imgurl,price}=prop.wood;
   const[text,setText]=useState('')
   const [isLiked,setlike]=useState('like')
   const [color,setcolor]=useState('')
@@ -67,9 +67,10 @@ function Card(prop: CardProp) {
            
      
        
-      <img src={cardImg} alt="" />
+      <img src={imgurl} alt="" />
       
       <h3>{name}</h3>
+      {/* <h3>{price} shekels</h3> */}
      <BasicRating></BasicRating>
     <Box sx={{ '& button': { m: 1 } }}>
       <div>

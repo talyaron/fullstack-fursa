@@ -3,6 +3,8 @@ import Card ,{CardProp}from '../../components/card/Card';
 import "./Rawmaterial.scss";
 import {Link} from 'react-router-dom'
 import Navbar from '../../components/navbar/Navbar';
+import axios from 'axios';
+import { useState } from 'react';
 
 
 const woods = [{name:'pine wood',cardImg:'https://d2kxk2c617i0nn.cloudfront.net/image_resize/crop/mw1500/mh750/products/23_001--yellow_pine_softwood-s.jpg'},
@@ -11,6 +13,8 @@ const woods = [{name:'pine wood',cardImg:'https://d2kxk2c617i0nn.cloudfront.net/
 const woodLogo:string="https://cdn2.iconfinder.com/data/icons/lightly-icons/30/search-480.png";
 
 function Rawmaterial(){
+  const [wood,setWood]=useState([]);
+axios.get('http://localhost:3004/RawMaterial').then(({data})=> setWood(data));
     return(
         <div className="RawMaterial">
       <header className='RawMaterial_header'>
@@ -28,10 +32,10 @@ function Rawmaterial(){
         <Wood title={woodLogo} ></Wood>
         </div>
         <div className="RawMaterial_body">
-        
-        {woods.map((wood, index)=>{
-          const{name,cardImg}=wood;
-          return <Card key={index} wood={{name,cardImg}}/>
+       
+        {wood.map((wood, index)=>{
+          const{name,imgurl,price}=wood;
+          return <Card key={index} wood={{name,imgurl,price}}/>
           
         })}
               
