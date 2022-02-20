@@ -21,6 +21,7 @@
 }
 .new .content .boxInfo .box {
   padding-top: 40px;
+  color: #b5739d;
 }
 .new .content .boxInfo .box .info1 {
   width: 90%;
@@ -42,6 +43,12 @@
 }
 .new .content .boxInfo .box .info1 .item {
   display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-content: center;
+}
+.new .content .boxInfo .box .info1 .item p {
+  font-size: 1.2em;
 }
 .new .content .boxInfo .box .info2 {
   width: 90%;

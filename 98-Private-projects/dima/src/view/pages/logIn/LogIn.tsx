@@ -3,13 +3,13 @@ import { styled } from '@mui/material/styles';
 import { Box, TextField } from "@mui/material";
 import { Link } from 'react-router-dom';
 import { CssTextField } from '../../../App';
-import background from '../../background.jpg';
-import logo from '../../logo.jpg';
+import background from '../../images/background.jpg';
+import logo from '../../images/logo.jpg';
 
 function LogIn() {
 
     return (
-        <div className="wrapper">
+        <div className="logIn">
             <img className="image" src={background} alt="" />
             <div className='LogInBox'>
                 <img className="logo" src={logo} alt="" />

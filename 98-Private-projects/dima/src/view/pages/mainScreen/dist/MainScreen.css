@@ -54,6 +54,14 @@
   -webkit-align-items: center;
   align-items: center;
 }
+.wrapper .contentBox .content .content1 .swiper-slide a {
+  height: 80%;
+  width: 100%;
+}
+.wrapper .contentBox .content .content1 .swiper-slide a img {
+  height: 100%;
+  width: 100%;
+}
 .wrapper .contentBox .content .content1 .swiper-slide img {
   height: 80%;
   width: 100%;

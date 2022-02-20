@@ -1,4 +1,5 @@
 .menu {
+    padding: 0 0 0;
     background-color: #e6d0de;
     display: flex;
     flex-direction: column;
@@ -7,7 +8,7 @@
     height: 8vh;
     justify-content: center;
     align-items: center;
-    gap: 180px;
+    gap: 160px;
 
     &__left {
         display: flex;
@@ -36,6 +37,7 @@
         .logo {
             width: 20%;
             margin-top: 3px;
+            //margin-left: 15px;
             img{
                 width:40%;
                 height: 40px;

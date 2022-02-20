@@ -5,10 +5,10 @@ var material_1 = require("@mui/material");
 var App_1 = require("../../../App");
 var ArrowBackSharp_1 = require("@mui/icons-material/ArrowBackSharp");
 var react_router_dom_1 = require("react-router-dom");
-var background_jpg_1 = require("../../background.jpg");
-var logo_jpg_1 = require("../../logo.jpg");
+var background_jpg_1 = require("../../images/background.jpg");
+var logo_jpg_1 = require("../../images/logo.jpg");
 function ResetPassword() {
-    return (React.createElement("div", { className: "wrapper" },
+    return (React.createElement("div", { className: "reset" },
         React.createElement("img", { className: "image", src: background_jpg_1["default"], alt: "" }),
         React.createElement("div", { className: "Box" },
             React.createElement(react_router_dom_1.Link, { to: '/' },

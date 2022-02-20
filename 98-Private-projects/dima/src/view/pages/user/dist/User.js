@@ -4,7 +4,7 @@ require("./User.scss");
 var menu_1 = require("../../components/menuBar/menu");
 var Profile_1 = require("../../components/profile/Profile");
 var Recipes_1 = require("../../components/recipes/Recipes");
-var background_jpg_1 = require("../../background.jpg");
+var background_jpg_1 = require("../../images/background.jpg");
 var userInfo = [{ name: "Dima Abbas", phone: "0525041028", email: "dimaabbas25@gmail.com" }];
 function User() {
     return (React.createElement("div", { className: "User" },

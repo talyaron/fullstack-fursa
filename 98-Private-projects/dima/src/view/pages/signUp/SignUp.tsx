@@ -3,13 +3,13 @@ import './SignUp.scss';
 import { CssTextField } from '../../../App';
 import ArrowBackSharpIcon from '@mui/icons-material/ArrowBackSharp';
 import { Link } from 'react-router-dom';
-import background from '../../background.jpg';
-import logo from '../../logo.jpg';
+import background from '../../images/background.jpg';
+import logo from '../../images/logo.jpg';
 
 export default function SignUp() {
 
     return (
-        <div className="wrapper">
+        <div className="signUp">
             <img className="image" src={background} alt="" />
             <div className="SignUpBox">
                 <Link to='/'>

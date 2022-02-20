@@ -6,7 +6,8 @@ import MenuItem from '@mui/material/MenuItem';
 import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
 import PersonIcon from '@mui/icons-material/Person';
-import logo from '../../logo.jpg';
+import logo from '../../images/logo.jpg';
+import SideBar from '../sidebar/SideBar';
 import './menu.scss';
 
 function Bagemenu() {
@@ -26,9 +27,10 @@ function Bagemenu() {
     };
 
     return (
-        <div className="menu">
+        <div className="menu" id="outer-container">
             <div className="menu__left">
-                <MenuIcon sx={{ fontSize: 40, color: '#b5739d', paddingTop: -30 }} />
+                {/* <MenuIcon sx={{ fontSize: 40, color: '#b5739d', paddingTop: -30 }} onClick={handleOn}/> */}
+                <SideBar />
                 <div className='logo'>
                     <Link to='/MainScreen'>
                         <img src={logo} alt="" />

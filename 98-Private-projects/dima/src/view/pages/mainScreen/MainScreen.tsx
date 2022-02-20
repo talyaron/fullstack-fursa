@@ -1,11 +1,12 @@
 import './MainScreen.scss';
 import Bagemenu from '../../components/menuBar/menu';
-import background from '../../background.jpg';
-import img1 from '../../1.jpg';
-import img2 from '../../2.jpg';
-import img3 from '../../3.jpg';
-import img4 from '../../4.jpg';
-import img5 from '../../5.jpg';
+import background from '../../images/background.jpg';
+import RecipeInfo from '../recipeInfo/RecipeInfo';
+import img1 from '../../images/1.jpg';
+import img2 from '../../images/2.jpg';
+import img3 from '../../images/3.jpg';
+import img4 from '../../images/4.jpg';
+import img5 from '../../images/5.jpg';
 import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -17,14 +18,19 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Pagination, Navigation } from "swiper";
+import { Link } from 'react-router-dom';
+
+function handleRecipe(){
+    <RecipeInfo />
+}
 
 export default function MainScreen() {
     return (
         <div className="wrapper">
-            <div className='menuBar'>
+            <div className='menuBar' id="outer-container">
                 <Bagemenu />
             </div>
-            <div className='contentBox'>
+            <div className='contentBox' id="page-wrap">
                 <img className='image' src={background} alt="" />
                 <div className='content'>
                     <h1 className='title1'>Top 10 Recipes</h1>
@@ -43,7 +49,9 @@ export default function MainScreen() {
                             className="mySwiper"
                         >
                             <SwiperSlide>
-                                <img src={img1} alt='' />
+                                <Link to='/RecipeInfo'>
+                                    <img src={img1} alt=''/>
+                                </Link>
                                 <p>Recipes 1</p>
                             </SwiperSlide>
                             <SwiperSlide>

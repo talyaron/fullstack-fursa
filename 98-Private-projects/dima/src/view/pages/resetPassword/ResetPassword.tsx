@@ -3,12 +3,12 @@ import { Box } from "@mui/material";
 import { CssTextField } from '../../../App';
 import ArrowBackSharpIcon from '@mui/icons-material/ArrowBackSharp';
 import { Link } from 'react-router-dom';
-import background from '../../background.jpg';
-import logo from '../../logo.jpg';
+import background from '../../images/background.jpg';
+import logo from '../../images/logo.jpg';
 
 export default function ResetPassword() {
     return (
-        <div className="wrapper">
+        <div className="reset">
             <img className="image" src={background} alt="" />
             <div className="Box">
                 <Link to='/'>

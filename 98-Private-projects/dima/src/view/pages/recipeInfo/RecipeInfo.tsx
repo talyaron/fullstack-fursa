@@ -1,13 +1,15 @@
-import './NewRecipe.scss';
-import Bagemenu from "../../components/menuBar/menu";
-import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
+import './RecipeInfo.scss';
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+import Bagemenu from '../../components/menuBar/menu';
 import background from '../../images/background.jpg';
+import img1 from '../../images/1.jpg';
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import PeopleIcon from '@mui/icons-material/People';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
-import { Box, TextField } from '@mui/material';
+import { useState } from 'react';
+import { TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 const Standard = styled(TextField)({
@@ -34,60 +36,54 @@ const Standard = styled(TextField)({
     },
 });
 
-export default function NewRecipe() {
+export default function RecipeInfo(){
+
+    const [like,setLike] = useState(0);
+
+    function handleLike(){
+        setLike(like + 1);
+    }
+
     return (
-        <div className='new'>
+        <div className='info'>
             <div className='menu'>
                 <Bagemenu />
             </div>
             <div className="content">
                 <img className='image' src={background} />
                 <div className='boxInfo'>
-                    <BookmarkAddIcon sx={{
+                    <AutoAwesomeIcon sx={{
                         color: '#b5739d', fontSize: 35, float: 'right',
                         paddingRight: '15px', paddingTop: '15px'
                     }} />
-                    <Box className='box' component="form"
-                        sx={{ '& .MuiTextField-root': { m: 1 }, }}
-                        autoComplete="off"
-                    >
-                        <Standard id="standard-basic" variant="standard"
-                            focused
-                            placeholder="Insert your recipe's name"
-                            size="small" sx={{ width: '30ch' }} />
+                    <form className='box'>
+                        <h1>Recipe's Name</h1>
                         <br />
                         <br />
                         <div className='info1'>
                             <div className='insertPhotos'>
-                                <InsertPhotoIcon sx={{ fontSize: 250, color: '#b5739d' }} />
+                                <img src={img1} alt="" />
                             </div>
                             <h2 className='by'>By : Dima Abbas</h2>
                             <div className='item'>
-                                <FavoriteBorderIcon sx={{ fontSize: 30, color: '#b5739d', paddingTop:'12px' }} />
-                                <p>0</p>
+                                <FavoriteBorderIcon onClick={handleLike} sx={{ fontSize: 30, color: '#b5739d', paddingTop:'10px' }} />
+                                <p>{like}</p>
                             </div>
                             <div className='item'>
-                                <AccessTimeIcon sx={{ fontSize: 30, color: '#b5739d', paddingTop:'12px' }} />
-                                <Standard id="standard-basic" variant="standard"
-                                    focused
-                                    placeholder=""
-                                    size="small" sx={{ width: '20ch'}} />
+                                <AccessTimeIcon sx={{ fontSize: 30, color: '#b5739d', paddingTop:'10px' }} />
+                                <p>1 hour</p>
                             </div>
                             <div className='item'>
                                 <PeopleIcon sx={{ fontSize: 30, color: '#b5739d', paddingTop:'10px' }} />
-                                <Standard id="standard-basic" variant="standard"
-                                    focused
-                                    placeholder=""
-                                    size="small" sx={{ width: '20ch' }} />
+                                <p>10 peoples</p>
                             </div>
                             <div className='item'>
-                                <LocalFireDepartmentIcon sx={{ fontSize: 30, color: '#b5739d', paddingTop:'12px' }} />
-                                <Standard id="standard-basic" variant="standard"
-                                    focused
-                                    placeholder=""
-                                    size="small" sx={{ width: '20ch' }} />
+                                <LocalFireDepartmentIcon sx={{ fontSize: 30, color: '#b5739d', paddingTop:'10px' }} />
+                                <p>1000 calories</p>
                             </div>
                         </div>
+                        <br />
+                        <br />
                         <div className='info2'>
                             <Standard className='ingredients'
                                 id="outlined-multiline-static"
@@ -106,7 +102,7 @@ export default function NewRecipe() {
                                 maxRows={30}
                             />
                         </div>
-                    </Box>
+                    </form>
                 </div>
             </div>
         </div>

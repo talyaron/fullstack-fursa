@@ -5,6 +5,7 @@ import SignUp from './view/pages/signUp/SignUp';
 import ResetPassword from "./view/pages/resetPassword/ResetPassword";
 import MainScreen from "./view/pages/mainScreen/MainScreen";
 import NewRecipe from './view/pages/newRecipe/NewRecipe';
+import RecipeInfo from "./view/pages/recipeInfo/RecipeInfo";
 import { styled } from '@mui/material/styles';
 import { TextField } from "@mui/material";
 
@@ -32,7 +33,8 @@ function App(){
         <Route path="SignUp" element={<SignUp />} />
         <Route path="ResetPassword" element={<ResetPassword />} />
         <Route path="MainScreen" element={<MainScreen />} />
-        <Route path="NewRecipe" element={<NewRecipe/>} />
+        <Route path="NewRecipe" element={<NewRecipe />} />
+        <Route path="RecipeInfo" element={<RecipeInfo />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,8 +1,8 @@
-import img1 from '../../1.jpg';
-import img2 from '../../2.jpg';
-import img3 from '../../3.jpg';
-import img4 from '../../4.jpg';
-import img5 from '../../5.jpg';
+import img1 from '../../images/1.jpg';
+import img2 from '../../images/2.jpg';
+import img3 from '../../images/3.jpg';
+import img4 from '../../images/4.jpg';
+import img5 from '../../images/5.jpg';
 import './recipes.scss';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { Link } from 'react-router-dom';

@@ -24,12 +24,12 @@
             width: 100vw;
             position: relative;
 
-            .title1{
+            .title1 {
                 margin-top: 70px;
                 margin-left: 50px;
             }
 
-            .content1{
+            .content1 {
                 height: 30vh;
                 width: 80vw;
                 margin: auto;
@@ -38,12 +38,12 @@
                     width: 100%;
                     height: 100%;
                 }
-    
+
                 .swiper-slide {
                     text-align: center;
                     font-size: 18px;
                     background: rgb(230, 208, 222);
-    
+
                     /* Center slide text vertically */
                     display: -webkit-box;
                     display: -ms-flexbox;
@@ -58,15 +58,25 @@
                     -ms-flex-align: center;
                     -webkit-align-items: center;
                     align-items: center;
-                    
-                    img{
+
+                    a{
+                        height: 80%;
+                        width: 100%;
+                        img {
+                            height: 100%;
+                            width: 100%;
+                        }
+                    }
+
+                    img {
                         height: 80%;
                         width: 100%;
                     }
+                    
                 }
-                
+
             }
-              
+
         }
     }
 }

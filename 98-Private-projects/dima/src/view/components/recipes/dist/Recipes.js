@@ -1,10 +1,10 @@
 "use strict";
 exports.__esModule = true;
-var _1_jpg_1 = require("../../1.jpg");
-var _2_jpg_1 = require("../../2.jpg");
-var _3_jpg_1 = require("../../3.jpg");
-var _4_jpg_1 = require("../../4.jpg");
-var _5_jpg_1 = require("../../5.jpg");
+var _1_jpg_1 = require("../../images/1.jpg");
+var _2_jpg_1 = require("../../images/2.jpg");
+var _3_jpg_1 = require("../../images/3.jpg");
+var _4_jpg_1 = require("../../images/4.jpg");
+var _5_jpg_1 = require("../../images/5.jpg");
 require("./recipes.scss");
 var AddCircleOutline_1 = require("@mui/icons-material/AddCircleOutline");
 var react_router_dom_1 = require("react-router-dom");

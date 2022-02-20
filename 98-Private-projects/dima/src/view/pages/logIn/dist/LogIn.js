@@ -4,10 +4,10 @@ require("./LogIn.scss");
 var material_1 = require("@mui/material");
 var react_router_dom_1 = require("react-router-dom");
 var App_1 = require("../../../App");
-var background_jpg_1 = require("../../background.jpg");
-var logo_jpg_1 = require("../../logo.jpg");
+var background_jpg_1 = require("../../images/background.jpg");
+var logo_jpg_1 = require("../../images/logo.jpg");
 function LogIn() {
-    return (React.createElement("div", { className: "wrapper" },
+    return (React.createElement("div", { className: "logIn" },
         React.createElement("img", { className: "image", src: background_jpg_1["default"], alt: "" }),
         React.createElement("div", { className: 'LogInBox' },
             React.createElement("img", { className: "logo", src: logo_jpg_1["default"], alt: "" }),
