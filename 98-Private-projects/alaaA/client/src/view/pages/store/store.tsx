@@ -16,13 +16,12 @@ interface product {
   quantity: number;
   description: string;
   Url: string;
-  productsCart: any;
-  setproductsCart: any;
+
 }
 
 function Store() {
 
-useEffect(()=>{axios.get('http://localhost:3004/products').then(({data})=>{
+useEffect(()=>{axios.get('http://localhost:3004/products1').then(({data})=>{
   console.log(data);
   setProducts(data);
 })},[]);
@@ -40,8 +39,8 @@ const [products,setProducts] = useState([])
       <div className="wrapper">
 
         {products.map((product, i) => {
-          const { id, name, price, quantity, description, Url, productsCart, setproductsCart } = product;
-          return <Card key={i} id={id} name={name} price={price} quantity={quantity} description={description} Url={Url} productsCart={productsCart} setproductsCart={setproductsCart} />
+          const { id, name, price, quantity, description, Url } = product;
+          return <Card key={i} id={id} name={name} price={price} quantity={quantity} description={description} Url={Url} />
         })}
 
         {/* <Cart arr={products}  /> */}
