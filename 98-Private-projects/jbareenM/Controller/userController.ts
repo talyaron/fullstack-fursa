@@ -1,6 +1,9 @@
 export { }
 const user = require("../Schema/user");
 const crypto = require('crypto');
+const nodemailer = require('nodemailer');
+
+require('dotenv').config();
 
 exports.Login = async (req, res) => {
     console.log("login!");
@@ -13,7 +16,7 @@ exports.Login = async (req, res) => {
         } else {
             const hashPassword = crypto.createHash('sha256').update(pass).digest('base64');
             if (hashPassword === _user.password) {
-                const curretUser = {email: _user.email};
+                const curretUser = { email: _user.email };
                 res.send({ ok: true, user: curretUser, message: "login successfully!" });
             }
             else {
@@ -48,4 +51,55 @@ exports.SignUp = async (req, res) => {
     } catch (err) {
         res.send({ ok: false, message: "Error!" });
     }
+}
+
+exports.getAllUsers = async (req, res) => {
+    console.log("get all users!");
+
+    try {
+        user.find({}, function (err, users) {
+            var userMap = [];
+            users.forEach(function (_user) {
+                userMap.push({
+                    email: _user.email
+                })
+            });
+            res.send({ ok: true, users: userMap });
+        });
+    } catch (err) {
+        res.send({ ok: false, message: "Error!" });
+    }
+}
+
+exports.sendInvitation = async (req, res) => {
+    console.log("send invitation!");
+    const { meetingAdmin, friendList } = req.body;
+    console.log(meetingAdmin, friendList);
+    
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: process.env.EMAIL,
+            pass: process.env.PASS
+        }
+    });
+
+    friendList.forEach(_user => {
+        const mailOptions = {
+            from: meetingAdmin.email,
+            to: _user.email,
+            subject: `${meetingAdmin.email} send you invitation for IBring`,
+            text: 'Choose stuff to bring\n http://localhost:3000/List'
+        };
+
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log("email not found!");
+                // res.send({ok: false});
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
+    })
+    res.send({ ok: true });
 }

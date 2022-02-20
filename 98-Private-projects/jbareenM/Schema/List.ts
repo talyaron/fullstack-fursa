@@ -14,7 +14,7 @@ const detailsSchema = new mongoose.Schema({
     imgURL: String,
     groupName: String,
     meetType: String,
-    date: String,
+    date: Date,
     time: String,
     reminder: String,
     place: String,

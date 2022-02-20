@@ -21,11 +21,15 @@ import { Provider } from 'react-redux';
 
 import store from './redux/store';
 import Home from './view/pages/Home/Home';
+import ChooseFriends from './view/pages/ChooseFirends/ChooseFriends';
+import Contact from './view/pages/ChooseFirends/Contact/Contact';
 
 ReactDOM.render((
   <Provider store={store}>
     <BrowserRouter>
       <Routes>
+        <Route path='/Contact' element={<Contact />} />
+        <Route path='/ChooseFriends' element={<ChooseFriends />} />
         <Route path="/home" element={<Home />} />
         <Route path="/list" element={<List />}>
           <Route path="previous/:listId" element={<List />} />
