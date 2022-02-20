@@ -17,10 +17,10 @@ function Header() {
         <Link to="/Cart">To The Cart</Link>
         <a href="#contact">Requests</a>
         <a href="#about">Profile</a>
-        <a href="#contact">Settings</a>
+        <Link to="/settings">Settings</Link>
         <Link to="/logIn">LogOut</Link>
-        <a href="#contact">Help</a>
-        <a href="#about">About Us</a>
+        <Link to="/help">help</Link>
+        <Link to="/aboutUsIn">About Us</Link>
       </div>
     </div>
   );
