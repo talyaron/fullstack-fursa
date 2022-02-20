@@ -43,8 +43,10 @@ const Results = () => (
                   );
                  })}
             </div>
-
-            <h1>Congrats! to save/edit, plase sign up </h1>
+                 <div className='congratMsgt'>
+                <h1>Congrats!</h1>
+                <p>to save/edit, plase sign up </p> 
+                 </div>
 
             <button className='signUpbtn' onClick={clickSignup}> Free Sign up to save & edit</button>
             <div>

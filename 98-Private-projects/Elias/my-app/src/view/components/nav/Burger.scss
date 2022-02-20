@@ -1,0 +1,46 @@
+.StyledBurger{
+    width: 2rem;
+    height:  2rem;
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: column nowrap;
+    .lineclosed{
+       transition: all 0.3s linear;
+        width: 2rem;
+        height: 0.25rem;
+        background-color: black;
+        border-radius: 10px;
+        &:nth-child(1){
+            transform: rotate(0);
+        }
+        &:nth-child(2){
+            transform: translateX(0);
+            opacity: 1;
+        }
+        &:nth-child(3){
+            transform: rotate(0);
+        }
+    }
+    .lineOpned{
+        transition: all 0.3s linear;
+        width: 2rem;
+        height: 0.25rem;
+        background-color: #ccc;
+        border-radius: 10px;
+        transform-origin: 1px;
+        &:nth-child(1){
+            transform: rotate(45deg);
+        }
+        &:nth-child(2){
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        &:nth-child(3){
+            transform: rotate(-45deg);
+        }
+    }
+
+}

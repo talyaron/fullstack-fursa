@@ -20,10 +20,12 @@ function Signup(props:any) {
                 <button className='googlebuttonText'>Google</button> 
                 or
                 <form className='other' action="submit">
-                    <input type="text" />
-                    <input type="password" />
+                    <input type="text" className=' inputs username' placeholder='Email'/>
+                    <input type="password"  className='inputs password' placeholder='Password'/>
 
                 </form>
+
+                <button className='SignUpbtn'>Sign Up</button>
             </div>
             <div>
                 <footer>home - notifacation</footer>

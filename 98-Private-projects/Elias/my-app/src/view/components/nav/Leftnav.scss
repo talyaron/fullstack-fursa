@@ -1,0 +1,40 @@
+ul{
+    list-style: none;
+    display: flex;
+    justify-content:  space-around;
+    flex-flow: row nowrap;
+    z-index: 5;
+    li{
+        padding: 18px 10px;
+        color: white;
+        color: #020205;
+        font-weight: 600;
+        font-family: Poppins;
+
+    }
+
+    @media (max-width: 768px) {
+        flex-flow: column  nowrap;  
+        background-color: #D6D2FC;
+        position: fixed;
+        transition:  0.3s linear;
+        transform: translateX(0);     
+        top: 0;
+        left: 0;
+        height: 100vh;    
+        width:300px ;
+        padding-top: 3.5rem;
+        }
+}
+.Opned{
+    
+    @media (max-width: 768px) {
+        transform: translateX(0);    
+        }
+
+}
+.Closed{
+    @media (max-width: 768px) {
+        transform: translateX(-100%);    
+        }
+}

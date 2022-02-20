@@ -1,25 +1,80 @@
+.wrapper {
+    position: relative;
+    
+    //width: 360px;
+    // height: 640px;
+    background: #F9F9F9;
+    .congratMsgt{
+        
+        left: 30%;
+        right: 29.72%;
+        top: 60.94%;
+        bottom: 27.34%;
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 125.5%;
+        text-align: center;
+        color: rgba(2, 2, 5, 0.8);
 
-.collapsible {
-   
-    .header {
-        width: 50vm;
-        background-color: #7572FC;
-        border-radius: 10px;
-        padding: 6px;
-        cursor: pointer;
-        color: #ffffff;
-        margin: 2px;
-        &:hover {
-            background-color: #504df7;
-          }
+    }
 
-}
-.content {
-    padding: 6px;
-    border-radius: 10px;
-    background-color: #adaaf3;
-    &:hover {
-        background-color: #adaaf3;
-      }
-}
+    .listheader {
+        //position: relative;
+        width: 360px;
+        height: 238px;
+        left: 0px;
+        top: 129px;
+        .collapsible {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2px;
+            position: static;
+            border-radius: 10px;
+            flex: none;
+            order: 0;
+            flex-grow: 0;
+            margin: 0px 0px;
+            cursor: pointer;
+            color: #ffffff;
+            margin: 2px;
+            .header {
+                //width: 50vm;
+                font-family: Poppins;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 20px;
+                line-height: 30px;
+                width: 100%;
+                background: #7572FC;
+                border-radius: 10px;
+                padding: 6px;
+
+                &:hover {
+                    background-color: #504df7;
+                }
+            }
+            .content {
+                padding: 6px;
+                width:100%;
+                border-radius: 10px;
+                background-color: #adaaf3;
+
+                &:hover {
+                    background-color: #adaaf3;
+                }
+            }
+        }
+    }
+    .signUpbtn{
+        height: 47.75px;
+        width: 257px;
+        left: 0px;
+        top: 0px;
+        border-radius: 16px;
+        background: #FF8074;
+        border-radius: 16px;
+    }
 }
