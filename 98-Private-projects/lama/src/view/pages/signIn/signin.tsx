@@ -22,12 +22,12 @@ function SignIn() {
         <p>Password</p>
         <input type="text" />
         <br /><br />
-            <Button  className='btn' size="small" variant="outlined" startIcon={<GoogleIcon/>}> Sign Up with Google</Button>
+            <Button  className='btn' size="small" variant="outlined" startIcon={<GoogleIcon/>}> Google</Button>
             <br></br>
             <br></br>
-            <Button className='btn' size="small" variant="outlined" startIcon={<FacebookOutlinedIcon/>}> Sign Up with Facebook</Button>
+            {/* <Button className='btn' size="small" variant="outlined" startIcon={<FacebookOutlinedIcon/>}> Sign Up with Facebook</Button>
             <br></br>
-            <br></br>
+            <br></br> */}
             <Link to={`/`}>
             <Button className='btn' size="small" variant="outlined" startIcon={<LoginIcon/>}> login </Button>
             </Link>

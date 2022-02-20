@@ -22,7 +22,7 @@ function SignUp(){
 <Avatar className='avatar'>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5" className="typ">
+          <Typography component="h3" variant="h5" className="typ">
             Sign up
           </Typography>
        

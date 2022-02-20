@@ -15,7 +15,8 @@ import {coursesProps} from './course';
 import Course from "./course";
 
 
-const courses = [{id:1,name:'group lessons'}, {id:2,name:'private lessons'},{id:3,name:'single lesson'}];
+const courses = [{id:1,name:'group lessons',hours:5,participants:10,cost:1000}, {id:2,name:'private lessons',hours:5,participants:1,cost:1200},{id:3,name:'single lesson',hours:5,participants:1,cost:100}];
+const cardcourses = [{id:1,hours:5,participants:10,cost:1000}, {id:2,hours:5,participants:1,cost:1200},{id:3,hours:5,participants:1,cost:100}];
 
 function Courses() {
 
@@ -38,14 +39,16 @@ function Courses() {
    
             <div className="courses">
     {courses.map((course:coursesProps, i)=>{
-          return <Course key={i} name={course.name} id={course.id} />
-      })}
+          return <Course key={i} name={course.name} id={course.id} hours={course.hours} participants={course.participants} cost={course.cost}/>
+      }
+      )}
    
   
       <Outlet />
-  </div>;
+
        
  
+    </div>
     </div>
     
                  

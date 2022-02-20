@@ -11,7 +11,7 @@ function SignUp() {
     return (React.createElement("div", { className: "signup" },
         React.createElement(Avatar_1["default"], { className: 'avatar' },
             React.createElement(LockOutlined_1["default"], null)),
-        React.createElement(Typography_1["default"], { component: "h1", variant: "h5", className: "typ" }, "Sign up"),
+        React.createElement(Typography_1["default"], { component: "h3", variant: "h5", className: "typ" }, "Sign up"),
         React.createElement("form", { className: "signupform" },
             React.createElement(TextField_1["default"], { className: "txtfield", autoComplete: "given-name", name: "firstName", required: true, fullWidth: true, id: "firstName", label: "First Name", autoFocus: true }),
             React.createElement(TextField_1["default"], { className: "txtfield", autoComplete: "given-name", name: "lastName", required: true, fullWidth: true, id: "lastName", label: "Last Name", autoFocus: true }),
