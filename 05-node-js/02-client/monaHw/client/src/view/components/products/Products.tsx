@@ -28,7 +28,7 @@ export interface productProp{
         }
        
      return(
-         <div className="products">
+         <div className="cartProducts">
            <div className="item">{woodName}</div>
            <div className="item">{amount}</div>
            <div className="item"></div>

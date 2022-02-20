@@ -14,7 +14,7 @@ function HomePage()
     {
         ev.preventDefault();
         const form = ev.target;
-      axios.post('http://localhost:3004/RawMaterial',{"name":form[0].value, "imgurl":form[1].value,"price":form[2].value}).then(({data})=>console.log(data));
+      axios.post('http://localhost:3004/products',{"name":form[0].value, "imgurl":form[1].value}).then(({data})=>console.log(data));
     }
   
     return(
@@ -38,7 +38,6 @@ function HomePage()
                 <form onSubmit={handleProductSubmit}>
                         <input type="text" name="name" placeholder='product name'></input>
                         <input type="text" name="imageUrl" placeholder='image Url'></input>
-                        <input type='number' name="price" placeholder='item price'></input>
                         <Button type="submit" variant="contained" style={{backgroundColor: 'rgb(47, 143, 90)'}}size="medium">add
                         </Button>
                         </form>

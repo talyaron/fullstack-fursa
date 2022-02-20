@@ -4,7 +4,7 @@ import "./Rawmaterial.scss";
 import {Link} from 'react-router-dom'
 import Navbar from '../../components/navbar/Navbar';
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 const woods = [{name:'pine wood',cardImg:'https://d2kxk2c617i0nn.cloudfront.net/image_resize/crop/mw1500/mh750/products/23_001--yellow_pine_softwood-s.jpg'},
@@ -14,7 +14,9 @@ const woodLogo:string="https://cdn2.iconfinder.com/data/icons/lightly-icons/30/s
 
 function Rawmaterial(){
   const [wood,setWood]=useState([]);
+useEffect(()  => {
 axios.get('http://localhost:3004/RawMaterial').then(({data})=> setWood(data));
+}, []);
     return(
         <div className="RawMaterial">
       <header className='RawMaterial_header'>
