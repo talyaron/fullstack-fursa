@@ -2,6 +2,7 @@ import '../Cart/Cart.scss'
 import { useState } from "react";
 // import Cart from './view/pages/cart/Cart';
 import Card from '../../components/card/Card';
+import Header from '../../components/header/header';
 
 
 interface product {
@@ -20,11 +21,12 @@ interface product {
 
 
 function Cart(prop: any) {
-  console.log(prop.products)
+  console.log(prop.arr)
 return(
-    <div className="cart">
-      
-     {prop.products.map((product:product, i:number) => {
+ <div>
+      <Header></Header>
+      <div className="cart">
+     {prop.arr.map((product:product, i:number) => {
           const { id, name, price, quantity, description, Url, productsCart, setproductsCart } = product;
          <div>
             <img src={Url} alt="" />
@@ -34,6 +36,7 @@ return(
         })
     }
 
+    </div>
     </div>
 );
 }

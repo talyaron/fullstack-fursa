@@ -16,6 +16,7 @@ const Login = () =>{
                 <br /><br />
                 Password <br />
                 <input type="password" />
+                <br /><br />
                 <Link to="/Group">Login</Link>
                 
                 <br />

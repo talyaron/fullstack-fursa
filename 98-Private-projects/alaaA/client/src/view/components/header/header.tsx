@@ -10,7 +10,7 @@ function Header() {
 
     <div className="header">
 
-      <div className='header-left'>   <a className="active" href="#home">Home</a>
+      <div className='header-left'>   <Link to="/Store">Store</Link>
       </div>
       <div className="header-right">
         <a href="#contact"></a>

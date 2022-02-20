@@ -1,5 +1,6 @@
 import './store.scss';
-import { useState } from 'react';
+import { useState , useEffect } from 'react';
+import axios from 'axios'; 
 //components
 import Card from '../../components/card/Card';
 import Cart from '../../components/Cart/Cart';
