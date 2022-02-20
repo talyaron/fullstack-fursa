@@ -7,15 +7,19 @@ import EventIcon from "@mui/icons-material/Event";
 import MessageIcon from "@mui/icons-material/Message";
 import "../components/Bottombar.scss";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 export interface data {
   name: string;
 }
 function Bottombar(prop: data) {
   const [value, setValue] = React.useState("explore");
-  const [color, setColor] = React.useState('');
+  const [color, setColor] = React.useState("");
   const navigate = useNavigate();
+  let val: string = value;
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
+    console.log(value);
+    navigate(`/${newValue}`);
   };
 
   return (
@@ -26,11 +30,10 @@ function Bottombar(prop: data) {
           "&  .Mui-selected ,.Mui-selected > svg ": {
             backgroundColor: "orange",
             color: "white",
-            borderTopLeftRadius: "0.3rem",
-            borderTopRightRadius: "0.3rem",
+            borderRadius: "0.3rem",
             display: "flex",
             flexDirection: "row",
-            margin: "0.3rem",
+            margin: "0",
           },
         }}
         value={value}
@@ -42,9 +45,9 @@ function Bottombar(prop: data) {
       >
         <BottomNavigationAction
           label="Explore"
-          value="explore"
+          value="mainpage"
           onClick={() => {
-            navigate("/");
+            navigate("/mainpage");
           }}
           style={{ color: color }}
           icon={<Explore />}
@@ -52,9 +55,9 @@ function Bottombar(prop: data) {
         <BottomNavigationAction
           label="Events"
           value="events"
-          onClick={() => {
-            navigate("/events");
-          }}
+          // onClick={() => {
+          //   navigate("/events");
+          // }}
           style={{ color: color }}
           icon={<EventIcon />}
         />

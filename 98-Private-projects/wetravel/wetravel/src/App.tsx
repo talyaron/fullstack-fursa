@@ -5,25 +5,26 @@ import Login from "./components/Login";
 import { timeStamp } from "console";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Mainpage from "./components/Mainpage";
-import { CounterState, State } from "./reducers/rootReducer";
-import { useDispatch, useSelector } from "react-redux";
-import { increments, decrements } from "./actions/actions";
+import Nearevents from "./components/Nearevents";
+
 
 
 function App() {
-  const counter = useSelector((state: State) => state.counter);
-  console.log(counter);
-  //console.log(counter.count)
-  const dispatch = useDispatch();
 
   return (
     <div className="App">
+
+
       <Router>
-        <Routes>
-          <Route path="/" element={<Login />}></Route>
-          <Route path="/mainpage" element={<Mainpage />}></Route>
-        </Routes>
+      <Routes>
+        <Route path='/' element={<Login/>} ></Route>
+        <Route path="/mainpage" element={<Mainpage/>}></Route>
+        <Route path="/nearevents" element={<Nearevents/>}></Route>
+
+      </Routes>
       </Router>
+
+
     </div>
   );
 }

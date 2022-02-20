@@ -94,47 +94,41 @@ function Mainpage() {
           </div>
         </div>
       </div>
-      <div>
-        <div className="grid">
-          <div className="grid__items">
-            <div className="div_h">
-              <h1>Right now at </h1>
-              <a href="">See all</a>
-            </div>
-            <div className="list">
-              {arr.map((hotel, index) => {
-                return (
-                  <Card
-                    key={index}
-                    src={hotel.src}
-                    id={hotel.id}
-                    title={hotel.title}
-                  />
-                );
-              })}
-            </div>
-          </div>
 
-          <div className="grid__items">
-            <div className="div_h">
-              <h1>Popular travelers</h1>
-              <a href="">See all</a>
-            </div>
-            <div className="list">
-              {travelers.map((traveler, index) => {
-                return (
-                  <Travelles
-                    key={index}
-                    src={traveler.src}
-                    name={traveler.name}
-                    country={traveler.country}
-                  />
-                );
-              })}
-            </div>
-          </div>
-        </div>
+      <div className="div_h">
+        <h1>Right now at </h1>
+        <a href="">See all</a>
       </div>
+      <div className="list">
+        {arr.map((hotel, index) => {
+          return (
+            <Card
+              key={index}
+              src={hotel.src}
+              id={hotel.id}
+              title={hotel.title}
+            />
+          );
+        })}
+      </div>
+
+      <div className="div_h">
+        <h1>Popular travelers</h1>
+        <a href="">See all</a>
+      </div>
+      <div className="list">
+        {travelers.map((traveler, index) => {
+          return (
+            <Travelles
+              key={index}
+              src={traveler.src}
+              name={traveler.name}
+              country={traveler.country}
+            />
+          );
+        })}
+      </div>
+
       <Bottombar name={name.name} />
     </div>
   );

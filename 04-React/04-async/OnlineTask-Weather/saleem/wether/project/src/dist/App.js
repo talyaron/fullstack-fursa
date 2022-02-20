@@ -42,7 +42,8 @@ function App() {
         });
     }
     function setData() {
-        findCity().then(function (whetherDB) {
+        findCity()
+            .then(function (whetherDB) {
             settemp(whetherDB.main.temp);
             settemp_max(whetherDB.main.temp_max);
             settemp_min(whetherDB.main.temp_min);
@@ -60,21 +61,19 @@ function App() {
                     setSearch(event.target.value);
                 } }),
             react_1["default"].createElement("input", { value: "Submit", type: "button", className: "btn", onClick: setData }),
-            !city ?
-                (react_1["default"].createElement("div", null,
-                    react_1["default"].createElement("h3", null,
-                        react_1["default"].createElement("b", null, "No Data Found")))) :
-                (react_1["default"].createElement("div", null,
-                    react_1["default"].createElement("h1", { className: "temp" },
-                        "curernt temp  ",
-                        temp),
-                    react_1["default"].createElement("h3", { className: "tempmin_max" },
-                        "min temp:",
-                        temp_min,
-                        " Cel"),
-                    react_1["default"].createElement("h3", { className: "tempmin_max" },
-                        "max temp:",
-                        temp_max,
-                        "Cel"))))));
+            !city ? (react_1["default"].createElement("div", null,
+                react_1["default"].createElement("h3", null,
+                    react_1["default"].createElement("b", null, "No Data Found")))) : (react_1["default"].createElement("div", null,
+                react_1["default"].createElement("h1", { className: "temp" },
+                    "curernt temp ",
+                    temp),
+                react_1["default"].createElement("h3", { className: "tempmin_max" },
+                    "min temp:",
+                    temp_min,
+                    " Cel"),
+                react_1["default"].createElement("h3", { className: "tempmin_max" },
+                    "max temp:",
+                    temp_max,
+                    "Cel"))))));
 }
 exports["default"] = App;

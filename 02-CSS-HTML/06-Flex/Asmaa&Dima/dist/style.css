@@ -1,0 +1,116 @@
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+<<<<<<< Updated upstream
+=======
+  width: 100%;
+>>>>>>> Stashed changes
+  margin: 1px;
+}
+.wrapper .item1 {
+  margin: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 200px;
+<<<<<<< Updated upstream
+  height: 100px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+.wrapper .item1 .item {
+  display: flex;
+  width: 45%;
+  height: 45%;
+  background-color: blueviolet;
+  margin: 1px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+=======
+  height: 200px;
+  flex: 1;
+  justify-content: center;
+  text-align: center;
+}
+.wrapper .item1 .item {
+  flex: 50%;
+  background-color: blueviolet;
+>>>>>>> Stashed changes
+}
+.wrapper .item2 {
+  margin: 5px;
+  display: flex;
+<<<<<<< Updated upstream
+  width: 200px;
+  height: 100px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  flex-wrap: wrap;
+=======
+  flex: 1;
+  width: 200px;
+  height: 200px;
+  justify-content: center;
+  text-align: center;
+>>>>>>> Stashed changes
+}
+.wrapper .item2 .item {
+  width: 100%;
+  background-color: #0cad6f;
+}
+.wrapper .item3 {
+  margin: 5px;
+  display: flex;
+<<<<<<< Updated upstream
+  flex-wrap: wrap;
+  width: 200px;
+  height: 100px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+.wrapper .item3 .item {
+  display: flex;
+  width: 45%;
+  height: 45%;
+  background-color: #ad0c0c;
+  margin: 1px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+=======
+  flex: 1;
+  width: 200px;
+  height: 200px;
+  justify-content: center;
+  text-align: center;
+}
+.wrapper .item3 .item {
+  flex: 50%;
+  background-color: #11ee92;
+>>>>>>> Stashed changes
+}
+.wrapper .item4 {
+  margin: 5px;
+  display: flex;
+<<<<<<< Updated upstream
+  width: 200px;
+  height: 100px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  flex-wrap: wrap;
+=======
+  flex: 1;
+  width: 200px;
+  height: 200px;
+  justify-content: center;
+  text-align: center;
+>>>>>>> Stashed changes
+}
+.wrapper .item4 .item {
+  width: 100%;
+  background-color: #adaa0c;
+}
