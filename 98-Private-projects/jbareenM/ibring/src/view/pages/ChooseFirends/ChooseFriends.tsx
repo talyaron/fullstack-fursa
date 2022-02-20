@@ -50,26 +50,26 @@ function ChooseFriends() {
 
     function handleTypeList(ev: any, elem: any) {
         ev.preventDefault();
-        if (userLogin && listInfo != undefined) {
-            const listData = {
-                email: userLogin.userInfo.email,
-                allUsers: [
-                    {
-                        email: userLogin.userInfo.email
-                    },
-                    {
-                        email: "a@a"
-                    }
-                ],
-                bringItems: [],
-                details: listInfo
-            }
-            axios.post("/meeting/addNewMeeting", {
-                email: listData.email, allUsers: listData.allUsers, bringItems: listData.bringItems, details: listData.details
-            }).then(data => {
-                console.log(data);
-            });
-        }
+        // if (userLogin && listInfo != undefined) {
+        //     const listData = {
+        //         email: userLogin.userInfo.email,
+        //         allUsers: [
+        //             {
+        //                 email: userLogin.userInfo.email
+        //             },
+        //             {
+        //                 email: "a@a"
+        //             }
+        //         ],
+        //         bringItems: [],
+        //         details: listInfo
+        //     }
+        //     axios.post("/meeting/addNewMeeting", {
+        //         email: listData.email, allUsers: listData.allUsers, bringItems: listData.bringItems, details: listData.details
+        //     }).then(data => {
+        //         console.log(data);
+        //     });
+        // }
         nav(elem.redirectTo);
     }
     return (

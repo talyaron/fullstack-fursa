@@ -42,19 +42,11 @@ function Contact() {
         console.log(selectedFriends);
     }, [selectedFriends]);
 
-    function handleTypeList(ev: any, elem: any) {
-        ev.preventDefault();
+    function handleTypeList() {
         if (userLogin && listInfo != undefined) {
             const listData = {
                 email: userLogin.userInfo.email,
-                allUsers: [
-                    {
-                        email: userLogin.userInfo.email
-                    },
-                    {
-                        email: "a@a"
-                    }
-                ],
+                allUsers: selectedFriends,
                 bringItems: [],
                 details: listInfo
             }
@@ -64,7 +56,7 @@ function Contact() {
                 console.log(data);
             });
         }
-        nav(elem.redirectTo);
+        nav('/list');
     }
 
     function handleSendInvitation(ev: any) {
@@ -75,6 +67,7 @@ function Contact() {
                 meetingAdmin: userLogin.userInfo, friendList: selectedFriends
             }).then(data => {
                 console.log(data);
+                handleTypeList();
             });
         }
     }
