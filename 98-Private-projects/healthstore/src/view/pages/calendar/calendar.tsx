@@ -20,10 +20,11 @@ import React, { useState } from "react";
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import DatePicker from "react-datepicker";
+import DateTimePicker from 'react-datetime-picker';
+import "react-datetime-picker/dist/DateTimePicker.css";
 import "react-datepicker/dist/react-datepicker.css";
 import TimePicker, { TimePickerValue } from 'react-time-picker';
 import 'react-time-picker/dist/TimePicker.css';
-//import { TimePicker } from '@material-ui/pickers'
 
 const locales = {
     "en-US": require("date-fns/locale/en-US"),
@@ -42,7 +43,7 @@ interface eventInt{
     end: Date;
     name: string;
     phone: string;
-    time?: Date;
+    //time?: Date;
 }
 
 const events:Array<eventInt> = [
@@ -67,7 +68,7 @@ const events:Array<eventInt> = [
 
 
 function CalendarFun(){
-    const [newEvent, setNewEvent] = useState({ title: "", name:"",phone:"",time:new Date(),start: new Date(2022, 1, 20),end: new Date(2022, 1, 20)});
+    const [newEvent, setNewEvent] = useState({ title: "", name:"",phone:"",start: new Date(2022, 1, 20),end: new Date(2022, 1, 20)});
     const [allEvents, setAllEvents] = useState(events);
     
     
@@ -85,17 +86,20 @@ function CalendarFun(){
                 <input  type="text" placeholder='Add Name' value={newEvent.name} onChange={(e) => setNewEvent({ ...newEvent, name: e.target.value })} />
                 <input  type="text" placeholder='Add Phone Number' value={newEvent.phone} onChange={(e) => setNewEvent({ ...newEvent, phone: e.target.value })} />
                 <input type="text" placeholder="Pick Treatment"  value={newEvent.title} onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })} />
-                <DatePicker placeholderText="Start Date" selected={newEvent.start} onChange={(start:Date) => setNewEvent({ ...newEvent, start:start,end:start })} />
-                             
-                <button onClick={handleAddEvent}>
-                    Book Now!
-                </button>
+                <div>
+                    <DateTimePicker  onChange={(start:Date) => setNewEvent({ ...newEvent, start:start,end:start })} />                              
+                    <button onClick={handleAddEvent}>
+                        Book Now!
+                    </button>
+                </div>
             </div>
             <Calendar localizer={localizer} events={allEvents} startAccessor="start" style={{ height: 500, margin: "50px" }} />
             </div >
         </div>
     )
 }
+
+// <DatePicker placeholderText="Start Date" selected={newEvent.start} onChange={(start:Date) => setNewEvent({ ...newEvent, start:start,end:start })} />
 // <TimePicker value={newEvent.time} onChange={(time) => setNewEvent({ ...newEvent, time:time})} />   
 export default CalendarFun;
 
