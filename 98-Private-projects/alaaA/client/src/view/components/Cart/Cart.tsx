@@ -28,7 +28,7 @@ function Cart(prop: any) {
   const [allProducts,setAllProducts] = useState([]);
 
   const [products,setProducts]=useState([]);
-  useEffect(()=>{axios.get('http://localhost:3004/products').then(({data})=>{
+  useEffect(()=>{axios.get('http://localhost:3004/products1').then(({data})=>{
   console.log(data);
   setAllProducts(data);
   const filterProducts = data.filter((product:product) =>  product.quantity>0);
