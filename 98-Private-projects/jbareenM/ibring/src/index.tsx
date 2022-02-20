@@ -20,13 +20,17 @@ import {
 import { Provider } from 'react-redux';
 
 import store from './redux/store';
-
+import Home from './view/pages/Home/Home';
 
 ReactDOM.render((
   <Provider store={store}>
     <BrowserRouter>
       <Routes>
-        <Route path="/list" element={<List />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/list" element={<List />}>
+          <Route path="previous/:listId" element={<List />} />
+          <Route path="upcoming/:listId" element={<List />} />
+        </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/TypeList" element={<TypeList />} />
         <Route path="/register" element={<Register />} />

@@ -10,7 +10,7 @@ import chef from '../../logoAndPhotos/chef.jpg';
 import homeLogo from '../../logoAndPhotos/homeLogo.jpg';
 import settings from '../../logoAndPhotos/settings.jpg';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { RootState } from '../../../redux/store';
 import { UserState } from '../../../redux/reducers/userReducer';
 
@@ -32,6 +32,7 @@ interface ListState {
 
 function List() {
     const nav = useNavigate();
+    const { listId } = useParams();
     const [list, setList] = useState<Array<ListIF>>([]);
 
     const userLogin = useSelector<RootState, UserState>(state => state.user);
@@ -71,6 +72,7 @@ function List() {
     ]);
 
     useEffect(() => {
+        console.log("listId:", listId);
         if (userInfo == undefined) {
             nav('/login');
         }
@@ -83,16 +85,26 @@ function List() {
         ev.preventDefault();
     }
 
+    function handleHome(ev: any) {
+        ev.preventDefault();
+        nav('/home');
+    }
+
+    function handleSettings(ev: any) {
+        ev.preventDefault();
+        nav('/home');
+    }
+
     return (
         <>{userInfo != undefined ?
             <div className="mainTemplate">
                 <div className="mainHeader withHome">
                     <div className="homeDiv">
                         <div className="homeLogo">
-                            <img src={homeLogo} alt="" />
+                            <img onClick={handleHome} src={homeLogo} alt="" />
                         </div>
                         <div className="settingsLogo">
-                            <img src={settings} alt="" />
+                            <img onClick={handleSettings} src={settings} alt="" />
                         </div>
                     </div>
                     <img className='registerLogo listLogo' alt="" src={listInfo && listInfo.imgURL} />

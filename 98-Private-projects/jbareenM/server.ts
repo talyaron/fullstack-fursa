@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 
 const userRouter = require("./Routes/userRoutes");
+const listRouter = require("./Routes/listRoutes");
 
 app.use(express.static("ibring/build"));
 app.use(express.json());
@@ -20,6 +21,7 @@ db.once("open", () => {
 });
 
 app.use("/user", userRouter);
+app.use("/meeting", listRouter);
 
 app.get("/", (req, res) => {
     res.send("hello world!");
