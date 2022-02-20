@@ -1,0 +1,53 @@
+.header {
+  background-color: #ff0026;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.header__left {
+  display: flex;
+  align-items: center;
+}
+
+.header__menu {
+  display: flex;
+  margin-left: 20px;
+}
+
+.header__item {
+  padding: 10px 5px;
+}
+
+.logo {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAqFBMVEX///8AAACkNfDY2Ng/Pz/29feiMPDw4P24Y/M8PDzIyMiiLvDe3t7///6iKvCfJu+zXPL16P7Hx8eUlJT79v7Ol/exV/LHhvfevfnHi/b9+f/Yq/jmyfuuS/Hn5OudGe/Zs/bAePTo0PvUpfjJkPapPPHs2fy7bPT26/1aWloxMTFPT0/v7++AgICysbIeHh4RERFnZ2dycnKPj4+kpKStT/EsLCxjYmOdTLhoAAADEUlEQVR4nO3aa1uiQBiAYUUd01FAgzKVLS1PmGds//8/2w5bcsrc1GDY5/7Y8OF9LnEG01wOAAAAAAAAAAAAAAAAAAAAAAAAAAAAALLOGlpJj3BebfvKznRi60KTg20r6THOpmFKoWmakGYj6VHOYnitS+2N1K/LSY9zcuM7x9B2DKeTrdfRao1eb9AdcTtqZWfLqXdvpNTCpH7Tryc92mmU7a0e6Xuhb+0svB3bHVOI2MDnW1WYnXbSAx6r62if9b02ak436RGP8su83df3tuWYv5Ie85vq7bFtRDYYISPJ0rDHbRX3HOvOjG4wcnu9jW6rxvZOxZOjHA0URq9v9XtG5GXUTRU31fKFCPc53ZcHmUbXCTeKiywU6s594+3dVm/cO3rmCqXe80eUe4FNSP1CoZn98PJIk5kpfP5A2ImeBvWW+fEwoHahEFc38Z+UGvdXfx/olC7UBw/hG3Sn/zDQFS8Ueq+77zC3uj1dqFxoDFrj/c9j9XFrYChbaMiD/nNo2dJQsnDojMYHXjoeOcOzznIeVvnwD7ftsopP3gAA4H9Qqjar75qxV/jWq6Ufnu4UahO38s6NCyhVduuT2o/Pd7xCJb8T+xL51iuFnx7vBArFfygsUphGFFKYfhRSmH4UUph+FFKYfhRSmH4UUph+FFKYfhRSmH5fFpYyVRgXoHxhbeorqMZcUPCtT1X87ilQuIm5YKN64ePMV1CJ/gKs7f/2bfaYwIRHmy92BUsvsuwtd8uLeQLzHS+w1URuw8BNrORG83ybrn0N+VUwsbbyL66VvElzuUt/RH7i/7lCcxJYu0xsxuNUK4GMp/X7mVFdPwVWKnGHiRJm+aBFcbXxNqviIvT3WdKDflvBzR/CVXOfeeUdVBg9SRSy/rovv056yKOUJl8GTlT8wZdPLbzbhM1UfCINeNyfuFH0rA+YLz/tU/cgDCpt4vtiHseVVbosPgVfyaX7W9VHtc80vdlq6i6Wy+XCna5mnvIbTKxac+553ryZzToAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+PAH+oUy6i7vZMsAAAAASUVORK5CYII=);
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  margin-right: 10px;
+}
+
+.main-content {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+  margin: auto;
+  margin-top: 50px;
+  display: flex;
+  font-weight: 400;
+  line-height: 1.4;
+  font-size: 1.6rem;
+  color: black;
+}
+.main-content .billboard {
+  display: flex;
+  flex-direction: column;
+}
+
+.body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
