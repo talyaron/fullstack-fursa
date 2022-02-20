@@ -2,21 +2,21 @@
   "courses": [
     {
       "id": 1,
-      "type": "group lessons",
-      "participants": "10",
-      "cost" : "1000"
+      "name": "group lessons",
+      "participants": 10,
+      "cost" : 1000
     },
     {
       "id": 2,
-      "type": "private lessons",
-      "participants": "1",
-      "cost" : "1200"
+      "name": "private lessons",
+      "participants": 1,
+      "cost" : 1200
     },
     {
       "id": 3,
-      "type": "single lesson",
-      "participants": "1",
-      "cost" : "100"
+      "name": "single lesson",
+      "participants": 1,
+      "cost" : 100
     }
   ],
   "comments": [

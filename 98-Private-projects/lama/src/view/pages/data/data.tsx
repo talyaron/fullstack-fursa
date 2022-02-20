@@ -3,16 +3,17 @@ import axios from 'axios';
 import logo from '../../../logo.svg';
 import './data.scss';
 import { useState } from "react";
+// import 'db.json';
 
 function Data() {
     // const [details, setdetails] = useState<Array<{ value: string }>>([]);
-    const [details, setdetails] = useState();
+    const [details, setdetails] = useState([{ id: 0, name: "", participants:0, cost: 0}]);
 
  
   function handleAxios(){
-    axios.get('http://localhost:3004/courses').then(({data})=>setdetails(data.Array));
+    // axios.get('http://localhost:3004/courses').then(({data})=>setdetails(data));
 //    console.log(data);
-    // axios.get('http://localhost:3004/posts/2').then(({data})=>console.log(data));
+    axios.get('http://localhost:3004/courses/1').then(({data})=>setdetails(data));
 
 
     // axios.post('http://localhost:3004/posts',{'title':'bad book'}).then(({data})=>console.log(data));
@@ -47,7 +48,21 @@ function Data() {
      <p>courses</p>
      <p>{listItems}</p>
 <div>
-     <p>{details}</p>
+  <p>aaaaaaaa</p>
+     {/* <p>{details}</p> */}
+     {details.map((data, key) => {
+          return (
+            <div key={key}>
+              {data.id +
+                " , " +
+                data.name +
+                " ," +
+                data.participants +
+                ", " +
+                data.cost}
+            </div>
+          );
+        })}
      </div>
 
       
