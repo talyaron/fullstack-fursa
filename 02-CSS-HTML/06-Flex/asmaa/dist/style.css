@@ -1,0 +1,12 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.wrapper .item {
+  width: 50px;
+  height: 40px;
+  background-color: #cd32c0;
+  margin: 1px;
+}
