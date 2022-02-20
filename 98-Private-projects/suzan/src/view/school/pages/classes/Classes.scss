@@ -1,8 +1,16 @@
-.classesContainer{
+.container{
+    .newclassBtn{
+        position: absolute;
+        right: 60px;
+        margin-top: 30px;
+        // margin-bottom: 10px;
+    }
+    .classesContainer{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     width: 80%;
     margin: auto;
-    margin-top: 60px;
+    margin-top: 70px;
+}
 }

@@ -1,12 +1,14 @@
 import react from 'react';
-import SchoolResponsiveAppBar from '../../components/header/header';
+import SchoolResponsiveAppBar from '../../components/header/AppBar';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
 import List from '@mui/material/List';
 import './Students.scss';
 import StudentsList from '../../components/studentsList/StudentsList';
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
+import Button from '@mui/material/Button';
+import EditIcon from '@mui/icons-material/Edit';
 
 
 export interface studentInfo {
@@ -32,10 +34,14 @@ export default function SchoolStudents() {
     ]
 
     return (
-        <div>
+        <div className='container'>
             <div className='bar'>
                 <   SchoolResponsiveAppBar></SchoolResponsiveAppBar>
             </div>
+
+            <Link to='/newStudent'>
+                <Button className='newstudentBtn' variant="contained" size='small' startIcon={<EditIcon/>}>New Student</Button>
+            </Link>
 
             <div className="search">
                 <TextField

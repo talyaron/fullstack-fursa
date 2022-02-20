@@ -40,7 +40,7 @@ export default function StudentCard() {
             <CardContent className='content'>
                 <h1> {info[0]} {info[1]} </h1>
                 <p><span>student's id:</span> {studentId}</p>
-                <p><span>student's email:</span> {info[7]}</p>
+                <p><span>student's phone:</span> {info[4]}</p>
                 <p><span>father's name:</span> {info[2]}</p>
                 <p><span>father's phone:</span> {info[5]}</p>
                 <p><span>mother's name:</span> {info[3]}</p>

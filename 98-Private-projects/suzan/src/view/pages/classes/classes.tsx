@@ -23,6 +23,8 @@ function Classes() {
         <Link to='classes'>new classes page</Link>
         <Link to='students'>new students page</Link>
         <Link to='teachers'>new teachers page</Link>
+        <Link to='newTeacher'>new teacher form</Link>
+        <Link to='newStudent'>new student form</Link>
       </header>
       <ClassContainer/>
 

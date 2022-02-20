@@ -15,7 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 const pages = ['classes', 'students', 'teachers', "school's events"];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-const ResponsiveAppBar = () => {
+const SchoolResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
@@ -137,4 +137,4 @@ const ResponsiveAppBar = () => {
     </AppBar>
   );
 };
-export default ResponsiveAppBar;
+export default SchoolResponsiveAppBar;

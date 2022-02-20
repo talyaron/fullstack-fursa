@@ -1,5 +1,5 @@
 import react from 'react';
-import SchoolResponsiveAppBar from '../../components/header/header';
+import SchoolResponsiveAppBar from '../../components/header/AppBar';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
@@ -9,6 +9,7 @@ import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRou
 import './Teachers.scss';
 import Button from '@mui/material/Button';
 import EditIcon from '@mui/icons-material/Edit';
+import {Link} from 'react-router-dom';
 
 
 export interface teacherInfo {
@@ -35,7 +36,10 @@ export default function SchoolTeachers() {
                 <   SchoolResponsiveAppBar></SchoolResponsiveAppBar>
             </div>
 
-            <Button className='newteacherBtn' variant="contained" size='small' startIcon={<EditIcon/>}>new Teacher</Button>
+            <Link to='/newTeacher'>
+                <Button className='newteacherBtn' variant="contained" size='small' startIcon={<EditIcon/>}>New Teacher</Button>
+            </Link>
+            
 
             <div className="search">
                 <TextField

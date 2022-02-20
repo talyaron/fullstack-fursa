@@ -14,6 +14,10 @@ import SchoolStudents from './view/school/pages/students/Students';
 import StudentCard from './view/school/components/studentCard/StudentCard';
 import SchoolTeachers from './view/school/pages/teachers/Teachers';
 import TeacherCard from './view/school/components/teacherCard/TeacherCard';
+import NewTeacher from './view/school/pages/teachers/NewTeacher';
+import NewStudent from './view/school/pages/students/NewStudent';
+import NewClass from './view/school/pages/classes/NewClass';
+import ClassInfo from './view/school/pages/classInfo/ClassInfo';
 
 function App() {
   return (
@@ -35,6 +39,11 @@ function App() {
         <Route path="teachers" element={<SchoolTeachers />} >
           <Route path=':teacherId' element={<TeacherCard />} />
         </Route>
+
+        <Route path="newTeacher" element={<NewTeacher />} />
+        <Route path="newStudent" element={<NewStudent />} />
+        <Route path="newClass" element={<NewClass />} />
+        <Route path="class" element={<ClassInfo />} />
 
       </Routes>
     </Router>
