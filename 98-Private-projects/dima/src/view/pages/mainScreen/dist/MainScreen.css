@@ -2,6 +2,7 @@
   margin: auto;
   color: #b5739d;
   font-style: italic;
+  height: fit-content;
 }
 .wrapper .menuBar {
   width: 100vw;
@@ -20,15 +21,14 @@
 .wrapper .contentBox .content {
   width: 100vw;
   position: relative;
-  height: 92vh;
 }
 .wrapper .contentBox .content .title1 {
   margin-top: 70px;
   margin-left: 50px;
 }
 .wrapper .contentBox .content .content1 {
-  height: 30%;
-  width: 80%;
+  height: 30vh;
+  width: 80vw;
   margin: auto;
 }
 .wrapper .contentBox .content .content1 .swiper {

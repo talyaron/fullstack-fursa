@@ -2,6 +2,7 @@
     margin: auto;
     color: #b5739d;
     font-style: italic;
+    height: fit-content;
 
     .menuBar {
         width: 100vw;
@@ -22,7 +23,6 @@
         .content {
             width: 100vw;
             position: relative;
-            height: 92vh;
 
             .title1{
                 margin-top: 70px;
@@ -30,8 +30,8 @@
             }
 
             .content1{
-                height: 30%;
-                width: 80%;
+                height: 30vh;
+                width: 80vw;
                 margin: auto;
 
                 .swiper {

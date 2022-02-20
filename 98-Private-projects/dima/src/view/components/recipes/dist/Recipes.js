@@ -39,7 +39,7 @@ function Recipes() {
                 React.createElement("div", { className: 'title' },
                     React.createElement("p", null, "recipe 5")))),
         React.createElement("div", { className: 'add' },
-            React.createElement(react_router_dom_1.Link, { to: '' },
+            React.createElement(react_router_dom_1.Link, { to: '/NewRecipe' },
                 React.createElement(AddCircleOutline_1["default"], { sx: { fontSize: 35, color: '#b5739d', float: 'right' } })))));
 }
 exports["default"] = Recipes;

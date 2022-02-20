@@ -48,6 +48,33 @@ function MainScreen() {
                         react_1["default"].createElement(react_2.SwiperSlide, null, "Slide 7"),
                         react_1["default"].createElement(react_2.SwiperSlide, null, "Slide 8"),
                         react_1["default"].createElement(react_2.SwiperSlide, null, "Slide 9"),
-                        react_1["default"].createElement(react_2.SwiperSlide, null, "Slide 10")))))));
+                        react_1["default"].createElement(react_2.SwiperSlide, null, "Slide 10"))),
+                react_1["default"].createElement("h1", { className: 'title1' }, "The Newest Recipes"),
+                react_1["default"].createElement("div", { className: 'content1' },
+                    react_1["default"].createElement(react_2.Swiper, { slidesPerView: 3, spaceBetween: 30, slidesPerGroup: 1, loop: true, loopFillGroupWithBlank: true, pagination: {
+                            clickable: true
+                        }, navigation: true, modules: [swiper_1.Pagination, swiper_1.Navigation], className: "mySwiper" },
+                        react_1["default"].createElement(react_2.SwiperSlide, null,
+                            react_1["default"].createElement("img", { src: _1_jpg_1["default"], alt: '' }),
+                            react_1["default"].createElement("p", null, "Recipes 1")),
+                        react_1["default"].createElement(react_2.SwiperSlide, null,
+                            react_1["default"].createElement("img", { src: _2_jpg_1["default"], alt: '' }),
+                            react_1["default"].createElement("p", null, "Recipes 2")),
+                        react_1["default"].createElement(react_2.SwiperSlide, null,
+                            react_1["default"].createElement("img", { src: _3_jpg_1["default"], alt: '' }),
+                            react_1["default"].createElement("p", null, "Recipes 3")),
+                        react_1["default"].createElement(react_2.SwiperSlide, null,
+                            react_1["default"].createElement("img", { src: _4_jpg_1["default"], alt: '' }),
+                            react_1["default"].createElement("p", null, "Recipes 4")),
+                        react_1["default"].createElement(react_2.SwiperSlide, null,
+                            react_1["default"].createElement("img", { src: _5_jpg_1["default"], alt: '' }),
+                            react_1["default"].createElement("p", null, "Recipes 5")),
+                        react_1["default"].createElement(react_2.SwiperSlide, null, "Slide 6"),
+                        react_1["default"].createElement(react_2.SwiperSlide, null, "Slide 7"),
+                        react_1["default"].createElement(react_2.SwiperSlide, null, "Slide 8"),
+                        react_1["default"].createElement(react_2.SwiperSlide, null, "Slide 9"),
+                        react_1["default"].createElement(react_2.SwiperSlide, null, "Slide 10"))),
+                react_1["default"].createElement("br", null),
+                react_1["default"].createElement("br", null)))));
 }
 exports["default"] = MainScreen;

@@ -37,7 +37,7 @@ export default function Recipes() {
                 </div>
             </div>
             <div className='add'>
-                <Link to=''>
+                <Link to='/NewRecipe'>
                     <AddCircleOutlineIcon sx={{ fontSize: 35, color: '#b5739d', float:'right'}} />
                 </Link>
             </div>

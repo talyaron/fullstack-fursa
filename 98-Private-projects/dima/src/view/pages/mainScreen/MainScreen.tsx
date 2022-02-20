@@ -69,6 +69,50 @@ export default function MainScreen() {
                             <SwiperSlide>Slide 10</SwiperSlide>
                         </Swiper>
                     </div>
+                    <h1 className='title1'>The Newest Recipes</h1>
+                    <div className='content1'>
+                        <Swiper
+                            slidesPerView={3}
+                            spaceBetween={30}
+                            slidesPerGroup={1}
+                            loop={true}
+                            loopFillGroupWithBlank={true}
+                            pagination={{
+                                clickable: true
+                            }}
+                            navigation={true}
+                            modules={[Pagination, Navigation]}
+                            className="mySwiper"
+                        >
+                            <SwiperSlide>
+                                <img src={img1} alt='' />
+                                <p>Recipes 1</p>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <img src={img2} alt='' />
+                                <p>Recipes 2</p>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <img src={img3} alt='' />
+                                <p>Recipes 3</p>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <img src={img4} alt='' />
+                                <p>Recipes 4</p>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <img src={img5} alt='' />
+                                <p>Recipes 5</p>
+                            </SwiperSlide>
+                            <SwiperSlide>Slide 6</SwiperSlide>
+                            <SwiperSlide>Slide 7</SwiperSlide>
+                            <SwiperSlide>Slide 8</SwiperSlide>
+                            <SwiperSlide>Slide 9</SwiperSlide>
+                            <SwiperSlide>Slide 10</SwiperSlide>
+                        </Swiper>
+                    </div>
+                    <br />
+                    <br />
                 </div>
             </div>
         </div>

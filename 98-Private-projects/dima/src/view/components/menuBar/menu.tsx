@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -28,7 +28,7 @@ function Bagemenu() {
     return (
         <div className="menu">
             <div className="menu__left">
-                <MenuIcon sx={{fontSize:40, color:'#b5739d', paddingTop:-30}}/>
+                <MenuIcon sx={{ fontSize: 40, color: '#b5739d', paddingTop: -30 }} />
                 <div className='logo'>
                     <Link to='/MainScreen'>
                         <img src={logo} alt="" />
@@ -36,18 +36,18 @@ function Bagemenu() {
                 </div>
                 <div className="searchbox">
                     <input type="text" placeholder="search for a recipe" />
-                    <SearchIcon sx={{ fontSize:30, color:'#b5739d'}}/>
+                    <SearchIcon sx={{ fontSize: 30, color: '#b5739d' }} />
                 </div>
             </div>
             <div className="menu__right">
-                <Button 
+                <Button
                     id="basic-button"
                     aria-controls={open ? 'basic-menu' : undefined}
                     aria-haspopup="true"
                     aria-expanded={open ? 'true' : undefined}
                     onClick={handleClick}
                 >
-                    <PersonIcon sx={{fontSize:40, color:'#b5739d'}}/>
+                    <PersonIcon sx={{ fontSize: 40, color: '#b5739d' }} />
                 </Button>
                 <Menu
                     id="basic-menu"
