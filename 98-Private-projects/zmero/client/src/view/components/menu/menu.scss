@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 4rem;
+    height: 3.7rem;
     background-color: white;
     //border-style: solid;
     box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
@@ -80,7 +80,6 @@
 
         &__signin {
             background-color: #2a945b;
-            border: none;
             border-radius: 12px;
             margin-top: 0.6rem;
             margin-bottom: 0.6rem;
@@ -90,20 +89,19 @@
             font-size: 14px;
             white-space: nowrap;
             font-weight: bold;
-            border: 2px solid #2a945b;
+            border: 1px solid #2a945b;
             transition-duration: 0.4s;
 
             &:hover {
                 color: #2a945b;
                 background-color: white;
-                border: 2px solid #2a945b;
+                border: 1px solid #2a945b;
 
             }
         }
 
         &__signup {
             background-color: #dff2e4;
-            border: none;
             border-radius: 12px;
             margin-right: 2vw;
             margin-top: 0.6rem;
@@ -115,13 +113,13 @@
             white-space: nowrap;
             //font-family: Inter, Tajawal, sans-serif;
             font-weight: bold;
-            border: 2px solid #dff2e4;
+            border: 1px solid #dff2e4;
             transition-duration: 0.4s;
 
             &:hover {
                 color: #381753;
                 background-color: white;
-                border: 2px solid #381753;
+                border: 1px solid #381753;
 
             }
         }

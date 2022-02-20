@@ -34,33 +34,7 @@ function Explore() {
         setUserRegion(e.target.dataset.myValue)
     };
     useEffect(() => {
-        fetch('/get-famous-restaurants')
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                setFamousRestaurant(data)
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-        fetch('/get-trending-restaurants')
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                setTrendingRestaurant(data)
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-        fetch('/get-sea-restaurants')
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                setSeaRestaurant(data)
-            })
-            .catch((err) => {
-                console.log(err)
-            })
+
     }, []);
     return (
         <div>

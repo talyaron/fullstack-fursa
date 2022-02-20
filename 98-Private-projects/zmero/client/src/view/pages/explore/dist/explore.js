@@ -26,30 +26,6 @@ function Explore() {
         setUserRegion(e.target.dataset.myValue);
     };
     react_1.useEffect(function () {
-        fetch('/get-famous-restaurants')
-            .then(function (res) { return res.json(); })
-            .then(function (data) {
-            console.log(data);
-            setFamousRestaurant(data);
-        })["catch"](function (err) {
-            console.log(err);
-        });
-        fetch('/get-trending-restaurants')
-            .then(function (res) { return res.json(); })
-            .then(function (data) {
-            console.log(data);
-            setTrendingRestaurant(data);
-        })["catch"](function (err) {
-            console.log(err);
-        });
-        fetch('/get-sea-restaurants')
-            .then(function (res) { return res.json(); })
-            .then(function (data) {
-            console.log(data);
-            setSeaRestaurant(data);
-        })["catch"](function (err) {
-            console.log(err);
-        });
     }, []);
     return (react_1["default"].createElement("div", null,
         react_1["default"].createElement(menu_1["default"], null),
