@@ -54,21 +54,21 @@ var localizer = react_big_calendar_1.dateFnsLocalizer({
 var events = [
     {
         title: "Cupping  Therapy",
-        start: new Date(2022, 1, 25),
-        end: new Date(2022, 1, 25),
+        start: new Date(2022, 1, 25, 6, 30),
+        end: new Date(2022, 1, 25, 7, 30),
         name: "Asma",
         phone: "123"
     },
     {
         title: "Hopi Candles",
-        start: new Date(2022, 1, 29),
-        end: new Date(2022, 1, 29),
+        start: new Date(2022, 1, 26, 5),
+        end: new Date(2022, 1, 26, 6),
         name: "Asma",
         phone: "123"
     }
 ];
 function CalendarFun() {
-    var _a = react_1.useState({ title: "", name: "", phone: "", start: new Date(2022, 1, 20), end: new Date(2022, 1, 20) }), newEvent = _a[0], setNewEvent = _a[1];
+    var _a = react_1.useState({ title: "", name: "", phone: "", start: new Date(), end: new Date() }), newEvent = _a[0], setNewEvent = _a[1];
     var _b = react_1.useState(events), allEvents = _b[0], setAllEvents = _b[1];
     function handleAddEvent() {
         setAllEvents(__spreadArrays(allEvents, [newEvent]));
@@ -82,9 +82,9 @@ function CalendarFun() {
                 react_1["default"].createElement("input", { type: "text", placeholder: 'Add Phone Number', value: newEvent.phone, onChange: function (e) { return setNewEvent(__assign(__assign({}, newEvent), { phone: e.target.value })); } }),
                 react_1["default"].createElement("input", { type: "text", placeholder: "Pick Treatment", value: newEvent.title, onChange: function (e) { return setNewEvent(__assign(__assign({}, newEvent), { title: e.target.value })); } }),
                 react_1["default"].createElement("div", null,
-                    react_1["default"].createElement(react_datetime_picker_1["default"], { onChange: function (start) { return setNewEvent(__assign(__assign({}, newEvent), { start: start, end: start })); } }),
+                    react_1["default"].createElement(react_datetime_picker_1["default"], { required: true, value: newEvent.start, onChange: function (value) { return setNewEvent(__assign(__assign({}, newEvent), { start: value, end: (new Date(value.getFullYear(), value.getMonth(), value.getDate(), value.getHours() + 1, value.getMinutes())) })); } }),
                     react_1["default"].createElement("button", { onClick: handleAddEvent }, "Book Now!"))),
-            react_1["default"].createElement(react_big_calendar_1.Calendar, { localizer: localizer, events: allEvents, startAccessor: "start", style: { height: 500, margin: "50px" } }))));
+            react_1["default"].createElement(react_big_calendar_1.Calendar, { localizer: localizer, events: allEvents, startAccessor: "start", endAccessor: "end", style: { height: 500, margin: "50px" } }))));
 }
 // <DatePicker placeholderText="Start Date" selected={newEvent.start} onChange={(start:Date) => setNewEvent({ ...newEvent, start:start,end:start })} />
 // <TimePicker value={newEvent.time} onChange={(time) => setNewEvent({ ...newEvent, time:time})} />   

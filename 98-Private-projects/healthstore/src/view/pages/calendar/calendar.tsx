@@ -25,6 +25,7 @@ import "react-datetime-picker/dist/DateTimePicker.css";
 import "react-datepicker/dist/react-datepicker.css";
 import TimePicker, { TimePickerValue } from 'react-time-picker';
 import 'react-time-picker/dist/TimePicker.css';
+import { TRUE } from 'sass';
 
 const locales = {
     "en-US": require("date-fns/locale/en-US"),
@@ -49,8 +50,8 @@ interface eventInt{
 const events:Array<eventInt> = [
     {
         title: "Cupping  Therapy",
-        start: new Date(2022,1, 25),
-        end: new Date(2022,1, 25),
+        start: new Date(2022,1, 25,6,30),
+        end: new Date(2022,1, 25,7,30),
         name: "Asma",
         phone:"123" ,
         //time:"10:00"
@@ -58,8 +59,8 @@ const events:Array<eventInt> = [
     },
     {
         title: "Hopi Candles",
-        start: new Date(2022, 1, 29),
-        end: new Date(2022, 1, 29),
+        start: new Date(2022, 1, 26,5),
+        end: new Date(2022, 1, 26,6),
         name: "Asma",
         phone:"123",
          
@@ -68,7 +69,7 @@ const events:Array<eventInt> = [
 
 
 function CalendarFun(){
-    const [newEvent, setNewEvent] = useState({ title: "", name:"",phone:"",start: new Date(2022, 1, 20),end: new Date(2022, 1, 20)});
+    const [newEvent, setNewEvent] = useState({ title: "", name:"",phone:"",start: new Date(),end: new Date()});
     const [allEvents, setAllEvents] = useState(events);
     
     
@@ -78,23 +79,26 @@ function CalendarFun(){
         console.log(allEvents);
     }
 
+
+    
+
     return(
         <div>
             <div className="calendar">
-            <h1>Calendar</h1>
-            <div>
-                <input  type="text" placeholder='Add Name' value={newEvent.name} onChange={(e) => setNewEvent({ ...newEvent, name: e.target.value })} />
-                <input  type="text" placeholder='Add Phone Number' value={newEvent.phone} onChange={(e) => setNewEvent({ ...newEvent, phone: e.target.value })} />
-                <input type="text" placeholder="Pick Treatment"  value={newEvent.title} onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })} />
+                <h1>Calendar</h1>
                 <div>
-                    <DateTimePicker  onChange={(start:Date) => setNewEvent({ ...newEvent, start:start,end:start })} />                              
-                    <button onClick={handleAddEvent}>
-                        Book Now!
-                    </button>
+                    <input  type="text" placeholder='Add Name' value={newEvent.name} onChange={(e) => setNewEvent({ ...newEvent, name: e.target.value })} />
+                    <input  type="text" placeholder='Add Phone Number' value={newEvent.phone} onChange={(e) => setNewEvent({ ...newEvent, phone: e.target.value })} />
+                    <input type="text" placeholder="Pick Treatment"  value={newEvent.title} onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })} />
+                    <div>
+                        <DateTimePicker required={true} value={newEvent.start} onChange={(value) => setNewEvent({ ...newEvent, start:value,end:(new Date(value.getFullYear(), value.getMonth(),value.getDate(),value.getHours()+1,value.getMinutes()))})} />                              
+                        <button onClick={handleAddEvent}>
+                            Book Now!
+                        </button>
+                    </div>
                 </div>
+                <Calendar localizer={localizer} events={allEvents} startAccessor="start"  endAccessor="end"  style={{ height: 500, margin: "50px" }} />
             </div>
-            <Calendar localizer={localizer} events={allEvents} startAccessor="start" style={{ height: 500, margin: "50px" }} />
-            </div >
         </div>
     )
 }
