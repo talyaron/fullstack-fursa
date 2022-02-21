@@ -31,17 +31,11 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function createData(name: string, city: string, age: number) {
-  return { name, city, age };
+function createData(id: string, groupName: string) {
+  return { id, groupName};
 }
 
-const rows = [
-  createData('Majd Nassar','Araba',25),
-  createData('Alaa ali aga', 'Sakhnin',25),
-  createData('cristiano ronaldo','Portugal',37),
-  createData('mohammad salah','Egybt',28),
-  createData('karim benzema', 'france',33)
-];
+
  
 interface GroupMember {
   id: string;
@@ -57,42 +51,58 @@ interface group {
 
 
 export default function Mygroups() {
-  
+  useEffect(()=>{axios.get('http://localhost:3004/group/').then(({data})=>{
+    //console.log(data);
+    //console.log(data[0].id,data[0].groupMember);
+ 
+    const arr:Array<any> = [
+      {
+        id: data[0].id,
+        name: data[0].groupName
+      },
+      {
+        id: data[1].id,
+        name: data[1].groupName
+      },
+
+      {
+        id: data[2].id,
+        name: data[2].groupName
+      }
+      
+    ]
+    
+
+    setRows(arr);
+    console.log(rows);
+    setGroup(data);
+
+  })},[]);
 
   const [group,setGroup]=useState([]);
-  const[data_filter,setdata_filter]= useState([]);
- 
-  useEffect(()=>{axios.get('http://localhost:3004/group').then(({data})=>{
-    console.log(data);
-    setGroup(data);
-    var data_filter = data.filter( (element: { id: string; }) => element.id =="1")
-    console.log(data_filter)
-    data.filter()
+  const [rows,setRows]=useState<Array<any>>([]);
+
   
-  })},[]);
  
   return (
     <div>
     <Header></Header>
- 
+     
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 300 }} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell align="center">FULL NAME</StyledTableCell>
-            <StyledTableCell align="center">CITY</StyledTableCell>
-            <StyledTableCell align="center">AGE</StyledTableCell>
-            <StyledTableCell align="center">ACTIONS</StyledTableCell>
+            <StyledTableCell align="center">Group ID </StyledTableCell>
+            <StyledTableCell align="center"> Group Name</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <StyledTableRow key={row.name}>
+            <StyledTableRow key={row.id}>
               <StyledTableCell align="center" component="th" scope="row">
-                {row.name}
+                {row.id}
               </StyledTableCell>
-              <StyledTableCell align="center">{row.city}</StyledTableCell>
-              <StyledTableCell align="center">{row.age}</StyledTableCell>
+              <StyledTableCell align="center">{row.name}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
