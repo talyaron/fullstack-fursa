@@ -73,23 +73,26 @@ function List() {
         // },
     ]);
 
-/**
- * upcoming list 
- * search list by id from list store in redux
- * useEffect fetch data from last week
- */
+    /**
+     * upcoming list 
+     * search list by id from list store in redux
+     * useEffect fetch data from last week
+     */
+
+    const listInfoFromLocalStorage = localStorage.getItem('curList') ? JSON.parse(localStorage.getItem('curList')!) : undefined;
 
     useEffect(() => {
         console.log("listId:", listId);
+        console.log("curList:", listInfoFromLocalStorage);
         if (userInfo == undefined) {
             nav('/login');
         }
         if (listInfo != undefined) {
             setList([listInfo]);
         }
-    }, []);
+    }, [listInfoFromLocalStorage]);
 
-    function handleAddFriends(ev: any) {    
+    function handleAddFriends(ev: any) {
         ev.preventDefault();
     }
 
@@ -103,23 +106,53 @@ function List() {
         nav('/home');
     }
 
+    // function handleAddOrNot(ev: any, flag: boolean) {
+    //     ev.preventDefault();
+    //     flag ? console.log("add") : console.log("not");
+    //     if (flag) {
+    //         let flag = false;
+    //         bringList.map((element) => {
+    //             if (element.userName == (userInfo && userInfo.email)) {
+    //                 element.items.push(whatToBring);
+    //                 setBringList([...bringList]);
+    //                 flag = true;
+    //             }
+    //         })
+    //         if (!flag) {
+    //             setBringList([{
+    //                 userName: (userInfo && userInfo.email) ? userInfo.email : "Unknown",
+    //                 items: [whatToBring]
+    //             }, ...bringList])
+    //         }
+    //     }
+    // }
+
     function handleAddOrNot(ev: any, flag: boolean) {
         ev.preventDefault();
         flag ? console.log("add") : console.log("not");
         if (flag) {
-            let flag = false;
-            bringList.map((element) => {
+            const getItemFromLocal = localStorage.getItem('curList') ? JSON.parse(localStorage.getItem('curList')!) : undefined;
+            localStorage.setItem('curList', JSON.stringify(getItemFromLocal));
+            let flag1 = false;
+            getItemFromLocal.bringItems.map((element: any) => {
                 if (element.userName == (userInfo && userInfo.email)) {
                     element.items.push(whatToBring);
-                    setBringList([...bringList]);
-                    flag = true;
+                    // setBringList([...bringList]);
+                    flag1 = true;
+                    localStorage.setItem('curList', JSON.stringify(getItemFromLocal));
+                    
+
+                    /**
+                     * save to DB
+                     */
                 }
             })
-            if (!flag) {
-                setBringList([{
+            if (!flag1) {
+                getItemFromLocal.bringItems.push({
                     userName: (userInfo && userInfo.email) ? userInfo.email : "Unknown",
                     items: [whatToBring]
-                }, ...bringList])
+                })
+                localStorage.setItem('curList', JSON.stringify(getItemFromLocal));
             }
         }
     }
@@ -139,32 +172,32 @@ function List() {
                     <img className='registerLogo listLogo' alt="" src={listInfo && listInfo.imgURL} />
                 </div>
                 <div className="mainContent">
-                    {listInfo != undefined ?
+                    {listInfoFromLocalStorage != undefined ?
                         <div className="listHeader">
-                            <label className='templateTitle marginTitleNormal'>{listInfo.groupName}</label>
+                            <label className='templateTitle marginTitleNormal'>{listInfoFromLocalStorage.meetingDetails.groupName}</label>
                             <div className="listInformation">
                                 <label className="info">
                                     <img src={calendar} alt="" />
-                                    <label>{listInfo && listInfo.date}</label>
+                                    <label>{listInfoFromLocalStorage.meetingDetails.date.toString().split("T")[0]}</label>
                                 </label>
                                 <label className="info">
                                     <img src={clock} alt="" />
-                                    <label>{listInfo && listInfo.time}</label>
+                                    <label>{listInfoFromLocalStorage.meetingDetails.time}</label>
                                 </label>
                                 <label className="info">
                                     <img src={location} alt="" />
-                                    <label>{listInfo && listInfo.place}</label>
+                                    <label>{listInfoFromLocalStorage.meetingDetails.place}</label>
                                 </label>
                             </div>
                             <div className="listFewWords">
-                                <p style={{ color: 'grey' }}>{listInfo && listInfo.fewWords}</p>
+                                <p style={{ color: 'grey' }}>{listInfoFromLocalStorage.meetingDetails.fewWords}</p>
                             </div>
 
                             <form onSubmit={handleAddFriends} className='invitedFriends'>
                                 <button type="submit">
                                     <div className="logoWithWords">
                                         <img src={people} alt="" />
-                                        <label>{numberOfPeople} Friends in the group</label>
+                                        <label>{listInfoFromLocalStorage.whoIsThere.length} Friends in the group</label>
                                     </div>
 
                                     <label id="addButton">+</label>
@@ -182,13 +215,14 @@ function List() {
                                         <button onClick={(ev: any) => handleAddOrNot(ev, false)} className='addOrNot'>-</button>
                                     </div>
                                 </div>
-                                {bringList.map((elem, index) => {
+                                {listInfoFromLocalStorage.bringItems.map((elem: any, index: number) => {
                                     return (
 
                                         <div key={index} className="whatToBring_items">
                                             <div className="whatToBring_items_user">
-                                                <label id='userName'>{elem != undefined && elem.userName}</label>
-                                                {elem.items.map((item) => {
+                                                {/* <label id='userName'>{elem != undefined && elem.userName}</label> */}
+                                                <label id='userName'>{elem.userName}</label>
+                                                {elem.items.map((item:any) => {
                                                     return (<label>{item}</label>);
                                                 })}
                                             </div>
@@ -204,7 +238,18 @@ function List() {
                         : <>Have No List</>}
 
 
-                    {/* {list.map((elem: any, index: number) => {
+
+                </div>
+            </div>
+            : <>Please Login</>}
+        </>
+    );
+}
+
+export default List;
+
+
+{/* {list.map((elem: any, index: number) => {
                     return (
                         <div key={index} className="listForm">
                             <div className="rowList">
@@ -231,11 +276,68 @@ function List() {
                         </div>
                     );
                 })} */}
-                </div>
-            </div>
-            : <>Please Login</>}
-        </>
-    );
-}
 
-export default List;
+
+                // <div className="mainContent">
+                // {listInfo != undefined ?
+                //     <div className="listHeader">
+                //         <label className='templateTitle marginTitleNormal'>{listInfo.groupName}</label>
+                //         <div className="listInformation">
+                //             <label className="info">
+                //                 <img src={calendar} alt="" />
+                //                 <label>{listInfo && listInfo.date}</label>
+                //             </label>
+                //             <label className="info">
+                //                 <img src={clock} alt="" />
+                //                 <label>{listInfo && listInfo.time}</label>
+                //             </label>
+                //             <label className="info">
+                //                 <img src={location} alt="" />
+                //                 <label>{listInfo && listInfo.place}</label>
+                //             </label>
+                //         </div>
+                //         <div className="listFewWords">
+                //             <p style={{ color: 'grey' }}>{listInfo && listInfo.fewWords}</p>
+                //         </div>
+
+                //         <form onSubmit={handleAddFriends} className='invitedFriends'>
+                //             <button type="submit">
+                //                 <div className="logoWithWords">
+                //                     <img src={people} alt="" />
+                //                     <label>{numberOfPeople} Friends in the group</label>
+                //                 </div>
+
+                //                 <label id="addButton">+</label>
+                //             </button>
+                //         </form>
+                //         <div className='whatToBring'>
+                //             <div className="whatToBring_header">
+                //                 {/* What do you want to bring? */}
+                //                 <TextField className='whatToBring_input' id="standard-basic"
+                //                     label="What do you want to bring?"
+                //                     sx={{ input: { color: '#7065F2' } }}
+                //                     variant="standard" onKeyUp={(ev: any) => { setWhatToBring(ev.target.value); }} />
+                //                 <div className="whatToBring_addOrNot">
+                //                     <button onClick={(ev: any) => handleAddOrNot(ev, true)} className='addOrNot'>+</button>
+                //                     <button onClick={(ev: any) => handleAddOrNot(ev, false)} className='addOrNot'>-</button>
+                //                 </div>
+                //             </div>
+                //             {bringList.map((elem, index) => {
+                //                 return (
+
+                //                     <div key={index} className="whatToBring_items">
+                //                         <div className="whatToBring_items_user">
+                //                             <label id='userName'>{elem != undefined && elem.userName}</label>
+                //                             {elem.items.map((item) => {
+                //                                 return (<label>{item}</label>);
+                //                             })}
+                //                         </div>
+                //                         <div className="whatToBring_items_logo">
+                //                             <img src={home} />
+                //                             <img src={chef} />
+                //                         </div>
+                //                     </div>
+                //                 );
+                //             })}
+                //         </div>
+                //     </div>

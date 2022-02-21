@@ -17,6 +17,7 @@ import { stringify } from 'querystring';
 import e from 'express';
 import HomeListComponent from '../../components/HomeListComponent/HomeListComponent';
 import axios from 'axios';
+import { ConstructionOutlined } from '@mui/icons-material';
 
 interface ListIF {
     imgURL?: string;
@@ -43,9 +44,11 @@ function Home() {
 
     const { userInfo } = userLogin;
 
+
+    const [allListFromDB, setAllListFromDB] = useState<Array<any>>([]);
     const [upcomingList, setUpcomingList] = useState<Array<any>>([]);
 
-    const [previousList, setPreviousList] = useState([
+    const [previousList, setPreviousList] = useState<Array<any>>([
         {
             name: "asd",
             date: "123",
@@ -86,20 +89,28 @@ function Home() {
 
     useEffect(() => {
         if (userLogin && userInfo.email) {
+            let listCopy: Array<any> = [];
             axios.post('/meeting/getListByUser', { email: userInfo.email }).then(data => {
                 /**
                  * save all data in redux
                  */
                 console.log(data.data);
-                const { groupName, time, place } = data.data.meetingDetails;
-                setUpcomingList([...upcomingList, {
-                    name: groupName,
-                    // date: data.data.meetingDetails.date.toString(),
-                    time: time,
-                    place: place,
-                    bringList: data.data.bringItems
-                },])
+                setAllListFromDB(data.data.lists);
+                data.data.lists.forEach((element: any, index: number) => {
+                    const { date, groupName, time, place } = element.meetingDetails;
+                    listCopy.push({
+                        id: element._id,
+                        name: groupName,
+                        date: date,
+                        time: time,
+                        place: place,
+                        bringList: [...element.bringItems]
+                    });
+                });
+                setUpcomingList(listCopy);
+                setPreviousList(listCopy);
             })
+
         }
     }, []);
 
@@ -133,8 +144,13 @@ function Home() {
                         <label id='header'>Your upcoming gathering</label>
 
                         {upcomingList.map((elem, index) => {
+                            const findList = allListFromDB.find(dbList=>{
+                                if(elem.id == dbList._id){
+                                    return dbList;
+                                }
+                            })
                             return (
-                                <HomeListComponent key={index} id={index} upcoming info={
+                                <HomeListComponent key={index} id={elem.id} findList={findList} upcoming info={
                                     { name: elem.name, date: elem.date, time: elem.time, place: elem.place, bringList: elem.bringList }} />
                             );
                         })}
@@ -145,8 +161,13 @@ function Home() {
                         <label id='header'>Your previous gathering</label>
 
                         {previousList.map((elem, index) => {
+                            const findList = allListFromDB.find(dbList=>{
+                                if(elem.id == dbList._id){
+                                    return dbList;
+                                }
+                            })
                             return (
-                                <HomeListComponent key={index} id={index} info={
+                                <HomeListComponent key={index} id={elem.id} findList={findList}  info={
                                     { name: elem.name, date: elem.date, time: elem.time, place: elem.place, bringList: elem.bringList }} />
                             );
                         })}

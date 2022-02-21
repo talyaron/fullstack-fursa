@@ -10,12 +10,15 @@ import path from 'path/posix';
 function HomeListComponent(props: any) {
     const nav = useNavigate()
     const { name, date, time, place, bringList } = props.info;
-    const { id, upcoming } = props;
+    const { id, upcoming, findList } = props;
     const [path, setPath] = useState(`${id}`);
 
     function handleClick(ev: any) {
         ev.preventDefault();
-        nav(`/list/${id}`);
+        if (findList) {
+            localStorage.setItem('curList', JSON.stringify(findList));
+            nav(`/list/${id}`);
+        }
     }
 
     return (
@@ -32,7 +35,7 @@ function HomeListComponent(props: any) {
                     <div className="listInformation_info_list">
                         <label className="info">
                             <img src={calendar} alt="" />
-                            <label>{date}</label>
+                            <label>{date.toString().split("T")[0]}</label>
                         </label>
                         <label className="info">
                             <img src={clock} alt="" />
