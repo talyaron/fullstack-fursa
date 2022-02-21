@@ -3,15 +3,36 @@ import {Link, useParams} from 'react-router-dom';
 import Navbar from '../../components/navbar/Navbar';
 import './Door.scss'
 import Button from '@mui/material/Button';
+import Alert from '@mui/material/Alert';
+import { useState} from 'react';
+import axios from 'axios'
 
 function Door()
 {
+    
+    const [add,setAdd]=useState('')
 
     const {name}=useParams();
     console.log({name});
 
-    function handleSubmit(){
+    function handleSubmit(ev:any){
+        ev.preventDefault();
+        console.dir(ev);
+        const form = ev.target;
+        const obj: any = {};
+        obj['woodName']=name;
+        for (let i = 0; i < form.length; i++) {
+            console.log(form[i].value, form[i].name, form[i].type);
+            if (form[i].type !== "submit") {
+                obj[form[i].name] = form[i].value;
+            }
+        }
+        // let copy = Object.assign([], product);
+        // copy.push(obj);
+        // setProduct(copy);
+        axios.post('http://localhost:3004/userOrder',{"woodName":name,"woodlength":form[0].value, "width":form[1].value, "thick":form[2].value, "color":form[3].value,"amount":form[4].value}).then(({data})=>console.log(data));
 
+        setAdd('item added successfully — check it out!')
     }
     return(
 
@@ -21,7 +42,7 @@ function Door()
              <Navbar></Navbar>
 
      <h1 >Wood Products /</h1>
-     <h1>order {name}</h1>
+     <h1> {name}</h1>
 
      <div className="RawMaterial_header_cart">
        <Link to='/cart'>
@@ -43,7 +64,7 @@ function Door()
        </Button>
        {/* <button type='submit'>add</button> */}
             </form>
-            {/* <Alert severity="success">{add}</Alert> */}
+            <Alert severity="success">{add}</Alert>
 
 
          

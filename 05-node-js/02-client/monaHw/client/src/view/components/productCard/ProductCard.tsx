@@ -4,6 +4,7 @@ import{Link} from 'react-router-dom'
 export interface ProductCardProp {
    
     product:{
+        id:number,
         name: string,
         imgurl:string,
        
@@ -12,11 +13,13 @@ export interface ProductCardProp {
   }
 function ProductCard(props:ProductCardProp)
 { 
-    const {name,imgurl}=props.product;
+    const {name,imgurl,id}=props.product;
+   
     return(
         <div className="proCard">
           <img src={imgurl} alt="" />
           <div className="proCard_link">
+         
             <Link to={`/door/${name}`} >{name}</Link>
           </div>
         </div>

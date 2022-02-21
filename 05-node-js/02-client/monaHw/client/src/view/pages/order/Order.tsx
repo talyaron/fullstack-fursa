@@ -10,7 +10,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Navbar from '../../components/navbar/Navbar';
-
+import axios from 'axios'
 // const woods = [{name:'pine wood',height:70,width:70, thick:70,cardImg:'https://d2kxk2c617i0nn.cloudfront.net/image_resize/crop/mw1500/mh750/products/23_001--yellow_pine_softwood-s.jpg'},
 // {name:'insulation wood',height:70,width:70, thick:70,cardImg:'https://www.greenspec.co.uk/images/web/materials/boards/board.jpg'},
 // {name:'multiLayer wood',height:70,width:70, thick:70,cardImg:'https://user-assets.sxlcdn.com/images/609056/FkbWNKuLffuq6lYY2qFlQ5bAGYJY.jpg?imageMogr2/strip/auto-orient/thumbnail/1200x9000%3E/quality/90!/interlace/1/format/jpg'}];
@@ -36,9 +36,11 @@ function Order(props: orderProps) {
                 obj[form[i].name] = form[i].value;
             }
         }
-        let copy = Object.assign([], product);
-        copy.push(obj);
-        setProduct(copy);
+        // let copy = Object.assign([], product);
+        // copy.push(obj);
+        // setProduct(copy);
+        axios.post('http://localhost:3004/userOrder',{"woodName":name,"woodlength":form[0].value, "width":form[1].value, "thick":form[2].value,"amount":form[4].value}).then(({data})=>console.log(data));
+
         setAdd('item added successfully — check it out!')
         // console.log(copy)
         // console.log(product)
@@ -77,7 +79,7 @@ function Order(props: orderProps) {
        </Button>
        {/* <button type='submit'>add</button> */}
             </form>
-            <Alert severity="success">{add}</Alert>
+            <Alert  severity="success">{add}</Alert>
 
 
           </div>

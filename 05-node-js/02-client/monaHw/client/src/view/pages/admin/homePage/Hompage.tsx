@@ -16,6 +16,9 @@ function HomePage()
         const form = ev.target;
       axios.post('http://localhost:3004/products',{"name":form[0].value, "imgurl":form[1].value}).then(({data})=>console.log(data));
     }
+    function handleDelivery(){
+
+    }
   
     return(
         <div className="homepage">
@@ -40,6 +43,12 @@ function HomePage()
                         <input type="text" name="imageUrl" placeholder='image Url'></input>
                         <Button type="submit" variant="contained" style={{backgroundColor: 'rgb(47, 143, 90)'}}size="medium">add
                         </Button>
+                        </form>
+                </div>
+                <div className="homepage_body_delivery">
+                    <h1>Manage Delivery</h1>
+                <form onSubmit={handleDelivery}>
+                      
                         </form>
                 </div>
               

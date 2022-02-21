@@ -1,5 +1,6 @@
 import Navbar from '../../components/navbar/Navbar';
 import {Link} from 'react-router-dom'
+import {Outlet} from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import axios from 'axios'
 import './WoodProduct.scss'
@@ -25,11 +26,10 @@ function WoodProduct(){
           </header>
            <div className="WoodUse_body">
            {products.map((product, index)=>{
-          const{name,imgurl}=product;
-          return <ProductCard key={index} product={{name,imgurl}}/>
+          const{name,imgurl,id}=product;
+          return <ProductCard key={index} product={{name,imgurl,id}}/>
           
-        })}
-
+        })}     
            </div>
         </div>
        

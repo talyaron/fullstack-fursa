@@ -9,13 +9,14 @@ export interface productProp{
     amount:number;
     product:any;
     setProduct:any;
+    color?:string;
    
  }
  
  
  
  function Product(prop:productProp){
-     const {product,setProduct,woodName,woodlength,width,thick,amount}=prop;
+     const {product,setProduct,woodName,woodlength,width,thick,amount,color}=prop;
      function removeHandler()
      {
          let copy=Object.assign([],product)
@@ -29,7 +30,9 @@ export interface productProp{
        
      return(
          <div className="cartProducts">
-           <div className="item">{woodName}</div>
+           <div className="item details">
+               <p>{woodName}</p> 
+               <p> <span>product Name: </span>{woodName} ,<span>Length: </span>{woodlength}, <span>Width: </span> {width} ,<span>Thickness: </span>{thick}</p></div>
            <div className="item">{amount}</div>
            <div className="item"></div>
            <div className="item"></div>

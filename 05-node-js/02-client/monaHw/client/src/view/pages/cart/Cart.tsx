@@ -2,7 +2,9 @@ import Product, {productProp} from '../../components/products/Products'
 import {Link} from 'react-router-dom'
 import './Cart.scss'
 import Navbar from '../../components/navbar/Navbar';
-
+import Button from '@mui/material/Button';
+import {useState,useEffect} from 'react'
+import axios from 'axios'
 interface cartProps{
     product:any;
     setProduct:any;
@@ -11,6 +13,10 @@ interface cartProps{
 function Cart(props:cartProps){
     const {product,setProduct}=props;
     console.log(product)
+    const [order,setOrder]=useState([]);
+useEffect(()  => {
+axios.get('http://localhost:3004/userOrder').then(({data})=> setOrder(data));
+}, []);
     return (
         
            
@@ -34,10 +40,14 @@ function Cart(props:cartProps){
 
                       </div>
     
-                 {product.map((products:productProp, i:any)=>{
+                 {order.map((products:productProp, i:any)=>{
                    
                 return  <Product key={i} woodName={products.woodName} woodlength={products.woodlength} width={products.width} thick={products.thick} amount={products.amount} product={product} setProduct={setProduct} />
     })}
+    <Button type="submit" variant="contained" style={{backgroundColor: 'rgb(47, 143, 90)'}} size="medium">
+          order 
+       
+       </Button>
     
     
     </div>

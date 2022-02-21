@@ -53,12 +53,12 @@ function Card(prop: CardProp) {
   function handlerMouseOver(ev:any)
   {
     
-     setcolor("rgb(196,196,196)")
+     setcolor("rgb(185, 109, 9)")
      
   }
   function handlerMouseOut()
   {
-    setcolor('rgb(185, 109, 9)')
+    setcolor('rgba(73, 48, 24, 1)')
   }
 
   return (
