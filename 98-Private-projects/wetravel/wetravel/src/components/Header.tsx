@@ -14,6 +14,13 @@ function Header() {
         <h3> Near Events </h3>
         <img src={Rola} />
       </div>
+
+      <h3> Near Events </h3>
+      <div className="flex">
+      <img src={Rola} />
+
+      </div>
+    
     </div>
   );
 }

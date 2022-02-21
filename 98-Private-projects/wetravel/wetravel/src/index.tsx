@@ -9,9 +9,18 @@ import Nearevents from "./components/Nearevents";
 import Createevent from "./components/Createevent";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import  reducers  from "../src/reducers/rootReducer";
+import { createStore, compose } from "redux";
+import reducers from "../src/reducers/rootReducer";
+import { Provider } from "react-redux";
+declare global {
+  interface Window {
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+  }
+}
+document.title = "Travelers";
 
-import { increments, decrements } from "./actions/actions";
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducers, composeEnhancers());
 
 ReactDOM.render(
      <Router>
@@ -27,8 +36,6 @@ ReactDOM.render(
   document.getElementById("root")
 );
 //Store secc
-
-
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
