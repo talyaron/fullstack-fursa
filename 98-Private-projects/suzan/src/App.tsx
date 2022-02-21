@@ -22,6 +22,8 @@ import Courses from './view/teacher/pages/courses/Courses';
 import TeacherMainPage from './view/teacher/pages/mainPage/TeacherMainPage';
 import Course from './view/teacher/pages/course/Course';
 import StudentMainPage from './view/student/pages/mainPage/StudentMainPage';
+import StudentCourse from './view/student/pages/course/Course';
+import StudentHomeworks from './view/student/pages/homeworks/Homworks';
 
 function App() {
   return (
@@ -56,6 +58,9 @@ function App() {
         <Route path="teacherUser/course" element={<Course />} />
 
         <Route path="studentUser/mainPage" element={<StudentMainPage />} />
+        <Route path="studentUser/coursePage" element={<StudentCourse />} />
+        <Route path="homeworks" element={<StudentHomeworks />} />
+
 
       </Routes>
     </Router>

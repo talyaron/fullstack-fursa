@@ -3,6 +3,7 @@ import Typography from "@mui/material/Typography";
 import CourseCard from "../../components/courseCard/CourseCard";
 import StudentResponsiveAppBar from "../../components/header/StudentAppBar";
 import UpdatesList from "../../components/updatesList/UpdatesList";
+import {Link} from 'react-router-dom';
 import './StudentMainPage.scss';
 
 const class_name = 'Class 1A';
@@ -44,7 +45,10 @@ export default function StudentMainPage() {
                             courses.map((course, i) => {
                                 const { name, teacher } = course;
                                 return (
-                                    <CourseCard key={i} info={course} />
+                                    <Link to="../studentUser/coursePage">
+                                        <CourseCard key={i} info={course} />
+                                    </Link>
+                                    
                                 );
                             })
                         }
