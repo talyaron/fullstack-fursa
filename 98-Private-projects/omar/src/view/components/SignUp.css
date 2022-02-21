@@ -83,3 +83,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3232', end
     margin-bottom: -5px;
     margin-left: -5px;
 }
+
+.title{
+    font-size: 25px;
+}
+
+.logo{
+    position:fixed;
+    /* top:10px; */
+    float: left;
+    margin: 0px 15px 15px 0px;
+    /* bottom: 10px; */
+    top:10px;
+    left: 100px;
+    /* right: 4px; */
+}

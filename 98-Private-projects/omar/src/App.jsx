@@ -18,11 +18,13 @@ import EmptyPlan from './view/components/EmptyPlan';
 import PlanGenerator from './view/components/PlanGenerator';
 import Food from './view/components/Food';
 import Profile from './view/components/Profile';
+import Plandecider from './view/components/Plandecider';
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
+        <Route exact path="/plandecider" element={<Plandecider/>}/>
         <Route exact path="/food" element={<Food/>}/>
         <Route exact path="/profile" element={<Profile/>}/>
         <Route exact path="/plangenerator" element={<PlanGenerator/>}/>

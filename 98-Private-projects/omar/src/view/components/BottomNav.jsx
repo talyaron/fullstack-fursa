@@ -33,7 +33,7 @@ export default function LabelBottomNavigation() {
           "&  .Mui-selected ,.Mui-selected > svg ": {
             backgroundColor: "#78909c",
             color: "#f5f5f5",
-            fontSize:25,
+            fontSize:22,
             borderRadius: "0.3rem",
             display: "flex",
             flexDirection: "row",

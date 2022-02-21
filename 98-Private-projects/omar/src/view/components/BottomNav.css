@@ -1,6 +1,6 @@
 .BottomNav{
     position: fixed;
-    bottom: 0;
+    bottom: 30px;
     /* display: felx;
     flex-direction: row;
     align-items: center;
