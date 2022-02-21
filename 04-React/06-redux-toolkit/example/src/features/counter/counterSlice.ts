@@ -60,6 +60,7 @@ export const counterSlice = createSlice({
   },
 });
 
+//export actions
 export const { increment, decrement, incrementByAmount } = counterSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
