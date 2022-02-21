@@ -32,7 +32,7 @@ const createGroup = () =>{
                 <Link type='submit' to="/Store">Login</Link>
                 </form>
                 <br />
-                <Link to="/HomePage">cancle</Link>
+                <Link to="/Group">cancle</Link>
 
                </div>
         </div>
