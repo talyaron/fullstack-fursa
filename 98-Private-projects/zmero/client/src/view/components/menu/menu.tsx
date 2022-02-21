@@ -17,6 +17,7 @@ import Checkbox from '@mui/material/Checkbox';
 import Select from '@mui/material/Select';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
+import User from '../user/user'
 
 
 
@@ -26,8 +27,9 @@ function Menu() {
     const [modalSignInsOpen, setSignINModal] = useState(false);
     const [modalSignUpModal, setSignUpModal] = useState(false);
     const [navbarindex, setNavbarindex] = useState(1);
-    const [loginState, setLoginState] = useState({})
+    const [loginState, setLoginState] = useState({ user: "" })
     const [sigupState, setSigupnState] = useState({})
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
     function openSearchModal(bool: boolean) {
         if (bool === false)
             setNavbarindex(1)
@@ -57,6 +59,8 @@ function Menu() {
         e.preventDefault();
 
         console.log(loginState)
+        setIsLoggedIn(true)
+        openSignInModal(false);
     }
     function onChangeSignup(e: any) {
         setSigupnState({
@@ -69,6 +73,14 @@ function Menu() {
         e.preventDefault();
 
         console.log(sigupState)
+    }
+    let comp;
+    if (isLoggedIn) {
+        comp = <User name={loginState.user.charAt(0)}></User>
+    }
+    else {
+        comp = (<div className="navbar__right"><button className="navbar__right__signup" type="button" onClick={() => openSignUpModal(true)}><span>Not Registered Yet?</span></button>
+            <button className="navbar__right__signin" type="button" onClick={() => openSignInModal(true)}>Sign in</button></div>)
     }
     return (
         <div className="navbar" style={{ zIndex: navbarindex }}>
@@ -94,8 +106,7 @@ function Menu() {
                     </Link>
                 </div>
                 <div className="navbar__right">
-                    <button className="navbar__right__signup" type="button" onClick={() => openSignUpModal(true)}><span>Not Registered Yet?</span></button>
-                    <button className="navbar__right__signin" type="button" onClick={() => openSignInModal(true)}>Sign in</button>
+                    {comp}
                     <img onClick={() => openSearchModal(true)} className="navbar__right__search" src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.png" alt="search_icon" />
                 </div>
             </div>

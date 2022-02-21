@@ -1,33 +1,62 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
+import axios from 'axios'
+import './restaurant.scss'
+import Menu from '../../components/menu/menu'
+import Button from '@mui/material/Button'
+import Checkbox from '@mui/material/Checkbox';
+import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
+import Favorite from '@mui/icons-material/Favorite';
 
 interface cardProp {
     id: number;
     name: string;
     image: string;
     booking: number;
+    region: string;
+    stars: number;
+    category: string;
 }
-const Restaurants: Array<cardProp> = [{ id: 1, name: 'shila-sharon cohen Kitchen & bar', image: 'https://media-cdn.tripadvisor.com/media/photo-s/03/7a/47/6d/shila.jpg', booking: 27 },
-{ id: 2, name: 'Cafe Popular', image: 'https://cdn.archilovers.com/projects/c_383_f83bb625-ff28-414b-a700-8e4bebde941b.jpg', booking: 22 },
-{ id: 3, name: 'Taizu', image: 'https://bestrest.rest/wp-content/uploads/2019/05/TAIZU_017.jpg', booking: 20 },
-{ id: 5, name: 'Hakosem', image: 'https://cdn.istores.co.il/image/upload/if_ar_gt_2:1/c_fill,h_662,w_555/c_fill,h_662,w_555/if_else/c_fill,q_100,w_555/if_end/dpr_2/v1614106887/clients/109701/5e9b9717137eea988b88592d0861cc3a64d59fcd.jpg', booking: 15 }, { id: 4, name: 'La Regence', image: 'https://images.jpost.com/image/upload/f_auto,fl_lossy/t_JM_ArticleMainImageFaceDetect/399693', booking: 5 }]
+
 function Restaurant() {
     const { RestaurantId } = useParams();
-    console.log(useParams())
-    function getRestaurant(id: string | undefined, Restaurants: Array<any>): cardProp | undefined {
-        const restaurant = Restaurants.find(restaurant => restaurant.id == id)
-        if (restaurant) {
-            return restaurant
-        } else {
-            return undefined
+    const [Restaurant, setRestaurant] = useState<cardProp>({ id: 0, name: "", image: "", booking: 0, region: "", stars: 0, category: "" })
+    useEffect(() => {
+        axios.get(`http://localhost:3004/Restaurants/${RestaurantId}`).then(({ data }) => {
+            setRestaurant(data)
         }
-    }
+        );
+    }, []);
+
+    //const imageArr = [{ url: 'https://www.w3schools.com/howto/img_nature_wide.jpg' }, { url: 'https://www.w3schools.com/howto/img_snow_wide.jpg' }]
+
     return (
         <div>
-            <h1>Name: {getRestaurant(RestaurantId, Restaurants)?.name} </h1>
-            <p> restaurant id {RestaurantId}</p>
-            <img src={getRestaurant(RestaurantId, Restaurants)?.image}></img>
-
+            <Menu></Menu>
+            <div className="rest">
+                <div className="rest__images" style={{ backgroundImage: `url(${Restaurant.image})` }}></div>
+                <div className="rest__main">
+                    <div className="rest__main__header">
+                        <div className="rest__main__header__left">
+                            <img src={Restaurant.image} alt="restaurant"></img>
+                            <div className="rest__main__header__left__title">
+                                <h1>{Restaurant.name}</h1>
+                                <div className="rest__main__header__left__title__category">
+                                    <span>{Restaurant.region}</span>
+                                    <span className="dot"></span>
+                                    <span>{Restaurant.category.toUpperCase()}</span>
+                                </div>
+                            </div>
+                            <div className="rest__main__header__left__favorite">
+                                <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
+                            </div>
+                        </div>
+                        <div className="rest__main__header__right">
+                            <Button style={{ backgroundColor: '#2a945b' }} fullWidth variant="contained">Reserve Now</Button>
+                        </div>
+                    </div>
+                </div>
+            </div >
         </div>
     )
 }
