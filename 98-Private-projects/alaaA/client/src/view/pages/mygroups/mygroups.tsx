@@ -6,6 +6,7 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import PeopleIcon from '@material-ui/icons/People';
 import Paper from '@mui/material/Paper';
 import Header from '../../components/header/header';
 import axios from 'axios';
@@ -48,6 +49,9 @@ interface group {
   }
 
 
+  function handleColumnValue (id:string){
+    console.log(id)
+  }
 
 
 export default function Mygroups() {
@@ -94,6 +98,7 @@ export default function Mygroups() {
           <TableRow>
             <StyledTableCell align="center">Group ID </StyledTableCell>
             <StyledTableCell align="center"> Group Name</StyledTableCell>
+            <StyledTableCell align="center"> Actions </StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -103,6 +108,7 @@ export default function Mygroups() {
                 {row.id}
               </StyledTableCell>
               <StyledTableCell align="center">{row.name}</StyledTableCell>
+              <StyledTableCell align="center"> <PeopleIcon onClick={()=> handleColumnValue(row.id)}> </PeopleIcon></StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
