@@ -2,8 +2,9 @@ import ClassCard from "../../components/classCard/ClassCard";
 import CourseCard from "../../components/courseCard/CourseCard";
 import TeacherResponsiveAppBar from "../../components/header/TeacherAppBar";
 import Divider from '@mui/material/Divider';
-import './MainPage.scss';
 import Typography from "@mui/material/Typography";
+
+import './TeacherMainPage.scss';
 
 const classes = [{ class_name: 'Class 1A' }];
 const courses = [
@@ -14,7 +15,7 @@ const courses = [
 
 export default function TeacherMainPage() {
     return (
-        <div className="container">
+        <div>
 
             <div className="bar">
                 <TeacherResponsiveAppBar />

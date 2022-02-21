@@ -36,8 +36,6 @@ export default function Course() {
                 <Typography variant='h5' align='center'>{className}</Typography>
             </div>
 
-
-
             <div className="course">
                 <div className="course__material">
                     <Divider >
@@ -63,8 +61,6 @@ export default function Course() {
 
                 <div className="course__recentUpdates">
                     <Typography className='title' variant='subtitle2' align='center'>RECENT UPDATES</Typography>
-
-
                     <UpdatesList updates={updates} />
                 </div>
             </div>

@@ -19,8 +19,9 @@ import NewStudent from './view/school/pages/students/NewStudent';
 import NewClass from './view/school/pages/classes/NewClass';
 import ClassInfo from './view/school/pages/classInfo/ClassInfo';
 import Courses from './view/teacher/pages/courses/Courses';
-import TeacherMainPage from './view/teacher/pages/mainPage/MainPage';
+import TeacherMainPage from './view/teacher/pages/mainPage/TeacherMainPage';
 import Course from './view/teacher/pages/course/Course';
+import StudentMainPage from './view/student/pages/mainPage/StudentMainPage';
 
 function App() {
   return (
@@ -53,6 +54,8 @@ function App() {
         <Route path="teacherUser/courses" element={<Courses />} />
         <Route path="teacherUser/mainPage" element={<TeacherMainPage/>} />
         <Route path="teacherUser/course" element={<Course />} />
+
+        <Route path="studentUser/mainPage" element={<StudentMainPage />} />
 
       </Routes>
     </Router>
