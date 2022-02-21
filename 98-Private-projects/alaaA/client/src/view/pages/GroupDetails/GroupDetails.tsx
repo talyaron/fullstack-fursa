@@ -10,10 +10,7 @@ import PeopleIcon from '@material-ui/icons/People';
 import Paper from '@mui/material/Paper';
 import Header from '../../components/header/header';
 import axios from 'axios';
-import { useState , useEffect} from "react";
-import { Link } from "react-router-dom";
-import GroupDetails from '../GroupDetails/GroupDetails';
-import ProductionQuantityLimitsSharpIcon from '@mui/icons-material/ProductionQuantityLimitsSharp';
+import { useState , useEffect } from "react";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -47,16 +44,24 @@ interface group {
   groupMember: GroupMember[];
   }
 
+interface user{
+    id: string,
+    fullName: string,
+    address: string,
+    city: string,
+    Email: string,
+    phone: string
+}
+
 
   function handleColumnValue (id:string){
-   console.log(id)
+    console.log(id)
   }
 
 
-export default function Mygroups() {
-  useEffect(()=>{axios.get('http://localhost:3004/group/').then(({data})=>{
-    //console.log(data);
-    //console.log(data[0].id,data[0].groupMember);
+export default function Mygroups(id:string) {
+  useEffect(()=>{axios.get('http://localhost:3004/user/${id}').then(({data})=>{
+    
  
     const arr:Array<any> = [
       {
@@ -107,10 +112,7 @@ export default function Mygroups() {
                 {row.id}
               </StyledTableCell>
               <StyledTableCell align="center">{row.name}</StyledTableCell>
-              <StyledTableCell align="center"> 
-              <PeopleIcon onClick={()=> handleColumnValue(row.id)}> </PeopleIcon>
-              <ProductionQuantityLimitsSharpIcon> </ProductionQuantityLimitsSharpIcon>
-              </StyledTableCell>
+              <StyledTableCell align="center"> <PeopleIcon onClick={()=> handleColumnValue(row.id)}> </PeopleIcon></StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
