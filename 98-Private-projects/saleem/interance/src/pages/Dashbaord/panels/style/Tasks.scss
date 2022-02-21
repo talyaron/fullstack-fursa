@@ -1,0 +1,27 @@
+.TasksCont{
+display:inline-flex;
+}
+
+.content{
+    border-top: 0.1px solid rgba(105, 77, 124, 0.705);
+}
+@media screen and (min-width: 601px) {
+    header {
+      font-size: 30px;
+      padding-left: 30px;
+      margin-top: auto;
+    }
+    .total{
+        padding-top: 20px;
+        padding-left: 30px;
+
+    }
+  }
+  
+  /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+  @media screen and (max-width: 600px) {
+    header {
+    padding-left: 15px;
+      font-size: 20px;
+    }
+  }
