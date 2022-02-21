@@ -1,11 +1,12 @@
 .nav {
-  width: 95%;
+  width: 90vw;
   height: 55px;
   background-color: #F9F9F9;
   border-bottom: 2px solid #f1f1f1;
   padding: 0 20px;
   display: flex;
   justify-content: space-between;
+  z-index: 4;
 }
 .nav .backb {
   padding: 5px 0;

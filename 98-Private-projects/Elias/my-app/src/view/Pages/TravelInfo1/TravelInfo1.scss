@@ -1,0 +1,47 @@
+@import url("https://cdn.syncfusion.com/ej2/material.css");
+
+
+
+
+#calendar{
+    //background-color: blueviolet;
+    //color: blue;
+    /* To remove the line in the input */ 
+
+}
+    
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+    .grid-item {
+        border: 1px solid gray;
+        padding: 20px;
+        font-size: 30px;
+        text-align: center;
+        border-radius: 13PX;
+      }
+  }
+
+ 
+
+.Proceedbtn {
+    color: white;
+    font-family: Poppins;
+    font-style: normal;
+    text-align: center;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    background-color: #FF8074;
+    border: #FF8074;
+    border-radius: 16px;
+    height: 47.75px;
+    width: 124px;
+    &:hover{
+        background-color: #fa6f63;
+
+    }
+}
+  

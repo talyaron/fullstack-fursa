@@ -1,13 +1,15 @@
 .nav{
-    width: 95%;
+    width: 90vw;
    height: 55px;
    background-color: #F9F9F9; ;
    border-bottom:  2px solid #f1f1f1;
     padding:  0 20px;
     display: flex;
     justify-content: space-between;
+    z-index: 4;
     .backb{
         padding: 5px 0;
+      
     
         .arrow-left{
             border: solid black;
@@ -16,6 +18,7 @@
             padding: 9px;
             transform: rotate(135deg);
             -webkit-transform: rotate(135deg);
+           
           }
           
 

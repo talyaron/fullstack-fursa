@@ -14,8 +14,6 @@ function Signup(props) {
             React.createElement("form", { className: 'other', action: "submit" },
                 React.createElement("input", { type: "text", className: ' inputs username', placeholder: 'Email' }),
                 React.createElement("input", { type: "password", className: 'inputs password', placeholder: 'Password' })),
-            React.createElement("button", { className: 'SignUpbtn' }, "Sign Up")),
-        React.createElement("div", null,
-            React.createElement("footer", null, "home - notifacation"))));
+            React.createElement("button", { className: 'SignUpbtn' }, "Sign Up"))));
 }
 exports["default"] = Signup;

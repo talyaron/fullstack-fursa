@@ -41,16 +41,19 @@
             font-family: Poppins;
             font-style: normal;
             text-align: center;
-
            font-weight: 500;
             font-size: 18px;
             line-height: 27px;
             background-color:  #FF8074;
+            border: #FF8074;
             border-radius: 16px;
             height: 47.75px;
             width: 124px;
-            left: 0px;
-            top: 0px;
+            
+            &:hover{
+                background-color: #fa6f63;
+
+            }
 
 
         }
