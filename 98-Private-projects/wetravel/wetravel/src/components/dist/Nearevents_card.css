@@ -1,0 +1,54 @@
+.grid_item {
+  display: grid;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  text-align: center;
+  border-radius: 1rem;
+  grid-template-rows: repeat(2, 1fr);
+}
+.grid_item img {
+  width: 100%;
+  height: 100%;
+  border-top-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+}
+.grid_item .grid2 {
+  width: 100%;
+  height: 100%;
+}
+.grid_item .grid2 img {
+  width: 26%;
+  margin-top: 0.4rem;
+  height: 30%;
+  border-radius: 5rem;
+  margin-bottom: 0.8rem;
+}
+.grid_item .grid2 .parent {
+  position: relative;
+  width: 100%;
+  height: 60%;
+  border-radius: 5rem;
+}
+.grid_item .grid2 .img1 {
+  position: absolute;
+  height: 50%;
+  left: 1.5rem;
+  border-right: 2px solid white;
+  top: 30px;
+}
+.grid_item .grid2 .img2 {
+  position: relative;
+  height: 50%;
+  right: 0.5rem;
+  border-right: 2px solid white;
+  top: 30px;
+}
+.grid_item .grid2 h1 {
+  margin-top: 1rem;
+}
+.grid_item .grid2 h2 {
+  font-size: 2em;
+}
+.grid_item .grid2 h3 {
+  color: grey;
+}

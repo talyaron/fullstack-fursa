@@ -1,9 +1,19 @@
-.header{
+.headero{
+    background-color: white;
+    //height: 100vh;
+    display: flex;
+    position: relative;
+    border-bottom-left-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
+    //flex-direction: column;
+    flex-wrap:wrap;
+    .header{
     display:grid;
     grid-template-columns: repeat(3,auto);
     height:8vh;
     width:100vw;
-    column-gap: 2rem;
+    column-gap: 7rem;
+    position: relative;
     text-align:center;  
     align-items:center;
 
@@ -14,21 +24,30 @@
         cursor: pointer;
         width: 5vw;
         display: block;
+        position: relative;
+        left: 0.3rem;
       }
 
 
     img{
-        width:30%;
-        height:80%;
+        background-size: 100%;
+        width:12vw;
+        height:6vh;
         object-fit: cover;
         border-radius:50%;
-        margin-left: 12vw;
+       // margin-right: 6vw;
+       position: relative;
+       left: 0.7rem;
     }
 
     h3{
         font-size:1.5em;
         font-style: inherit;
         font-family: sans-serif;
+        position: relative;
+        left: 1rem;
     }
+
+}
 
 }

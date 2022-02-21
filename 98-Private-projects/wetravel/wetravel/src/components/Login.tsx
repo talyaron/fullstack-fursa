@@ -46,7 +46,7 @@ function Login() {
           history("/mainpage");
         }}
       >
-        Log In
+        <div>Log In</div>
       </button>
     </div>
   );
