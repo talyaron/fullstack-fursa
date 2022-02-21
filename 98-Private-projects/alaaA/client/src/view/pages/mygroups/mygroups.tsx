@@ -9,7 +9,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Header from '../../components/header/header';
 import axios from 'axios';
-
+import { useState , useEffect } from "react";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -42,12 +42,39 @@ const rows = [
   createData('mohammad salah','Egybt',28),
   createData('karim benzema', 'france',33)
 ];
+ 
+interface GroupMember {
+  id: string;
+}
+
+interface group {
+  id:string;
+  groupName: string;
+  groupMember: GroupMember[];
+  }
+
+
 
 
 export default function Mygroups() {
+  
+
+  const [group,setGroup]=useState([]);
+  const[data_filter,setdata_filter]= useState([]);
+ 
+  useEffect(()=>{axios.get('http://localhost:3004/group').then(({data})=>{
+    console.log(data);
+    setGroup(data);
+    var data_filter = data.filter( (element: { id: string; }) => element.id =="1")
+    console.log(data_filter)
+    data.filter()
+  
+  })},[]);
+ 
   return (
     <div>
     <Header></Header>
+ 
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 300 }} aria-label="customized table">
         <TableHead>
