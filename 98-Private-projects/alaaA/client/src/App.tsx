@@ -51,7 +51,9 @@ return(
     <Route path="Group" element={<Group />} />
     <Route path="CreateGroup" element={<CreateGroup />} />
     <Route path="HomePage" element={<HomePage />} />
-    <Route path="Store" element={<Store />} />
+    <Route path="Store" element={<Store />} >
+    {/* <Route path="HomePage" element={<HomePage />} /> */}
+    </Route>
     <Route path="mygroups" element={<Mygroups />} />
 
     <Route path="profile" element={<Profile />} />
