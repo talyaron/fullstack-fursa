@@ -19,6 +19,7 @@ var calender_1 = require("./view/pages/coursescalender/calender");
 var data_1 = require("./view/pages/data/data");
 var admincourses_1 = require("./view/pages/adminCourses/admincourses");
 var adminpage_1 = require("./view/pages/AdminPage/adminpage");
+var addCourse_1 = require("./view/pages/addCourse/addCourse");
 // ReactDOM.render(
 //   <React.StrictMode>
 //     <App />
@@ -43,6 +44,7 @@ react_dom_1.render(react_1["default"].createElement(react_router_dom_1.BrowserRo
         react_1["default"].createElement(react_router_dom_1.Route, { path: "courses", element: react_1["default"].createElement(courses_1["default"], null) }),
         react_1["default"].createElement(react_router_dom_1.Route, { path: "data", element: react_1["default"].createElement(data_1["default"], null) }),
         react_1["default"].createElement(react_router_dom_1.Route, { path: "adminpage", element: react_1["default"].createElement(adminpage_1["default"], null) }),
+        react_1["default"].createElement(react_router_dom_1.Route, { path: "addCourse", element: react_1["default"].createElement(addCourse_1["default"], null) }),
         react_1["default"].createElement(react_router_dom_1.Route, { path: "admincourses", element: react_1["default"].createElement(admincourses_1["default"], null) }),
         react_1["default"].createElement(react_router_dom_1.Route, { path: "calender", element: react_1["default"].createElement(calender_1["default"], null) }),
         react_1["default"].createElement(react_router_dom_1.Route, { path: "course/:courseId", element: react_1["default"].createElement(course_1["default"], null) }))), 

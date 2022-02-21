@@ -57,7 +57,10 @@ function AdminCourses() {
                         React.createElement("td", null, info.cost),
                         React.createElement("td", null,
                             React.createElement(ButtonGroup_1["default"], { className: 'grpbtn', variant: "contained", "aria-label": "outlined small button group" },
-                                React.createElement(Button_1["default"], null, "Add"),
+                                React.createElement(react_router_dom_1.Link, { to: "/addCourse" },
+                                    "    ",
+                                    React.createElement(Button_1["default"], null, "Add"),
+                                    " "),
                                 React.createElement(Button_1["default"], null, "Edit"),
                                 React.createElement(Button_1["default"], null, "Delete")))));
                 }))))));

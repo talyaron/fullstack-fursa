@@ -3,29 +3,7 @@ exports.__esModule = true;
 require("./homepage.scss");
 var React = require("react");
 var react_1 = require("react");
-// const Tab = createBottomTabNavigator();
-// function MyTabs() {
-//     return (
-//       <Tab.Navigator>
-//         <Tab.Screen name="Home" component={HomeScreen} />
-//         <Tab.Screen name="Settings" component={SettingsScreen} />
-//       </Tab.Navigator>
-//     );
-//   }
-//   function SettingsScreen() {
-//     return (
-//       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-//         <Text>Settings!</Text>
-//       </View>
-//     );
-//   }
-//   function HomeScreen() {
-//     return (
-//       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-//         <Text>Home!</Text>
-//       </View>
-//     );
-//   }
+var courses_1 = require("../courses/courses");
 var horses = [{ name: 'Zoro', age: 5, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRnVjp6dcfqRT0CGg5Q89VXbV0RsfJ-Y9png&usqp=CAU' },
     { name: 'Ice', age: 6, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIxcYVFc1xSuH9jgYeJgDXsVw0P7KdnX53UA&usqp=CAU' }];
 function Homepage() {
@@ -43,7 +21,8 @@ function Homepage() {
     }
     return (React.createElement("div", { className: 'maindiv' },
         React.createElement("h3", { className: "h" }, "Welcome to our farm"),
-        React.createElement("p", null, "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni deleniti deserunt, accusamus distinctio et minus similique! Officia quae, alias natus optio temporibus saepe voluptates in nostrum reiciendis vitae, facilis ex."),
+        React.createElement("p", { className: "firstP" }, "Our course duration is 5 weeks, one lesson a week ."),
+        React.createElement(courses_1["default"], null),
         React.createElement("div", { className: "ani" },
             React.createElement("div", { className: 'animation' }))));
 }

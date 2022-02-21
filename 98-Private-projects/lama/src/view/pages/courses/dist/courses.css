@@ -7,6 +7,9 @@
 }
 
 .courses {
+  position: absolute;
+  left: 40%;
   width: 200px;
   height: 200px;
+  display: flex;
 }

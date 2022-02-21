@@ -12,7 +12,7 @@ const Course = (props: coursesProps) => {
   const { name, id ,hours,participants,cost} = props;
 
   return (
-    <Link to={`/courses/${id}`}>
+    <Link to={`/courses/`}>
       <div className="course">{name}
         <p>{hours} hours</p>
    <p>{participants} participants</p>

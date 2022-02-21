@@ -70,8 +70,8 @@ function Header() {
                     <Link to="/trainers">
                     Our trainers
                     </Link>
-                    <Link to="/courses">
-                    Our Courses
+                    <Link to="/calender">
+                    Register
                     </Link>
                 </div>
                 <div className="mainheader__right">

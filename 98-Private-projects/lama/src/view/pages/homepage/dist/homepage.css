@@ -4,6 +4,10 @@ div {
   text-align: center;
   color: black;
 }
+div .firstP {
+  text-align: left;
+  margin-left: 100px;
+}
 div .h {
   font-size: large;
   margin: 50px;
@@ -13,7 +17,7 @@ div .ani {
   width: 40vw;
   height: 20vh;
   position: relative;
-  top: 20px;
+  top: 200px;
   left: 35%;
 }
 div .ani .animation {

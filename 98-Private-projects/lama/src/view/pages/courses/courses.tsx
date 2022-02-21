@@ -15,7 +15,7 @@ import {coursesProps} from './course';
 import Course from "./course";
 
 
-const courses = [{id:1,name:'group lessons',hours:5,participants:10,cost:1000}, {id:2,name:'private lessons',hours:5,participants:1,cost:1200},{id:3,name:'single lesson',hours:5,participants:1,cost:100}];
+const courses = [{id:1,name:'group lessons',hours:5,participants:10,cost:1000}, {id:2,name:'private lessons',hours:5,participants:1,cost:1200},{id:3,name:'single lesson',hours:0.5,participants:1,cost:100}];
 const cardcourses = [{id:1,hours:5,participants:10,cost:1000}, {id:2,hours:5,participants:1,cost:1200},{id:3,hours:5,participants:1,cost:100}];
 
 function Courses() {
@@ -25,13 +25,13 @@ function Courses() {
     return (
 
         <div className="maindiv">
-     <Header />
+     {/* <Header /> */}
             <h3>Courses and private lessons</h3>
             {/* <div className='calbtn'> */}
- <Link to={`/calender`}>
+ {/* <Link to={`/calender`}>
     < button className='calbtn'>
    Register </button>
- </Link>
+ </Link> */}
      {/* </div> */}
      {/* <Link to={`/calender`}>Register 
  </Link> */}

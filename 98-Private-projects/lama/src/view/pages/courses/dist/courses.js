@@ -4,22 +4,17 @@ exports.__esModule = true;
 require("./courses.scss");
 var React = require("react");
 var react_router_dom_1 = require("react-router-dom");
-var header_1 = require("../../components/header/header");
-var react_router_dom_2 = require("react-router-dom");
 //components
 var course_1 = require("./course");
-var courses = [{ id: 1, name: 'group lessons', hours: 5, participants: 10, cost: 1000 }, { id: 2, name: 'private lessons', hours: 5, participants: 1, cost: 1200 }, { id: 3, name: 'single lesson', hours: 5, participants: 1, cost: 100 }];
+var courses = [{ id: 1, name: 'group lessons', hours: 5, participants: 10, cost: 1000 }, { id: 2, name: 'private lessons', hours: 5, participants: 1, cost: 1200 }, { id: 3, name: 'single lesson', hours: 0.5, participants: 1, cost: 100 }];
 var cardcourses = [{ id: 1, hours: 5, participants: 10, cost: 1000 }, { id: 2, hours: 5, participants: 1, cost: 1200 }, { id: 3, hours: 5, participants: 1, cost: 100 }];
 function Courses() {
     return (React.createElement("div", { className: "maindiv" },
-        React.createElement(header_1["default"], null),
         React.createElement("h3", null, "Courses and private lessons"),
-        React.createElement(react_router_dom_1.Link, { to: "/calender" },
-            React.createElement("button", { className: 'calbtn' }, "Register ")),
         React.createElement("div", { className: "courses" },
             courses.map(function (course, i) {
                 return React.createElement(course_1["default"], { key: i, name: course.name, id: course.id, hours: course.hours, participants: course.participants, cost: course.cost });
             }),
-            React.createElement(react_router_dom_2.Outlet, null))));
+            React.createElement(react_router_dom_1.Outlet, null))));
 }
 exports["default"] = Courses;

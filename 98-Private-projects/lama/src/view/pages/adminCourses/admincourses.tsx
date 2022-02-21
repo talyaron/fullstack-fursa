@@ -90,7 +90,7 @@ function AdminCourses() {
                       <td>{info.cost}</td>
                       <td>
                       <ButtonGroup className='grpbtn' variant="contained" aria-label="outlined small button group">
-      <Button>Add</Button>
+                      <Link to={`/addCourse`}>    <Button>Add</Button> </Link>
       <Button>Edit</Button>
       <Button>Delete</Button>
     </ButtonGroup>
