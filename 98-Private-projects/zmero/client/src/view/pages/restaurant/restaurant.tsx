@@ -16,11 +16,12 @@ interface cardProp {
     region: string;
     stars: number;
     category: string;
+    photos: Array<string>;
 }
 
 function Restaurant() {
     const { RestaurantId } = useParams();
-    const [Restaurant, setRestaurant] = useState<cardProp>({ id: 0, name: "", image: "", booking: 0, region: "", stars: 0, category: "" })
+    const [Restaurant, setRestaurant] = useState<cardProp>({ id: 0, name: "", image: "", booking: 0, region: "", stars: 0, category: "", photos: [] })
     useEffect(() => {
         axios.get(`http://localhost:3004/Restaurants/${RestaurantId}`).then(({ data }) => {
             setRestaurant(data)
@@ -34,7 +35,10 @@ function Restaurant() {
         <div>
             <Menu></Menu>
             <div className="rest">
-                <div className="rest__images" style={{ backgroundImage: `url(${Restaurant.image})` }}></div>
+                <div className="rest__images">
+                    <div className="rest__images__photo" style={{ backgroundImage: `url(${Restaurant.photos[0]})` }}></div>
+                    <div className="rest__images__photo" style={{ backgroundImage: `url(${Restaurant.photos[1]})` }}></div>
+                </div>
                 <div className="rest__main">
                     <div className="rest__main__header">
                         <div className="rest__main__header__left">

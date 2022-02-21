@@ -18,6 +18,8 @@ import Select from '@mui/material/Select';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import User from '../user/user'
+import Alert from '@mui/material/Alert'
+import Snackbar from '@mui/material/Snackbar'
 
 
 
@@ -30,6 +32,7 @@ function Menu() {
     const [loginState, setLoginState] = useState({ user: "" })
     const [sigupState, setSigupnState] = useState({})
     const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const [openAlert, setOpenAlert] = React.useState(false);
     function openSearchModal(bool: boolean) {
         if (bool === false)
             setNavbarindex(1)
@@ -59,8 +62,10 @@ function Menu() {
         e.preventDefault();
 
         console.log(loginState)
-        setIsLoggedIn(true)
+        setIsLoggedIn(true);
+
         openSignInModal(false);
+        setOpenAlert(true)
     }
     function onChangeSignup(e: any) {
         setSigupnState({
@@ -183,6 +188,15 @@ function Menu() {
                 </div>
 
             </Modal>
+            <Snackbar sx={{ height: "100%" }}
+                anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "center"
+                }} open={openAlert} autoHideDuration={6000} onClose={() => setOpenAlert(false)}>
+                <Alert onClose={() => setOpenAlert(false)} severity="success" sx={{ width: '100%' }}>
+                    You have logged in Successfully!
+                            </Alert>
+            </Snackbar>
         </div >
     );
 

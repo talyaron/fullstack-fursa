@@ -6,19 +6,24 @@
 
     &__images {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
-        width: 60%;
-        height: 25rem;
-        background-position: 50%;
-        background-size: cover;
-        border-radius: 12px;
+        width: 80%;
+        height: 20rem;
         margin-top: 1rem;
+
+        &__photo {
+            background-position: 50%;
+            background-size: cover;
+            border-radius: 12px;
+            width: 49%;
+            height: 100%;
+        }
     }
 
     &__main {
         margin-top: 3rem;
-        width: 60%;
+        width: 80%;
         display: flex;
         flex-direction: column;
 
