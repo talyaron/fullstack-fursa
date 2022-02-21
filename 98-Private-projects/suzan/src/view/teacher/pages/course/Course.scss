@@ -1,0 +1,25 @@
+.title{
+    margin-top: 20px;
+}
+.course{
+    display: flex;
+    justify-content: space-evenly;
+    margin: auto;
+    margin-top: 30px;
+
+    .divider{
+        height: 100%;
+    }
+
+    &__material{
+        // border: 1px red solid;
+        width: 65%;
+        // padding: 30PX;
+    }
+
+    &__recentUpdates{
+        border: 1px blue solid;
+        width: 20%;
+        // padding: 20px;
+    }
+}
