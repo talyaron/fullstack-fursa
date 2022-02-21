@@ -20,7 +20,8 @@ function ProductCard(props:ProductCardProp)
           <img src={imgurl} alt="" />
           <div className="proCard_link">
          
-            <Link to={`/door/${name}`} >{name}</Link>
+            <Link to={`/woodProduct/${name}`} >{name}</Link>
+            
           </div>
         </div>
 

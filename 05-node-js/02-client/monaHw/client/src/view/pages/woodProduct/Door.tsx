@@ -12,15 +12,15 @@ function Door()
     
     const [add,setAdd]=useState('')
 
-    const {name}=useParams();
-    console.log({name});
+    const {woodproname}=useParams();
+    console.log({woodproname});
 
     function handleSubmit(ev:any){
         ev.preventDefault();
         console.dir(ev);
         const form = ev.target;
         const obj: any = {};
-        obj['woodName']=name;
+        obj['woodName']=woodproname;
         for (let i = 0; i < form.length; i++) {
             console.log(form[i].value, form[i].name, form[i].type);
             if (form[i].type !== "submit") {
@@ -30,7 +30,7 @@ function Door()
         // let copy = Object.assign([], product);
         // copy.push(obj);
         // setProduct(copy);
-        axios.post('http://localhost:3004/userOrder',{"woodName":name,"woodlength":form[0].value, "width":form[1].value, "thick":form[2].value, "color":form[3].value,"amount":form[4].value}).then(({data})=>console.log(data));
+        axios.post('http://localhost:3004/userOrder',{"woodName":woodproname,"woodlength":form[0].value, "width":form[1].value, "thick":form[2].value, "color":form[3].value,"amount":form[4].value}).then(({data})=>console.log(data));
 
         setAdd('item added successfully — check it out!')
     }
@@ -42,7 +42,7 @@ function Door()
              <Navbar></Navbar>
 
      <h1 >Wood Products /</h1>
-     <h1> {name}</h1>
+     <h1> {woodproname}</h1>
 
      <div className="RawMaterial_header_cart">
        <Link to='/cart'>

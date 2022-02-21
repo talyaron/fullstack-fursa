@@ -14,9 +14,18 @@ function Cart(props:cartProps){
     const {product,setProduct}=props;
     console.log(product)
     const [order,setOrder]=useState([]);
+
 useEffect(()  => {
 axios.get('http://localhost:3004/userOrder').then(({data})=> setOrder(data));
 }, []);
+   function orderHandler(ev:any)
+   {
+       return(
+           <div>
+               hello
+           </div>
+       )
+   }
     return (
         
            
@@ -44,7 +53,7 @@ axios.get('http://localhost:3004/userOrder').then(({data})=> setOrder(data));
                    
                 return  <Product key={i} woodName={products.woodName} woodlength={products.woodlength} width={products.width} thick={products.thick} amount={products.amount} product={product} setProduct={setProduct} />
     })}
-    <Button type="submit" variant="contained" style={{backgroundColor: 'rgb(47, 143, 90)'}} size="medium">
+    <Button onClick={orderHandler} variant="contained" style={{backgroundColor: 'rgb(47, 143, 90)'}} size="medium">
           order 
        
        </Button>
