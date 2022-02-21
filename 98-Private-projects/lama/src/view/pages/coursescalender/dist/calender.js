@@ -23,6 +23,7 @@ var Select_1 = require("@mui/material/Select");
 var TextField_1 = require("@mui/material/TextField");
 var Button_1 = require("@mui/material/Button");
 require("react-datetime-picker/dist/DateTimePicker.css");
+require("react-datepicker/dist/react-datepicker.css");
 var coursesRegis = [
     {
         start: new Date(2022, 3, 22, 4, 30),
@@ -35,9 +36,14 @@ function Calender() {
     var _a = react_1["default"].useState(''), course = _a[0], setCourse = _a[1];
     var _b = react_2.useState(new Date()), dateState = _b[0], setDateState = _b[1];
     var _c = react_2.useState(new Date()), startDate = _c[0], setStateDate = _c[1];
-    var _d = react_2.useState(new Date()), value = _d[0], onChange = _d[1];
-    var _e = react_2.useState({ name: "", start: new Date(), end: new Date(), course: "" }), registration = _e[0], setRegistration = _e[1];
-    var _f = react_2.useState(coursesRegis), allReg = _f[0], setAllReg = _f[1];
+    var _d = react_2.useState(new Date()), date = _d[0], setDate = _d[1];
+    var _e = react_2.useState(new Date()), value = _e[0], onChange = _e[1];
+    var _f = react_2.useState(new Date()), endDate = _f[0], setEndDate = _f[1];
+    var _g = react_2.useState({ name: "", start: new Date(), end: new Date(), course: "" }), registration = _g[0], setRegistration = _g[1];
+    var _h = react_2.useState(coursesRegis), allReg = _h[0], setAllReg = _h[1];
+    var dt = new Date(2022, 3, 22, 7, 30);
+    var maxTime = dt.setDate(dt.getDate() + 5);
+    var includeDatesArray = [new Date('02-25-2022'), new Date('02-26-2022')];
     var changeDate = function (e) {
         setDateState(e);
     };
@@ -59,7 +65,11 @@ function Calender() {
                     react_1["default"].createElement(MenuItem_1["default"], { value: 20 }, "Private lessons"),
                     react_1["default"].createElement(MenuItem_1["default"], { value: 30 }, "single lesson")))),
         react_1["default"].createElement(TextField_1["default"], { className: "txtfield", autoComplete: "given-name", name: "Name", required: true, id: "Name", label: "Name", autoFocus: true }),
-        react_1["default"].createElement(react_datetime_picker_1["default"], { onChange: onChange, value: value }),
+        react_1["default"].createElement(react_datetime_picker_1["default"]
+        //  includeDates={includeDatesArray} 
+        , { 
+            //  includeDates={includeDatesArray} 
+            onChange: onChange, value: value }),
         react_1["default"].createElement(react_calendar_1["default"], { className: 'caldiv', value: dateState, onChange: changeDate }),
         react_1["default"].createElement("p", { className: 'aaa' },
             "Current selected date is ",

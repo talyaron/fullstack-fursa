@@ -18,7 +18,8 @@ import Button from '@mui/material/Button';
 import "react-datetime-picker/dist/DateTimePicker.css";
 // import { registerLocale } from "react-datepicker";
 // import ro from 'date-fns/locale/ro';
-// import DatePicker from "react-datepicker";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 
 interface TimeManagement{
@@ -45,9 +46,14 @@ function Calender(){
   const [course, setCourse] = React.useState('');
   const [dateState, setDateState] = useState(new Date())
   const [startDate, setStateDate] = useState(new Date())
+  const [date, setDate] = useState(new Date());
   const [value, onChange] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
   const [registration, setRegistration] = useState({name:"",start:new Date(),end:new Date(),course:""});
   const [allReg, setAllReg] = useState(coursesRegis);
+  let dt = new Date(2022,3,22,7,30);
+  const maxTime = dt.setDate(dt.getDate() + 5);
+  const includeDatesArray = [new Date('02-25-2022'), new Date('02-26-2022')]
 
   const changeDate = (e:any) => {
     setDateState(e)
@@ -96,14 +102,20 @@ function Calender(){
                   autoFocus
                 />
  {/* <Register /> */}
- <DateTimePicker onChange={onChange} value={value}/>
+ <DateTimePicker   
+//  includeDates={includeDatesArray} 
+ onChange={onChange} value={value}/>
 
- {/* <DatePicker
-                    onChange={this.handleChange}
-                    selected={this.state.startDate}
-                    showTimeSelect
-                    dateFormat="MM/dd/yyyy  EE hh:mm a"
-                /> */}
+{/* <DatePicker
+ showTimeSelect
+ dateFormat="MMMM d, yyyy h:mmaa"
+ selected={startDate}
+ selectsEnd
+ startDate={startDate}
+ endDate={endDate}
+ minDate={startDate}
+ onChange={date => setEndDate(date)}
+/> */}
 
       <Calendar className='caldiv'
       value={dateState}

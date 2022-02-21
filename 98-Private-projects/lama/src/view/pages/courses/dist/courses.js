@@ -6,7 +6,7 @@ var React = require("react");
 var react_router_dom_1 = require("react-router-dom");
 //components
 var course_1 = require("./course");
-var courses = [{ id: 1, name: 'group lessons', hours: 5, participants: 10, cost: 1000 }, { id: 2, name: 'private lessons', hours: 5, participants: 1, cost: 1200 }, { id: 3, name: 'single lesson', hours: 0.5, participants: 1, cost: 100 }];
+var courses = [{ id: 1, name: 'group lessons', hours: 5, participants: 10, cost: 1000 }, { id: 2, name: 'private lessons', hours: 5, participants: 1, cost: 1200 }, { id: 3, name: 'single lesson', hours: 0.5, participants: 1, cost: 110 }];
 var cardcourses = [{ id: 1, hours: 5, participants: 10, cost: 1000 }, { id: 2, hours: 5, participants: 1, cost: 1200 }, { id: 3, hours: 5, participants: 1, cost: 100 }];
 function Courses() {
     return (React.createElement("div", { className: "maindiv" },

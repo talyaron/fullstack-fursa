@@ -15,7 +15,7 @@ import {coursesProps} from './course';
 import Course from "./course";
 
 
-const courses = [{id:1,name:'group lessons',hours:5,participants:10,cost:1000}, {id:2,name:'private lessons',hours:5,participants:1,cost:1200},{id:3,name:'single lesson',hours:0.5,participants:1,cost:100}];
+const courses = [{id:1,name:'group lessons',hours:5,participants:10,cost:1000}, {id:2,name:'private lessons',hours:5,participants:1,cost:1200},{id:3,name:'single lesson',hours:0.5,participants:1,cost:110}];
 const cardcourses = [{id:1,hours:5,participants:10,cost:1000}, {id:2,hours:5,participants:1,cost:1200},{id:3,hours:5,participants:1,cost:100}];
 
 function Courses() {

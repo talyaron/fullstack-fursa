@@ -22,6 +22,7 @@ import Data from "./view/pages/data/data";
 import AdminCourses from "./view/pages/adminCourses/admincourses";
 import AdminPage from "./view/pages/AdminPage/adminpage";
 import AddCourse from "./view/pages/addCourse/addCourse";
+import TableDatePicker from "./view/pages/TableDatePicker/TableDatePicker"
 
 // ReactDOM.render(
 //   <React.StrictMode>
@@ -54,6 +55,7 @@ render(
       <Route path="data" element={<Data />} /> 
       <Route path="adminpage" element={<AdminPage />} /> 
       <Route path="addCourse" element={<AddCourse />} /> 
+      <Route path="TableDatePicker" element={<TableDatePicker />} /> 
       <Route path="admincourses" element={<AdminCourses />} /> 
       <Route path="calender" element={<Calender />} />
       <Route path="course/:courseId" element={<Course />} />

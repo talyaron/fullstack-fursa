@@ -8,7 +8,7 @@
   border-style: double;
   margin: 5px;
   height: 30vh;
-  width: 15vw;
+  width: 10vw;
 }
 .Card:hover {
   transform: translateY(-1rem);

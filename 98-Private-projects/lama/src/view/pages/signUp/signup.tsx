@@ -32,7 +32,7 @@ function SignUp(){
 <form className="signupform">
 
             <TextField
-            className="txtfield"
+            className="textfield"
                   autoComplete="given-name"
                   name="firstName"
                   required
@@ -42,7 +42,7 @@ function SignUp(){
                   autoFocus
                 />
                    <TextField
-            className="txtfield"
+            className="textfield"
                   autoComplete="given-name"
                   name="lastName"
                   required
@@ -52,7 +52,7 @@ function SignUp(){
                   autoFocus
                 /> 
                   <TextField
-            className="txtfield"
+            className="textfield"
                   autoComplete="given-name"
                   name="Email"
                   required
@@ -62,7 +62,7 @@ function SignUp(){
                   autoFocus
                 />
                          <TextField
-            className="txtfield"
+            className="textfield"
                   autoComplete="given-name"
                   name="passowrd"
                   required

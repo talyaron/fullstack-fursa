@@ -60,7 +60,7 @@ function AdminCourses() {
 
   return (
       
- <div>
+ <div className='admCouDiv'>
 <Link to={`/`}>
    <Button className='backbtn' variant="outlined"   onClick={() => {
     alert('clicked');
@@ -90,7 +90,7 @@ function AdminCourses() {
                       <td>{info.cost}</td>
                       <td>
                       <ButtonGroup className='grpbtn' variant="contained" aria-label="outlined small button group">
-                      <Link to={`/addCourse`}>    <Button>Add</Button> </Link>
+                      <Link to={`/addCourse`}>    <Button className='addbtn'>Add</Button> </Link>
       <Button>Edit</Button>
       <Button>Delete</Button>
     </ButtonGroup>

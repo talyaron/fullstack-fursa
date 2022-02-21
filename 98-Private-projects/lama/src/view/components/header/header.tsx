@@ -73,6 +73,9 @@ function Header() {
                     <Link to="/calender">
                     Register
                     </Link>
+                    <Link to="/TableDatePicker">
+                    Register2
+                    </Link>
                 </div>
                 <div className="mainheader__right">
                 <Button 

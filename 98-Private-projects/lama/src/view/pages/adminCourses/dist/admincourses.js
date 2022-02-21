@@ -34,7 +34,7 @@ function AdminCourses() {
                 React.createElement("td", null, info.cost)));
         });
     }
-    return (React.createElement("div", null,
+    return (React.createElement("div", { className: 'admCouDiv' },
         React.createElement(react_router_dom_1.Link, { to: "/" },
             React.createElement(Button_1["default"], { className: 'backbtn', variant: "outlined", onClick: function () {
                     alert('clicked');
@@ -59,7 +59,7 @@ function AdminCourses() {
                             React.createElement(ButtonGroup_1["default"], { className: 'grpbtn', variant: "contained", "aria-label": "outlined small button group" },
                                 React.createElement(react_router_dom_1.Link, { to: "/addCourse" },
                                     "    ",
-                                    React.createElement(Button_1["default"], null, "Add"),
+                                    React.createElement(Button_1["default"], { className: 'addbtn' }, "Add"),
                                     " "),
                                 React.createElement(Button_1["default"], null, "Edit"),
                                 React.createElement(Button_1["default"], null, "Delete")))));
