@@ -13,56 +13,48 @@ function HomeListComponent(props: any) {
     const { id, upcoming } = props;
     const [path, setPath] = useState(`${id}`);
 
-    useEffect(() => {
-        if(upcoming){
-            setPath(`upcoming/${id}`)
-        }else{
-            setPath(`previous/${id}`)
-        }
-    }, []);
-
     function handleClick(ev: any) {
         ev.preventDefault();
-        nav(`/list/${path}`);
+        nav(`/list/${id}`);
     }
 
     return (
         // <Link to={`/list/${path}`}>
-            <div className="contentList" onClick={handleClick}>
-                <div className="listInformation">
-                    <div className="listImage">
-                        <img className='listImage_img' src={calendar} alt="" />
+        <div className="contentList" onClick={handleClick}>
+            <div className="listInformation">
+                <div className="listImage">
+                    <img className='listImage_img' src={calendar} alt="" />
+                </div>
+                <div className="listInformation_info">
+                    <div className="headerInfo">
+                        <label>{name}</label>
                     </div>
-                    <div className="listInformation_info">
-                        <div className="headerInfo">
-                            <label>{name}</label>
-                        </div>
-                        <div className="listInformation_info_list">
-                            <label className="info">
-                                <img src={calendar} alt="" />
-                                <label>{date}</label>
-                            </label>
-                            <label className="info">
-                                <img src={clock} alt="" />
-                                <label>{time}</label>
-                            </label>
-                            <label className="info">
-                                <img src={location} alt="" />
-                                <label>{place}</label>
-                            </label>
-                        </div>
+                    <div className="listInformation_info_list">
+                        <label className="info">
+                            <img src={calendar} alt="" />
+                            <label>{date}</label>
+                        </label>
+                        <label className="info">
+                            <img src={clock} alt="" />
+                            <label>{time}</label>
+                        </label>
+                        <label className="info">
+                            <img src={location} alt="" />
+                            <label>{place}</label>
+                        </label>
                     </div>
                 </div>
-                {upcoming ?
-                    <div className="myStuf">
-                        {bringList.map((bring: any, key: number) => {
-                            return (
-                                <label key={key}>{bring.item}</label>
-                            );
-                        })}
-                    </div>
-                    : <></>}
             </div>
+            {upcoming ?
+                <div className="myStuf">
+                    {bringList.map((bring: any, key: number) => {
+                        return (
+                            <label key={key}>{bring.item}</label>
+                        );
+                    })}
+                </div>
+                : <></>}
+        </div>
         // </Link>
     )
 

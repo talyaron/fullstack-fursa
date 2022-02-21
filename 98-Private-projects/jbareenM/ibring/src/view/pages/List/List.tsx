@@ -13,6 +13,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { RootState } from '../../../redux/store';
 import { UserState } from '../../../redux/reducers/userReducer';
+import TextField from '@mui/material/TextField';
 
 interface ListIF {
     imgURL?: string;
@@ -34,6 +35,7 @@ function List() {
     const nav = useNavigate();
     const { listId } = useParams();
     const [list, setList] = useState<Array<ListIF>>([]);
+    const [whatToBring, setWhatToBring] = useState("");
 
     const userLogin = useSelector<RootState, UserState>(state => state.user);
     const _list = useSelector<RootState, ListState>(state => state.list);
@@ -47,29 +49,35 @@ function List() {
     const [bringList, setBringList] = useState([
         {
             userName: (userInfo && userInfo.email) ? userInfo.email : "Unknown",
-            item: "somthing"
+            items: ["somthing", "someting2"]
         },
-        {
-            userName: "Person A",
-            item: "somthing"
-        },
-        {
-            userName: "Person B",
-            item: "somthing"
-        },
-        {
-            userName: "Person C",
-            item: "somthing"
-        },
-        {
-            userName: "Person D",
-            item: "somthing"
-        },
-        {
-            userName: "Person E",
-            item: "somthing"
-        },
+        // {
+        //     userName: "Person A",
+        //     item: "somthing"
+        // },
+        // {
+        //     userName: "Person B",
+        //     item: "somthing"
+        // },
+        // {
+        //     userName: "Person C",
+        //     item: "somthing"
+        // },
+        // {
+        //     userName: "Person D",
+        //     item: "somthing"
+        // },
+        // {
+        //     userName: "Person E",
+        //     item: "somthing"
+        // },
     ]);
+
+/**
+ * upcoming list 
+ * search list by id from list store in redux
+ * useEffect fetch data from last week
+ */
 
     useEffect(() => {
         console.log("listId:", listId);
@@ -81,7 +89,7 @@ function List() {
         }
     }, []);
 
-    function handleAddFriends(ev: any) {
+    function handleAddFriends(ev: any) {    
         ev.preventDefault();
     }
 
@@ -93,6 +101,27 @@ function List() {
     function handleSettings(ev: any) {
         ev.preventDefault();
         nav('/home');
+    }
+
+    function handleAddOrNot(ev: any, flag: boolean) {
+        ev.preventDefault();
+        flag ? console.log("add") : console.log("not");
+        if (flag) {
+            let flag = false;
+            bringList.map((element) => {
+                if (element.userName == (userInfo && userInfo.email)) {
+                    element.items.push(whatToBring);
+                    setBringList([...bringList]);
+                    flag = true;
+                }
+            })
+            if (!flag) {
+                setBringList([{
+                    userName: (userInfo && userInfo.email) ? userInfo.email : "Unknown",
+                    items: [whatToBring]
+                }, ...bringList])
+            }
+        }
     }
 
     return (
@@ -143,7 +172,15 @@ function List() {
                             </form>
                             <div className='whatToBring'>
                                 <div className="whatToBring_header">
-                                    What do you want to bring?
+                                    {/* What do you want to bring? */}
+                                    <TextField className='whatToBring_input' id="standard-basic"
+                                        label="What do you want to bring?"
+                                        sx={{ input: { color: '#7065F2' } }}
+                                        variant="standard" onKeyUp={(ev: any) => { setWhatToBring(ev.target.value); }} />
+                                    <div className="whatToBring_addOrNot">
+                                        <button onClick={(ev: any) => handleAddOrNot(ev, true)} className='addOrNot'>+</button>
+                                        <button onClick={(ev: any) => handleAddOrNot(ev, false)} className='addOrNot'>-</button>
+                                    </div>
                                 </div>
                                 {bringList.map((elem, index) => {
                                     return (
@@ -151,7 +188,9 @@ function List() {
                                         <div key={index} className="whatToBring_items">
                                             <div className="whatToBring_items_user">
                                                 <label id='userName'>{elem != undefined && elem.userName}</label>
-                                                <label>{elem.item}</label>
+                                                {elem.items.map((item) => {
+                                                    return (<label>{item}</label>);
+                                                })}
                                             </div>
                                             <div className="whatToBring_items_logo">
                                                 <img src={home} />

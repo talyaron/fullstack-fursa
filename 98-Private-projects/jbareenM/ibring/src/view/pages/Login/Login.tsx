@@ -35,7 +35,7 @@ function Login() {
 
     useEffect(() => {
         if (userInfo != undefined && userInfo.email){
-            nav('/greetings');
+            nav('/home');
         }
     }, [userInfo])
 

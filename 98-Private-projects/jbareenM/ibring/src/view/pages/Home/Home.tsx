@@ -16,6 +16,7 @@ import { UserState } from '../../../redux/reducers/userReducer';
 import { stringify } from 'querystring';
 import e from 'express';
 import HomeListComponent from '../../components/HomeListComponent/HomeListComponent';
+import axios from 'axios';
 
 interface ListIF {
     imgURL?: string;
@@ -42,26 +43,7 @@ function Home() {
 
     const { userInfo } = userLogin;
 
-    const [upcomingList, setUpcomingList] = useState([
-        {
-            name: "asd",
-            date: "123",
-            time: "123",
-            place: "465",
-            bringList: [
-                { item: "Egg" }
-            ]
-        },
-        {
-            name: "asd",
-            date: "123",
-            time: "123",
-            place: "465",
-            bringList: [
-                { item: "Egg" }
-            ]
-        }
-    ]);
+    const [upcomingList, setUpcomingList] = useState<Array<any>>([]);
 
     const [previousList, setPreviousList] = useState([
         {
@@ -103,7 +85,22 @@ function Home() {
     ]);
 
     useEffect(() => {
-
+        if (userLogin && userInfo.email) {
+            axios.post('/meeting/getListByUser', { email: userInfo.email }).then(data => {
+                /**
+                 * save all data in redux
+                 */
+                console.log(data.data);
+                const { groupName, time, place } = data.data.meetingDetails;
+                setUpcomingList([...upcomingList, {
+                    name: groupName,
+                    // date: data.data.meetingDetails.date.toString(),
+                    time: time,
+                    place: place,
+                    bringList: data.data.bringItems
+                },])
+            })
+        }
     }, []);
 
     function handleHome(ev: any) {

@@ -97,11 +97,32 @@
 
         .whatToBring{
             .whatToBring_header{
+                display: flex;
                 margin-top: 30px;
+                justify-content: space-between;
+                align-items: center;
                 border-bottom: 2px solid rgba(128, 128, 128, 0.445);
                 padding-bottom: 20px;
                 text-align: left;
                 color: #A5A6F6;
+                .whatToBring_input{
+                    width: 70%;
+                    font-size: 100px;
+                }
+
+                .whatToBring_addOrNot{
+                    display: flex;
+                    gap: 5px;
+                    .addOrNot{
+                        background-color: #A5A6F6;
+                        border-radius: 50%;
+                        border: 0px;
+                        width: 30px;
+                        height: 30px;
+                        font-size: 20px;
+                        text-align: center;
+                    }
+                }
             }
 
             .whatToBring_items{

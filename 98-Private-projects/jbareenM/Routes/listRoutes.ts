@@ -7,4 +7,8 @@ router
     .route("/addNewMeeting")
     .post(listController.addNewMeeting);
 
+router
+    .route("/getListByUser")
+    .post(listController.getListByUser);
+
 module.exports = router;

@@ -13,7 +13,7 @@ exports.addNewMeeting = async (req, res) => {
             res.send({ ok: false, message: "user doesn't exists!" });
         } else {
             const listToAdd = new list({
-                meetingAdmin: {email: _user.email},
+                meetingAdmin: { email: _user.email },
                 whoIsThere: allUsers,
                 bringItems: bringItems,
                 meetingDetails: details
@@ -29,22 +29,31 @@ exports.addNewMeeting = async (req, res) => {
 }
 
 exports.getListByUser = async (req, res) => {
-    console.log("get lists!");
-    const { email, pass } = req.body;
+    console.log("getListByUser!");
+    const { email } = req.body;
 
     try {
         const _user = await user.findOne({ email: email });
         if (!_user) {
-            res.send({ ok: false, message: "login failed doesn't exists!" });
+            res.send({ ok: false, message: "user doesn't exists!" });
         } else {
-            const hashPassword = crypto.createHash('sha256').update(pass).digest('base64');
-            if (hashPassword === _user.password) {
-                const curretUser = { email: _user.email };
-                res.send({ ok: true, user: curretUser, message: "login successfully!" });
-            }
-            else {
-                res.send({ ok: false, message: "wrong email or password!" });
-            }
+            list.find({}, function (err, allLists) {
+                let listMap = [];
+                allLists.forEach(function (_list) {
+                    if (_list.meetingAdmin.email !== email) {
+                        const whoIsThereFound = _list.whoIsThere.filter(element => {
+                            if (element.email === email)
+                                return element;
+                        });
+                        if (JSON.stringify(whoIsThereFound) !== JSON.stringify([])) {
+                            listMap.push(_list);
+                        }
+                    } else {
+                        listMap.push(_list);
+                    }
+                });
+                res.send({ ok: true, lists: listMap });
+            });
         }
     } catch (err) {
         res.send({ ok: false, message: "Error!" });

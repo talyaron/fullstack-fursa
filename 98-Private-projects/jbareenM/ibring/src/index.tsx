@@ -31,10 +31,7 @@ ReactDOM.render((
         <Route path='/Contact' element={<Contact />} />
         <Route path='/ChooseFriends' element={<ChooseFriends />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/list" element={<List />}>
-          <Route path="previous/:listId" element={<List />} />
-          <Route path="upcoming/:listId" element={<List />} />
-        </Route>
+        <Route path="/list/:listId" element={<List />} />
         <Route path="/login" element={<Login />} />
         <Route path="/TypeList" element={<TypeList />} />
         <Route path="/register" element={<Register />} />
