@@ -19,7 +19,7 @@ function Search() {
                 <div className="searchDiv__bar__content">
                     <div className="searchDiv__bar__content__a">
                         <input className="searchDiv__bar__content__a__input" type="text" placeholder=" Search For Food or Restaurant" name="search" />
-                        <FormControl variant="filled" sx={{ backgroundColor: "white", minWidth: 120, maxHeight: '2.5rem' }}>
+                        <FormControl variant="filled" sx={{ backgroundColor: "white", minWidth: 120, maxHeight: '2.5rem', zIndex: 0 }}>
                             <InputLabel style={{ fontSize: '0.7rem' }} id="demo-simple-select-filled-label">Category</InputLabel>
                             <Select sx={{ height: "2.5rem", backgroundColor: "white" }}
                                 labelId="demo-simple-select-filled-label"

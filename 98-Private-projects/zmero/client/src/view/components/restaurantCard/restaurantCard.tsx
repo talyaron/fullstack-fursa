@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Logo from './raise.svg'
 import './restaurantCard.scss'
 import { Link } from 'react-router-dom';
@@ -10,6 +10,8 @@ import TextField from '@mui/material/TextField';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
+import TimePicker from '@mui/lab/TimePicker';
+import Button from '@mui/material/Button';
 interface cardProp {
     id: number;
     name: string;
@@ -22,7 +24,8 @@ interface cardProp {
 
 function RestaurantCard(prop: cardProp) {
     const [openModal, setOpenModal] = useState(false);
-    const [value, setValue] = React.useState<Date | null>(new Date());
+    const [reserveDate, setReserveDate] = React.useState<Date | null>(new Date());
+    const [reserveTime, setReserveTime] = useState<number | null>(0)
     const style = {
         position: 'absolute',
         top: '50%',
@@ -66,20 +69,35 @@ function RestaurantCard(prop: cardProp) {
                     onClick={(e: any) => (e.preventDefault())}
                 >
                     <Box sx={style} >
-                        <Typography id="modal-modal-title" variant="h6" component="h2">
+                        <Typography variant="h6" component="h2">
                             Pick Up a Date
                         </Typography>
-                        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                        <Typography sx={{ mt: 2 }}>
                             <LocalizationProvider dateAdapter={AdapterDateFns}>
                                 <DatePicker
-                                    label="Basic example"
-                                    value={value}
+                                    label="Date"
+                                    value={reserveDate}
                                     onChange={(newValue) => {
-                                        setValue(newValue);
+                                        setReserveDate(newValue);
                                     }}
                                     renderInput={(params) => <TextField {...params} />}
                                 />
                             </LocalizationProvider>
+                        </Typography>
+                        <Typography sx={{ mt: 2 }}>
+                            <LocalizationProvider dateAdapter={AdapterDateFns}>
+                                <TimePicker
+                                    label="Time"
+                                    value={reserveTime}
+                                    onChange={(newValue) => {
+                                        setReserveTime(newValue);
+                                    }}
+                                    renderInput={(params) => <TextField {...params} />}
+                                />
+                            </LocalizationProvider>
+                        </Typography>
+                        <Typography align="right" sx={{ mt: 3 }}>
+                            <Button style={{ backgroundColor: '#2a945b' }} variant="contained">Reserve Now</Button>
                         </Typography>
                     </Box>
                 </Modal>
