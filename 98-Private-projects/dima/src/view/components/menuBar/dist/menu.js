@@ -24,7 +24,8 @@ function Bagemenu() {
     };
     return (react_1["default"].createElement("div", { className: "menu", id: "outer-container" },
         react_1["default"].createElement("div", { className: "menu__left" },
-            react_1["default"].createElement(SideBar_1["default"], null),
+            react_1["default"].createElement("div", { className: 'sideBar' },
+                react_1["default"].createElement(SideBar_1["default"], null)),
             react_1["default"].createElement("div", { className: 'logo' },
                 react_1["default"].createElement(react_router_dom_1.Link, { to: '/MainScreen' },
                     react_1["default"].createElement("img", { src: logo_jpg_1["default"], alt: "" }))),

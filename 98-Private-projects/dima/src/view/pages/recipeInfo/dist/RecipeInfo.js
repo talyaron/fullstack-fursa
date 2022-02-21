@@ -12,6 +12,7 @@ var LocalFireDepartment_1 = require("@mui/icons-material/LocalFireDepartment");
 var react_1 = require("react");
 var material_1 = require("@mui/material");
 var styles_1 = require("@mui/material/styles");
+var Tooltip_1 = require("@mui/material/Tooltip");
 var Standard = styles_1.styled(material_1.TextField)({
     '& label.Mui-focused': {
         color: '#b5739d'
@@ -35,7 +36,8 @@ var Standard = styles_1.styled(material_1.TextField)({
         fontSize: 15
     }
 });
-function RecipeInfo() {
+function RecipeInfo(props) {
+    var name = props.name, img = props.img, time = props.time, people = props.people, cal = props.cal, ingredients = props.ingredients, method = props.method;
     var _a = react_1.useState(0), like = _a[0], setLike = _a[1];
     function handleLike() {
         setLike(like + 1);
@@ -46,10 +48,11 @@ function RecipeInfo() {
         React.createElement("div", { className: "content" },
             React.createElement("img", { className: 'image', src: background_jpg_1["default"] }),
             React.createElement("div", { className: 'boxInfo' },
-                React.createElement(AutoAwesome_1["default"], { sx: {
-                        color: '#b5739d', fontSize: 35, float: 'right',
-                        paddingRight: '15px', paddingTop: '15px'
-                    } }),
+                React.createElement(Tooltip_1["default"], { title: 'edit recipe' },
+                    React.createElement(AutoAwesome_1["default"], { sx: {
+                            color: '#b5739d', fontSize: 35, float: 'right',
+                            paddingRight: '15px', paddingTop: '15px'
+                        } })),
                 React.createElement("form", { className: 'box' },
                     React.createElement("h1", null, "Recipe's Name"),
                     React.createElement("br", null),
@@ -73,7 +76,7 @@ function RecipeInfo() {
                     React.createElement("br", null),
                     React.createElement("br", null),
                     React.createElement("div", { className: 'info2' },
-                        React.createElement(Standard, { className: 'ingredients', id: "outlined-multiline-static", label: "Recipe's ingredients", placeholder: "Write your recipe ingredients here", multiline: true, rows: 10, maxRows: 30 }),
-                        React.createElement(Standard, { className: 'steps', id: "outlined-multiline-static", label: "The Method", placeholder: "Write here the steps for preparing the recipe", multiline: true, rows: 10, maxRows: 30 })))))));
+                        React.createElement(Standard, { className: 'ingredients', id: "outlined-multiline-static", label: "Recipe's ingredients", placeholder: "Write your recipe ingredients here", multiline: true, rows: 20, maxRows: 50 }),
+                        React.createElement(Standard, { className: 'steps', id: "outlined-multiline-static", label: "The Method", placeholder: "Write here the steps for preparing the recipe", multiline: true, rows: 20, maxRows: 50 })))))));
 }
 exports["default"] = RecipeInfo;

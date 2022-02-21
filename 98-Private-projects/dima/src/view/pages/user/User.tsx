@@ -31,6 +31,8 @@ export default function User() {
             <Recipes />
           </div>
         </div>
+        <br />
+        <br />
       </div>
     </div>
   );

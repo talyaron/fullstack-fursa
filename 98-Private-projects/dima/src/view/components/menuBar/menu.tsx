@@ -30,7 +30,10 @@ function Bagemenu() {
         <div className="menu" id="outer-container">
             <div className="menu__left">
                 {/* <MenuIcon sx={{ fontSize: 40, color: '#b5739d', paddingTop: -30 }} onClick={handleOn}/> */}
-                <SideBar />
+                <div className='sideBar'>
+                    <SideBar />
+                </div>
+                
                 <div className='logo'>
                     <Link to='/MainScreen'>
                         <img src={logo} alt="" />

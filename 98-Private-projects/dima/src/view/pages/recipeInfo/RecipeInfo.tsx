@@ -11,6 +11,7 @@ import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import { useState } from 'react';
 import { TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import Tooltip from '@mui/material/Tooltip';
 
 const Standard = styled(TextField)({
     '& label.Mui-focused': {
@@ -36,8 +37,18 @@ const Standard = styled(TextField)({
     },
 });
 
-export default function RecipeInfo(){
+interface recipeInfo{
+    name? : any|undefined;
+    img? : string;
+    time? : string;
+    people? : string;
+    cal? : string;
+    ingredients? : string;
+    method? : string;
+}
 
+export default function RecipeInfo(props:recipeInfo){
+    const {name, img, time, people, cal, ingredients, method} = props;
     const [like,setLike] = useState(0);
 
     function handleLike(){
@@ -52,10 +63,11 @@ export default function RecipeInfo(){
             <div className="content">
                 <img className='image' src={background} />
                 <div className='boxInfo'>
-                    <AutoAwesomeIcon sx={{
-                        color: '#b5739d', fontSize: 35, float: 'right',
-                        paddingRight: '15px', paddingTop: '15px'
-                    }} />
+                    <Tooltip title='edit recipe'>
+                        <AutoAwesomeIcon sx={{
+                            color: '#b5739d', fontSize: 35, float: 'right',
+                            paddingRight: '15px', paddingTop: '15px'}} />
+                    </Tooltip>
                     <form className='box'>
                         <h1>Recipe's Name</h1>
                         <br />
@@ -90,16 +102,16 @@ export default function RecipeInfo(){
                                 label="Recipe's ingredients"
                                 placeholder="Write your recipe ingredients here"
                                 multiline
-                                rows={10}
-                                maxRows={30}
+                                rows={20}
+                                maxRows={50}
                             />
                             <Standard className='steps'
                                 id="outlined-multiline-static"
                                 label="The Method"
                                 placeholder="Write here the steps for preparing the recipe"
                                 multiline
-                                rows={10}
-                                maxRows={30}
+                                rows={20}
+                                maxRows={50}
                             />
                         </div>
                     </form>

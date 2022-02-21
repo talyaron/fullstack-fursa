@@ -18,6 +18,8 @@ function User() {
                     return React.createElement(Profile_1["default"], { key: index, info: { name: name, phone: phone, email: email } });
                 })),
                 React.createElement("div", { className: "recipes" },
-                    React.createElement(Recipes_1["default"], null))))));
+                    React.createElement(Recipes_1["default"], null))),
+            React.createElement("br", null),
+            React.createElement("br", null))));
 }
 exports["default"] = User;

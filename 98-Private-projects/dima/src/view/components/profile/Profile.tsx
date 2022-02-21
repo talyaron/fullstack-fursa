@@ -1,6 +1,8 @@
 import chief from './chief.jpg';
 import './Profile.scss';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+import { useState } from 'react';
+import Tooltip from '@mui/material/Tooltip';
 
 interface profileInfo {
     info: {
@@ -11,14 +13,17 @@ interface profileInfo {
 }
 
 function Profile(prop: profileInfo) {
+    const[edit, setEdit] = useState(false);
     const { name, phone, email } = prop.info;
     
     return (
         <div className="profile">
-            <div className='Edit'>
-                <AutoAwesomeIcon />
-            </div>
-            <br />
+            <Tooltip title='edit profile'>
+                <div className='Edit'>
+                    <AutoAwesomeIcon sx={{fontSize:40}}/>
+                </div>
+            </Tooltip>
+            
             <div className="profileImg">
                 <img src={chief} alt="" />
             </div>

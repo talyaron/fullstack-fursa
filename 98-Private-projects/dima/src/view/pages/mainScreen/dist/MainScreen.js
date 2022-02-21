@@ -31,7 +31,7 @@ function MainScreen() {
             react_1["default"].createElement("div", { className: 'content' },
                 react_1["default"].createElement("h1", { className: 'title1' }, "Top 10 Recipes"),
                 react_1["default"].createElement("div", { className: 'content1' },
-                    react_1["default"].createElement(react_2.Swiper, { slidesPerView: 3, spaceBetween: 30, slidesPerGroup: 1, loop: true, loopFillGroupWithBlank: true, pagination: {
+                    react_1["default"].createElement(react_2.Swiper, { slidesPerView: 3, spaceBetween: 20, slidesPerGroup: 1, loop: true, loopFillGroupWithBlank: true, pagination: {
                             clickable: true
                         }, navigation: true, modules: [swiper_1.Pagination, swiper_1.Navigation], className: "mySwiper" },
                         react_1["default"].createElement(react_2.SwiperSlide, null,
