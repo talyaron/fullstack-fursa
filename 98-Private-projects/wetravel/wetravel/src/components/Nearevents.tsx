@@ -10,7 +10,7 @@ import { DateRangeTwoTone } from "@mui/icons-material";
 function Nearevents() {
   const name: data = { name: "events" };
   return (
-    <div style ={{backgroundColor:'grey'}}>
+    <div style ={{backgroundColor:'#aaaa'}}>
       <Header />
       <div className="grid">
         <div className="grid__item">

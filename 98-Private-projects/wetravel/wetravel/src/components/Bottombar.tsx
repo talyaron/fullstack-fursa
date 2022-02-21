@@ -16,6 +16,9 @@ function Bottombar(prop: data) {
   const [color, setColor] = React.useState("");
   const navigate = useNavigate();
   let val: string = value;
+  useEffect(() => {
+    setValue(value);
+  },[value])
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
     console.log(value);
@@ -37,7 +40,10 @@ function Bottombar(prop: data) {
           },
         }}
         value={value}
-        onChange={handleChange}
+       // onChange={handleChange}
+        onChange= {(event: any, newValue: string) => {
+         handleChange(event ,newValue)
+        }}
         style={{
           width: "inherit",
           height: "inherit",

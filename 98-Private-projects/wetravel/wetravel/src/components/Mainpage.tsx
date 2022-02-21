@@ -5,6 +5,8 @@ import Card from "./Card";
 import Bottombar from "../components/Bottombar";
 import Travelles from "./Travelers";
 import { data } from "./Bottombar";
+import { useEffect } from "react";
+import axios from "axios";
 interface Hotel {
   id: string;
   src: string;
@@ -27,6 +29,11 @@ const travelers: Array<travelers> = [
     src: "https://qtxasset.com/quartz/qcloud1/media/image/2016-12/ethical%20traveler.jpg?VersionId=mIycdotTCoKNtVnW0d2g4wvfA.y.bqOw",
     name: "John Smith",
     country: "Italy",
+  },
+  {
+    src: "https://qtxasset.com/quartz/qcloud1/media/image/2016-12/ethical%20traveler.jpg?VersionId=mIycdotTCoKNtVnW0d2g4wvfA.y.bqOw",
+    name: "Moshe Doe",
+    country: "Thailand",
   },
   {
     src: "https://qtxasset.com/quartz/qcloud1/media/image/2016-12/ethical%20traveler.jpg?VersionId=mIycdotTCoKNtVnW0d2g4wvfA.y.bqOw",
@@ -61,8 +68,18 @@ const arr: Array<Hotel> = [
     src: "https://cf.bstatic.com/xdata/images/hotel/max500/263858373.jpg?k=1818a9f40dbf631c2870111510af6d1eee39fd366d246da6a0b0875f1c87066a&o=&hp=1",
     title: "Las Vegas",
   },
+  {
+    id: "3",
+    src: "https://cf.bstatic.com/xdata/images/hotel/max500/263858373.jpg?k=1818a9f40dbf631c2870111510af6d1eee39fd366d246da6a0b0875f1c87066a&o=&hp=1",
+    title: "Las Vegas",
+  },
 ];
 function Mainpage() {
+  useEffect(() => {
+    axios
+      .get("http://localhost:3004/posts")
+      .then(({ data }) => console.log(data));
+  }, []);
   const name: data = { name: "Home" };
   return (
     <div className="wrapper">
@@ -94,39 +111,44 @@ function Mainpage() {
           </div>
         </div>
       </div>
+      <div className="grid">
+        <div className="grid__items">
+          <div className="div_h">
+            <h1>Right now at </h1>
+            <a href="">See all</a>
+          </div>
 
-      <div className="div_h">
-        <h1>Right now at </h1>
-        <a href="">See all</a>
-      </div>
-      <div className="list">
-        {arr.map((hotel, index) => {
-          return (
-            <Card
-              key={index}
-              src={hotel.src}
-              id={hotel.id}
-              title={hotel.title}
-            />
-          );
-        })}
-      </div>
-
-      <div className="div_h">
-        <h1>Popular travelers</h1>
-        <a href="">See all</a>
-      </div>
-      <div className="list">
-        {travelers.map((traveler, index) => {
-          return (
-            <Travelles
-              key={index}
-              src={traveler.src}
-              name={traveler.name}
-              country={traveler.country}
-            />
-          );
-        })}
+          <div className="list">
+            {arr.map((hotel, index) => {
+              return (
+                <Card
+                  key={index}
+                  src={hotel.src}
+                  id={hotel.id}
+                  title={hotel.title}
+                />
+              );
+            })}
+          </div>
+        </div>
+        <div className="grid__items">
+          <div className="div_h">
+            <h1>Popular travelers</h1>
+            <a href="">See all</a>
+          </div>
+          <div className="list">
+            {travelers.map((traveler, index) => {
+              return (
+                <Travelles
+                  key={index}
+                  src={traveler.src}
+                  name={traveler.name}
+                  country={traveler.country}
+                />
+              );
+            })}
+          </div>
+        </div>
       </div>
 
       <Bottombar name={name.name} />

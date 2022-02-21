@@ -8,8 +8,10 @@
   grid-column-gap: 6rem;
   row-gap: 4rem;
   padding: 10px;
+  
   padding-bottom: 6rem;
   overflow-y: scroll;
+
   &::-webkit-scrollbar {
     display: none;
   }
