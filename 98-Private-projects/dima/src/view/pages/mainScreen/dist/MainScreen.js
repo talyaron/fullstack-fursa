@@ -3,7 +3,6 @@ exports.__esModule = true;
 require("./MainScreen.scss");
 var menu_1 = require("../../components/menuBar/menu");
 var background_jpg_1 = require("../../images/background.jpg");
-var RecipeInfo_1 = require("../recipeInfo/RecipeInfo");
 var _1_jpg_1 = require("../../images/1.jpg");
 var _2_jpg_1 = require("../../images/2.jpg");
 var _3_jpg_1 = require("../../images/3.jpg");
@@ -20,7 +19,7 @@ require("swiper/css/navigation");
 var swiper_1 = require("swiper");
 var react_router_dom_1 = require("react-router-dom");
 function handleRecipe() {
-    react_1["default"].createElement(RecipeInfo_1["default"], null);
+    react_1["default"].createElement(react_router_dom_1.Link, { to: '/RecipeInfo' });
 }
 function MainScreen() {
     return (react_1["default"].createElement("div", { className: "wrapper" },

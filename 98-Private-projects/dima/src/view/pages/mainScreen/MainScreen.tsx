@@ -20,8 +20,8 @@ import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper";
 import { Link } from 'react-router-dom';
 
-function handleRecipe(){
-    <RecipeInfo />
+function handleRecipe() {
+    <Link to='/RecipeInfo'></Link>
 }
 
 export default function MainScreen() {
@@ -50,7 +50,7 @@ export default function MainScreen() {
                         >
                             <SwiperSlide>
                                 <Link to='/RecipeInfo'>
-                                    <img src={img1} alt=''/>
+                                    <img src={img1} alt='' />
                                 </Link>
                                 <p>Recipes 1</p>
                             </SwiperSlide>

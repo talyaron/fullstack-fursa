@@ -19,6 +19,14 @@
   position: relative;
   text-align: center;
 }
+.new .content .boxInfo .save {
+  float: right;
+  padding-top: 15px;
+  padding-right: 15px;
+}
+.new .content .boxInfo .save:hover {
+  transform: scale(1.1);
+}
 .new .content .boxInfo .box {
   padding-top: 40px;
   color: #b5739d;

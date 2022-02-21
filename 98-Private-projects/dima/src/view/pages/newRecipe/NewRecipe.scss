@@ -20,6 +20,16 @@
             position: relative;
             text-align: center;
 
+            .save{
+                float: right;
+                padding-top: 15px;
+                padding-right: 15px;
+
+                &:hover{
+                    transform: scale(1.1);
+                }
+            }
+
             .box {
                 padding-top: 40px;
                 color: #b5739d;

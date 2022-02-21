@@ -23,6 +23,14 @@
   position: relative;
   text-align: center;
 }
+.info .content .boxInfo .edit {
+  float: right;
+  padding-top: 15px;
+  padding-right: 15px;
+}
+.info .content .boxInfo .edit:hover {
+  transform: scale(1.1);
+}
 .info .content .boxInfo .box {
   padding-top: 40px;
 }

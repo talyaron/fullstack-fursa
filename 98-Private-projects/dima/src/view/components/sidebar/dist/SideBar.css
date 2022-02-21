@@ -1,6 +1,6 @@
 /* Position and sizing of burger button */
 .bm-burger-button {
-  position: fixed;
+  position: absolute;
   width: 32px;
   height: 26px;
   top: 10px;
@@ -33,6 +33,12 @@
   Sidebar wrapper styles
   Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
   */
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+  left: -7px;
+}
+
 /* General sidebar styles */
 .bm-menu {
   background: #e6d0de;
@@ -41,6 +47,10 @@
 }
 
 /* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+
 /* Wrapper for item list */
 .bm-item-list {
   color: #b5739d;
@@ -48,6 +58,10 @@
 }
 
 /* Individual item */
+.bm-item {
+  display: inline-block;
+}
+
 /* Styling of overlay */
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);

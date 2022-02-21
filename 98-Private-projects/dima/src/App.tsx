@@ -8,6 +8,7 @@ import NewRecipe from './view/pages/newRecipe/NewRecipe';
 import RecipeInfo from "./view/pages/recipeInfo/RecipeInfo";
 import { styled } from '@mui/material/styles';
 import { TextField } from "@mui/material";
+import { useState } from 'react';
 
 export const CssTextField = styled(TextField)({
   '& label.Mui-focused': {
@@ -24,7 +25,25 @@ export const CssTextField = styled(TextField)({
   },
 });
 
+export interface recipeInfo{
+  name? : any|undefined;
+  //img : {img1};
+  time? : string;
+  people? : string;
+  cal? : string;
+  ingredients? : string;
+  method? : string;
+}
+
+export interface recipeProp{
+  recipe:any;
+  setRecipe:any;
+}
+
 function App(){
+
+  const[recipe, setRecipe] = useState<recipeInfo>({});
+
   return(
     <BrowserRouter>
       <Routes>
@@ -33,8 +52,8 @@ function App(){
         <Route path="SignUp" element={<SignUp />} />
         <Route path="ResetPassword" element={<ResetPassword />} />
         <Route path="MainScreen" element={<MainScreen />} />
-        <Route path="NewRecipe" element={<NewRecipe />} />
-        <Route path="RecipeInfo" element={<RecipeInfo />} />
+        <Route path="NewRecipe" element={<NewRecipe recipe={recipe} setRecipe={setRecipe}/>} />
+        <Route path="RecipeInfo" element={<RecipeInfo recipe={recipe} setRecipe={setRecipe}/>} />
       </Routes>
     </BrowserRouter>
   );

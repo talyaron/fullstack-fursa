@@ -2,7 +2,7 @@ import './RecipeInfo.scss';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import Bagemenu from '../../components/menuBar/menu';
 import background from '../../images/background.jpg';
-import img1 from '../../images/1.jpg';
+import img1 from '../../images/img1.png';
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
@@ -12,6 +12,8 @@ import { useState } from 'react';
 import { TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Tooltip from '@mui/material/Tooltip';
+import { recipeInfo, recipeProp } from '../../../App';
+import { Link } from 'react-router-dom';
 
 const Standard = styled(TextField)({
     '& label.Mui-focused': {
@@ -34,24 +36,25 @@ const Standard = styled(TextField)({
     input: {
         color: 'grey',
         fontSize: 15,
+        readonly: true,
     },
 });
 
-interface recipeInfo{
-    name? : any|undefined;
-    img? : string;
-    time? : string;
-    people? : string;
-    cal? : string;
-    ingredients? : string;
-    method? : string;
-}
+// interface recipeInfo{
+//     name? : any|undefined;
+//     img? : string;
+//     time? : string;
+//     people? : string;
+//     cal? : string;
+//     ingredients? : string;
+//     method? : string;
+// }
 
-export default function RecipeInfo(props:recipeInfo){
-    const {name, img, time, people, cal, ingredients, method} = props;
-    const [like,setLike] = useState(0);
+export default function RecipeInfo(props: recipeProp) {
+    const { recipe, setRecipe } = props;
+    const [like, setLike] = useState(0);
 
-    function handleLike(){
+    function handleLike() {
         setLike(like + 1);
     }
 
@@ -63,13 +66,17 @@ export default function RecipeInfo(props:recipeInfo){
             <div className="content">
                 <img className='image' src={background} />
                 <div className='boxInfo'>
-                    <Tooltip title='edit recipe'>
-                        <AutoAwesomeIcon sx={{
-                            color: '#b5739d', fontSize: 35, float: 'right',
-                            paddingRight: '15px', paddingTop: '15px'}} />
-                    </Tooltip>
+                    <div className="edit">
+                        <Tooltip title='edit recipe'>
+                            <Link to='/NewRecipe'>
+                                <AutoAwesomeIcon sx={{
+                                    color: '#b5739d', fontSize: 35
+                                }} />
+                            </Link>
+                        </Tooltip>
+                    </div>
                     <form className='box'>
-                        <h1>Recipe's Name</h1>
+                        <h1>{recipe.name}</h1>
                         <br />
                         <br />
                         <div className='info1'>
@@ -78,20 +85,20 @@ export default function RecipeInfo(props:recipeInfo){
                             </div>
                             <h2 className='by'>By : Dima Abbas</h2>
                             <div className='item'>
-                                <FavoriteBorderIcon onClick={handleLike} sx={{ fontSize: 30, color: '#b5739d', paddingTop:'10px' }} />
+                                <FavoriteBorderIcon onClick={handleLike} sx={{ fontSize: 30, color: '#b5739d', paddingTop: '10px' }} />
                                 <p>{like}</p>
                             </div>
                             <div className='item'>
-                                <AccessTimeIcon sx={{ fontSize: 30, color: '#b5739d', paddingTop:'10px' }} />
-                                <p>1 hour</p>
+                                <AccessTimeIcon sx={{ fontSize: 30, color: '#b5739d', paddingTop: '10px' }} />
+                                <p>{recipe.time}</p>
                             </div>
                             <div className='item'>
-                                <PeopleIcon sx={{ fontSize: 30, color: '#b5739d', paddingTop:'10px' }} />
-                                <p>10 peoples</p>
+                                <PeopleIcon sx={{ fontSize: 30, color: '#b5739d', paddingTop: '10px' }} />
+                                <p>{recipe.people}</p>
                             </div>
                             <div className='item'>
-                                <LocalFireDepartmentIcon sx={{ fontSize: 30, color: '#b5739d', paddingTop:'10px' }} />
-                                <p>1000 calories</p>
+                                <LocalFireDepartmentIcon sx={{ fontSize: 30, color: '#b5739d', paddingTop: '10px' }} />
+                                <p>{recipe.cal}</p>
                             </div>
                         </div>
                         <br />
@@ -103,7 +110,8 @@ export default function RecipeInfo(props:recipeInfo){
                                 placeholder="Write your recipe ingredients here"
                                 multiline
                                 rows={20}
-                                maxRows={50}
+                                value={recipe.ingredients}
+                            //maxRows={50}
                             />
                             <Standard className='steps'
                                 id="outlined-multiline-static"
@@ -111,7 +119,8 @@ export default function RecipeInfo(props:recipeInfo){
                                 placeholder="Write here the steps for preparing the recipe"
                                 multiline
                                 rows={20}
-                                maxRows={50}
+                                value={recipe.method}
+                            //maxRows={50}
                             />
                         </div>
                     </form>

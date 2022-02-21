@@ -11,6 +11,9 @@ import { Box, TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { useState } from 'react';
 import RecipeInfo from '../../pages/recipeInfo/RecipeInfo';
+import { recipeInfo, recipeProp } from '../../../App';
+import { Link } from 'react-router-dom';
+import Tooltip from '@mui/material/Tooltip';
 
 const Standard = styled(TextField)({
     '& label.Mui-focused': {
@@ -36,48 +39,71 @@ const Standard = styled(TextField)({
     },
 });
 
-interface recipeInfo{
-    name? : any|undefined;
-    img? : string;
-    time? : string;
-    people? : string;
-    cal? : string;
-    ingredients? : string;
-    method? : string;
-}
+// interface recipeInfo{
+//     name? : any|undefined;
+//     img? : string;
+//     time? : string;
+//     people? : string;
+//     cal? : string;
+//     ingredients? : string;
+//     method? : string;
+// }
 
-export default function NewRecipe() {
-    const[recipe, setRecipe] = useState<recipeInfo>({});
+export default function NewRecipe(props: recipeProp) {
+    const { recipe, setRecipe } = props;
 
-    function handleUpdate(ev:any){
-        //console.dir(ev.target);
-        switch(ev.target.name){
+    // function handleUpdate(ev: any) {
+    //     //console.dir(ev.target);
+    //     switch (ev.target.name) {
+    //         case 'recipeName':
+    //             setRecipe({ ...recipe, name: ev.target.value });
+    //             break;
+    //         case 'time':
+    //             setRecipe({ ...recipe, time: ev.target.value })
+    //             break;
+    //         case 'people':
+    //             setRecipe({ ...recipe, people: ev.target.value });
+    //             break;
+    //         case 'cal':
+    //             setRecipe({ ...recipe, cal: ev.target.value });
+    //             break;
+    //         case 'ingredients':
+    //             setRecipe({ ...recipe, ingredients: ev.target.value });
+    //             break;
+    //         case 'method':
+    //             setRecipe({ ...recipe, method: ev.target.value });
+    //             break;
+    //     }
+    // }
+
+    function handleChange(ev: any) {
+        console.dir(recipe);
+        switch (ev.target.name) {
             case 'recipeName':
-                setRecipe({...recipe, name:ev.target.value});
+                setRecipe({ ...recipe, name: ev.target.value });
                 break;
             case 'time':
-                setRecipe({...recipe, time:ev.target.value})
+                setRecipe({ ...recipe, time: ev.target.value })
                 break;
-            case 'people' :
-                setRecipe({...recipe, people:ev.target.value});
+            case 'people':
+                setRecipe({ ...recipe, people: ev.target.value });
                 break;
-            case 'cal' :
-                setRecipe({...recipe, cal:ev.target.value});
+            case 'cal':
+                setRecipe({ ...recipe, cal: ev.target.value });
                 break;
             case 'ingredients':
-                setRecipe({...recipe, ingredients:ev.target.value});
+                setRecipe({ ...recipe, ingredients: ev.target.value });
                 break;
-            case 'method' :
-                setRecipe({...recipe, method:ev.target.value});
+            case 'method':
+                setRecipe({ ...recipe, method: ev.target.value });
                 break;
         }
     }
 
-    function handleSave(){
+    function handleSave() {
         setRecipe(recipe);
         console.dir(recipe);
         console.dir(recipe.ingredients);
-        <RecipeInfo />
     }
 
     return (
@@ -88,10 +114,15 @@ export default function NewRecipe() {
             <div className="content">
                 <img className='image' src={background} />
                 <div className='boxInfo'>
-                    <BookmarkAddIcon sx={{
-                        color: '#b5739d', fontSize: 35, float: 'right',
-                        paddingRight: '15px', paddingTop: '15px'
-                    }} onClick={handleSave}/>
+                    <div className="save">
+                        <Tooltip title='save'>
+                            <Link to='/RecipeInfo'>
+                                <BookmarkAddIcon sx={{
+                                    color: '#b5739d', fontSize: 35
+                                }} onClick={handleSave} />
+                            </Link>
+                        </ Tooltip>
+                    </div>
                     <Box className='box' component="form"
                         sx={{ '& .MuiTextField-root': { m: 1 }, }}
                         autoComplete="off"
@@ -99,9 +130,11 @@ export default function NewRecipe() {
                         <Standard id="standard-basic" variant="standard"
                             focused
                             placeholder="Insert your recipe's name"
-                            size="small" sx={{ width: '30ch' }} 
-                            onKeyUp={handleUpdate}
-                            name='recipeName'/>
+                            size="small" sx={{ width: '30ch' }}
+                            //onKeyUp={handleUpdate}
+                            name='recipeName'
+                            value={recipe.name}
+                            onChange={handleChange} />
                         <br />
                         <br />
                         <div className='info1'>
@@ -110,35 +143,43 @@ export default function NewRecipe() {
                             </div>
                             <h2 className='by'>By : Dima Abbas</h2>
                             <div className='item'>
-                                <FavoriteBorderIcon sx={{ fontSize: 30, color: '#b5739d', paddingTop:'12px' }} />
+                                <FavoriteBorderIcon sx={{ fontSize: 30, color: '#b5739d', paddingTop: '12px' }} />
                                 <p>0</p>
                             </div>
                             <div className='item'>
-                                <AccessTimeIcon sx={{ fontSize: 30, color: '#b5739d', paddingTop:'12px' }} />
+                                <AccessTimeIcon sx={{ fontSize: 30, color: '#b5739d', paddingTop: '12px' }} />
                                 <Standard id="standard-basic" variant="standard"
                                     focused
                                     placeholder=""
-                                    size="small" sx={{ width: '20ch'}} 
+                                    size="small" sx={{ width: '20ch' }}
                                     name='time'
-                                    onKeyUp={handleUpdate}/>
+                                    //onKeyUp={handleUpdate} 
+                                    value={recipe.time}
+                                    onChange={handleChange}
+                                />
                             </div>
                             <div className='item'>
-                                <PeopleIcon sx={{ fontSize: 30, color: '#b5739d', paddingTop:'10px' }} />
+                                <PeopleIcon sx={{ fontSize: 30, color: '#b5739d', paddingTop: '10px' }} />
                                 <Standard id="standard-basic" variant="standard"
                                     focused
                                     placeholder=""
-                                    size="small" sx={{ width: '20ch' }} 
+                                    size="small" sx={{ width: '20ch' }}
                                     name='people'
-                                    onKeyUp={handleUpdate}/>
+                                    //onKeyUp={handleUpdate} 
+                                    value={recipe.people}
+                                    onChange={handleChange}
+                                />
                             </div>
                             <div className='item'>
-                                <LocalFireDepartmentIcon sx={{ fontSize: 30, color: '#b5739d', paddingTop:'12px' }} />
+                                <LocalFireDepartmentIcon sx={{ fontSize: 30, color: '#b5739d', paddingTop: '12px' }} />
                                 <Standard id="standard-basic" variant="standard"
                                     focused
                                     placeholder=""
-                                    size="small" sx={{ width: '20ch' }} 
+                                    size="small" sx={{ width: '20ch' }}
                                     name='cal'
-                                    onKeyUp={handleUpdate}/>
+                                    //onKeyUp={handleUpdate}
+                                    value={recipe.cal}
+                                    onChange={handleChange} />
                             </div>
                         </div>
                         <div className='info2'>
@@ -149,8 +190,10 @@ export default function NewRecipe() {
                                 multiline
                                 rows={10}
                                 name='ingredients'
-                                onKeyUp={handleUpdate}
-                                //maxRows={50}
+                                //onKeyUp={handleUpdate}
+                                value={recipe.ingredients}
+                                onChange={handleChange}
+                            //maxRows={50}
                             />
                             <Standard className='steps'
                                 id="outlined-multiline-static"
@@ -159,8 +202,10 @@ export default function NewRecipe() {
                                 multiline
                                 rows={10}
                                 name='method'
-                                onKeyUp={handleUpdate}
-                                //maxRows={50}
+                                //onKeyUp={handleUpdate}
+                                value={recipe.method}
+                                onChange={handleChange}
+                            //maxRows={50}
                             />
                         </div>
                     </Box>

@@ -11,6 +11,7 @@ var NewRecipe_1 = require("./view/pages/newRecipe/NewRecipe");
 var RecipeInfo_1 = require("./view/pages/recipeInfo/RecipeInfo");
 var styles_1 = require("@mui/material/styles");
 var material_1 = require("@mui/material");
+var react_1 = require("react");
 exports.CssTextField = styles_1.styled(material_1.TextField)({
     '& label.Mui-focused': {
         color: '#b5739d'
@@ -26,6 +27,7 @@ exports.CssTextField = styles_1.styled(material_1.TextField)({
     }
 });
 function App() {
+    var _a = react_1.useState({}), recipe = _a[0], setRecipe = _a[1];
     return (React.createElement(react_router_dom_1.BrowserRouter, null,
         React.createElement(react_router_dom_1.Routes, null,
             React.createElement(react_router_dom_1.Route, { path: "/", element: React.createElement(LogIn_1["default"], null) }),
@@ -33,7 +35,7 @@ function App() {
             React.createElement(react_router_dom_1.Route, { path: "SignUp", element: React.createElement(SignUp_1["default"], null) }),
             React.createElement(react_router_dom_1.Route, { path: "ResetPassword", element: React.createElement(ResetPassword_1["default"], null) }),
             React.createElement(react_router_dom_1.Route, { path: "MainScreen", element: React.createElement(MainScreen_1["default"], null) }),
-            React.createElement(react_router_dom_1.Route, { path: "NewRecipe", element: React.createElement(NewRecipe_1["default"], null) }),
-            React.createElement(react_router_dom_1.Route, { path: "RecipeInfo", element: React.createElement(RecipeInfo_1["default"], null) }))));
+            React.createElement(react_router_dom_1.Route, { path: "NewRecipe", element: React.createElement(NewRecipe_1["default"], { recipe: recipe, setRecipe: setRecipe }) }),
+            React.createElement(react_router_dom_1.Route, { path: "RecipeInfo", element: React.createElement(RecipeInfo_1["default"], { recipe: recipe, setRecipe: setRecipe }) }))));
 }
 exports["default"] = App;
