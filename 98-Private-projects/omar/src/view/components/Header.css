@@ -1,0 +1,43 @@
+.Middle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 620px) {
+    /* For mobile phones: */
+    .Middle {
+      width: 100%;
+    }
+}
+
+.Header{
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.Header__HeadTitle{
+    position: sticky;
+    font-size: 80px;
+    display : flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Header__SecondTitle{
+    position: sticky;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 25px;
+    color: red
+}
+
+.HeaderImg{
+    position: sticky;
+    height:200px;
+    margin:10px;
+}
