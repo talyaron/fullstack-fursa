@@ -43,7 +43,7 @@ function Restaurant() {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
 
-    const handleStepChange = (step: number) => {
+    const handleStepChange = (step: any) => {
         setActiveStep(step);
     };
 
@@ -105,26 +105,27 @@ function Restaurant() {
                 aria-labelledby="parent-modal-title"
                 aria-describedby="parent-modal-description"
             >
-                <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
+                <Box sx={{
+                    top: '50%', left: '50%', position: 'absolute', transform: 'translate(-50%, -50%)', Width: "50%", maxHeight: "300",
+                }}>
                     <AutoPlaySwipeableViews
                         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
                         index={activeStep}
                         onChangeIndex={handleStepChange}
                         enableMouseEvents
                     >
-                        {images.map((step, index) => (
+                        {Restaurant.photos.map((step, index) => (
                             <div key={index}>
                                 {Math.abs(activeStep - index) <= 2 ? (
                                     <Box
                                         component="img"
                                         sx={{
-                                            height: 255,
-                                            display: 'block',
-                                            maxWidth: 400,
-                                            overflow: 'hidden',
-                                            width: '100%',
+                                            height: "450px",
+                                            width: "100%",
+                                            maxHeight: "700px",
+                                            display: "block"
                                         }}
-                                        src={step.url}
+                                        src={step}
 
                                     />
                                 ) : null}
@@ -162,7 +163,7 @@ function Restaurant() {
                     />
                 </Box>
             </Modal>
-        </div>
+        </div >
     )
 }
 
