@@ -14,7 +14,7 @@ function Closet(){
     }
     return(
         <div className="closet">
-              {/* <header className="closet_header">
+              <header className="closet_header">
         <img className="closet_header_logo" src="https://scontent.fhfa2-2.fna.fbcdn.net/v/t1.6435-9/191373428_5543723205668752_6758159996168278797_n.png?_nc_cat=100&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=vD2Ck1UqS_MAX-yTblw&_nc_ht=scontent.fhfa2-2.fna&oh=00_AT-kafBKJB3bLHogSgPEVUQQtAHgClIHTT0FGy07h8nZTA&oe=622CF120" alt="" />
              <Navbar></Navbar>
              <h1 >Wood Products /</h1>
@@ -25,7 +25,7 @@ function Closet(){
      <img src="https://cdn4.iconfinder.com/data/icons/shopping-21/64/shopping-06-512.png" alt="" />
        </Link>
         </div>
-        </header> */}
+        </header>
         <div className="closet_body">
         <div className="closet_body_inputs">
             <form onSubmit={handleSubmit}>

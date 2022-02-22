@@ -14,7 +14,7 @@ interface cartProps{
 
 function Cart(props:cartProps){
     const {product,setProduct}=props;
-    console.log(product)
+    //console.log(product)
     const [order,setOrder]=useState([]);
 
 useEffect(()  => {
@@ -52,12 +52,11 @@ axios.get('http://localhost:3004/userOrder').then(({data})=> setOrder(data));
                       </div>
                  {order.map((products:productProp, i:any)=>{
                    
-                return  <Product key={i} woodName={products.woodName} woodlength={products.woodlength} width={products.width} thick={products.thick} amount={products.amount} product={product} setProduct={setProduct} />
+                return  <Product key={i} woodName={products.woodName} woodlength={products.woodlength} width={products.width} thick={products.thick} amount={products.amount} id={products.id} product={product} setProduct={setProduct} />
     })}
     
     <Button variant="contained" style={{backgroundColor: 'rgb(47, 143, 90)'}} size="medium">
-       <Link to="/cart/checkOutOrder"> order </Link>  
-       
+       <Link to="/cart/checkOutOrder"> order </Link> 
        </Button>     
 
       

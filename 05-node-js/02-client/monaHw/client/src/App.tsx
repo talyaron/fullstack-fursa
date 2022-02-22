@@ -49,7 +49,7 @@ function App() {
         <Route path="product/:productId" element={<Product />} >
         <Route path=":woodproname" element={<NavProduct />} />
         </Route>
-        {/* <Route path="woodProduct/:woodproname" element={<NavProduct  />} /> */}
+        <Route path="woodProduct/:woodproname" element={<NavProduct  />} />
          
         <Route path="order/:name" element={<Order product={product} setProduct={setProduct} />} />
         <Route path="cart" element={<Cart product={product} setProduct={setProduct} />} >

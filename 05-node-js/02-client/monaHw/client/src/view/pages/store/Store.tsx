@@ -40,6 +40,7 @@ const Store = () => {
       <Outlet />
       </div>
       </div>
+
   </div>
 };
 

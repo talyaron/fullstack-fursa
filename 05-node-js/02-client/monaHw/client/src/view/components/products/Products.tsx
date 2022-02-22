@@ -1,6 +1,7 @@
 import './Products.scss'
 import Button from '@mui/material/Button';
-
+import axios from 'axios'
+import { useState,useEffect } from 'react';
 export interface productProp{
     woodName:string;
     woodlength:number;
@@ -10,23 +11,25 @@ export interface productProp{
     product:any;
     setProduct:any;
     color?:string;
+    id:number;
    
  }
  
  
  
  function Product(prop:productProp){
-     const {product,setProduct,woodName,woodlength,width,thick,amount,color}=prop;
-     function removeHandler()
+    const [order,setOrder]=useState([]);
+    useEffect(()  => {
+       axios.get('http://localhost:3004/userOrder').then(({data})=> setOrder(data));
+        }, []);
+     const {product,setProduct,woodName,woodlength,width,thick,amount,color,id}=prop;
+     function RemoveHandler()
      {
-         let copy=Object.assign([],product)
-        setProduct( copy.filter((product:any)=>{
-             if(product.woodName!=woodName){
-                 return product;
-             }
-
-         }))
-        }
+        
+        axios.delete(`http://localhost:3004/userOrder/${id}`).then(({data})=>setOrder(data));
+        
+    
+    }
        
      return(
          <div className="cartProducts">
@@ -37,7 +40,7 @@ export interface productProp{
            <div className="item"></div>
            <div className="item"></div>
 
-           <Button onClick={removeHandler} type="submit" variant="contained" style={{backgroundColor: 'red'}} size="small">
+           <Button onClick={RemoveHandler} type="submit" variant="contained" style={{backgroundColor: 'rgb(248, 140, 38) '}} size="small">
           remove
        </Button>
 

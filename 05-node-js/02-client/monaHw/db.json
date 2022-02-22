@@ -62,30 +62,12 @@
   ],
   "userOrder": [
     {
-      "woodName": "Doors",
-      "woodlength": "250",
+      "woodName": "insulation wood",
+      "woodlength": "22",
       "width": "160",
-      "thick": "3",
-      "color": "green",
-      "amount": "4",
-      "id": 2
-    },
-    {
-      "woodName": "Doors",
-      "woodlength": "250",
-      "width": "200",
-      "thick": "2",
-      "color": "green",
-      "amount": "22",
-      "id": 3
-    },
-    {
-      "woodName": "Maple Wood",
-      "woodlength": "250",
-      "width": "3",
       "thick": "22",
       "amount": "",
-      "id": 4
+      "id": 2
     }
   ]
 }
