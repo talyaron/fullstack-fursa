@@ -44,7 +44,6 @@ interface eventInt{
     end: Date;
     name: string;
     phone: string;
-    //time?: Date;
 }
 
 const events:Array<eventInt> = [
@@ -53,17 +52,14 @@ const events:Array<eventInt> = [
         start: new Date(2022,1, 25,6,30),
         end: new Date(2022,1, 25,7,30),
         name: "Asma",
-        phone:"123" ,
-        //time:"10:00"
-                  
+        phone:"123" ,            
     },
     {
         title: "Hopi Candles",
         start: new Date(2022, 1, 26,5),
         end: new Date(2022, 1, 26,6),
         name: "Asma",
-        phone:"123",
-         
+        phone:"123",       
     }
 ];
 
@@ -72,15 +68,30 @@ function CalendarFun(){
     const [newEvent, setNewEvent] = useState({ title: "", name:"",phone:"",start: new Date(),end: new Date()});
     const [allEvents, setAllEvents] = useState(events);
     
-    
-   
     function handleAddEvent() {
-        setAllEvents([...allEvents, newEvent]);
+        if(newEvent.name==="" || newEvent.title==="" ||newEvent.phone==="")
+            alert("Your Info Is Incomplete!!");
+
+        else {
+            const result: eventInt|undefined = allEvents.find((appoint: eventInt) =>
+            appoint.start.getFullYear() === newEvent.start.getFullYear() &&
+            appoint.start.getMonth() === newEvent.start.getMonth()&&
+            appoint.start.getDate() === newEvent.start.getDate()&&
+            (appoint.start.getHours() === newEvent.start.getHours()|| 
+            (appoint.end.getHours() === newEvent.start.getHours() && appoint.end.getMinutes() > newEvent.start.getMinutes())||
+            (appoint.start.getHours() === newEvent.end.getHours() && appoint.start.getMinutes() < newEvent.end.getMinutes()))
+            )
+
+            if(result)
+                alert("Date Is Not Available!!");
+            
+            else
+                setAllEvents([...allEvents, newEvent]); 
+            
+        }
         console.log(allEvents);
     }
 
-
-    
 
     return(
         <div>
@@ -89,7 +100,7 @@ function CalendarFun(){
                 <div>
                     <input  type="text" placeholder='Add Name' value={newEvent.name} onChange={(e) => setNewEvent({ ...newEvent, name: e.target.value })} />
                     <input  type="text" placeholder='Add Phone Number' value={newEvent.phone} onChange={(e) => setNewEvent({ ...newEvent, phone: e.target.value })} />
-                    <input type="text" placeholder="Pick Treatment"  value={newEvent.title} onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })} />
+                    <input  type="text" placeholder="Pick Treatment"  value={newEvent.title} onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })} />
                     <div>
                         <DateTimePicker required={true} value={newEvent.start} onChange={(value) => setNewEvent({ ...newEvent, start:value,end:(new Date(value.getFullYear(), value.getMonth(),value.getDate(),value.getHours()+1,value.getMinutes()))})} />                              
                         <button onClick={handleAddEvent}>
@@ -97,7 +108,9 @@ function CalendarFun(){
                         </button>
                     </div>
                 </div>
-                <Calendar localizer={localizer} events={allEvents} startAccessor="start"  endAccessor="end"  style={{ height: 500, margin: "50px" }} />
+                <div className="table">
+                <Calendar localizer={localizer} events={allEvents} startAccessor="start"  endAccessor="end"/>
+                </div>
             </div>
         </div>
     )

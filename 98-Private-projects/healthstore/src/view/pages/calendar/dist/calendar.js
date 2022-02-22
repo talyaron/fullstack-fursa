@@ -71,7 +71,22 @@ function CalendarFun() {
     var _a = react_1.useState({ title: "", name: "", phone: "", start: new Date(), end: new Date() }), newEvent = _a[0], setNewEvent = _a[1];
     var _b = react_1.useState(events), allEvents = _b[0], setAllEvents = _b[1];
     function handleAddEvent() {
-        setAllEvents(__spreadArrays(allEvents, [newEvent]));
+        if (newEvent.name === "" || newEvent.title === "" || newEvent.phone === "")
+            alert("Your Info Is Incomplete!!");
+        else {
+            var result = allEvents.find(function (appoint) {
+                return appoint.start.getFullYear() === newEvent.start.getFullYear() &&
+                    appoint.start.getMonth() === newEvent.start.getMonth() &&
+                    appoint.start.getDate() === newEvent.start.getDate() &&
+                    (appoint.start.getHours() === newEvent.start.getHours() ||
+                        (appoint.end.getHours() === newEvent.start.getHours() && appoint.end.getMinutes() > newEvent.start.getMinutes()) ||
+                        (appoint.start.getHours() === newEvent.end.getHours() && appoint.start.getMinutes() < newEvent.end.getMinutes()));
+            });
+            if (result)
+                alert("Date Is Not Available!!");
+            else
+                setAllEvents(__spreadArrays(allEvents, [newEvent]));
+        }
         console.log(allEvents);
     }
     return (react_1["default"].createElement("div", null,
@@ -84,7 +99,8 @@ function CalendarFun() {
                 react_1["default"].createElement("div", null,
                     react_1["default"].createElement(react_datetime_picker_1["default"], { required: true, value: newEvent.start, onChange: function (value) { return setNewEvent(__assign(__assign({}, newEvent), { start: value, end: (new Date(value.getFullYear(), value.getMonth(), value.getDate(), value.getHours() + 1, value.getMinutes())) })); } }),
                     react_1["default"].createElement("button", { onClick: handleAddEvent }, "Book Now!"))),
-            react_1["default"].createElement(react_big_calendar_1.Calendar, { localizer: localizer, events: allEvents, startAccessor: "start", endAccessor: "end", style: { height: 500, margin: "50px" } }))));
+            react_1["default"].createElement("div", { className: "table" },
+                react_1["default"].createElement(react_big_calendar_1.Calendar, { localizer: localizer, events: allEvents, startAccessor: "start", endAccessor: "end" })))));
 }
 // <DatePicker placeholderText="Start Date" selected={newEvent.start} onChange={(start:Date) => setNewEvent({ ...newEvent, start:start,end:start })} />
 // <TimePicker value={newEvent.time} onChange={(time) => setNewEvent({ ...newEvent, time:time})} />   
