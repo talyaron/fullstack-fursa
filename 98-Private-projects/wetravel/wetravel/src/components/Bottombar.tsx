@@ -18,7 +18,7 @@ function Bottombar(prop: data) {
   let val: string = value;
   useEffect(() => {
     setValue(value);
-  },[value])
+  }, [value]);
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
     console.log(value);
@@ -31,7 +31,7 @@ function Bottombar(prop: data) {
         sx={{
           width: 500,
           "&  .Mui-selected ,.Mui-selected > svg ": {
-            backgroundColor: "orange",
+            backgroundColor: "#ff4500",
             color: "white",
             borderRadius: "0.3rem",
             display: "flex",
@@ -40,13 +40,14 @@ function Bottombar(prop: data) {
           },
         }}
         value={value}
-       // onChange={handleChange}
-        onChange= {(event: any, newValue: string) => {
-         handleChange(event ,newValue)
+        onChange={(event: any, newValue: string) => {
+          handleChange(event, newValue);
         }}
         style={{
           width: "inherit",
           height: "inherit",
+          position: "fixed",
+          bottom: "0",
         }}
       >
         <BottomNavigationAction
@@ -61,9 +62,9 @@ function Bottombar(prop: data) {
         <BottomNavigationAction
           label="Events"
           value="events"
-          // onClick={() => {
-          //   navigate("/events");
-          // }}
+          onClick={() => {
+            navigate("/events");
+          }}
           style={{ color: color }}
           icon={<EventIcon />}
         />

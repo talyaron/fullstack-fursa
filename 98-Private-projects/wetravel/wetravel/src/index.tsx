@@ -26,7 +26,7 @@ ReactDOM.render(
     <Routes>
       <Route path="/" element={<Login />}></Route>
       <Route path="/mainpage" element={<Mainpage />}></Route>
-      <Route path ="/events" element = {<Nearevents/>}></Route>
+      <Route path="/events" element={<Nearevents />}></Route>
     </Routes>
   </Router>,
 

@@ -1,4 +1,4 @@
-$base-color: rgb(245, 119, 60);
+$base-color: #ff4500;
 
 * {
   font-size: 1em;
@@ -6,7 +6,6 @@ $base-color: rgb(245, 119, 60);
   font-weight: bold;
 }
 .login {
-  background-size: cover;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -14,17 +13,18 @@ $base-color: rgb(245, 119, 60);
   height: 100vh;
   position: relative;
   background-image: url(../Images/cover2.jpeg);
+  background-size: cover;
+
   img {
-    width: 14vw;
+    padding: 0.3rem;
+    width: 18%;
     border-radius: 50%;
-    position: absolute;
-    left: 45%;
-    top: 6%;
+    margin: auto;
     object-fit: cover;
   }
   &__inner {
     width: 100%;
-    height: 100vh;
+    height: 70%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,24 +33,30 @@ $base-color: rgb(245, 119, 60);
     gap: 3rem;
   }
   h1 {
-    font-size: 1.3em;
+    font-size: 1.3rem;
     color: black;
   }
   p {
     font-weight: normal;
     font-size: 0.9em;
     font-weight: bold;
-    color: white;
+    color: black;
   }
-  button {
-    background-color: $base-color;
-    width: 100%;
-    height: 15vh;
-    color: white;
-    font-size: 0.8em;
-    border-radius: 0.3em;
-    border: white;
+  .buttons {
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    row-gap: 0.6rem;
+    button {
+      background-color: $base-color;
+      width: 100%;
+      height: 10vh;
+      color: white;
+      font-size: 0.8em;
+      border-radius: 0.3em;
+      border: white;
+    }
   }
+
   .contact-us-div {
     display: flex;
     flex-direction: column;

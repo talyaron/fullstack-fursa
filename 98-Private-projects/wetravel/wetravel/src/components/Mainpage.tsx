@@ -97,7 +97,7 @@ function Mainpage() {
           <p>App connect with travel community.</p>
           <div className="search-bar">
             <div className="right-div">
-              <img src={Search}></img>
+              <img src={Search} style={{color:"#ff4500"}}></img>
             </div>
             <div className="left-div">
               <p>Search for your destination</p>
