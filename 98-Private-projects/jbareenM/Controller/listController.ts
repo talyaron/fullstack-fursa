@@ -59,3 +59,54 @@ exports.getListByUser = async (req, res) => {
         res.send({ ok: false, message: "Error!" });
     }
 }
+
+exports.getListByID = async (req, res) => {
+    console.log("getListByID!");
+    const { id } = req.body;
+
+    try {
+        const _list = await list.findOne({ _id: id });
+        if (!_list) {
+            res.send({ ok: false, message: "list doesn't exists!" });
+        } else {
+            res.send({ ok: true, list: _list, message: "fetch successfully!" });
+        }
+    } catch (err) {
+        res.send({ ok: false, message: "Error!" });
+    }
+}
+
+/**
+ *     "updatedList": {
+        "items": "asd",
+        "userName": {
+            "email": "jbareen@jbareen"
+        }
+    }
+ */
+
+exports.updateListByID = async (req, res) => {
+    console.log("updateListByID!");
+    const { id, updatedList } = req.body;
+    console.log({ id: id, updatedList: updatedList })
+
+    try {
+        let newListUpdate = await list.findOneAndUpdate(
+            { _id: id, "bringItems.userName.email": updatedList.userName.email },
+            { $push: { "bringItems.$.items": updatedList.items } }
+        )
+        if (!newListUpdate) {
+            newListUpdate = await list.findOneAndUpdate(
+                { _id: id },
+                { $push: { bringItems: updatedList } }
+            )
+        }
+        if(newListUpdate){
+            res.send({ ok: true, list: newListUpdate });
+        }else{
+            res.send({ ok: false });
+        }
+    } catch (error) {
+        
+    }
+}

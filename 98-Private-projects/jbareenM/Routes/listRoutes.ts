@@ -11,4 +11,13 @@ router
     .route("/getListByUser")
     .post(listController.getListByUser);
 
+router
+    .route("/getListByID")
+    .post(listController.getListByID);
+
+router
+    .route("/updateListByID")
+    .patch(listController.updateListByID);
+
+
 module.exports = router;

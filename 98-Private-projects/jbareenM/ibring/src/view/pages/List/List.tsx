@@ -9,11 +9,14 @@ import home from '../../logoAndPhotos/home.jpg';
 import chef from '../../logoAndPhotos/chef.jpg';
 import homeLogo from '../../logoAndPhotos/homeLogo.jpg';
 import settings from '../../logoAndPhotos/settings.jpg';
+import sentImage from '../../logoAndPhotos/sentImage.jpg';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { RootState } from '../../../redux/store';
 import { UserState } from '../../../redux/reducers/userReducer';
 import TextField from '@mui/material/TextField';
+import axios from 'axios';
+import ItemContainer from '../../../redux/testRedux/ItemContainer/dist/ItemContainer';
 
 interface ListIF {
     imgURL?: string;
@@ -44,53 +47,34 @@ function List() {
 
     const { userInfo } = userLogin;
 
-    const [numberOfPeople, setNumberOfPeople] = useState(12);
-
-    const [bringList, setBringList] = useState([
-        {
-            userName: (userInfo && userInfo.email) ? userInfo.email : "Unknown",
-            items: ["somthing", "someting2"]
-        },
-        // {
-        //     userName: "Person A",
-        //     item: "somthing"
-        // },
-        // {
-        //     userName: "Person B",
-        //     item: "somthing"
-        // },
-        // {
-        //     userName: "Person C",
-        //     item: "somthing"
-        // },
-        // {
-        //     userName: "Person D",
-        //     item: "somthing"
-        // },
-        // {
-        //     userName: "Person E",
-        //     item: "somthing"
-        // },
-    ]);
-
+    const [listInfoFromLocalStorage, setListInfoFromLocalStorage] = useState(localStorage.getItem('curList') ? JSON.parse(localStorage.getItem('curList')!) : undefined);
+    const [updatePage, setUpdatePage] = useState(0);
     /**
      * upcoming list 
      * search list by id from list store in redux
      * useEffect fetch data from last week
      */
 
-    const listInfoFromLocalStorage = localStorage.getItem('curList') ? JSON.parse(localStorage.getItem('curList')!) : undefined;
+    // const listInfoFromLocalStorage = localStorage.getItem('curList') ? JSON.parse(localStorage.getItem('curList')!) : undefined;
 
     useEffect(() => {
         console.log("listId:", listId);
         console.log("curList:", listInfoFromLocalStorage);
+
+        axios.post('/meeting/getListByID', { id: listId }).then(data => {
+            if (data.data.ok) {
+                console.log(data.data);
+                setListInfoFromLocalStorage(data.data.list);
+                localStorage.setItem('curList', JSON.stringify(data.data.list));
+            }
+        })
         if (userInfo == undefined) {
             nav('/login');
         }
         if (listInfo != undefined) {
             setList([listInfo]);
         }
-    }, [listInfoFromLocalStorage]);
+    }, [updatePage]);
 
     function handleAddFriends(ev: any) {
         ev.preventDefault();
@@ -106,59 +90,28 @@ function List() {
         nav('/home');
     }
 
-    // function handleAddOrNot(ev: any, flag: boolean) {
-    //     ev.preventDefault();
-    //     flag ? console.log("add") : console.log("not");
-    //     if (flag) {
-    //         let flag = false;
-    //         bringList.map((element) => {
-    //             if (element.userName == (userInfo && userInfo.email)) {
-    //                 element.items.push(whatToBring);
-    //                 setBringList([...bringList]);
-    //                 flag = true;
-    //             }
-    //         })
-    //         if (!flag) {
-    //             setBringList([{
-    //                 userName: (userInfo && userInfo.email) ? userInfo.email : "Unknown",
-    //                 items: [whatToBring]
-    //             }, ...bringList])
-    //         }
-    //     }
-    // }
-
     function handleAddOrNot(ev: any, flag: boolean) {
         ev.preventDefault();
         flag ? console.log("add") : console.log("not");
         if (flag) {
-            const getItemFromLocal = localStorage.getItem('curList') ? JSON.parse(localStorage.getItem('curList')!) : undefined;
-            localStorage.setItem('curList', JSON.stringify(getItemFromLocal));
-            let flag1 = false;
-            getItemFromLocal.bringItems.map((element: any) => {
-                if (element.userName == (userInfo && userInfo.email)) {
-                    element.items.push(whatToBring);
-                    // setBringList([...bringList]);
-                    flag1 = true;
-                    localStorage.setItem('curList', JSON.stringify(getItemFromLocal));
-                    
-
-                    /**
-                     * save to DB
-                     */
+            const updatedData = {
+                id: listId,
+                updatedList: {
+                    items: whatToBring,
+                    userName: {
+                        email: userInfo.email
+                    }
                 }
-            })
-            if (!flag1) {
-                getItemFromLocal.bringItems.push({
-                    userName: (userInfo && userInfo.email) ? userInfo.email : "Unknown",
-                    items: [whatToBring]
-                })
-                localStorage.setItem('curList', JSON.stringify(getItemFromLocal));
             }
+            axios.patch('/meeting/updateListByID', updatedData).then(data => {
+                console.log(data);
+                setUpdatePage(updatePage + 1);
+            })
         }
     }
 
     return (
-        <>{userInfo != undefined ?
+        <>{userInfo !== undefined ?
             <div className="mainTemplate">
                 <div className="mainHeader withHome">
                     <div className="homeDiv">
@@ -169,10 +122,10 @@ function List() {
                             <img onClick={handleSettings} src={settings} alt="" />
                         </div>
                     </div>
-                    <img className='registerLogo listLogo' alt="" src={listInfo && listInfo.imgURL} />
+                    <img className='registerLogo listLogo' alt="" src={sentImage} />
                 </div>
                 <div className="mainContent">
-                    {listInfoFromLocalStorage != undefined ?
+                    {listInfoFromLocalStorage !== undefined ?
                         <div className="listHeader">
                             <label className='templateTitle marginTitleNormal'>{listInfoFromLocalStorage.meetingDetails.groupName}</label>
                             <div className="listInformation">
@@ -217,12 +170,11 @@ function List() {
                                 </div>
                                 {listInfoFromLocalStorage.bringItems.map((elem: any, index: number) => {
                                     return (
-
                                         <div key={index} className="whatToBring_items">
                                             <div className="whatToBring_items_user">
                                                 {/* <label id='userName'>{elem != undefined && elem.userName}</label> */}
-                                                <label id='userName'>{elem.userName}</label>
-                                                {elem.items.map((item:any) => {
+                                                <label id='userName'>{elem.userName.email}</label>
+                                                {elem.items.map((item: any) => {
                                                     return (<label>{item}</label>);
                                                 })}
                                             </div>

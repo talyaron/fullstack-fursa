@@ -6,8 +6,8 @@ const userSchema = new mongoose.Schema({
 });
 
 const ItemSchema = new mongoose.Schema({
-    item: String,
-    user: userSchema
+    items: [String],
+    userName: userSchema
 });
 
 const detailsSchema = new mongoose.Schema({
