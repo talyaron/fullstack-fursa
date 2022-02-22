@@ -2,7 +2,7 @@ import React from 'react'
 import logoImg from './logo-removebg-preview.png'
 import Btn from './Btn'
 import { Link } from 'react-router-dom';
-
+import BottomNav from './BottomNav' 
 function EmptyPlan() {
   return (
     <div className="Middle">
@@ -27,6 +27,7 @@ function EmptyPlan() {
         <Link className="linkStyle" to="/plandecider">
           <Btn title={"next"} />
         </Link>
+        <BottomNav/>
     </div>
   );
 }

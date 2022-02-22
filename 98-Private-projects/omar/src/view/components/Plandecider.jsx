@@ -1,38 +1,61 @@
 import React from 'react'
-// import logoImg from './logo-removebg-preview.png'
-// import Btn from './Btn'
-// import { Link } from 'react-router-dom';
-// import TodayIcon from '@mui/icons-material/Today';
-import Test from './Test';
+import TodayIcon from '@mui/icons-material/Today';
+import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
+import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
+import Btn from './Btn'
+import { Link } from 'react-router-dom';
+import logoImg from './logo-removebg-preview.png'
+import BottomNav from './BottomNav' 
+
 
 function Plandecider() {
   return (
     <div className="Middle">
-      {/* <img src={logoImg} alt="" className="logo" />
+      <img src={logoImg} alt="" className="logo" />
       <p className="title">
-        <b>Designe your Plan</b>
+        <b>Personal Plan</b>
       </p>
-      <br></br> <br></br><br></br><br></br>
-      <div className="flex">
-        <TodayIcon style={{ fontSize: 50 }}/>
-        <p><b>plan duration</b></p>
-        <button>asasa</button>
-      </div>
-      <br></br> <br></br><br></br><br></br>
-      <div className="flex">
-        <img src={logoImg} alt="" />
-        <p>plan duration</p>
-        <button>asasa</button>
+      <br></br> <br></br>
+      <div className="grid-container">
+        <div className="grid-item">
+          <TodayIcon style={{ fontSize: 50 }} />
         </div>
-        <br></br> <br></br><br></br><br></br>
-      <div className="flex">
-        <img src={logoImg} alt="" />
-        <p>plan duration</p>
-        <button>asasa</button>
-      </div> */}
-      <Test/>
+        <div className="grid-item">Plan Duration</div>
+        <div className="grid-item">
+        <Link className="linkStyle" to="/duration">
+          <Btn title={"select"} />
+          </Link>
+        </div>
+        <div className="grid-item">
+          <FitnessCenterIcon style={{ fontSize: 50 }} />
+        </div>
+        <div className="grid-item">Exercises</div>
+        <div className="grid-item">
+        <Link className="linkStyle" to="/exercises">
+          <Btn title={"add"} />
+          </Link>
+        </div>
+        <div className="grid-item">
+          <LibraryMusicIcon style={{ fontSize: 50 }} />
+        </div>
+        <div className="grid-item">Music</div>
+        <div className="grid-item">
+          <Link className="linkStyle" to="/Music">
+            <Btn title={"add"} />
+          </Link>
+        </div>
+      </div>
+      <Link className="linkStyle" to="/Music">
+        <div >
+          <Btn 
+            title={"Add to your plans"}
+          />
+        </div>
+      </Link>
+      <BottomNav />
     </div>
   );
 }
 
 export default Plandecider
+

@@ -15,15 +15,22 @@ import Weight from './view/components/Weight';
 import Plan from './view/components/PersonalPlan'
 import SingleWorkout from './view/components/SingleWorkout';
 import EmptyPlan from './view/components/EmptyPlan';
-import PlanGenerator from './view/components/PlanGenerator';
+import PlanGenerator from './view/components/MyPlans';
 import Food from './view/components/Food';
 import Profile from './view/components/Profile';
 import Plandecider from './view/components/Plandecider';
+import Music from './view/components/Music';
+import Exercises from './view/components/Exercises';
+import Duration from './view/components/Duration';
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
+        <Route exact path="/music" element={<Music/>}/>
+        <Route exact path="/exercises" element={<Exercises/>}/>
+        <Route exact path="/duration" element={<Duration/>}/>
+
         <Route exact path="/plandecider" element={<Plandecider/>}/>
         <Route exact path="/food" element={<Food/>}/>
         <Route exact path="/profile" element={<Profile/>}/>

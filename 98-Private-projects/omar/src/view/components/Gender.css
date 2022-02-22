@@ -15,7 +15,7 @@
 }
 
 .Male:hover {
-    background-color: #3e0bc9; /* Green */
+    background-color: #3e0bc9; 
     color: white;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
@@ -54,21 +54,21 @@
 
   .Other{
     background-color: grey;
-width: 350px;
-height:50px;
-border-radius: 10px;
-font-size: 20px;
-font-weight: bold;
-margin:10px;
-text-align: center;
+    width: 350px;
+    height:50px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    margin:10px;
+    text-align: center;
 }
 .Other:hover {
     /* background-color: #3e0bc9; Green */
-background: #ff3232;
-background: -moz-linear-gradient(-45deg, #ff3232 0%, #ff3030 50%, #282fff 51%, #005dff 100%);
-background: -webkit-linear-gradient(-45deg, #ff3232 0%,#ff3030 50%,#282fff 51%,#005dff 100%);
-background: linear-gradient(135deg, #ff3232 0%,#ff3030 50%,#282fff 51%,#005dff 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3232', endColorstr='#005dff',GradientType=1 );
+    background: #ff3232;
+    background: -moz-linear-gradient(-45deg, #ff3232 0%, #ff3030 50%, #282fff 51%, #005dff 100%);
+    background: -webkit-linear-gradient(-45deg, #ff3232 0%,#ff3030 50%,#282fff 51%,#005dff 100%);
+    background: linear-gradient(135deg, #ff3232 0%,#ff3030 50%,#282fff 51%,#005dff 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3232', endColorstr='#005dff',GradientType=1 );
     color: white;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
@@ -79,15 +79,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3232', end
     background: -webkit-linear-gradient(-45deg, #ff3232 0%,#ff3030 50%,#282fff 51%,#005dff 100%);
     background: linear-gradient(135deg, #ff3232 0%,#ff3030 50%,#282fff 51%,#005dff 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3232', endColorstr='#005dff',GradientType=1 );
-        color: white;
-        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);  }
+    color: white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);  }
 
-        .linkStyle{
-            text-decoration: none;
-        }
+.linkStyle{
+    text-decoration: none;
+}
 
 .Middle{
     display: flex;
     flex-direction: column;
 }
+
+
 

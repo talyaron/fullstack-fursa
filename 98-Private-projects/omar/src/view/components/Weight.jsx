@@ -2,7 +2,12 @@ import React from 'react'
 import Header from './Header'
 import Btn from './Btn'
 import { Link } from 'react-router-dom';
-import ComboBox1 from './ComboBox1';
+import ComboBox from './ComboBox';
+
+const measurment = [
+  { label: 'KG' },
+  { label: 'LBS' } ]
+  
 function Weight() {
   return (
     <div>
@@ -10,7 +15,7 @@ function Weight() {
       <Header/>
       <div className="Middle">
         <p className="underTilte">your weight? </p>
-        <ComboBox1/>
+        <ComboBox measurment={measurment}/>
         <br></br>
         <input
         className="Input1"
