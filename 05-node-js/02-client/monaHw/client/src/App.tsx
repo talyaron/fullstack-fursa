@@ -21,6 +21,7 @@ import Door from "./view/pages/woodProduct/Door";
 import Closet from "./view/pages/woodProduct/Closet";
 import WoodProduct from "./view/pages/woodProduct/WoodProduct";
 import NavProduct from "./view/pages/product/NavProduct";
+import ChekOutOrder from './view/pages/checkOutOrder/CheckOutOrder';
 
 function App() {
   const [product, setProduct] = useState([])
@@ -48,10 +49,13 @@ function App() {
         <Route path="product/:productId" element={<Product />} >
         <Route path=":woodproname" element={<NavProduct />} />
         </Route>
-        <Route path="woodProduct/:woodproname" element={<NavProduct  />} />
+        {/* <Route path="woodProduct/:woodproname" element={<NavProduct  />} /> */}
          
         <Route path="order/:name" element={<Order product={product} setProduct={setProduct} />} />
-        <Route path="cart" element={<Cart product={product} setProduct={setProduct} />} />
+        <Route path="cart" element={<Cart product={product} setProduct={setProduct} />} >
+          <Route path="checkOutOrder" element={<ChekOutOrder />} />
+
+          </Route>
 
 
       </Routes>

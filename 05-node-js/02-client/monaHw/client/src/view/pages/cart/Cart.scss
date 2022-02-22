@@ -1,14 +1,14 @@
 .cart{
-   
+  
    
     width: 100%;
     height: auto;
-
+    position: relative;
     &_header{
       display: flex;
       flex-direction: row;
       align-items: center;
-      //  justify-content: space-between;
+      // justify-content: center;
       height: 20%;
       width: 100%;
        background-color: white;
@@ -69,7 +69,13 @@
 
     }
 }
-
+&_done{
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+}
+
 
 }

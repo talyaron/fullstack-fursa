@@ -1,0 +1,23 @@
+.checkOut{
+    width:100%;
+    background-color: rgba(73, 48, 24, 0.13);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    position: absolute;
+    &_grid{
+        background-color:rgb(248, 140, 38) ;
+        display: grid;;
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: repeat(2,1fr);
+        .item{
+
+            img{
+                width: 15vw;
+                padding: 2%;
+            }
+        }
+
+    }
+}
