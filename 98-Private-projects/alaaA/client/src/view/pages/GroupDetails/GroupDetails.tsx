@@ -11,7 +11,8 @@ import Paper from '@mui/material/Paper';
 import Header from '../../components/header/header';
 import axios from 'axios';
 import { useState , useEffect } from "react";
-
+import {useParams} from 'react-router-dom';
+import './GroupDetails.scss';
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -54,70 +55,51 @@ interface user{
 }
 
 
-  function handleColumnValue (id:string){
-    console.log(id)
-  }
-
-
-export default function Mygroups(id:string) {
-  useEffect(()=>{axios.get('http://localhost:3004/user/${id}').then(({data})=>{
-    
  
-    const arr:Array<any> = [
-      {
-        id: data[0].id,
-        name: data[0].groupName
-      },
-      {
-        id: data[1].id,
-        name: data[1].groupName
-      },
 
-      {
-        id: data[2].id,
-        name: data[2].groupName
-      }
-      
-    ]
-    
+export default function GroupDetails() {
+  const {id} = useParams();
+  
+  useEffect(()=>{axios.get(`http://localhost:3004/group/${id}`).then(({data})=>{
+    console.log('Response from main API: ',data)
+   // data.groupMember
+   const arr = [...data.groupMember];
+   setGroupName(data.groupName);
+   console.log(arr);
+   setArr(arr)
+   console.log('group name:',{groupName});
+  })
+  },[]);
 
-    setRows(arr);
-    console.log(rows);
-    setGroup(data);
-
-  })},[]);
-
-  const [group,setGroup]=useState([]);
-  const [rows,setRows]=useState<Array<any>>([]);
-
+  const [arr,setArr]=useState<Array<GroupMember>>([]);
+  const [groupName,setGroupName]=useState("");
   
  
   return (
     <div>
     <Header></Header>
-     
+    <div className='groupName'>{groupName}</div>
+   
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 300 }} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell align="center">Group ID </StyledTableCell>
-            <StyledTableCell align="center"> Group Name</StyledTableCell>
-            <StyledTableCell align="center"> Actions </StyledTableCell>
+            <StyledTableCell align="center"> MemberID </StyledTableCell>
+           
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {arr.map((row) => (
             <StyledTableRow key={row.id}>
               <StyledTableCell align="center" component="th" scope="row">
                 {row.id}
               </StyledTableCell>
-              <StyledTableCell align="center">{row.name}</StyledTableCell>
-              <StyledTableCell align="center"> <PeopleIcon onClick={()=> handleColumnValue(row.id)}> </PeopleIcon></StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
       </Table>
     </TableContainer>
+
     </div>
   );
 }

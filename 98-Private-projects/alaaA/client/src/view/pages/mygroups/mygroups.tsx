@@ -11,7 +11,7 @@ import Paper from '@mui/material/Paper';
 import Header from '../../components/header/header';
 import axios from 'axios';
 import { useState , useEffect} from "react";
-import { Link } from "react-router-dom";
+import  { Outlet,Link, useNavigate} from "react-router-dom";
 import GroupDetails from '../GroupDetails/GroupDetails';
 import ProductionQuantityLimitsSharpIcon from '@mui/icons-material/ProductionQuantityLimitsSharp';
 
@@ -49,8 +49,9 @@ interface group {
 
 
   function handleColumnValue (id:string){
-   console.log(id)
-  }
+   console.log(id);
+
+   }
 
 
 export default function Mygroups() {
@@ -85,7 +86,7 @@ export default function Mygroups() {
   const [group,setGroup]=useState([]);
   const [rows,setRows]=useState<Array<any>>([]);
 
-  
+  let navigate = useNavigate();
  
   return (
     <div>
@@ -108,7 +109,9 @@ export default function Mygroups() {
               </StyledTableCell>
               <StyledTableCell align="center">{row.name}</StyledTableCell>
               <StyledTableCell align="center"> 
-              <PeopleIcon onClick={()=> handleColumnValue(row.id)}> </PeopleIcon>
+              <PeopleIcon onClick={()=>{
+                navigate(`/mygroups/${row.id}`);
+              }}> </PeopleIcon>
               <ProductionQuantityLimitsSharpIcon> </ProductionQuantityLimitsSharpIcon>
               </StyledTableCell>
             </StyledTableRow>

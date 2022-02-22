@@ -19,6 +19,7 @@ import Cart from './view/components/Cart/Cart'
 import AboutUsIn from "./view/pages/aboutUsIn/aboutUsIn"
 import Help from "./view/pages/help/help"
 import Settings from "./view/pages/settings/settings"
+import GroupDetails from './view/pages/GroupDetails/GroupDetails';
 
 
 
@@ -54,13 +55,17 @@ return(
     <Route path="Store" element={<Store />} >
     {/* <Route path="HomePage" element={<HomePage />} /> */}
     </Route>
-    <Route path="mygroups" element={<Mygroups />} />
+    <Route path="/mygroups" element={<Mygroups />} />
+    <Route path="/mygroups/:id" element={<GroupDetails/>} />
+      
 
+    <Route path="GroupDetails" element={<GroupDetails />} />
     <Route path="profile" element={<Profile />} />
 
     <Route path="aboutUsIn" element={<AboutUsIn />} />
     <Route path="help" element={<Help />} />
-    <Route path="settings" element={<Settings />} />
+    
+    
 
     {/* <Route></Route> */}
     {/* </Route> */}
