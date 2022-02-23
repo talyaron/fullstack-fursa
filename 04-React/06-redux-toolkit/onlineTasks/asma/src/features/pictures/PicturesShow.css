@@ -1,0 +1,8 @@
+.pictures{
+    display: flex;
+    flex-direction: row;
+
+}   
+ img{
+        max-width: 20rem;
+ }
