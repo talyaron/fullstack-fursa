@@ -5,7 +5,7 @@ import { selectedCourseName, selectedTeacherName } from "../../../../app/reducer
 import StudentResponsiveAppBar from "../../components/header/StudentAppBar";
 import MaterialSection from "../../components/materialSection/MaterialSection";
 import UpdatesList from "../../components/updatesList/UpdatesList";
-// import './Course.scss';
+import './Course.scss';
 
 const materials = [
     { title: 'material title1', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' },
@@ -30,45 +30,49 @@ export default function StudentCourse() {
     return (
         <div>
             <div className="bar">
-            <StudentResponsiveAppBar></StudentResponsiveAppBar>
+                <StudentResponsiveAppBar></StudentResponsiveAppBar>
             </div>
 
-            <div className="title">
-                <Typography variant='h3' align='center'>{courseName}</Typography>
-                <Typography variant='h5' align='center'>{teacherName}</Typography>
+            <div className="subContainer">
 
-            </div>
 
-            <div className="course">
-                <div className="course__material">
-                    <Divider >
-                        <Typography variant='h5' >COURSE MATERIAL</Typography>
-                    </Divider>
 
-                    {
-                        materials.map((material, i) => {
-                            const { title, description } = material;
-                            return (
-                                <MaterialSection key={i} title={title} description={description} />
-                            );
-                        })
-                    }
+                <div className="title">
+                    <Typography variant='h3' align='center'>{courseName}</Typography>
+                    <Typography variant='h5' align='center'>{teacherName}</Typography>
+
                 </div>
 
-                <span>
-                    <Divider className='divider' orientation="vertical" variant="middle" flexItem></Divider>
-                </span>
+                <div className="course">
+                    <div className="course__material">
+                        <Divider >
+                            <Typography variant='h5' >COURSE MATERIAL</Typography>
+                        </Divider>
+
+                        {
+                            materials.map((material, i) => {
+                                const { title, description } = material;
+                                return (
+                                    <MaterialSection key={i} title={title} description={description} />
+                                );
+                            })
+                        }
+                    </div>
+
+                    <span>
+                        <Divider className='divider' orientation="vertical" variant="middle" flexItem></Divider>
+                    </span>
 
 
 
 
-                <div className="course__recentUpdates">
-                    <Typography className='title' variant='subtitle2' align='center'>RECENT UPDATES</Typography>
-                    <UpdatesList updates={updates} />
+                    <div className="course__recentUpdates">
+                        <Typography className='title' variant='subtitle2' align='center'>RECENT UPDATES</Typography>
+                        <UpdatesList updates={updates} />
+                    </div>
                 </div>
+
             </div>
-
-
 
         </div>
     );

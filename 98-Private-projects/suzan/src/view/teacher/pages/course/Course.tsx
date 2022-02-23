@@ -33,41 +33,45 @@ export default function Course() {
                 <CourseResponsiveAppBar></CourseResponsiveAppBar>
             </div>
 
-            <div className="title">
-                <Typography variant='h3' align='center'>{courseName}</Typography>
-                <Typography variant='h5' align='center'>{className}</Typography>
-            </div>
+            <div className="subContainer">
 
-            <div className="course">
-                <div className="course__material">
-                    <Divider >
-                        <Typography variant='h5' >COURSE MATERIAL</Typography>
-                    </Divider>
 
-                    {
-                        materials.map((material, i) => {
-                            const { title, description } = material;
-                            return (
-                                <MaterialSection key={i} title={title} description={description} />
-                            );
-                        })
-                    }
+
+                <div className="title">
+                    <Typography variant='h3' align='center'>{courseName}</Typography>
+                    <Typography variant='h5' align='center'>{className}</Typography>
                 </div>
 
-                <span>
-                    <Divider className='divider' orientation="vertical" variant="middle" flexItem></Divider>
-                </span>
+                <div className="course">
+                    <div className="course__material">
+                        <Divider >
+                            <Typography variant='h5' >COURSE MATERIAL</Typography>
+                        </Divider>
+
+                        {
+                            materials.map((material, i) => {
+                                const { title, description } = material;
+                                return (
+                                    <MaterialSection key={i} title={title} description={description} />
+                                );
+                            })
+                        }
+                    </div>
+
+                    <span>
+                        <Divider className='divider' orientation="vertical" variant="middle" flexItem></Divider>
+                    </span>
 
 
 
 
-                <div className="course__recentUpdates">
-                    <Typography className='title' variant='subtitle2' align='center'>RECENT UPDATES</Typography>
-                    <UpdatesList updates={updates} />
+                    <div className="course__recentUpdates">
+                        <Typography className='title' variant='subtitle2' align='center'>RECENT UPDATES</Typography>
+                        <UpdatesList updates={updates} />
+                    </div>
                 </div>
+
             </div>
-
-
 
         </div>
     );

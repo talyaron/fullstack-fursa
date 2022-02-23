@@ -14,8 +14,8 @@ import Paper from '@mui/material/Paper';
 import './StudentExams.scss';
 
 const exams = [
-    {course: "English", material:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
-    {course: "Math", material:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'}
+    { course: "English", material: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' },
+    { course: "Math", material: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' }
 ]
 
 export default function StudentExams() {
@@ -34,40 +34,45 @@ export default function StudentExams() {
                 <StudentResponsiveAppBar></StudentResponsiveAppBar>
             </div>
 
-            <div className="calendarAndExams">
-                <div className="calendar">
-                    <LocalizationProvider dateAdapter={AdapterDateFns}>
-                        <DesktopDatePicker
-                            inputFormat="MM/dd/yyyy"
-                            value={selectedDate}
-                            onChange={handleChange}
-                            renderInput={(params) => <TextField {...params} />}
-                        />
-                    </LocalizationProvider>
-                </div>
+            <div className="subContainer">
 
-                <div className="examsTable">
-                    <TableContainer component={Paper}>
-                        <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell align="center">Course</TableCell>
-                                    <TableCell align="center">description</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {exams.map((exam, i) => (
-                                    <TableRow
-                                        key={i}
-                                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                    >
-                                        <TableCell align="center">{exam.course}</TableCell>
-                                        <TableCell align="center">{exam.material}</TableCell>
+
+
+                <div className="calendarAndExams">
+                    <div className="calendar">
+                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+                            <DesktopDatePicker
+                                inputFormat="MM/dd/yyyy"
+                                value={selectedDate}
+                                onChange={handleChange}
+                                renderInput={(params) => <TextField {...params} />}
+                            />
+                        </LocalizationProvider>
+                    </div>
+
+                    <div className="examsTable">
+                        <TableContainer component={Paper}>
+                            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell align="center">Course</TableCell>
+                                        <TableCell align="center">description</TableCell>
                                     </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
+                                </TableHead>
+                                <TableBody>
+                                    {exams.map((exam, i) => (
+                                        <TableRow
+                                            key={i}
+                                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                        >
+                                            <TableCell align="center">{exam.course}</TableCell>
+                                            <TableCell align="center">{exam.material}</TableCell>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
+                    </div>
                 </div>
             </div>
 

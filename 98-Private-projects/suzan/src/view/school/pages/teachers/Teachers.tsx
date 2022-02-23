@@ -9,7 +9,7 @@ import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRou
 import './Teachers.scss';
 import Button from '@mui/material/Button';
 import EditIcon from '@mui/icons-material/Edit';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 export interface teacherInfo {
@@ -36,36 +36,39 @@ export default function SchoolTeachers() {
                 <   SchoolResponsiveAppBar></SchoolResponsiveAppBar>
             </div>
 
-            <Link to='/newTeacher'>
-                <Button className='newteacherBtn' variant="contained" size='small' startIcon={<EditIcon/>}>New Teacher</Button>
-            </Link>
-            
+            <div className="subContainer">
+                <Link to='/newTeacher'>
+                    <Button className='newteacherBtn' variant="contained" size='small' startIcon={<EditIcon />}>New Teacher</Button>
+                </Link>
 
-            <div className="search">
-                <TextField
-                    id="outlined-basic"
-                    label="search by name, id, email..."
-                    variant="outlined"
-                    size="small"
-                    InputProps={{
-                        startAdornment: (
-                            <InputAdornment position="start">
-                                <SearchIcon />
-                            </InputAdornment>
-                        ),
-                    }}
-                />
 
+                <div className="search">
+                    <TextField
+                        id="outlined-basic"
+                        label="search by name, id, email..."
+                        variant="outlined"
+                        size="small"
+                        InputProps={{
+                            startAdornment: (
+                                <InputAdornment position="start">
+                                    <SearchIcon />
+                                </InputAdornment>
+                            ),
+                        }}
+                    />
+
+                </div>
+
+                <div className="teachers">
+                    <div className="teachers__list">
+                        <TeachersList teachers={teachers} />
+                    </div>
+                    <div className="teachers__info">
+                        <Outlet />
+                    </div>
+                </div>
             </div>
 
-            <div className="teachers">
-                <div className="teachers__list">
-                    <TeachersList teachers={teachers} />
-                </div>
-                <div className="teachers__info">
-                    <Outlet />
-                </div>
-            </div>
         </div>
     );
 }

@@ -24,26 +24,32 @@ export default function SchoolClasses() {
             <div className='bar'>
                 <   SchoolResponsiveAppBar></SchoolResponsiveAppBar>
             </div>
+            <div className="subContainer">
+                <div className="newclassBtn">
+                    <Link to='/newClass'>
+                        <Button variant="contained" size='small' startIcon={<EditIcon />}>
+                            Create new class
+                        </Button>
+                    </Link>
+                </div>
 
-            <Link to='/newClass'>
-                <Button className='newclassBtn' variant="contained" size='small' startIcon={<EditIcon />}>
-                    Create new class
-                </Button>
-            </Link>
 
-            <div className="classesContainer">
-                {
-                    arr.map((classroom, index) => {
-                        const { name, teacher } = classroom;
-                        return (
-                            <Link to='/class'>
-                                <ClassCard key={index} info={classroom} />
-                            </Link>
+                <div className="classesContainer">
+                    {
+                        arr.map((classroom, index) => {
+                            const { name, teacher } = classroom;
+                            return (
+                                <Link to='/class'>
+                                    <ClassCard key={index} info={classroom} />
+                                </Link>
 
-                        );
-                    })
-                }
+                            );
+                        })
+                    }
+                </div>
             </div>
+
+
         </div>
     );
 }

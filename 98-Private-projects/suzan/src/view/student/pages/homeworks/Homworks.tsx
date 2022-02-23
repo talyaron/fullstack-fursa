@@ -25,37 +25,41 @@ export default function StudentHomeworks() {
                 <StudentResponsiveAppBar></StudentResponsiveAppBar>
             </div>
 
-            <div className="homeworksTable">
+            <div className="subContainer">
 
-                <Divider className='divider'>
-                    <Typography variant='h5' >HOMEWORKS</Typography>
-                </Divider>
 
-                <TableContainer component={Paper}>
-                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                        <TableHead>
-                            <TableRow>
-                                <TableCell align="center">Date</TableCell>
-                                <TableCell align="center">Course</TableCell>
-                                <TableCell align="center">description</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {homeworks.map((homework, i) => (
-                                <TableRow
-                                    key={i}
-                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                >
-                                    <TableCell align="center" component="th" scope="row">
-                                        {homework.date}
-                                    </TableCell>
-                                    <TableCell align="center">{homework.course}</TableCell>
-                                    <TableCell align="center">{homework.description}</TableCell>
+                <div className="homeworksTable">
+
+                    <Divider className='divider'>
+                        <Typography variant='h5' >HOMEWORKS</Typography>
+                    </Divider>
+
+                    <TableContainer component={Paper}>
+                        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell align="center">Date</TableCell>
+                                    <TableCell align="center">Course</TableCell>
+                                    <TableCell align="center">description</TableCell>
                                 </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
+                            </TableHead>
+                            <TableBody>
+                                {homeworks.map((homework, i) => (
+                                    <TableRow
+                                        key={i}
+                                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                    >
+                                        <TableCell align="center" component="th" scope="row">
+                                            {homework.date}
+                                        </TableCell>
+                                        <TableCell align="center">{homework.course}</TableCell>
+                                        <TableCell align="center">{homework.description}</TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                </div>
             </div>
         </div>
     );
