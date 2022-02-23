@@ -1,0 +1,35 @@
+.content{
+
+    .content__row1{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        margin: 20px 200px 0px 200px;
+        .content__box {
+            flex: 1;       
+            .title{
+                width: 90%;
+
+                h1{
+                    font-size:2.5vw;
+                }
+                h2{
+                    font-size:1.5vw;
+                }
+            } 
+            img{
+                  width: 40vw;
+            } 
+
+            img:hover{
+                opacity: 0.9;
+                transform: scale(1.05);
+            }
+        }
+            .text{
+                text-align: left;
+                font-size: 25px;
+                margin: 0 20% 0 20%;
+            }
+    }
+}
