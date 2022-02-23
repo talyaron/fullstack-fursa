@@ -3,6 +3,7 @@
     flex-direction: row;
 
 }   
- img{
+ .pictures img{
         max-width: 20rem;
+        margin: 10px;
  }
