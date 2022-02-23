@@ -1,0 +1,186 @@
+html, body {
+  margin: 0px;
+  font-size: 15px;
+}
+
+.header {
+  font-family: sans-serif;
+  background-color: white;
+  box-shadow: 2px 2px 10px rgba(109, 109, 109, 0.8);
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.header__right {
+  display: flex;
+  align-items: center;
+}
+.header__right .search {
+  margin-right: 10px;
+}
+.header__right .search:hover {
+  color: #30afc5;
+  cursor: default;
+}
+.header__right .search:hover .hiddenSearch {
+  display: block;
+}
+.header__right .search .hiddenSearch {
+  display: none;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  height: fit-content;
+  text-align: center;
+  box-shadow: 10px 10px 10px rgba(109, 109, 109, 0.8);
+}
+.header__right .search .hiddenSearch .blankHeaderSearch {
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0);
+}
+.header__right .search .hiddenSearch .hiddenDataSearch {
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  background-color: #eaf8f8;
+}
+.header__right .search .hiddenSearch .hiddenDataSearch .hiddenBlockSearch {
+  width: 100%;
+  max-width: 400px;
+  padding: 5px;
+  color: black;
+  margin: auto;
+}
+.header__right .search .hiddenSearch .hiddenDataSearch .hiddenBlockSearch input {
+  width: 100%;
+}
+.header__right .search .hiddenSearch .hiddenDataSearch .hiddenBlockSearch:hover {
+  cursor: pointer;
+}
+.header__left {
+  display: flex;
+  align-items: center;
+}
+.header__menu {
+  margin-left: 50px;
+  display: flex;
+}
+.header__menu__item {
+  font-size: 1.1rem;
+  margin-right: 10px;
+  padding: 5px;
+}
+.header__menu__item:hover {
+  color: #30afc5;
+  border-radius: 25px;
+  cursor: default;
+}
+.header__menu__item:hover .hidden {
+  display: block;
+}
+.header__menu__item .hidden {
+  display: none;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  height: fit-content;
+  text-align: center;
+  box-shadow: 10px 10px 10px rgba(109, 109, 109, 0.8);
+}
+.header__menu__item .hidden .blankHeader {
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0);
+}
+.header__menu__item .hidden .hiddenData {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #eaf8f8;
+}
+.header__menu__item .hidden .hiddenData .hiddenBlock {
+  width: 45%;
+  max-width: 300px;
+  height: 48%;
+  border: 1px solid #5a5656;
+  border-radius: 10px;
+  padding: 5px;
+  background-color: white;
+  color: black;
+  margin: 5px;
+}
+.header__menu__item .hidden .hiddenData .hiddenBlock img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.header__menu__item .hidden .hiddenData .hiddenBlock p {
+  font-size: 0.8rem;
+}
+.header__menu__item .hidden .hiddenData .hiddenBlock:hover {
+  cursor: pointer;
+}
+.header .logo {
+  margin-left: 3vw;
+  background-image: url(https://blog.hubspot.com/hubfs/assets/hubspot.com/web-team/WBZ/Blog%202021/Images/Logos/HubSpot%20Logo.svg);
+  width: 100px;
+  height: 40px;
+  background-size: 100%;
+  margin-top: 10px;
+  background-repeat: no-repeat;
+}
+
+/*.btn{
+    background-color: teal;
+    border-radius: 5px;
+    padding: 10px 20px;
+    width: fit-content;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.205);
+    color: white;
+
+    &:hover{
+        box-shadow: 2x 2px 6px rgba(0, 0, 0, 0.205);
+        opacity: 0.9;
+    }
+
+    &--danger{
+        background-color: red;
+    }
+
+    &--header{
+        background-color: rgb(187, 187, 187);
+    }
+}*/
+.image {
+  width: 40px;
+}
+
+.content .content__row1 {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: 20px 200px 0px 200px;
+}
+.content .content__row1 .content__box {
+  flex: 1;
+}
+.content .content__row1 .content__box .title {
+  width: 90%;
+}
+.content .content__row1 .content__box .title h1 {
+  font-size: 2.5vw;
+}
+.content .content__row1 .content__box .title h2 {
+  font-size: 1.5vw;
+}
+.content .content__row1 .content__box img {
+  width: 40vw;
+}
+.content .content__row1 .content__box img:hover {
+  opacity: 0.9;
+  width: 41vw;
+}
+.content .content__row1 .text {
+  text-align: left;
+  font-size: 25px;
+  margin: 0 20% 0 20%;
+}
