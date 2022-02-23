@@ -94,6 +94,14 @@
       "thick": "3",
       "amount": "",
       "id": 6
+    },
+    {
+      "woodName": "Maple Wood",
+      "woodlength": "250",
+      "width": "160",
+      "thick": "22",
+      "amount": "",
+      "id": 7
     }
   ]
 }
