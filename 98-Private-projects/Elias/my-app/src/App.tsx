@@ -4,10 +4,6 @@ import ViewList from './view/components/ViewList/ViewList';
 import Navbar from './view/components/nav/Navbar'
 import Bottom_Nav from './view/components/nav/Bottom_Nav';
 
-import { Router } from 'react-router-dom';
-import { useNavigate } from "react-router-dom";
-
-
 import {
   BrowserRouter,
   Routes,
@@ -27,11 +23,12 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path="/Signup" element={<Signup />} />
-        <Route path="/ViewLis" element={<ViewList />} />
+       
         <Route path="/" element={<Homepage />} />
         <Route path="/TravelInfo1" element={< TravelInfo1/>} />
         <Route path="/TravelInfo2" element={< TravelInfo2/>} />
+        <Route path="/Signup" element={<Signup />} />
+        <Route path="/ViewList" element={<ViewList />} />
       </Routes>
       <Bottom_Nav />
     </BrowserRouter>

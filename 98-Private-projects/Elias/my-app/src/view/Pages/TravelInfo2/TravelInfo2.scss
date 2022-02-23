@@ -1,0 +1,85 @@
+.wrapper {
+
+     margin:4px, 4px;
+     padding:4px;
+     height: 100%;
+     overflow-x: hidden;
+     overflow-y: auto;
+     padding-bottom:60px;
+     text-align:justify;
+     width: 100%;
+     .text{
+         padding: 10px;
+         color: #7572FC;
+         font-family:Monospace;
+         font-size: 20px;
+         font-weight: 550;
+
+     }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .catg{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+                border: 2px solid gray;
+                background-color: white;
+                border-radius: 20px;
+                margin: 10px;
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            padding: 10px;
+            row-gap: 5px;
+            column-gap: 5px;
+
+            .grid-item {
+                border: 1px solid gray;
+                background-color: white;
+                padding: 10px;
+                font-size: 30px;
+                text-align: center;
+                border-radius: 13pX;
+            }
+        }
+    }
+
+        .Proceedbtn {
+            color: white;
+            font-family: Poppins;
+            font-style: normal;
+            text-align: center;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 27px;
+            background-color: #FF8074;
+            border: #FF8074;
+            border-radius: 16px;
+            height: 47.75px;
+            width: 124px;
+
+            &:hover {
+                background-color: #fa6f63;
+
+            }
+        }
+
+
+    }
+}
+
+img {
+    height: 100%;
+    width: 100%;
+}
+
+input {
+    height: 38px;
+    width: 100%;
+    border-radius: 9px;
+
+}

@@ -19,11 +19,11 @@ var TravelInfo1 = function () {
     var nav = react_router_dom_1.useNavigate();
     var state = react_router_dom_1.useLocation().state;
     function clickProceed(e) {
-        nav('/Signup', {
+        nav('/TravelInfo2', {
             state: state
         });
     }
-    var dateValue = new Date(new Date().getFullYear(), new Date().getMonth(), 20);
+    //const dateValue: Date = new Date(new Date().getFullYear(), new Date().getMonth(), 20);
     return (React.createElement("div", { className: "wrapper" },
         React.createElement("div", { className: "header" }, " Fill travel info"),
         React.createElement("form", { action: "", className: "TarvelInfo1Form" },

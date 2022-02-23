@@ -24,11 +24,11 @@ const TravelInfo1 = () => {
     const { state }: any = useLocation();
 
     function clickProceed(e: any) {
-        nav('/Signup', {
+        nav('/TravelInfo2', {
             state: state
         });
     }
-    const dateValue: Date = new Date(new Date().getFullYear(), new Date().getMonth(), 20);
+    //const dateValue: Date = new Date(new Date().getFullYear(), new Date().getMonth(), 20);
 
 
     return (

@@ -1,12 +1,25 @@
 @import url("https://cdn.syncfusion.com/ej2/material.css");
 
+
 .wrapper {
-     height:100%;
+
+     margin:4px, 4px;
+     padding:4px;
+    // background-color: green;
+     height: 100%;
+     overflow-x: hidden;
+     overflow-y: auto;
+     padding-bottom:60px;
+     text-align:justify;
      width: 100%;
      .text{
+         padding: 10px;
          color: #7572FC;
-         font-family: Poppins;
+         font-family:Monospace;
          font-size: 20px;
+         font-weight: 550;
+         //text-shadow: 1px 1px grey;
+
      }
 
     form {
@@ -30,8 +43,6 @@
                 border-radius: 13pX;
             }
         }
-
-
 
         .Proceedbtn {
             color: white;

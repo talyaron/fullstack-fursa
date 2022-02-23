@@ -1,9 +1,9 @@
 "use strict";
 exports.__esModule = true;
+//import { useState } from 'react';
 require("./Signup.scss");
+//import { Link, useLocation, useNavigate } from "react-router-dom";
 function Signup(props) {
-    function hanleLetsStart(ev) {
-    }
     return (React.createElement("div", { className: 'wrapper' },
         React.createElement("div", null, "signup to save list"),
         React.createElement("div", { className: 'imagTeampet' },

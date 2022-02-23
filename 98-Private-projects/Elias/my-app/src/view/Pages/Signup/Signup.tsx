@@ -1,14 +1,10 @@
-import { useState } from 'react';
+//import { useState } from 'react';
 import './Signup.scss';
 
-import { Link, useLocation, useNavigate } from "react-router-dom";
+//import { Link, useLocation, useNavigate } from "react-router-dom";
 
 function Signup(props: any) {
 
-
-    function hanleLetsStart(ev: any) {
-
-    }
 
     return (
         <div className='wrapper'>
