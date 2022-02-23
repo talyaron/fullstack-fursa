@@ -46,6 +46,9 @@ function Restaurant() {
     const handleStepChange = (step: any) => {
         setActiveStep(step);
     };
+    function addFavorite(e: any) {
+        console.log(e.target.checked)
+    }
 
     const { RestaurantId } = useParams();
     const [openModal, setOpenModal] = useState(false);
@@ -88,7 +91,7 @@ function Restaurant() {
                                 </div>
                             </div>
                             <div className="rest__main__header__left__favorite">
-                                <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
+                                <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} onChange={addFavorite} />
                             </div>
                         </div>
                         <div className="rest__main__header__right">
@@ -116,7 +119,7 @@ function Restaurant() {
                     >
                         {Restaurant.photos.map((step, index) => (
                             <div key={index}>
-                                {Math.abs(activeStep - index) <= 2 ? (
+                                {Math.abs(activeStep - index) <= Restaurant.photos.length ? (
                                     <Box
                                         component="img"
                                         sx={{
@@ -143,7 +146,7 @@ function Restaurant() {
                                 disabled={activeStep === maxSteps - 1}
                             >
                                 Next
-            {theme.direction === 'rtl' ? (
+                                    {theme.direction === 'rtl' ? (
                                     <KeyboardArrowLeft />
                                 ) : (
                                         <KeyboardArrowRight />
@@ -157,8 +160,8 @@ function Restaurant() {
                                 ) : (
                                         <KeyboardArrowLeft />
                                     )}
-            Back
-          </Button>
+                                Back
+                            </Button>
                         }
                     />
                 </Box>
