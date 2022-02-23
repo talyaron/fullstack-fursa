@@ -1,0 +1,201 @@
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  height: 8.6vh;
+  border-style: solid;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
+  z-index: 0;
+}
+.navbar__box {
+  display: flex;
+  width: 90%;
+  height: 100%;
+}
+.navbar__left {
+  display: flex;
+  width: 70%;
+  /*
+  * Made by Erik Terwan
+  * 24th of November 2015
+  * MIT License
+  *
+  *
+  * If you are thinking of using this in
+  * production code, beware of the browser
+  * prefixes.
+  */
+  /*
+   * Just a quick hamburger
+   */
+  /* 
+   * Transform all the slices of hamburger
+   * into a crossmark.
+   */
+  /*
+   * But let's hide the middle one.
+   */
+  /*
+   * Ohyeah and the last one should go the other direction
+   */
+  /*
+   * Make this absolute positioned
+   * at the top left of the screen
+   */
+  /*
+   * And let's slide it in from the left
+   */
+}
+.navbar__left img {
+  width: auto;
+  max-height: 100%;
+  max-width: 100%;
+  align-items: center;
+  margin-top: 3vh;
+  overflow: hidden;
+  transform: scale(2);
+  margin-right: 3vw;
+}
+.navbar__left a {
+  color: black;
+  text-align: center;
+  padding: 20px 24px;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: Inter;
+}
+.navbar__left a:hover {
+  font-size: 20px;
+  color: #2a945b;
+}
+.navbar__left body {
+  margin: 0;
+  padding: 0;
+  /* make it look decent enough */
+  background: #232323;
+  color: #cdcdcd;
+  font-family: "Avenir Next", "Avenir", sans-serif;
+}
+.navbar__left #menuToggle {
+  display: block;
+  position: relative;
+  top: 50px;
+  left: 50px;
+  z-index: 1;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.navbar__left #menuToggle a {
+  text-decoration: none;
+  color: #232323;
+  transition: color 0.3s ease;
+}
+.navbar__left #menuToggle input {
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left: -5px;
+  cursor: pointer;
+  opacity: 0;
+  /* hide this */
+  z-index: 2;
+  /* and place it over the hamburger */
+}
+.navbar__left #menuToggle span {
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  background: #cdcdcd;
+  border-radius: 3px;
+  z-index: 1;
+  transform-origin: 4px 0px;
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+}
+.navbar__left #menuToggle span:first-child {
+  transform-origin: 0% 0%;
+}
+.navbar__left #menuToggle span:nth-last-child(2) {
+  transform-origin: 0% 100%;
+}
+.navbar__left #menuToggle input:checked ~ span {
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #232323;
+}
+.navbar__left #menuToggle input:checked ~ span:nth-last-child(3) {
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+.navbar__left #menuToggle input:checked ~ span:nth-last-child(2) {
+  transform: rotate(-45deg) translate(0, -1px);
+}
+.navbar__left #menu {
+  position: absolute;
+  width: 300px;
+  margin: -100px 0 0 -50px;
+  padding: 50px;
+  padding-top: 125px;
+  background: #ededed;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+  transform-origin: 0% 0%;
+  transform: translate(-100%, 0);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+}
+.navbar__left #menu li {
+  padding: 10px 0;
+  font-size: 22px;
+}
+.navbar__left #menuToggle input:checked ~ ul {
+  transform: none;
+}
+.navbar__right {
+  display: flex;
+  width: 30%;
+}
+.navbar__right__signin {
+  background-color: #000804;
+  border: none;
+  border-radius: 12px;
+  margin-top: 1.5vh;
+  margin-bottom: 1.5vh;
+  padding: 12px 24px;
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  white-space: nowrap;
+  font-weight: bold;
+}
+.navbar__right__signup {
+  background-color: #010e04;
+  border: none;
+  border-radius: 12px;
+  margin-right: 2vw;
+  margin-top: 1.5vh;
+  margin-bottom: 1.5vh;
+  text-align: center;
+  color: #fffbfb;
+  font-size: 14px;
+  padding: 12px 24px;
+  white-space: nowrap;
+  font-weight: bold;
+}
+.navbar__right a {
+  color: black;
+  text-align: center;
+  padding: 20px 24px;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: Inter;
+  margin: auto;
+}
+.navbar__right a:hover {
+  font-size: 20px;
+  color: #2a945b;
+}
