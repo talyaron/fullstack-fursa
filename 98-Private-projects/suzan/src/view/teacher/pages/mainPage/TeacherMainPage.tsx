@@ -5,6 +5,7 @@ import Divider from '@mui/material/Divider';
 import Typography from "@mui/material/Typography";
 
 import './TeacherMainPage.scss';
+import { Link } from "react-router-dom";
 
 const classes = [{ class_name: 'Class 1A' }];
 const courses = [
@@ -47,7 +48,10 @@ export default function TeacherMainPage() {
                         courses.map((course, i) => {
                             const { name, class_name } = course;
                             return (
-                                <CourseCard info={course} />
+                                <Link to="../teacherUser/coursePage">
+                                    <CourseCard info={course} />
+                                </Link>
+                                
                             );
                         })
                     }

@@ -1,5 +1,6 @@
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
 import CourseCard from "../../components/courseCard/CourseCard";
 import TeacherResponsiveAppBar from "../../components/header/TeacherAppBar";
 import './Courses.scss';
@@ -29,7 +30,10 @@ export default function Courses() {
                         courses.map((course, i) => {
                             const { name, class_name } = course;
                             return (
-                                <CourseCard key={i} info={course} />
+                                <Link to="../teacherUser/coursePage">
+                                    <CourseCard key={i} info={course} />
+                                </Link>
+                                
                             );
                         })
                     }

@@ -1,15 +1,14 @@
-import react from 'react-router-dom';
-import StudentResponsiveAppBar from '../../components/header/StudentAppBar';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
+import Divider from "@mui/material/Divider";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Typography from "@mui/material/Typography";
+import CourseResponsiveAppBar from "../../components/courseHeader/CourseAppBar";
 import Paper from '@mui/material/Paper';
-import './Homeworks.scss';
-import Divider from '@mui/material/Divider';
-import Typography from '@mui/material/Typography';
+import './TeacherHomeworks.scss';
 
 const homeworks = [
     { date: '20.2.2022', course: 'Math', description: 'questions from 1 to 15 page 225' },
@@ -18,11 +17,11 @@ const homeworks = [
     { date: '15.2.2022', course: 'Math', description: 'questions 20-25 page 333' }
 ]
 
-export default function StudentHomeworks() {
+export default function TeacherHomeworks() {
     return (
         <div>
             <div className="bar">
-                <StudentResponsiveAppBar></StudentResponsiveAppBar>
+                <CourseResponsiveAppBar></CourseResponsiveAppBar>
             </div>
 
             <div className="homeworksTable">

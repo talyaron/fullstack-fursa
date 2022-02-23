@@ -24,6 +24,9 @@ import Course from './view/teacher/pages/course/Course';
 import StudentMainPage from './view/student/pages/mainPage/StudentMainPage';
 import StudentCourse from './view/student/pages/course/Course';
 import StudentHomeworks from './view/student/pages/homeworks/Homworks';
+import StudentExams from './view/student/pages/exams/StudentExams';
+import TeacherHomeworks from './view/teacher/pages/homeworks/TeacherHomeworks';
+import TeacherExams from './view/teacher/pages/exams/TeacherExams';
 
 function App() {
   return (
@@ -54,12 +57,15 @@ function App() {
         <Route path="class" element={<ClassInfo />} />
 
         <Route path="teacherUser/courses" element={<Courses />} />
-        <Route path="teacherUser/mainPage" element={<TeacherMainPage/>} />
-        <Route path="teacherUser/course" element={<Course />} />
+        <Route path="teacherUser/home" element={<TeacherMainPage/>} />
+        <Route path="teacherUser/coursePage" element={<Course />} />
+        <Route path="teacherUser/homeworks" element={<TeacherHomeworks />} />
+        <Route path="teacherUser/exams" element={<TeacherExams />} />
 
-        <Route path="studentUser/mainPage" element={<StudentMainPage />} />
+        <Route path="studentUser/myclass" element={<StudentMainPage />} />
         <Route path="studentUser/coursePage" element={<StudentCourse />} />
-        <Route path="homeworks" element={<StudentHomeworks />} />
+        <Route path="studentUser/homeworks" element={<StudentHomeworks />} />
+        <Route path="studentUser/exams" element={<StudentExams />} />
 
 
       </Routes>
