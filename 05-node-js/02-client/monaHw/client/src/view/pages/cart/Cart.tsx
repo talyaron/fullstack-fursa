@@ -6,6 +6,10 @@ import Button from '@mui/material/Button';
 import {useState,useEffect} from 'react'
 import axios from 'axios'
 import {Outlet} from 'react-router-dom'
+import {selectorders} from '../../../features/cart/cartSlice';
+import {update} from '../../../features/cart/cartSlice';
+import {useAppSelector} from '../../../app/hooks';
+import {useAppDispatch} from '../../../app/hooks';
 
 interface cartProps{
     product:any;
@@ -15,12 +19,17 @@ interface cartProps{
 function Cart(props:cartProps){
     const {product,setProduct}=props;
     //console.log(product)
-    const [order,setOrder]=useState([]);
+//     const [order,setOrder]=useState([]);
 
+// useEffect(()  => {
+// axios.get('http://localhost:3004/userOrder').then(({data})=> setOrder(data));
+// }, []);
+const dispatch = useAppDispatch();
 useEffect(()  => {
-axios.get('http://localhost:3004/userOrder').then(({data})=> setOrder(data));
-}, []);
-  
+    axios.get('http://localhost:3004/userOrder').then(({data})=>  dispatch(update(data)));
+    }, []);
+const orders=useAppSelector(selectorders);
+console.log(orders);
     return (
         
     
@@ -50,7 +59,7 @@ axios.get('http://localhost:3004/userOrder').then(({data})=> setOrder(data));
                       <div className="cart_body_done"> 
                   <Outlet  />
                       </div>
-                 {order.map((products:productProp, i:any)=>{
+                 {orders.map((products:productProp, i:any)=>{
                    
                 return  <Product key={i} woodName={products.woodName} woodlength={products.woodlength} width={products.width} thick={products.thick} amount={products.amount} id={products.id}  />
     })}

@@ -54,7 +54,7 @@ function HomePage()
                 </div>
               
             </div>
-           <CartShow></CartShow>
+          
 
         </div>
  
