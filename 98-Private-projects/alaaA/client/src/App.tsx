@@ -57,10 +57,8 @@ return(
     </Route>
     <Route path="/mygroups" element={<Mygroups />} />
     <Route path="/mygroups/:id" element={<GroupDetails/>} />
-      
-
-    <Route path="GroupDetails" element={<GroupDetails />} />
-    <Route path="profile" element={<Profile />} />
+    <Route path="/users/:id" element={<Profile/>} />
+    <Route path="GroupDetails" element={<GroupDetails />} /> 
 
     <Route path="aboutUsIn" element={<AboutUsIn />} />
     <Route path="help" element={<Help />} />

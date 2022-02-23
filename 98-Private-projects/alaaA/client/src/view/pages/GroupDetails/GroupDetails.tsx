@@ -11,8 +11,9 @@ import Paper from '@mui/material/Paper';
 import Header from '../../components/header/header';
 import axios from 'axios';
 import { useState , useEffect } from "react";
-import {useParams} from 'react-router-dom';
+import {useParams, useNavigate} from 'react-router-dom';
 import './GroupDetails.scss';
+import { Link } from '@material-ui/core';
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -61,8 +62,7 @@ export default function GroupDetails() {
   const {id} = useParams();
   
   useEffect(()=>{axios.get(`http://localhost:3004/group/${id}`).then(({data})=>{
-    console.log('Response from main API: ',data)
-   // data.groupMember
+   
    const arr = [...data.groupMember];
    setGroupName(data.groupName);
    console.log(arr);
@@ -73,7 +73,7 @@ export default function GroupDetails() {
 
   const [arr,setArr]=useState<Array<GroupMember>>([]);
   const [groupName,setGroupName]=useState("");
-  
+  let navigate = useNavigate();
  
   return (
     <div>
@@ -91,7 +91,9 @@ export default function GroupDetails() {
         <TableBody>
           {arr.map((row) => (
             <StyledTableRow key={row.id}>
-              <StyledTableCell align="center" component="th" scope="row">
+              <StyledTableCell align="center" component="th" scope="row" onClick={()=>{
+                navigate(`/users/${row.id}`);
+              }}>
                 {row.id}
               </StyledTableCell>
             </StyledTableRow>
