@@ -3,27 +3,30 @@ import { RootState, AppThunk } from '../../app/store';
 
 
 export interface CounterState {
-  text: string;
-  status: 'idle' | 'loading' | 'failed';
+  pic: string;
+ 
 }
 
 const initialState: CounterState = {
-  text: 'starting...',
-  status: 'idle',
+  pic: '',
+  
 };
 
 
 export const picSlice = createSlice({
-  name: 'text',
+  name: 'selectedPic',
   initialState,
   reducers: {
-    update: (state, action) => {
-      state.text = action.payload;
-    }
-  },
+      update: (state, action) => {
+          state.pic = action.payload;
+         
+      }
+  }
 });
 
+
+
 export const { update  } = picSlice.actions;
-export const selectText = (state: RootState) => state.text.text;
+export const selectPic = (state: RootState) => state.selectedPic;
 
 export default picSlice.reducer;

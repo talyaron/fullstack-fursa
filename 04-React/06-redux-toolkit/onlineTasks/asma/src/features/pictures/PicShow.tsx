@@ -1,8 +1,8 @@
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import {update,selectText} from './picSlice'; 
+import {update,selectPic} from './picSlice'; 
 
 export default function PicShow() {
-    const pic = useAppSelector(selectText)
+    const pic = useAppSelector(selectPic)
 
   return (
     <div className="outputBox">
