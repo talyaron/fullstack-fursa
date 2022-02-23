@@ -8,55 +8,65 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import PeopleIcon from '@mui/icons-material/People';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
-import { useState } from 'react';
+import { useState , useEffect } from 'react';
 import { TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Tooltip from '@mui/material/Tooltip';
-import { recipeInfo, recipeProp } from '../../../App';
+import { recipeProp } from '../../../App';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-const Standard = styled(TextField)({
+const CssTextField = styled(TextField)({
     '& label.Mui-focused': {
         color: '#b5739d',
     },
-    '& .MuiInput-underline:after': {
-        borderBottomColor: '#b5739d',
-    },
     '& .MuiOutlinedInput-root': {
-        '& fieldset': {
-            borderColor: '#b5739d',
-        },
-        '&:hover fieldset': {
-            borderColor: '#b5739d',
-        },
         '&.Mui-focused fieldset': {
             borderColor: '#b5739d',
         },
     },
     input: {
-        color: 'grey',
+        color: "gray",
         fontSize: 15,
-        readonly: true,
+        readOnly: true,
     },
 });
 
-// interface recipeInfo{
-//     name? : any|undefined;
-//     img? : string;
-//     time? : string;
-//     people? : string;
-//     cal? : string;
-//     ingredients? : string;
-//     method? : string;
-// }
+interface recipeInfo{
+    id?: number;
+    name? : string;
+    image? : string;
+    time? : string;
+    people? : string;
+    calories? : string;
+    ingredients? : string;
+    method? : string;
+}
 
-export default function RecipeInfo(props: recipeProp) {
-    const { recipe, setRecipe } = props;
+export default function RecipeInfo() {
+    const [recipe, setRecipe] = useState<recipeInfo>({})
     const [like, setLike] = useState(0);
+    const [from_, setFrom] = useState('');
 
     function handleLike() {
         setLike(like + 1);
     }
+    
+    useEffect(() => {
+        axios.get('http://localhost:3004/selected/1').then(res => {
+            console.log(res.data);
+            const data = res.data.recipe;
+            const f = res.data.from;
+            setRecipe(data);
+            setFrom(f);
+        });
+        axios.delete('http://localhost:3004/selected/1');
+    }, []);
+    console.log(from_);
+
+    const editClick = (recipe:any) => {
+        axios.post('http://localhost:3004/edit', {recipe, new: false, from: from_});
+    } 
 
     return (
         <div className='info'>
@@ -71,7 +81,7 @@ export default function RecipeInfo(props: recipeProp) {
                             <Link to='/NewRecipe'>
                                 <AutoAwesomeIcon sx={{
                                     color: '#b5739d', fontSize: 35
-                                }} />
+                                }} onClick={() => editClick(recipe)}  />
                             </Link>
                         </Tooltip>
                     </div>
@@ -81,7 +91,7 @@ export default function RecipeInfo(props: recipeProp) {
                         <br />
                         <div className='info1'>
                             <div className='insertPhotos'>
-                                <img src={img1} alt="" />
+                                <img src={recipe.image} alt="" />
                             </div>
                             <h2 className='by'>By : Dima Abbas</h2>
                             <div className='item'>
@@ -98,27 +108,29 @@ export default function RecipeInfo(props: recipeProp) {
                             </div>
                             <div className='item'>
                                 <LocalFireDepartmentIcon sx={{ fontSize: 30, color: '#b5739d', paddingTop: '10px' }} />
-                                <p>{recipe.cal}</p>
+                                <p>{recipe.calories}</p>
                             </div>
                         </div>
                         <br />
                         <br />
                         <div className='info2'>
-                            <Standard className='ingredients'
-                                id="outlined-multiline-static"
+                            <CssTextField className='ingredients'
+                                focused
+                                id="custom-css-outlined-input"
                                 label="Recipe's ingredients"
                                 placeholder="Write your recipe ingredients here"
                                 multiline
-                                rows={20}
+                                rows={10}
                                 value={recipe.ingredients}
                             //maxRows={50}
                             />
-                            <Standard className='steps'
-                                id="outlined-multiline-static"
+                            <CssTextField className='steps'
+                                focused
+                                id="custom-css-outlined-input"
                                 label="The Method"
                                 placeholder="Write here the steps for preparing the recipe"
                                 multiline
-                                rows={20}
+                                rows={10}
                                 value={recipe.method}
                             //maxRows={50}
                             />

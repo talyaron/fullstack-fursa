@@ -9,11 +9,12 @@ import PeopleIcon from '@mui/icons-material/People';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import { Box, TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import RecipeInfo from '../../pages/recipeInfo/RecipeInfo';
-import { recipeInfo, recipeProp } from '../../../App';
+import { recipeProp } from '../../../App';
 import { Link } from 'react-router-dom';
 import Tooltip from '@mui/material/Tooltip';
+import axios from 'axios';
 
 const Standard = styled(TextField)({
     '& label.Mui-focused': {
@@ -39,42 +40,56 @@ const Standard = styled(TextField)({
     },
 });
 
-// interface recipeInfo{
-//     name? : any|undefined;
-//     img? : string;
-//     time? : string;
-//     people? : string;
-//     cal? : string;
-//     ingredients? : string;
-//     method? : string;
-// }
+const CssTextField = styled(TextField)({
+    '& label.Mui-focused': {
+        color: '#b5739d',
+    },
+    '& .MuiOutlinedInput-root': {
+        '&.Mui-focused fieldset': {
+            borderColor: '#b5739d',
+        },
+    },
+    input: {
+        color: "gray",
+        fontSize: 15,
+    },
+});
 
-export default function NewRecipe(props: recipeProp) {
-    const { recipe, setRecipe } = props;
+interface recipeInfo{
+    id? : number;
+    name? : string;
+    img? : string;
+    time? : string;
+    people? : string;
+    calories? : string;
+    ingredients? : string;
+    method? : string;
+}
 
-    // function handleUpdate(ev: any) {
-    //     //console.dir(ev.target);
-    //     switch (ev.target.name) {
-    //         case 'recipeName':
-    //             setRecipe({ ...recipe, name: ev.target.value });
-    //             break;
-    //         case 'time':
-    //             setRecipe({ ...recipe, time: ev.target.value })
-    //             break;
-    //         case 'people':
-    //             setRecipe({ ...recipe, people: ev.target.value });
-    //             break;
-    //         case 'cal':
-    //             setRecipe({ ...recipe, cal: ev.target.value });
-    //             break;
-    //         case 'ingredients':
-    //             setRecipe({ ...recipe, ingredients: ev.target.value });
-    //             break;
-    //         case 'method':
-    //             setRecipe({ ...recipe, method: ev.target.value });
-    //             break;
-    //     }
-    // }
+export default function NewRecipe() {
+
+    const [recipe, setRecipe] = useState<recipeInfo>({});
+    const [linkTo, setLink] = useState('/RecipeInfo');
+    const [from_, setFrom] = useState('');
+
+    useEffect(() => {
+        axios.get('http://localhost:3004/edit/1').then(res => {
+            console.log(res.data);
+            const data = res.data.recipe;
+            const new_ = res.data.new;
+            const f = res.data.from;
+            console.log(new_)
+            setRecipe(data);
+            setFrom(f);
+            if(!new_)
+                setLink('/RecipeInfo');
+            else {
+                console.log("yes")
+                setLink('/User');
+            }
+        });
+        axios.delete('http://localhost:3004/edit/1');
+    }, []);
 
     function handleChange(ev: any) {
         console.dir(recipe);
@@ -89,7 +104,7 @@ export default function NewRecipe(props: recipeProp) {
                 setRecipe({ ...recipe, people: ev.target.value });
                 break;
             case 'cal':
-                setRecipe({ ...recipe, cal: ev.target.value });
+                setRecipe({ ...recipe, calories: ev.target.value });
                 break;
             case 'ingredients':
                 setRecipe({ ...recipe, ingredients: ev.target.value });
@@ -101,9 +116,17 @@ export default function NewRecipe(props: recipeProp) {
     }
 
     function handleSave() {
-        setRecipe(recipe);
-        console.dir(recipe);
-        console.dir(recipe.ingredients);
+        const newRecipe = recipe;
+        setRecipe(newRecipe);
+        if(linkTo === '/User')
+            axios.post('http://localhost:3004/'+`${from_}`, recipe);
+        else {
+            console.log(recipe);
+            console.log(from_);
+            axios.post('http://localhost:3004/selected', {recipe, from: from_});
+            axios.put('http://localhost:3004/'+`${from_}`+'/'+`${recipe.id}`, recipe);
+            //axios.post('http://localhost:3004/selected', {recipe, from: from_});
+        }
     }
 
     return (
@@ -116,7 +139,7 @@ export default function NewRecipe(props: recipeProp) {
                 <div className='boxInfo'>
                     <div className="save">
                         <Tooltip title='save'>
-                            <Link to='/RecipeInfo'>
+                            <Link to={linkTo}>
                                 <BookmarkAddIcon sx={{
                                     color: '#b5739d', fontSize: 35
                                 }} onClick={handleSave} />
@@ -178,13 +201,14 @@ export default function NewRecipe(props: recipeProp) {
                                     size="small" sx={{ width: '20ch' }}
                                     name='cal'
                                     //onKeyUp={handleUpdate}
-                                    value={recipe.cal}
+                                    value={recipe.calories}
                                     onChange={handleChange} />
                             </div>
                         </div>
                         <div className='info2'>
-                            <Standard className='ingredients'
-                                id="outlined-multiline-static"
+                            <CssTextField className='ingredients'
+                                focused
+                                id="custom-css-outlined-input"
                                 label="Recipe's ingredients"
                                 placeholder="Write your recipe ingredients here"
                                 multiline
@@ -195,8 +219,9 @@ export default function NewRecipe(props: recipeProp) {
                                 onChange={handleChange}
                             //maxRows={50}
                             />
-                            <Standard className='steps'
-                                id="outlined-multiline-static"
+                            <CssTextField className='steps'
+                                focused
+                                id="custom-css-outlined-input"
                                 label="The Method"
                                 placeholder="Write here the steps for preparing the recipe"
                                 multiline

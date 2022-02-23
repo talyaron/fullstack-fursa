@@ -22,8 +22,10 @@ var People_1 = require("@mui/icons-material/People");
 var LocalFireDepartment_1 = require("@mui/icons-material/LocalFireDepartment");
 var material_1 = require("@mui/material");
 var styles_1 = require("@mui/material/styles");
+var react_1 = require("react");
 var react_router_dom_1 = require("react-router-dom");
 var Tooltip_1 = require("@mui/material/Tooltip");
+var axios_1 = require("axios");
 var Standard = styles_1.styled(material_1.TextField)({
     '& label.Mui-focused': {
         color: '#b5739d'
@@ -47,40 +49,42 @@ var Standard = styles_1.styled(material_1.TextField)({
         fontSize: 15
     }
 });
-// interface recipeInfo{
-//     name? : any|undefined;
-//     img? : string;
-//     time? : string;
-//     people? : string;
-//     cal? : string;
-//     ingredients? : string;
-//     method? : string;
-// }
-function NewRecipe(props) {
-    var recipe = props.recipe, setRecipe = props.setRecipe;
-    // function handleUpdate(ev: any) {
-    //     //console.dir(ev.target);
-    //     switch (ev.target.name) {
-    //         case 'recipeName':
-    //             setRecipe({ ...recipe, name: ev.target.value });
-    //             break;
-    //         case 'time':
-    //             setRecipe({ ...recipe, time: ev.target.value })
-    //             break;
-    //         case 'people':
-    //             setRecipe({ ...recipe, people: ev.target.value });
-    //             break;
-    //         case 'cal':
-    //             setRecipe({ ...recipe, cal: ev.target.value });
-    //             break;
-    //         case 'ingredients':
-    //             setRecipe({ ...recipe, ingredients: ev.target.value });
-    //             break;
-    //         case 'method':
-    //             setRecipe({ ...recipe, method: ev.target.value });
-    //             break;
-    //     }
-    // }
+var CssTextField = styles_1.styled(material_1.TextField)({
+    '& label.Mui-focused': {
+        color: '#b5739d'
+    },
+    '& .MuiOutlinedInput-root': {
+        '&.Mui-focused fieldset': {
+            borderColor: '#b5739d'
+        }
+    },
+    input: {
+        color: "gray",
+        fontSize: 15
+    }
+});
+function NewRecipe() {
+    var _a = react_1.useState({}), recipe = _a[0], setRecipe = _a[1];
+    var _b = react_1.useState('/RecipeInfo'), linkTo = _b[0], setLink = _b[1];
+    var _c = react_1.useState(''), from_ = _c[0], setFrom = _c[1];
+    react_1.useEffect(function () {
+        axios_1["default"].get('http://localhost:3004/edit/1').then(function (res) {
+            console.log(res.data);
+            var data = res.data.recipe;
+            var new_ = res.data["new"];
+            var f = res.data.from;
+            console.log(new_);
+            setRecipe(data);
+            setFrom(f);
+            if (!new_)
+                setLink('/RecipeInfo');
+            else {
+                console.log("yes");
+                setLink('/User');
+            }
+        });
+        axios_1["default"]["delete"]('http://localhost:3004/edit/1');
+    }, []);
     function handleChange(ev) {
         console.dir(recipe);
         switch (ev.target.name) {
@@ -94,7 +98,7 @@ function NewRecipe(props) {
                 setRecipe(__assign(__assign({}, recipe), { people: ev.target.value }));
                 break;
             case 'cal':
-                setRecipe(__assign(__assign({}, recipe), { cal: ev.target.value }));
+                setRecipe(__assign(__assign({}, recipe), { calories: ev.target.value }));
                 break;
             case 'ingredients':
                 setRecipe(__assign(__assign({}, recipe), { ingredients: ev.target.value }));
@@ -105,9 +109,17 @@ function NewRecipe(props) {
         }
     }
     function handleSave() {
-        setRecipe(recipe);
-        console.dir(recipe);
-        console.dir(recipe.ingredients);
+        var newRecipe = recipe;
+        setRecipe(newRecipe);
+        if (linkTo === '/User')
+            axios_1["default"].post('http://localhost:3004/' + ("" + from_), recipe);
+        else {
+            console.log(recipe);
+            console.log(from_);
+            axios_1["default"].post('http://localhost:3004/selected', { recipe: recipe, from: from_ });
+            axios_1["default"].put('http://localhost:3004/' + ("" + from_) + '/' + ("" + recipe.id), recipe);
+            //axios.post('http://localhost:3004/selected', {recipe, from: from_});
+        }
     }
     return (React.createElement("div", { className: 'new' },
         React.createElement("div", { className: 'menu' },
@@ -117,7 +129,7 @@ function NewRecipe(props) {
             React.createElement("div", { className: 'boxInfo' },
                 React.createElement("div", { className: "save" },
                     React.createElement(Tooltip_1["default"], { title: 'save' },
-                        React.createElement(react_router_dom_1.Link, { to: '/RecipeInfo' },
+                        React.createElement(react_router_dom_1.Link, { to: linkTo },
                             React.createElement(BookmarkAdd_1["default"], { sx: {
                                     color: '#b5739d', fontSize: 35
                                 }, onClick: handleSave })))),
@@ -148,12 +160,12 @@ function NewRecipe(props) {
                             React.createElement(LocalFireDepartment_1["default"], { sx: { fontSize: 30, color: '#b5739d', paddingTop: '12px' } }),
                             React.createElement(Standard, { id: "standard-basic", variant: "standard", focused: true, placeholder: "", size: "small", sx: { width: '20ch' }, name: 'cal', 
                                 //onKeyUp={handleUpdate}
-                                value: recipe.cal, onChange: handleChange }))),
+                                value: recipe.calories, onChange: handleChange }))),
                     React.createElement("div", { className: 'info2' },
-                        React.createElement(Standard, { className: 'ingredients', id: "outlined-multiline-static", label: "Recipe's ingredients", placeholder: "Write your recipe ingredients here", multiline: true, rows: 10, name: 'ingredients', 
+                        React.createElement(CssTextField, { className: 'ingredients', focused: true, id: "custom-css-outlined-input", label: "Recipe's ingredients", placeholder: "Write your recipe ingredients here", multiline: true, rows: 10, name: 'ingredients', 
                             //onKeyUp={handleUpdate}
                             value: recipe.ingredients, onChange: handleChange }),
-                        React.createElement(Standard, { className: 'steps', id: "outlined-multiline-static", label: "The Method", placeholder: "Write here the steps for preparing the recipe", multiline: true, rows: 10, name: 'method', 
+                        React.createElement(CssTextField, { className: 'steps', focused: true, id: "custom-css-outlined-input", label: "The Method", placeholder: "Write here the steps for preparing the recipe", multiline: true, rows: 10, name: 'method', 
                             //onKeyUp={handleUpdate}
                             value: recipe.method, onChange: handleChange })))))));
 }

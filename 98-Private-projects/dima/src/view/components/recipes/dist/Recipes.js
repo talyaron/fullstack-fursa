@@ -1,45 +1,39 @@
 "use strict";
 exports.__esModule = true;
-var _1_jpg_1 = require("../../images/1.jpg");
-var _2_jpg_1 = require("../../images/2.jpg");
-var _3_jpg_1 = require("../../images/3.jpg");
-var _4_jpg_1 = require("../../images/4.jpg");
-var _5_jpg_1 = require("../../images/5.jpg");
 var Tooltip_1 = require("@mui/material/Tooltip");
 require("./Recipes.scss");
 var AddCircleOutline_1 = require("@mui/icons-material/AddCircleOutline");
 var react_router_dom_1 = require("react-router-dom");
+var react_1 = require("react");
+var axios_1 = require("axios");
 function Recipes() {
+    var _a = react_1.useState([]), recipes = _a[0], setRecipes = _a[1];
+    react_1.useEffect(function () {
+        axios_1["default"].get('http://localhost:3004/recipe').then(function (res) {
+            var data = res.data;
+            setRecipes(data);
+        });
+    }, []);
+    console.log(recipes);
+    var imageClick = function (recipe) {
+        axios_1["default"].post('http://localhost:3004/selected', { recipe: recipe, from: 'recipe' });
+    };
+    var addClick = function () {
+        axios_1["default"].post('http://localhost:3004/edit', { recipe: {}, "new": true, from: 'recipe' });
+    };
     return (React.createElement("div", { className: "recipes" },
         React.createElement("h2", { className: 'title1' }, "Recipes"),
         React.createElement("div", { className: 'add' },
             React.createElement(Tooltip_1["default"], { title: 'add new recipe' },
                 React.createElement(react_router_dom_1.Link, { to: '/NewRecipe' },
-                    React.createElement(AddCircleOutline_1["default"], { sx: { fontSize: 40, color: '#b5739d' } })))),
-        React.createElement("div", { className: "item" },
-            React.createElement("div", { className: 'itemImg' },
-                React.createElement("img", { src: _1_jpg_1["default"], alt: "" })),
-            React.createElement("div", { className: 'title' },
-                React.createElement("p", null, "recipe 1"))),
-        React.createElement("div", { className: "item" },
-            React.createElement("div", { className: 'itemImg' },
-                React.createElement("img", { src: _2_jpg_1["default"], alt: "" })),
-            React.createElement("div", { className: 'title' },
-                React.createElement("p", null, "recipe 2"))),
-        React.createElement("div", { className: "item" },
-            React.createElement("div", { className: 'itemImg' },
-                React.createElement("img", { src: _3_jpg_1["default"], alt: "" })),
-            React.createElement("div", { className: 'title' },
-                React.createElement("p", null, "recipe 3"))),
-        React.createElement("div", { className: "item" },
-            React.createElement("div", { className: 'itemImg' },
-                React.createElement("img", { src: _4_jpg_1["default"], alt: "" })),
-            React.createElement("div", { className: 'title' },
-                React.createElement("p", null, "recipe 4"))),
-        React.createElement("div", { className: "item" },
-            React.createElement("div", { className: 'itemImg' },
-                React.createElement("img", { src: _5_jpg_1["default"], alt: "" })),
-            React.createElement("div", { className: 'title' },
-                React.createElement("p", null, "recipe 5")))));
+                    React.createElement(AddCircleOutline_1["default"], { sx: { fontSize: 40, color: '#b5739d' }, onClick: function () { return addClick(); } })))),
+        recipes.map(function (recipe, index) {
+            return (React.createElement("div", { key: index, className: "item" },
+                React.createElement(react_router_dom_1.Link, { to: '/RecipeInfo' },
+                    React.createElement("div", { className: 'itemImg' },
+                        React.createElement("img", { src: recipe.image, alt: "", onClick: function () { return imageClick(recipe); } }))),
+                React.createElement("div", { className: 'title' },
+                    React.createElement("p", null, recipe.name))));
+        })));
 }
 exports["default"] = Recipes;

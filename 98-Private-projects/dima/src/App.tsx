@@ -42,8 +42,6 @@ export interface recipeProp{
 
 function App(){
 
-  const[recipe, setRecipe] = useState<recipeInfo>({});
-
   return(
     <BrowserRouter>
       <Routes>
@@ -52,8 +50,8 @@ function App(){
         <Route path="SignUp" element={<SignUp />} />
         <Route path="ResetPassword" element={<ResetPassword />} />
         <Route path="MainScreen" element={<MainScreen />} />
-        <Route path="NewRecipe" element={<NewRecipe recipe={recipe} setRecipe={setRecipe}/>} />
-        <Route path="RecipeInfo" element={<RecipeInfo recipe={recipe} setRecipe={setRecipe}/>} />
+        <Route path="NewRecipe" element={<NewRecipe />} />
+        <Route path="RecipeInfo" element={<RecipeInfo />} />
       </Routes>
     </BrowserRouter>
   );
