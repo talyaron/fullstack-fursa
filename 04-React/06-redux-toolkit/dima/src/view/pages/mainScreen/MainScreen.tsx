@@ -20,11 +20,14 @@ import "swiper/css/navigation";
 // import required modules
 import { Pagination, Navigation } from "swiper";
 import { Link } from 'react-router-dom';
+import { useAppDispatch } from '../../../app/hooks';
+import { updateRecipe, updateFrom } from '../../features/item/itemSlice';
 
 
 export default function MainScreen() {
     const [top10, setTop] = useState([]);
     const [recent, setRecent] = useState([]);
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
         axios.get('http://localhost:3004/Top10').then(res => {
@@ -42,12 +45,16 @@ export default function MainScreen() {
     }, []);
     //console.log(recent);
 
-    const imageClick1 = (recipe:any) => {
-        axios.post('http://localhost:3004/selected', {recipe, from: 'top10'});
+    const imageClick1 = (ev:any, recipe:any) => {
+        //axios.post('http://localhost:3004/selected', {recipe, from: 'top10'});
+        dispatch(updateRecipe(recipe));
+        dispatch(updateFrom('top10'));
     } 
 
     const imageClick2 = (recipe:any) => {
-        axios.post('http://localhost:3004/selected', {recipe, from: 'recent'});
+        //axios.post('http://localhost:3004/selected', {recipe, from: 'recent'});
+        dispatch(updateRecipe(recipe));
+        dispatch(updateFrom('recent'));
     } 
 
     return (
@@ -74,9 +81,9 @@ export default function MainScreen() {
                             className="mySwiper"
                         >
                             {top10.map((recipe:any, index:number) => {
-                                return(<SwiperSlide key={index}>
+                                return(<SwiperSlide key={index} onClick={(ev:any) => imageClick1(ev,recipe)}>
                                     <Link to='/RecipeInfo'>
-                                        <img src={recipe.image} alt='' onClick={() => imageClick1(recipe)}/>
+                                        <img src={recipe.image} alt=''/>
                                     </Link>
                                     <p>{recipe.name}</p>
                                 </SwiperSlide>);

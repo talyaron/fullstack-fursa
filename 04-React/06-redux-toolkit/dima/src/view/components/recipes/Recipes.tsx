@@ -1,18 +1,19 @@
-import img1 from '../../images/1.jpg';
-import img2 from '../../images/2.jpg';
-import img3 from '../../images/3.jpg';
-import img4 from '../../images/4.jpg';
-import img5 from '../../images/5.jpg';
 import Tooltip from '@mui/material/Tooltip';
 import './Recipes.scss';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { selectedRecipe, updateFrom, updateRecipe, updateNew } from '../../features/item/itemSlice';
 
 export default function Recipes() {
 
     const [recipes, setRecipes] = useState([]);
+
+    //Redux
+    const recipe_ = useAppSelector(selectedRecipe);
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
         axios.get('http://localhost:3004/recipe').then(res => {
@@ -24,11 +25,15 @@ export default function Recipes() {
     console.log(recipes);
 
     const imageClick = (recipe:any) => {
-        axios.post('http://localhost:3004/selected', {recipe, from: 'recipe'});
+        // axios.post('http://localhost:3004/selected', {recipe, from: 'recipe'});
+        dispatch(updateRecipe(recipe));
     } 
 
     const addClick = () => {
         axios.post('http://localhost:3004/edit', {recipe: {}, new: true, from: 'recipe'});
+        dispatch(updateRecipe({}));
+        dispatch(updateFrom('recipe'));
+        dispatch(updateNew(true));
     }
 
     return (
@@ -50,27 +55,10 @@ export default function Recipes() {
                         <div className='title'><p>{recipe.name}</p></div>
                     </div>);
             })}
-
-            {/* <div className="item">
-                <div className='itemImg'><img src={img1} alt="" /></div>
-                <div className='title'><p>recipe 1</p></div>
-            </div>
-            <div className="item">
-                <div className='itemImg'><img src={img2} alt="" /></div>
-                <div className='title'><p>recipe 2</p></div>
-            </div>
-            <div className="item">
-                <div className='itemImg'><img src={img3} alt="" /></div>
-                <div className='title'><p>recipe 3</p></div>
-            </div>
-            <div className="item">
-                <div className='itemImg'><img src={img4} alt="" /></div>
-                <div className='title'><p>recipe 4</p></div>
-            </div>
-            <div className="item">
-                <div className='itemImg'><img src={img5} alt="" /></div>
-                <div className='title'><p>recipe 5</p></div>
-            </div> */}
         </div>
     );
+}
+
+function updateIsNew(arg0: boolean): any {
+    throw new Error('Function not implemented.');
 }
