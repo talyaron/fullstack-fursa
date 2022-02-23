@@ -1,0 +1,21 @@
+.pageContainer{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    width: 200px;
+    height: 300px;
+    align-items: center;
+
+    .pageHeader{
+        width: 100%;
+        
+        img{
+            width: 100%;
+        }
+    }
+
+    .pageContent{
+        width: 100%;
+        text-align: center;
+    }
+}
