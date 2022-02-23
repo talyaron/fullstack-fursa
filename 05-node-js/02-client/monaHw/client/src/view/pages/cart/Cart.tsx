@@ -52,7 +52,7 @@ axios.get('http://localhost:3004/userOrder').then(({data})=> setOrder(data));
                       </div>
                  {order.map((products:productProp, i:any)=>{
                    
-                return  <Product key={i} woodName={products.woodName} woodlength={products.woodlength} width={products.width} thick={products.thick} amount={products.amount} id={products.id} product={product} setProduct={setProduct} />
+                return  <Product key={i} woodName={products.woodName} woodlength={products.woodlength} width={products.width} thick={products.thick} amount={products.amount} id={products.id}  />
     })}
     
     <Button variant="contained" style={{backgroundColor: 'rgb(47, 143, 90)'}} size="medium">

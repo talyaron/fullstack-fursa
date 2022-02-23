@@ -9,8 +9,7 @@ export interface productProp{
     width:number;
     thick:number;
     amount:number;
-    product:any;
-    setProduct:any;
+   
     color?:string;
     id:number;
    
@@ -23,7 +22,7 @@ export interface productProp{
     useEffect(()  => {
        axios.get('http://localhost:3004/userOrder').then(({data})=> setOrder(data));
         }, []);
-     const {product,setProduct,woodName,woodlength,width,thick,amount,color,id}=prop;
+     const {woodName,woodlength,width,thick,amount,color,id}=prop;
      function RemoveHandler()
      {
         

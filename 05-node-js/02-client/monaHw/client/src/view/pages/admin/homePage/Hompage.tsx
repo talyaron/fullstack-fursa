@@ -1,6 +1,7 @@
 import './HomePage.scss'
 import axios from 'axios';
 import Button from '@mui/material/Button';
+import CartShow from '../../../../features/cart/CartShow';
 function HomePage()
 {
     function handleSubmit(ev:any)
@@ -53,6 +54,8 @@ function HomePage()
                 </div>
               
             </div>
+           <CartShow></CartShow>
+
         </div>
  
     );

@@ -2,28 +2,26 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState, AppThunk } from '../../app/store';
 
 export interface CartState {
-    text: string;
-    img: string;
+    orders: Array<any>;
 }
 
 
 const initialState : CartState = {
-    img : '',
-    text : 'text',
+    orders:[]
 }
 
 
 export const cartSlice = createSlice({
-  name: 'text',
+  name: 'order',
   initialState,
   reducers: {
     update: (state, action) => {
-      state.text = action.payload;
+      state.orders = action.payload;
     }
 }
 });
 
 export const { update  } = cartSlice.actions;
-export const selectText = (state: RootState) => state.text.text;
+export const selectorders = (state: RootState) => state.cart.orders;
 
 export default cartSlice.reducer;
