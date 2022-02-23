@@ -3,15 +3,14 @@
   flex-direction: row;
   width: 100%;
 }
-.wrapper 
-.left {
+.wrapper .left {
   flex: 50%;
   flex-direction: column;
 }
 .wrapper .right {
   flex: 50%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 .wrapper .right .item {
   flex: 25%;

@@ -3,6 +3,7 @@ import React from 'react';
 //components
 import Card from './view/components/card/Card';
 import Mainbar from './view/components/menu/menu';
+import Coats from './view/pages/Coats/Coats';
 
 
 const clothes:Array<item> = [{name:'WOOL BLEND HIGH NECK COAT', price:500,img:'https://static.zara.net/photos///2022/V/0/1/p/2096/289/802/2/w/830/2096289802_1_1_1.jpg?ts=1637256490476'}
@@ -24,7 +25,8 @@ function App() {
     <div className="App">
       <header className="App-header">
       <Mainbar></Mainbar>
-     
+    
+    
      
       {clothes.map((item1, index)=>{
         const {name,price,img}= item1;

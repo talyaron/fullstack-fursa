@@ -6,6 +6,22 @@ function menu() {
         <div className="navbar">
         <div className="navbar__box">
             <div className="navbar__left">
+        <nav role="navigation">
+                     <div id="menuToggle">
+    <input type="checkbox" />  
+    <span></span>
+    <span></span>
+    <span></span>
+    <ul id="menu">
+      <a href="#"><li>Home</li></a>
+      <a href="#"><li>About</li></a>
+      <a href="#"><li>Info</li></a>
+      <a href="#"><li>Contact</li></a>
+      <a href="/" target="_blank"><li>Show me more</li></a>
+    </ul>
+  </div>
+                  </nav>
+                  
                 <img src='https://static.dezeen.com/uploads/2019/02/new-zara-logo-hero-1.jpg' alt="Logo" />
                 <a href="#home">Explore</a>
             
@@ -18,6 +34,7 @@ function menu() {
             </div>
         </div>
     </div>
+ 
     );
 
 }

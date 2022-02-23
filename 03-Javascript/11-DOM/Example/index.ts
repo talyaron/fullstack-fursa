@@ -11,4 +11,4 @@ console.dir(h1)
 
 h1.addEventListener('click',((ev:any)=>{
     console.log(ev)
-})
+}))

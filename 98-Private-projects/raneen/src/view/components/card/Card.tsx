@@ -30,6 +30,7 @@ function Card(prop: CardProp) {
   
     setColor(getRandomColor());
     
+    
   }
 function handleAdd(){
   alert("added to favourites")
