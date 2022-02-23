@@ -2,6 +2,7 @@ import './Products.scss'
 import Button from '@mui/material/Button';
 import axios from 'axios'
 import { useState,useEffect } from 'react';
+
 export interface productProp{
     woodName:string;
     woodlength:number;
@@ -27,7 +28,6 @@ export interface productProp{
      {
         
         axios.delete(`http://localhost:3004/userOrder/${id}`).then(({data})=>setOrder(data));
-        
     
     }
        
