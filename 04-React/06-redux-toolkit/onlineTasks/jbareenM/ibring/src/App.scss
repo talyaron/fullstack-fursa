@@ -1,0 +1,19 @@
+.App {
+
+  .selectedPage{
+    display: flex;
+    align-items: center;
+    border: 2px solid blue;
+    height: 120px;
+    width: 100%;
+
+    img{
+
+    }
+  }
+
+  .appPageContainer{
+    display: flex;
+    justify-content: space-between;
+  }
+}
