@@ -1,0 +1,25 @@
+
+.collapsible {
+   
+    .header {
+        width: 50vm;
+        background-color: #7572FC;
+        border-radius: 10px;
+        padding: 6px;
+        cursor: pointer;
+        color: #ffffff;
+        margin: 2px;
+        &:hover {
+            background-color: #504df7;
+          }
+
+}
+.content {
+    padding: 6px;
+    border-radius: 10px;
+    background-color: #adaaf3;
+    &:hover {
+        background-color: #adaaf3;
+      }
+}
+}

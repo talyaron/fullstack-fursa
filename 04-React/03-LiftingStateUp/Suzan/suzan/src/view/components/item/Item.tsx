@@ -3,22 +3,22 @@ import { useState } from "react";
 
 
 interface ItemProps {
-    generalCart: any;
-    setGeneralCart: any;
+    cart: any;
+    setCart: any;
     name:string
 }
 
 function Product(prop:ItemProps) {
 
-    const {generalCart, setGeneralCart} = prop;
+    const {cart, setCart} = prop;
     const name = prop.name;
 
     function removeFromCart() {
-        const copy = Object.assign([], generalCart);
+        const copy = Object.assign([], cart);
 
-        if (setGeneralCart){
+        if (setCart){
             copy.splice(copy.indexOf(name),1);
-            setGeneralCart(copy);
+            setCart(copy);
         }
     }
 

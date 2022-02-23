@@ -9,32 +9,7 @@ interface chat {
 
 }
 
-// function chatList() {
-//   const [chats, setChats] = React.useState(["hiii"]);
 
-//   return (
-//     <ul>
-//       {chats.map((chat) => (
-        
-//         <li key={chat}>{chat}</li>
-        
-//       ))}
-//     </ul>
-//   );
-// }
-// function AddTochat() {
-//   function handleSubmit(event:any) {
-//     event.preventDefault();
-//     const todo = event.target.elements.todo.value;
-//     console.log(todo);
-//   }
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <input type="text" id="chat" />
-//       <button type="submit">Add chat</button>
-//     </form>
-//   );
-// }
 const chats:Array<string>=["hello"]
 
 

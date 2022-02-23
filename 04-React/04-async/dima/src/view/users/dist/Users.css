@@ -1,0 +1,13 @@
+.Users {
+  margin: auto;
+  width: 35vw;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, 200px);
+  grid-template-rows: repeat(5, 80px);
+  text-align: center;
+}
+.Users .user {
+  background-color: aqua;
+  color: #053b29;
+}

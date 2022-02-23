@@ -16,7 +16,7 @@ const Login = () =>{
                 <br /><br />
                 Password <br />
                 <input type="password" />
-                <Link to="/App">Login</Link>
+                <Link to="/Store">Login</Link>
                 
                 <br />
                 <Link to="/HomePage">cancle</Link>
