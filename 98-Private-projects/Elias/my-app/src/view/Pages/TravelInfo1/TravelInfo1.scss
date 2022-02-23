@@ -1,47 +1,70 @@
 @import url("https://cdn.syncfusion.com/ej2/material.css");
 
+.wrapper {
+     height:100%;
+     width: 100%;
+     .text{
+         color: #7572FC;
+         font-family: Poppins;
+         font-size: 20px;
+     }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            padding: 10px;
+            row-gap: 5px;
+            column-gap: 5px;
+
+            .grid-item {
+                border: 1px solid gray;
+                background-color: white;
+                padding: 10px;
+                font-size: 30px;
+                text-align: center;
+                border-radius: 13pX;
+            }
+        }
 
 
 
-#calendar{
-    //background-color: blueviolet;
-    //color: blue;
-    /* To remove the line in the input */ 
+        .Proceedbtn {
+            color: white;
+            font-family: Poppins;
+            font-style: normal;
+            text-align: center;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 27px;
+            background-color: #FF8074;
+            border: #FF8074;
+            border-radius: 16px;
+            height: 47.75px;
+            width: 124px;
 
-}
-    
+            &:hover {
+                background-color: #fa6f63;
 
-.grid-container {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    padding: 10px;
-    .grid-item {
-        border: 1px solid gray;
-        padding: 20px;
-        font-size: 30px;
-        text-align: center;
-        border-radius: 13PX;
-      }
-  }
+            }
+        }
 
- 
-
-.Proceedbtn {
-    color: white;
-    font-family: Poppins;
-    font-style: normal;
-    text-align: center;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 27px;
-    background-color: #FF8074;
-    border: #FF8074;
-    border-radius: 16px;
-    height: 47.75px;
-    width: 124px;
-    &:hover{
-        background-color: #fa6f63;
 
     }
 }
-  
+
+img {
+    height: 80%;
+    width: 80%;
+}
+
+input {
+    height: 38px;
+    width: 100%;
+    border-radius: 9px;
+
+}

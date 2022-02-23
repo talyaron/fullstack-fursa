@@ -18,17 +18,17 @@ const Bottom_Nav = () => {
   };
   return (
     <div className="botnav">
-      <BottomNavigation /*sx={{ width:100}}*/ value={value} onChange={handleChange}>
+      <BottomNavigation /*sx={{ width:100}}*/  value={value} onChange={handleChange}>
         <BottomNavigationAction
           label="Home"
           value="Home"
-          icon={<HomeIcon color="primary" />}
+          icon={<HomeIcon  color="primary"  />}
         />
-        <BottomNavigationAction
+        <BottomNavigationAction 
           label="Notifications"
           value="Notifications"
           icon={<CircleNotificationsIcon color="primary" />} />
-      </BottomNavigation>
+      </BottomNavigation >
     </div>
   );
 }
