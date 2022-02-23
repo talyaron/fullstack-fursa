@@ -3,6 +3,7 @@ import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 // import textReducer from '../features/text/textSlice';
 import courseCardReducer from './reducers/student/CourseCardSlice';
 import teacherCourseCardReducer from './reducers/teacher/CourseCardSlice';
+import schoolClassCardReducer from './reducers/school/ClassCardSlice';
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     //  text:textReducer,
     courseCard: courseCardReducer, 
     teacherCourseCard: teacherCourseCardReducer,
+    schoolClassCard: schoolClassCardReducer,
   },
 });
 
