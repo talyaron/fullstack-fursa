@@ -8,14 +8,28 @@
 
     .pageHeader{
         width: 100%;
-        
+        height: 50%;
         img{
             width: 100%;
+            height: 100%;
         }
     }
 
     .pageContent{
         width: 100%;
         text-align: center;
+
+        .pageTitle{
+            font-size: larger;
+            font-weight: bold;
+            color: purple;
+            border-bottom: 2px solid grey;
+            padding: 5px;
+            text-align: center;
+        }
+
+        .pageData{
+            margin-top: 10px;
+        }
     }
 }
