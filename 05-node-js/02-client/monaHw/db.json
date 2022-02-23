@@ -68,6 +68,15 @@
       "thick": "22",
       "amount": "",
       "id": 2
+    },
+    {
+      "woodName": "Doors",
+      "woodlength": "22",
+      "width": "160",
+      "thick": "300",
+      "color": "green",
+      "amount": "2",
+      "id": 3
     }
   ]
 }
