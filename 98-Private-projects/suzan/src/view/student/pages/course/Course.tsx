@@ -1,12 +1,11 @@
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
+import { useAppSelector } from "../../../../app/hooks";
+import { selectedCourseName, selectedTeacherName } from "../../../../app/reducers/student/CourseCardSlice";
 import StudentResponsiveAppBar from "../../components/header/StudentAppBar";
 import MaterialSection from "../../components/materialSection/MaterialSection";
 import UpdatesList from "../../components/updatesList/UpdatesList";
 // import './Course.scss';
-
-const courseName = 'English';
-const className = 'Class 1A';
 
 const materials = [
     { title: 'material title1', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' },
@@ -25,6 +24,9 @@ const updates = [
 ]
 
 export default function StudentCourse() {
+    const courseName = useAppSelector(selectedCourseName);
+    const teacherName = useAppSelector(selectedTeacherName);
+
     return (
         <div>
             <div className="bar">
@@ -33,6 +35,8 @@ export default function StudentCourse() {
 
             <div className="title">
                 <Typography variant='h3' align='center'>{courseName}</Typography>
+                <Typography variant='h5' align='center'>{teacherName}</Typography>
+
             </div>
 
             <div className="course">
