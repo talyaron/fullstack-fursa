@@ -27,7 +27,7 @@
         //height: 100%;
         &__logo {
             display: flex;
-            max-width: 20%;
+
 
             img {
                 height: auto;
@@ -70,6 +70,18 @@
                 //background-color: #2a945b;
                 font-size: 20px;
                 color: #2a945b;
+            }
+        }
+
+        &__disable {
+            display: flex;
+
+            span {
+                color: black;
+                cursor: default;
+                text-align: center;
+                padding: 20px 24px;
+                opacity: 0.6;
             }
         }
     }
@@ -282,6 +294,10 @@
             width: 100%;
 
             a {
+                display: none;
+            }
+
+            span {
                 display: none;
             }
 

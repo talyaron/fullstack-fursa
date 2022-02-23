@@ -20,6 +20,9 @@ import { faBars } from '@fortawesome/free-solid-svg-icons'
 import User from '../user/user'
 import Alert from '@mui/material/Alert'
 import Snackbar from '@mui/material/Snackbar'
+import { useAppSelector, useAppDispatch } from '../../../app/hooks';
+import { checkUser, updateLogIn, updateUserInfo, selectUser } from '../../../app/reducers/userReducer'
+import axios from 'axios';
 
 
 
@@ -31,8 +34,10 @@ function Menu() {
     const [navbarindex, setNavbarindex] = useState(1);
     const [loginState, setLoginState] = useState({ user: "" })
     const [sigupState, setSigupnState] = useState({})
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [openAlert, setOpenAlert] = React.useState(false);
+    const dispatch = useAppDispatch();
+    const isLoggedIn = useAppSelector(checkUser)
+    const userInfo = useAppSelector(selectUser)
     function openSearchModal(bool: boolean) {
         if (bool === false)
             setNavbarindex(1)
@@ -60,11 +65,13 @@ function Menu() {
     }
     function handleLogin(e: any) {
         e.preventDefault();
-
-        console.log(loginState)
-        setIsLoggedIn(true);
-
+        dispatch(updateLogIn(true));
         openSignInModal(false);
+        axios.get('http://localhost:3004/Users/1').then(
+            ({ data }) => {
+                dispatch(updateUserInfo(data))
+            });
+
         setOpenAlert(true)
     }
     function onChangeSignup(e: any) {
@@ -72,16 +79,15 @@ function Menu() {
             ...sigupState,
             [e.target.name]: e.target.value,
         })
-
     }
     function handleSignup(e: any) {
         e.preventDefault();
+        openSignUpModal(false)
 
-        console.log(sigupState)
     }
     let comp;
     if (isLoggedIn) {
-        comp = <User name={loginState.user.charAt(0)}></User>
+        comp = <User></User>
     }
     else {
         comp = (<div className="navbar__right"><button className="navbar__right__signup" type="button" onClick={() => openSignUpModal(true)}><span>Not Registered Yet?</span></button>
@@ -97,18 +103,21 @@ function Menu() {
                     <div className="navbar__left__logo">
                         <img src={logo} alt="Logo" />
                     </div>
-                    <Link to="/">
+                    < Link to="/">
                         Explore
                     </Link>
-                    <Link to="/Reservations">
-                        Reservation
+                    {isLoggedIn ?
+                        <div className="navbar__left">
+                            <Link to="/Reservations">
+                                Reservation
                     </Link>
-                    <Link to="/Favorite">
-                        Favorite
+                            <Link to="/Favorite">
+                                Favorite
                     </Link>
-                    <Link to="/Maps">
-                        Maps
-                    </Link>
+                            <Link to="/Maps">
+                                Maps
+                    </Link></div> : <div className="navbar__left__disable"> <span>Reservation</span><span>Favorite</span><span >Maps</span></div>
+                    }
                 </div>
                 <div className="navbar__right">
                     {comp}

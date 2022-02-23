@@ -50,5 +50,12 @@
             "photos": ["https://www.booster2success.com/wp-content/uploads/2020/09/Image-2-restaurant-caf%C3%A9-la-r%C3%A9gence.jpg", "https://media.timeout.com/images/105331194/750/422/image.jpg"]
         }
     ],
-    "Users": []
+    "Users": [{
+        "id": 1,
+        "email": "m.zmiro@hotmail.com",
+        "fullName": "mohamed zmiro",
+        "favorite": [],
+        "password": "123123147",
+        "reservations": []
+    }]
 }
