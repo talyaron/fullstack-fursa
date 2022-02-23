@@ -3,8 +3,9 @@ import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import './App.css';
 import Card from './components/card/card'
-import { selectCard } from './components/card/cardSlice';
+import { selectCard, selectText } from './components/card/cardSlice';
 import { useAppSelector } from './app/hooks';
+import GeneralCard from './components/generalcard/generalcard'
 interface cardprops {
   img: string;
   text: string;
@@ -16,7 +17,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div className="global">
-          <Card img={temp.img} text={temp.text}></Card>
+          <GeneralCard />
         </div>
         <div className="menu">
           <Card img="https://st2.depositphotos.com/2124563/8893/i/450/depositphotos_88939092-stock-photo-flag-football-club-chelsea-england.jpg

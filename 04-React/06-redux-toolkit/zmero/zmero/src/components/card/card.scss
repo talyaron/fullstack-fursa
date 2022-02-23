@@ -1,4 +1,7 @@
 .card {
+    display: flex;
+    flex-direction: column;
+
     img {
         width: 7rem;
         height: 7rem;
