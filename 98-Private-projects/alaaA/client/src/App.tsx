@@ -14,10 +14,13 @@ import Group from "./view/pages/Groups/group";
 import CreateGroup from "./view/pages/CreateGroup/createGroup";
 import Store from "./view/pages/store/store";
 import Mygroups from './view/pages/mygroups/mygroups';
+import Profile from './view/pages/profile/profile';
 import Cart from './view/components/Cart/Cart'
 import AboutUsIn from "./view/pages/aboutUsIn/aboutUsIn"
 import Help from "./view/pages/help/help"
 import Settings from "./view/pages/settings/settings"
+import GroupDetails from './view/pages/GroupDetails/GroupDetails';
+
 
 
 interface product {
@@ -52,12 +55,15 @@ return(
     <Route path="Store" element={<Store />} >
     {/* <Route path="HomePage" element={<HomePage />} /> */}
     </Route>
-    <Route path="mygroups" element={<Mygroups />} />
+    <Route path="/mygroups" element={<Mygroups />} />
+    <Route path="/mygroups/:id" element={<GroupDetails/>} />
+    <Route path="/users/:id" element={<Profile/>} />
+    <Route path="GroupDetails" element={<GroupDetails />} /> 
+
     <Route path="aboutUsIn" element={<AboutUsIn />} />
     <Route path="help" element={<Help />} />
-    <Route path="settings" element={<Settings />} />
-
-
+    
+    
 
     {/* <Route></Route> */}
     {/* </Route> */}

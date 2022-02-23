@@ -27,6 +27,7 @@ function App() {
             react_1["default"].createElement(react_router_dom_1.Route, { path: "CreateGroup", element: react_1["default"].createElement(createGroup_1["default"], null) }),
             react_1["default"].createElement(react_router_dom_1.Route, { path: "HomePage", element: react_1["default"].createElement(homePage_1["default"], null) }),
             react_1["default"].createElement(react_router_dom_1.Route, { path: "Store", element: react_1["default"].createElement(store_1["default"], null) }),
-            react_1["default"].createElement(react_router_dom_1.Route, { path: "mygroups", element: react_1["default"].createElement(mygroups_1["default"], null) }))));
+            react_1["default"].createElement(react_router_dom_1.Route, { path: "mygroups", element: react_1["default"].createElement(mygroups_1["default"], null) }),
+            react_1["default"].createElement(react_router_dom_1.Route, { path: "profile", element: react_1["default"].createElement(Profile, null) }))));
 }
 exports["default"] = App;
