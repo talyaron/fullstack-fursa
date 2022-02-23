@@ -1,6 +1,10 @@
 {
   "dependencies": {
+<<<<<<< HEAD
     "react-router-dom": "^6.2.1",
     "sass": "^1.49.7"
+=======
+    "express": "^4.17.2"
+>>>>>>> jbareenM
   }
 }
