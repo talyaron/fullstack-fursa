@@ -7,6 +7,7 @@ interface userProb {
     userName: string;
     favorite: Array<number>;
     reservations: Array<number>;
+    //restaurants:Array<restprops>
 }
 
 const initialState: userProb = {
@@ -15,6 +16,7 @@ const initialState: userProb = {
     userName: "",
     favorite: [],
     reservations: [],
+    //restaurants:[]
 };
 
 
@@ -29,14 +31,18 @@ export const userReducer = createSlice({
             state.userName = action.payload.fullName
             state.favorite = action.payload.favorite
             state.userID = action.payload.id
-            state.reservations = action.payload.reservations
+        },
+        updateReservation: (state, action) => {
+            state.reservations = action.payload
         }
     }
 })
 
 
-export const { updateLogIn, updateUserInfo } = userReducer.actions
+export const { updateLogIn, updateUserInfo, updateReservation } = userReducer.actions
 export const selectUser = (state: RootState) => state.user
 export const selecUserName = (state: RootState) => state.user.userName
 export const checkUser = (state: RootState) => state.user.userIsLogIn
+export const getReservations = (state: RootState) => state.user.reservations
+//export const getRestaurants = (state: RootState) => state.user.restaurants 
 export default userReducer.reducer;
