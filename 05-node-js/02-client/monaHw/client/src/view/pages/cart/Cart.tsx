@@ -10,6 +10,7 @@ import { selectorders } from '../../../features/cart/cartSlice';
 import { update } from '../../../features/cart/cartSlice';
 import { useAppSelector } from '../../../app/hooks';
 import { useAppDispatch } from '../../../app/hooks';
+import {getCartAsync,order} from '../../../features/cart/cartSlice';
 
 interface cartProps {
     product: any;
@@ -25,11 +26,12 @@ function Cart(props: cartProps) {
     // axios.get('http://localhost:3004/userOrder').then(({data})=> setOrder(data));
     // }, []);
     const dispatch = useAppDispatch();
-    useEffect(() => {
-        axios.get('http://localhost:3004/userOrder').then(({ data }) => dispatch(update(data)));
-    }, []);
+    dispatch(getCartAsync())
+    // useEffect(() => {
+    //     axios.get('http://localhost:3004/userOrder').then(({ data }) => dispatch(update(data)));
+    // }, []);
     const orders = useAppSelector(selectorders);
-    console.log(orders);
+   
     return (
 
 
@@ -59,10 +61,11 @@ function Cart(props: cartProps) {
                 <div className="cart_body_done">
                     <Outlet />
                 </div>
-                {orders.map((products: productProp, i: any) => {
+                {orders.status!=='loading'}
+                {orders.orders.map((products: order, i: any) => {
 
                     return <Product key={i} woodName={products.woodName} woodlength={products.woodlength} width={products.width} thick={products.thick} amount={products.amount} id={products.id} />
-                })}
+                })}:  <div>loading</div>
 
                 <Button variant="contained" style={{ backgroundColor: 'rgb(47, 143, 90)' }} size="medium">
                     <Link to="/cart/checkOutOrder"> order </Link>
