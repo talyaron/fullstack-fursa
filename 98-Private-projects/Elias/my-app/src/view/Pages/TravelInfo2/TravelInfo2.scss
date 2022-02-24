@@ -44,6 +44,10 @@
                 font-size: 30px;
                 text-align: center;
                 border-radius: 13pX;
+                &:hover{
+                    border: 2px solid rgb(0, 217, 255);
+
+                }
             }
         }
     }
@@ -72,10 +76,6 @@
     }
 }
 
-img {
-    height: 100%;
-    width: 100%;
-}
 
 input {
     height: 38px;
