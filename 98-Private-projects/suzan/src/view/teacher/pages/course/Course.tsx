@@ -5,15 +5,17 @@ import { selectedClassName, selectedCourseName } from "../../../../app/reducers/
 import CourseResponsiveAppBar from "../../components/courseHeader/CourseAppBar";
 import MaterialSection from "../../components/materialSection/MaterialSection";
 import UpdatesList from "../../components/updatesList/UpdatesList";
+import {useState, useEffect} from 'react';
+import axios from 'axios';
 import './Course.scss';
 
-const materials = [
-    { title: 'material title1', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' },
-    { title: 'material title2', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' },
-    { title: 'material title3', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' },
-    { title: 'material title4', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' },
-    { title: 'material title5', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' }
-]
+// const materials = [
+//     { title: 'material title1', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' },
+//     { title: 'material title2', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' },
+//     { title: 'material title3', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' },
+//     { title: 'material title4', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' },
+//     { title: 'material title5', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' }
+// ]
 
 const updates = [
     { update: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' },
@@ -26,6 +28,14 @@ const updates = [
 export default function Course() {
     const courseName = useAppSelector(selectedCourseName);
     const className = useAppSelector(selectedClassName);
+
+    const [materials, setMaterials] = useState([]);
+    useEffect(() => {
+        axios.get('http://localhost:3004/courseMaterial').then(({data})=>{
+            console.log(data);
+            setMaterials(data);
+    })
+    }, []);
 
     return (
         <div>

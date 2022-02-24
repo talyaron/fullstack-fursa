@@ -8,16 +8,26 @@ import TableRow from "@mui/material/TableRow";
 import Typography from "@mui/material/Typography";
 import CourseResponsiveAppBar from "../../components/courseHeader/CourseAppBar";
 import Paper from '@mui/material/Paper';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import './TeacherHomeworks.scss';
 
-const homeworks = [
-    { date: '20.2.2022', course: 'Math', description: 'questions from 1 to 15 page 225' },
-    { date: '20.2.2022', course: 'Arabic', description: 'reading page 25' },
-    { date: '18.2.2022', course: 'Science', description: 'question 3+4 page 15' },
-    { date: '15.2.2022', course: 'Math', description: 'questions 20-25 page 333' }
-]
+// const homeworks = [
+//     { date: '20.2.2022', course: 'Math', description: 'questions from 1 to 15 page 225' },
+//     { date: '20.2.2022', course: 'Arabic', description: 'reading page 25' },
+//     { date: '18.2.2022', course: 'Science', description: 'question 3+4 page 15' },
+//     { date: '15.2.2022', course: 'Math', description: 'questions 20-25 page 333' }
+// ]
 
 export default function TeacherHomeworks() {
+    const [homeworks, setHomeworks] = useState([]);
+    useEffect(() => {
+        axios.get('http://localhost:3004/homeworks').then(({ data }) => {
+            console.log(data);
+            setHomeworks(data);
+        })
+    }, []);
+
     return (
         <div>
             <div className="bar">
@@ -40,18 +50,23 @@ export default function TeacherHomeworks() {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {homeworks.map((homework, i) => (
-                                <TableRow
-                                    key={i}
-                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                >
-                                    <TableCell align="center" component="th" scope="row">
-                                        {homework.date}
-                                    </TableCell>
-                                    <TableCell align="center">{homework.course}</TableCell>
-                                    <TableCell align="center">{homework.description}</TableCell>
-                                </TableRow>
-                            ))}
+                            {
+                                homeworks.map((homework, i) => {
+                                    const {date, course, description} = homework;
+                                    return(
+                                        <TableRow
+                                        key={i}
+                                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                    >
+                                        <TableCell align="center" component="th" scope="row">
+                                            {date}
+                                        </TableCell>
+                                        <TableCell align="center">{course}</TableCell>
+                                        <TableCell align="center">{description}</TableCell>
+                                    </TableRow>
+                                    );
+                                })
+                            }
                         </TableBody>
                     </Table>
                 </TableContainer>

@@ -27,6 +27,12 @@
     {"id":1, "course": "English", "material": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." },
     {"id":2, "course": "Math", "material": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." }
   ],
+
+  "teacherCourses":[
+    { "name": "Arabic", "class_name": "class 1A" }, { "name": "Arabic", "class_name": "class 1B" },
+    { "name": "Arabic", "class_name": "class 2A" }, { "name": "Hebrew", "class_name": "class 2A" },
+    { "name": "Hebrew", "class_name": "class 2B" }
+  ],
   
   "comments": [
     {
