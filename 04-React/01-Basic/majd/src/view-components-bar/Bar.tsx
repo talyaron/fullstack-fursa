@@ -1,19 +1,20 @@
 import { isPropertySignature } from "typescript";
-
+import {useState} from 'react';
+import {Outlet} from 'react-router-dom'
+import { Link } from "react-router-dom";
 interface BarProp {
     title: string;
-    subtitle: string;
+    id: string;
   }
+ 
 
 function Bar(prop: BarProp) {
+  
+  
     return (
-      <div className="bar">
-        <button>
-        <p>{prop.title}</p>
-        <p>{prop.subtitle}</p>
-        </button>
-      </div>
+       <Link to={`${prop.id}`}> {prop.title} </Link>  
     );
+    
   }
   
   export default Bar;
