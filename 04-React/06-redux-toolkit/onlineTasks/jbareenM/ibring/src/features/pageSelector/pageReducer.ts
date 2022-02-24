@@ -23,7 +23,7 @@ export const pageReducer = createSlice({
     name: 'selectImg',
     initialState,
     reducers: {
-        select: (state, action: PayloadAction<any>) => {
+        select: (state, action: PayloadAction<any>) => { //Action select => action.type
             state.value = action.payload;
         },
         changeText: (state, action: PayloadAction<any>) => {

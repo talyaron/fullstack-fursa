@@ -6,10 +6,13 @@ import Page from './components/page/Page';
 import { selectURL, changeText } from './features/pageSelector/pageReducer';
 import { useAppSelector, useAppDispatch } from './app/hooks';
 import { RootState } from './app/store';
+import { add, addWithNumber, dec } from './features/test/testReducer';
 
 function App() {
   const imgURL = useAppSelector(selectURL);
   const dispatch = useAppDispatch();
+
+  const counter = useAppSelector(state => state.test.counter)
 
   const [textInput, setTextInput] = useState("");
   // const selectURL = useAppSelector((state: RootState) => state.selectImg);
@@ -19,9 +22,21 @@ function App() {
     dispatch(changeText(textInput));
   }, [textInput])
 
+  function addNumber() {
+    // dispatch(add());
+    dispatch(addWithNumber(4));
+  }
+
+  function decNumber() {
+    dispatch(dec());
+  }
+
   return (
     <div className="App">
       <div className="selectedPage">
+        <p>{counter}</p>
+        <button onClick={addNumber}>+</button>
+        <button onClick={decNumber}>-</button>
         <label>Selected Page</label>
         <input type="text" placeholder='Enter some text' onKeyUp={(ev: any) => setTextInput(ev.target.value)} />
         <Page content={{ title: imgURL.value.title, data: imgURL.value.data }}
