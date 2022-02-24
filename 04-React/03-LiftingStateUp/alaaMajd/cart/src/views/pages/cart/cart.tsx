@@ -1,5 +1,6 @@
 import React from 'react'
 import CartItem from './cartItem'
+import './cart.scss'
 import { Link } from 'react-router-dom';
 interface cartprop {
     cartItems: any;
