@@ -2,6 +2,9 @@ import './Products.scss'
 import Button from '@mui/material/Button';
 import axios from 'axios'
 import { useState,useEffect } from 'react';
+import {selectorders} from '../../../features/cart/cartSlice';
+import {update} from '../../../features/cart/cartSlice';
+import {useAppDispatch} from '../../../app/hooks';
 
 export interface productProp{
     woodName:string;
@@ -9,7 +12,6 @@ export interface productProp{
     width:number;
     thick:number;
     amount:number;
-   
     color?:string;
     id:number;
    
@@ -18,6 +20,8 @@ export interface productProp{
  
  
  function Product(prop:productProp){
+    // const dispatch = useAppDispatch();
+
     const [order,setOrder]=useState([]);
     useEffect(()  => {
        axios.get('http://localhost:3004/userOrder').then(({data})=> setOrder(data));

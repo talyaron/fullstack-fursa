@@ -62,30 +62,12 @@
   ],
   "userOrder": [
     {
-      "woodName": "Doors",
-      "woodlength": "22",
-      "width": "160",
-      "thick": "300",
-      "color": "green",
-      "amount": "2",
-      "id": 3
-    },
-    {
       "woodName": "Maple Wood",
       "woodlength": "250",
       "width": "160",
       "thick": "3",
       "amount": "",
       "id": 4
-    },
-    {
-      "woodName": "Doors",
-      "woodlength": "250",
-      "width": "160",
-      "thick": "22",
-      "color": "green",
-      "amount": "3",
-      "id": 5
     },
     {
       "woodName": "Maple Wood",
@@ -102,14 +84,6 @@
       "thick": "22",
       "amount": "",
       "id": 7
-    },
-    {
-      "woodName": "Maple Wood",
-      "woodlength": "250",
-      "width": "160",
-      "thick": "3",
-      "amount": "",
-      "id": 8
     }
   ]
 }

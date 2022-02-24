@@ -48,7 +48,7 @@ function handlepick()
           </div>
           <input placeholder="toatal price"></input>
             <Button variant="contained" style={{backgroundColor: 'rgb(47, 143, 90)'}} size="medium">
-       <Link to="/cart/checkOutOrder"> checkout order </Link>  
+       <Link to="/cart/checkOutOrder"> checkout  </Link>  
        
        </Button> 
        <button onClick={handler}>

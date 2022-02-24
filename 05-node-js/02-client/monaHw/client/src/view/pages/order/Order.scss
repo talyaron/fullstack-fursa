@@ -77,6 +77,18 @@
           align-items: center;
           justify-content: center;
           margin: 50px;
+          .row{
+            display: flex;
+            margin: 5px;
+           
+            
+            p{
+              font-size: 1rem;
+              font-weight: bold;
+              font-style: italic;
+              color: rgb(173, 89, 10) ;
+            }
+          }
        }
     
     form{

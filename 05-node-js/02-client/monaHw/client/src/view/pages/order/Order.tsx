@@ -11,16 +11,40 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Navbar from '../../components/navbar/Navbar';
 import axios from 'axios'
+import TextField from '@mui/material/TextField';
+import MenuItem from '@mui/material/MenuItem';
+import { height, width } from '@mui/system';
+
 // const woods = [{name:'pine wood',height:70,width:70, thick:70,cardImg:'https://d2kxk2c617i0nn.cloudfront.net/image_resize/crop/mw1500/mh750/products/23_001--yellow_pine_softwood-s.jpg'},
 // {name:'insulation wood',height:70,width:70, thick:70,cardImg:'https://www.greenspec.co.uk/images/web/materials/boards/board.jpg'},
 // {name:'multiLayer wood',height:70,width:70, thick:70,cardImg:'https://user-assets.sxlcdn.com/images/609056/FkbWNKuLffuq6lYY2qFlQ5bAGYJY.jpg?imageMogr2/strip/auto-orient/thumbnail/1200x9000%3E/quality/90!/interlace/1/format/jpg'}];
-
+const currencies = [
+    {
+      value: 'm',
+      label: 'm',
+    },
+    {
+      value: 'mm',
+      label: 'mm',
+    },
+    {
+      value: 'cm',
+      label: 'cm',
+    },
+  
+  ];
 interface orderProps {
     product: any;
     setProduct: any;
 }
 function Order(props: orderProps) {
     const { product, setProduct } = props;
+    const [currency, setCurrency] = React.useState('cm');
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCurrency(event.target.value);
+  };
+
     const { name } = useParams();
     const [add,setAdd]=useState('')
   
@@ -69,10 +93,64 @@ function Order(props: orderProps) {
           
             <div className="order_body_inputs">
             <form onSubmit={handleSubmit}>
+                <div className="row">
+                <p>Length</p>
                 <input type="text" name="woodlength"  required placeholder="Length" />
+                <TextField
+          id="outlined-select-currency"
+          select
+         
+          value={currency}
+          onChange={handleChange}
+          style={{width:'8vw'}}
+
+        >
+          {currencies.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
+                </div>
+                <div className="row">
+                <p>Width</p>
                 <input type="text" name="width" required placeholder="Width" />
+                <TextField
+          id="outlined-select-currency"
+          select
+          value={currency}
+          onChange={handleChange}
+          style={{width:'8vw'}}
+
+        >
+          {currencies.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
+                </div>
+                <div className="row">
+                <p>Thick</p>
                 <input type="text" name="thick" required placeholder="Thickness" />
+                <TextField
+          id="outlined-select-currency"
+          select
+          value={currency}
+          onChange={handleChange}
+          style={{width:'8vw'}}
+        >
+          {currencies.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
+                </div>
+                <div className="row">
+                <p>Quantity</p>
                 <input type="number" name="amount" required placeholder="Quantity" />
+                </div>
                 <Button type="submit" variant="contained" style={{backgroundColor: 'rgb(47, 143, 90)'}}size="medium">
           add to cart
        
