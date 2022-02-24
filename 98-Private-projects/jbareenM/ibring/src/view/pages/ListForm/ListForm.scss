@@ -1,0 +1,36 @@
+.mainTemplate{
+
+    .mainHeader{
+
+        .toDo{
+            width: 20%;
+            opacity: 0.5;
+        }
+    }
+
+    .mainContent{
+        .next{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+
+        .fewWords{
+            height: 100px;
+        }
+
+    }
+}
+
+@media only screen and (max-width: 700px){
+    .mainTemplate{
+
+        .mainContent{
+
+        }
+    }
+}
