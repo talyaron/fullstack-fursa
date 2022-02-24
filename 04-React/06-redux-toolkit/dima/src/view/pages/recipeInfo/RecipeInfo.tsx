@@ -13,7 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useAppSelector } from '../../../app/hooks';
-import { selectedFrom, selectedRecipe } from '../../features/item/itemSlice';
+import { selectedFrom, selectedIsNew, selectedRecipe } from '../../features/item/itemSlice';
 
 const CssTextField = styled(TextField)({
     '& label.Mui-focused': {
@@ -31,24 +31,23 @@ const CssTextField = styled(TextField)({
     },
 });
 
-interface recipeInfo{
-    id?: number;
-    name? : string;
-    image? : string;
-    time? : string;
-    people? : string;
-    calories? : string;
-    ingredients? : string;
-    method? : string;
-}
+// interface recipeInfo{
+//     id?: number;
+//     name? : string;
+//     image? : string;
+//     time? : string;
+//     people? : string;
+//     calories? : string;
+//     ingredients? : string;
+//     method? : string;
+// }
 
 export default function RecipeInfo() {
-    //const [recipe, setRecipe] = useState<recipeInfo>({})
     const [like, setLike] = useState(0);
-    //const [from_, setFrom] = useState('');
     //Redux toolkit
     const recipe_ = useAppSelector(selectedRecipe);
     const from_ = useAppSelector(selectedFrom);
+    const isNew = useAppSelector(selectedIsNew);
 
     function handleLike() {
         setLike(like + 1);
@@ -67,9 +66,10 @@ export default function RecipeInfo() {
     //     axios.delete('http://localhost:3004/selected/1');
     // }, []);
 
-    const editClick = (recipe:any) => {
-        axios.post('http://localhost:3004/edit', {recipe: recipe, new: false, from: from_});
-    } 
+    // const editClick = (recipe:any) => {
+    //     console.log(isNew);
+    //     axios.post('http://localhost:3004/edit', {recipe: recipe, new: false, from: from_});
+    // } 
 
     return (
         <div className='info'>
@@ -84,7 +84,7 @@ export default function RecipeInfo() {
                             <Link to='/NewRecipe'>
                                 <AutoAwesomeIcon sx={{
                                     color: '#b5739d', fontSize: 35
-                                }} onClick={() => editClick(recipe_)} />
+                                }} />{/* onClick={() => editClick(recipe_)}*/}
                             </Link>
                         </Tooltip>
                     </div>

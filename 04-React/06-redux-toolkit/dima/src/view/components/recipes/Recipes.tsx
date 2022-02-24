@@ -6,23 +6,29 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { selectedRecipe, updateFrom, updateRecipe, updateNew } from '../../features/item/itemSlice';
+import { getRecipesAsync, myRecipes } from '../../features/recipes/RecipesArray';
 
 export default function Recipes() {
 
-    const [recipes, setRecipes] = useState([]);
+    //const [recipes, setRecipes] = useState([]);
 
     //Redux
-    const recipe_ = useAppSelector(selectedRecipe);
+    //const recipe_ = useAppSelector(selectedRecipe);
+    const myRecipe = useAppSelector(myRecipes);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        axios.get('http://localhost:3004/recipe').then(res => {
-            const data = res.data;
-            setRecipes(data);
-        });
-    }, []);
+        dispatch(getRecipesAsync());
+    },[])
 
-    console.log(recipes);
+    // useEffect(() => {
+    //     axios.get('http://localhost:3004/recipe').then(res => {
+    //         const data = res.data;
+    //         setRecipes(data);
+    //     });
+    // }, []);
+
+    // console.log(recipes);
 
     const imageClick = (recipe:any) => {
         // axios.post('http://localhost:3004/selected', {recipe, from: 'recipe'});
@@ -30,7 +36,7 @@ export default function Recipes() {
     } 
 
     const addClick = () => {
-        axios.post('http://localhost:3004/edit', {recipe: {}, new: true, from: 'recipe'});
+        //axios.post('http://localhost:3004/edit', {recipe: {}, new: true, from: 'recipe'});
         dispatch(updateRecipe({}));
         dispatch(updateFrom('recipe'));
         dispatch(updateNew(true));
@@ -47,7 +53,7 @@ export default function Recipes() {
                 </Tooltip>
             </div>
 
-            {recipes.map((recipe:any, index:number) => {
+            {myRecipe.map((recipe:any, index:number) => {
                 return(<div key={index} className="item">
                         <Link to='/RecipeInfo'>
                             <div className='itemImg'><img src={recipe.image} alt="" onClick={() => imageClick(recipe)}/></div>
@@ -57,8 +63,4 @@ export default function Recipes() {
             })}
         </div>
     );
-}
-
-function updateIsNew(arg0: boolean): any {
-    throw new Error('Function not implemented.');
 }

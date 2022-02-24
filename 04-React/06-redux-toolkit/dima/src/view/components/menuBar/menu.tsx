@@ -29,7 +29,6 @@ function Bagemenu() {
     return (
         <div className="menu" id="outer-container">
             <div className="menu__left">
-                {/* <MenuIcon sx={{ fontSize: 40, color: '#b5739d', paddingTop: -30 }} onClick={handleOn}/> */}
                 <div className='sideBar'>
                     <SideBar />
                 </div>

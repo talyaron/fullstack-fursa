@@ -20,39 +20,27 @@ import "swiper/css/navigation";
 // import required modules
 import { Pagination, Navigation } from "swiper";
 import { Link } from 'react-router-dom';
-import { useAppDispatch } from '../../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { updateRecipe, updateFrom } from '../../features/item/itemSlice';
+import { getRecipesAsync, recentRecipes, top10Recipes } from '../../features/recipes/RecipesArray';
 
 
 export default function MainScreen() {
-    const [top10, setTop] = useState([]);
-    const [recent, setRecent] = useState([]);
+    //Redux
     const dispatch = useAppDispatch();
+    const top10 = useAppSelector(top10Recipes);
+    const recent = useAppSelector(recentRecipes);
 
     useEffect(() => {
-        axios.get('http://localhost:3004/Top10').then(res => {
-            const data = res.data;
-            setTop(data);
-        });
+        dispatch(getRecipesAsync());
     }, []);
-    //console.log(top10);
-
-    useEffect(() => {
-        axios.get('http://localhost:3004/recent').then(res => {
-            const data = res.data;
-            setRecent(data);
-        });
-    }, []);
-    //console.log(recent);
 
     const imageClick1 = (ev:any, recipe:any) => {
-        //axios.post('http://localhost:3004/selected', {recipe, from: 'top10'});
         dispatch(updateRecipe(recipe));
         dispatch(updateFrom('top10'));
     } 
 
     const imageClick2 = (recipe:any) => {
-        //axios.post('http://localhost:3004/selected', {recipe, from: 'recent'});
         dispatch(updateRecipe(recipe));
         dispatch(updateFrom('recent'));
     } 

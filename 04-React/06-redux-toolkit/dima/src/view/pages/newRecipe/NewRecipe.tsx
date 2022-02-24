@@ -17,6 +17,7 @@ import Tooltip from '@mui/material/Tooltip';
 import axios from 'axios';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { selectedRecipe ,selectedFrom, selectedIsNew, updateRecipe } from '../../features/item/itemSlice';
+import { addToMyRecipe } from '../../features/recipes/RecipesArray';
 
 const Standard = styled(TextField)({
     '& label.Mui-focused': {
@@ -58,14 +59,14 @@ const CssTextField = styled(TextField)({
 });
 
 interface recipeInfo{
-    id? : number;
-    name? : string;
-    image? : string;
-    time? : string;
-    people? : string;
-    calories? : string;
-    ingredients? : string;
-    method? : string;
+    id:number;
+    name:string;
+    image:string;
+    time:string;
+    people:string;
+    calories:string;
+    ingredients:string;
+    method:string;
 }
 
 export default function NewRecipe() {
@@ -80,42 +81,35 @@ export default function NewRecipe() {
     const isNew = useAppSelector(selectedIsNew); 
     const dispatch = useAppDispatch();
     let to = '';
-    //console.log(recipe_);
 
     const [recipe, setRecipe] = useState<recipeInfo>(recipe_);
-    console.log(recipe);
 
     if(from === 'recipe' && isNew)
         to = '/User';
     else to = '/RecipeInfo';
-    console.log(to);
 
-    //console.log(recipe_);
-    //console.log(from);
-    //console.log(isNew);
+    // useEffect(() => {
+    //     axios.get('http://localhost:3004/edit/1').then(res => {
+    //         //console.log(res.data);
+    //         const data = res.data.recipe;
+    //         const new_ = res.data.new;
+    //         const f = res.data.from;
+    //         console.log(new_)
+    //         //setRecipe(data);
+    //         setFrom(f);
+    //         if(!new_)
+    //             setLink('/RecipeInfo');
+    //         else {
+    //             console.log("yes")
+    //             setLink('/User');
+    //         }
+    //     });
+    //     axios.delete('http://localhost:3004/edit/1');
 
-    useEffect(() => {
-        axios.get('http://localhost:3004/edit/1').then(res => {
-            //console.log(res.data);
-            const data = res.data.recipe;
-            const new_ = res.data.new;
-            const f = res.data.from;
-            console.log(new_)
-            setRecipe(data);
-            setFrom(f);
-            if(!new_)
-                setLink('/RecipeInfo');
-            else {
-                console.log("yes")
-                setLink('/User');
-            }
-        });
-        axios.delete('http://localhost:3004/edit/1');
-
-    }, []);
+    // }, []);
 
     function handleChange(ev: any) {
-        console.dir(recipe);
+        //console.dir(recipe);
         switch (ev.target.name) {
             case 'recipeName':
                 setRecipe({ ...recipe, name: ev.target.value });
@@ -139,25 +133,38 @@ export default function NewRecipe() {
     }
 
     function handleSave() {
-        const newRecipe = recipe;
-        setRecipe(newRecipe);
-        if(to === '/User'){
-             axios.post('http://localhost:3004/'+`${from}`, newRecipe);
-        }  
-        else{
-            axios.put('http://localhost:3004/'+`${from}`+'/'+`${newRecipe.id}`, newRecipe);
-        } 
-        // else {
-        //     console.log(recipe);
-        //     console.log(from_);
-        //     axios.post('http://localhost:3004/selected', {recipe, from: from_});
-        //     axios.put('http://localhost:3004/'+`${from_}`+'/'+`${recipe.id}`, recipe);
-        //     //axios.post('http://localhost:3004/selected', {recipe, from: from_});
-        // }
+        // //Redux
+        // //console.log(recipe)
+        // dispatch(updateRecipe(recipe));
 
-        //Redux
-        console.log(newRecipe)
-        dispatch(updateRecipe(newRecipe));
+        // let id = 0;
+        // // const newRecipe = recipe;
+        // // setRecipe(newRecipe);
+        // switch(from){
+        //     case 'top10':
+        //         id = 1;
+        //         break
+        //     case 'recent':
+        //         id = 2;
+        //         break
+        //     case 'recipe':
+        //         id = 3
+        //         break
+        // }
+        // //Rewrite this code
+        // // if(to === '/User'){
+        // //     let newRecipe = {id:0,name:'', image:'', time:'', people:'', calories:'', ingredients:'', method:''};
+        // //     axios.post('http://localhost:3004/Recipes/'+`${id}`, recipe_).then(data => {
+        // //         newRecipe = data.data;
+        // //         console.log(data.data);
+        // //         //dispatch(addToMyRecipe();
+        // //     })
+        // //      //axios.post('http://localhost:3004/Recipes/'+`${from}`, recipe);
+        // //     dispatch(addToMyRecipe(recipe_));
+        // // }  
+        // // else{
+        // //     //add a action to udpate a recipe in the array
+        // // } 
     }
 
     return (
