@@ -27,7 +27,9 @@ export const itemReducer = createSlice({
         state.text = action.payload;
       }
     }
-  });
+});
+
+
 
 export const { update, updateText  } = itemReducer.actions;
 export const selectImage = (state: RootState) => state.item.img;
