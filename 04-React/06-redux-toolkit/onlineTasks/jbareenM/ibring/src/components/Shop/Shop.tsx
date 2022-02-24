@@ -14,9 +14,17 @@ function Shop() {
         <div className='shopContainer'>
             {shop.value.map((elem: ProductState, index: number) => {
                 return (
-                    <div className='product'>
-                        <img src={elem.image} alt="" />
-                        {elem.price}
+                    <div className="product">
+                        <div className="productHeader">
+                            {elem.image !== "" ?
+                                <img src={elem.image} alt="" />
+                                : <label>there is no selected image</label>}
+                        </div>
+                        <div className="productContent">
+                            <div className="productTitle">{elem.title}</div>
+                            <div className="productPrice">{elem.price}$</div>
+                            <div className="productData">{elem.description}</div>
+                        </div>
                     </div>
                 )
             })}
