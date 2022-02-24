@@ -79,11 +79,11 @@ export default function Mygroups() {
 
     setRows(arr);
     console.log(rows);
-    setGroup(data);
+    //setGroup(data);
 
   })},[]);
 
-  const [group,setGroup]=useState([]);
+  //const [group,setGroup]=useState([]);
   const [rows,setRows]=useState<Array<any>>([]);
 
   let navigate = useNavigate();
