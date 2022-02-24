@@ -58,7 +58,7 @@ interface group {
 
 export default function Mygroups() {
   const myGroups = useAppSelector(selectMygroups);
-  useEffect(()=>{axios.get('http://localhost:3004/group/').then(({data})=>{
+  /*useEffect(()=>{axios.get('http://localhost:3004/group/').then(({data})=>{
     //console.log(data);
     //console.log(data[0].id,data[0].groupMember);
  
@@ -85,7 +85,7 @@ export default function Mygroups() {
     //setGroup(data);
 
   })},[]);
-
+*/
   //const [group,setGroup]=useState([]);
   const [rows,setRows]=useState<Array<any>>([]);
 
