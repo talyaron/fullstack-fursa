@@ -1,9 +1,15 @@
 {
   "dependencies": {
+<<<<<<< HEAD
     "react-router-dom": "^6.2.1",
     "sass": "^1.49.7"
   },
   "devDependencies": {
     "@types/node": "^17.0.18"
+=======
+    "cookie-parser": "^1.4.6",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.3"
+>>>>>>> jbareenM
   }
 }

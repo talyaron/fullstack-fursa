@@ -1,0 +1,13 @@
+.shopContainer{
+    display: flex;
+    flex-wrap: wrap;
+
+    .product{
+        display: flex;
+        flex-direction: column;
+
+        img{
+            width: 100px;
+        }
+    }
+}
