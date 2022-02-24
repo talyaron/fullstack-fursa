@@ -3,6 +3,7 @@ import './card.scss';
 
 import { changeText, select,selectData } from '../../features/cardReducer/cardReducer';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
+import { getProductAsync } from '../../features/productsReducer/products';
 
 
 
@@ -17,7 +18,11 @@ function Card(props: any) {
         dispatch(select({url:url, title: content.title, data: content.data}));
 
     }
-
+    
+    function handleGetProducts() {
+        dispatch(getProductAsync());
+    }
+    
 
     return (
         <div className="cardContainer" onClick={handleChoosecard}>
@@ -26,6 +31,9 @@ function Card(props: any) {
             </div>
             <div>
              {text}   
+            </div>
+            <div>
+                <button onClick={handleGetProducts}>getProduct</button>
             </div>
         </div>
     )

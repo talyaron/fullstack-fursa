@@ -2,12 +2,14 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState, AppThunk } from '../../app/store';
 
 export interface cardState {
+    products:[];
     value: string;
     data: string;
     status: 'idle' | 'loading' | 'failed';
 }
 
 const initialState: cardState = {
+    products:[],
     value: "",
     data:"",
     status: 'idle',
