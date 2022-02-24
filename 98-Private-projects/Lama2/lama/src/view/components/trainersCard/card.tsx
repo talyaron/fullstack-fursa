@@ -11,18 +11,15 @@ interface cardProp {
 
 function Card(prop: cardProp) {
     return (
-            <div className="Card">
-                <img src={prop.image}></img>
-                {/* <div className="Card__title"> */}
-                    {prop.name}
-                {/* </div>
-                <div className="Card__desc"> */}
+        <div className="Card">
+            <img src={prop.image}></img>
+            <p className='txt'>
+                {prop.name}
                 <br />
-                         {prop.desc}
-        
-                {/* </div> */}
-            </div>
-     
+                {prop.desc}
+            </p>
+        </div>
+
     )
 }
 export default Card;

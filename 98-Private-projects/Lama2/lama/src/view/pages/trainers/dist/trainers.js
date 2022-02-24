@@ -11,10 +11,10 @@ function Trainers() {
         { name: 'Rachel', image: 'https://m.media-amazon.com/images/M/MV5BNjk1MjIxNjUxNF5BMl5BanBnXkFtZTcwODk2NzM4Mg@@._V1_UY317_CR3,0,214,317_AL_.jpg', desc: "description" },
         { name: 'Chandler', image: 'https://m.media-amazon.com/images/M/MV5BMTMwODc5NjI3N15BMl5BanBnXkFtZTcwNDEyMTE3Mw@@._V1_UY317_CR17,0,214,317_AL_.jpg', desc: "description" },
         { name: 'Monica', image: 'https://m.media-amazon.com/images/M/MV5BMTA4OTczNDExNDNeQTJeQWpwZ15BbWU3MDUyNTIzMTM@._V1_UY317_CR7,0,214,317_AL_.jpg', desc: "description" }];
-    return (React.createElement("div", { className: "maindiv" },
+    return (React.createElement("div", { className: "maindiv2" },
         React.createElement(header_1["default"], null),
         React.createElement("h3", null, "Our trainers"),
-        React.createElement("div", { className: "maindiv_card" }, trainers.map(function (trainer, index) {
+        React.createElement("div", { className: "maindiv_card2" }, trainers.map(function (trainer, index) {
             return React.createElement(card_1["default"], { key: index, name: trainer.name, image: trainer.image, desc: trainer.desc });
         }))));
 }

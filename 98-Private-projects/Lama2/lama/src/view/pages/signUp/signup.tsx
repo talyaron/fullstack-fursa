@@ -14,74 +14,71 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-function SignUp(){
+function SignUp() {
 
-    return(
-        <div className="signup">
+  return (
+    <div className="signup">
 
-<Avatar className='avatar'>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h3" variant="h5" className="typ">
-            Sign up
-          </Typography>
-       
-            {/* <h2>Sign Up</h2> */}
-{/* <Grid> */}
+      <Avatar className='avatar'>
+        <LockOutlinedIcon />
+      </Avatar>
+      <Typography component="h3" variant="h5" className="typ">
+        Sign up
+      </Typography>
 
-<form className="signupform">
+      <form className="signupform">
 
-            <TextField
-            className="textfield"
-                  autoComplete="given-name"
-                  name="firstName"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                  autoFocus
-                />
-                   <TextField
-            className="textfield"
-                  autoComplete="given-name"
-                  name="lastName"
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  autoFocus
-                /> 
-                  <TextField
-            className="textfield"
-                  autoComplete="given-name"
-                  name="Email"
-                  required
-                  fullWidth
-                  id="Email"
-                  label="Email"
-                  autoFocus
-                />
-                         <TextField
-            className="textfield"
-                  autoComplete="given-name"
-                  name="passowrd"
-                  required
-                  fullWidth
-                  id="passowrd"
-                  label="Email"
-                  autoFocus
-                />
-              
+        <TextField
+          className="textfield"
+          autoComplete="given-name"
+          name="firstName"
+          required
+          fullWidth
+          id="firstName"
+          label="First Name"
+          autoFocus
+        />
+        <TextField
+          className="textfield"
+          autoComplete="given-name"
+          name="lastName"
+          required
+          fullWidth
+          id="lastName"
+          label="Last Name"
+          autoFocus
+        />
+        <TextField
+          className="textfield"
+          autoComplete="given-name"
+          name="Email"
+          required
+          fullWidth
+          id="Email"
+          label="Email"
+          autoFocus
+        />
+        <TextField
+          className="textfield"
+          autoComplete="given-name"
+          name="passowrd"
+          required
+          fullWidth
+          id="passowrd"
+          label="Password"
+          autoFocus
+        />
+
         {/* </Grid> */}
-<br />
-<br />
-<Link to={`/signIn`}>
-   <button className='subbtn'>submit</button>
-   </Link>
-   </form>
-</div>
-        
-    );
+        <br />
+        <br />
+        <Link to={`/signIn`}>
+          <button className='subbtn'>submit</button>
+        </Link>
+      </form>
+    </div>
+
+  );
 
 }
 

@@ -16,7 +16,7 @@ function SignUp() {
             React.createElement(TextField_1["default"], { className: "textfield", autoComplete: "given-name", name: "firstName", required: true, fullWidth: true, id: "firstName", label: "First Name", autoFocus: true }),
             React.createElement(TextField_1["default"], { className: "textfield", autoComplete: "given-name", name: "lastName", required: true, fullWidth: true, id: "lastName", label: "Last Name", autoFocus: true }),
             React.createElement(TextField_1["default"], { className: "textfield", autoComplete: "given-name", name: "Email", required: true, fullWidth: true, id: "Email", label: "Email", autoFocus: true }),
-            React.createElement(TextField_1["default"], { className: "textfield", autoComplete: "given-name", name: "passowrd", required: true, fullWidth: true, id: "passowrd", label: "Email", autoFocus: true }),
+            React.createElement(TextField_1["default"], { className: "textfield", autoComplete: "given-name", name: "passowrd", required: true, fullWidth: true, id: "passowrd", label: "Password", autoFocus: true }),
             React.createElement("br", null),
             React.createElement("br", null),
             React.createElement(react_router_dom_1.Link, { to: "/signIn" },

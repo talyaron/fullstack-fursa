@@ -1,5 +1,5 @@
 
-import './header.scss';
+import './adminHeader.scss';
 import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Card from '../../components/card/Card';
@@ -12,7 +12,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
 
-function Header() {
+function AdminHeader() {
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -36,19 +36,10 @@ function Header() {
             <div className="mainheader__left">
 
                 <Link to="/">
-                    HomePage
+                    courses 
                 </Link>
                 <Link to="/horses">
-                    Our Horses
-                </Link>
-                <Link to="/trainers">
-                    Our trainers
-                </Link>
-                <Link to="/calender">
-                    Register
-                </Link>
-                <Link to="/TableDatePicker">
-                    Register2
+                    participants
                 </Link>
             </div>
             <div className="mainheader__right">
@@ -89,4 +80,4 @@ function Header() {
     );
 }
 
-export default Header;
+export default AdminHeader;

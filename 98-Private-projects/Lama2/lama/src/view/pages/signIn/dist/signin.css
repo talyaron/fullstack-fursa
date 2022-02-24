@@ -6,9 +6,12 @@
   padding: 30px;
   margin: auto;
   margin-top: 20px;
-  width: 30vw;
-  height: 80vh;
+  width: 20vw;
+  height: 70vh;
+  border-style: double;
   font-size: large;
+  position: relative;
+  top: 10px;
 }
 .signin img {
   width: 20vw;

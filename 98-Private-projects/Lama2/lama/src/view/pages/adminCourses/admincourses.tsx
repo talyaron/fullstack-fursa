@@ -10,7 +10,8 @@ import Button from '@mui/material/Button';
 import {Link} from 'react-router-dom';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ButtonGroup from '@mui/material/ButtonGroup';
-
+import AdminHeader from '../../components/adminHeader/adminHeader';
+import AddCourse from '../addCourse/addCourse'
 
 interface courses {
   id: number;
@@ -61,11 +62,12 @@ function AdminCourses() {
   return (
       
  <div className='admCouDiv'>
-<Link to={`/`}>
+<AdminHeader />
+{/* <Link to={`/`}>
    <Button className='backbtn' variant="outlined"   onClick={() => {
     alert('clicked');
   }}> back</Button>
-  </Link>
+  </Link> */}
 
      <h4>courses</h4>
      <div className='tablediv'>
@@ -76,7 +78,7 @@ function AdminCourses() {
                     <th>Name</th>
                     <th>participants</th>
                     <th>Cost</th>
-                    <th>Edit/Add</th>
+                    <th>Edit/Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -90,7 +92,7 @@ function AdminCourses() {
                       <td>{info.cost}</td>
                       <td>
                       <ButtonGroup className='grpbtn' variant="contained" aria-label="outlined small button group">
-                      <Link to={`/addCourse`}>    <Button className='addbtn'>Add</Button> </Link>
+                      {/* <Link to={`/addCourse`}>    <Button className='addbtn'>Add</Button> </Link> */}
       <Button>Edit</Button>
       <Button>Delete</Button>
     </ButtonGroup>
@@ -104,6 +106,7 @@ function AdminCourses() {
                 </tbody>
             </table>
      </div>
+     <Link to={`/addCourse`}>    <Button className='addbtn'>Add new course</Button> </Link>
       
         </div>
   );

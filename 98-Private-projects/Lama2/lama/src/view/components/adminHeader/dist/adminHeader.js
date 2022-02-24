@@ -1,12 +1,12 @@
 "use strict";
 exports.__esModule = true;
-require("./header.scss");
+require("./adminHeader.scss");
 var React = require("react");
 var react_router_dom_1 = require("react-router-dom");
 var Button_1 = require("@mui/material/Button");
 var Menu_1 = require("@mui/material/Menu");
 var MenuItem_1 = require("@mui/material/MenuItem");
-function Header() {
+function AdminHeader() {
     var _a = React.useState(null), anchorEl = _a[0], setAnchorEl = _a[1];
     var open = Boolean(anchorEl);
     var handleClick = function (event) {
@@ -21,11 +21,8 @@ function Header() {
     };
     return (React.createElement("div", { className: "mainheader" },
         React.createElement("div", { className: "mainheader__left" },
-            React.createElement(react_router_dom_1.Link, { to: "/" }, "HomePage"),
-            React.createElement(react_router_dom_1.Link, { to: "/horses" }, "Our Horses"),
-            React.createElement(react_router_dom_1.Link, { to: "/trainers" }, "Our trainers"),
-            React.createElement(react_router_dom_1.Link, { to: "/calender" }, "Register"),
-            React.createElement(react_router_dom_1.Link, { to: "/TableDatePicker" }, "Register2")),
+            React.createElement(react_router_dom_1.Link, { to: "/" }, "courses"),
+            React.createElement(react_router_dom_1.Link, { to: "/horses" }, "participants")),
         React.createElement("div", { className: "mainheader__right" },
             React.createElement(Button_1["default"], { id: "basic-button", "aria-controls": open ? 'basic-menu' : undefined, "aria-haspopup": "true", "aria-expanded": open ? 'true' : undefined, onClick: handleClick },
                 React.createElement("img", { src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfyK_uZ7ZiiOIKc2i9NOiwn3fzsWWzc96ojA&usqp=CAU" })),
@@ -46,4 +43,4 @@ function Header() {
     // </div>
     );
 }
-exports["default"] = Header;
+exports["default"] = AdminHeader;

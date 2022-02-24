@@ -4,6 +4,7 @@ require("./admincourses.scss");
 var Button_1 = require("@mui/material/Button");
 var react_router_dom_1 = require("react-router-dom");
 var ButtonGroup_1 = require("@mui/material/ButtonGroup");
+var adminHeader_1 = require("../../components/adminHeader/adminHeader");
 var Courses = [
     {
         id: 1,
@@ -35,10 +36,7 @@ function AdminCourses() {
         });
     }
     return (React.createElement("div", { className: 'admCouDiv' },
-        React.createElement(react_router_dom_1.Link, { to: "/" },
-            React.createElement(Button_1["default"], { className: 'backbtn', variant: "outlined", onClick: function () {
-                    alert('clicked');
-                } }, " back")),
+        React.createElement(adminHeader_1["default"], null),
         React.createElement("h4", null, "courses"),
         React.createElement("div", { className: 'tablediv' },
             React.createElement("table", { className: "table table-striped" },
@@ -48,7 +46,7 @@ function AdminCourses() {
                         React.createElement("th", null, "Name"),
                         React.createElement("th", null, "participants"),
                         React.createElement("th", null, "Cost"),
-                        React.createElement("th", null, "Edit/Add"))),
+                        React.createElement("th", null, "Edit/Delete"))),
                 React.createElement("tbody", null, Courses.map(function (info) {
                     return (React.createElement("tr", null,
                         React.createElement("td", null, info.id),
@@ -57,12 +55,12 @@ function AdminCourses() {
                         React.createElement("td", null, info.cost),
                         React.createElement("td", null,
                             React.createElement(ButtonGroup_1["default"], { className: 'grpbtn', variant: "contained", "aria-label": "outlined small button group" },
-                                React.createElement(react_router_dom_1.Link, { to: "/addCourse" },
-                                    "    ",
-                                    React.createElement(Button_1["default"], { className: 'addbtn' }, "Add"),
-                                    " "),
                                 React.createElement(Button_1["default"], null, "Edit"),
                                 React.createElement(Button_1["default"], null, "Delete")))));
-                }))))));
+                })))),
+        React.createElement(react_router_dom_1.Link, { to: "/addCourse" },
+            "    ",
+            React.createElement(Button_1["default"], { className: 'addbtn' }, "Add new course"),
+            " ")));
 }
 exports["default"] = AdminCourses;

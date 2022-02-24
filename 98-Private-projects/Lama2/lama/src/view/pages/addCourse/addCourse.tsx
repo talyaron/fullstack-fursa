@@ -3,15 +3,16 @@ import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import './addCourse.scss'
 
 
 function AddCourse(){
 
     return(
         <div className="addCourse">
-            <form action="">
+            <form className="formAddCourse" action="">
             <TextField
-            className="txtfield"
+            className="txtfield1"
                   autoComplete="given-name"
                   name="Course Type"
                   required
@@ -21,7 +22,7 @@ function AddCourse(){
                   autoFocus
                 />
                       <TextField
-            className="txtfield"
+            className="txtfield1"
                   autoComplete="given-name"
                   name="Cost"
                   required

@@ -16,6 +16,15 @@
   left: 45%;
   background-color: "secondary.main";
 }
+.signup .typ {
+  position: absolute;
+  top: 10%;
+  left: 40%;
+}
+.signup .signupform {
+  position: relative;
+  top: 60px;
+}
 .signup .signupform .textfield {
   width: 20vw;
   height: 10vh;

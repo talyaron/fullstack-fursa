@@ -7,7 +7,7 @@ function App() {
 
  
   function handleAxios(){
-    // axios.get('http://localhost:3004/posts').then(({data})=>console.log(data));
+     axios.get('http://localhost:3004/posts').then(({data})=>console.log(data));
     // axios.get('http://localhost:3004/posts/2').then(({data})=>console.log(data));
 
 

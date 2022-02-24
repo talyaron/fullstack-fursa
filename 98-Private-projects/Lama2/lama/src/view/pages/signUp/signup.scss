@@ -1,6 +1,4 @@
-// body{
-//     background-color: aqua;
-// }
+
 .signup{
     font-size: small;
     margin-top: 20px;
@@ -19,20 +17,21 @@
         top: 10px;
         left: 45%;
         background-color: 'secondary.main';
- 
+    }
+    .typ{
+        position: absolute;
+        top: 10%;
+        left: 40%;
     }
     
 .signupform{
-    // display:flex;
-    // flex-direction: column;
-    // position: relative;
-    // left: 650px;
+    position: relative;
+    top: 60px;
     .textfield{
         width:20vw;
         height:10vh;
         position: relative;
         text-align: center;
-        // left: 20px;
     }
 
 }

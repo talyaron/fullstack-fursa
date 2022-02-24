@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #3635347c;
-  border: 0.0625rem solid #141e33;
+  background-color: #41403f7c;
+  border: 0.0625rem solid #4164b1;
   border-radius: 30px;
   border-style: double;
   margin: 5px;
@@ -17,20 +17,14 @@
   box-sizing: border-box;
   width: 100%;
   height: 20vh;
+  border-radius: 30px;
+  position: absolute;
+  top: 0px;
 }
-.Card__title h3 {
-  display: inline-block;
-  text-overflow: ellipsis;
-  overflow: hidden !important;
-  white-space: nowrap;
-  width: 16rem;
-  opacity: 0.9;
-}
-.Card__desc {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
+.Card .txt {
+  position: absolute;
+  top: 65%;
+  left: 25%;
 }
 
 a,
