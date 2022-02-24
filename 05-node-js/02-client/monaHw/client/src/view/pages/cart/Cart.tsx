@@ -26,12 +26,17 @@ function Cart(props: cartProps) {
     // axios.get('http://localhost:3004/userOrder').then(({data})=> setOrder(data));
     // }, []);
     const dispatch = useAppDispatch();
-    dispatch(getCartAsync())
+    useEffect(()=>{
+        dispatch(getCartAsync())
+
+    },[])
     // useEffect(() => {
     //     axios.get('http://localhost:3004/userOrder').then(({ data }) => dispatch(update(data)));
     // }, []);
     const orders = useAppSelector(selectorders);
-   
+//    useEffect(()=>{
+//        orders.orders
+//    },[]);
     return (
 
 
@@ -61,7 +66,8 @@ function Cart(props: cartProps) {
                 <div className="cart_body_done">
                     <Outlet />
                 </div>
-                {orders.status!=='loading'}
+             
+                (orders.status!=='loading')?
                 {orders.orders.map((products: order, i: any) => {
 
                     return <Product key={i} woodName={products.woodName} woodlength={products.woodlength} width={products.width} thick={products.thick} amount={products.amount} id={products.id} />

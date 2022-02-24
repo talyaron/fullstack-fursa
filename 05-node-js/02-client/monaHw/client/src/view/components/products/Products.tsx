@@ -5,7 +5,7 @@ import { useState,useEffect } from 'react';
 import {selectorders} from '../../../features/cart/cartSlice';
 import {update} from '../../../features/cart/cartSlice';
 import {useAppDispatch} from '../../../app/hooks';
-
+import Cart from '../../pages/cart/Cart'
 export interface productProp{
     woodName:string;
     woodlength:number;
@@ -27,10 +27,12 @@ export interface productProp{
        axios.get('http://localhost:3004/userOrder').then(({data})=> setOrder(data));
         }, []);
      const {woodName,woodlength,width,thick,amount,color,id}=prop;
+     let comp;
      function RemoveHandler()
      {
         
         axios.delete(`http://localhost:3004/userOrder/${id}`).then(({data})=>setOrder(data));
+        // comp=<Cart></Cart>
     
     }
        
