@@ -1,13 +1,11 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import counterReducer from '../features/counter/counterSlice';
-import pageReducer from '../features/pageSelector/pageReducer';
-import { ShopReducer } from '../features/storeSelector/storeReducer';
+import { loginReducer } from '../features/userLogin/userLoginReducer';
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
-    selectImg: pageReducer,
-    shop: ShopReducer.reducer
+    logged: loginReducer.reducer
   },
 });
 
