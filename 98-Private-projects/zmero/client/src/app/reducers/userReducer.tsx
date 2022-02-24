@@ -1,23 +1,45 @@
 import { RootState, AppThunk } from '../store';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import axios from 'axios'
 
 interface userProb {
-    userID: number;
+    userinfo: {
+        id: number;
+        userName: string;
+        email: string;
+        favorite: Array<number>;
+    };
     userIsLogIn: boolean;
-    userName: string;
-    favorite: Array<number>;
     reservations: Array<number>;
-    //restaurants:Array<restprops>
+    status: 'idle' | 'loading' | 'failed';
 }
 
 const initialState: userProb = {
-    userID: -1,
+    userinfo: {
+        id: -1,
+        userName: "",
+        email: "",
+        favorite: [],
+    },
     userIsLogIn: false,
-    userName: "",
-    favorite: [],
     reservations: [],
-    //restaurants:[]
+    status: 'idle',
 };
+
+export const getUserInfoAsync = createAsyncThunk(
+    'user/GetUserInfo',
+    async (_, thunkAPI) => {
+        try {
+            const response = await axios.get('http://localhost:3004/Users/1')
+            const data: any = response.data
+            return data
+        } catch (e) {
+            thunkAPI.rejectWithValue(e)
+        }
+
+    }
+);
+
 
 
 export const userReducer = createSlice({
@@ -27,22 +49,24 @@ export const userReducer = createSlice({
         updateLogIn: (state, action) => {
             state.userIsLogIn = action.payload
         },
-        updateUserInfo: (state, action) => {
-            state.userName = action.payload.fullName
-            state.favorite = action.payload.favorite
-            state.userID = action.payload.id
-        },
-        updateReservation: (state, action) => {
-            state.reservations = action.payload
-        }
-    }
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(getUserInfoAsync.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(getUserInfoAsync.fulfilled, (state, action) => {
+                state.status = 'idle';
+                state.userinfo = action.payload;
+                state.userIsLogIn = true;
+            });
+    },
 })
 
 
-export const { updateLogIn, updateUserInfo, updateReservation } = userReducer.actions
+export const { updateLogIn } = userReducer.actions
 export const selectUser = (state: RootState) => state.user
-export const selecUserName = (state: RootState) => state.user.userName
+export const selecUserName = (state: RootState) => state.user.userinfo.userName
 export const checkUser = (state: RootState) => state.user.userIsLogIn
 export const getReservations = (state: RootState) => state.user.reservations
-//export const getRestaurants = (state: RootState) => state.user.restaurants 
 export default userReducer.reducer;

@@ -1,6 +1,5 @@
 {
-  "Restaurants": [
-    {
+  "Restaurants": [{
       "id": 1,
       "name": "shila-sharon cohen Kitchen & bar",
       "image": "https://media-cdn.tripadvisor.com/media/photo-s/03/7a/47/6d/shila.jpg",
@@ -66,17 +65,14 @@
       ]
     }
   ],
-  "Users": [
-    {
-      "id": 1,
-      "email": "m.zmiro@hotmail.com",
-      "fullName": "mohamed zmiro",
-      "favorite": [],
-      "password": "123123147"
-    }
-  ],
-  "Reservations": [
-    {
+  "Users": [{
+    "id": 1,
+    "email": "m.zmiro@hotmail.com",
+    "userName": "mohamed zmiro",
+    "favorite": [],
+    "password": "123123147"
+  }],
+  "Reservations": [{
       "restID": 3,
       "hour": 23,
       "year": 2022,

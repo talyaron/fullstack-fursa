@@ -16,8 +16,6 @@ interface cardProp {
 
 function RestaurantCard(props: cardProp) {
     const [openModal, setOpenModal] = useState(false);
-    const [reserveDate, setReserveDate] = React.useState<Date | null>(new Date());
-    const [reserveTime, setReserveTime] = useState<number | null>(0)
     const style = {
         position: 'absolute',
         top: '50%',

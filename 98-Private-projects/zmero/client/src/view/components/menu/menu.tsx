@@ -21,8 +21,8 @@ import User from '../user/user'
 import Alert from '@mui/material/Alert'
 import Snackbar from '@mui/material/Snackbar'
 import { useAppSelector, useAppDispatch } from '../../../app/hooks';
-import { checkUser, updateLogIn, updateUserInfo, selectUser } from '../../../app/reducers/userReducer'
-import axios from 'axios';
+import { checkUser, getUserInfoAsync, updateLogIn, selectUser } from '../../../app/reducers/userReducer'
+
 
 
 
@@ -63,15 +63,11 @@ function Menu() {
         })
 
     }
+
     function handleLogin(e: any) {
         e.preventDefault();
-        dispatch(updateLogIn(true));
         openSignInModal(false);
-        axios.get('http://localhost:3004/Users/1').then(
-            ({ data }) => {
-                dispatch(updateUserInfo(data))
-            });
-
+        dispatch(getUserInfoAsync())
         setOpenAlert(true)
     }
     function onChangeSignup(e: any) {
@@ -107,7 +103,7 @@ function Menu() {
                         Explore
                     </Link>
                     {isLoggedIn ?
-                        <div className="navbar__left">
+                        <div className="navbar__left__links">
                             <Link to="/Reservations">
                                 Reservation
                     </Link>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import Logo from './raise.svg'
 import './reservationCard.scss'
-import axios from 'axios'
+import { useAppSelector, useAppDispatch } from '../../../app/hooks';
+import { getAllRestaurants } from '../../../app/reducers/resterauntsReducer'
 interface cardProp {
     id: number;
     hour: number;
@@ -12,27 +12,31 @@ interface cardProp {
     restID: number;
 }
 
-interface restprop {
-    id: number;
-    name: string;
-    image: string;
-}
-
 function ReservationCard(props: cardProp) {
-    const [openModal, setOpenModal] = useState(false);
-    const [rest, setRest] = useState([{ image: "", name: "" }])
+    const restaurants = useAppSelector(getAllRestaurants)
+    const restaurant = restaurants.filter((rest, index) => {
+        if (rest.id === props.id)
+            return rest
+    })
     function CancelReserve(e: any) {
         e.preventDefault();
-        console.log(rest)
+
     }
+    let img = "";
+    let title = ""
+    if (restaurant.length != 0) {
+        img = restaurant[0].image;
+        title = restaurant[0].name;
+    }
+
     return (
-        <div className="reservationCard">
-            <img src=""></img>
-            <div className="reservationCard__title">
-                <h3></h3>
+        <div className="reservationcard">
+            <div className="reservationcard__image" style={{ backgroundImage: `url(${img})` }}></div>
+            <div className="reservationcard__title">
+                <h3>{title}</h3>
             </div>
-            <div className="reservationCard__cancel">
-                <button className="restaurantCard__reserve__btn" onClick={CancelReserve}>Cancel</button>
+            <div className="reservationcard__cancel">
+                <button className="reservationcard__cancel__btn" onClick={CancelReserve}>Cancel</button>
             </div>
 
         </div>

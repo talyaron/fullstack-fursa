@@ -7,27 +7,22 @@ import Location from './location.svg'
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import axios from 'axios';
+import { useAppSelector, useAppDispatch } from '../../../app/hooks';
+import { getFamousRestaurants, fetchFamousRestaurants } from '../../../app/reducers/resterauntsReducer'
 
 import './explore.scss'
-interface cardProp {
-    id: number;
-    name: string;
-    image: string;
-    booking: number;
-    region: string;
-    stars: number;
-}
-
-
 
 function Explore() {
-    const [famousRestaurants, setFamousRestaurant] = useState([{ id: 0, name: "", image: "", booking: 0, region: "", stars: 0 }]);
+    const dispatch = useAppDispatch()
+    const famousRestaurants = useAppSelector(getFamousRestaurants)
     const [trendingRestaurants, setTrendingRestaurant] = useState([{ id: 0, name: "", image: "", booking: 0, region: "", stars: 0 }]);
     const [seaRestaurants, setSeaRestaurant] = useState([{ id: 0, name: "", image: "", booking: 0, region: "", stars: 0 }]);
     const [userRegion, setUserRegion] = useState('Israel');
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
+    useEffect(() => {
+        dispatch(fetchFamousRestaurants(userRegion))
+    }, []);
     const handleClick = (event: any) => {
         setAnchorEl(event.currentTarget);
     };
@@ -36,20 +31,11 @@ function Explore() {
         if (Object.keys(e.currentTarget.dataset).length != 0) {
             setUserRegion(e.target.dataset.myValue)
             const newRegion = e.target.dataset.myValue
-            axios.get('http://localhost:3004/Restaurants').then(({ data }) => setFamousRestaurant(data.filter((rest: cardProp) => {
-                if (rest.region === newRegion)
-                    return rest;
-
-            })));
+            dispatch(fetchFamousRestaurants(newRegion))
         }
     };
-    useEffect(() => {
-        axios.get('http://localhost:3004/Restaurants').then(({ data }) => setFamousRestaurant(data.filter((rest: cardProp) => {
-            if (rest.region === userRegion)
-                return rest;
-        })));
 
-    }, []);
+
     return (
         <div>
             <Navbar></Navbar>
