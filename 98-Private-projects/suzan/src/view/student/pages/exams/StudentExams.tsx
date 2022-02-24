@@ -3,7 +3,6 @@ import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import TextField from "@mui/material/TextField";
-import { useState } from "react";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -11,11 +10,13 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import './StudentExams.scss';
 
 const exams = [
-    { course: "English", material: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' },
-    { course: "Math", material: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' }
+    { course: "English", material: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." },
+    { course: "Math", material: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." }
 ]
 
 export default function StudentExams() {
@@ -26,6 +27,14 @@ export default function StudentExams() {
     const handleChange = (newValue: Date | null) => {
         setSelectedDate(newValue);
     };
+
+    const [exams, setExams] = useState([]);
+    useEffect(() => {
+        axios.get('http://localhost:3004/exams').then(({ data }) => {
+            console.log(data);
+            setExams(data);
+        })
+    }, []);
 
 
     return (
@@ -60,15 +69,21 @@ export default function StudentExams() {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {exams.map((exam, i) => (
-                                        <TableRow
-                                            key={i}
-                                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                        >
-                                            <TableCell align="center">{exam.course}</TableCell>
-                                            <TableCell align="center">{exam.material}</TableCell>
-                                        </TableRow>
-                                    ))}
+                                    {
+                                        exams.map((exam, i) => {
+                                            const {course, material} = exam;
+                                            return (
+                                                <TableRow
+                                                    key={i}
+                                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                                >
+                                                    <TableCell align="center">{course}</TableCell>
+                                                    <TableCell align="center">{material}</TableCell>
+                                                </TableRow>
+                                            );
+                                        })
+
+                                    }
                                 </TableBody>
                             </Table>
                         </TableContainer>

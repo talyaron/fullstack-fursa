@@ -1,11 +1,33 @@
 {
-  "posts": [
-    {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
+  "studentCourses": [
+    {"id": 1,"name": "Arabic","teacher": "Manal Misherky"},
+    {"id": 2,"name": "Mathmatics","teacher": "Manal Bisharat"},
+    {"id": 3,"name": "Hebrew","teacher": "Areen Awwad"},
+    {"id":4,"name": "English","teacher": "Rania Ateek"},
+    {"id":5,"name": "Science","teacher": "Zahera Bisharat"},
+    {"id": 6,"name": "Caution on streets","teacher": "Doaa Marjieh"}
   ],
+
+  "courseMaterial": [
+    {"id":1, "title": "material title1", "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},
+    {"id":2, "title": "material title2", "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},
+    {"id":3, "title": "material title3", "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},
+    {"id":4, "title": "material title4", "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},
+    {"id":5, "title": "material title5", "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."}
+  ],
+
+  "homeworks": [
+    {"id":1, "date": "20.2.2022", "course": "Math", "description": "questions from 1 to 15 page 225"},
+    {"id":2, "date": "20.2.2022", "course": "Arabic", "description": "reading page 25" },
+    {"id":3, "date": "18.2.2022", "course": "Science", "description": "question 3+4 page 15" },
+    {"id":4, "date": "15.2.2022", "course": "Math", "description": "questions 20-25 page 333" }
+  ],
+
+  "exams": [
+    {"id":1, "course": "English", "material": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." },
+    {"id":2, "course": "Math", "material": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." }
+  ],
+  
   "comments": [
     {
       "id": 1,

@@ -5,14 +5,16 @@ import StudentResponsiveAppBar from "../../components/header/StudentAppBar";
 import UpdatesList from "../../components/updatesList/UpdatesList";
 import { Link } from 'react-router-dom';
 import './StudentMainPage.scss';
+import axios from 'axios';
+import {useState, useEffect} from 'react';
 
 const class_name = 'Class 1A';
 
-const courses = [
-    { name: "Arabic", teacher: "Manal Misherky" }, { name: "Mathmatics", teacher: "Manal Bisharat" },
-    { name: "English", teacher: "Rania Ateek" }, { name: "Hebrew", teacher: "Areen Awwad" },
-    { name: "Science", teacher: "Zahera Bisharat" }, { name: "Caution on streets", teacher: "Doaa margieh" }
-]
+// const courses = [
+//     { name: "Arabic", teacher: "Manal Misherky" }, { name: "Mathmatics", teacher: "Manal Bisharat" },
+//     { name: "English", teacher: "Rania Ateek" }, { name: "Hebrew", teacher: "Areen Awwad" },
+//     { name: "Science", teacher: "Zahera Bisharat" }, { name: "Caution on streets", teacher: "Doaa margieh" }
+// ]
 
 const updates = [
     { update: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' },
@@ -23,6 +25,14 @@ const updates = [
 ]
 
 export default function StudentMainPage() {
+    const [courses, setCourses] = useState([]);
+    useEffect(() => {
+        axios.get('http://localhost:3004/studentCourses').then(({data})=>{
+            console.log(data);
+            setCourses(data);
+    })
+    }, []);
+    
     return (
         <div>
             <div className="bar">
