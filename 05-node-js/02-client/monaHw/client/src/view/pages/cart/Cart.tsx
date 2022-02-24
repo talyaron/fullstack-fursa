@@ -67,7 +67,7 @@ function Cart(props: cartProps) {
                     <Outlet />
                 </div>
              
-                (orders.status!=='loading')?
+                {(orders.status!=='loading')}?
                 {orders.orders.map((products: order, i: any) => {
 
                     return <Product key={i} woodName={products.woodName} woodlength={products.woodlength} width={products.width} thick={products.thick} amount={products.amount} id={products.id} />
