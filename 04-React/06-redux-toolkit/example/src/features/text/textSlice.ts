@@ -20,7 +20,7 @@ export const getJokeAsync = createAsyncThunk(
   }
 );
 
-export const textSlice = createSlice({
+export const textReducer = createSlice({
   name: 'text',
   initialState,
   reducers: {
@@ -42,7 +42,8 @@ export const textSlice = createSlice({
   },
 });
 
-export const { update  } = textSlice.actions;
+export const { update  } = textReducer.actions;
 export const selectText = (state: RootState) => state.text.text;
+export const selectTextStauts = (state:RootState) => state.text.status;
 
-export default textSlice.reducer;
+export default textReducer.reducer;

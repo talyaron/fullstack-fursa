@@ -67,12 +67,21 @@ export default function Landing(props: LandingProps) {
       <h1>Albums</h1>
       <button onClick={handleCounter}>{counter}</button>
       <div className="albums">
+<<<<<<< Updated upstream
         {albums.map((album: any, i) => {
           return (
             <div key={album.id} className="album">
               <h3>{album.title}</h3>
             </div>
           );
+=======
+        {albums.map((album:any, i) => {
+          return <div key={album.id} className="album">
+            <h1>{album.id}</h1>
+            <h2>{album.name}</h2>
+            <h3>{album.title}</h3>
+          </div>;
+>>>>>>> Stashed changes
         })}
       </div>
     </div>
