@@ -1,9 +1,9 @@
 .pictures{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 
 }   
  .pictures img{
-        max-width: 20rem;
-        margin: 10px;
+        max-width: 8rem;
+        margin: 5px;
  }

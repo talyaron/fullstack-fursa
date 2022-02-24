@@ -3,13 +3,13 @@ import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import PicturesShow from './features/pictures/PicturesShow';
 import './App.css';
-import PicShow from './features/pictures/PicShow';
+///import PicShow from './features/pictures/PicShow';
 
 function App() {
   return (
       <div className="App">
         <header className="App-header">
-          <PicShow />
+          {/* <PicShow /> */}
           <PicturesShow /> 
         </header>
     </div>

@@ -5,6 +5,7 @@ import { Button } from '@material-ui/core';
 import EventNoteTwoToneIcon from '@material-ui/icons/EventNoteTwoTone';
 import { useAppDispatch } from '../../../app/hooks';
 import {update} from '../../../features/treatment/treatmentSlice';
+import { Link } from "react-router-dom";
 
 export interface TreatmentInt{
     id: number;
@@ -31,7 +32,7 @@ function Treatment(props: TreatmentInt){
                 <h1>{name}</h1>
                 <img src={img}></img>
                 <p>{text}</p>
-                <Button className="button" onClick={handleClick} href="/calendar" variant="contained" startIcon={<EventNoteTwoToneIcon />} >Book Appointment</Button>
+                <Link to="/calendar"><Button className="button" onClick={handleClick} variant="contained" startIcon={<EventNoteTwoToneIcon />} >Book Appointment</Button> </Link>
             </div >
         </div>
     )

@@ -5,7 +5,6 @@ export const store = configureStore({
   reducer: {
     counter: counterReducer,
     selectedPic:  picSliceReducer,
-
   },
 });
 
