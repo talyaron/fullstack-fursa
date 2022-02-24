@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from './Header'
-import BottomNav from'./BottomNav'
+import BottomNav from'../components/BottomNav'
 
 function Food() {
   return (

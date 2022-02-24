@@ -1,8 +1,9 @@
 import React from 'react'
 import Header from './Header'
 import { Link } from 'react-router-dom';
-
 import './NewAccount.css'
+
+
 function NewAccount() {
   return (
     <div className="SignUp">
@@ -33,7 +34,7 @@ function NewAccount() {
         className="Input"
         type="password"
         placeholder="Enter Password"
-        name="psw"
+        name="password"
         required
       ></input>
       <input

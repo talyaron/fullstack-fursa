@@ -15,9 +15,18 @@ function Plandecider() {
       <p className="title">
         <b>Personal Plan</b>
       </p>
-      <br></br> <br></br>
+      <br></br> <br></br> <br></br>
+      <input
+          className="Input1"
+          type="text"
+          placeholder="plan title"
+          name="title"
+          required
+        ></input>
+        <br></br>
       <div className="grid-container">
         <div className="grid-item">
+          
           <TodayIcon style={{ fontSize: 50 }} />
         </div>
         <div className="grid-item">Plan Duration</div>

@@ -22,6 +22,7 @@ import Plandecider from './view/components/Plandecider';
 import Music from './view/components/Music';
 import Exercises from './view/components/Exercises';
 import Duration from './view/components/Duration';
+import { Counter } from './features/counter/Counter';
 function App() {
   return (
     <div className="App">
@@ -30,7 +31,7 @@ function App() {
         <Route exact path="/music" element={<Music/>}/>
         <Route exact path="/exercises" element={<Exercises/>}/>
         <Route exact path="/duration" element={<Duration/>}/>
-
+        <Route exact path="/test" element={<Counter/>}/>
         <Route exact path="/plandecider" element={<Plandecider/>}/>
         <Route exact path="/food" element={<Food/>}/>
         <Route exact path="/profile" element={<Profile/>}/>
