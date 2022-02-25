@@ -8,17 +8,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../../app/hooks';
 
 function HomeListComponent(props: any) {
-    const dispatch = useAppDispatch();
     const nav = useNavigate()
     const { name, date, time, place, bringList } = props.info;
     const { id, upcoming, findList } = props;
-    const [path, setPath] = useState(`${id}`);
-
 
     function handleClick(ev: any) {
         ev.preventDefault();
         if (findList) {
-            localStorage.setItem('curList', JSON.stringify(findList));
             nav(`/list/${id}`);
         }
     }

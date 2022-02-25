@@ -29,6 +29,9 @@ function List() {
 
     useEffect(() => {
         console.log("listId:", listId);
+        if(listId === ""){
+            nav('/home');
+        }
 
         dispatch(curListAsync(listId));
 
@@ -39,6 +42,7 @@ function List() {
 
     function handleAddFriends(ev: any) {
         ev.preventDefault();
+        nav('/FriendsInGroup')
     }
 
     function handleHome(ev: any) {

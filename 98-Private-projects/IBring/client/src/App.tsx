@@ -6,9 +6,8 @@ import { useAppDispatch } from './app/hooks';
 import { logintAsync } from './features/userLogin/userLoginReducer';
 
 function App() {
-  const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(logintAsync({ email: "jbareen@a", pass: "123" }));
+    
   }, []);
 
   return (

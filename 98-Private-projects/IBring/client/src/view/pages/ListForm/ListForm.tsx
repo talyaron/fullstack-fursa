@@ -39,8 +39,6 @@ function ListForm() {
             obj["imgURL"] = sentImg;
         }
         dispatch(addMeetingDetails(obj));
-        localStorage.setItem('listInfo', JSON.stringify(obj));
-
         nav('/typeList');
     }
 

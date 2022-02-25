@@ -110,3 +110,24 @@ exports.updateListByID = async (req, res) => {
 
     }
 }
+
+
+exports.updateFrindList = async (req, res) => {
+    console.log("updateFrindList!");
+    const { id, updatedList } = req.body;
+    console.log({ id: id._id, updatedList: updatedList })
+
+    try {
+        let newListUpdate = await list.findOneAndUpdate(
+            { _id: id._id },
+            { $push: { whoIsThere: updatedList } }
+        )
+        if (newListUpdate) {
+            res.send({ ok: true, list: newListUpdate });
+        } else {
+            res.send({ ok: false });
+        }
+    } catch (error) {
+
+    }
+}

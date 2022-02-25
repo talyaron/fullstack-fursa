@@ -1,10 +1,13 @@
 import './Greetings.scss';
 
 import { useNavigate } from "react-router-dom";
-import { useAppSelector } from '../../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { useEffect } from 'react';
+import { logout } from '../../../features/userLogin/userLoginReducer';
 
 function Greetings(props: any) {
     const userLogin = useAppSelector(state => state.logged);
+    const dispatch = useAppDispatch();
     const nav = useNavigate();
 
     function hanleLetsStart(ev: any) {
@@ -15,9 +18,15 @@ function Greetings(props: any) {
     function handleLogout(ev: any) {
         ev.preventDefault();
         localStorage.removeItem('userInfo');
-        localStorage.removeItem('listInfo');
+        dispatch(logout());
         nav('/login');
     }
+
+    useEffect(() => {
+        // if (userLogin.status !== 'logged') {
+        //     nav('/login')
+        // }
+    }, [])
 
     return (
         <div className="GreetingsTheme">

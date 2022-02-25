@@ -19,5 +19,8 @@ router
     .route("/updateListByID")
     .patch(listController.updateListByID);
 
+router
+    .route("/updateFrindList")
+    .patch(listController.updateFrindList);
 
 module.exports = router;

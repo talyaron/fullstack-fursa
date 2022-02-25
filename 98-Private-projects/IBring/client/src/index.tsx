@@ -21,12 +21,14 @@ import {
 import Home from './view/pages/Home/Home';
 import ChooseFriends from './view/pages/ChooseFirends/ChooseFriends';
 import Contact from './view/pages/ChooseFirends/Contact/Contact';
+import FriendsInGroup from './view/pages/List/FriendInGroup/FriendsInGroup';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
+          <Route path='/FriendsInGroup' element={<FriendsInGroup />} />
           <Route path='/Contact' element={<Contact />} />
           <Route path='/ChooseFriends' element={<ChooseFriends />} />
           <Route path="/home" element={<Home />} />

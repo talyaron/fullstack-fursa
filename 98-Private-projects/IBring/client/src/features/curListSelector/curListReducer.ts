@@ -31,7 +31,7 @@ export const curListAsync = createAsyncThunk(
             const response = await axios.post('/meeting/getListByID', { id: id });
             const data = await response.data;
             if (data.ok) {
-                localStorage.setItem('curList', JSON.stringify(data.list));
+                // localStorage.setItem('curList', JSON.stringify(data.list));
                 return data.list;
             }
         } catch (error: any) {

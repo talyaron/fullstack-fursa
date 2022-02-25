@@ -14,7 +14,6 @@ export const listAsync = createAsyncThunk(
             const data = await response.data;
             console.log(data);
             if (data.ok) {
-                localStorage.setItem('curList', JSON.stringify(data.list));
                 return data;
             }
         } catch (error: any) {
