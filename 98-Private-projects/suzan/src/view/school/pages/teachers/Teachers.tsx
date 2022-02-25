@@ -10,13 +10,15 @@ import './Teachers.scss';
 import Button from '@mui/material/Button';
 import EditIcon from '@mui/icons-material/Edit';
 import { Link } from 'react-router-dom';
+import {useState, useEffect} from 'react';
+import axios from 'axios';
 
 
 export interface teacherInfo {
     info: {
         firstName: string;
         lastName: string;
-        id: string;
+        teacherId: string;
         phone: string;
         email: string;
     }
@@ -24,11 +26,19 @@ export interface teacherInfo {
 
 export default function SchoolTeachers() {
 
-    const teachers: Array<teacherInfo> = [
-        { info: { firstName: 'Suzan', lastName: 'Kassabry', id: '207745638', phone: '0537756048', email: 'suzankassabry97@gmail.com' } },
-        { info: { firstName: 'Lama', lastName: 'Kassabry', id: '218439247', phone: '0537756048', email: 'suzankassabry97@gmail.com' } },
-        { info: { firstName: 'Rania', lastName: 'Kassabry', id: '634892469', phone: '0537756048', email: 'suzankassabry97@gmail.com' } }
-    ]
+    // const teachers: Array<teacherInfo> = [
+    //     { info: { firstName: 'Suzan', lastName: 'Kassabry', teacherId: '207745638', phone: '0537756048', email: 'suzankassabry97@gmail.com' } },
+    //     { info: { firstName: 'Lama', lastName: 'Kassabry', teacherId: '218439247', phone: '0537756048', email: 'suzankassabry97@gmail.com' } },
+    //     { info: { firstName: 'Rania', lastName: 'Kassabry', teacherId: '634892469', phone: '0537756048', email: 'suzankassabry97@gmail.com' } }
+    // ]
+
+    const [teachers, setTeachers] = useState([]);
+    useEffect(() => {
+        axios.get('http://localhost:3004/schoolTeachers').then(({data})=>{
+            console.log(data);
+            setTeachers(data);
+    })
+    }, []);
 
     return (
         <div className='container'>
