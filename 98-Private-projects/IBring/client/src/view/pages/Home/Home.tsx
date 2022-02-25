@@ -2,22 +2,10 @@ import React, { useEffect, useState } from 'react'
 import './Home.scss';
 import homeLogo from '../../logoAndPhotos/homeLogo.jpg';
 import settings from '../../logoAndPhotos/settings.jpg';
-import clock from '../../logoAndPhotos/clock.jpg'
-import calendar from '../../logoAndPhotos/calendar.jpg';
-import location from '../../logoAndPhotos/location.png';
-import people from '../../logoAndPhotos/people.jpg';
-import home from '../../logoAndPhotos/home.jpg';
-import chef from '../../logoAndPhotos/chef.jpg';
-
-import { useSelector, useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
-import { RootState } from '../../../redux/store';
-import { UserState } from '../../../redux/reducers/userReducer';
-import { stringify } from 'querystring';
-import e from 'express';
+import { useNavigate } from 'react-router-dom';
 import HomeListComponent from '../../components/HomeListComponent/HomeListComponent';
 import axios from 'axios';
-import { ConstructionOutlined } from '@mui/icons-material';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 
 interface ListIF {
     imgURL?: string;
@@ -29,20 +17,12 @@ interface ListIF {
     place: string;
     fewWords: string;
 }
-interface ListState {
-    loading?: boolean,
-    error?: string,
-    listInfo: ListIF
-}
 
 function Home() {
     const nav = useNavigate();
-    const userLogin = useSelector<RootState, UserState>(state => state.user);
-    const _list = useSelector<RootState, ListState>(state => state.list);
-    const dispatch = useDispatch();
-    const listInfo: ListIF = _list.listInfo;
+    const userLogin = useAppSelector(state => state.logged);
+    const dispatch = useAppDispatch();
 
-    const { userInfo } = userLogin;
 
 
     const [allListFromDB, setAllListFromDB] = useState<Array<any>>([]);
@@ -88,9 +68,9 @@ function Home() {
     ]);
 
     useEffect(() => {
-        if (userLogin && userInfo.email) {
+        if (userLogin.status === "logged") {
             let listCopy: Array<any> = [];
-            axios.post('/meeting/getListByUser', { email: userInfo.email }).then(data => {
+            axios.post('/meeting/getListByUser', { email: userLogin.value.email }).then(data => {
                 /**
                  * save all data in redux
                  */
@@ -138,14 +118,14 @@ function Home() {
             </div>
             <div className="mainContent">
                 <div className="homeHeader">
-                    <label className='templateTitle marginTitleNormal userName'>Hi, {userInfo && userInfo.email}</label>
+                    <label className='templateTitle marginTitleNormal userName'>Hi, {userLogin.value.email}</label>
 
                     <div className="upcoming">
                         <label id='header'>Your upcoming gathering</label>
 
                         {upcomingList.map((elem, index) => {
-                            const findList = allListFromDB.find(dbList=>{
-                                if(elem.id == dbList._id){
+                            const findList = allListFromDB.find(dbList => {
+                                if (elem.id == dbList._id) {
                                     return dbList;
                                 }
                             })
@@ -161,13 +141,13 @@ function Home() {
                         <label id='header'>Your previous gathering</label>
 
                         {previousList.map((elem, index) => {
-                            const findList = allListFromDB.find(dbList=>{
-                                if(elem.id == dbList._id){
+                            const findList = allListFromDB.find(dbList => {
+                                if (elem.id == dbList._id) {
                                     return dbList;
                                 }
                             })
                             return (
-                                <HomeListComponent key={index} id={elem.id} findList={findList}  info={
+                                <HomeListComponent key={index} id={elem.id} findList={findList} info={
                                     { name: elem.name, date: elem.date, time: elem.time, place: elem.place, bringList: elem.bringList }} />
                             );
                         })}
