@@ -44,6 +44,8 @@ function App() {
           return (
             <p key={index}>
               {product.title}
+              <br />
+              {product.id}
 
             </p>)
         }) : <div>loading</div>}
