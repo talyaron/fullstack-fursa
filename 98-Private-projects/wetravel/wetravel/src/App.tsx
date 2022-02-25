@@ -1,11 +1,14 @@
 import React from "react";
+<<<<<<< HEAD
 import logo from "./logo.svg";
+=======
+>>>>>>> origin/Aiman
 import "./App.css";
 import Login from "./components/Login";
-import { timeStamp } from "console";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Mainpage from "./components/Mainpage";
 import Nearevents from "./components/Nearevents";
+<<<<<<< HEAD
 import Createevent from "./components/Createevent";
 import {useEffect} from "react";
 
@@ -18,6 +21,10 @@ function App() {
 
 
   
+=======
+
+function App() {
+>>>>>>> origin/Aiman
   return (
     <div className="App">
       <Router>

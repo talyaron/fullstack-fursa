@@ -1,20 +1,35 @@
 {
   "dependencies": {
+    "@types/mongoose": "^5.11.97",
+    "@types/react": "^17.0.39",
     "axios": "^0.26.0",
+<<<<<<< HEAD
     "express": "^4.17.3",
     "mongoose": "^6.2.2",
     "nodemon": "^2.0.15"
+=======
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.2",
+    "nodemon": "^2.0.15",
+    "react-google-button": "^0.7.2"
+>>>>>>> origin/Aiman
   },
   "devDependencies": {
-    "@types/node": "^17.0.18"
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/node": "^17.0.19",
+    "ts-node": "^10.5.0",
+    "typescript": "^4.5.5"
   },
   "name": "wetravel",
   "description": "",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "db": "json-server --watch db.json --port 3004"
+    "db": "json-server --watch db.json --port 3004",
+    "dev": "concurrently nodemon  \"cd wetravel && npm start\""
   },
   "repository": {
     "type": "git",

@@ -1,16 +1,14 @@
-import React from "react";
 import "../components/Nearevents.scss";
 import Bottombar from "./Bottombar";
 import Header from "./Header";
 import Rola from "../Images/Rola.jpeg";
 import tent from "../Images/tent.jpg";
 import { data } from "../components/Bottombar";
-import { DateRangeTwoTone } from "@mui/icons-material";
 
 function Nearevents() {
   const name: data = { name: "events" };
   return (
-    <div style ={{backgroundColor:'#aaaa'}}>
+    <div style={{ backgroundColor: "#F0F0F0" }}>
       <Header />
       <div className="grid">
         <div className="grid__item">
@@ -85,7 +83,6 @@ function Nearevents() {
             <img src={Rola} />
           </div>
         </div>
-        
       </div>
       <Bottombar name={name.name} />
     </div>
