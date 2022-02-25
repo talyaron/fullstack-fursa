@@ -1,11 +1,12 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from './reducers/counterSlice';
-import textReducer from './reducers/textSlice';
-
+import counterReducer from '../features/counter/counterSlice';
+// import textReducer from '../features/text/textSlice';
+import userReducer from '../features/user/userReducer';
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
-     text:textReducer,
+    user:userReducer, 
+    //  text:textReducer,
   },
 });
 
@@ -17,3 +18,4 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   unknown,
   Action<string>
 >;
+

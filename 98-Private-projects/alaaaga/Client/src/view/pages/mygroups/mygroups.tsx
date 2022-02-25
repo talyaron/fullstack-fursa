@@ -107,7 +107,7 @@ export default function Mygroups() {
               <StyledTableCell align="center" component="th" scope="row">
                 {row.id}
               </StyledTableCell>
-              <StyledTableCell align="center">{row.name}</StyledTableCell>
+              <StyledTableCell align="center">{row.groupName}</StyledTableCell>
               <StyledTableCell align="center"> 
               <PeopleIcon onClick={()=>{
                 navigate(`/mygroups/${row.id}`);

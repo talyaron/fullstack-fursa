@@ -68,11 +68,11 @@ function Store() {
       {/* <Bar></Bar> */}
 
       <div className="navbar">
-        <a href="#Discount" onClick={(ev: any) => { setCatagory("All") }} >All Product</a>
-        <a href="#news" onClick={(ev: any) => { setCatagory("fruits vegetables") }}>fruits vegetables</a>
-        <a href="#contact" onClick={(ev: any) => { setCatagory("Meat and fish") }}>Meat and fish</a>
-        <a href="#about"  onClick={(ev: any) => { setCatagory("Organic and healthy") }}>Organic and healthy</a>
-        <a href="#about"  onClick={(ev: any) => { setCatagory("Drinks") }}>Drinks</a>
+        <a href="#All" onClick={(ev: any) => { setCatagory("All") }} >All Product</a>
+        <a href="#fruits" onClick={(ev: any) => { setCatagory("fruits vegetables") }}>fruits vegetables</a>
+        <a href="#Meat" onClick={(ev: any) => { setCatagory("Meat and fish") }}>Meat and fish</a>
+        <a href="#Organic"  onClick={(ev: any) => { setCatagory("Organic and healthy") }}>Organic and healthy</a>
+        <a href="#Drinks"  onClick={(ev: any) => { setCatagory("Drinks") }}>Drinks</a>
         <div className="dropdown">
           <button className="dropbtn">More
             <i className="fa fa-caret-down"></i>
@@ -88,7 +88,6 @@ function Store() {
         </div>
       </div>
       <div className="wrapper">
-
         {productByCatagory.map((product, i) => {
           const { id, name, price, catagory, quantity, description, Url } = product;
           return <Card key={i} id={id} name={name} price={price} catagory={catagory} quantity={quantity} description={description} Url={Url} />

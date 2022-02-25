@@ -46,7 +46,6 @@ return(
     <Route path="/" element={<HomePage/>} />
     <Route path="Login" element={<Login />}></Route>
     <Route path="Cart" element={<Cart />} />
-    <Route path="Login" element={<HomePage />} />
     <Route path="signUp" element={<SignUp />} />
     <Route path="AboutUs" element={<AboutUs />} />
     <Route path="Group" element={<Group />} />

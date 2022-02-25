@@ -1,11 +1,11 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from './reducers/counterSlice';
-import textReducer from './reducers/textSlice';
+export {}
+/*import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import  mygroupsReducer  from '../view/fitures/myGroups/myGroupsSlice';
+
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
-     text:textReducer,
+     mygroups : mygroupsReducer,
   },
 });
 
@@ -16,4 +16,4 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   RootState,
   unknown,
   Action<string>
->;
+>;*/

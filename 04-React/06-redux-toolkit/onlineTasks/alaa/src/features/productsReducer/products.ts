@@ -25,7 +25,7 @@ export const getProductAsync = createAsyncThunk(
     'products/fetchProducts',
     async (_, thunkAPI) => {
         try {
-            const response = await axios.get('https://fakestoreapi.com/products/')
+            const response = await axios.get('https://fakestoreapi.com/products/aaa')
             const data = response.data
             return data
         } catch (error:any) {
