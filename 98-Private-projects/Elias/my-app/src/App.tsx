@@ -13,6 +13,7 @@ import Signup from './view/Pages/Signup/Signup';
 import Homepage from './view/Pages/Homepage/Homepage';
 import TravelInfo1 from './view/Pages/TravelInfo1/TravelInfo1';
 import TravelInfo2 from './view/Pages/TravelInfo2/TravelInfo2';
+import Test from './view/Pages/TravelInfo1/Test';
 
 
 
@@ -29,6 +30,8 @@ function App() {
         <Route path="/TravelInfo2" element={< TravelInfo2/>} />
         <Route path="/Signup" element={<Signup />} />
         <Route path="/ViewList" element={<ViewList />} />
+        <Route path="/Test" element={<Test />} />
+
 
       </Routes>
       <Bottom_Nav />

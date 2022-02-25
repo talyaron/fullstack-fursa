@@ -51,62 +51,123 @@ const TravelInfo2 = () => {
 
   return (
     <div className="wrapper">
+        <div className="header"> Fill travel info</div>
+        <form action="" className="TarvelInfo1Form">
 
-      <div className="header"> Fill travel info</div>
-      <form action="" className="TarvelInfo1Form">
-        <div className="catg box1">
-          <div className=" text Transport">Transport</div>
-          <div className="grid-container">
-            <div className="grid-item"><img src={Plane} alt="" /></div>
-            <div className="grid-item"><img src={Bus} alt="" /></div>
-            <div className="grid-item"><img src={Car} alt="" /></div>
-            <div className="grid-item"><img src={Ship} alt="" /></div>
-            <div className="grid-item"><img src={Metro} alt="" /></div>
-            <div className="grid-item"><img src={Taxi} alt="" /></div>
-          </div>
-        </div>
-        <div className="catg box2">
-          <div className=" text Activity">Activity</div>
-          <div className="grid-container">
-            <div className="grid-item"><img src={Glof} alt="" /></div>
-            <div className="grid-item"><img src={Club} alt="" /></div>
-            <div className="grid-item"><img src={Photography} alt="" /></div>
-            <div className="grid-item"><img src={Swimming} alt="" /></div>
-            <div className="grid-item"><img src={Hiking} alt="" /></div>
-            <div className="grid-item"><img src={Biking} alt="" /></div>
-         
-          </div>
-        </div>
-        <div className="catg box3">
-          <div className=" text Accommodation">Accommodation</div>
-
-          <div className="grid-container">
-            <div className="grid-item"><img src={Hotel} alt="" /></div>
-            <div className="grid-item"><img src={BNB} alt="" /></div>
-            <div className="grid-item"><img src={ShortTerm} alt="" /></div>
-            <div className="grid-item"><img src={Van} alt="" /></div>
-            <div className="grid-item"><img src={Tent} alt="" /></div>
-            <div className="grid-item"><img src={Sofa} alt="" /></div>
-          </div>
-        </div>
-        <div className="catg box4">
-          <div className=" text Special">Special Care</div>
-          <div className="grid-container">
-            <div className="grid-item"><img src={Baby} alt="" /></div>
-            <div className="grid-item"><img src={Toddlers} alt="" /></div>
-            <div className="grid-item"><img src={Pets} alt="" /></div>
-            <div className="grid-item"><img src={Med} alt="" /></div>
-            <div className="grid-item"><img src={Merchandise} alt="" /></div>
-            <div className="grid-item"><img src={Valuable} alt="" /></div>
-          </div>
-        </div>
+            <div className="catg box1">
+                <div className=" text Transport">Transport</div>
+                <div className="grid-container">
 
 
-        <button className='Proceedbtn' onClick={onSubmit}>Submit</button>
-      </form>
+                    <input id="Plane" type="checkbox" name="apple" />
+                    <label className="Plane" htmlFor="Plane"></label>
+
+                    <input id="Bus" type="checkbox" />
+                    <label className='Bus' htmlFor="Bus"></label>
+
+                    <input id="Car" type="checkbox" name="apple" />
+                    <label className="Car" htmlFor="Car"></label>
+
+                    <input id="Ship" type="checkbox" />
+                    <label className='Ship' htmlFor="Ship"></label>
+
+                    <input id="Metro" type="checkbox" name="apple" />
+                    <label className="Metro" htmlFor="Metro"></label>
+
+                    <input id="Taxi" type="checkbox" />
+                    <label className='Taxi' htmlFor="Taxi"></label>
+                </div>
+            </div>
+            <div className="catg box2">
+                <div className=" text Activity">Activity</div>
+                <div className="grid-container">
+
+
+                    <input id="Glof" type="checkbox" name="apple" />
+                    <label className="Glof" htmlFor="Glof"></label>
+
+
+                    <input id="Club" type="checkbox" />
+                    <label className='Club' htmlFor="Club"></label>
+
+                    <input id="Photography" type="checkbox" name="apple" />
+                    <label className="Photography" htmlFor="Photography"></label>
+
+                    <input id="Swimming" type="checkbox" />
+                    <label className='Swimming' htmlFor="Swimming"></label>
+
+                    <input id="Hiking" type="checkbox" name="apple" />
+                    <label className="Hiking" htmlFor="Hiking"></label>
+
+                    <input id="Biking" type="checkbox" />
+                    <label className='Biking' htmlFor="Biking"></label>
+
+
+                </div>
+            </div>
+            <div className="catg box3">
+                <div className=" text Accommodation">Accommodation</div>
+                <div className="grid-container">
+
+
+                    <input id="Hotel" type="checkbox" name="apple" />
+                    <label className="Hotel" htmlFor="Hotel"></label>
+
+
+                    <input id="BNB" type="checkbox" />
+                    <label className='BNB' htmlFor="BNB"></label>
+
+                    <input id="ShortTerm" type="checkbox" name="apple" />
+                    <label className="ShortTerm" htmlFor="ShortTerm"></label>
+
+                    <input id="Van" type="checkbox" />
+                    <label className='Van' htmlFor="Van"></label>
+
+                    <input id="Tent" type="checkbox" name="apple" />
+                    <label className="Tent" htmlFor="Tent"></label>
+
+                    <input id="Sofa" type="checkbox" />
+                    <label className='Sofa' htmlFor="Sofa"></label>
+
+
+                </div>
+            </div>
+            <div className="catg box4">
+                <div className=" text Special">Special Care</div>
+                <div className="grid-container">
+
+
+
+                    <input id="Baby" type="checkbox" name="apple" />
+                    <label className="Baby" htmlFor="Baby"></label>
+
+
+                    <input id="Toddlers" type="checkbox" />
+                    <label className='Toddlers' htmlFor="Toddlers"></label>
+
+                    <input id="Pets" type="checkbox" name="apple" />
+                    <label className="Pets" htmlFor="Pets"></label>
+
+                    <input id="Med" type="checkbox" />
+                    <label className='Med' htmlFor="Med"></label>
+
+                    <input id="Merchandise" type="checkbox" name="apple" />
+                    <label className="Merchandise" htmlFor="Merchandise"></label>
+
+                    <input id="Valuable" type="checkbox" />
+                    <label className='Valuable' htmlFor="Valuable"></label>
+
+
+                </div>
+            </div>
+            <button className='Proceedbtn'onClick={onSubmit} >Submit</button>
+
+        </form>
+
 
     </div>
-  )
+)
+ 
 }
 
 export default TravelInfo2;
