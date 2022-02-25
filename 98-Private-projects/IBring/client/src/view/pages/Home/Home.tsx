@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import HomeListComponent from '../../components/HomeListComponent/HomeListComponent';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { listAsync } from '../../../features/listSelector/listReducer';
+import Sidebar from '../../components/Sidebar/Sidebar';
 
 function Home() {
     const nav = useNavigate();
@@ -20,7 +21,7 @@ function Home() {
         else {
             nav('/login')
         }
-    }, []);
+    }, [userLogin]);
 
     function handleHome(ev: any) {
         ev.preventDefault();
@@ -40,7 +41,8 @@ function Home() {
                         <img onClick={handleHome} src={homeLogo} alt="" />
                     </div>
                     <div className="settingsLogo">
-                        <img onClick={handleSettings} src={settings} alt="" />
+                        {/* <img onClick={handleSettings} src={settings} alt="" /> */}
+                        <Sidebar />
                     </div>
                 </div>
             </div>

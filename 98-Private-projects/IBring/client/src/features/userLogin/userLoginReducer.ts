@@ -71,6 +71,7 @@ export const loginReducer = createSlice({
     initialState,
     reducers: {
         logout: (state) => {
+            localStorage.removeItem('userInfo');
             state.status = 'idle';
             state.value = {
                 email: ""
