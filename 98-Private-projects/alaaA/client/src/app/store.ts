@@ -1,4 +1,5 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+export {}
+/*import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import  mygroupsReducer  from '../view/fitures/myGroups/myGroupsSlice';
 
 
@@ -15,4 +16,4 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   RootState,
   unknown,
   Action<string>
->;
+>;*/
