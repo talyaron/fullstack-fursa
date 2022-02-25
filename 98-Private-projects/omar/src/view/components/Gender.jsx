@@ -6,22 +6,28 @@ import MaleIcon from '@mui/icons-material/Male';
 import FemaleIcon from '@mui/icons-material/Female';
 import TransgenderIcon from '@mui/icons-material/Transgender';
 import { Link } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import  { setGender } from "../../slice"
+
+
 
 function Gender() {
+  const dispatch = useDispatch();
+  // const refValues = useRef({ gender: ""});
   return (
     <div>
       <Header />
       <div className='Middle'>
       <p className="underTilte">What's your gender ? </p>
-      <button className="Male">
+      <button className="Male" onClick={() => dispatch(setGender('male'))}>
         <MaleIcon className="Icon"/>
         <b>Male</b>
       </button>
-      <button className="FeMale">
+      <button className="FeMale" onClick={() => dispatch(setGender('female'))}>
         <FemaleIcon className="Icon"/>
         <b>Female</b>
       </button>
-      <button className="Other">
+      <button className="Other" onClick={() => dispatch(setGender('other'))}>
         <TransgenderIcon className="Icon"/>
         <b>other</b>
       </button>

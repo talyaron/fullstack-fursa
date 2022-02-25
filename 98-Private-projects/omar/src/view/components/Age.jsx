@@ -1,9 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Header from './Header'
-import Btn from './Btn'
+// import Btn from './Btn'
 import { Link } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import  { setAge } from "../../slice"
 
 function Age() {
+  const dispatch = useDispatch();
+  const [state, setState] = useState({age:""})
+  // const refValues = useRef({age:""});
+
   return (
     <div>
       {/* how old + TextField + next button */}
@@ -15,11 +21,15 @@ function Age() {
         type="text"
         placeholder="Enter your Age"
         name="age"
+        value={state.age}
+        onChange={(e) => setState(({age: e.target.value }))}
         required
       ></input> <br></br>
-        <Link className="linkStyle" to="/height">
-          <Btn title={"next"} />
-        </Link>
+          <Link to="/height">
+        <button onClick={() => dispatch(setAge(state))} className="Acoount">
+          <b>next</b>
+        </button>
+      </Link>
       </div>
     </div>
   );

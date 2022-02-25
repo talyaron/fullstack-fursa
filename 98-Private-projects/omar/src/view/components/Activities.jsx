@@ -5,28 +5,30 @@ import { Link } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
-
+import { useDispatch } from "react-redux";
+import  { setActivity } from "../../slice"
 
 function Activities() {
+  const dispatch = useDispatch();
   return (
     <div>
       {/* title + logo + which Activities text + 3 buttons + Next button */}
       <Header />
       <div className="Middle">
         <p className="underTilte">Which activities do you prefer ? </p>
-        <button className="Male">
+        <button className="Male" onClick={() => dispatch(setActivity('fitness at home'))}>
           <HomeIcon className="Icon"/>
           <b>fitness at home</b>
         </button>
-        <button className="Male">
-          <FitnessCenterIcon className="Icon"/>
+        <button className="Male" onClick={() => dispatch(setActivity('fitness at gym'))}>
+          <FitnessCenterIcon className="Icon" />
           <b>fitness at gym</b>
         </button>
-        <button className="Male">
+        <button className="Male" onClick={() => dispatch(setActivity('running'))}>
           <DirectionsRunIcon className="Icon"/>
           <b>running</b>
         </button>
-        <Link className="linkStyle" to="/name">
+        <Link className="linkStyle" to="/age">
           <Btn title={"next"} />
         </Link>
       </div>

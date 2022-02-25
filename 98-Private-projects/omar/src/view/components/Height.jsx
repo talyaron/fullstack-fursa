@@ -1,14 +1,17 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Header from './Header'
-import Btn from './Btn'
 import { Link } from 'react-router-dom';
 import ComboBox from './ComboBox';
+import { useDispatch } from "react-redux";
+import  { setHeight } from "../../slice"
 
 const measurment = [
   { label: 'CM' },
   { label: 'FT' } ]
 
 function Height() {
+  const dispatch = useDispatch();
+  const [state, setState] = useState({height:""})
   return (
     <div>
       {/* your heght + CM/FT + TextField + next button  */}
@@ -22,11 +25,15 @@ function Height() {
           type="text"
           placeholder="Enter your height"
           name="height"
+          value={state.height}
+          onChange={(e) => setState(({height: e.target.value }))}
           required
         ></input>{" "}
         <br></br>
-        <Link className="linkStyle" to="/weight">
-          <Btn title={"next"} />
+        <Link to="/weight">
+        <button onClick={() => dispatch(setHeight(state))} className="Acoount">
+          <b>next</b>
+        </button>
         </Link>
       </div>
     </div>

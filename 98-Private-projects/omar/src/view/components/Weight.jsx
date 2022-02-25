@@ -1,14 +1,18 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Header from './Header'
-import Btn from './Btn'
+
 import { Link } from 'react-router-dom';
 import ComboBox from './ComboBox';
+import { useDispatch } from "react-redux";
+import  { setWeight } from "../../slice"
 
 const measurment = [
   { label: 'KG' },
   { label: 'LBS' } ]
   
 function Weight() {
+  const dispatch = useDispatch();
+  const [state, setState] = useState({weight:""})
   return (
     <div>
       {/* your weight + CM/FT + TextField + next button  */}
@@ -22,10 +26,14 @@ function Weight() {
         type="text"
         placeholder="Enter your weight"
         name="weight"
+        value={state.weight}
+        onChange={(e) => setState(({weight: e.target.value }))}
         required
       ></input> <br></br>
-        <Link className="linkStyle" to="/personalplan">
-          <Btn title={"next"} />
+        <Link to="/personalplan">
+        <button onClick={() => dispatch(setWeight(state))} className="Acoount">
+          <b>next</b>
+        </button>
         </Link>
       </div>
     </div>
