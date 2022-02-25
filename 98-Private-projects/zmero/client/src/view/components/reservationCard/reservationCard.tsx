@@ -50,7 +50,7 @@ function ReservationCard(props: cardProp) {
                     <div>{strDate}</div>
                 </div>
                 <div className="reservationcard__cancel">
-                    <Button style={{ backgroundColor: '#2a945b', width: '50%' }} fullWidth variant="contained" onClick={CancelReserve}>Cancel</Button>
+                    <Button style={{ backgroundColor: '#2a945b', width: '50%', padding: '0.1rem 0.1rem' }} fullWidth variant="contained" onClick={CancelReserve}>Cancel</Button>
                 </div>
             </div>
 

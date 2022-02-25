@@ -4,6 +4,7 @@ import './restaurantCard.scss'
 import { Link } from 'react-router-dom';
 import Rating from '@mui/material/Rating'
 import ReserveModal from '../../components/reserveModal/reserveModal'
+import Button from '@mui/material/Button';
 interface cardProp {
     id: number;
     name: string;
@@ -11,6 +12,7 @@ interface cardProp {
     booking: number;
     region: string;
     stars: number;
+    city: string;
 }
 
 
@@ -39,6 +41,9 @@ function RestaurantCard(props: cardProp) {
                     <div className="restaurantCard__title">
                         <h3>{props.name}</h3>
                     </div>
+                    <div className="restaurantCard__city">
+                        <span>{props.city}</span>
+                    </div>
                     <div>
                         <Rating style={{ color: '#FFDF32' }} name="read-only" value={props.stars} readOnly />
                     </div>
@@ -49,7 +54,7 @@ function RestaurantCard(props: cardProp) {
                         </div>
                     </div>
                     <div className="restaurantCard__reserve">
-                        <button className="restaurantCard__reserve__btn" onClick={openReserve}>Find next availabe</button>
+                        <Button style={{ backgroundColor: '#2a945b', width: '50%', padding: '0.1rem 0.1rem' }} fullWidth variant="contained" onClick={openReserve}>Reserve Now</Button>
                     </div>
                 </div>
                 <ReserveModal restaurantID={props.id} openModal={openModal} setOpenModal={setOpenModal} />

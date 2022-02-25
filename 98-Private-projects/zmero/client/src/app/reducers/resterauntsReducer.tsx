@@ -9,6 +9,7 @@ interface Restaurant {
     booking: number;
     region: string;
     stars: number;
+    city: string;
     category: string;
     photos: Array<string>;
 }

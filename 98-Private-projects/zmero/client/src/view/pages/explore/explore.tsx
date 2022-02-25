@@ -16,8 +16,8 @@ import Grid from '@mui/material/Grid';
 function Explore() {
     const dispatch = useAppDispatch()
     const famousRestaurants = useAppSelector(getFamousRestaurants)
-    const [trendingRestaurants, setTrendingRestaurant] = useState([{ id: 0, name: "", image: "", booking: 0, region: "", stars: 0 }]);
-    const [seaRestaurants, setSeaRestaurant] = useState([{ id: 0, name: "", image: "", booking: 0, region: "", stars: 0 }]);
+    const [trendingRestaurants, setTrendingRestaurant] = useState([{ id: 0, name: "", image: "", booking: 0, region: "", stars: 0, city: "" }]);
+    const [seaRestaurants, setSeaRestaurant] = useState([{ id: 0, name: "", image: "", booking: 0, region: "", stars: 0, city: "" }]);
     const [userRegion, setUserRegion] = useState('Israel');
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -85,7 +85,7 @@ function Explore() {
                         <Grid container spacing={{ xs: 2, md: 3 }}>
                             {famousRestaurants.slice(0, 4).map((rest, index) => {
                                 return (<Grid item xs={12} sm={6} md={3} key={index}>
-                                    <Card key={index} id={rest.id} name={rest.name} image={rest.image} booking={rest.booking} stars={rest.stars} region={rest.region}></Card>
+                                    <Card key={index} id={rest.id} name={rest.name} image={rest.image} booking={rest.booking} stars={rest.stars} region={rest.region} city={rest.city}></Card>
                                 </Grid>)
                             })}
                         </Grid>
@@ -98,7 +98,7 @@ function Explore() {
                     </header>
                     <div className="exploremain__popular__grid">
                         {trendingRestaurants.map((rest, index) => {
-                            return <Card key={index} id={rest.id} name={rest.name} image={rest.image} booking={rest.booking} stars={rest.stars} region={rest.region}></Card>
+                            return <Card key={index} id={rest.id} name={rest.name} image={rest.image} booking={rest.booking} stars={rest.stars} region={rest.region} city={rest.city}></Card>
                         })}
                     </div>
                 </div>
@@ -109,7 +109,7 @@ function Explore() {
                     </header>
                     <div className="exploremain__popular__grid">
                         {seaRestaurants.map((rest, index) => {
-                            return <Card key={index} id={rest.id} name={rest.name} image={rest.image} booking={rest.booking} stars={rest.stars} region={rest.region}></Card>
+                            return <Card key={index} id={rest.id} name={rest.name} image={rest.image} booking={rest.booking} stars={rest.stars} region={rest.region} city={rest.city}></Card>
                         })}
                     </div>
                 </div>

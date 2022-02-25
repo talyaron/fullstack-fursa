@@ -38,7 +38,14 @@
             overflow: hidden !important;
             white-space: nowrap;
             width: 12rem;
-            opacity: 0.9;
+            margin-bottom: 0.2rem;
+
+        }
+    }
+
+    &__city {
+        span {
+            font-weight: 500;
         }
     }
 
