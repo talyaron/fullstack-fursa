@@ -2,7 +2,7 @@ import './Products.scss'
 import Button from '@mui/material/Button';
 import axios from 'axios'
 import { useState,useEffect } from 'react';
-import {selectorders} from '../../../features/cart/cartSlice';
+import {getCartAsync, selectorders} from '../../../features/cart/cartSlice';
 import {update} from '../../../features/cart/cartSlice';
 import {useAppDispatch} from '../../../app/hooks';
 import Cart from '../../pages/cart/Cart'
@@ -23,15 +23,16 @@ export interface productProp{
     // const dispatch = useAppDispatch();
 
     const [order,setOrder]=useState([]);
-    useEffect(()  => {
-       axios.get('http://localhost:3004/userOrder').then(({data})=> setOrder(data));
-        }, []);
+    // useEffect(()  => {
+    //    axios.get('http://localhost:3004/userOrder').then(({data})=> setOrder(data));
+    //     }, []);
      const {woodName,woodlength,width,thick,amount,color,id}=prop;
      let comp;
+     const dispatch=useAppDispatch();
      function RemoveHandler()
      {
-        
-        axios.delete(`http://localhost:3004/userOrder/${id}`).then(({data})=>setOrder(data));
+        // dispatch(deleteCartAsync())
+        axios.delete(`http://localhost:3004/userOrder/${id}`).then(({data})=>dispatch(getCartAsync()));
         // comp=<Cart></Cart>
     
     }

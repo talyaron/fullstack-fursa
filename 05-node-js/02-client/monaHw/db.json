@@ -41,6 +41,12 @@
       "imgurl": "https://d2kxk2c617i0nn.cloudfront.net/image_resize/w555/h368/products/191/wood2edited.jpg",
       "price": "15",
       "id": 7
+    },
+    {
+      "name": "cedar wood",
+      "imgurl": "https://www.timbercut4u.co.uk/uploads/images/products/verylarge/timbercut4u-buy-north-american-western-red-cedar-1573054736Western-Red-Cedar-002.jpg",
+      "price": "15",
+      "id": 8
     }
   ],
   "products": [
@@ -62,20 +68,44 @@
   ],
   "userOrder": [
     {
-      "woodName": "Maple Wood",
+      "woodName": "Doors",
       "woodlength": "250",
       "width": "160",
-      "thick": "3",
-      "amount": "",
+      "thick": "300",
+      "color": "green",
+      "amount": "3",
+      "id": 3
+    },
+    {
+      "woodName": "cedar wood",
+      "woodlength": "250",
+      "width": "22",
+      "thick": "52",
+      "amount": "3",
       "id": 4
     },
     {
-      "woodName": "Maple Wood",
+      "woodName": "Doors",
       "woodlength": "250",
       "width": "160",
-      "thick": "3",
-      "amount": "",
-      "id": 6
+      "thick": "300",
+      "color": "green",
+      "amount": "70",
+      "id": 5
+    }
+  ],
+  "userInfo": [
+    {
+      "name": "mona",
+      "phone": "0000",
+      "location": "naz",
+      "id": 1
+    },
+    {
+      "name": "admin",
+      "phone": "040",
+      "location": "naz",
+      "id": 2
     }
   ]
 }

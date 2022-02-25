@@ -29,7 +29,7 @@ function WoodProduct(){
           const{name,imgurl,id}=product;
           return <ProductCard key={index} product={{name,imgurl,id}}/>
           
-        })}            <Outlet />
+        })}        <Outlet />
 
 
            </div>    

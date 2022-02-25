@@ -11,6 +11,7 @@ import { update } from '../../../features/cart/cartSlice';
 import { useAppSelector } from '../../../app/hooks';
 import { useAppDispatch } from '../../../app/hooks';
 import {getCartAsync,order} from '../../../features/cart/cartSlice';
+import CircularProgress from '@mui/material/CircularProgress';
 
 interface cartProps {
     product: any;
@@ -67,11 +68,12 @@ function Cart(props: cartProps) {
                     <Outlet />
                 </div>
              
-                {(orders.status!=='loading')}?
-                {orders.orders.map((products: order, i: any) => {
+                {orders.status!=='loading' ?
+                orders.orders.map((products: order, i: any) => {
 
                     return <Product key={i} woodName={products.woodName} woodlength={products.woodlength} width={products.width} thick={products.thick} amount={products.amount} id={products.id} />
-                })}:  <div>loading</div>
+                }):  <div><CircularProgress color="secondary" />
+                </div>}
 
                 <Button variant="contained" style={{ backgroundColor: 'rgb(47, 143, 90)' }} size="medium">
                     <Link to="/cart/checkOutOrder"> order </Link>

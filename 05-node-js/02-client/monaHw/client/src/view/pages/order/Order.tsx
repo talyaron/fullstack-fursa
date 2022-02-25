@@ -14,6 +14,8 @@ import axios from 'axios'
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import { height, width } from '@mui/system';
+import { useDispatch } from 'react-redux';
+import { getCartAsync } from '../../../features/cart/cartSlice';
 
 // const woods = [{name:'pine wood',height:70,width:70, thick:70,cardImg:'https://d2kxk2c617i0nn.cloudfront.net/image_resize/crop/mw1500/mh750/products/23_001--yellow_pine_softwood-s.jpg'},
 // {name:'insulation wood',height:70,width:70, thick:70,cardImg:'https://www.greenspec.co.uk/images/web/materials/boards/board.jpg'},
@@ -40,7 +42,7 @@ interface orderProps {
 function Order(props: orderProps) {
     const { product, setProduct } = props;
     const [currency, setCurrency] = React.useState('cm');
-
+     const dispatch=useDispatch();
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCurrency(event.target.value);
   };
@@ -50,7 +52,7 @@ function Order(props: orderProps) {
   
     function handleSubmit(ev: any) {
         ev.preventDefault();
-        console.dir(ev);
+       console.dir(ev.target);
         const form = ev.target;
         const obj: any = {};
         obj['woodName']=name;
@@ -63,7 +65,7 @@ function Order(props: orderProps) {
         // let copy = Object.assign([], product);
         // copy.push(obj);
         // setProduct(copy);
-        axios.post('http://localhost:3004/userOrder',{"woodName":name,"woodlength":form[0].value, "width":form[1].value, "thick":form[2].value,"amount":form[4].value}).then(({data})=>console.log(data));
+        axios.post('http://localhost:3004/userOrder',{"woodName":name,"woodlength":form[0].value, "width":form[3].value, "thick":form[6].value,"amount":form[9].value}).then(({data})=>dispatch(getCartAsync()));
 
         setAdd('item added successfully — check it out!')
         // console.log(copy)
@@ -153,13 +155,9 @@ function Order(props: orderProps) {
                 </div>
                 <Button type="submit" variant="contained" style={{backgroundColor: 'rgb(47, 143, 90)'}}size="medium">
           add to cart
-       
        </Button>
-       {/* <button type='submit'>add</button> */}
             </form>
             <Alert  severity="success">{add}</Alert>
-
-
           </div>
             <img src="https://www.woodworkerssource.com/images/board_feet_example.jpg" alt="" />
 

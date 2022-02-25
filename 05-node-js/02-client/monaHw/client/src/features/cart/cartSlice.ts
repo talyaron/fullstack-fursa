@@ -37,16 +37,16 @@ export const getCartAsync = createAsyncThunk(
     }
 
   }
-
-
 );
+
 export const cartSlice = createSlice({
   name: 'order',
   initialState,
   reducers: {
     update: (state, action) => {
       state.orders = action.payload;
-    }
+    },
+    
   },
   extraReducers: (builder) => {
     builder
@@ -57,7 +57,7 @@ export const cartSlice = createSlice({
         state.status = 'idle';
         state.orders = action.payload;
       })
-
+      
   }
 });
 
