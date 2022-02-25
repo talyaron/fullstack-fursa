@@ -24,7 +24,7 @@ function Header() {
             React.createElement(react_router_dom_1.Link, { to: "/" }, "HomePage"),
             React.createElement(react_router_dom_1.Link, { to: "/horses" }, "Our Horses"),
             React.createElement(react_router_dom_1.Link, { to: "/trainers" }, "Our trainers"),
-            React.createElement(react_router_dom_1.Link, { to: "/calender" }, "Register"),
+            React.createElement(react_router_dom_1.Link, { to: "/courseRegistration" }, "Register"),
             React.createElement(react_router_dom_1.Link, { to: "/TableDatePicker" }, "Register2")),
         React.createElement("div", { className: "mainheader__right" },
             React.createElement(Button_1["default"], { id: "basic-button", "aria-controls": open ? 'basic-menu' : undefined, "aria-haspopup": "true", "aria-expanded": open ? 'true' : undefined, onClick: handleClick },

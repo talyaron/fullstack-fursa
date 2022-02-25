@@ -21,8 +21,7 @@ function AdminHeader() {
     };
     return (React.createElement("div", { className: "mainheader" },
         React.createElement("div", { className: "mainheader__left" },
-            React.createElement(react_router_dom_1.Link, { to: "/data" }, "data"),
-            React.createElement(react_router_dom_1.Link, { to: "/horses" }, "participants")),
+            React.createElement(react_router_dom_1.Link, { to: "/data" }, "data")),
         React.createElement("div", { className: "mainheader__right" },
             React.createElement(Button_1["default"], { id: "basic-button", "aria-controls": open ? 'basic-menu' : undefined, "aria-haspopup": "true", "aria-expanded": open ? 'true' : undefined, onClick: handleClick },
                 React.createElement("img", { src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfyK_uZ7ZiiOIKc2i9NOiwn3fzsWWzc96ojA&usqp=CAU" })),

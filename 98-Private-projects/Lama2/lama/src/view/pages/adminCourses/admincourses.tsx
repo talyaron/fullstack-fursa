@@ -17,48 +17,18 @@ interface courses {
   id: number;
   name:string;
   participants: number;
+  lessons:number;
   cost:number;
 }
-const Courses: Array<courses> = [
-    {
-        id: 1,
-        name: "group lessons",
-        participants: 10,
-        cost : 1000
-      },
-      {
-        id: 2,
-        name: "private lessons",
-        participants: 1,
-        cost : 1200
-      },
-      {
-        id: 3,
-        name: "single lesson",
-        participants: 1,
-        cost : 100
-      },
-  ];
 
 function AdminCourses() {
- 
-    function JsonDataDisplay(){
-      const DisplayData=Courses.map(
-          (info)=>{
-              return(
-                  <tr>
-                      <td>{info.id}</td>
-                      <td>{info.name}</td>
-                      <td>{info.participants}</td>
-                      <td>{info.cost}</td>
-                  </tr>
-              )
-          }
-          
-      )
-      }
-      
+  const [details, setDetails] = useState<Array<any>>([{id: 0, name:"", participants:0,lessons:0,cost:0}]);
 
+useEffect(() => {
+  axios.get('http://localhost:3004/courses').then(({ data }) => setDetails(data));
+}, []);
+
+ 
   return (
       
  <div className='admCouDiv'>
@@ -77,18 +47,20 @@ function AdminCourses() {
                     <th>Id</th>
                     <th>Name</th>
                     <th>participants</th>
+                    <th>lessons</th>
                     <th>Cost</th>
                     <th>Edit/Delete</th>
                     </tr>
                 </thead>
                 <tbody>
                  
-              {Courses.map((info)=>{
+              {details.map((info,index)=>{
               return(
-                  <tr>
+                  <tr key={index}>
                       <td>{info.id}</td>
                       <td>{info.name}</td>
                       <td>{info.participants}</td>
+                      <td>{info.lessons}</td>
                       <td>{info.cost}</td>
                       <td>
                       <ButtonGroup className='grpbtn' variant="contained" aria-label="outlined small button group">

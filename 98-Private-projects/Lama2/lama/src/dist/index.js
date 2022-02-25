@@ -15,7 +15,7 @@ var trainers_1 = require("./view/pages/trainers/trainers");
 var horses_1 = require("./view/pages/horses/horses");
 var courses_1 = require("./view/pages/courses/courses");
 var course_1 = require("./view/pages/course/course");
-var calender_1 = require("./view/pages/coursescalender/calender");
+var courseRegistration_1 = require("./view/pages/courseRegistration/courseRegistration");
 var data_1 = require("./view/pages/data/data");
 var admincourses_1 = require("./view/pages/adminCourses/admincourses");
 var adminpage_1 = require("./view/pages/AdminPage/adminpage");
@@ -39,7 +39,7 @@ react_dom_1["default"].render(react_1["default"].createElement(react_1["default"
                 react_1["default"].createElement(react_router_dom_1.Route, { path: "addCourse", element: react_1["default"].createElement(addCourse_1["default"], null) }),
                 react_1["default"].createElement(react_router_dom_1.Route, { path: "TableDatePicker", element: react_1["default"].createElement(TableDatePicker_1["default"], null) }),
                 react_1["default"].createElement(react_router_dom_1.Route, { path: "admincourses", element: react_1["default"].createElement(admincourses_1["default"], null) }),
-                react_1["default"].createElement(react_router_dom_1.Route, { path: "calender", element: react_1["default"].createElement(calender_1["default"], null) }),
+                react_1["default"].createElement(react_router_dom_1.Route, { path: "courseRegistration", element: react_1["default"].createElement(courseRegistration_1["default"], null) }),
                 react_1["default"].createElement(react_router_dom_1.Route, { path: "course/:courseId", element: react_1["default"].createElement(course_1["default"], null) }))),
         ",")), document.getElementById('root'));
 // If you want your app to work offline and load faster, you can change

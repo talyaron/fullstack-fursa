@@ -15,8 +15,12 @@ import {coursesProps} from './course';
 import Course from "./course";
 
 
-const courses = [{id:1,name:'group lessons',hours:5,participants:10,cost:1000}, {id:2,name:'private lessons',hours:5,participants:1,cost:1200},{id:3,name:'single lesson',hours:0.5,participants:1,cost:110}];
-const cardcourses = [{id:1,hours:5,participants:10,cost:1000}, {id:2,hours:5,participants:1,cost:1200},{id:3,hours:5,participants:1,cost:100}];
+const courses = [{id:1,name:'group lessons',hours:5,lessons:10 ,participants:10,cost:1000},
+ {id:2,name:'private lessons',hours:5,lessons:10,participants:1,cost:1200},
+{id:3,name:'single lesson',hours:0.5,lessons:1 ,participants:1,cost:110}];
+const cardcourses = [{id:1,hours:5,participants:10,cost:1000}, 
+    {id:2,hours:5,participants:1,cost:1200},
+    {id:3,hours:5,participants:1,cost:100}];
 
 function Courses() {
 
@@ -39,23 +43,14 @@ function Courses() {
    
             <div className="courses">
     {courses.map((course:coursesProps, i)=>{
-          return <Course key={i} name={course.name} id={course.id} hours={course.hours} participants={course.participants} cost={course.cost}/>
+          return <Course key={i} name={course.name} id={course.id} hours={course.hours}
+          lessons={course.lessons} participants={course.participants} cost={course.cost}/>
       }
       )}
-   
-  
       <Outlet />
-
-       
- 
     </div>
     </div>
-    
-                 
-
-   
-
-    );
+     );
 }
 
 export default Courses;

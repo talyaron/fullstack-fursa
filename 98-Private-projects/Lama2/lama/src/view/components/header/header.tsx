@@ -44,7 +44,7 @@ function Header() {
                 <Link to="/trainers">
                     Our trainers
                 </Link>
-                <Link to="/calender">
+                <Link to="/courseRegistration">
                     Register
                 </Link>
                 <Link to="/TableDatePicker">

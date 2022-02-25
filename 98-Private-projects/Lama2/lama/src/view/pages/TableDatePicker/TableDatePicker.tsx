@@ -57,6 +57,10 @@ export default function TableDatePicker() {
    </div>
    <div>Selected start date={startDate ? startDate.toString() : null}</div>
  <div>Selected end date={endDate ? endDate.toString() : null}</div>
+
+
+<input type="datetime-local" id="meeting-time"
+       name="meeting-time"></input>
    </div>
  );
 }

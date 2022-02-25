@@ -18,7 +18,7 @@ import Trainers from "./view/pages/trainers/trainers";
 import Horses from "./view/pages/horses/horses";
 import Courses from "./view/pages/courses/courses";
 import Course from "./view/pages/course/course";
-import Calender from "./view/pages/coursescalender/calender";
+import CourseRegistration from "./view/pages/courseRegistration/courseRegistration";
 import Data from "./view/pages/data/data";
 import AdminCourses from "./view/pages/adminCourses/admincourses";
 import AdminPage from "./view/pages/AdminPage/adminpage";
@@ -47,7 +47,7 @@ ReactDOM.render(
       <Route path="addCourse" element={<AddCourse />} /> 
       <Route path="TableDatePicker" element={<TableDatePicker />} /> 
       <Route path="admincourses" element={<AdminCourses />} /> 
-      <Route path="calender" element={<Calender />} />
+      <Route path="courseRegistration" element={<CourseRegistration />} />
       <Route path="course/:courseId" element={<Course />} />
     </Routes>
   </BrowserRouter>,

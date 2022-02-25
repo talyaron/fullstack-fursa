@@ -38,9 +38,9 @@ function AdminHeader() {
                 <Link to="/data">
                     data 
                 </Link>
-                <Link to="/horses">
+                {/* <Link to="/horses">
                     participants
-                </Link>
+                </Link> */}
             </div>
             <div className="mainheader__right">
                 <Button

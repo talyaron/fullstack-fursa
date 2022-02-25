@@ -25,29 +25,34 @@
   ],
 "participants": [
     {
+      "id":1,
       "courseid": 1,
       "userid": 1,
-      "username":"aaaa"
+      "username":"Alex"
     },
     {
+      "id":2,
       "courseid": 1,
       "userid": 2,
-      "username":"bbb"
+      "username":"Sam"
     },
     {
+      "id":3,
       "courseid": 1,
       "userid": 3,
-      "username":"ccc"
+      "username":"Clara"
     },
     {
+      "id":4,
       "courseid": 1,
       "userid": 4,
-      "username":"dddd"
+      "username":"Tom"
     },
     {
+      "id":5,
       "courseid": 2,
       "userid": 2,
-      "username":"bbb"
+      "username":"Kevin"
     }
   ]
 }

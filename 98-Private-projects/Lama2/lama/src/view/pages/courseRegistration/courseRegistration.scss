@@ -1,0 +1,61 @@
+.mydiv {
+    width: 80%;
+    .backbtn {
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        width: 6vw;
+
+    }
+
+    .mybox {
+        position: absolute;
+        top: 150px;
+        left: 60px;
+
+    }
+
+    .txtfield {
+        position: absolute;
+        left:60px ;
+        top: 210px;
+        width: 10vw;
+
+
+    }
+
+    .cal{
+        position:absolute;
+        left:200px;
+        top:0px;
+        width:10vw;
+        .cal1{
+            width:20vw;
+        }
+    }
+
+
+    .caldiv {
+        position: absolute;
+        margin: 50px;
+        left: 40%;
+        // height: 50vh;
+        // width: 50vw;
+    }
+
+    .aaa {
+        position: relative;
+        top: 350px;
+        left: 70px;
+    }
+
+  
+
+    .regBtn {
+        position: absolute;
+        left: 50%;
+        top: 500px;
+        width: 10vw;
+
+    }
+}

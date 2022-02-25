@@ -17,7 +17,7 @@ function Homepage() {
     }
     return (React.createElement("div", { className: 'maindiv' },
         React.createElement("h3", { className: "h" }, "Welcome to our farm"),
-        React.createElement("p", { className: "firstP" }, "Our course duration is 5 weeks, one lesson a week ."),
+        React.createElement("p", { className: "firstP" }, "Our course duration is 10 weeks, one lesson a week ."),
         React.createElement(courses_1["default"], null),
         React.createElement("div", { className: "ani" },
             React.createElement("div", { className: 'animation' }))));

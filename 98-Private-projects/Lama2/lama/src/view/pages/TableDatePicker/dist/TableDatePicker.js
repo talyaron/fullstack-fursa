@@ -25,7 +25,8 @@ function TableDatePicker() {
             startDate ? startDate.toString() : null),
         react_1["default"].createElement("div", null,
             "Selected end date=",
-            endDate ? endDate.toString() : null)));
+            endDate ? endDate.toString() : null),
+        react_1["default"].createElement("input", { type: "datetime-local", id: "meeting-time", name: "meeting-time" })));
 }
 exports["default"] = TableDatePicker;
 // export {};

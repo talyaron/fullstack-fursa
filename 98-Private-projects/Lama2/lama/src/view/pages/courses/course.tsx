@@ -5,20 +5,25 @@ export interface coursesProps {
   name: string;
   id: number;
   hours:number;
+  lessons:number;
   participants:number;
   cost:number;
 }
 const Course = (props: coursesProps) => {
-  const { name, id ,hours,participants,cost} = props;
+  const { name, id ,hours,lessons,participants,cost} = props;
 
   return (
-    <Link to={`/`}>
-      <div className="course">{name}
-        <p>{hours} hours</p>
-   <p>{participants} participants</p>
-        <p>cost :{cost}</p>
+      <div className="course">
+        {name}
+        <br></br>
+       {hours} hours
+       <br></br>
+      {lessons} lessons
+      <br></br>
+   {participants} participants
+   <br></br>
+        cost :{cost}
         </div>
-    </Link>
   );
 };
 
