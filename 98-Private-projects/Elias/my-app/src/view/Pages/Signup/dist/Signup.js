@@ -3,22 +3,24 @@ exports.__esModule = true;
 //import { useState } from 'react';
 var react_1 = require("react");
 var hooks_1 = require("../../../app/hooks");
+var NavTextReducer_1 = require("../../../app/reducer/NavTextReducer");
 var UserReducer_1 = require("../../../app/reducer/UserReducer");
 require("./Signup.scss");
 function Signup(props) {
-    var _a = react_1.useState(""), username = _a[0], setusername = _a[1];
-    var user_name = username;
-    // const user = useAppSelector((state) => state.User);
+    //const[username,setusername]=useState("");
+    // const user_name:string = username;
     var user = hooks_1.useAppSelector(UserReducer_1.GetUserinfo);
-    console.log(user);
     var dispatch = hooks_1.useAppDispatch();
+    react_1.useEffect(function () {
+        dispatch(NavTextReducer_1.changeNavText("Sign up to save List"));
+    }, [dispatch]);
     function SignUpHandel(e) {
         console.log("signup pressed");
         // dispatch(login({
         //     userInfo: {
-        //         Email: "Elias3",
-        //         Fname: "Elias3",
-        //         Lname: "elias3"
+        //         Email: "Elias",
+        //         Fname: "Elias",
+        //         Lname: "elias"
         //     },
         //         Islogin: "True",
         //     status: 'loading'

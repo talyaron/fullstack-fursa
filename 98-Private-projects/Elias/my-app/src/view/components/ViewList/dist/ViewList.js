@@ -15,11 +15,17 @@ require("./ViewList.scss");
 var react_1 = require("react");
 var react_collapsed_1 = require("react-collapsed");
 var react_router_dom_1 = require("react-router-dom");
+var hooks_1 = require("../../../app/hooks");
+var NavTextReducer_1 = require("../../../app/reducer/NavTextReducer");
 function ViewList() {
     var listContent = [{ catInlList: "Essentials" }, { catInlList: "Clothes" }, { catInlList: "Care" }, { catInlList: "Accessories" }];
     var _a = react_1.useState(false), showResults = _a[0], setShowResults = _a[1];
     var nav = react_router_dom_1.useNavigate();
     var state = react_router_dom_1.useLocation().state;
+    var dispatch = hooks_1.useAppDispatch();
+    react_1.useEffect(function () {
+        dispatch(NavTextReducer_1.changeNavText("NYC,oct 6th 2021,Trolly"));
+    }, [dispatch]);
     function clickSignup(e) {
         setShowResults(true);
         nav('/Signup', {

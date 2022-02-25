@@ -5,7 +5,10 @@ ul{
     flex-flow: row nowrap;
     z-index: 5;
     li{
-        padding: 18px 10px;
+        height: 100%;
+        width: 100%;
+        padding: 0px 10px;
+        padding-bottom: 20px;
         color: white;
         color: #020205;
         font-weight: 600;
@@ -25,6 +28,10 @@ ul{
         width:300px ;
         padding-top: 3.5rem;
         }
+}
+img{
+    width: 60px;
+    height: 50px;
 }
 .Opned{
     

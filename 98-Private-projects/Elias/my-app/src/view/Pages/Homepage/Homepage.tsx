@@ -1,11 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../../app/hooks';
+import { changeNavText } from '../../../app/reducer/NavTextReducer';
 import './Homepage.scss';
 
 const Homepage = () => {
 
     const nav = useNavigate();
     const {state}:any = useLocation();
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(changeNavText(""));
+      }, [dispatch]);
 
 
     function clickNewTravel(e:any){

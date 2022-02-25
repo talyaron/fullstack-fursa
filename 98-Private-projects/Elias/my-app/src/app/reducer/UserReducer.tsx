@@ -70,6 +70,4 @@ export const UserSlice = createSlice({
 //export const{getUserInfoAsync} =UserSlice.caseReducers;
 
 export const GetUserinfo = (state: RootState) => state.User.userInfo;
-
-
 export default UserSlice.reducer;

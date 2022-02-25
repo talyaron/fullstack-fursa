@@ -1,7 +1,9 @@
 import './ViewList.scss';
-import{useState} from'react';
+import{useEffect, useState} from'react';
 import useCollapse from 'react-collapsed';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../../app/hooks';
+import { changeNavText } from '../../../app/reducer/NavTextReducer';
 
 
 //to do side menu
@@ -17,6 +19,14 @@ function ViewList() {
     const [showResults, setShowResults] = useState(false);
     const nav = useNavigate();
     const {state}:any = useLocation();
+
+    
+
+    const dispatch = useAppDispatch();
+
+        useEffect(() => {
+            dispatch(changeNavText("NYC,oct 6th 2021,Trolly"));
+        }, [dispatch]);
 
 
     function clickSignup(e:any){

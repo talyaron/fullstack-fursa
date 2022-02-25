@@ -5,7 +5,10 @@ ul {
   z-index: 5;
 }
 ul li {
-  padding: 18px 10px;
+  height: 100%;
+  width: 100%;
+  padding: 0px 10px;
+  padding-bottom: 20px;
   color: white;
   color: #020205;
   font-weight: 600;
@@ -24,6 +27,11 @@ ul li {
     width: 300px;
     padding-top: 3.5rem;
   }
+}
+
+img {
+  width: 60px;
+  height: 50px;
 }
 
 @media (max-width: 768px) {

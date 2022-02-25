@@ -2,78 +2,54 @@
 exports.__esModule = true;
 var react_1 = require("react");
 var react_router_dom_1 = require("react-router-dom");
+var hooks_1 = require("../../../app/hooks");
+var NavTextReducer_1 = require("../../../app/reducer/NavTextReducer");
 require("./TravelInfo2.scss");
 var TravelInfo2 = function () {
+    var TransportList = [{ propsname: "Plane" }, { propsname: "Bus" }, { propsname: "Car" }, { propsname: "Ship" }, { propsname: "Metro" }, { propsname: "Taxi" }];
+    var ActivityList = [{ propsname: "Glof" }, { propsname: "Club" }, { propsname: "Photography" }, { propsname: "Swimming" }, { propsname: "Hiking" }, { propsname: "Biking" }];
+    var AccommodationList = [{ propsname: "Hotel" }, { propsname: "BNB" }, { propsname: "ShortTerm" }, { propsname: "Van" }, { propsname: "Tent" }, { propsname: "Sofa" }];
+    var SpecialList = [{ propsname: "Baby" }, { propsname: "Toddlers" }, { propsname: "Pets" }, { propsname: "Med" }, { propsname: "Merchandise" }, { propsname: "Valuable" }];
     var nav = react_router_dom_1.useNavigate();
     var state = react_router_dom_1.useLocation().state;
+    var dispatch = hooks_1.useAppDispatch();
+    react_1.useEffect(function () {
+        dispatch(NavTextReducer_1.changeNavText("Choose Categories"));
+    }, [dispatch]);
     function onSubmit(e) {
         nav('/ViewList', {
             state: state
         });
     }
-    return (react_1["default"].createElement("div", { className: "wrapper" },
-        react_1["default"].createElement("div", { className: "header" }, " Fill travel info"),
-        react_1["default"].createElement("form", { action: "", className: "TarvelInfo1Form" },
-            react_1["default"].createElement("div", { className: "catg box1" },
-                react_1["default"].createElement("div", { className: " text Transport" }, "Transport"),
-                react_1["default"].createElement("div", { className: "grid-container" },
-                    react_1["default"].createElement("input", { id: "Plane", type: "checkbox", name: "apple" }),
-                    react_1["default"].createElement("label", { className: "Plane", htmlFor: "Plane" }),
-                    react_1["default"].createElement("input", { id: "Bus", type: "checkbox" }),
-                    react_1["default"].createElement("label", { className: 'Bus', htmlFor: "Bus" }),
-                    react_1["default"].createElement("input", { id: "Car", type: "checkbox", name: "apple" }),
-                    react_1["default"].createElement("label", { className: "Car", htmlFor: "Car" }),
-                    react_1["default"].createElement("input", { id: "Ship", type: "checkbox" }),
-                    react_1["default"].createElement("label", { className: 'Ship', htmlFor: "Ship" }),
-                    react_1["default"].createElement("input", { id: "Metro", type: "checkbox", name: "apple" }),
-                    react_1["default"].createElement("label", { className: "Metro", htmlFor: "Metro" }),
-                    react_1["default"].createElement("input", { id: "Taxi", type: "checkbox" }),
-                    react_1["default"].createElement("label", { className: 'Taxi', htmlFor: "Taxi" }))),
-            react_1["default"].createElement("div", { className: "catg box2" },
-                react_1["default"].createElement("div", { className: " text Activity" }, "Activity"),
-                react_1["default"].createElement("div", { className: "grid-container" },
-                    react_1["default"].createElement("input", { id: "Glof", type: "checkbox", name: "apple" }),
-                    react_1["default"].createElement("label", { className: "Glof", htmlFor: "Glof" }),
-                    react_1["default"].createElement("input", { id: "Club", type: "checkbox" }),
-                    react_1["default"].createElement("label", { className: 'Club', htmlFor: "Club" }),
-                    react_1["default"].createElement("input", { id: "Photography", type: "checkbox", name: "apple" }),
-                    react_1["default"].createElement("label", { className: "Photography", htmlFor: "Photography" }),
-                    react_1["default"].createElement("input", { id: "Swimming", type: "checkbox" }),
-                    react_1["default"].createElement("label", { className: 'Swimming', htmlFor: "Swimming" }),
-                    react_1["default"].createElement("input", { id: "Hiking", type: "checkbox", name: "apple" }),
-                    react_1["default"].createElement("label", { className: "Hiking", htmlFor: "Hiking" }),
-                    react_1["default"].createElement("input", { id: "Biking", type: "checkbox" }),
-                    react_1["default"].createElement("label", { className: 'Biking', htmlFor: "Biking" }))),
-            react_1["default"].createElement("div", { className: "catg box3" },
-                react_1["default"].createElement("div", { className: " text Accommodation" }, "Accommodation"),
-                react_1["default"].createElement("div", { className: "grid-container" },
-                    react_1["default"].createElement("input", { id: "Hotel", type: "checkbox", name: "apple" }),
-                    react_1["default"].createElement("label", { className: "Hotel", htmlFor: "Hotel" }),
-                    react_1["default"].createElement("input", { id: "BNB", type: "checkbox" }),
-                    react_1["default"].createElement("label", { className: 'BNB', htmlFor: "BNB" }),
-                    react_1["default"].createElement("input", { id: "ShortTerm", type: "checkbox", name: "apple" }),
-                    react_1["default"].createElement("label", { className: "ShortTerm", htmlFor: "ShortTerm" }),
-                    react_1["default"].createElement("input", { id: "Van", type: "checkbox" }),
-                    react_1["default"].createElement("label", { className: 'Van', htmlFor: "Van" }),
-                    react_1["default"].createElement("input", { id: "Tent", type: "checkbox", name: "apple" }),
-                    react_1["default"].createElement("label", { className: "Tent", htmlFor: "Tent" }),
-                    react_1["default"].createElement("input", { id: "Sofa", type: "checkbox" }),
-                    react_1["default"].createElement("label", { className: 'Sofa', htmlFor: "Sofa" }))),
-            react_1["default"].createElement("div", { className: "catg box4" },
-                react_1["default"].createElement("div", { className: " text Special" }, "Special Care"),
-                react_1["default"].createElement("div", { className: "grid-container" },
-                    react_1["default"].createElement("input", { id: "Baby", type: "checkbox", name: "apple" }),
-                    react_1["default"].createElement("label", { className: "Baby", htmlFor: "Baby" }),
-                    react_1["default"].createElement("input", { id: "Toddlers", type: "checkbox" }),
-                    react_1["default"].createElement("label", { className: 'Toddlers', htmlFor: "Toddlers" }),
-                    react_1["default"].createElement("input", { id: "Pets", type: "checkbox", name: "apple" }),
-                    react_1["default"].createElement("label", { className: "Pets", htmlFor: "Pets" }),
-                    react_1["default"].createElement("input", { id: "Med", type: "checkbox" }),
-                    react_1["default"].createElement("label", { className: 'Med', htmlFor: "Med" }),
-                    react_1["default"].createElement("input", { id: "Merchandise", type: "checkbox", name: "apple" }),
-                    react_1["default"].createElement("label", { className: "Merchandise", htmlFor: "Merchandise" }),
-                    react_1["default"].createElement("input", { id: "Valuable", type: "checkbox" }),
-                    react_1["default"].createElement("label", { className: 'Valuable', htmlFor: "Valuable" }))),
-            react_1["default"].createElement("button", { className: 'Proceedbtn', onClick: onSubmit }, "Submit"))));
+    return (React.createElement("div", { className: "wrapper" },
+        React.createElement("div", { className: "header" }, " Fill travel info"),
+        React.createElement("form", { action: "", className: "TarvelInfo1Form" },
+            React.createElement("div", { className: "catg box1" },
+                React.createElement("div", { className: " text Transport" }, "Transport"),
+                React.createElement("div", { className: "grid-container" }, TransportList.map(function (element, index) {
+                    return (React.createElement(InputComp, { key: index, propsname: element.propsname }));
+                }))),
+            React.createElement("div", { className: "catg box2" },
+                React.createElement("div", { className: " text Activity" }, "Activity"),
+                React.createElement("div", { className: "grid-container" }, ActivityList.map(function (element, index) {
+                    return (React.createElement(InputComp, { key: index, propsname: element.propsname }));
+                }))),
+            React.createElement("div", { className: "catg box3" },
+                React.createElement("div", { className: " text Accommodation" }, "Accommodation"),
+                React.createElement("div", { className: "grid-container" }, AccommodationList.map(function (element, index) {
+                    return (React.createElement(InputComp, { key: index, propsname: element.propsname }));
+                }))),
+            React.createElement("div", { className: "catg box4" },
+                React.createElement("div", { className: " text Special" }, "Special Care"),
+                React.createElement("div", { className: "grid-container" }, SpecialList.map(function (element, index) {
+                    return (React.createElement(InputComp, { key: index, propsname: element.propsname }));
+                }))),
+            React.createElement("button", { className: 'Proceedbtn', onClick: onSubmit }, "Submit"))));
 };
+function InputComp(props) {
+    var propsname = props.propsname;
+    return (React.createElement("div", null,
+        React.createElement("input", { id: propsname, type: "checkbox" }),
+        React.createElement("label", { className: propsname, htmlFor: propsname })));
+}
 exports["default"] = TravelInfo2;

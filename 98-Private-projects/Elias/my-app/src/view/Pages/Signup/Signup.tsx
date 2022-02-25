@@ -1,6 +1,7 @@
 //import { useState } from 'react';
 import { useEffect ,useState} from 'react';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { changeNavText } from '../../../app/reducer/NavTextReducer';
 import { GetUserinfo, getUserInfoAsync} from '../../../app/reducer/UserReducer';
 import './Signup.scss';
 
@@ -14,21 +15,23 @@ interface Userinfo {
 }
 
 function Signup(props: any) {
-    const[username,setusername]=useState("");
-    const user_name:string = username;
+    //const[username,setusername]=useState("");
+   // const user_name:string = username;
 
-   // const user = useAppSelector((state) => state.User);
     const user = useAppSelector(GetUserinfo);
-    console.log(user);
+
     const dispatch = useAppDispatch();
 
+        useEffect(() => {
+            dispatch(changeNavText("Sign up to save List"));
+        }, [dispatch]);
     function SignUpHandel(e: any) {
         console.log("signup pressed");
         // dispatch(login({
         //     userInfo: {
-        //         Email: "Elias3",
-        //         Fname: "Elias3",
-        //         Lname: "elias3"
+        //         Email: "Elias",
+        //         Fname: "Elias",
+        //         Lname: "elias"
         //     },
         //         Islogin: "True",
         //     status: 'loading'
