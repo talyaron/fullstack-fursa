@@ -6,6 +6,8 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import './ClassCard.scss';
+import { useAppDispatch } from '../../../../app/hooks';
+import { select } from '../../../../app/reducers/school/ClassCardSlice';
 
 interface ClassCardProps {
     info: {
@@ -17,8 +19,14 @@ interface ClassCardProps {
 
 export default function ClassCard(props: ClassCardProps) {
     const { name, teacher } = props.info;
+    const dispatch = useAppDispatch();
+
+    function handleClick() {
+        dispatch(select([name, teacher]));
+    };
+
     return (
-        <Card className='card' style={{ display: 'inline-block' }}>
+        <Card className='card' style={{ display: 'inline-block' }} onClick={handleClick}>
             <CardContent className='content'>
                 <Typography variant='h6' align='center'>{name}</Typography>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" align='center'>{teacher}</Typography>

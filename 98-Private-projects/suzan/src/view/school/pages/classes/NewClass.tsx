@@ -17,8 +17,8 @@ const teachers = [
 ]
 
 const students = [
-    {name: 'Suzan Kassabry 1'}, {name: 'Suzan Kassabry 2'}, {name: 'Suzan Kassabry 3'}, {name: 'Suzan Kassabry 4'},
-    {name: 'Suzan Kassabry 5'}, {name: 'Suzan Kassabry 6'}, {name: 'Suzan Kassabry 7'}, {name: 'Suzan Kassabry 8'}
+    { name: 'Suzan Kassabry 1' }, { name: 'Suzan Kassabry 2' }, { name: 'Suzan Kassabry 3' }, { name: 'Suzan Kassabry 4' },
+    { name: 'Suzan Kassabry 5' }, { name: 'Suzan Kassabry 6' }, { name: 'Suzan Kassabry 7' }, { name: 'Suzan Kassabry 8' }
 ]
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
@@ -32,69 +32,73 @@ export default function NewClass() {
                 <SchoolResponsiveAppBar></SchoolResponsiveAppBar>
             </div>
 
-            <Button className='createClassBtn' variant="contained" size='small'>
-                Submit
-            </Button>
+            <div className="subContainer">
+                <Button className='createClassBtn' variant="contained" size='small'>
+                    Submit
+                </Button>
 
-            <div className="newClass">
-                <div className="newClass__section">
-                    <Typography sx={{ fontSize: 18 }} color="text.primary" gutterBottom>
-                        Class name:
-                    </Typography>
-                    <TextField
-                        required
-                        id="outlined-required"
-                        label="Class name required"
-                        size='small'
-                        className='inputField'
-                    />
+                <div className="newClass">
+                    <div className="newClass__section">
+                        <Typography sx={{ fontSize: 18 }} color="text.primary" gutterBottom>
+                            Class name:
+                        </Typography>
+                        <TextField
+                            required
+                            id="outlined-required"
+                            label="Class name required"
+                            size='small'
+                            className='inputField'
+                        />
+                    </div>
+
+                    <div className="newClass__section">
+                        <Typography sx={{ fontSize: 18 }} color="text.primary" gutterBottom>
+                            Teacher:
+                        </Typography>
+                        <Autocomplete
+                            disablePortal
+                            id="combo-box-demo"
+                            options={teachers}
+                            sx={{ width: 300 }}
+                            renderInput={(params) => <TextField {...params} label="select or serch for teacher" />}
+                            size="small"
+                            className='inputField'
+                        />
+                    </div>
+
+                    <div className="newClass__section">
+                        <Typography sx={{ fontSize: 18 }} color="text.primary" gutterBottom>
+                            select the students:
+                        </Typography>
+                        <Autocomplete
+                            multiple
+                            id="checkboxes-tags-demo"
+                            options={students}
+                            disableCloseOnSelect
+                            getOptionLabel={(option) => option.name}
+                            renderOption={(props, option, { selected }) => (
+                                <li {...props}>
+                                    <Checkbox
+                                        icon={icon}
+                                        checkedIcon={checkedIcon}
+                                        style={{ marginRight: 8 }}
+                                        checked={selected}
+                                    />
+                                    {option.name}
+                                </li>
+                            )}
+                            style={{ width: 500 }}
+                            renderInput={(params) => (
+                                <TextField {...params} label="select or search students" placeholder="Favorites" />
+                            )}
+                            size="small"
+                            className='inputField'
+                        />
+                    </div>
                 </div>
 
-                <div className="newClass__section">
-                    <Typography sx={{ fontSize: 18 }} color="text.primary" gutterBottom>
-                        Teacher:
-                    </Typography>
-                    <Autocomplete
-                        disablePortal
-                        id="combo-box-demo"
-                        options={teachers}
-                        sx={{ width: 300 }}
-                        renderInput={(params) => <TextField {...params} label="select or serch for teacher" />}
-                        size="small"
-                        className='inputField'
-                    />
-                </div>
-
-                <div className="newClass__section">
-                    <Typography sx={{ fontSize: 18 }} color="text.primary" gutterBottom>
-                        select the students:
-                    </Typography>
-                    <Autocomplete
-                        multiple
-                        id="checkboxes-tags-demo"
-                        options={students}
-                        disableCloseOnSelect
-                        getOptionLabel={(option) => option.name}
-                        renderOption={(props, option, { selected }) => (
-                            <li {...props}>
-                                <Checkbox
-                                    icon={icon}
-                                    checkedIcon={checkedIcon}
-                                    style={{ marginRight: 8 }}
-                                    checked={selected}
-                                />
-                                {option.name}
-                            </li>
-                        )}
-                        style={{ width: 500 }}
-                        renderInput={(params) => (
-                            <TextField {...params} label="select or search students" placeholder="Favorites" />
-                        )}
-                        size="small"
-                        className='inputField'
-                    />
-                </div>
             </div>
+
 
 
         </div>

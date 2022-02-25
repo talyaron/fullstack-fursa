@@ -12,6 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
+import './AppBar.scss';
 
 const pages = ['classes', 'students', 'teachers'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -36,7 +37,7 @@ const SchoolResponsiveAppBar = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar className='bar' position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography

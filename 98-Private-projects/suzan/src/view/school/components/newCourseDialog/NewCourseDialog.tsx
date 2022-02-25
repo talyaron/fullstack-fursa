@@ -7,6 +7,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Autocomplete from '@mui/material/Autocomplete';
+import { useState } from 'react';
+import axios from 'axios';
 
 interface dialogProps {
     open: any;
@@ -24,6 +26,8 @@ const teachers = [
 
 export default function NewCourseDialog(props: dialogProps) {
     const { open, setOpen } = props
+    const [courseName, setCourseName] = useState("");
+    const [teacherName, setTeacherName] = useState("");
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -32,6 +36,23 @@ export default function NewCourseDialog(props: dialogProps) {
     const handleClose = () => {
         setOpen(false);
     };
+
+    const handleCreate = () => {
+        axios.post('http://localhost:3004/studentCourses', { 'name': courseName, 'teacher': teacherName })
+            .then(({ data }) => console.log(data));
+        
+        handleClose();
+    }
+
+    function handleCourseNameUpdate(ev:any) {
+        console.log(ev.target.value);
+        setCourseName(ev.target.value);
+    };
+
+    function handleChange(ev:any, value:any) {
+        console.log(value.label);
+        setTeacherName(value.label);
+    }
 
     return (
         <div>
@@ -50,6 +71,7 @@ export default function NewCourseDialog(props: dialogProps) {
                         fullWidth
                         variant="standard"
                         required
+                        onKeyUp={handleCourseNameUpdate}
                     />
                 </DialogContent>
                 <DialogContent>
@@ -64,11 +86,12 @@ export default function NewCourseDialog(props: dialogProps) {
                         renderInput={(params) => <TextField {...params} label="search or select teacher" />}
                         size="small"
                         className='inputField'
+                        onChange={handleChange}
                     />
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
-                    <Button onClick={handleClose}>create</Button>
+                    <Button onClick={handleCreate}>create</Button>
                 </DialogActions>
             </Dialog>
         </div>

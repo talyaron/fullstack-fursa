@@ -1,12 +1,16 @@
-.calendarAndExams{
-    .calendar{
-        margin-left: 100px;
-        margin-top: 50px;
-    }
+.subcontainer {
+    margin-top: 20vh;
+    
+    .calendarAndExams {
+        .calendar {
+            margin-left: 100px;
+            margin-top: 50px;
+        }
 
-    .examsTable{
-        width: 60%;
-        margin: auto;
-        margin-top: 20px;
+        .examsTable {
+            width: 60%;
+            margin: auto;
+            margin-top: 20px;
+        }
     }
 }

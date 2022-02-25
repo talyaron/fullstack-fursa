@@ -124,7 +124,7 @@ export default function ClassTabsBar() {
 
                     <NewCourseDialog open={openCourseDialog} setOpen={setOpenCourseDialog} />
 
-                    <div className="coursesContainer">
+                    <div className="coursesWrapper">
                         {
                             courses.map((course, i) => {
                                 const { name, teacher } = course;
