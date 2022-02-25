@@ -14,6 +14,8 @@ import { useState , useEffect} from "react";
 import  { Outlet,Link, useNavigate} from "react-router-dom";
 import GroupDetails from '../GroupDetails/GroupDetails';
 import ProductionQuantityLimitsSharpIcon from '@mui/icons-material/ProductionQuantityLimitsSharp';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { selectMygroups } from '../../fitures/myGroups/myGroupsSlice';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -52,10 +54,11 @@ interface group {
    console.log(id);
 
    }
-
+  
 
 export default function Mygroups() {
-  useEffect(()=>{axios.get('http://localhost:3004/group/').then(({data})=>{
+  const myGroups = useAppSelector(selectMygroups);
+  /*useEffect(()=>{axios.get('http://localhost:3004/group/').then(({data})=>{
     //console.log(data);
     //console.log(data[0].id,data[0].groupMember);
  
@@ -79,11 +82,11 @@ export default function Mygroups() {
 
     setRows(arr);
     console.log(rows);
-    setGroup(data);
+    //setGroup(data);
 
   })},[]);
-
-  const [group,setGroup]=useState([]);
+*/
+  //const [group,setGroup]=useState([]);
   const [rows,setRows]=useState<Array<any>>([]);
 
   let navigate = useNavigate();
@@ -102,7 +105,7 @@ export default function Mygroups() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {myGroups.arr.map((row) => (
             <StyledTableRow key={row.id}>
               <StyledTableCell align="center" component="th" scope="row">
                 {row.id}
