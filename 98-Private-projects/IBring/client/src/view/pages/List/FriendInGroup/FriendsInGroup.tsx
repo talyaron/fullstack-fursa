@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react'
 import './FriendsInGroup.scss';
 import '../../MainTemplate/MainTemplate.scss';
 
+import homeLogo from '../../../logoAndPhotos/homeLogo.jpg';
 import sentImage from '../../../logoAndPhotos/sentImage.jpg';
 import contactIcon from '../../../logoAndPhotos/contact.jpg';
 import { useAppSelector } from '../../../../app/hooks';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Sidebar from '../../../components/Sidebar/Sidebar';
 
 function FriendsInGroup() {
     const userLogin = useAppSelector(state => state.logged);
@@ -27,6 +29,12 @@ function FriendsInGroup() {
             }
         })
     }, [])
+
+    useEffect(() => {
+        if(userLogin.status !== 'logged'){
+            nav('/login')
+        }
+    }, [userLogin])
 
     const [contact, setContact] = useState<Array<any>>([]);
     const [selectedFriends, setSelectedFriends] = useState<Array<any>>([]);
@@ -51,11 +59,25 @@ function FriendsInGroup() {
         setSelectedFriends([...selectedFriends, elem]);
     }
 
+    function handleHome(ev: any) {
+        ev.preventDefault();
+        nav('/home');
+    }
+
     return (
         <div className="mainTemplate">
-            <div className="mainHeader">
-                <img className='groupImage' alt="" src={sentImage} />
-            </div>
+           <div className="mainHeader withHome">
+                    <div className="homeDiv">
+                        <div className="homeLogo">
+                            <img onClick={handleHome} src={homeLogo} alt="" />
+                        </div>
+                        <div className="settingsLogo">
+                            {/* <img onClick={handleSettings} src={settings} alt="" /> */}
+                            <Sidebar />
+                        </div>
+                    </div>
+                    <img className='registerLogo listLogo' alt="" src={sentImage} />
+                </div>
             <div className="mainContent">
                 <label className='marginTitleNormal'></label>
                 <div className="whoIsThere">

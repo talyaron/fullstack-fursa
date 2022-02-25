@@ -15,6 +15,7 @@ import TextField from '@mui/material/TextField';
 import axios from 'axios';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { curListAsync } from '../../../features/curListSelector/curListReducer';
+import Sidebar from '../../components/Sidebar/Sidebar';
 
 function List() {
     const nav = useNavigate();
@@ -29,7 +30,7 @@ function List() {
 
     useEffect(() => {
         console.log("listId:", listId);
-        if(listId === ""){
+        if (listId === "") {
             nav('/home');
         }
 
@@ -55,6 +56,12 @@ function List() {
         nav('/home');
     }
 
+    useEffect(() => {
+        if (userLogin.status === 'idle') {
+            nav('/login');
+        }
+    }, [userLogin])
+
     function handleAddOrNot(ev: any, flag: boolean) {
         ev.preventDefault();
         flag ? console.log("add") : console.log("not");
@@ -74,7 +81,7 @@ function List() {
             })
         }
     }
-   
+
     return (
         <>{userLogin.status === "logged" ?
             <div className="mainTemplate">
@@ -84,7 +91,8 @@ function List() {
                             <img onClick={handleHome} src={homeLogo} alt="" />
                         </div>
                         <div className="settingsLogo">
-                            <img onClick={handleSettings} src={settings} alt="" />
+                            {/* <img onClick={handleSettings} src={settings} alt="" /> */}
+                            <Sidebar />
                         </div>
                     </div>
                     <img className='registerLogo listLogo' alt="" src={sentImage} />
