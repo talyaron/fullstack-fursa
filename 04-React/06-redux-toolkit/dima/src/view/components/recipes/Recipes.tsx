@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { selectedRecipe, updateFrom, updateRecipe, updateNew } from '../../features/item/itemSlice';
-import { getRecipesAsync, myRecipes } from '../../features/recipes/RecipesArray';
+import { getRecipesAsync, myRecipes } from '../../features/myRecipes/MyRecipes';
 
 export default function Recipes() {
 

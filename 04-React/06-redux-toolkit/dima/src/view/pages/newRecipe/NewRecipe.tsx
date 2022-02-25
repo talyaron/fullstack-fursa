@@ -17,7 +17,7 @@ import Tooltip from '@mui/material/Tooltip';
 import axios from 'axios';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { selectedRecipe ,selectedFrom, selectedIsNew, updateRecipe } from '../../features/item/itemSlice';
-import { addToMyRecipe } from '../../features/recipes/RecipesArray';
+import { addToMyRecipe } from '../../features/myRecipes/MyRecipes';
 
 const Standard = styled(TextField)({
     '& label.Mui-focused': {

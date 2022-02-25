@@ -22,7 +22,7 @@ import { Pagination, Navigation } from "swiper";
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { updateRecipe, updateFrom } from '../../features/item/itemSlice';
-import { getRecipesAsync, recentRecipes, top10Recipes } from '../../features/recipes/RecipesArray';
+import { getRecipesAsync, recentRecipes, top10Recipes } from '../../features/myRecipes/MyRecipes';
 
 
 export default function MainScreen() {
