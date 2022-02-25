@@ -26,13 +26,14 @@ export const CssTextField = styled(TextField)({
 });
 
 export interface recipeInfo{
-  name? : any|undefined;
-  //img : {img1};
-  time? : string;
-  people? : string;
-  cal? : string;
-  ingredients? : string;
-  method? : string;
+  id:number;
+  name:string;
+  image:string;
+  time:string;
+  people:string;
+  calories:string;
+  ingredients:string;
+  method:string;
 }
 
 export interface recipeProp{

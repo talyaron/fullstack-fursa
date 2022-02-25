@@ -70,7 +70,7 @@
       "method": "1. Prepare the oven and baking sheet:\nSet an oven rack in the center of the oven and preheat it to 375°F. Line 2 large baking sheets with parchment paper.\n2. Prepare the coconut oil and chocolate:\nIn a small skillet or saucepan over low heat, add the coconut oil. As soon as the oil fully melts, turn the heat off, remove the skillet from the heat, and let cool a bit while you prepare the other ingredients.\nAlternatively, add the coconut oil into a medium heatproof bowl and microwave on 50 percent power in 30-second intervals, just until melted.\nPlace the chocolate on a cutting board and use a large knife to roughly chop it. The biggest pieces should be about 1/2-inch chunks, but you should mostly have smaller pieces and shards. You can leave it on the cutting board until you’re ready to add it to the dough.\n 3. Mix the dry ingredients:\nIn a medium bowl, add the flour, baking powder, and salt. Whisk together to combine.\n4. Mix the wet ingredients:\nIn a large bowl, combine the melted and cooled coconut oil, brown sugar, sugar, non-dairy milk, and vanilla extract. Whisk until fully combined and creamy, about 2 minutes.\n5. Make the cookie dough:\nAdd the flour mixture into the wet ingredients. Use a wooden spoon or rubber spatula to mix just until a dough forms and no streaks of flour remain. Don’t overmix the dough. Add the chopped chocolate and mix to combine.\n6. Form the cookies:\nUse a #30 cookie scoop or a spoon to divide the dough into 2-tablespoon (43g) portions. Roll each between your palms to form it into a ball.\nPlace it on a prepared baking sheet, about 2 inches apart. Use your hand to gently flatten the dough just slightly and sprinkle the tops with a little flaky sea salt.\nPlace the baking sheet in the freezer for 10 minutes. Meanwhile, form more cookies and add them to the second baking sheet.\n7. Bake the cookies:\nTake the first baking sheet out of the freezer and place it in the oven. Place the second baking sheet in the freezer while the first batch bakes.\nBake until the cookies have doubled in width and are lightly brown around the edges, 9 to 11 minutes. Don’t overbake these cookies. Let them cool on the baking sheet for 3 minutes before transferring them to a cooling rack to finish cooling.\nMove the second batch from the freezer to the oven and bake. Repeat with any remaining cookie dough, if needed."
     }
   ],
-  "recipe": [
+  "myRecipe": [
     {
       "id": 1,
       "name": "Grapefruit Margarita",
@@ -113,5 +113,5 @@
     }
   ],
   "edit": [],
-  "selected": []
+  "select": []
 }

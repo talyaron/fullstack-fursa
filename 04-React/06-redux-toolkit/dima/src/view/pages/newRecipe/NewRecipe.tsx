@@ -70,11 +70,6 @@ interface recipeInfo{
 }
 
 export default function NewRecipe() {
-
-    //const [recipe, setRecipe] = useState<recipeInfo>({});
-    const [linkTo, setLink] = useState('/RecipeInfo');
-    const [from_, setFrom] = useState('');
-
     //Redux
     const recipe_ = useAppSelector(selectedRecipe);
     const from = useAppSelector(selectedFrom);
@@ -84,7 +79,7 @@ export default function NewRecipe() {
 
     const [recipe, setRecipe] = useState<recipeInfo>(recipe_);
 
-    if(from === 'recipe' && isNew)
+    if(from === 'myRecipe' && isNew)
         to = '/User';
     else to = '/RecipeInfo';
 
@@ -135,36 +130,20 @@ export default function NewRecipe() {
     function handleSave() {
         // //Redux
         // //console.log(recipe)
-        // dispatch(updateRecipe(recipe));
+        dispatch(updateRecipe(recipe));
 
         // let id = 0;
         // // const newRecipe = recipe;
-        // // setRecipe(newRecipe);
-        // switch(from){
-        //     case 'top10':
-        //         id = 1;
-        //         break
-        //     case 'recent':
-        //         id = 2;
-        //         break
-        //     case 'recipe':
-        //         id = 3
-        //         break
-        // }
-        // //Rewrite this code
-        // // if(to === '/User'){
-        // //     let newRecipe = {id:0,name:'', image:'', time:'', people:'', calories:'', ingredients:'', method:''};
-        // //     axios.post('http://localhost:3004/Recipes/'+`${id}`, recipe_).then(data => {
-        // //         newRecipe = data.data;
-        // //         console.log(data.data);
-        // //         //dispatch(addToMyRecipe();
-        // //     })
-        // //      //axios.post('http://localhost:3004/Recipes/'+`${from}`, recipe);
-        // //     dispatch(addToMyRecipe(recipe_));
-        // // }  
-        // // else{
-        // //     //add a action to udpate a recipe in the array
-        // // } 
+        setRecipe(recipe);
+        if(to === '/User'){
+            axios.post('http://localhost:3004/'+`${from}`, recipe_).then(data => console.log(data));
+            dispatch(addToMyRecipe(recipe_));
+        }  
+        else{
+            //add a action to udpate a recipe in the array
+            axios.put('http://localhost:3004/'+`${from}`+'/'+`${recipe_.id}`, recipe_).then(data => console.log(data));
+
+        } 
     }
 
     return (

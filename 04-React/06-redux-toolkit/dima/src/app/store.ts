@@ -1,11 +1,15 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import itemReducer from '../view/features/item/itemSlice';
-import recipesReducer from '../view/features/myRecipes/MyRecipes';
+import myRecipesReducer from '../view/features/myRecipes/MyRecipes';
+import recentRecipesReducer from '../view/features/recentRecipes/RecentRecipes';
+import topRecipesReducer from '../view/features/topRecipes/TopRecipes';
 
 export const store = configureStore({
   reducer: {
     item : itemReducer,
-    recipesArray : recipesReducer,
+    myRecipes : myRecipesReducer,
+    topRecipes : topRecipesReducer,
+    recentRecipes : recentRecipesReducer
   },
 });
 

@@ -1,35 +1,21 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 import { RootState } from "../../../app/store";
-
-export interface recipeInfo{
-    id:number;
-    name:string;
-    image:string;
-    time:string;
-    people:string;
-    calories:string;
-    ingredients:string;
-    method:string;
-}
+import {recipeInfo} from '../../../App';
 
 interface recipesState{
-    top10Recipes:Array<recipeInfo>;
-    recentRecipes:Array<recipeInfo>;
     myRecipes:Array<recipeInfo>;
 }
 
 const initialState : recipesState = {
-    top10Recipes:[],
-    recentRecipes:[],
     myRecipes:[]
 };
 
-export const getRecipesAsync = createAsyncThunk(
-    'recipes/fetchRecipe',
+export const getMyRecipesAsync = createAsyncThunk(
+    'myRecipe/fetchMyRecipe',
     async (_, thunkAPI) => {
         try {
-            const response = await axios.get('http://localhost:3004/Recipes');
+            const response = await axios.get('http://localhost:3004/myRecipe');
             const data = response.data;
             return data;
         } catch (error:any) {
@@ -38,7 +24,7 @@ export const getRecipesAsync = createAsyncThunk(
     }
 );
 
-export const recipesReducer = createSlice({
+export const myRecipesReducer = createSlice({
     name:'recipes',
     initialState,
     reducers:{
@@ -48,18 +34,14 @@ export const recipesReducer = createSlice({
     },
     extraReducers: (builder) => {
         builder
-        .addCase(getRecipesAsync.fulfilled, (state, action) => {
-            state.myRecipes = action.payload[2].myRecipe;
-            state.top10Recipes = action.payload[0].top10;
-            state.recentRecipes = action.payload[1].recent;
+        .addCase(getMyRecipesAsync.fulfilled, (state, action) => {
+            state.myRecipes = action.payload;
         })
     }
 })
 
-export const { addToMyRecipe } = recipesReducer.actions;
+export const { addToMyRecipe } = myRecipesReducer.actions;
 
-export const top10Recipes = (state:RootState) => state.recipesArray.top10Recipes;
-export const recentRecipes = (state:RootState) => state.recipesArray.recentRecipes;
-export const myRecipes = (state:RootState) => state.recipesArray.myRecipes;
+export const myRecipes = (state:RootState) => state.myRecipes.myRecipes;
 
-export default recipesReducer.reducer
+export default myRecipesReducer.reducer

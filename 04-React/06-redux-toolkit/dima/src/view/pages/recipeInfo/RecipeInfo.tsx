@@ -12,8 +12,8 @@ import { styled } from '@mui/material/styles';
 import Tooltip from '@mui/material/Tooltip';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { useAppSelector } from '../../../app/hooks';
-import { selectedFrom, selectedIsNew, selectedRecipe } from '../../features/item/itemSlice';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { getSelectAsync, selectedFrom, selectedIsNew, selectedRecipe } from '../../features/item/itemSlice';
 
 const CssTextField = styled(TextField)({
     '& label.Mui-focused': {
@@ -45,9 +45,23 @@ const CssTextField = styled(TextField)({
 export default function RecipeInfo() {
     const [like, setLike] = useState(0);
     //Redux toolkit
+    const dispatch = useAppDispatch();
     const recipe_ = useAppSelector(selectedRecipe);
     const from_ = useAppSelector(selectedFrom);
     const isNew = useAppSelector(selectedIsNew);
+    
+    useEffect(()=> {
+        axios.get('http://localhost:3004/select').then(data => {
+            const recipe = data.data[0].recipe;
+            const from = data.data[0].from;
+            const isNew_ = data.data[0].isNew;
+            dispatch(getSelectAsync([recipe, from, isNew_]));
+        })
+    },[])
+
+    function editRecipe(recipe:any){
+        
+    }
 
     function handleLike() {
         setLike(like + 1);
@@ -84,7 +98,7 @@ export default function RecipeInfo() {
                             <Link to='/NewRecipe'>
                                 <AutoAwesomeIcon sx={{
                                     color: '#b5739d', fontSize: 35
-                                }} />{/* onClick={() => editClick(recipe_)}*/}
+                                }} onClick={() => editRecipe(recipe_) />
                             </Link>
                         </Tooltip>
                     </div>

@@ -22,28 +22,46 @@ import { Pagination, Navigation } from "swiper";
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { updateRecipe, updateFrom } from '../../features/item/itemSlice';
-import { getRecipesAsync, recentRecipes, top10Recipes } from '../../features/myRecipes/MyRecipes';
+//import { getRecentRecipesAsync, recentRecipes } from '../../features/recentRecipes/RecentRecipes';
+import { getTopRecipesAsync, topRecipes } from '../../features/topRecipes/TopRecipes';
+import { getRecentRecipesAsync, recentRecipes } from '../../features/recentRecipes/RecentRecipes';
 
 
 export default function MainScreen() {
     //Redux
     const dispatch = useAppDispatch();
-    const top10 = useAppSelector(top10Recipes);
+    const top10 = useAppSelector(topRecipes);
     const recent = useAppSelector(recentRecipes);
 
     useEffect(() => {
-        dispatch(getRecipesAsync());
+        dispatch(getTopRecipesAsync());
+        dispatch(getRecentRecipesAsync());
     }, []);
 
-    const imageClick1 = (ev:any, recipe:any) => {
+    const imageClick = (recipe:any, row:number) => {
+        let from = '';
+        if(row == 1)
+            from = 'top10'
+        else from = 'recent'
+        try {
+            axios.post('http://localhost:3004/select', {recipe, from:from, isNew:false});
+        } catch (error) {
+            console.error();
+        }
         dispatch(updateRecipe(recipe));
-        dispatch(updateFrom('top10'));
+        dispatch(updateFrom(from));
     } 
 
-    const imageClick2 = (recipe:any) => {
-        dispatch(updateRecipe(recipe));
-        dispatch(updateFrom('recent'));
-    } 
+    // const imageClick2 = (recipe:any) => {
+    //     try {
+            
+    //     } catch (error) {
+            
+    //     }
+    //     axios.post('http://localhost:3004/select', {recipe, from:'recent', isNew:false});
+    //     dispatch(updateRecipe(recipe));
+    //     dispatch(updateFrom('recent'));
+    // } 
 
     return (
         <div className="wrapper">
@@ -69,7 +87,7 @@ export default function MainScreen() {
                             className="mySwiper"
                         >
                             {top10.map((recipe:any, index:number) => {
-                                return(<SwiperSlide key={index} onClick={(ev:any) => imageClick1(ev,recipe)}>
+                                return(<SwiperSlide key={index} onClick={(ev:any) => imageClick(recipe, 1)}>
                                     <Link to='/RecipeInfo'>
                                         <img src={recipe.image} alt=''/>
                                     </Link>
@@ -96,7 +114,7 @@ export default function MainScreen() {
                             {recent.map((recipe:any, index:number) => {
                                 return(<SwiperSlide key={index}>
                                     <Link to='/RecipeInfo'>
-                                        <img src={recipe.image} alt='' onClick={() => imageClick2(recipe)}/>
+                                        <img src={recipe.image} alt='' onClick={() => imageClick(recipe, 2)}/>
                                     </Link>
                                     <p>{recipe.name}</p>
                                 </SwiperSlide>);

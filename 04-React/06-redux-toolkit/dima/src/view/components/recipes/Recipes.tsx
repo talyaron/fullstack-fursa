@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { selectedRecipe, updateFrom, updateRecipe, updateNew } from '../../features/item/itemSlice';
-import { getRecipesAsync, myRecipes } from '../../features/myRecipes/MyRecipes';
+import { getMyRecipesAsync, myRecipes } from '../../features/myRecipes/MyRecipes';
 
 export default function Recipes() {
 
@@ -18,7 +18,7 @@ export default function Recipes() {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(getRecipesAsync());
+        dispatch(getMyRecipesAsync());
     },[])
 
     // useEffect(() => {
