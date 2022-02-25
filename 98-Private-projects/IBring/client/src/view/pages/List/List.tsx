@@ -14,6 +14,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import axios from 'axios';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { curListAsync } from '../../../features/curListSelector/curListReducer';
 
 function List() {
     const nav = useNavigate();
@@ -21,29 +22,16 @@ function List() {
     const [whatToBring, setWhatToBring] = useState("");
 
     const userLogin = useAppSelector(state => state.logged);
+    const curList = useAppSelector(state => state.curList);
     const dispatch = useAppDispatch();
 
-    const [listInfoFromLocalStorage, setListInfoFromLocalStorage] = useState(localStorage.getItem('curList') ? JSON.parse(localStorage.getItem('curList')!) : undefined);
     const [updatePage, setUpdatePage] = useState(0);
-    /**
-     * upcoming list 
-     * search list by id from list store in redux
-     * useEffect fetch data from last week
-     */
-
-    // const listInfoFromLocalStorage = localStorage.getItem('curList') ? JSON.parse(localStorage.getItem('curList')!) : undefined;
 
     useEffect(() => {
         console.log("listId:", listId);
-        console.log("curList:", listInfoFromLocalStorage);
 
-        axios.post('/meeting/getListByID', { id: listId }).then(data => {
-            if (data.data.ok) {
-                console.log(data.data);
-                setListInfoFromLocalStorage(data.data.list);
-                localStorage.setItem('curList', JSON.stringify(data.data.list));
-            }
-        })
+        dispatch(curListAsync(listId));
+
         if (userLogin.status !== "logged") {
             nav('/login');
         }
@@ -82,7 +70,7 @@ function List() {
             })
         }
     }
-
+   
     return (
         <>{userLogin.status === "logged" ?
             <div className="mainTemplate">
@@ -98,32 +86,32 @@ function List() {
                     <img className='registerLogo listLogo' alt="" src={sentImage} />
                 </div>
                 <div className="mainContent">
-                    {listInfoFromLocalStorage !== undefined ?
+                    {curList.list !== undefined ?
                         <div className="listHeader">
-                            <label className='templateTitle marginTitleNormal'>{listInfoFromLocalStorage.meetingDetails.groupName}</label>
+                            <label className='templateTitle marginTitleNormal'>{curList.list.meetingDetails?.groupName}</label>
                             <div className="listInformation">
                                 <label className="info">
                                     <img src={calendar} alt="" />
-                                    <label>{listInfoFromLocalStorage.meetingDetails.date.toString().split("T")[0]}</label>
+                                    <label>{curList.list.meetingDetails?.date?.toString().split("T")[0]}</label>
                                 </label>
                                 <label className="info">
                                     <img src={clock} alt="" />
-                                    <label>{listInfoFromLocalStorage.meetingDetails.time}</label>
+                                    <label>{curList.list.meetingDetails?.time}</label>
                                 </label>
                                 <label className="info">
                                     <img src={location} alt="" />
-                                    <label>{listInfoFromLocalStorage.meetingDetails.place}</label>
+                                    <label>{curList.list.meetingDetails?.place}</label>
                                 </label>
                             </div>
                             <div className="listFewWords">
-                                <p style={{ color: 'grey' }}>{listInfoFromLocalStorage.meetingDetails.fewWords}</p>
+                                <p style={{ color: 'grey' }}>{curList.list.meetingDetails?.fewWords}</p>
                             </div>
 
                             <form onSubmit={handleAddFriends} className='invitedFriends'>
                                 <button type="submit">
                                     <div className="logoWithWords">
                                         <img src={people} alt="" />
-                                        <label>{listInfoFromLocalStorage.whoIsThere.length} Friends in the group</label>
+                                        <label>{curList.list.whoIsThere?.length} Friends in the group</label>
                                     </div>
 
                                     <label id="addButton">+</label>
@@ -141,7 +129,7 @@ function List() {
                                         <button onClick={(ev: any) => handleAddOrNot(ev, false)} className='addOrNot'>-</button>
                                     </div>
                                 </div>
-                                {listInfoFromLocalStorage.bringItems.map((elem: any, index: number) => {
+                                {curList.list.bringItems?.map((elem: any, index: number) => {
                                     return (
                                         <div key={index} className="whatToBring_items">
                                             <div className="whatToBring_items_user">

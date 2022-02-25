@@ -1,12 +1,8 @@
 import './TypeList.scss';
 import '../MainTemplate/MainTemplate.scss';
 import { useState } from "react";
-import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { RootState } from '../../../redux/store';
-import { UserState } from '../../../redux/reducers/userReducer';
-import { ListState } from '../../../redux/reducers/listReducer';
-import axios from 'axios';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 
 interface _List {
     imgUrl: string;
@@ -16,10 +12,8 @@ interface _List {
 }
 
 function TypeList() {
-    const userLogin = useSelector<RootState, UserState>(state => state.user);
-    const _list = useSelector<RootState, ListState>(state => state.list);
-    const dispatch = useDispatch();
-    const { listInfo } = _list;
+    const userLogin = useAppSelector(state => state.logged);
+    const dispatch = useAppDispatch();
     const nav = useNavigate();
 
     const [typeList, setTypeList] = useState([

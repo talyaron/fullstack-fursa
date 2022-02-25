@@ -7,16 +7,6 @@ import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { logintAsync } from '../../../features/userLogin/userLoginReducer';
 import axios from 'axios';
 
-interface actionIF {
-    type: string;
-    payload: boolean;
-}
-
-interface userIF {
-    email: string;
-    pass: string;
-}
-
 function Register() {
     const loggedReducer = useAppSelector(state => state.logged);
     const dispatch = useAppDispatch();
@@ -53,7 +43,6 @@ function Register() {
             .then((json) => {
                 console.log("isUer:", json);
                 if (json) {
-
                     dispatch(logintAsync({ email: email, pass: pass }));
                     nav('/greetings');
                 } else {

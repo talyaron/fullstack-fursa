@@ -5,12 +5,15 @@ import clock from '../../logoAndPhotos/clock.jpg'
 import calendar from '../../logoAndPhotos/calendar.jpg';
 import location from '../../logoAndPhotos/location.png';
 import { Link, useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../../app/hooks';
 
 function HomeListComponent(props: any) {
+    const dispatch = useAppDispatch();
     const nav = useNavigate()
     const { name, date, time, place, bringList } = props.info;
     const { id, upcoming, findList } = props;
     const [path, setPath] = useState(`${id}`);
+
 
     function handleClick(ev: any) {
         ev.preventDefault();
@@ -21,7 +24,6 @@ function HomeListComponent(props: any) {
     }
 
     return (
-        // <Link to={`/list/${path}`}>
         <div className="contentList" onClick={handleClick}>
             <div className="listInformation">
                 <div className="listImage">
@@ -57,7 +59,6 @@ function HomeListComponent(props: any) {
                 </div>
                 : <></>}
         </div>
-        // </Link>
     )
 
 }

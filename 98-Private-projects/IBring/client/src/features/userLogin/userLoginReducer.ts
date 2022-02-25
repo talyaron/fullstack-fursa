@@ -19,12 +19,21 @@ export interface LoginState {
     status: 'idle' | 'loading' | 'failed' | 'logged';
 }
 
-const initialState: LoginState = {
-    value: {
-        email: ""
-    },
-    status: 'idle',
-};
+// const initialState: LoginState = {
+//     value: {
+//         email: ""
+//     },
+//     status: 'idle',
+// };
+
+const initialState = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')!) :
+    {
+        value: {
+            email: ""
+        },
+        status: 'idle',
+    }
+
 
 export const logintAsync = createAsyncThunk(
     'login/fetchUser',
@@ -37,7 +46,14 @@ export const logintAsync = createAsyncThunk(
             console.log("response", data)
             if (data.ok) {
                 const userData = data.user;
-                localStorage.setItem('userInfo', JSON.stringify(userData));
+                localStorage.setItem('userInfo', JSON.stringify(
+                    {
+                        value: {
+                            email: userData.email
+                        },
+                        status: 'logged'
+                    }
+                ));
                 return data.user;
             }
             else {

@@ -5,16 +5,11 @@ import logo from "../../logoAndPhotos/ibring.jpg";
 import { useNavigate } from 'react-router-dom';
 import { logintAsync } from '../../../features/userLogin/userLoginReducer';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-
-interface payloadIF {
-    status: boolean;
-    user?: object;
-}
+import { listAsync } from '../../../features/listSelector/listReducer';
 
 function Login() {
     const userLogin = useAppSelector(state => state.logged);
     const dispatch = useAppDispatch();
-    console.log(userLogin)
     const { value } = userLogin;
     const nav = useNavigate();
 

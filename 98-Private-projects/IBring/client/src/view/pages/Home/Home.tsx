@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import HomeListComponent from '../../components/HomeListComponent/HomeListComponent';
 import axios from 'axios';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { listAsync } from '../../../features/listSelector/listReducer';
 
 interface ListIF {
     imgURL?: string;
@@ -22,7 +23,7 @@ function Home() {
     const nav = useNavigate();
     const userLogin = useAppSelector(state => state.logged);
     const dispatch = useAppDispatch();
-
+    const allLists = useAppSelector(state => state.allLists);
 
 
     const [allListFromDB, setAllListFromDB] = useState<Array<any>>([]);
@@ -70,27 +71,13 @@ function Home() {
     useEffect(() => {
         if (userLogin.status === "logged") {
             let listCopy: Array<any> = [];
-            axios.post('/meeting/getListByUser', { email: userLogin.value.email }).then(data => {
-                /**
-                 * save all data in redux
-                 */
-                console.log(data.data);
-                setAllListFromDB(data.data.lists);
-                data.data.lists.forEach((element: any, index: number) => {
-                    const { date, groupName, time, place } = element.meetingDetails;
-                    listCopy.push({
-                        id: element._id,
-                        name: groupName,
-                        date: date,
-                        time: time,
-                        place: place,
-                        bringList: [...element.bringItems]
-                    });
-                });
-                setUpcomingList(listCopy);
-                setPreviousList(listCopy);
-            })
-
+            dispatch(listAsync(userLogin.value.email));
+            /**
+             * save all data in redux
+             */
+        }
+        else {
+            nav('/login')
         }
     }, []);
 
@@ -122,7 +109,16 @@ function Home() {
 
                     <div className="upcoming">
                         <label id='header'>Your upcoming gathering</label>
+                        {allLists.status === 'loading' ? <>Loading</> :
 
+                            allLists.lists.map((elem: any, index) => {
+                                return (
+                                    <HomeListComponent key={index} id={elem._id} findList={elem} upcoming info={
+                                        { name: elem.meetingDetails.groupName, date: elem.meetingDetails.date, time: elem.meetingDetails.time, place: elem.meetingDetails.place, bringList: elem.bringItems }} />
+                                );
+                            })
+                        }
+                        {/* 
                         {upcomingList.map((elem, index) => {
                             const findList = allListFromDB.find(dbList => {
                                 if (elem.id == dbList._id) {
@@ -133,14 +129,24 @@ function Home() {
                                 <HomeListComponent key={index} id={elem.id} findList={findList} upcoming info={
                                     { name: elem.name, date: elem.date, time: elem.time, place: elem.place, bringList: elem.bringList }} />
                             );
-                        })}
+                        })} */}
 
                     </div>
 
                     <div className="previous">
                         <label id='header'>Your previous gathering</label>
+                        {allLists.status === 'loading' ? <>Loading</> :
 
-                        {previousList.map((elem, index) => {
+
+                            allLists.lists.map((elem: any, index) => {
+                                return (
+                                    <HomeListComponent key={index} id={elem._id} findList={elem} info={
+                                        { name: elem.meetingDetails.groupName, date: elem.meetingDetails.date, time: elem.meetingDetails.time, place: elem.meetingDetails.place, bringList: elem.bringItems }} />
+                                );
+                            })
+
+                        }
+                        {/* {previousList.map((elem, index) => {
                             const findList = allListFromDB.find(dbList => {
                                 if (elem.id == dbList._id) {
                                     return dbList;
@@ -150,7 +156,7 @@ function Home() {
                                 <HomeListComponent key={index} id={elem.id} findList={findList} info={
                                     { name: elem.name, date: elem.date, time: elem.time, place: elem.place, bringList: elem.bringList }} />
                             );
-                        })}
+                        })} */}
 
                     </div>
                 </div>

@@ -1,14 +1,11 @@
 import '../MainTemplate/MainTemplate.scss'
 import './ListForm.scss'
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import camera from '../../logoAndPhotos/camera.jpg';
 import sentImg from '../../logoAndPhotos/sentImage.jpg';
-import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { RootState } from '../../../redux/store';
-import { UserState } from '../../../redux/reducers/userReducer';
-import { fetchListRequest, fetchListFailure, fetchListSuccess } from '../../../redux';
-import { ListState } from '../../../redux/reducers/listReducer';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { addMeetingDetails } from '../../../features/curListSelector/curListReducer';
 
 //URL.createObjectURL(selectedImage)
 
@@ -24,17 +21,8 @@ interface listFormIF {
 }
 
 function ListForm() {
-    const userLogin = useSelector<RootState, UserState>(state => state.user);
-    const _list = useSelector<RootState, ListState>(state => state.list);
-    const dispatch = useDispatch();
-    const { listInfo } = _list;
-    const [selectedImage, setSelectedImage] = useState("");
-
-    // useEffect(() => {
-    //     if (listInfo != undefined) {
-    //         nav('/typeList');
-    //     }
-    // }, [listInfo]);
+    const userLogin = useAppSelector(state => state.logged);
+    const dispatch = useAppDispatch();
 
     const nav = useNavigate();
 
@@ -50,14 +38,12 @@ function ListForm() {
         if (selectedFile) {
             obj["imgURL"] = sentImg;
         }
-        dispatch(fetchListRequest());
-        setListForm(obj);
-        dispatch(fetchListSuccess(obj));
+        dispatch(addMeetingDetails(obj));
         localStorage.setItem('listInfo', JSON.stringify(obj));
 
         nav('/typeList');
     }
-    const [listForm, setListForm] = useState<listFormIF>();
+
 
     const [selectedFile, setSelectedFile] = useState()
     const [preview, setPreview] = useState("")

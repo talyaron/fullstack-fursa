@@ -21,7 +21,7 @@ exports.addNewMeeting = async (req, res) => {
             listToAdd.save().then(() => {
                 console.log("list saved");
             });
-            res.send({ ok: true, message: "list saved successfully!" });
+            res.send({ ok: true, id: listToAdd._id, message: "list saved successfully!" });
         }
     } catch (err) {
         res.send({ ok: false, message: "Error!" });
@@ -101,12 +101,12 @@ exports.updateListByID = async (req, res) => {
                 { $push: { bringItems: updatedList } }
             )
         }
-        if(newListUpdate){
+        if (newListUpdate) {
             res.send({ ok: true, list: newListUpdate });
-        }else{
+        } else {
             res.send({ ok: false });
         }
     } catch (error) {
-        
+
     }
 }
