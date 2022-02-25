@@ -14,25 +14,28 @@ import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import NewCourseDialog from '../newCourseDialog/NewCourseDialog';
 import EditStudentsDialog from '../editStudentsDialog/EditStudentsDialog';
+import { useAppSelector, useAppDispatch } from '../../../../app/hooks';
+import { classCourses, classStudents, classTeachers, getCoursesAsync, getStudentsAsync, getTeachersAsync } from '../../../../app/reducers/school/ClassDetailsSlice';
+import { selectedTeacherName } from '../../../../app/reducers/school/ClassCardSlice';
 
-const courses = [
-    { name: "Arabic", teacher: "Manal Misherky" }, { name: "Mathmatics", teacher: "Manal Bisharat" },
-    { name: "English", teacher: "Rania Ateek" }, { name: "Hebrew", teacher: "Areen Awwad" },
-    { name: "Science", teacher: "Zahera Bisharat" }, { name: "Caution on the streets", teacher: "Doaa margieh" }
-]
+// const courses = [
+//     { name: "Arabic", teacher: "Manal Misherky" }, { name: "Mathmatics", teacher: "Manal Bisharat" },
+//     { name: "English", teacher: "Rania Ateek" }, { name: "Hebrew", teacher: "Areen Awwad" },
+//     { name: "Science", teacher: "Zahera Bisharat" }, { name: "Caution on the streets", teacher: "Doaa margieh" }
+// ]
 
-const students = [
-    { first: "Suzan", last: "Kassabry 1", id: "123456789", phone: "0537756044" },
-    { first: "Suzan", last: "Kassabry 2", id: "123456789", phone: "0537756044" },
-    { first: "Suzan", last: "Kassabry 3", id: "123456789", phone: "0537756044" },
-    { first: "Suzan", last: "Kassabry 4", id: "123456789", phone: "0537756044" },
-    { first: "Suzan", last: "Kassabry 5", id: "123456789", phone: "0537756044" },
-    { first: "Suzan", last: "Kassabry 6", id: "123456789", phone: "0537756044" },
-    { first: "Suzan", last: "Kassabry 7", id: "123456789", phone: "0537756044" },
-    { first: "Suzan", last: "Kassabry 8", id: "123456789", phone: "0537756044" },
-    { first: "Suzan", last: "Kassabry 9", id: "123456789", phone: "0537756044" },
-    { first: "Suzan", last: "Kassabry 10", id: "123456789", phone: "0537756044" }
-]
+// const students = [
+//     { first: "Suzan", last: "Kassabry 1", id: "123456789", phone: "0537756044" },
+//     { first: "Suzan", last: "Kassabry 2", id: "123456789", phone: "0537756044" },
+//     { first: "Suzan", last: "Kassabry 3", id: "123456789", phone: "0537756044" },
+//     { first: "Suzan", last: "Kassabry 4", id: "123456789", phone: "0537756044" },
+//     { first: "Suzan", last: "Kassabry 5", id: "123456789", phone: "0537756044" },
+//     { first: "Suzan", last: "Kassabry 6", id: "123456789", phone: "0537756044" },
+//     { first: "Suzan", last: "Kassabry 7", id: "123456789", phone: "0537756044" },
+//     { first: "Suzan", last: "Kassabry 8", id: "123456789", phone: "0537756044" },
+//     { first: "Suzan", last: "Kassabry 9", id: "123456789", phone: "0537756044" },
+//     { first: "Suzan", last: "Kassabry 10", id: "123456789", phone: "0537756044" }
+// ]
 
 const teachers = [
     { label: 'Suzan Kassabry' },
@@ -40,7 +43,7 @@ const teachers = [
     { label: 'Rania Ateek' }
 ]
 
-const teacherName = { label: 'Lama Bisharat' };
+// const teacherName = { label: 'Lama Bisharat' };
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -81,17 +84,31 @@ export default function ClassTabsBar() {
     const [editTeacherBtn, setEditTeacherBtn] = useState('Edit');
     const [openCourseDialog, setOpenCourseDialog] = useState(false);
     const [openStudentsDialog, setOpenStudentsDialog] = useState(false);
+    const [newTeacherName, setNewTeacherName] = useState('');
+    const dispatch = useAppDispatch();
+    dispatch(getCoursesAsync());
+    dispatch(getStudentsAsync());
+    dispatch(getTeachersAsync());
+    const courses = useAppSelector(classCourses);
+    const students = useAppSelector(classStudents);
+    const teachers = useAppSelector(classTeachers);
+    const teacherName = useAppSelector(selectedTeacherName);
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);
     };
 
-    function editTeacher(){
+    function handleTeacherChange(ev: any, value: any) {
+        console.log(value);
+        setNewTeacherName(value);
+    }
+
+    function editTeacher() {
         const edit = !disableEditTeacher;
         setDisableEditTeacher(!disableEditTeacher);
         if (!edit) {
             setEditTeacherBtn('Save');
-        }else {
+        } else {
             setEditTeacherBtn('Edit')
         }
     }
@@ -150,15 +167,19 @@ export default function ClassTabsBar() {
                     <List className='list' dense={true}>
                         {
                             students.map((student, i) => {
-                                const { first, last, id, phone } = student;
+                                const { first, last, studentId, phone } = student;
+                                // console.log(first)
+                                // console.log(last)
+                                // console.log(studentId)
+                                // console.log(phone)
                                 return (
-                                    <ListItem className='studentsList__listItem' divider={true}>
+                                    <ListItem key={i} className='studentsList__listItem' divider={true}>
                                         <ListItemText
                                             className='studentsList__listItem__text'
                                             primary={first.concat(' ', last)}
                                             secondary={
                                                 <div className='secondary'>
-                                                    <div>{'id: '.concat(id)}</div>
+                                                    <div>{'id: '.concat(studentId)}</div>
                                                     <div>{'phone: '.concat(phone)}</div>
                                                 </div>
                                             }
@@ -191,11 +212,12 @@ export default function ClassTabsBar() {
                             id="combo-box-demo"
                             disabled={disableEditTeacher}
                             options={teachers}
-                            defaultValue={teacherName}
+                            // defaultValue={teacherName}
                             sx={{ width: 300 }}
                             renderInput={(params) => <TextField {...params} />}
                             size="small"
                             className='inputField'
+                            onChange={handleTeacherChange}
                         />
                     </div>
 
