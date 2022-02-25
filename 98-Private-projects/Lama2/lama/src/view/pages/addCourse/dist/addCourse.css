@@ -1,3 +1,6 @@
-.formAddCourse {
+.addCourse {
+  margin: auto;
+}
+.addCourse .formAddCourse {
   width: 40vw;
 }

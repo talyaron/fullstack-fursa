@@ -107,7 +107,6 @@ function AdminCourses() {
             </table>
      </div>
      <Link to={`/addCourse`}>    <Button className='addbtn'>Add new course</Button> </Link>
-      
         </div>
   );
 }

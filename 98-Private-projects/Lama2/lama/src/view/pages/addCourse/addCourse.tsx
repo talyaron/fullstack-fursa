@@ -31,6 +31,9 @@ function AddCourse(){
                   label="cost"
                   autoFocus
                 />
+                 {/* <Link to={`/addCourse`}>    */}
+                  <Button className='addbtn'>Add</Button>
+                  {/* </Link> */}
 
             </form>
 

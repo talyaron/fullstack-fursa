@@ -20,7 +20,9 @@ interface courseProp {
 function Data() {
     const [details, setDetails] = useState([]);
      const [courses,setCourses]=useState([{courseid:0, userid:0, username: ""}]);
+     axios.get('http://localhost:3004/courses').then(({data})=>console.log(data));
      axios.get('http://localhost:3004/participants').then(({data})=>console.log(data));
+ 
 
   useEffect(()=>{
     axios.get('http://localhost:3004/participants').then(({data})=>{
@@ -54,9 +56,9 @@ function Data() {
               {details.map((rest, index)=>{
               return(
                   <tr>
-                      <td>{rest.courseid}</td>
+                      {/* <td>{rest.courseid}</td>
                       <td>{rest.userid}</td>
-                      <td>{rest.username}</td>
+                      <td>{rest.username}</td> */}
                       <td>
                       <ButtonGroup className='grpbtn' variant="contained" aria-label="outlined small button group">
       <Button>Add</Button>

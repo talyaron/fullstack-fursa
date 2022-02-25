@@ -11,6 +11,10 @@ var ButtonGroup_1 = require("@mui/material/ButtonGroup");
 function Data() {
     var _a = react_2.useState([]), details = _a[0], setDetails = _a[1];
     var _b = react_2.useState([{ courseid: 0, userid: 0, username: "" }]), courses = _b[0], setCourses = _b[1];
+    axios_1["default"].get('http://localhost:3004/courses').then(function (_a) {
+        var data = _a.data;
+        return console.log(data);
+    });
     axios_1["default"].get('http://localhost:3004/participants').then(function (_a) {
         var data = _a.data;
         return console.log(data);
@@ -37,9 +41,6 @@ function Data() {
                         React.createElement("th", null, "Edit/Add"))),
                 React.createElement("tbody", null, details.map(function (rest, index) {
                     return (React.createElement("tr", null,
-                        React.createElement("td", null, rest.courseid),
-                        React.createElement("td", null, rest.userid),
-                        React.createElement("td", null, rest.username),
                         React.createElement("td", null,
                             React.createElement(ButtonGroup_1["default"], { className: 'grpbtn', variant: "contained", "aria-label": "outlined small button group" },
                                 React.createElement(Button_1["default"], null, "Add"),
