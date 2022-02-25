@@ -1,4 +1,3 @@
-import React from "react";
 import Rola from "../Images/Rola.jpeg";
 import "./Header.scss";
 

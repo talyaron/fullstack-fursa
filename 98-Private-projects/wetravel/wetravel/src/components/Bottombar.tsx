@@ -12,37 +12,30 @@ export interface data {
   name: string;
 }
 function Bottombar(prop: data) {
-  const [value, setValue] = React.useState("explore");
-  const [color, setColor] = React.useState("");
+  const [value, setValue] = React.useState("mainpage");
+  //const [color, setColor] = React.useState(0);
   const navigate = useNavigate();
-  let val: string = value;
-  useEffect(() => {
-    setValue(value);
-  }, [value]);
+
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
-    console.log(value);
-    navigate(`/${newValue}`);
   };
-
   return (
     <div className="bottombar">
       <BottomNavigation
         sx={{
           width: 500,
           "&  .Mui-selected ,.Mui-selected > svg ": {
-            backgroundColor: "#ff4500",
-            color: "white",
+            color: "#ff4500",
+           // color: "white",
             borderRadius: "0.3rem",
             display: "flex",
             flexDirection: "row",
-            margin: "0",
+            margin: "0.3rem",
+            
           },
         }}
         value={value}
-        onChange={(event: any, newValue: string) => {
-          handleChange(event, newValue);
-        }}
+        onChange={handleChange}
         style={{
           width: "inherit",
           height: "inherit",
@@ -55,8 +48,9 @@ function Bottombar(prop: data) {
           value="mainpage"
           onClick={() => {
             navigate("/mainpage");
+            
           }}
-          style={{ color: color }}
+          // style={{ color: color }}
           icon={<Explore />}
         />
         <BottomNavigationAction
@@ -65,20 +59,17 @@ function Bottombar(prop: data) {
           onClick={() => {
             navigate("/events");
           }}
-          style={{ color: color }}
           icon={<EventIcon />}
         />
         <BottomNavigationAction
           label="Messages"
           value="messages"
-          style={{ color: color }}
           icon={<MessageIcon />}
         />
 
         <BottomNavigationAction
           label="Nearby"
           value="nearby"
-          style={{ color: color }}
           icon={<LocationOnIcon />}
         />
       </BottomNavigation>

@@ -7,10 +7,21 @@ import Travelles from "./Travelers";
 import { data } from "./Bottombar";
 import { useEffect } from "react";
 import axios from "axios";
+import { useAppSelector } from "../hooks/hooks";
+import { userEmail, userName } from "../reducers/userSlice";
+
 interface Hotel {
   id: string;
   src: string;
   title: string;
+}
+
+export interface Flights {
+  id: String,
+  name: String,
+  imgUrl: String,
+  from: String,
+  to: String,
 }
 
 export interface travelers {
@@ -54,6 +65,7 @@ const arr: Array<Hotel> = [
   },
   {
     id: "2",
+
     src: "https://media.shichor.co.il/a87daa5f0aeb03962dbac774498bdc87.jpg",
     title: "Sirmione",
   },
@@ -74,7 +86,13 @@ const arr: Array<Hotel> = [
     title: "Las Vegas",
   },
 ];
+
+
 function Mainpage() {
+  const user_email = useAppSelector(userEmail);
+  console.log(user_email);
+
+
   useEffect(() => {
     axios
       .get("http://localhost:3004/posts")
@@ -93,11 +111,11 @@ function Mainpage() {
           <img src={Rola}></img>
         </div>
         <div className="down">
-          <h1>Travelles</h1>
+          <h1> Welcome to Travelers {user_email}</h1>
           <p>App connect with travel community.</p>
           <div className="search-bar">
             <div className="right-div">
-              <img src={Search} style={{color:"#ff4500"}}></img>
+              <img src={Search} style={{ color: "#ff4500" }}></img>
             </div>
             <div className="left-div">
               <p>Search for your destination</p>

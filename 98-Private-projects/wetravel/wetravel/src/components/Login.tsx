@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../components/Login.scss";
 import TextField from "@mui/material/TextField";
 import { useNavigate } from "react-router-dom";
 import Logo from "../Images/Travelles.png";
 import GoogleButton from "react-google-button";
 import InputAdornment from "@mui/material/InputAdornment";
-import { AccountCircle, Visibility, VisibilityOff } from "@mui/icons-material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
-
 import EmailIcon from "@mui/icons-material/Email";
-import { color } from "@mui/system";
+import { useAppDispatch } from "../hooks/hooks";
+import { setUser, userName, userEmail } from "../reducers/userSlice";
 interface State {
   amount: string;
   password: string;
@@ -19,6 +19,11 @@ interface State {
 }
 
 function Login() {
+  const dispatch = useAppDispatch();
+  const [userData, setUserdata] = useState({
+    email: "",
+    name: "",
+  });
   const [values, setValues] = React.useState<State>({
     amount: "",
     password: "",
@@ -44,7 +49,6 @@ function Login() {
   ) => {
     event.preventDefault();
   };
-  // const handleChange = () => {};
   let history = useNavigate();
   return (
     <div className="login">
@@ -55,14 +59,17 @@ function Login() {
         <TextField
           id="outlined-name"
           label="Email"
-          //onChange={}
+          
+          onChange={(ev: any) => {
+            setUserdata({ ...userData, email: ev.target.value });
+          }}
           style={{
             width: "90%",
             border: "1px solid",
             borderRadius: "0.3rem",
             color: "#ff4500",
             opacity: "0.6",
-            backgroundColor: "black",
+            
           }}
           InputLabelProps={{ style: { color: "#ff4500" } }}
           InputProps={{
@@ -77,12 +84,14 @@ function Login() {
           id="outlined-uncontrolled"
           label="Password"
           type={values.showPassword ? "text" : "password"}
+          onChange={(ev: any) => {
+            setUserdata({ ...userData, name: ev.target.value });
+          }}
           style={{
             width: "90%",
             margin: "1rem",
             border: "1px solid",
             opacity: "0.6",
-            backgroundColor: "black",
             borderRadius: "0.3rem",
             color: "#ff4500",
           }}
@@ -104,7 +113,6 @@ function Login() {
           }}
         />
       </div>
-
       <div className="contact-us-div">
         <div className="contact-us">Don't have an account?</div>
         <a href="/mainpage">Contact us</a>
@@ -121,6 +129,7 @@ function Login() {
         <button
           onClick={() => {
             console.log("clicked");
+            dispatch(setUser(userData));
             history("/mainpage");
           }}
         >
