@@ -59,12 +59,8 @@
         }
 
         &__grid {
-            width: 100%;
-            padding-top: 1rem;
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            margin-top: 1rem;
             align-items: center;
-            gap: 1rem;
         }
 
 
@@ -135,12 +131,4 @@
     }
 }
 
-@media only screen and (max-width: 800px) {
-    .exploremain__popular__grid {
-        grid-template-columns: repeat(1, 16rem);
-        grid-template-rows: repeat(5, 1fr);
-        display: flex;
-        flex-direction: column;
-
-    }
-}
+@media only screen and (max-width: 800px) {}

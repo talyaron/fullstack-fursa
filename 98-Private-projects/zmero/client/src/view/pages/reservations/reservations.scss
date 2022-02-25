@@ -8,14 +8,20 @@
     &__content {
         display: flex;
         flex-direction: column;
-        width: 90%;
+        width: 85%;
+
+        header {
+            h2 {
+                opacity: 0.9;
+            }
+        }
 
         &__card {
             width: 100%;
             padding-top: 1rem;
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            grid-template-rows: repeat(5, 1fr);
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(3, 1fr);
             align-items: center;
             gap: 1rem;
         }

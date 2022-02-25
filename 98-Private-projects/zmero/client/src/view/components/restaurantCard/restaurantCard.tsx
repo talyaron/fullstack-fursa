@@ -34,21 +34,23 @@ function RestaurantCard(props: cardProp) {
     return (
         <Link to={`/Restaurant/${props.id}`}>
             <div className="restaurantCard">
-                <img src={props.image}></img>
-                <div className="restaurantCard__title">
-                    <h3>{props.name}</h3>
-                </div>
-                <div>
-                    <Rating style={{ color: '#931b23' }} name="read-only" value={props.stars} readOnly />
-                </div>
-                <div className="restaurantCard__booking">
-                    <img src={Logo} ></img>
-                    <div className="restaurantCard__booking__title">
-                        Booked {props.booking} times today!
-                </div>
-                </div>
-                <div className="restaurantCard__reserve">
-                    <button className="restaurantCard__reserve__btn" onClick={openReserve}>Find next availabe</button>
+                <div className="reservationcard__image" style={{ backgroundImage: `url(${props.image})` }}></div>
+                <div className="reservationcard__main">
+                    <div className="restaurantCard__title">
+                        <h3>{props.name}</h3>
+                    </div>
+                    <div>
+                        <Rating style={{ color: '#FFDF32' }} name="read-only" value={props.stars} readOnly />
+                    </div>
+                    <div className="restaurantCard__booking">
+                        <img src={Logo} ></img>
+                        <div className="restaurantCard__booking__title">
+                            Booked {props.booking} times today!
+                        </div>
+                    </div>
+                    <div className="restaurantCard__reserve">
+                        <button className="restaurantCard__reserve__btn" onClick={openReserve}>Find next availabe</button>
+                    </div>
                 </div>
                 <ReserveModal restaurantID={props.id} openModal={openModal} setOpenModal={setOpenModal} />
             </div>

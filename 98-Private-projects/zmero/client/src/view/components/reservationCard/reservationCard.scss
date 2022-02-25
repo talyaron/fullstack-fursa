@@ -1,8 +1,11 @@
 .reservationcard {
     border: .0625rem solid #d8d9db;
-    width: 18rem;
+    max-width: 19.25rem;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
-    border-radius: 4px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     &:hover {
         transform: translateY(-0.4rem);
@@ -10,15 +13,20 @@
         box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
     }
 
+    &__main {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        align-items: flex-start;
+    }
+
     &__image {
         background-position: 50%;
         background-size: cover;
-        height: 10rem;
-        max-width: 100%;
-    }
-
-    img {
-        max-width: 100%;
+        min-height: 9rem;
+        width: 100%;
+        border-top-right-radius: 8px;
+        border-top-left-radius: 8px;
     }
 
     &__title {
@@ -27,15 +35,23 @@
             text-overflow: ellipsis;
             overflow: hidden !important;
             white-space: nowrap;
-            width: 13rem;
+            width: 19.25rem;
             opacity: 0.9;
         }
+    }
+
+    &__date {
+        display: flex;
+        justify-content: space-around;
+        width: 50%;
     }
 
     &__cancel {
         width: 100%;
         margin-top: 1rem;
         margin-bottom: 1rem;
+        display: flex;
+        flex-direction: row-reverse;
 
         &__btn {
             background-color: white;

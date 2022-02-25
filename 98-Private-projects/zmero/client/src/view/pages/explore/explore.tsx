@@ -11,6 +11,7 @@ import { useAppSelector, useAppDispatch } from '../../../app/hooks';
 import { getFamousRestaurants, fetchFamousRestaurants } from '../../../app/reducers/resterauntsReducer'
 
 import './explore.scss'
+import Grid from '@mui/material/Grid';
 
 function Explore() {
     const dispatch = useAppDispatch()
@@ -81,9 +82,13 @@ function Explore() {
                         <div className="exploremain__popular__view">View All</div>
                     </header>
                     <div className="exploremain__popular__grid">
-                        {famousRestaurants.map((rest, index) => {
-                            return <Card key={index} id={rest.id} name={rest.name} image={rest.image} booking={rest.booking} stars={rest.stars} region={rest.region}></Card>
-                        })}
+                        <Grid container spacing={{ xs: 2, md: 3 }}>
+                            {famousRestaurants.slice(0, 4).map((rest, index) => {
+                                return (<Grid item xs={12} sm={6} md={3} key={index}>
+                                    <Card key={index} id={rest.id} name={rest.name} image={rest.image} booking={rest.booking} stars={rest.stars} region={rest.region}></Card>
+                                </Grid>)
+                            })}
+                        </Grid>
                     </div>
                 </div>
                 <div className="exploremain__popular">
