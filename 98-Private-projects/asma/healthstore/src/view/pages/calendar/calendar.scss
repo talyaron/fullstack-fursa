@@ -4,17 +4,35 @@
     align-items: center;
     justify-content: center;
 
-    button{
-        margin-left: 10px;
+    .info{
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 15px;
+
+    }
+
+   .button{
+        margin-left: 30px;
+        font-weight: bold;
 
     }
     button:hover{
-       background-color: rgba(12, 12, 116, 0.377);
+       background-color: rgba(156, 156, 158, 0.377);
     }
     
     .table{
         height: 600px;
         width:70%;
-        margin: 50px; 
+        margin: 45px; 
     }
+    .inputs{
+        margin-right: 1rem;
+
+    }
+    .date{
+        margin-top : 4px;
+        height: 37px;
+        //width:20px;
+    }
+
 }

@@ -5,13 +5,15 @@ import { Button } from '@material-ui/core';
 import EventNoteTwoToneIcon from '@material-ui/icons/EventNoteTwoTone';
 //import {DatePicker} from '@material-ui/lab' ;
 //import "react-datepicker/dist/react-datepicker.css";
-//import DatePicker from "react-datepicker";
-import FormControl from '@material-ui/core/FormControl';
+//import DatePicker from "react-datepicker";*/
+import Box from '@material-ui/core/Box';
+import TextField from '@material-ui/core/TextField';
+import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';*/
-
-
+import MenuItem from '@material-ui/core/MenuItem';
+import { Button } from '@material-ui/core';
+import EventNoteTwoToneIcon from '@material-ui/icons/EventNoteTwoTone';
 import format from "date-fns/format";
 import getDay from "date-fns/getDay";
 import parse from "date-fns/parse";
@@ -26,7 +28,9 @@ import "react-datepicker/dist/react-datepicker.css";
 import TimePicker, { TimePickerValue } from 'react-time-picker';
 import 'react-time-picker/dist/TimePicker.css';
 import { useAppSelector, useAppDispatch } from '../../../app/hooks';
-import {selectTreatment } from '../../../features/treatment/treatmentSlice';
+//import { selectTreatment } from '../../../features/treatment/treatmentSlice';
+import { addAppointment, selectAppointment } from '../../../features/appointment/appointmentsSlice';
+import { appointment } from '../../../features/appointment/appointmentsSlice';
 
 const locales = {
     "en-US": require("date-fns/locale/en-US"),
@@ -39,108 +43,72 @@ const localizer = dateFnsLocalizer({
     locales,
 });
 
-interface eventInt{
-    title: string;
-    start: Date;
-    end: Date;
-    name: string;
-    phone: string;
-}
 
-const events:Array<eventInt> = [
-    {
-        title: "Cupping  Therapy",
-        start: new Date(2022,1, 25,6,30),
-        end: new Date(2022,1, 25,7,30),
-        name: "Asma",
-        phone:"123" ,            
-    },
-    {
-        title: "Hopi Candles",
-        start: new Date(2022, 1, 26,5),
-        end: new Date(2022, 1, 26,6),
-        name: "Asma",
-        phone:"123",       
-    }
-];
+function CalendarFun() {
 
+    // const treatment = useAppSelector(selectTreatment);
+    const appointments = useAppSelector(selectAppointment);
 
-function CalendarFun(){
+    const [newEvent, setNewEvent] = useState({ title: "", start: new Date(), end: new Date(), name: "", phone: "" });
 
-    const treatment = useAppSelector( selectTreatment );
+    const dispatch = useAppDispatch();
 
-    const [newEvent, setNewEvent] = useState({ title: "", name:"",phone:"",start: new Date(),end: new Date()});
-    const [allEvents, setAllEvents] = useState(events);
-    
     function handleAddEvent() {
-        if(newEvent.name==="" || newEvent.title==="" ||newEvent.phone==="")
+        if (newEvent.name === "" || newEvent.phone === "" || newEvent.title === "")
             alert("Your Info Is Incomplete!!");
 
         else {
-            const result: eventInt|undefined = allEvents.find((appoint: eventInt) =>
-            appoint.start.getFullYear() === newEvent.start.getFullYear() &&
-            appoint.start.getMonth() === newEvent.start.getMonth()&&
-            appoint.start.getDate() === newEvent.start.getDate()&&
-            (appoint.start.getHours() === newEvent.start.getHours()|| 
-            (appoint.end.getHours() === newEvent.start.getHours() && appoint.end.getMinutes() > newEvent.start.getMinutes())||
-            (appoint.start.getHours() === newEvent.end.getHours() && appoint.start.getMinutes() < newEvent.end.getMinutes()))
+            const result: appointment | undefined = appointments.find((appoint: appointment) =>
+                appoint.start.getFullYear() === newEvent.start.getFullYear() &&
+                appoint.start.getMonth() === newEvent.start.getMonth() &&
+                appoint.start.getDate() === newEvent.start.getDate() &&
+                (appoint.start.getHours() === newEvent.start.getHours() ||
+                    (appoint.end.getHours() === newEvent.start.getHours() && appoint.end.getMinutes() > newEvent.start.getMinutes()) ||
+                    (appoint.start.getHours() === newEvent.end.getHours() && appoint.start.getMinutes() < newEvent.end.getMinutes()))
             )
-
-            if(result)
+            if (result)
                 alert("Date Is Not Available!!");
-            
+
             else
-                setAllEvents([...allEvents, newEvent]); 
-            
+                dispatch(addAppointment(newEvent));
         }
-        console.log(allEvents);
     }
 
 
-    return(
+    return (
         <div>
             <div className="calendar">
                 <h1>Calendar</h1>
                 <div>
-                    <input  type="text" placeholder='Add Name' value={newEvent.name} onChange={(e) => setNewEvent({ ...newEvent, name: e.target.value })} />
-                    <input  type="text" placeholder='Add Phone Number' value={newEvent.phone} onChange={(e) => setNewEvent({ ...newEvent, phone: e.target.value })} />
-                    <input  type="text" placeholder={treatment}  value={newEvent.title} onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })} />
-                    <div>
-                        <DateTimePicker required={true} value={newEvent.start} onChange={(value) => setNewEvent({ ...newEvent, start:value,end:(new Date(value.getFullYear(), value.getMonth(),value.getDate(),value.getHours()+1,value.getMinutes()))})} />                              
-                        <button onClick={handleAddEvent}>
-                            Book Now!
-                        </button>
+                    <div className="info">
+                        <TextField required className="inputs" id="standard-basic" label="Add Name" variant="standard" value={newEvent.name} onChange={(e) => setNewEvent({ ...newEvent, name: e.target.value })} />
+                        <TextField required className="inputs" type="number" id="standard-basic" label="Add Phone Number" variant="standard" value={newEvent.phone} onChange={(e) => setNewEvent({ ...newEvent, phone: e.target.value })} />
+                        <Box className="box" sx={{ minWidth: 170 }}>
+                            <FormControl fullWidth>
+                                <InputLabel id="demo-simple-select-label">Pick Appointment</InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    value={newEvent.title}
+                                    onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value as string })}
+                                >
+                                    <MenuItem value="Cupping Therapy">Cupping Therapy</MenuItem>
+                                    <MenuItem value="Facial Treatment">Facial Treatment</MenuItem>
+                                    <MenuItem value="Hopi Ear Candles">Hopi Ear Candles</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </Box>
                     </div>
+                    <DateTimePicker className="date" value={newEvent.start} onChange={(value) => setNewEvent({ ...newEvent, start: value, end: (new Date(value.getFullYear(), value.getMonth(), value.getDate(), value.getHours() + 1, value.getMinutes())) })} />
+                    <Button className="button" onClick={handleAddEvent} startIcon={<EventNoteTwoToneIcon />} variant="contained" >Book Now!</Button>
                 </div>
                 <div className="table">
-                <Calendar localizer={localizer} events={allEvents} startAccessor="start"  endAccessor="end"/>
+                    <Calendar localizer={localizer} events={appointments} startAccessor="start" endAccessor="end" />
                 </div>
             </div>
         </div>
     )
 }
 
-// <DatePicker placeholderText="Start Date" selected={newEvent.start} onChange={(start:Date) => setNewEvent({ ...newEvent, start:start,end:start })} />
-// <TimePicker value={newEvent.time} onChange={(time) => setNewEvent({ ...newEvent, time:time})} />   
 export default CalendarFun;
 
-
-
-
-/*
-                <h1>Calendar</h1>
-                <div>
-                    <input  type="text" placeholder='Add Name'/>
-                    <input  type="text" placeholder='Add Phone Number'/>
-                    <label>
-                        Pick Treatment:
-                        <select placeholder='Add Name'>
-                            <option value="CuppingTherapy">Cupping Therapy</option>
-                            <option value="Facial Treatment">'Facial Treatment</option>
-                            <option value="Hopi Ear Candles">Hopi Ear Candles</option>
-                        </select>
-                    </label>
-                    <input type="submit" value="Book Now!" />
-                </div>
-
-*/ 

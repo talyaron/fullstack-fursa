@@ -10,13 +10,6 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-var __spreadArrays = (this && this.__spreadArrays) || function () {
-    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
-    for (var r = Array(s), k = 0, i = 0; i < il; i++)
-        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
-            r[k] = a[j];
-    return r;
-};
 exports.__esModule = true;
 require("./calendar.scss");
 /*
@@ -25,11 +18,15 @@ import { Button } from '@material-ui/core';
 import EventNoteTwoToneIcon from '@material-ui/icons/EventNoteTwoTone';
 //import {DatePicker} from '@material-ui/lab' ;
 //import "react-datepicker/dist/react-datepicker.css";
-//import DatePicker from "react-datepicker";
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';*/
+//import DatePicker from "react-datepicker";*/
+var Box_1 = require("@material-ui/core/Box");
+var TextField_1 = require("@material-ui/core/TextField");
+var FormControl_1 = require("@material-ui/core/FormControl");
+var Select_1 = require("@material-ui/core/Select");
+var InputLabel_1 = require("@material-ui/core/InputLabel");
+var MenuItem_1 = require("@material-ui/core/MenuItem");
+var core_1 = require("@material-ui/core");
+var EventNoteTwoTone_1 = require("@material-ui/icons/EventNoteTwoTone");
 var format_1 = require("date-fns/format");
 var getDay_1 = require("date-fns/getDay");
 var parse_1 = require("date-fns/parse");
@@ -42,7 +39,8 @@ require("react-datetime-picker/dist/DateTimePicker.css");
 require("react-datepicker/dist/react-datepicker.css");
 require("react-time-picker/dist/TimePicker.css");
 var hooks_1 = require("../../../app/hooks");
-var treatmentSlice_1 = require("../../../features/treatment/treatmentSlice");
+//import { selectTreatment } from '../../../features/treatment/treatmentSlice';
+var appointmentsSlice_1 = require("../../../features/appointment/appointmentsSlice");
 var locales = {
     "en-US": require("date-fns/locale/en-US")
 };
@@ -53,31 +51,16 @@ var localizer = react_big_calendar_1.dateFnsLocalizer({
     getDay: getDay_1["default"],
     locales: locales
 });
-var events = [
-    {
-        title: "Cupping  Therapy",
-        start: new Date(2022, 1, 25, 6, 30),
-        end: new Date(2022, 1, 25, 7, 30),
-        name: "Asma",
-        phone: "123"
-    },
-    {
-        title: "Hopi Candles",
-        start: new Date(2022, 1, 26, 5),
-        end: new Date(2022, 1, 26, 6),
-        name: "Asma",
-        phone: "123"
-    }
-];
 function CalendarFun() {
-    var treatment = hooks_1.useAppSelector(treatmentSlice_1.selectTreatment);
-    var _a = react_1.useState({ title: "", name: "", phone: "", start: new Date(), end: new Date() }), newEvent = _a[0], setNewEvent = _a[1];
-    var _b = react_1.useState(events), allEvents = _b[0], setAllEvents = _b[1];
+    // const treatment = useAppSelector(selectTreatment);
+    var appointments = hooks_1.useAppSelector(appointmentsSlice_1.selectAppointment);
+    var _a = react_1.useState({ title: "", start: new Date(), end: new Date(), name: "", phone: "" }), newEvent = _a[0], setNewEvent = _a[1];
+    var dispatch = hooks_1.useAppDispatch();
     function handleAddEvent() {
-        if (newEvent.name === "" || newEvent.title === "" || newEvent.phone === "")
+        if (newEvent.name === "" || newEvent.phone === "" || newEvent.title === "")
             alert("Your Info Is Incomplete!!");
         else {
-            var result = allEvents.find(function (appoint) {
+            var result = appointments.find(function (appoint) {
                 return appoint.start.getFullYear() === newEvent.start.getFullYear() &&
                     appoint.start.getMonth() === newEvent.start.getMonth() &&
                     appoint.start.getDate() === newEvent.start.getDate() &&
@@ -88,40 +71,26 @@ function CalendarFun() {
             if (result)
                 alert("Date Is Not Available!!");
             else
-                setAllEvents(__spreadArrays(allEvents, [newEvent]));
+                dispatch(appointmentsSlice_1.addAppointment(newEvent));
         }
-        console.log(allEvents);
     }
     return (react_1["default"].createElement("div", null,
         react_1["default"].createElement("div", { className: "calendar" },
             react_1["default"].createElement("h1", null, "Calendar"),
             react_1["default"].createElement("div", null,
-                react_1["default"].createElement("input", { type: "text", placeholder: 'Add Name', value: newEvent.name, onChange: function (e) { return setNewEvent(__assign(__assign({}, newEvent), { name: e.target.value })); } }),
-                react_1["default"].createElement("input", { type: "text", placeholder: 'Add Phone Number', value: newEvent.phone, onChange: function (e) { return setNewEvent(__assign(__assign({}, newEvent), { phone: e.target.value })); } }),
-                react_1["default"].createElement("input", { type: "text", placeholder: treatment, value: newEvent.title, onChange: function (e) { return setNewEvent(__assign(__assign({}, newEvent), { title: e.target.value })); } }),
-                react_1["default"].createElement("div", null,
-                    react_1["default"].createElement(react_datetime_picker_1["default"], { required: true, value: newEvent.start, onChange: function (value) { return setNewEvent(__assign(__assign({}, newEvent), { start: value, end: (new Date(value.getFullYear(), value.getMonth(), value.getDate(), value.getHours() + 1, value.getMinutes())) })); } }),
-                    react_1["default"].createElement("button", { onClick: handleAddEvent }, "Book Now!"))),
+                react_1["default"].createElement("div", { className: "info" },
+                    react_1["default"].createElement(TextField_1["default"], { required: true, className: "inputs", id: "standard-basic", label: "Add Name", variant: "standard", value: newEvent.name, onChange: function (e) { return setNewEvent(__assign(__assign({}, newEvent), { name: e.target.value })); } }),
+                    react_1["default"].createElement(TextField_1["default"], { required: true, className: "inputs", type: "number", id: "standard-basic", label: "Add Phone Number", variant: "standard", value: newEvent.phone, onChange: function (e) { return setNewEvent(__assign(__assign({}, newEvent), { phone: e.target.value })); } }),
+                    react_1["default"].createElement(Box_1["default"], { className: "box", sx: { minWidth: 170 } },
+                        react_1["default"].createElement(FormControl_1["default"], { fullWidth: true },
+                            react_1["default"].createElement(InputLabel_1["default"], { id: "demo-simple-select-label" }, "Pick Appointment"),
+                            react_1["default"].createElement(Select_1["default"], { labelId: "demo-simple-select-label", id: "demo-simple-select", value: newEvent.title, onChange: function (e) { return setNewEvent(__assign(__assign({}, newEvent), { title: e.target.value })); } },
+                                react_1["default"].createElement(MenuItem_1["default"], { value: "Cupping Therapy" }, "Cupping Therapy"),
+                                react_1["default"].createElement(MenuItem_1["default"], { value: "Facial Treatment" }, "Facial Treatment"),
+                                react_1["default"].createElement(MenuItem_1["default"], { value: "Hopi Ear Candles" }, "Hopi Ear Candles"))))),
+                react_1["default"].createElement(react_datetime_picker_1["default"], { className: "date", value: newEvent.start, onChange: function (value) { return setNewEvent(__assign(__assign({}, newEvent), { start: value, end: (new Date(value.getFullYear(), value.getMonth(), value.getDate(), value.getHours() + 1, value.getMinutes())) })); } }),
+                react_1["default"].createElement(core_1.Button, { className: "button", onClick: handleAddEvent, startIcon: react_1["default"].createElement(EventNoteTwoTone_1["default"], null), variant: "contained" }, "Book Now!")),
             react_1["default"].createElement("div", { className: "table" },
-                react_1["default"].createElement(react_big_calendar_1.Calendar, { localizer: localizer, events: allEvents, startAccessor: "start", endAccessor: "end" })))));
+                react_1["default"].createElement(react_big_calendar_1.Calendar, { localizer: localizer, events: appointments, startAccessor: "start", endAccessor: "end" })))));
 }
-// <DatePicker placeholderText="Start Date" selected={newEvent.start} onChange={(start:Date) => setNewEvent({ ...newEvent, start:start,end:start })} />
-// <TimePicker value={newEvent.time} onChange={(time) => setNewEvent({ ...newEvent, time:time})} />   
 exports["default"] = CalendarFun;
-/*
-                <h1>Calendar</h1>
-                <div>
-                    <input  type="text" placeholder='Add Name'/>
-                    <input  type="text" placeholder='Add Phone Number'/>
-                    <label>
-                        Pick Treatment:
-                        <select placeholder='Add Name'>
-                            <option value="CuppingTherapy">Cupping Therapy</option>
-                            <option value="Facial Treatment">'Facial Treatment</option>
-                            <option value="Hopi Ear Candles">Hopi Ear Candles</option>
-                        </select>
-                    </label>
-                    <input type="submit" value="Book Now!" />
-                </div>
-
-*/ 
