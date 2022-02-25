@@ -73,9 +73,9 @@ exports.getAllUsers = async (req, res) => {
 
 exports.sendInvitation = async (req, res) => {
     console.log("send invitation!");
-    const { meetingAdmin, friendList } = req.body;
+    const { meetingAdmin, friendList, id } = req.body;
     console.log(meetingAdmin, friendList);
-    
+
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -89,7 +89,7 @@ exports.sendInvitation = async (req, res) => {
             from: meetingAdmin.email,
             to: _user.email,
             subject: `${meetingAdmin.email} send you invitation for IBring`,
-            text: 'Choose stuff to bring\n http://localhost:3000/List'
+            text: `Choose stuff to bring\n http://localhost:3000/List/${id}`
         };
 
         transporter.sendMail(mailOptions, function (error, info) {

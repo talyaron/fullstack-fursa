@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import { logintAsync } from '../../../features/userLogin/userLoginReducer';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 
+import { Link } from "react-router-dom";
+
 function Login() {
     const userLogin = useAppSelector(state => state.logged);
     const dispatch = useAppDispatch();
@@ -13,7 +15,7 @@ function Login() {
     const nav = useNavigate();
 
     useEffect(() => {
-        if (userLogin.status === "logged"){
+        if (userLogin.status === "logged") {
             nav('/home');
         }
     }, [value])
@@ -40,10 +42,22 @@ function Login() {
                 <form onSubmit={handleEmailPassLogin} className='loginWithEmailAndPass' >
                     <input className='templateInput EmailRegistered' placeholder="Email" type="email" required onKeyUp={(ev: any) => { setEmail(ev.target.value) }} />
                     <input className='templateInput passRegistered' placeholder="Password" type="password" required onKeyUp={(ev: any) => { setPass(ev.target.value) }} />
-                    <label className='haveAccount'>Have no account! <span>Sign up here</span></label>
+                    <label className='haveAccount'>Have no account! <span><Link to="/register">Sign up here</Link></span></label>
                     <input className='templateButton signUpButton' type="submit" value="Login" />
                 </form>
             </div>
+            {userLogin.status === 'loading' ?
+                <div className='loading'>
+                    <p>Loading</p>
+                </div> :
+                userLogin.status === 'failed' ?
+                    <div className='loading'>
+                        <p>Failed</p>
+                    </div> :
+                    <div className='loading'>
+                        <p></p>
+                    </div>
+            }
         </div>
     );
 }

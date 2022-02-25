@@ -16,9 +16,6 @@ function Home() {
     useEffect(() => {
         if (userLogin.status === "logged") {
             dispatch(listAsync(userLogin.value.email));
-            /**
-             * save all data in redux
-             */
         }
         else {
             nav('/login')

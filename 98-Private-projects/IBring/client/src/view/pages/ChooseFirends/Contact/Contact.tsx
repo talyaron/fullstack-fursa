@@ -31,7 +31,8 @@ function Contact() {
         console.log(selectedFriends);
     }, [selectedFriends]);
 
-    function handleTypeList() {
+    function handleTypeList(ev: any) {
+        ev.preventDefault();
         if (userLogin && listInfo != undefined) {
             const listData = {
                 email: userLogin.value.email,
@@ -46,20 +47,19 @@ function Contact() {
                 console.log(listData.details)
                 dispatch(addWhoIsThere(selectedFriends));
                 console.log(data.data.id)
+                handleSendInvitation(data.data.id);
                 nav(`/list/${data.data.id}`);
             });
         }
     }
 
-    function handleSendInvitation(ev: any) {
-        ev.preventDefault();
+    function handleSendInvitation(id: string) {
         console.log("outSide form!");
         if (userLogin) {
             axios.post("/user/sendInvitation", {
-                meetingAdmin: userLogin.value, friendList: selectedFriends
+                meetingAdmin: userLogin.value, friendList: selectedFriends, id: id
             }).then(data => {
                 console.log(data);
-                handleTypeList();
             });
         }
     }
@@ -78,7 +78,7 @@ function Contact() {
             <div className="mainContent">
                 <label className='marginTitleNormal'>Please choose friends</label>
 
-                <form onSubmit={handleSendInvitation} className="friendsList">
+                <form onSubmit={handleTypeList} className="friendsList">
                     {contact.map((elem: any, index) => {
                         return (
                             <div key={index} className="contact">
