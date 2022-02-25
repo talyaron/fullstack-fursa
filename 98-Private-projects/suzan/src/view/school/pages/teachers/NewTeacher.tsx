@@ -5,13 +5,47 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import react from 'react';
+import axios from 'axios';
+import react, { useState } from 'react';
 import SchoolResponsiveAppBar from '../../components/header/AppBar';
 import './NewTeacher.scss';
+import { Link } from 'react-router-dom';
 
 export default function NewTeacher() {
-    function handleSubmit() {
 
+    const defaultValues = {
+        firstName: "",
+        lastName: "",
+        teacherId: "",
+        phone: "",
+        email: ""
+    }
+    const [formValues, setFormValues] = useState(defaultValues);
+
+    function handleFirstName(ev: any) {
+        console.log(ev.target.value);
+        setFormValues({ ...formValues, firstName: ev.target.value });
+    }
+
+    function handleLastName(ev: any) {
+        setFormValues({ ...formValues, lastName: ev.target.value });
+    }
+
+    function handleTeacherId(ev: any) {
+        setFormValues({ ...formValues, teacherId: ev.target.value });
+    }
+
+    function handleEmail(ev: any) {
+        setFormValues({ ...formValues, email: ev.target.value });
+    }
+
+    function handlePhone(ev: any) {
+        setFormValues({ ...formValues, phone: ev.target.value });
+    }
+
+    function handleSubmit() {
+        axios.post('http://localhost:3004/schoolTeachers', { 'info': formValues })
+            .then(({ data }) => console.log(data));
     }
 
     return (
@@ -36,6 +70,7 @@ export default function NewTeacher() {
                                     id="outlined-required"
                                     label="Required"
                                     size='small'
+                                    onKeyUp={handleFirstName}
                                 />
                             </CardContent>
                             <CardContent>
@@ -47,6 +82,7 @@ export default function NewTeacher() {
                                     id="outlined-required"
                                     label="Required"
                                     size='small'
+                                    onKeyUp={handleTeacherId}
                                 />
                             </CardContent>
 
@@ -59,6 +95,7 @@ export default function NewTeacher() {
                                     id="outlined-required"
                                     label="Required"
                                     size='small'
+                                    onKeyUp={handleEmail}
                                 />
                             </CardContent>
 
@@ -73,6 +110,7 @@ export default function NewTeacher() {
                                     id="outlined-required"
                                     label="Required"
                                     size='small'
+                                    onKeyUp={handleLastName}
                                 />
                             </CardContent>
                             <CardContent>
@@ -84,14 +122,18 @@ export default function NewTeacher() {
                                     id="outlined-required"
                                     label="Required"
                                     size='small'
+                                    onKeyUp={handlePhone}
                                 />
                             </CardContent>
                         </CardContent>
                     </CardContent>
 
-                    <CardActions className='actions'>
-                        <Button variant="contained" size="large">Submit</Button>
-                    </CardActions>
+                    {/* <CardActions className='actions'> */}
+                    <Link to='../teachers'>
+                        <Button variant="contained" size="large" onClick={handleSubmit}>Submit</Button>
+                    </Link>
+
+                    {/* </CardActions> */}
 
                 </Card>
             </div>

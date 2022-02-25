@@ -10,6 +10,8 @@ import Autocomplete from '@mui/material/Autocomplete';
 import Checkbox from '@mui/material/Checkbox';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import { useAppSelector } from '../../../../app/hooks';
+import { classStudents } from '../../../../app/reducers/school/ClassDetailsSlice';
 
 interface dialogProps {
     open: any;
@@ -26,6 +28,8 @@ const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 export default function NewCourseDialog(props: dialogProps) {
     const { open, setOpen } = props
+
+    const students = useAppSelector(classStudents);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -48,7 +52,7 @@ export default function NewCourseDialog(props: dialogProps) {
                         id="checkboxes-tags-demo"
                         options={students}
                         disableCloseOnSelect
-                        getOptionLabel={(option) => option.name}
+                        getOptionLabel={(option) => option.first.concat('', option.last)}
                         renderOption={(props, option, { selected }) => (
                             <li {...props}>
                                 <Checkbox
@@ -57,7 +61,7 @@ export default function NewCourseDialog(props: dialogProps) {
                                     style={{ marginRight: 8 }}
                                     checked={selected}
                                 />
-                                {option.name}
+                                {option.first.concat('', option.last)}
                             </li>
                         )}
                         style={{ width: 500 }}

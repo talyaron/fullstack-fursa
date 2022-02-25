@@ -5,13 +5,67 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import react from 'react';
+import { useState } from 'react';
 import SchoolResponsiveAppBar from '../../components/header/AppBar';
 import './NewStudent.scss';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export default function NewStudent() {
-    function handleSubmit() {
+    const defaultValues = {
+        firstName: "",
+        lastName: "",
+        father: "",
+        mother: "",
+        studentId: "",
+        phone: "",
+        fphone: "",
+        mphone: "",
+        email: ""
 
+    }
+    const [formValues, setFormValues] = useState(defaultValues);
+
+    function handleFirstName(ev: any) {
+        console.log(ev.target.value);
+        setFormValues({ ...formValues, firstName: ev.target.value });
+    }
+
+    function handleLastName(ev: any) {
+        setFormValues({ ...formValues, lastName: ev.target.value });
+    }
+
+    function handleStudentId(ev: any) {
+        setFormValues({ ...formValues, studentId: ev.target.value });
+    }
+
+    function handleFatherName(ev: any) {
+        setFormValues({ ...formValues, father: ev.target.value });
+    }
+
+    function handleMotherName(ev: any) {
+        setFormValues({ ...formValues, mother: ev.target.value });
+    }
+
+    function handleEmail(ev: any) {
+        setFormValues({ ...formValues, email: ev.target.value });
+    }
+
+    function handlePhone(ev: any) {
+        setFormValues({ ...formValues, phone: ev.target.value });
+    }
+
+    function handleFPhone(ev: any) {
+        setFormValues({ ...formValues, fphone: ev.target.value });
+    }
+
+    function handleMPhone(ev: any) {
+        setFormValues({ ...formValues, mphone: ev.target.value });
+    }
+
+    function handleSubmit() {
+        axios.post('http://localhost:3004/schoolStudents', { 'info': formValues })
+            .then(({ data }) => console.log(data));
     }
 
     return (
@@ -36,6 +90,7 @@ export default function NewStudent() {
                                     id="outlined-required"
                                     label="Required"
                                     size='small'
+                                    onKeyUp={handleFirstName}
                                 />
                             </CardContent>
                             <CardContent>
@@ -47,6 +102,7 @@ export default function NewStudent() {
                                     id="outlined-required"
                                     label="Required"
                                     size='small'
+                                    onKeyUp={handleStudentId}
                                 />
                             </CardContent>
 
@@ -59,6 +115,7 @@ export default function NewStudent() {
                                     id="outlined-required"
                                     label="Required"
                                     size='small'
+                                    onKeyUp={handleFatherName}
                                 />
                             </CardContent>
 
@@ -71,6 +128,7 @@ export default function NewStudent() {
                                     id="outlined-required"
                                     label="Required"
                                     size='small'
+                                    onKeyUp={handleMotherName}
                                 />
                             </CardContent>
                             <CardContent>
@@ -78,10 +136,10 @@ export default function NewStudent() {
                                     email:
                                 </Typography>
                                 <TextField
-                                    required
                                     id="outlined-required"
                                     label="Required"
                                     size='small'
+                                    onKeyUp={handleEmail}
                                 />
                             </CardContent>
 
@@ -96,6 +154,7 @@ export default function NewStudent() {
                                     id="outlined-required"
                                     label="Required"
                                     size='small'
+                                    onKeyUp={handleLastName}
                                 />
                             </CardContent>
                             <CardContent>
@@ -107,6 +166,7 @@ export default function NewStudent() {
                                     id="outlined-required"
                                     label="Required"
                                     size='small'
+                                    onKeyUp={handlePhone}
                                 />
                             </CardContent>
                             <CardContent>
@@ -118,6 +178,7 @@ export default function NewStudent() {
                                     id="outlined-required"
                                     label="Required"
                                     size='small'
+                                    onKeyUp={handleFPhone}
                                 />
                             </CardContent>
                             <CardContent>
@@ -129,14 +190,18 @@ export default function NewStudent() {
                                     id="outlined-required"
                                     label="Required"
                                     size='small'
+                                    onKeyUp={handleMPhone}
                                 />
                             </CardContent>
                         </CardContent>
                     </CardContent>
 
-                    <CardActions className='actions'>
-                        <Button variant="contained" size="large">Submit</Button>
-                    </CardActions>
+                    {/* <CardActions className='actions'> */}
+                        <Link to='../students'>
+                            <Button variant="contained" size="large" onClick={handleSubmit}>Submit</Button>
+                        </Link>
+
+                    {/* </CardActions> */}
 
                 </Card>
             </div>

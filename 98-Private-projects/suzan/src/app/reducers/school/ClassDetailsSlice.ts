@@ -75,7 +75,7 @@ export const getTeachersAsync = createAsyncThunk (
 );
 
 export const classReducer = createSlice ({
-    name: 'courses',
+    name: 'classDetails',
     initialState,
     reducers: {
 

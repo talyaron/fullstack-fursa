@@ -5,6 +5,7 @@ import courseCardReducer from './reducers/student/CourseCardSlice';
 import teacherCourseCardReducer from './reducers/teacher/CourseCardSlice';
 import schoolClassCardReducer from './reducers/school/ClassCardSlice';
 import classReducer from './reducers/school/ClassDetailsSlice';
+import schoolReducer from './reducers/school/SchoolSlice';
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
     teacherCourseCard: teacherCourseCardReducer,
     schoolClassCard: schoolClassCardReducer,
     classDetails: classReducer,
+    schoolData: schoolReducer,
   },
 });
 

@@ -11,7 +11,7 @@ import ListItemText from '@mui/material/ListItemText';
 import List from '@mui/material/List';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import NewCourseDialog from '../newCourseDialog/NewCourseDialog';
 import EditStudentsDialog from '../editStudentsDialog/EditStudentsDialog';
 import { useAppSelector, useAppDispatch } from '../../../../app/hooks';
@@ -71,6 +71,8 @@ function TabPanel(props: TabPanelProps) {
     );
 }
 
+
+
 function a11yProps(index: number) {
     return {
         id: `simple-tab-${index}`,
@@ -84,11 +86,13 @@ export default function ClassTabsBar() {
     const [editTeacherBtn, setEditTeacherBtn] = useState('Edit');
     const [openCourseDialog, setOpenCourseDialog] = useState(false);
     const [openStudentsDialog, setOpenStudentsDialog] = useState(false);
-    const [newTeacherName, setNewTeacherName] = useState('');
+    // const [newTeacherName, setNewTeacherName] = useState('');
     const dispatch = useAppDispatch();
-    dispatch(getCoursesAsync());
-    dispatch(getStudentsAsync());
-    dispatch(getTeachersAsync());
+    useEffect(() => {
+        dispatch(getCoursesAsync());
+        dispatch(getStudentsAsync());
+        dispatch(getTeachersAsync());
+    }, [])
     const courses = useAppSelector(classCourses);
     const students = useAppSelector(classStudents);
     const teachers = useAppSelector(classTeachers);
@@ -100,7 +104,7 @@ export default function ClassTabsBar() {
 
     function handleTeacherChange(ev: any, value: any) {
         console.log(value);
-        setNewTeacherName(value);
+        // setNewTeacherName(value);
     }
 
     function editTeacher() {
