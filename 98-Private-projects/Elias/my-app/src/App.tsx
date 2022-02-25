@@ -29,6 +29,7 @@ function App() {
         <Route path="/TravelInfo2" element={< TravelInfo2/>} />
         <Route path="/Signup" element={<Signup />} />
         <Route path="/ViewList" element={<ViewList />} />
+
       </Routes>
       <Bottom_Nav />
     </BrowserRouter>
