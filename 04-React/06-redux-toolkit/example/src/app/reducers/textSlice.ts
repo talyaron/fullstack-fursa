@@ -1,13 +1,13 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState, AppThunk } from '../../app/store';
+import { RootState, AppThunk } from '../store';
 import {getJoke} from './textApi';
 
-export interface CounterState {
+export interface TextProps {
   text: string;
   status: 'idle' | 'loading' | 'failed';
 }
 
-const initialState: CounterState = {
+const initialState: TextProps = {
   text: 'starting...',
   status: 'idle',
 };
