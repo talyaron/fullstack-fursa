@@ -151,7 +151,7 @@ export default function NewRecipe() {
     }
 
     function handleSave() {
-        // //Redux
+        //Redux
 
         dispatch(updateRecipe(recipe))
         if (to === '/User') {
@@ -173,6 +173,10 @@ export default function NewRecipe() {
 
     function handleTo() {
         dispatch(updateName('/NewRecipe'));
+    }
+
+    function handleImage(image:any){
+        console.log(image)
     }
 
     return (
@@ -214,9 +218,9 @@ export default function NewRecipe() {
                                 <InsertPhotoIcon sx={{ fontSize: 250, color: '#b5739d' }} />
                                 {/* <input type="file" name="myImage" onChange={ChooseImage} /> */}
                                 {/* <img src="" alt="image" /> */}
-                                {/* {selectedImage && (
+                                {selectedImage && (
                                     <div>
-                                        <img alt="not fount" width={"250px"} src={URL.createObjectURL(selectedImage)}/>
+                                        <img alt="not fount" width={"250px"} src={URL.createObjectURL(selectedImage)} onChange={(ev:any) => handleImage(URL.createObjectURL(selectedImage))}/>
                                         <br />
                                         <button onClick={() => setSelectedImage(null)}>Remove</button>
                                     </div>
@@ -231,7 +235,7 @@ export default function NewRecipe() {
                                         console.log(event.target.files[0]);
                                         setSelectedImage(event.target.files[0]);
                                     }}
-                                /> */}
+                                />
                             </div>
                             <h2 className='by'>By : Dima Abbas</h2>
                             <div className='item'>

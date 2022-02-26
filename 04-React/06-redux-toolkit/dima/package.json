@@ -61,6 +61,7 @@
   },
   "devDependencies": {
     "@types/react-burger-menu": "^2.8.3",
+    "@types/react-native": "^0.66.16",
     "@types/styled-components": "^5.1.23"
   }
 }

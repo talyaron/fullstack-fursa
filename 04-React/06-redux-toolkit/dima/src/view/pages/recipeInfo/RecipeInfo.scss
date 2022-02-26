@@ -100,6 +100,26 @@
                         grid-column: 3 / 6;
                     }
                 }
+
+            }
+        }
+
+        .info3{
+            float: left;
+            padding-left: 15%;
+            text-align: left;
+            color: #b5739d;
+            width: 90vw;
+
+            h1{
+                max-width: 100%;
+                line-height: 1.07;
+                font-size: 2em;
+                color: #b5739d;
+                font-style: italic;
+                font-weight: 500;
+                border-bottom: 2px solid #b5739d;
+                padding-bottom: 1rem;
             }
         }
     }
