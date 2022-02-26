@@ -10,6 +10,8 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import TextField from '@mui/material/TextField/TextField';
 import Stack from '@mui/material/Stack';
 import axios from 'axios'
+import { AddReservation } from '../../../app/reducers/reservationsReducer';
+import { useAppSelector, useAppDispatch } from '../../../app/hooks';
 
 interface details {
     restaurantID: number;
@@ -18,6 +20,7 @@ interface details {
 }
 
 function ReserveModal(props: details) {
+    const dispatch = useAppDispatch()
     const [reserveDate, setReserveDate] = React.useState<Date | null>(new Date());
     const [reserveTime, setReserveTime] = useState<Date | null>(new Date())
     const style = {
@@ -32,13 +35,10 @@ function ReserveModal(props: details) {
         p: 4,
     };
     function handleReserve() {
-        axios.post('http://localhost:3004/reservations/', {
+        dispatch(AddReservation({
             restID: props.restaurantID, hour: reserveTime?.getHours(), year: reserveDate?.getFullYear(),
             min: reserveTime?.getMinutes(), day: reserveDate?.getDate(), month: reserveDate?.getMonth()
-        }
-        ).then(({ data }) => {
-            console.log(data)
-        })
+        }))
         props.setOpenModal(false)
     }
     return (

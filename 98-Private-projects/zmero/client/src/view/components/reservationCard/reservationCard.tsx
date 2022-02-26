@@ -20,18 +20,17 @@ function ReservationCard(props: cardProp) {
     const restaurants = useAppSelector(getAllRestaurants)
     const dispatch = useAppDispatch()
     const restaurant = restaurants.filter((rest, index) => {
-        if (rest.id === props.id)
+        if (rest.id === props.restID)
             return rest
     })
     function CancelReserve(e: any) {
         e.preventDefault();
         dispatch(cancelReservations(props.id))
         dispatch(fetchUserReservations())
-
-
     }
     let img = "";
     let title = ""
+    console.log(restaurant)
     if (restaurant.length != 0) {
         img = restaurant[0].image;
         title = restaurant[0].name;

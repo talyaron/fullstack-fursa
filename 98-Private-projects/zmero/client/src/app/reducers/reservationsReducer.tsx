@@ -11,6 +11,16 @@ interface Reservation {
     day: number;
     restID: number;
 }
+
+interface Reservation2 {
+    hour: number | undefined;
+    min: number | undefined;
+    year: number | undefined;
+    month: number | undefined;
+    day: number | undefined;
+    restID: number | undefined;
+}
+
 interface Reservations {
     reservations: Array<Reservation>
     status: 'idle' | 'loading' | 'failed';
@@ -40,6 +50,20 @@ export const cancelReservations = createAsyncThunk(
     async (reserveationID: number, thunkAPI) => {
         try {
             const response = await axios.delete(`http://localhost:3004/Reservations/${reserveationID}`)
+            const data: any = response.data
+            return data
+        } catch (e) {
+            thunkAPI.rejectWithValue(e)
+        }
+
+    }
+);
+
+export const AddReservation = createAsyncThunk(
+    'reservation/AddReservation',
+    async (Reserve: Reservation2, thunkAPI) => {
+        try {
+            const response = await axios.post(`http://localhost:3004/Reservations/`, Reserve)
             const data: any = response.data
             return data
         } catch (e) {
