@@ -74,7 +74,7 @@ export default function LabelBottomNavigation() {
           label="Market"
           value="Market"
           onClick={() => {
-            Navigate("/market");
+            Navigate("/store");
           }}
           icon={<LocalGroceryStoreIcon style={{ fontSize: 50 }} />}
         />

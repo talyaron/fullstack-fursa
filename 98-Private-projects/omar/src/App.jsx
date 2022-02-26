@@ -1,4 +1,5 @@
 import './App.css';
+import React, { useState } from 'react';
 import {BrowserRouter,Routes,Route} from "react-router-dom";
 import Header from './view/components/Header';
 import SignUp from './view/components/SignUp';
@@ -22,20 +23,22 @@ import Plandecider from './view/components/Plandecider';
 import Music from './view/components/Music';
 import Exercises from './view/components/Exercises';
 import Duration from './view/components/Duration';
-import { Counter } from './features/counter/Counter';
-import Test from './view/components/Test';
-import Market from './view/components/Market';
+// import Test from './view/components/Test';
+// import Market from './view/components/Market'
+import Store from './view/Store/Store.tsx'
+import Cart from './view/cart/cart.tsx'
 function App() {
+  const [cartItems, setcartItems] = useState([]);
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-        <Route exact path="/market" element={<Market/>}/>
-        <Route exact path="/test" element={<Test/>}/>
+        <Route exact path="/cart" element={<Cart cartItems={cartItems} setcartItems={setcartItems} />}/>
+        <Route exact path="/store" element={<Store cartItems={cartItems} setcartItems={setcartItems} />} />
+        {/* <Route exact path="/market" element={<Market/>}/> */}
         <Route exact path="/music" element={<Music/>}/>
         <Route exact path="/exercises" element={<Exercises/>}/>
         <Route exact path="/duration" element={<Duration/>}/>
-        <Route exact path="/test" element={<Counter/>}/>
         <Route exact path="/plandecider" element={<Plandecider/>}/>
         <Route exact path="/food" element={<Food/>}/>
         <Route exact path="/profile" element={<Profile/>}/>

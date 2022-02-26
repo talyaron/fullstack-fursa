@@ -75,7 +75,7 @@ export default function AccountMenu() {
       >
         <MenuItem>
           <Avatar /> 
-          <Link className="linkStyle" to='/profile'>Profile</Link>
+          <Link className="linkStyle" to='/profile'>Profile1</Link>
         </MenuItem>
         {/* <MenuItem>
           <Avatar /> My account
