@@ -34,7 +34,8 @@ function CreateGroup(){
            }
            for(let memberId of membersArray){
                if(arr.findIndex((id:any) => memberId===id) == -1){
-                alert(`${memberId.id} doesn't exist`);
+                console.log("not found")
+                alert("doesn't exist");
                 return
             }
            }
