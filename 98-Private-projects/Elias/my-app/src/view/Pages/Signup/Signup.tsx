@@ -2,7 +2,7 @@
 import { useEffect ,useState} from 'react';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { changeNavText } from '../../../app/reducer/NavTextReducer';
-import { GetUser, getUserInfoAsync} from '../../../app/reducer/UserReducer';
+import { login,GetUser, getUserInfoAsync} from '../../../app/reducer/UserReducer';
 import './Signup.scss';
 
 //import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -45,13 +45,14 @@ function Signup(props: any) {
         // },[]);
             dispatch(getUserInfoAsync());
 
+
     }
 
     return (
         <div className='wrapper'>
             <div >signup to save list</div>
             <div className='imagTeampet'>
-                <img src="" alt="" />
+                {/* <img src="" alt="" /> */}
             </div>
             <div className='loginOp'>
                 <button className='googlebuttonText'>Google</button>

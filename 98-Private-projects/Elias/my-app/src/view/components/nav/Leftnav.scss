@@ -4,21 +4,26 @@ ul{
     //justify-content:top space-around;
     flex-flow: row nowrap;
     z-index: 5;
+
     li{
-        height: 100%;
-        width: 100%;
-        padding: 0px 10px;
+        padding-top: 10px;
         padding-bottom: 20px;
-        color: white;
         color: #020205;
         font-weight: 600;
         font-family: Poppins;
+        &:hover{
+            background-color:#afa7fb ;
+        }
 
     }
 
     @media (max-width: 768px) {
         flex-flow: column  nowrap;  
         background-color: #D6D2FC;
+        background-image: url('../../../icons/Group 143.png') ;
+        background-size:10em;
+        background-repeat: no-repeat;
+        background-position: center top;
         position: fixed;
         transition:  0.3s linear;
         transform: translateX(0);     

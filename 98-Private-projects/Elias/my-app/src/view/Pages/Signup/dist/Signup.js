@@ -33,8 +33,7 @@ function Signup(props) {
     }
     return (React.createElement("div", { className: 'wrapper' },
         React.createElement("div", null, "signup to save list"),
-        React.createElement("div", { className: 'imagTeampet' },
-            React.createElement("img", { src: "", alt: "" })),
+        React.createElement("div", { className: 'imagTeampet' }),
         React.createElement("div", { className: 'loginOp' },
             React.createElement("button", { className: 'googlebuttonText' }, "Google"),
             "or",

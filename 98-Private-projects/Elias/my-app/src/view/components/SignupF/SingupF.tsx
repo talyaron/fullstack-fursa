@@ -4,7 +4,6 @@ import SignupIcon from '../../../icons/SignupIcon.png'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../../app/hooks';
 import { GetUser } from '../../../app/reducer/UserReducer';
-import { dividerClasses } from '@mui/material';
 
 
 const SingupF = () => {
