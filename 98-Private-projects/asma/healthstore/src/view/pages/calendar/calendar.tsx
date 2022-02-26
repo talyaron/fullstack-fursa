@@ -18,7 +18,7 @@ import format from "date-fns/format";
 import getDay from "date-fns/getDay";
 import parse from "date-fns/parse";
 import startOfWeek from "date-fns/startOfWeek";
-import React, { useState } from "react";
+import React, { useState ,useEffect } from "react";
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 //import DatePicker from "react-datepicker";
@@ -29,8 +29,9 @@ import "react-datepicker/dist/react-datepicker.css";
 import 'react-time-picker/dist/TimePicker.css';
 import { useAppSelector, useAppDispatch } from '../../../app/hooks';
 //import { selectTreatment } from '../../../features/treatment/treatmentSlice';
-import { addAppointment, selectAppointment } from '../../../features/appointment/appointmentsSlice';
+import { addAppointment, getAppointmentsAsyn, selectAppointment } from '../../../features/appointment/appointmentsSlice';
 import { appointment } from '../../../features/appointment/appointmentsSlice';
+import axios from 'axios';
 
 const locales = {
     "en-US": require("date-fns/locale/en-US"),
@@ -49,25 +50,60 @@ function CalendarFun() {
     const [newEvent, setNewEvent] = useState({ title: "", start: new Date(), end: new Date(), name: "", phone: "" });
     const appointments = useAppSelector(selectAppointment);
     const dispatch = useAppDispatch();
+    
+
+
+    useEffect(() => {
+        dispatch(getAppointmentsAsyn());
+
+        //console.log(date.getFullYear());
+
+        //axios.get('http://localhost:3004/AppointmentData').then(({data})=>console.log(data));
+
+    }, []);
+
+
+
 
     function handleAddEvent() {
         if (newEvent.name === "" || newEvent.phone === "" || newEvent.title === "")
             alert("Your Info Is Incomplete!!");
 
         else {
+        //     dispatch(addAppointment(newEvent));
+        //     console.log(appointments);
+        //      //console.log(newEvent.start);
+        //      var json ="2022-02-28T02:00:00.000Z";
+        //      var date=new Date(JSON.parse(json));
+        //      console.log(date);
+        //      //console.log(date.getFullYear());
+
+           
             const result: appointment | undefined = appointments.find((appoint: appointment) =>
-                appoint.start.getFullYear() === newEvent.start.getFullYear() &&
-                appoint.start.getMonth() === newEvent.start.getMonth() &&
-                appoint.start.getDate() === newEvent.start.getDate() &&
-                (appoint.start.getHours() === newEvent.start.getHours() ||
-                    (appoint.end.getHours() === newEvent.start.getHours() && appoint.end.getMinutes() > newEvent.start.getMinutes()) ||
-                    (appoint.start.getHours() === newEvent.end.getHours() && appoint.start.getMinutes() < newEvent.end.getMinutes()))
-            )
+           
+            // //var json1 = appoint.start;
+            // //var json2 = appoint.end;
+            // var dateStart = new Date(appoint.start)
+            // //console.log(json1);
+            // console.log(dateStart); 
+            // var dateEnd = (new Date(appoint.end));
+            // console.log(dateEnd); 
+
+            (new Date(appoint.start)).getFullYear() === newEvent.start.getFullYear() &&
+            (new Date(appoint.start)).getMonth() === newEvent.start.getMonth() &&
+            (new Date(appoint.start)).getDate() === newEvent.start.getDate() &&
+                ((new Date(appoint.start)).getHours() === newEvent.start.getHours() ||
+                    ((new Date(appoint.end)).getHours() === newEvent.start.getHours() && (new Date(appoint.end)).getMinutes() > newEvent.start.getMinutes()) ||
+                    ((new Date(appoint.start)).getHours() === newEvent.end.getHours() && (new Date(appoint.start)).getMinutes() < newEvent.end.getMinutes()))
+           )
             if (result)
                 alert("Date Is Not Available!!");
 
-            else
-                dispatch(addAppointment(newEvent));
+            else{ 
+                // console.log(newEvent);
+                // console.log(appointments);
+                dispatch(addAppointment({ title: newEvent.title, start: newEvent.start.toJSON(), end:newEvent.end.toJSON(), name: newEvent.name, phone: newEvent.phone }));
+            }
         }
     }
 

@@ -57,22 +57,44 @@ function CalendarFun() {
     var _a = react_1.useState({ title: "", start: new Date(), end: new Date(), name: "", phone: "" }), newEvent = _a[0], setNewEvent = _a[1];
     var appointments = hooks_1.useAppSelector(appointmentsSlice_1.selectAppointment);
     var dispatch = hooks_1.useAppDispatch();
+    react_1.useEffect(function () {
+        dispatch(appointmentsSlice_1.getAppointmentsAsyn());
+        //console.log(date.getFullYear());
+        //axios.get('http://localhost:3004/AppointmentData').then(({data})=>console.log(data));
+    }, []);
     function handleAddEvent() {
         if (newEvent.name === "" || newEvent.phone === "" || newEvent.title === "")
             alert("Your Info Is Incomplete!!");
         else {
+            //     dispatch(addAppointment(newEvent));
+            //     console.log(appointments);
+            //      //console.log(newEvent.start);
+            //      var json ="2022-02-28T02:00:00.000Z";
+            //      var date=new Date(JSON.parse(json));
+            //      console.log(date);
+            //      //console.log(date.getFullYear());
             var result = appointments.find(function (appoint) {
-                return appoint.start.getFullYear() === newEvent.start.getFullYear() &&
-                    appoint.start.getMonth() === newEvent.start.getMonth() &&
-                    appoint.start.getDate() === newEvent.start.getDate() &&
-                    (appoint.start.getHours() === newEvent.start.getHours() ||
-                        (appoint.end.getHours() === newEvent.start.getHours() && appoint.end.getMinutes() > newEvent.start.getMinutes()) ||
-                        (appoint.start.getHours() === newEvent.end.getHours() && appoint.start.getMinutes() < newEvent.end.getMinutes()));
+                // //var json1 = appoint.start;
+                // //var json2 = appoint.end;
+                // var dateStart = new Date(appoint.start)
+                // //console.log(json1);
+                // console.log(dateStart); 
+                // var dateEnd = (new Date(appoint.end));
+                // console.log(dateEnd); 
+                return (new Date(appoint.start)).getFullYear() === newEvent.start.getFullYear() &&
+                    (new Date(appoint.start)).getMonth() === newEvent.start.getMonth() &&
+                    (new Date(appoint.start)).getDate() === newEvent.start.getDate() &&
+                    ((new Date(appoint.start)).getHours() === newEvent.start.getHours() ||
+                        ((new Date(appoint.end)).getHours() === newEvent.start.getHours() && (new Date(appoint.end)).getMinutes() > newEvent.start.getMinutes()) ||
+                        ((new Date(appoint.start)).getHours() === newEvent.end.getHours() && (new Date(appoint.start)).getMinutes() < newEvent.end.getMinutes()));
             });
             if (result)
                 alert("Date Is Not Available!!");
-            else
-                dispatch(appointmentsSlice_1.addAppointment(newEvent));
+            else {
+                // console.log(newEvent);
+                // console.log(appointments);
+                dispatch(appointmentsSlice_1.addAppointment({ title: newEvent.title, start: newEvent.start.toJSON(), end: newEvent.end.toJSON(), name: newEvent.name, phone: newEvent.phone }));
+            }
         }
     }
     return (react_1["default"].createElement("div", null,

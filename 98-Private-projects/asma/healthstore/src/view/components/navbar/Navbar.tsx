@@ -15,7 +15,7 @@ function Navbar() {
     <>
       <IconContext.Provider value={{ color: '#fff' }}>
         <div className='navbar'>
-        <Link to="/"><img src="https://www.pngall.com/wp-content/uploads/2016/06/Health-PNG-File.png" ></img> </Link> 
+        <Link to="/"><img src='./logo.png' ></img> </Link> 
           <Link to='#' className='menu-bars'>
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
