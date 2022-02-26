@@ -21,11 +21,11 @@ import startOfWeek from "date-fns/startOfWeek";
 import React, { useState } from "react";
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import DatePicker from "react-datepicker";
+//import DatePicker from "react-datepicker";
 import DateTimePicker from 'react-datetime-picker';
 import "react-datetime-picker/dist/DateTimePicker.css";
 import "react-datepicker/dist/react-datepicker.css";
-import TimePicker, { TimePickerValue } from 'react-time-picker';
+//import TimePicker, { TimePickerValue } from 'react-time-picker';
 import 'react-time-picker/dist/TimePicker.css';
 import { useAppSelector, useAppDispatch } from '../../../app/hooks';
 //import { selectTreatment } from '../../../features/treatment/treatmentSlice';
@@ -46,11 +46,8 @@ const localizer = dateFnsLocalizer({
 
 function CalendarFun() {
 
-    // const treatment = useAppSelector(selectTreatment);
-    const appointments = useAppSelector(selectAppointment);
-
     const [newEvent, setNewEvent] = useState({ title: "", start: new Date(), end: new Date(), name: "", phone: "" });
-
+    const appointments = useAppSelector(selectAppointment);
     const dispatch = useAppDispatch();
 
     function handleAddEvent() {
@@ -73,7 +70,6 @@ function CalendarFun() {
                 dispatch(addAppointment(newEvent));
         }
     }
-
 
     return (
         <div>

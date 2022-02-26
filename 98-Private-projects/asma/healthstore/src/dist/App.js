@@ -1,7 +1,6 @@
 "use strict";
 exports.__esModule = true;
 var react_router_dom_1 = require("react-router-dom");
-var Nav_1 = require("./view/components/nav/Nav");
 var home_1 = require("./view/pages/home/home");
 var vitamins_1 = require("./view/pages/vitamins/vitamins");
 var product_1 = require("./view/pages/product/product");
@@ -9,6 +8,7 @@ var cosmetics_1 = require("./view/pages/cosmetics/cosmetics");
 var sugerfree_1 = require("./view/pages/sugerfree/sugerfree");
 var treatment_1 = require("./view/pages/treatment/treatment");
 var calendar_1 = require("./view/pages/calendar/calendar");
+var Navbar_1 = require("./view/components/navbar/Navbar");
 function App() {
     var products = [{ id: 1, name: 'Vitamin D', text: "Vitamin D helps regulate the amount of calcium and phosphate in the body. These nutrients are needed to keep bones, teeth and muscles healthy. A lack of vitamin D can lead to bone deformities such as rickets in children, and bone pain caused by a condition called osteomalacia in adults", img: 'https://img.mako.co.il/2016/03/14/shutterstock_59410978_i.jpg' },
         { id: 2, name: 'Chlorella', text: "Chlorella as a supplement improves cholesterol levels and rides the body of toxins.", img: 'https://eatwell.co.il/wp-content/uploads/2017/12/Chlorella-eatwell-123.jpg' },
@@ -25,7 +25,7 @@ function App() {
     var candles = { id: 1, name: 'Hopi Ear Candles', img: 'https://saltandcrystal.com/wp-content/uploads/2019/03/viber-image-3_E.jpg',
         text: "Do you suffer from conditions related to your ear, nose or throat? Hopi ear candles are an ancient and natural therapy that can offer relief from issues such as sinus problems, compacted ear wax, tinnitus and headaches. Hopi ear candle treatments can also help to reduce inflammation in the ears and sinuses, relieve the symptoms of hay fever, rebalance your body’s natural flow, and generally calm and relax you when life is stressful. " };
     return (React.createElement(react_router_dom_1.BrowserRouter, null,
-        React.createElement(Nav_1["default"], null),
+        React.createElement(Navbar_1["default"], null),
         React.createElement(react_router_dom_1.Routes, null,
             React.createElement(react_router_dom_1.Route, { path: "/", element: React.createElement(home_1["default"], null) }),
             React.createElement(react_router_dom_1.Route, { path: "vitamins", element: React.createElement(vitamins_1["default"], null) },

@@ -1,7 +1,8 @@
-//*{background-color: rgba(139, 201, 160, 0.926);}
 .home {
-   // background-color: #b1e2b5;
+    display: flex;
     text-align: center;
+    align-items: center;
+    justify-content: center;
     //min-height: 200vh;
   }
   .App-header {
@@ -22,11 +23,11 @@
       justify-content: center;
       position: relative;
       margin: 5rem;
-      width: 90vw;
+      //min-width: 70vw;
       .text{
         position: absolute;
         top: -55px;
-        left: 17rem;
+        left: 0rem;
         font-size: 24px;
         font-weight: bold;
       }

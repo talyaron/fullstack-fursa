@@ -34,9 +34,11 @@ var startOfWeek_1 = require("date-fns/startOfWeek");
 var react_1 = require("react");
 var react_big_calendar_1 = require("react-big-calendar");
 require("react-big-calendar/lib/css/react-big-calendar.css");
+//import DatePicker from "react-datepicker";
 var react_datetime_picker_1 = require("react-datetime-picker");
 require("react-datetime-picker/dist/DateTimePicker.css");
 require("react-datepicker/dist/react-datepicker.css");
+//import TimePicker, { TimePickerValue } from 'react-time-picker';
 require("react-time-picker/dist/TimePicker.css");
 var hooks_1 = require("../../../app/hooks");
 //import { selectTreatment } from '../../../features/treatment/treatmentSlice';
@@ -52,9 +54,8 @@ var localizer = react_big_calendar_1.dateFnsLocalizer({
     locales: locales
 });
 function CalendarFun() {
-    // const treatment = useAppSelector(selectTreatment);
-    var appointments = hooks_1.useAppSelector(appointmentsSlice_1.selectAppointment);
     var _a = react_1.useState({ title: "", start: new Date(), end: new Date(), name: "", phone: "" }), newEvent = _a[0], setNewEvent = _a[1];
+    var appointments = hooks_1.useAppSelector(appointmentsSlice_1.selectAppointment);
     var dispatch = hooks_1.useAppDispatch();
     function handleAddEvent() {
         if (newEvent.name === "" || newEvent.phone === "" || newEvent.title === "")

@@ -1,5 +1,6 @@
 import {BrowserRouter,Routes,Route} from "react-router-dom";
 import Nav from './view/components/nav/Nav';
+
 import Home from './view/pages/home/home';
 import Vitamins from "./view/pages/vitamins/vitamins";
 import Product from "./view/pages/product/product";
@@ -10,6 +11,7 @@ import { ProductInt } from "./view/pages/product/product";
 import Treatment from "./view/pages/treatment/treatment";
 import {TreatmentInt} from "./view/pages/treatment/treatment";
 import CalendarFun from "./view/pages/calendar/calendar";
+import Navbar from "./view/components/navbar/Navbar";
 
 
 function App() {
@@ -35,7 +37,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Nav />
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="vitamins" element={<Vitamins />}>
