@@ -1,13 +1,14 @@
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
 import { useEffect, useState} from "react";
-import { useAppSelector } from "../../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { selectedCourseName, selectedTeacherName } from "../../../../app/reducers/student/CourseCardSlice";
 import StudentResponsiveAppBar from "../../components/header/StudentAppBar";
 import MaterialSection from "../../components/materialSection/MaterialSection";
 import UpdatesList from "../../components/updatesList/UpdatesList";
 import axios from 'axios';
 import './Course.scss';
+import { courseMaterial, getMaterialAsync } from "../../../../app/reducers/student/CourseDataSlice";
 
 // const materials = [
 //     { title: 'material title1', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' },
@@ -29,12 +30,11 @@ export default function StudentCourse() {
     const courseName = useAppSelector(selectedCourseName);
     const teacherName = useAppSelector(selectedTeacherName);
 
-    const [materials, setMaterials] = useState([]);
+    const dispatch = useAppDispatch();
     useEffect(() => {
-        axios.get('http://localHost:3004/courseMaterial').then(({data}) => {
-            setMaterials(data);
-        })
+        dispatch(getMaterialAsync());
     }, []);
+    const materials = useAppSelector(courseMaterial);
 
     return (
         <div>

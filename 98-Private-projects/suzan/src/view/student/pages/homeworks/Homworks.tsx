@@ -12,6 +12,8 @@ import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
+import { courseHomeworks, getHomeworksAsync } from '../../../../app/reducers/student/CourseDataSlice';
 
 // const homeworks = [
 //     { date: '20.2.2022', course: 'Math', description: 'questions from 1 to 15 page 225' },
@@ -21,13 +23,11 @@ import axios from 'axios';
 // ]
 
 export default function StudentHomeworks() {
-    const [homeworks, setHomeworks] = useState([]);
+    const dispatch = useAppDispatch();
     useEffect(() => {
-        axios.get('http://localhost:3004/homeworks').then(({ data }) => {
-            console.log(data);
-            setHomeworks(data);
-        })
+        dispatch(getHomeworksAsync());
     }, []);
+    const homeworks = useAppSelector(courseHomeworks);
 
     return (
         <div>

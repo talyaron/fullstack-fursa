@@ -13,13 +13,21 @@ import Paper from '@mui/material/Paper';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './StudentExams.scss';
+import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
+import { courseExams, getExamsAsync } from "../../../../app/reducers/student/CourseDataSlice";
 
-const exams = [
-    { course: "English", material: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." },
-    { course: "Math", material: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." }
-]
+// const exams = [
+//     { course: "English", material: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." },
+//     { course: "Math", material: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." }
+// ]
 
 export default function StudentExams() {
+    const dispatch = useAppDispatch();
+    useEffect(() => {
+        dispatch(getExamsAsync());
+    }, []);
+    const exams = useAppSelector(courseExams);
+
     const [selectedDate, setSelectedDate] = useState<Date | null>(
         new Date(),
     );
@@ -28,13 +36,13 @@ export default function StudentExams() {
         setSelectedDate(newValue);
     };
 
-    const [exams, setExams] = useState([]);
-    useEffect(() => {
-        axios.get('http://localhost:3004/exams').then(({ data }) => {
-            console.log(data);
-            setExams(data);
-        })
-    }, []);
+    // const [exams, setExams] = useState([]);
+    // useEffect(() => {
+    //     axios.get('http://localhost:3004/exams').then(({ data }) => {
+    //         console.log(data);
+    //         setExams(data);
+    //     })
+    // }, []);
 
 
     return (
@@ -71,14 +79,14 @@ export default function StudentExams() {
                                 <TableBody>
                                     {
                                         exams.map((exam, i) => {
-                                            const {course, material} = exam;
+                                            const {course, examMaterial} = exam;
                                             return (
                                                 <TableRow
                                                     key={i}
                                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                                 >
                                                     <TableCell align="center">{course}</TableCell>
-                                                    <TableCell align="center">{material}</TableCell>
+                                                    <TableCell align="center">{examMaterial}</TableCell>
                                                 </TableRow>
                                             );
                                         })
