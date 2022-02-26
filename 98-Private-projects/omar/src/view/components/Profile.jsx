@@ -4,7 +4,7 @@ import Btn from './Btn'
 // import Avatar from '@mui/material/Avatar';
 import Header from './Header'
 import BottomNav from'./BottomNav'
-import Menu from './Menu'
+// import Menu from './Menu'
 import MonitorWeightIcon from '@mui/icons-material/MonitorWeight';
 import HeightIcon from '@mui/icons-material/Height';
 import NumbersIcon from '@mui/icons-material/Numbers';
@@ -28,7 +28,7 @@ function Profile() {
 
   return (
     <div className="Middle">
-      <Menu/>
+      {/* <Menu/> */}
       <Header/>
       <br></br> 
       <BottomNav/>
