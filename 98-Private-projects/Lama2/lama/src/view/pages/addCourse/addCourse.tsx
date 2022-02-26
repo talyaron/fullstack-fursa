@@ -4,9 +4,15 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import './addCourse.scss';
+import { useState } from 'react';
 import axios from 'axios';
 
 function AddCourse(){
+  const [name, setName] = useState('');
+  const [participants, setParti] = useState();
+  const [lessons, setLessons] = useState();
+  const [cost, setCost] = useState();
+  
     function handleAdd(){
         axios.put('http://localhost:3004/courses/',{'name':'group lessons', 'participants':12,'lessons':10,'cost':1200}).then(({data})=>console.log(data));
             // axios.post('http://localhost:3004/posts',{'title':'bad book'}).then(({data})=>console.log(data));
