@@ -48,7 +48,7 @@ function Order() {
   };
 
     const { name,pricePerMeter } = useParams();
-    const [add,setAdd]=useState('')
+    const [show,setShow]=useState('none')
   
     function handleSubmit(ev: any) {
         ev.preventDefault();
@@ -67,7 +67,7 @@ function Order() {
         // setProduct(copy);
         axios.post('http://localhost:3004/userOrder',{"woodName":name,"woodlength":form[0].value,"amount":form[1].value,"price":pricePerMeter}).then(({data})=>dispatch(getCartAsync()));
 
-        setAdd('item added successfully — check it out!')
+        setShow('block')
         // console.log(copy)
         // console.log(product)
       
@@ -157,7 +157,8 @@ function Order() {
           add to cart
        </Button>
             </form>
-            <Alert  severity="success">{add}</Alert>
+            <Box sx={{ display:show }}>
+            <Alert  severity="success">item added successfully — check it out!</Alert></Box>
           </div>
             <img src="https://www.woodworkerssource.com/images/board_feet_example.jpg" alt="" />
 

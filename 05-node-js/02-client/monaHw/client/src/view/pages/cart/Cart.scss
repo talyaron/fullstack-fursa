@@ -69,6 +69,10 @@
 
     }
 }
+&_check{
+  background-color: yellow;
+  display: none;
+}
 &_done{
   margin: auto;
   display: flex;

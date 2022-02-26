@@ -75,48 +75,11 @@
       "id": 1
     },
     {
-      "woodName": "multilayer wood white 150X150",
-      "woodlength": "4",
+      "woodName": "pine wood multilayer 210X105 ",
+      "woodlength": "250",
       "amount": "3",
-      "price": "10",
+      "price": "13",
       "id": 2
-    },
-    {
-      "woodName": "Doors",
-      "woodlength": "250",
-      "width": "160",
-      "thick": "3",
-      "color": "green",
-      "amount": "4",
-      "id": 3
-    },
-    {
-      "woodName": "Doors",
-      "woodlength": "250",
-      "width": "160",
-      "thick": "22",
-      "color": "green",
-      "amount": "4",
-      "id": 4
-    },
-    {
-      "woodName": "Doors",
-      "woodlength": "250",
-      "width": "160",
-      "thick": "2",
-      "color": "green",
-      "amount": "3",
-      "id": 5
-    },
-    {
-      "woodName": "Closets",
-      "woodlength": "250",
-      "width": "160",
-      "thick": "22",
-      "color": "green",
-      "amount": "3",
-      "doorType": "standard doors",
-      "id": 6
     }
   ],
   "userInfo": [
@@ -131,6 +94,12 @@
       "phone": "040",
       "location": "naz",
       "id": 2
+    },
+    {
+      "name": "dad",
+      "phone": "111",
+      "location": "naz",
+      "id": 3
     }
   ],
   "woods": [

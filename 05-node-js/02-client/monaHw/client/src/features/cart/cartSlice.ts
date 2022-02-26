@@ -9,6 +9,10 @@ export interface order {
   amount: number;
   price:number;
   id: number;
+  color?:string;
+  width?:number;
+  thick?:number;
+  doorType?:string;
 
 }
 export interface CartState {

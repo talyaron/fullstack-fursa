@@ -14,6 +14,9 @@ export interface productProp{
     amount:number;
     price:number;
     color?:string;
+    width?:number;
+    thick?:number;
+    doorType?:string;
     id:number;
    
  }
@@ -27,7 +30,7 @@ export interface productProp{
     // useEffect(()  => {
     //    axios.get('http://localhost:3004/userOrder').then(({data})=> setOrder(data));
     //     }, []);
-     const {woodName,woodlength,amount,color,id,price}=prop;
+     const {woodName,woodlength,amount,color,id,price,width,thick,doorType}=prop;
      let comp;
      const dispatch=useAppDispatch();
      function RemoveHandler()
@@ -37,12 +40,13 @@ export interface productProp{
         // comp=<Cart></Cart>
     
     }
-       
+    //    if(!width)
+    //       {console.log('sss')}
      return(
          <div className="cartProducts">
            <div className="item details">
                <p>{woodName}</p> 
-               <p> <span>product Name: </span>{woodName} ,<span>Length: </span>{woodlength}</p></div>
+               <p> <span>product Name: </span>{woodName} ,<span>Length: </span>{woodlength},{width},{thick},{doorType} ,{color}</p> </div>
            <div className="item">{amount} </div>
            <div className="item">{price}₪</div>
            <div className="item">{amount*price}₪</div>

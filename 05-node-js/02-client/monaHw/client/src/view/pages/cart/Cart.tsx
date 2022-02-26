@@ -1,5 +1,5 @@
 import Product, { productProp } from '../../components/products/Products'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './Cart.scss'
 import Navbar from '../../components/navbar/Navbar';
 import Button from '@mui/material/Button';
@@ -12,6 +12,8 @@ import { useAppSelector } from '../../../app/hooks';
 import { useAppDispatch } from '../../../app/hooks';
 import {getCartAsync,order} from '../../../features/cart/cartSlice';
 import CircularProgress from '@mui/material/CircularProgress';
+import { set } from 'immer/dist/internal';
+import { display } from '@mui/system';
 
 // interface cartProps {
 //     product: any;
@@ -38,6 +40,7 @@ function Cart(){
 //    useEffect(()=>{
 //        orders.orders
 //    },[]);
+
     return (
 
 
@@ -63,7 +66,7 @@ function Cart(){
                     <div className="item">Total Price</div>
 
                 </div>
-
+                
                 <div className="cart_body_done">
                     <Outlet />
                 </div>
@@ -71,11 +74,11 @@ function Cart(){
                 {orders.status!=='loading' ?
                 orders.orders.map((products: order, i: any) => {
 
-                    return <Product key={i} woodName={products.woodName} woodlength={products.woodlength}  amount={products.amount} price={products.price} id={products.id} />
+                    return <Product key={i} woodName={products.woodName} woodlength={products.woodlength}  amount={products.amount} price={products.price} id={products.id} color={products.color} width={products.width} thick={products.thick} doorType={products.doorType}/>
                 }):  <div><CircularProgress color="secondary" />
                 </div>}
 
-                <Button variant="contained" style={{ backgroundColor: 'rgb(47, 143, 90)' }} size="medium">
+                <Button variant="contained"  style={{ backgroundColor: 'rgb(47, 143, 90)'}} size="medium">
                     <Link to="/cart/checkOutOrder"> order </Link>
                 </Button>
 
