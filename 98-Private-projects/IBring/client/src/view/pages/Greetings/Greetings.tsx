@@ -14,14 +14,7 @@ function Greetings(props: any) {
         ev.preventDefault();
         nav('/ListForm');
     }
-
-    function handleLogout(ev: any) {
-        ev.preventDefault();
-        localStorage.removeItem('userInfo');
-        dispatch(logout());
-        nav('/login');
-    }
-
+    
     useEffect(() => {
         // if (userLogin.status !== 'logged') {
         //     nav('/login')
@@ -33,10 +26,6 @@ function Greetings(props: any) {
 
             <div className="imgGreeting">Template img</div>
             <div className="imgGreeting">Template img</div>
-
-            <form onSubmit={handleLogout}>
-                <input type="submit" value="logout" />
-            </form>
 
             <form onSubmit={hanleLetsStart} className="userGreeting">
                 <label>Hi {(userLogin.status === "logged" && userLogin.value.email) ? userLogin.value.email.toString().split('@')[0] : "Unknown"}</label>
