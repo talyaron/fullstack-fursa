@@ -28,9 +28,8 @@ function Store() {
 
   const user = useAppSelector(state=> state.user)
   // user.email example
-
   useEffect(() => {
-    console.log(user.email)
+    console.log(user.ID)
     axios.get('http://localhost:3004/products1').then(({ data }) => {
       console.log(data);
       setProducts(data);
