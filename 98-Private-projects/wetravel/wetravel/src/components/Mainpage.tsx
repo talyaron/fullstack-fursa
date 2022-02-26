@@ -89,30 +89,10 @@ const arr: Array<Hotel> = [
 
 
 function Mainpage() {
-<<<<<<< HEAD
-  useEffect(() => {handleAxios()},[]);
-  function handleAxios(){
-     axios.get('http://localhost:3004/posts').then(({data})=>console.log(data));
-    // axios.get('http://localhost:3004/posts/2').then(({data})=>console.log(data));
 
-
-    // axios.post('http://localhost:3004/posts',{'title':'bad book'}).then(({data})=>console.log(data));
-
-    //axios.put('http://localhost:3004/posts/2',{'title':'best book', author:'best author'}).then(({data})=>console.log(data));
-    // axios.patch('http://localhost:3004/posts/2',{ author:'best ever author'}).then(({data})=>console.log(data));
-    // axios.patch('http://localhost:3004/posts/2', {readers:['Jame',"bob", 'alis']}).then(({data})=>console.log(data))
-
-    // axios.delete('http://localhost:3004/posts/3').then(({data})=>console.log(data));
-
-
-  }
-
-=======
   const user_email = useAppSelector(userEmail);
   console.log(user_email);
 
-
->>>>>>> origin/Aiman
   useEffect(() => {
     axios
       .get("http://localhost:3004/posts")

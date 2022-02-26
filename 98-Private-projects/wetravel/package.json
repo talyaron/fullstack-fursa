@@ -1,19 +1,23 @@
 {
   "dependencies": {
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/lab": "^4.0.0-alpha.60",
+    "@mui/lab": "^5.0.0-alpha.70",
     "@types/mongoose": "^5.11.97",
     "@types/react": "^17.0.39",
     "axios": "^0.26.0",
-<<<<<<< HEAD
-    "express": "^4.17.3",
-    "mongoose": "^6.2.2",
-    "nodemon": "^2.0.15"
-=======
+    "concurrently": "^7.0.0",
     "cors": "^2.8.5",
     "express": "^4.17.3",
     "mongoose": "^6.2.2",
     "nodemon": "^2.0.15",
-    "react-google-button": "^0.7.2"
->>>>>>> origin/Aiman
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-google-button": "^0.7.2",
+    "react-icons": "^4.3.1",
+    "react-player": "^2.9.0",
+    "redux": "^4.1.2",
+    "video-react": "^0.15.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",

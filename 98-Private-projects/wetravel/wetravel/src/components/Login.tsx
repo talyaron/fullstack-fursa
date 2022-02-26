@@ -117,16 +117,8 @@ function Login() {
         <div className="contact-us">Don't have an account?</div>
         <a href="/mainpage">Contact us</a>
       </div>
-<<<<<<< HEAD
-      <button
-        onClick={() => {
-          console.log("clicked");
-          history("/mainpage");
-        }}
-      >
-        <div>Log In</div>
-      </button>
-=======
+
+
       <div className="buttons">
         <GoogleButton
           style={{
@@ -146,7 +138,6 @@ function Login() {
           Log In
         </button>
       </div>
->>>>>>> origin/Aiman
     </div>
   );
 }

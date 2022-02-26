@@ -8,9 +8,9 @@ import "../components/Createevent.scss";
 function Createevent() {
   const handleChange = () => {};
   let history = useNavigate();
+  const [value, setValue] = React.useState([null, null]);
   return (
     <div className="container">
-      <Header />
         <div className="login__inner">
           <TextField
             id="outlined-name"
