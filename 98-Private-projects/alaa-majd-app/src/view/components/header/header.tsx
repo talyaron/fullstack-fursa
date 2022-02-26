@@ -10,10 +10,9 @@ function Header() {
 
     <div className="header">
 
-      <div className='header-left'>   <Link to="/Store">Store</Link>
+      <div className='header-left'> 
       </div>
       <div className="header-right">
-        <Link to="/Cart">To The Cart</Link>
         <a href="#contact">Requests</a>
         <a href="#about">Profile</a>
         <Link to="/settings">Settings</Link>

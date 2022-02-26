@@ -20,8 +20,7 @@ const group = () => {
                     <br />
 
                     <Link to="/CreateGroup">create GROUP</Link>
-                    <br />
-                    <Link to="/Store" > to Store</Link>
+                    
                 </div>
             </div>
         </div>
