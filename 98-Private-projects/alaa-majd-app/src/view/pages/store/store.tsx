@@ -9,6 +9,8 @@ import Bar from '../../components/productBar/bar';
 import Header from '../../components/header/header';
 import { Console } from 'console';
 import { useAppSelector } from '../../../app/hooks';
+import { Link } from "react-router-dom";
+
 
 
 interface product {
@@ -68,7 +70,20 @@ function Store() {
   return (
 
     <div className="App">
-      <header className='header'> <Header></Header> </header>
+      <header className='header'>     <div className="header">
+
+<div className='header-left'>   <Link to="/Store">Store</Link>
+</div>
+<div className="header-right">
+  <Link to="/Cart">To The Cart</Link>
+  <a href="#contact">Requests</a>
+  <a href="#about">Profile</a>
+  <Link to="/settings">Settings</Link>
+  <Link to="/logIn">LogOut</Link>
+  <Link to="/help">help</Link>
+  <Link to="/aboutUsIn">About Us</Link>
+</div>
+</div></header>
 
       {/* <Bar></Bar> */}
 

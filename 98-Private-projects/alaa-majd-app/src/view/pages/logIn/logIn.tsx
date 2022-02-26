@@ -9,7 +9,7 @@ import {useNavigate } from 'react-router-dom'
 
 
 function Login() {
-    const [email, setEmail] = useState("");
+    const [ID, setID] = useState("");
     const [password, setPassword] = useState("");
     const nav=useNavigate();
     const dispatch = useAppDispatch();
@@ -18,10 +18,13 @@ function Login() {
         e.preventDefault();
 
         dispatch(
-            login([email, password, true]));
-
-        nav("/Group");
-    }
+            login([ID, password, true]));
+            if(ID === "314763467" && password==="123456")
+            {  nav("/Seller");}
+             else if(ID !== "" && password!=="")
+              {
+                nav("/Group");} 
+             }
 
     useEffect(() => {
         console.log("aaa")
@@ -33,8 +36,8 @@ function Login() {
                 <form onSubmit={hadleSubmit}>
                     Login <br /><br />
                     <br /><br />
-                    Email <br />
-                    <input type="email" onKeyUp={(e:any)=>{setEmail(e.target.value)}} />
+                    ID <br />
+                    <input type="text" onKeyUp={(e:any)=>{setID(e.target.value)}} />
                     <br /><br />
                     Password <br />
                     <input type="password" onKeyUp={(e:any)=>{setPassword(e.target.value)}} />
