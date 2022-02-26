@@ -19,13 +19,21 @@ interface courseProp {
   username: string,
 }
 function Data() {
-  const [details, setDetails] = useState<Array<any>>([{ courseid: 0, userid: 0, username: "" }]);
+  const [details, setDetails] = useState<Array<any>>([{ courseid: 0, coursaname: "", userid: 0, username: "" }]);
   const [courses, setCourses] = useState([{ courseid: 0, userid: 0, username: "" }]);
   //  axios.get('http://localhost:3004/courses').then(({data})=>console.log(data));
   // axios.get('http://localhost:3004/participants').then(({ data }) => setDetails(data));
 
   function handleData() {
     axios.get('http://localhost:3004/participants').then(({ data }) => setDetails(data));
+  }
+
+  function handleDelete(ev: any) {
+    // ev.prevenntDefault();
+    // console.dir(ev.target);
+
+    // axios.delete('http://localhost:3004/participants/').then(({data})=>console.log(data));
+
   }
   useEffect(() => {
     axios.get('http://localhost:3004/participants').then(({ data }) => setDetails(data));
@@ -36,19 +44,20 @@ function Data() {
     <div className='dataDiv'>
       <AdminHeader />
       <Link to={`/`}>
-        <Button className='backbtn' variant="outlined" onClick={() => {
+        {/* <Button className='backbtn' variant="outlined" onClick={() => {
           alert('clicked');
-        }}> back</Button>
+        }}> back</Button> */}
       </Link>
-      <h4>user in courses management</h4>
+      <h4>participants in courses management</h4>
       <div className='tablediv'>
         <table className="table table-striped">
           <thead>
             <tr>
               <th>Course Id</th>
+              <th>Course Name</th>
               <th>User Id</th>
-              <th>User Name</th>
-              <th>Edit/Add</th>
+              <th>Participant Name</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -57,13 +66,13 @@ function Data() {
               return (
                 <tr key={index}>
                   <td>{info.courseid}</td>
+                  <td>{info.coursename}</td>
                   <td>{info.userid}</td>
                   <td>{info.username}</td>
                   <td>
                     <ButtonGroup className='grpbtn' variant="contained" aria-label="outlined small button group">
                       {/* <Link to={`/addCourse`}>    <Button className='addbtn'>Add</Button> </Link> */}
-                      <Button>Edit</Button>
-                      <Button>Delete</Button>
+                      <Button onClick={handleDelete}>Delete</Button>
                     </ButtonGroup>
                   </td>
                 </tr>
@@ -75,9 +84,9 @@ function Data() {
           </tbody>
         </table>
       </div>
-      <Button variant="outlined" startIcon={<DeleteIcon />}>
+      {/* <Button variant="outlined" startIcon={<DeleteIcon />}>
         Delete
-      </Button>
+      </Button> */}
       {/* <Button onClick={handleData}> btn</Button> */}
       {/* {details.map((rest,index)=>{
   console.log(rest)

@@ -5,9 +5,8 @@ require("./App.scss");
 // import { Text, View } from 'react-native';
 // import { NavigationContainer } from '@react-navigation/native';
 var header_1 = require("./view/components/header/header");
-// import Card from './view/components/card/Card';
-// import SignUp from './view/pages/signUp/signup'
 var homepage_1 = require("./view/pages/homepage/homepage");
+// import TextInput from "./features/text/TextInput";
 // const students:Array<Place> = [{name:'Saleem', place:'Mashad'},{name:'Mona',place:"Nazereth"}];
 // interface Place{
 //   name:string;

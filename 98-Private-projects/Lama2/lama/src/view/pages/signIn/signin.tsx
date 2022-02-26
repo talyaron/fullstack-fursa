@@ -82,7 +82,7 @@ const responseGoogle = (response:any
       <br></br>
 
 
-      { showloginButton ?
+      {/* { showloginButton ?
                 <GoogleLogin
                     clientId={clientId}
                     buttonText="Sign In"
@@ -99,7 +99,7 @@ const responseGoogle = (response:any
                     onLogoutSuccess={onSignoutSuccess}
                 >
                 </GoogleLogout> : null
-            }
+            } */}
 
 
     </div>

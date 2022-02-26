@@ -4,12 +4,10 @@ import './App.scss';
 // import { Text, View } from 'react-native';
 // import { NavigationContainer } from '@react-navigation/native';
 import Header from './view/components/header/header';
-
-// import Card from './view/components/card/Card';
-// import SignUp from './view/pages/signUp/signup'
 import Homepage from './view/pages/homepage/homepage'; 
 // import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ProfileButton from './view/pages/signIn/signin';
+// import TextInput from "./features/text/TextInput";
 
 
 // const students:Array<Place> = [{name:'Saleem', place:'Mashad'},{name:'Mona',place:"Nazereth"}];

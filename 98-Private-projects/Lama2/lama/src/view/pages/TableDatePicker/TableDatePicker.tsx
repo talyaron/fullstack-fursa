@@ -1,30 +1,43 @@
+import { AnyAsyncThunk } from "@reduxjs/toolkit/dist/matchers";
 import React, { useState } from "react";
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 export default function TableDatePicker() {
- const [date, setDate] = useState(new Date());
- const [startDate, setStartDate] = useState(new Date());
- const [endDate, setEndDate] = useState(new Date());
- let dt = new Date('02 15 2020');
- const includeDatesArray = [new Date('02-25-2022'), new Date('02-24-2022')]
- const maxDate = dt.setDate(dt.getDate() + 5);
-//  const date=new Date(any);
+  const [date, setDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+  const [value, onChange] = useState(new Date());
+  let dt = new Date('02 15 2020');
+  const includeDatesArray = [new Date('02-25-2022'), new Date('02-24-2022')]
+  const maxDate = dt.setDate(dt.getDate() + 5);
+  //  const date=new Date(any);
 
-// const filterDays = (date) => {
-//     // Disable Weekends
-//     if (date.getDay() === 0 || date.getDay() === 6) {
-//         return false;
-//     } else {
-//         return true;
-//     }
-// }
+  function changeStartDate(date:any){
+    // date=>setStartDate(date)
+    setStartDate(date);
+  }
+  function changeEndDate(date:any){
+    setEndDate(date);
+  }
+  const changeDate = (e: any) => {
+    setEndDate(e)
+  }
 
- return (
-     <div>
-    <div style={{ display: "flex" }}> 
-    {/* <DatePicker
+  const filterDays = (date:any) => {
+      // Disable Weekends
+      if (date.getDay() === 0 || date.getDay() === 6) {
+          return false;
+      } else {
+          return true;
+      }
+  }
+
+  return (
+    <div>
+      <div style={{ display: "flex" }}>
+        <DatePicker
  isClearable
  placeholderText="Select Start Date"
  showTimeSelect
@@ -36,9 +49,10 @@ export default function TableDatePicker() {
  includeDates={includeDatesArray}
  filterDate={filterDays}
 //  maxDate={maxDate}
- onChange={date => setStartDate(date)}
-/> */}
-{/* <DatePicker
+ onChange={changeStartDate}
+  
+/> 
+       <DatePicker
  isClearable
  placeholderText="Select End Date"
  showTimeSelect
@@ -51,17 +65,16 @@ export default function TableDatePicker() {
  includeDates={includeDatesArray}
  filterDate={filterDays}
 //  maxDate={maxDate}
- onChange={date => setEndDate(date)}
-/> */}
+ onChange={changeDate}
+/>
 
-   </div>
-   <div>Selected start date={startDate ? startDate.toString() : null}</div>
- <div>Selected end date={endDate ? endDate.toString() : null}</div>
+      </div>
+      <div>Selected start date={startDate ? startDate.toString() : null}</div>
+      <div>Selected end date={endDate ? endDate.toString() : null}</div>
 
 
-<input type="datetime-local" id="meeting-time"
-       name="meeting-time"></input>
-   </div>
- );
+      {/* <input type="datetime-local" id="meeting-time"
+        name="meeting-time"></input> */}
+    </div>
+  );
 }
-// export {};

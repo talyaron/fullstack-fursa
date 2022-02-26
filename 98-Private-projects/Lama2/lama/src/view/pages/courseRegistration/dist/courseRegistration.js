@@ -12,8 +12,8 @@ var react_1 = require("react");
 var react_2 = require("react");
 require("react-calendar/dist/Calendar.css");
 var react_router_dom_1 = require("react-router-dom");
-var react_datetime_picker_1 = require("react-datetime-picker");
 var Box_1 = require("@mui/material/Box");
+require("react-big-calendar/lib/css/react-big-calendar.css");
 var InputLabel_1 = require("@mui/material/InputLabel");
 var MenuItem_1 = require("@mui/material/MenuItem");
 var FormControl_1 = require("@mui/material/FormControl");
@@ -21,7 +21,11 @@ var Select_1 = require("@mui/material/Select");
 var TextField_1 = require("@mui/material/TextField");
 var Button_1 = require("@mui/material/Button");
 require("react-datetime-picker/dist/DateTimePicker.css");
+// import { registerLocale } from "react-datepicker";
+// import ro from 'date-fns/locale/ro';
 require("react-datepicker/dist/react-datepicker.css");
+require("react-time-picker/dist/TimePicker.css");
+var hooks_1 = require("../../../app/hooks");
 var coursesRegis = [
     {
         start: new Date(2022, 3, 22, 4, 30),
@@ -42,6 +46,7 @@ function CourseRegistration() {
     var dt = new Date(2022, 3, 22, 7, 30);
     var maxTime = dt.setDate(dt.getDate() + 5);
     var includeDatesArray = [new Date('02-25-2022'), new Date('02-26-2022')];
+    var dispatch = hooks_1.useAppDispatch();
     var changeDate = function (e) {
         setDateState(e);
     };
@@ -63,8 +68,8 @@ function CourseRegistration() {
                         react_1["default"].createElement(MenuItem_1["default"], { value: 10 }, "Group lessons"),
                         react_1["default"].createElement(MenuItem_1["default"], { value: 20 }, "Private lessons"),
                         react_1["default"].createElement(MenuItem_1["default"], { value: 30 }, "single lesson")))),
-            react_1["default"].createElement(TextField_1["default"], { className: "txtfield", autoComplete: "given-name", name: "Name", required: true, id: "Name", label: "Name", autoFocus: true })),
-        react_1["default"].createElement(react_datetime_picker_1["default"], { onChange: onChange, value: value }),
-        react_1["default"].createElement(Button_1["default"], { variant: "contained", className: "regBtn" }, "register")));
+            react_1["default"].createElement(TextField_1["default"], { className: "txtfield", autoComplete: "given-name", name: "Name", required: true, id: "Name", label: "Name", autoFocus: true }),
+            react_1["default"].createElement("input", { type: "datetime-local", id: "meeting-time", name: "meeting-time" }),
+            react_1["default"].createElement(Button_1["default"], { variant: "contained", className: "regBtn" }, "register"))));
 }
 exports["default"] = CourseRegistration;

@@ -7,16 +7,46 @@
   left: 0%;
   width: 6vw;
 }
-.mydiv .mybox {
+.mydiv .inputDiv {
+  margin: auto;
+  padding: 10px;
   position: absolute;
-  top: 150px;
-  left: 60px;
+  top: 100px;
+  left: 40%;
+  width: 30vw;
+  height: 30vh;
+  justify-content: center;
 }
-.mydiv .txtfield {
+.mydiv .inputDiv .mybox {
   position: absolute;
-  left: 60px;
-  top: 210px;
+  left: 25%;
+  width: 50%;
+}
+.mydiv .inputDiv .txtfield {
+  position: absolute;
+  left: 25%;
+  top: 80px;
+  width: 50%;
+  height: 7vh;
+}
+.mydiv .inputDiv .DateTimePicker {
+  position: absolute;
+  left: 25%;
+  top: 300px;
   width: 10vw;
+}
+.mydiv .inputDiv #meeting-time {
+  position: absolute;
+  left: 25%;
+  top: 150px;
+  width: 50%;
+}
+.mydiv .inputDiv .regBtn {
+  position: absolute;
+  left: 40%;
+  top: 180px;
+  width: 5vw;
+  font-size: small;
 }
 .mydiv .cal {
   position: absolute;
@@ -36,10 +66,4 @@
   position: relative;
   top: 350px;
   left: 70px;
-}
-.mydiv .regBtn {
-  position: absolute;
-  left: 50%;
-  top: 500px;
-  width: 10vw;
 }

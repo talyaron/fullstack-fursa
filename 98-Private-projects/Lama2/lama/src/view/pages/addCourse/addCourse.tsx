@@ -12,16 +12,19 @@ function AddCourse(){
   const [participants, setParti] = useState();
   const [lessons, setLessons] = useState();
   const [cost, setCost] = useState();
-  
-    function handleAdd(){
-        axios.put('http://localhost:3004/courses/',{'name':'group lessons', 'participants':12,'lessons':10,'cost':1200}).then(({data})=>console.log(data));
+
+    function handleAdd(ev:any){
+      ev.prevenntDefault();
+      console.dir(ev.target);
+      const form=ev.target
+        axios.post('http://localhost:3004/courses',{'name':form[0].value, 'participants':form[2].value,'lessons':form[3].value,'cost':form[1].value}).then(({data})=>console.log(data));
             // axios.post('http://localhost:3004/posts',{'title':'bad book'}).then(({data})=>console.log(data));
 
     }
 
     return(
         <div className="addCourse">
-            <form className="formAddCourse" action="">
+            <form onSubmit={handleAdd} className="formAddCourse" >
             <TextField
             className="txtfield1"
                   autoComplete="given-name"
@@ -62,7 +65,7 @@ function AddCourse(){
                   autoFocus
                 />
                  {/* <Link to={`/addCourse`}>    */}
-                  <Button onClick={handleAdd} className='addbtn'>Add</Button>
+                  <Button className='addbtn'  type="submit">Add</Button>
                   {/* </Link> */}
 
             </form>

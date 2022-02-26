@@ -7,7 +7,6 @@ var react_router_dom_1 = require("react-router-dom");
 var react_1 = require("react");
 require("./signin.scss");
 var TextField_1 = require("@mui/material/TextField");
-var react_google_login_1 = require("react-google-login");
 var clientId = "Your-Client-Id";
 function SignIn() {
     var _a = react_1.useState(true), showloginButton = _a[0], setShowloginButton = _a[1];
@@ -44,10 +43,6 @@ function SignIn() {
         react_1["default"].createElement("br", null),
         react_1["default"].createElement(react_router_dom_1.Link, { to: "/" },
             react_1["default"].createElement(Button_1["default"], { className: 'btn', size: "small", variant: "outlined", startIcon: react_1["default"].createElement(Login_1["default"], null) }, " login ")),
-        react_1["default"].createElement("br", null),
-        showloginButton ?
-            react_1["default"].createElement(react_google_login_1.GoogleLogin, { clientId: clientId, buttonText: "Sign In", onSuccess: onLoginSuccess, onFailure: onLoginFailure, cookiePolicy: 'single_host_origin', isSignedIn: true }) : null,
-        showlogoutButton ?
-            react_1["default"].createElement(react_google_login_1.GoogleLogout, { clientId: clientId, buttonText: "Sign Out", onLogoutSuccess: onSignoutSuccess }) : null));
+        react_1["default"].createElement("br", null)));
 }
 exports["default"] = SignIn;
