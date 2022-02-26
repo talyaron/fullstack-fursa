@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import {BrowserRouter,Routes,Route} from "react-router-dom";
 import Header from './view/components/Header';
 import SignUp from './view/components/SignUp';
@@ -25,10 +25,24 @@ import Exercises from './view/components/Exercises';
 import Duration from './view/components/Duration';
 // import Test from './view/components/Test';
 // import Market from './view/components/Market'
+import { useDispatch } from "react-redux"
+import  { setExercises } from "./slice"
+import axios from 'axios';
 import Store from './view/Store/Store.tsx'
 import Cart from './view/cart/cart.tsx'
+import MyPlans from './view/components/MyPlans'
 function App() {
   const [cartItems, setcartItems] = useState([]);
+const dispatch = useDispatch();
+  useEffect(() => {
+    axios
+      .get("http://localhost:3004/exercises")
+      .then(({ data }) => {
+        console.log(data);
+        dispatch(setExercises(data))
+      })
+      .catch((error) => console.log(error));
+  }, []);
   return (
     <div className="App">
       <BrowserRouter>
@@ -42,7 +56,7 @@ function App() {
         <Route exact path="/plandecider" element={<Plandecider/>}/>
         <Route exact path="/food" element={<Food/>}/>
         <Route exact path="/profile" element={<Profile/>}/>
-        <Route exact path="/plangenerator" element={<PlanGenerator/>}/>
+        <Route exact path="/plangenerator" element={<MyPlans/>}/>
         <Route exact path="/emptyPlan" element={<EmptyPlan/>}/>
         <Route exact path="/singleworkout" element={<SingleWorkout/>}/>
         <Route exact path="/personalplan" element={<Plan/>}/>

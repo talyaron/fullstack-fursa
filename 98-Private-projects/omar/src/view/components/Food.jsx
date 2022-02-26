@@ -6,12 +6,14 @@ import Search from './Search'
 import ImagesBox from './ImagesBox'
 function Food() {
   return (
-    <div className="Middle">
-      <Menu/>
-      <Header />
-      <BottomNav />
-      <Search title = "search for food" items={meals}/>
-      <ImagesBox/>
+    <div>
+      <Menu />
+      <div className="Middle">
+        <Header />
+        <BottomNav />
+        <Search title="search for food" items={meals} />
+        <ImagesBox />
+      </div>
     </div>
   );
 }

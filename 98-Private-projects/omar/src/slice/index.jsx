@@ -8,6 +8,10 @@ export const initialState = {
   age:"",
   height:"",
   weight:"",
+  exercises:[],
+  time: "",
+  selectedExercises: [],
+  myplans:[],
 }
 
 export const AppSlice = createSlice({
@@ -46,10 +50,31 @@ export const AppSlice = createSlice({
     setWeight:(state, action) => {
         state.weight = action.payload;
     },
+    setExercises:(state, action) => {
+        state.exercises = action.payload;
+    },
+    SetselectedExercises:(state,action) => {
+        state.selectedExercises = action.payload;
+    },
+    SetTime:(state,action) => {
+        state.time = action.payload;
+    },
+    addMyplans:(state,action) => {
+        const exercies = [];
+        state.exercises.forEach(elem => {
+            if(state.selectedExercises.includes(elem.id)){
+                exercies.push(elem);
+            }
+        })
+        const name = action.payload;
+        const time = state.time;
+        state.myplans.push( {name: name,time: time,exercies : exercies});
+    
+    },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setUser,setfirstName,setLastName,setEmail,setGender,setMainGoal,setActivity,setAge,setHeight,setWeight } = AppSlice.actions
+export const { SetTime,addMyplans, SetselectedExercises,setUser,setfirstName,setLastName,setEmail,setGender,setMainGoal,setActivity,setAge,setHeight,setWeight,setExercises } = AppSlice.actions
 
 export default AppSlice.reducer

@@ -4,8 +4,19 @@ import Btn from './Btn'
 import { Link } from 'react-router-dom';
 import BottomNav from './BottomNav' 
 import Menu from './Menu'
+import {useDispatch} from "react-redux"
+import {SetTime} from "../../slice"
+import {useNavigate} from 'react-router-dom'
 // import DateTime from './DateTime'
 const Duration = () => {
+  const dispatch = useDispatch();
+  const [time,setTimestate] = React.useState("");
+  const Navigate= useNavigate();
+
+  const handleAddTime = () => {
+    dispatch(SetTime(time));
+    Navigate("/plandecider")
+  }
   return (
     <div className="Middle">
       <Menu/>
@@ -21,12 +32,14 @@ const Duration = () => {
           type="text"
           placeholder="HH:mm MM-DD-YYYY"
           name="duration"
+          value={time}
+          onChange={(e) => setTimestate(e.target.value)}
           required
         ></input>{" "}
         <br></br>
-        <Link className="linkStyle" to="/plandecider">
-          <Btn title={"add"} />
-        </Link>
+        <button className="Male" onClick={handleAddTime}>add</button>
+          {/* <Btn onClick={() => dispatch(SetTime(time))} title={"add"} /> */}
+      
         <BottomNav/>
     </div>
   );

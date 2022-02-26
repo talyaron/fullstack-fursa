@@ -17,7 +17,7 @@ function PersonalPlan() {
         <Link className="linkStyle" to="/Emptyplan">
         <button className="Male">
           <AddIcon className="Icon"/>
-          <b>Empty plan</b>
+          <b>Add plan</b>
         </button>
         </Link>
 

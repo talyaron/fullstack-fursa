@@ -39,4 +39,14 @@ export const selectWeight = createSelector(
   slice => slice.weight,
 )
 
+export const selectExercises = createSelector(
+  [selectDomain],
+slice => slice.exercises,
+)
+
+export const selectPlans = createSelector(
+  [selectDomain],
+slice => slice.myplans,
+)
+
   
