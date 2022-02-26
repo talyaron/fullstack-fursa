@@ -20,7 +20,7 @@ function Login() {
         dispatch(
             login([email, password, true]));
 
-        nav("/Store");
+        nav("/Group");
     }
 
     useEffect(() => {
@@ -40,7 +40,6 @@ function Login() {
                     <input type="password" onKeyUp={(e:any)=>{setPassword(e.target.value)}} />
                     <br /><br />
                     <input type='submit' className='submit' value="submit" />
-                    {/* <Link to="/Store">Login</Link> */}
                     <br />
                 </form>
                 <Link to="/HomePage">cancle</Link>
