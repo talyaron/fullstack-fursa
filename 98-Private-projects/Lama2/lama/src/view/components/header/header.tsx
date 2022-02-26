@@ -44,11 +44,14 @@ function Header() {
                 <Link to="/trainers">
                     Our trainers
                 </Link>
-                <Link to="/courseRegistration">
+                <Link to="/courseregistration">
                     Register
                 </Link>
                 <Link to="/TableDatePicker">
                     Register2
+                </Link>
+                <Link to="/courseregistration2">
+                    Register3
                 </Link>
             </div>
             <div className="mainheader__right">

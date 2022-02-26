@@ -21,6 +21,7 @@ var admincourses_1 = require("./view/pages/adminCourses/admincourses");
 var adminpage_1 = require("./view/pages/AdminPage/adminpage");
 var addCourse_1 = require("./view/pages/addCourse/addCourse");
 var TableDatePicker_1 = require("./view/pages/TableDatePicker/TableDatePicker");
+var courseregistration2_1 = require("./view/pages/courseRegistration/courseregistration2");
 react_dom_1["default"].render(react_1["default"].createElement(react_1["default"].StrictMode, null,
     react_1["default"].createElement(react_redux_1.Provider, { store: store_1.store },
         react_1["default"].createElement(react_router_dom_1.BrowserRouter, null,
@@ -40,6 +41,7 @@ react_dom_1["default"].render(react_1["default"].createElement(react_1["default"
                 react_1["default"].createElement(react_router_dom_1.Route, { path: "TableDatePicker", element: react_1["default"].createElement(TableDatePicker_1["default"], null) }),
                 react_1["default"].createElement(react_router_dom_1.Route, { path: "admincourses", element: react_1["default"].createElement(admincourses_1["default"], null) }),
                 react_1["default"].createElement(react_router_dom_1.Route, { path: "courseRegistration", element: react_1["default"].createElement(courseRegistration_1["default"], null) }),
+                react_1["default"].createElement(react_router_dom_1.Route, { path: "courseregistration2", element: react_1["default"].createElement(courseregistration2_1["default"], null) }),
                 react_1["default"].createElement(react_router_dom_1.Route, { path: "course/:courseId", element: react_1["default"].createElement(course_1["default"], null) }))),
         ",")), document.getElementById('root'));
 // If you want your app to work offline and load faster, you can change
