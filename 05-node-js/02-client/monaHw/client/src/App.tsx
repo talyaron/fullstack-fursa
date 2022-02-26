@@ -51,8 +51,8 @@ function App() {
         </Route>
         <Route path="woodProduct/:woodproname" element={<NavProduct  />} />
          
-        <Route path="order/:name" element={<Order product={product} setProduct={setProduct} />} />
-        <Route path="cart" element={<Cart product={product} setProduct={setProduct} />} >
+        <Route path="order/:name/:pricePerMeter" element={<Order  />} />
+        <Route path="cart" element={<Cart />} >
           <Route path="checkOutOrder" element={<ChekOutOrder />} />
 
           </Route>

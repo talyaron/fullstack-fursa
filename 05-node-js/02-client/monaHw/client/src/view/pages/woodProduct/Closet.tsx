@@ -10,6 +10,7 @@ import TextField from '@mui/material/TextField';
 import axios from 'axios'
 import { useDispatch } from 'react-redux';
 import { getCartAsync } from '../../../features/cart/cartSlice';
+import Box from '@mui/material/Box';
 
 const doorType = [
   {
@@ -28,7 +29,7 @@ const doorType = [
 
 ];
 function Closet() {
-  const [add, setAdd] = useState('')
+  const [show, setShow] = useState('none')
   const [type, setType] = useState('standard doors')
   const { woodproname } = useParams();
   const dispatch=useDispatch();
@@ -38,9 +39,14 @@ function Closet() {
   function handleSubmit(ev:any) {
     ev.preventDefault();
     console.dir(ev.target)
-    const form=ev.target
+    const form=ev.target;
+    
+    // setAdd('item added successfully — check it out!');
+    
+    // <Alert severity="success">item added successfully — check it out!</Alert>
     axios.post('http://localhost:3004/userOrder',{"woodName":woodproname,"woodlength":form[0].value, "width":form[1].value, "thick":form[2].value,"color":form[3].value,"amount":form[4].value,"doorType":form[5].value}).then(({data})=>dispatch(getCartAsync()));
 
+    setShow('block')
 
   }
   return (
@@ -78,8 +84,10 @@ function Closet() {
             </Button>
             {/* <button type='submit'>add</button> */}
           </form>
-          <Alert severity="success">{add}</Alert>
+          <Box sx={{ display:show }}>
+            <Alert severity="success" >item added successfully — check it out!</Alert>
 
+            </Box>
         </div>
 
       </div>

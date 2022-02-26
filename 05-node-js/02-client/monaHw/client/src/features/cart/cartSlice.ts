@@ -4,9 +4,10 @@ import axios from 'axios'
 export interface order {
   woodName: string;
   woodlength: number;
-  width: number;
-  thick: number;
+  // width: number;
+  // thick: number;
   amount: number;
+  price:number;
   id: number;
 
 }

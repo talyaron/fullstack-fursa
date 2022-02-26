@@ -35,19 +35,19 @@ const currencies = [
     },
   
   ];
-interface orderProps {
-    product: any;
-    setProduct: any;
-}
-function Order(props: orderProps) {
-    const { product, setProduct } = props;
+// interface orderProps {
+//     product: any;
+//     setProduct: any;
+// }
+function Order() {
+    // const { product, setProduct } = props;
     const [currency, setCurrency] = React.useState('cm');
      const dispatch=useDispatch();
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCurrency(event.target.value);
   };
 
-    const { name } = useParams();
+    const { name,pricePerMeter } = useParams();
     const [add,setAdd]=useState('')
   
     function handleSubmit(ev: any) {
@@ -65,7 +65,7 @@ function Order(props: orderProps) {
         // let copy = Object.assign([], product);
         // copy.push(obj);
         // setProduct(copy);
-        axios.post('http://localhost:3004/userOrder',{"woodName":name,"woodlength":form[0].value, "width":form[3].value, "thick":form[6].value,"amount":form[9].value}).then(({data})=>dispatch(getCartAsync()));
+        axios.post('http://localhost:3004/userOrder',{"woodName":name,"woodlength":form[0].value,"amount":form[1].value,"price":pricePerMeter}).then(({data})=>dispatch(getCartAsync()));
 
         setAdd('item added successfully — check it out!')
         // console.log(copy)
@@ -98,7 +98,7 @@ function Order(props: orderProps) {
                 <div className="row">
                 <p>Length</p>
                 <input type="text" name="woodlength"  required placeholder="Length" />
-                <TextField
+                {/* <TextField
           id="outlined-select-currency"
           select
          
@@ -112,9 +112,9 @@ function Order(props: orderProps) {
               {option.label}
             </MenuItem>
           ))}
-        </TextField>
+        </TextField> */}
                 </div>
-                <div className="row">
+                {/* <div className="row">
                 <p>Width</p>
                 <input type="text" name="width" required placeholder="Width" />
                 <TextField
@@ -131,8 +131,8 @@ function Order(props: orderProps) {
             </MenuItem>
           ))}
         </TextField>
-                </div>
-                <div className="row">
+                </div> */}
+                {/* <div className="row">
                 <p>Thick</p>
                 <input type="text" name="thick" required placeholder="Thickness" />
                 <TextField
@@ -148,7 +148,7 @@ function Order(props: orderProps) {
             </MenuItem>
           ))}
         </TextField>
-                </div>
+                </div> */}
                 <div className="row">
                 <p>Quantity</p>
                 <input type="number" name="amount" required placeholder="Quantity" />

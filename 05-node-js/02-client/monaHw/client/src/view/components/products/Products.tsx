@@ -9,9 +9,10 @@ import Cart from '../../pages/cart/Cart'
 export interface productProp{
     woodName:string;
     woodlength:number;
-    width:number;
-    thick:number;
+    // width:number;
+    // thick:number;
     amount:number;
+    price:number;
     color?:string;
     id:number;
    
@@ -26,7 +27,7 @@ export interface productProp{
     // useEffect(()  => {
     //    axios.get('http://localhost:3004/userOrder').then(({data})=> setOrder(data));
     //     }, []);
-     const {woodName,woodlength,width,thick,amount,color,id}=prop;
+     const {woodName,woodlength,amount,color,id,price}=prop;
      let comp;
      const dispatch=useAppDispatch();
      function RemoveHandler()
@@ -41,10 +42,10 @@ export interface productProp{
          <div className="cartProducts">
            <div className="item details">
                <p>{woodName}</p> 
-               <p> <span>product Name: </span>{woodName} ,<span>Length: </span>{woodlength}, <span>Width: </span> {width} ,<span>Thickness: </span>{thick}</p></div>
-           <div className="item">{amount}</div>
-           <div className="item"></div>
-           <div className="item"></div>
+               <p> <span>product Name: </span>{woodName} ,<span>Length: </span>{woodlength}</p></div>
+           <div className="item">{amount} </div>
+           <div className="item">{price}₪</div>
+           <div className="item">{amount*price}₪</div>
 
            <Button onClick={RemoveHandler} type="submit" variant="contained" style={{backgroundColor: 'rgb(248, 140, 38) '}} size="small">
           remove

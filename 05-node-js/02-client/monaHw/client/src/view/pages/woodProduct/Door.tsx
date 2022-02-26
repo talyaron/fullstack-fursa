@@ -6,11 +6,13 @@ import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
 import { useState} from 'react';
 import axios from 'axios'
+import Box from '@mui/material/Box';
+import { display } from '@mui/system';
 
 function Door()
 {
     
-    const [add,setAdd]=useState('')
+    const [show,setShow]=useState('none')
 
     const {woodproname}=useParams();
     console.log({woodproname});
@@ -31,8 +33,8 @@ function Door()
         // copy.push(obj);
         // setProduct(copy);
         axios.post('http://localhost:3004/userOrder',{"woodName":woodproname,"woodlength":form[0].value, "width":form[1].value, "thick":form[2].value, "color":form[3].value,"amount":form[4].value}).then(({data})=>console.log(data));
+        setShow('block')
 
-        setAdd('item added successfully — check it out!')
     }
     return(
 
@@ -64,7 +66,10 @@ function Door()
        </Button>
        {/* <button type='submit'>add</button> */}
             </form>
-            <Alert severity="success">{add}</Alert>
+            <Box sx={{ display:show }}>
+            <Alert severity="success" >item added successfully — check it out!</Alert>
+
+            </Box>
 
 
          

@@ -13,13 +13,13 @@ import { useAppDispatch } from '../../../app/hooks';
 import {getCartAsync,order} from '../../../features/cart/cartSlice';
 import CircularProgress from '@mui/material/CircularProgress';
 
-interface cartProps {
-    product: any;
-    setProduct: any;
-}
+// interface cartProps {
+//     product: any;
+//     setProduct: any;
+// }
 
-function Cart(props: cartProps) {
-    const { product, setProduct } = props;
+function Cart(){
+    // const { product, setProduct } = props;
     //console.log(product)
     //     const [order,setOrder]=useState([]);
 
@@ -71,7 +71,7 @@ function Cart(props: cartProps) {
                 {orders.status!=='loading' ?
                 orders.orders.map((products: order, i: any) => {
 
-                    return <Product key={i} woodName={products.woodName} woodlength={products.woodlength} width={products.width} thick={products.thick} amount={products.amount} id={products.id} />
+                    return <Product key={i} woodName={products.woodName} woodlength={products.woodlength}  amount={products.amount} price={products.price} id={products.id} />
                 }):  <div><CircularProgress color="secondary" />
                 </div>}
 

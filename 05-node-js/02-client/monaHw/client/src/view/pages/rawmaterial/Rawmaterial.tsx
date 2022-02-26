@@ -15,7 +15,9 @@ const woodLogo:string="https://cdn2.iconfinder.com/data/icons/lightly-icons/30/s
 function Rawmaterial(){
   const [wood,setWood]=useState([]);
 useEffect(()  => {
-axios.get('http://localhost:3004/RawMaterial').then(({data})=> setWood(data));
+// axios.get('http://localhost:3004/RawMaterial').then(({data})=> setWood(data));
+axios.get('http://localhost:3004/woods').then(({data})=> setWood(data));
+
 }, []);
     return(
         <div className="RawMaterial">
@@ -36,8 +38,8 @@ axios.get('http://localhost:3004/RawMaterial').then(({data})=> setWood(data));
         <div className="RawMaterial_body">
        
         {wood.map((wood, index)=>{
-          const{name,imgurl,price}=wood;
-          return <Card key={index} wood={{name,imgurl,price}}/>
+          const{name,imgurl,pricePerMeter}=wood;
+          return <Card key={index} wood={{name,imgurl,pricePerMeter}}/>
           
         })}
               

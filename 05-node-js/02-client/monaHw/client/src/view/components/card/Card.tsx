@@ -10,14 +10,14 @@ export interface CardProp {
   wood: {
     name: string,
     imgurl: string,
-    price: number
+    pricePerMeter: number
   };
 }
 
 function Card(prop: CardProp) {
   //onst [randomname,setrandomName]=useState('suzan')
   //const names:Array<string>=['mona',"suzan","Tal","suzan2",'mona2','Tal2'];
-  const { name, imgurl, price } = prop.wood;
+  const { name, imgurl, pricePerMeter } = prop.wood;
   const [text, setText] = useState('')
   const [isLiked, setlike] = useState('like')
   const [color, setcolor] = useState('')
@@ -61,11 +61,12 @@ function Card(prop: CardProp) {
     >
       <div><img src={imgurl} alt="" /></div>
       <div><h3>{name}</h3></div>
+      <h4>{pricePerMeter}₪ (per meter) </h4>
       {/* <h3>{price} shekels</h3> */}
       <BasicRating></BasicRating>
       <Box sx={{ '& button': { m: 1 } }}>
         <div>
-          <Button variant="contained" style={{ backgroundColor: 'rgb(47, 143, 90)' }} size="medium"><Link to={`/order/${name}`} style={{ color: 'white' }}>
+          <Button variant="contained" style={{ backgroundColor: 'rgb(47, 143, 90)' }} size="medium"><Link to={`/order/${name}/${pricePerMeter}`} style={{ color: 'white' }}>
             order
           </Link>
           </Button>

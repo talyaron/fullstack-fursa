@@ -7,8 +7,7 @@ function HomePage()
     {
         ev.preventDefault();
         const form = ev.target;
-    axios.post('http://localhost:3004/RawMaterial',{"name":form[0].value, "imgurl":form[1].value,"price":form[2].value}).then(({data})=>console.log(data));
-
+    axios.post('http://localhost:3004/woods',{"name":form[0].value, "imgurl":form[1].value,"pricePerMeter":form[2].value}).then(({data})=>console.log(data));
     }
     function handleProductSubmit(ev:any)
     {
@@ -29,9 +28,9 @@ function HomePage()
                 <div className="homepage_body_add">
                     <h1>add Raw Material type</h1>
                     <form onSubmit={handleSubmit}>
-                        <input type="text" name="type" placeholder='wood type'></input>
+                        <input type="text" name="type" placeholder='product name'></input>
                         <input type="text" name="imageUrl" placeholder='image Url'></input>
-                        <input type='number' name="price" placeholder='item price'></input>
+                        <input type='number' name="price" placeholder='price per meter'></input>
                         <Button type="submit" variant="contained" style={{backgroundColor: 'rgb(47, 143, 90)'}}size="medium">add
                         </Button>
                         </form>
