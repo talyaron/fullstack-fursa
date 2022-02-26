@@ -522,7 +522,10 @@ header .search-bar-container label:hover {
 }
 
 .contact .row .image {
-  flex: 1 1 35rem;
+  flex: 1 1 50rem;
+  padding: 2rem;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
 }
 
 .contact .row .image img {

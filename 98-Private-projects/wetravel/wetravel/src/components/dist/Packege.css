@@ -1,0 +1,40 @@
+.box {
+  flex: 1 1 30rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+}
+.box .box img {
+  height: 25rem;
+  width: 100%;
+  object-fit: cover;
+}
+.box .box .content {
+  padding: 2rem;
+}
+.box .box .content h3 {
+  font-size: 2rem;
+  color: #333;
+}
+.box .box .content h3 i {
+  color: var(--orange);
+}
+.box .box .content p {
+  font-size: 1.7rem;
+  color: #666;
+  padding: 1rem 0;
+}
+.box .box .content .stars i {
+  font-size: 1.7rem;
+  color: var(--orange);
+}
+.box .box .content .price {
+  font-size: 2rem;
+  color: #333;
+  padding-top: 1rem;
+}
+.box .box .content .price span {
+  color: #666;
+  font-size: 1.5rem;
+  text-decoration: line-through;
+}
