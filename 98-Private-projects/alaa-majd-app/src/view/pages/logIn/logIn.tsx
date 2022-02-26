@@ -26,9 +26,6 @@ function Login() {
                 nav("/Group");} 
              }
 
-    useEffect(() => {
-        console.log(email)
-    }, [])
 
     return (
         <div className='warpper'>
