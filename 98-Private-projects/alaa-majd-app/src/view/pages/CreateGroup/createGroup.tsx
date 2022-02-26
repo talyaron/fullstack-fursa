@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Header from '../../components/header/header';
 import axios from 'axios';
 import { ContactsOutlined } from '@material-ui/icons';
-
+import { useAppSelector } from '../../../app/hooks';
 
 
 
@@ -12,6 +12,7 @@ import { ContactsOutlined } from '@material-ui/icons';
 
 function CreateGroup(){
     
+    const user = useAppSelector(state=> state.user)
 
     function handelSubmit (ev:any){
         ev.preventDefault();
@@ -30,25 +31,24 @@ function CreateGroup(){
         axios.get('http://localhost:3004/users/').then(({data})=>{
             const arr:string[] = [];
            for(let obj of data){
-               arr.push(obj.id)
+               arr.push(obj.id);
            }
            for(let memberId of membersArray){
-               if(arr.findIndex((id:any) => memberId===id) == -1){
-                console.log("not found")
-                alert("doesn't exist");
+               if(arr.findIndex((id:any) => memberId.id===id) === -1){
+                alert(`${memberId.id} user doesn't exist`);
                 return
             }
            }
            const info={
             id:"234",
             groupName: ev.target.groupName.value,
-            adminId: "0000000",
+            adminId: user.ID,
             groupMember: membersArray
             }
            
             axios.post('http://localhost:3004/group',info)
             .then((data)=>{
-                console.log("group 1")
+                alert(`${ev.target.groupName.value} added`);
                 // check repose if ok
                 return data;
             }).catch(err=>{
