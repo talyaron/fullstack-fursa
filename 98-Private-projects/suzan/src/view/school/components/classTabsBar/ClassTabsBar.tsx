@@ -17,6 +17,7 @@ import EditStudentsDialog from '../editStudentsDialog/EditStudentsDialog';
 import { useAppSelector, useAppDispatch } from '../../../../app/hooks';
 import { classCourses, classStudents, classTeachers, getCoursesAsync, getStudentsAsync, getTeachersAsync } from '../../../../app/reducers/school/ClassDetailsSlice';
 import { selectedTeacherName } from '../../../../app/reducers/school/ClassCardSlice';
+import { schoolTeachers } from '../../../../app/reducers/school/SchoolSlice';
 
 // const courses = [
 //     { name: "Arabic", teacher: "Manal Misherky" }, { name: "Mathmatics", teacher: "Manal Bisharat" },
@@ -95,7 +96,7 @@ export default function ClassTabsBar() {
     }, [])
     const courses = useAppSelector(classCourses);
     const students = useAppSelector(classStudents);
-    const teachers = useAppSelector(classTeachers);
+    const teachers = useAppSelector(schoolTeachers);
     const teacherName = useAppSelector(selectedTeacherName);
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -216,11 +217,13 @@ export default function ClassTabsBar() {
                             id="combo-box-demo"
                             disabled={disableEditTeacher}
                             options={teachers}
+                            getOptionLabel={(option) => option.info.firstName.concat(' ', option.info.lastName)}
                             // defaultValue={teacherName}
                             sx={{ width: 300 }}
                             renderInput={(params) => <TextField {...params} />}
                             size="small"
                             className='inputField'
+                            isOptionEqualToValue={(option, value) => option.info.teacherId === value.info.teacherId}
                             onChange={handleTeacherChange}
                         />
                     </div>
