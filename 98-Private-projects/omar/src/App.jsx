@@ -23,11 +23,15 @@ import Music from './view/components/Music';
 import Exercises from './view/components/Exercises';
 import Duration from './view/components/Duration';
 import { Counter } from './features/counter/Counter';
+import Test from './view/components/Test';
+import Market from './view/components/Market';
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
+        <Route exact path="/market" element={<Market/>}/>
+        <Route exact path="/test" element={<Test/>}/>
         <Route exact path="/music" element={<Music/>}/>
         <Route exact path="/exercises" element={<Exercises/>}/>
         <Route exact path="/duration" element={<Duration/>}/>

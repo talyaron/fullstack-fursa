@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import ComboBox from './ComboBox';
 import { useDispatch } from "react-redux";
 import  { setHeight } from "../../slice"
+import BackButton from './BackButton';
 
 const measurment = [
   { label: 'CM' },
@@ -14,7 +15,7 @@ function Height() {
   const [state, setState] = useState({height:""})
   return (
     <div>
-      {/* your heght + CM/FT + TextField + next button  */}
+      <Link to='/age'><BackButton/></Link> 
       <Header />
       <div className="Middle">
         <p className="underTilte">your height? </p>

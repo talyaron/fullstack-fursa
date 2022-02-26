@@ -1,8 +1,10 @@
 .App {
   text-align: center;
+  /* overflow-y: scroll; */
 }
 
 .App-header {
+  overflow-y: scroll;
   background-color: #282c34;
   min-height: 100vh;
   display: flex;

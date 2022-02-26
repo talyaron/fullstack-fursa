@@ -4,6 +4,7 @@ import Header from './Header'
 import { Link } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import  { setAge } from "../../slice"
+import BackButton from './BackButton';
 
 function Age() {
   const dispatch = useDispatch();
@@ -12,8 +13,8 @@ function Age() {
 
   return (
     <div>
-      {/* how old + TextField + next button */}
-      <Header />
+     <Link to='/activity'><BackButton/></Link> 
+     <Header />
       <div className="Middle">
         <p className="underTilte">How old are you ? </p>
         <input

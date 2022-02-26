@@ -8,6 +8,7 @@ import TransgenderIcon from '@mui/icons-material/Transgender';
 import { Link } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import  { setGender } from "../../slice"
+import BackButton from './BackButton';
 
 
 
@@ -16,6 +17,7 @@ function Gender() {
   // const refValues = useRef({ gender: ""});
   return (
     <div>
+            <Link to='/newaccount'><BackButton/></Link>
       <Header />
       <div className='Middle'>
       <p className="underTilte">What's your gender ? </p>

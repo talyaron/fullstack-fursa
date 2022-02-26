@@ -1,12 +1,12 @@
-// import React from 'react'
+import React from 'react'
+import Menu from './Menu'
+import './Menu.css'
+function Test() {
+  return (
+    <div className='menu'>
+      <Menu/>
+    </div>
+  )
+}
 
-
-
-// function Test() {
-//   return (
-//     <div className="">
-//     </div>
-//   );
-// }
-
-// export default Test
+export default Test

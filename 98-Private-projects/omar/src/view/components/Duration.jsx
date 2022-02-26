@@ -3,10 +3,12 @@ import logoImg from './logo-removebg-preview.png'
 import Btn from './Btn'
 import { Link } from 'react-router-dom';
 import BottomNav from './BottomNav' 
+import Menu from './Menu'
 // import DateTime from './DateTime'
 const Duration = () => {
   return (
     <div className="Middle">
+      <Menu/>
       <img src={logoImg} alt="" className="logo" />
       <p className="title">
         <b>Plan Duration</b>

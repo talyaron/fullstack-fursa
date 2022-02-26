@@ -3,8 +3,11 @@ import logoImg from './logo-removebg-preview.png'
 import Btn from './Btn'
 import { Link } from 'react-router-dom';
 import BottomNav from './BottomNav' 
+import Menu  from './Menu';
 function EmptyPlan() {
   return (
+    <div>
+    <Menu/>
     <div className="Middle">
       <img src={logoImg} alt="" className="logo" />
       <p className="title">
@@ -28,6 +31,7 @@ function EmptyPlan() {
           <Btn title={"next"} />
         </Link>
         <BottomNav/>
+    </div>
     </div>
   );
 }

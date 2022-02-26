@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import ComboBox from './ComboBox';
 import { useDispatch } from "react-redux";
 import  { setWeight } from "../../slice"
+import BackButton from './BackButton';
+
 
 const measurment = [
   { label: 'KG' },
@@ -15,6 +17,8 @@ function Weight() {
   const [state, setState] = useState({weight:""})
   return (
     <div>
+      <Link to='/height'><BackButton/></Link>
+      
       {/* your weight + CM/FT + TextField + next button  */}
       <Header/>
       <div className="Middle">

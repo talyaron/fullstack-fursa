@@ -53,6 +53,7 @@
 }
 
 .grid-container {
+    /* overflow-y: scroll; */
     display: grid;
     grid-template-columns: auto auto auto;
     /* background-color: #2196F3; */

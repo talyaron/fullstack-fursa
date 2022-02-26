@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './BottomNav.css'
 import { styled } from '@mui/material/styles';
+import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
@@ -68,6 +69,14 @@ export default function LabelBottomNavigation() {
             Navigate("/Profile");
           }}
           icon={<AccountCircleIcon style={{ fontSize: 50 }} />}
+        />
+        <BtmNav
+          label="Market"
+          value="Market"
+          onClick={() => {
+            Navigate("/market");
+          }}
+          icon={<LocalGroceryStoreIcon style={{ fontSize: 50 }} />}
         />
       </BottomNavigation>
     </div>

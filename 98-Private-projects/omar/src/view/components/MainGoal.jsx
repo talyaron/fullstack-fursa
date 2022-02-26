@@ -7,11 +7,13 @@ import MonitorWeightIcon from '@mui/icons-material/MonitorWeight';
 import ConstructionIcon from '@mui/icons-material/Construction';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import  { setMainGoal } from "../../slice"
+import BackButton from './BackButton';
+
 function MainGoal() {
   const dispatch = useDispatch();
   return (
     <div>
-      {/* title + logo + what's your main goal text + 3 buttons + Next button */}
+            <Link to='/gender'><BackButton/></Link>
       <Header/>
       <div className='Middle'>
       <p className="underTilte">what's your main goal ? </p>

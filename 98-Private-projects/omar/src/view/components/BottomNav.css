@@ -7,3 +7,16 @@
     justify-content: center; */
 
     }
+
+    .BackButton{
+        line-height: 12px;
+         width: 18px;
+         font-size: 8pt;
+         font-family: tahoma;
+         /* margin-top: 10px;
+         margin-right: 200px; */
+         position:absolute;
+         margin: 20px;
+         top:0;
+         left:0;
+    }

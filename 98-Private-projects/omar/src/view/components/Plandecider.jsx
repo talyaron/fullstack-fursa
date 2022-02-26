@@ -6,11 +6,12 @@ import Btn from './Btn'
 import { Link } from 'react-router-dom';
 import logoImg from './logo-removebg-preview.png'
 import BottomNav from './BottomNav' 
-
+import Menu from './Menu'
 
 function Plandecider() {
   return (
     <div className="Middle">
+      <Menu/>
       <img src={logoImg} alt="" className="logo" />
       <p className="title">
         <b>Personal Plan</b>

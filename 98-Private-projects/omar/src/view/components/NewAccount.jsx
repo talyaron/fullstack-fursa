@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import './NewAccount.css'
 import { useDispatch } from "react-redux"
 import  { setUser } from "../../slice"
+import BackButton from './BackButton';
+
 function NewAccount() {
   const dispatch = useDispatch();
 
@@ -13,6 +15,7 @@ function NewAccount() {
  const refValues = useRef({firstname: "", lastname: "", email: ""});
   return (
     <div className="SignUp">
+      <Link to='/'><BackButton/></Link>
       <Header />
       <p><b>please fill out these fields</b></p>
       <input

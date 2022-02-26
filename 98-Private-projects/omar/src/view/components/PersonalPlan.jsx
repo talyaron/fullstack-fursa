@@ -3,13 +3,16 @@ import Header from './Header'
 import { Link } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
 import BottomNav from './BottomNav' 
+import Menu from './Menu'
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 function PersonalPlan() {
   return (
     <div>
+      <Menu/>
       <Header />
       <div className="Middle">
+      
         <p className="underTilte">Let's start training !  </p>
         <Link className="linkStyle" to="/Emptyplan">
         <button className="Male">

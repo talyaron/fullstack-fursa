@@ -7,13 +7,14 @@ import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
 import { useDispatch } from "react-redux";
 import  { setActivity } from "../../slice"
+import BackButton from './BackButton';
 
 function Activities() {
   const dispatch = useDispatch();
   return (
     <div>
-      {/* title + logo + which Activities text + 3 buttons + Next button */}
-      <Header />
+    <Link to='/goal'><BackButton/></Link>   
+   <Header />
       <div className="Middle">
         <p className="underTilte">Which activities do you prefer ? </p>
         <button className="Male" onClick={() => dispatch(setActivity('fitness at home'))}>
