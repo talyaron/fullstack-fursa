@@ -7,6 +7,7 @@ import axios from 'axios';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { selectedRecipe, updateFrom, updateRecipe, updateNew } from '../../features/item/itemSlice';
 import { getMyRecipesAsync, myRecipes } from '../../features/myRecipes/MyRecipes';
+import { updateName } from '../../features/pgaeName/NamePage';
 
 export default function Recipes() {
 
@@ -14,31 +15,24 @@ export default function Recipes() {
 
     //Redux
     //const recipe_ = useAppSelector(selectedRecipe);
-    const myRecipe = useAppSelector(myRecipes);
     const dispatch = useAppDispatch();
+    const myRecipe = useAppSelector(myRecipes);
 
     useEffect(() => {
         dispatch(getMyRecipesAsync());
     },[])
 
-    // useEffect(() => {
-    //     axios.get('http://localhost:3004/recipe').then(res => {
-    //         const data = res.data;
-    //         setRecipes(data);
-    //     });
-    // }, []);
-
-    // console.log(recipes);
-
     const imageClick = (recipe:any) => {
-        // axios.post('http://localhost:3004/selected', {recipe, from: 'recipe'});
+        axios.patch('http://localhost:3004/select/1', {recipe, from:'myRecipe', isNew:false});
         dispatch(updateRecipe(recipe));
+        dispatch(updateFrom('myRecipe'));
+        dispatch(updateName('/User'))
     } 
 
     const addClick = () => {
-        //axios.post('http://localhost:3004/edit', {recipe: {}, new: true, from: 'recipe'});
+        axios.patch('http://localhost:3004/select/1', {recipe:{}, from: 'myRecipe', isNew: true});
         dispatch(updateRecipe({}));
-        dispatch(updateFrom('recipe'));
+        dispatch(updateFrom('myRecipe'));
         dispatch(updateNew(true));
     }
 

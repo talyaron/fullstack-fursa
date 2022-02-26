@@ -21,7 +21,7 @@
       "id": 1,
       "name": "Cast Iron Skillet Pizza",
       "image": "https://www.simplyrecipes.com/thmb/2yg01vDLZM4pKWxhmZrQzR71LxQ=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Simply-Recipes-Cast-Iron-Skillet-Pizza-LEAD-7-57c1f65409244ae587bcf4c23ef7904f.jpg",
-      "time": "36 min",
+      "time": "36 mi",
       "people": "4",
       "calories": "400 calories",
       "ingredients": "1 tablespoon olive oil\n1 pound (454g) pizza dough, store-bought or homemade\nAll-purpose flour, for dusting \n1 1/2 cups (170g) shredded low-moisture mozzarella cheese \n1/3 cup pizza sauce, store-bought or homemade\n2 tablespoons finely grated Parmesan cheese\n3 to 4 fresh basil leaves",
@@ -31,17 +31,17 @@
       "id": 2,
       "name": "Sigeumchi Namul",
       "image": "https://www.simplyrecipes.com/thmb/TkcoxydQESTL7uVKmvXozs_1HZE=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Simply-Recipes-Spinach-Banchan-LEAD-2-6d22429517024d20a899e5a0f5eed764.jpg",
-      "time": "16 min",
+      "time": "20 min",
       "people": "4 to 6 servings",
       "calories": "89 calories",
-      "ingredients": "* 2 large bunches (14 ounces) spinach, rinsed\n* 3 scallions, thinly sliced\n* 3 cloves garlic, finely chopped\n* 1 tablespoon toasted sesame seeds\n* 2 tablespoons toasted sesame oil\n* 2 teaspoons sugar\n* 1/2 teaspoon kosher salt\n.....",
+      "ingredients": "* 2 large bunches (14 ounces) spinach, rinsed\n* 3 scallions, thinly sliced\n* 3 cloves garlic, finely chopped\n* 1 tablespoon toasted sesame seeds\n* 2 tablespoons toasted sesame oil\n* 2 teaspoons sugar\n* 1/2 teaspoon kosher salt",
       "method": "1. Boil water and prepare ice bath: \n Fill a large pot with water and bring it up to a boil over high heat. Prepare a large ice bath. Set it on the counter next to the pot. \n 2. Blanch the spinach:\nUsing tongs and working in batches, dunk the spinach in the pot of boiling water. Swish it around until the spinach is bright green and the stems have softened a bit, about 10 seconds.\nImmediately transfer the blanched spinach into the ice bath to stop the cooking. Swish the spinach around in the ice bath to loosen it up. Repeat until all the spinach is cooked and cooled.\n 3. Dry the spinach:\nDrain the spinach into a colander set in the sink. Working in batches, grab handfuls of the spinach with your hands and wring out as much water as possible. Place the dried spinach on a cutting board.\n4. Chop the spinach:\nRoughly chop the spinach into bite-size pieces. Transfer the spinach into a medium bowl and use your fingers to loosen them if lumped together.\n5. Season the spinach: \n Add the scallions, garlic, sesame seeds, sesame oil, sugar, and salt. Toss to combine. Taste and decide if you want to add more salt or leave it as it is. \n 6. Serve: \nServe immediately or store it tightly covered in the refrigerator until ready to serve."
     },
     {
       "id": 3,
       "name": "Air Fryer Chicken Wings",
       "image": "https://www.simplyrecipes.com/thmb/kijjE5mgx42XXMRNWlAEHtEQeWE=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2019__12__Air-Fryer-Chicken-LEAD-12-143ef1081ffc4a6681fc14ace3c10698.jpg",
-      "time": "80 min",
+      "time": "90 min",
       "people": "4 to 6 servings",
       "calories": "666 calories",
       "ingredients": "For the wings:\n3 pounds chicken wing drumettes and flats\n3 teaspoons baking powder\n2 teaspoons kosher salt\nFor the sauce:\n2 tablespoons gochujang\n2 tablespoons soy sauce\n1 tablespoon rice wine vinegar\n2 teaspoons sesame oil\n1 teaspoon sugar\n3 tablespoons butter, melted and kept warm\nFor the sesame mayonnaise dipping sauce:\n1 cup mayonnaise\n1 tablespoon toasted sesame oil\n3/4 teaspoon sugar\n1/8 teaspoon sriracha\nTo garnish:\nThinly sliced scallions, for garnish\nToasted sesame seeds, for garnish\nThin spears of cucumber\nThin slices of radish",
@@ -113,5 +113,12 @@
     }
   ],
   "edit": [],
-  "select": []
+  "select": [
+    {
+      "recipe": {},
+      "from": "myRecipe",
+      "isNew": true,
+      "id": 1
+    }
+  ]
 }

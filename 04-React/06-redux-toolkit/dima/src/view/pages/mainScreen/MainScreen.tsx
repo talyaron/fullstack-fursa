@@ -1,12 +1,6 @@
 import './MainScreen.scss';
 import Bagemenu from '../../components/menuBar/menu';
 import background from '../../images/background.jpg';
-import RecipeInfo from '../recipeInfo/RecipeInfo';
-import img1 from '../../images/1.jpg';
-import img2 from '../../images/2.jpg';
-import img3 from '../../images/3.jpg';
-import img4 from '../../images/4.jpg';
-import img5 from '../../images/5.jpg';
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 // Import Swiper React components
@@ -22,9 +16,9 @@ import { Pagination, Navigation } from "swiper";
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { updateRecipe, updateFrom } from '../../features/item/itemSlice';
-//import { getRecentRecipesAsync, recentRecipes } from '../../features/recentRecipes/RecentRecipes';
 import { getTopRecipesAsync, topRecipes } from '../../features/topRecipes/TopRecipes';
 import { getRecentRecipesAsync, recentRecipes } from '../../features/recentRecipes/RecentRecipes';
+import { updateName } from '../../features/pgaeName/NamePage';
 
 
 export default function MainScreen() {
@@ -36,6 +30,7 @@ export default function MainScreen() {
     useEffect(() => {
         dispatch(getTopRecipesAsync());
         dispatch(getRecentRecipesAsync());
+        dispatch(updateName('/MainScreen'));
     }, []);
 
     const imageClick = (recipe:any, row:number) => {
@@ -44,7 +39,7 @@ export default function MainScreen() {
             from = 'top10'
         else from = 'recent'
         try {
-            axios.post('http://localhost:3004/select', {recipe, from:from, isNew:false});
+            axios.patch('http://localhost:3004/select/1', {recipe, from:from, isNew:false});
         } catch (error) {
             console.error();
         }

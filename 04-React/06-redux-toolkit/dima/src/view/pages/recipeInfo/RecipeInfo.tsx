@@ -3,10 +3,11 @@ import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import Bagemenu from '../../components/menuBar/menu';
 import background from '../../images/background.jpg';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import ArrowBackSharpIcon from '@mui/icons-material/ArrowBackSharp';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import PeopleIcon from '@mui/icons-material/People';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
-import { useState , useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Tooltip from '@mui/material/Tooltip';
@@ -14,6 +15,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { getSelectAsync, selectedFrom, selectedIsNew, selectedRecipe } from '../../features/item/itemSlice';
+import { selectPage, updateName } from '../../features/pgaeName/NamePage';
 
 const CssTextField = styled(TextField)({
     '& label.Mui-focused': {
@@ -31,17 +33,6 @@ const CssTextField = styled(TextField)({
     },
 });
 
-// interface recipeInfo{
-//     id?: number;
-//     name? : string;
-//     image? : string;
-//     time? : string;
-//     people? : string;
-//     calories? : string;
-//     ingredients? : string;
-//     method? : string;
-// }
-
 export default function RecipeInfo() {
     const [like, setLike] = useState(0);
     //Redux toolkit
@@ -49,24 +40,25 @@ export default function RecipeInfo() {
     const recipe_ = useAppSelector(selectedRecipe);
     const from_ = useAppSelector(selectedFrom);
     const isNew = useAppSelector(selectedIsNew);
-    
-    useEffect(()=> {
-        axios.get('http://localhost:3004/select').then(data => {
-            const recipe = data.data[0].recipe;
-            const from = data.data[0].from;
-            const isNew_ = data.data[0].isNew;
+    const pageName = useAppSelector(selectPage);
+
+    useEffect(() => {
+        axios.get('http://localhost:3004/select/1').then(data => {
+            const recipe = data.data.recipe;
+            const from = data.data.from;
+            const isNew_ = data.data.isNew;
             dispatch(getSelectAsync([recipe, from, isNew_]));
         })
-    },[])
-
-    function editRecipe(recipe:any){
-        
-    }
+    }, [])
 
     function handleLike() {
         setLike(like + 1);
     }
-    
+
+    function handleTo(){
+        dispatch(updateName('/RecipeInfo'));
+    }
+
     //json db
     // useEffect(() => {
     //     axios.get('http://localhost:3004/selected/1').then(res => {
@@ -93,12 +85,15 @@ export default function RecipeInfo() {
             <div className="content">
                 <img className='image' src={background} />
                 <div className='boxInfo'>
+                    <Link className='backTo' to={pageName}>
+                        <ArrowBackSharpIcon sx={{color: '#b5739d', fontSize: 30}} onClick={handleTo}/>
+                    </Link>
                     <div className="edit">
                         <Tooltip title='edit recipe'>
                             <Link to='/NewRecipe'>
                                 <AutoAwesomeIcon sx={{
                                     color: '#b5739d', fontSize: 35
-                                }} onClick={() => editRecipe(recipe_) />
+                                }} /*onClick={() => editRecipe(recipe_)*/ />
                             </Link>
                         </Tooltip>
                     </div>

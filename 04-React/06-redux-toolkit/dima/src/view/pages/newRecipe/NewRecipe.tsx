@@ -7,17 +7,20 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import PeopleIcon from '@mui/icons-material/People';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
+import ArrowBackSharpIcon from '@mui/icons-material/ArrowBackSharp';
 import { Box, TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { useState, useEffect } from 'react';
-import RecipeInfo from '../../pages/recipeInfo/RecipeInfo';
-import { recipeProp } from '../../../App';
 import { Link } from 'react-router-dom';
 import Tooltip from '@mui/material/Tooltip';
 import axios from 'axios';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { selectedRecipe ,selectedFrom, selectedIsNew, updateRecipe } from '../../features/item/itemSlice';
+import { selectedRecipe, selectedFrom, selectedIsNew, updateRecipe, getSelectAsync } from '../../features/item/itemSlice';
 import { addToMyRecipe } from '../../features/myRecipes/MyRecipes';
+import { selectPage, updateName } from '../../features/pgaeName/NamePage';
+import { updateTopRecipes } from '../../features/topRecipes/TopRecipes';
+import { updateRecent } from '../../features/recentRecipes/RecentRecipes';
+import { updateMyRecipe } from '../../features/myRecipes/MyRecipes';
 
 const Standard = styled(TextField)({
     '& label.Mui-focused': {
@@ -58,28 +61,45 @@ const CssTextField = styled(TextField)({
     },
 });
 
-interface recipeInfo{
-    id:number;
-    name:string;
-    image:string;
-    time:string;
-    people:string;
-    calories:string;
-    ingredients:string;
-    method:string;
+interface recipeInfo {
+    id: number;
+    name: string;
+    image: string;
+    time: string;
+    people: string;
+    calories: string;
+    ingredients: string;
+    method: string;
 }
 
 export default function NewRecipe() {
     //Redux
+    const dispatch = useAppDispatch();
+
     const recipe_ = useAppSelector(selectedRecipe);
     const from = useAppSelector(selectedFrom);
-    const isNew = useAppSelector(selectedIsNew); 
-    const dispatch = useAppDispatch();
-    let to = '';
+    const isNew = useAppSelector(selectedIsNew);
+    const pageName = useAppSelector(selectPage)
 
     const [recipe, setRecipe] = useState<recipeInfo>(recipe_);
 
-    if(from === 'myRecipe' && isNew)
+    let to = '';
+
+    const [selectedImage, setSelectedImage] = useState(null);
+
+    useEffect(() => {
+        axios.get('http://localhost:3004/select/1').then(data => {
+            console.log(data.data.isNew)
+            const recipe1 = data.data.recipe;
+            const from_ = data.data.from;
+            const isNew_ = data.data.isNew;
+            if (!isNew_) {
+                dispatch(getSelectAsync([recipe1, from_, isNew_]));
+            }
+        })
+    }, [])
+
+    if (from === 'myRecipe' && isNew)
         to = '/User';
     else to = '/RecipeInfo';
 
@@ -124,26 +144,35 @@ export default function NewRecipe() {
             case 'method':
                 setRecipe({ ...recipe, method: ev.target.value });
                 break;
+            case 'image':
+                console.log(ev.target);
         }
+        dispatch(updateRecipe(recipe))
     }
 
     function handleSave() {
         // //Redux
-        // //console.log(recipe)
-        dispatch(updateRecipe(recipe));
 
-        // let id = 0;
-        // // const newRecipe = recipe;
-        setRecipe(recipe);
-        if(to === '/User'){
-            axios.post('http://localhost:3004/'+`${from}`, recipe_).then(data => console.log(data));
+        dispatch(updateRecipe(recipe))
+        if (to === '/User') {
+            axios.post('http://localhost:3004/' + `${from}`, recipe_).then(data => console.log(data));
             dispatch(addToMyRecipe(recipe_));
-        }  
-        else{
+        }
+        else {
             //add a action to udpate a recipe in the array
-            axios.put('http://localhost:3004/'+`${from}`+'/'+`${recipe_.id}`, recipe_).then(data => console.log(data));
+            axios.put('http://localhost:3004/' + `${from}` + '/' + `${recipe_.id}`, recipe);
+            axios.patch('http://localhost:3004/select/1', { recipe });
+            dispatch(updateRecipe(recipe))
+            if (from === 'top10')
+                dispatch(updateTopRecipes([recipe, recipe.id]))
+            else if (from === 'recent')
+                dispatch(updateRecent([recipe, recipe.id]))
+            else dispatch(updateMyRecipe([recipe, recipe.id]))
+        }
+    }
 
-        } 
+    function handleTo() {
+        dispatch(updateName('/NewRecipe'));
     }
 
     return (
@@ -154,6 +183,9 @@ export default function NewRecipe() {
             <div className="content">
                 <img className='image' src={background} />
                 <div className='boxInfo'>
+                    <Link className='backTo' to={pageName}>
+                        <ArrowBackSharpIcon sx={{ color: '#b5739d', fontSize: 30 }} onClick={handleTo} />
+                    </Link>
                     <div className="save">
                         <Tooltip title='save'>
                             <Link to={to}>
@@ -180,6 +212,26 @@ export default function NewRecipe() {
                         <div className='info1'>
                             <div className='insertPhotos'>
                                 <InsertPhotoIcon sx={{ fontSize: 250, color: '#b5739d' }} />
+                                {/* <input type="file" name="myImage" onChange={ChooseImage} /> */}
+                                {/* <img src="" alt="image" /> */}
+                                {/* {selectedImage && (
+                                    <div>
+                                        <img alt="not fount" width={"250px"} src={URL.createObjectURL(selectedImage)}/>
+                                        <br />
+                                        <button onClick={() => setSelectedImage(null)}>Remove</button>
+                                    </div>
+                                )}
+                                <br />
+
+                                <br />
+                                <input
+                                    type="file"
+                                    name="myImage"
+                                    onChange={(event:any) => {
+                                        console.log(event.target.files[0]);
+                                        setSelectedImage(event.target.files[0]);
+                                    }}
+                                /> */}
                             </div>
                             <h2 className='by'>By : Dima Abbas</h2>
                             <div className='item'>

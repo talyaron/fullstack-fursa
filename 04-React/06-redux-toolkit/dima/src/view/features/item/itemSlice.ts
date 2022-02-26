@@ -34,7 +34,7 @@ const initialState: RecipeState = {
 }
 
 export const getSelectAsync = createAsyncThunk(
-  'myRecipe/fetchMyRecipe',
+  'select/fetchselect',
   async (info: Array<any>, thunkAPI) => {
     try {
       const response = await axios.get('http://localhost:3004/' + `${info[1]}` + '/' + `${info[0].id}`);

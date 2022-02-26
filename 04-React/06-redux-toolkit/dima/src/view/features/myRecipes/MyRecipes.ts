@@ -12,7 +12,7 @@ const initialState : recipesState = {
 };
 
 export const getMyRecipesAsync = createAsyncThunk(
-    'myRecipe/fetchMyRecipe',
+    'myrecipe/fetchMyRecipe',
     async (_, thunkAPI) => {
         try {
             const response = await axios.get('http://localhost:3004/myRecipe');
@@ -30,6 +30,14 @@ export const myRecipesReducer = createSlice({
     reducers:{
         addToMyRecipe(state, action:PayloadAction<recipeInfo>){
             state.myRecipes = [...state.myRecipes, action.payload];
+        },
+        updateMyRecipe : (state, action:PayloadAction<Array<any>>) => {
+            const index = action.payload[1];
+            {state.myRecipes.filter((recipe:recipeInfo)=>{
+                if(recipe.id != index)
+                    return recipe
+                else return action.payload[0]
+            })}
         }
     },
     extraReducers: (builder) => {
@@ -40,7 +48,7 @@ export const myRecipesReducer = createSlice({
     }
 })
 
-export const { addToMyRecipe } = myRecipesReducer.actions;
+export const { addToMyRecipe, updateMyRecipe } = myRecipesReducer.actions;
 
 export const myRecipes = (state:RootState) => state.myRecipes.myRecipes;
 

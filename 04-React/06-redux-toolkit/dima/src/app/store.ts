@@ -1,6 +1,7 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import itemReducer from '../view/features/item/itemSlice';
 import myRecipesReducer from '../view/features/myRecipes/MyRecipes';
+import pageReducer from '../view/features/pgaeName/NamePage';
 import recentRecipesReducer from '../view/features/recentRecipes/RecentRecipes';
 import topRecipesReducer from '../view/features/topRecipes/TopRecipes';
 
@@ -9,7 +10,8 @@ export const store = configureStore({
     item : itemReducer,
     myRecipes : myRecipesReducer,
     topRecipes : topRecipesReducer,
-    recentRecipes : recentRecipesReducer
+    recentRecipes : recentRecipesReducer,
+    pageName : pageReducer,
   },
 });
 

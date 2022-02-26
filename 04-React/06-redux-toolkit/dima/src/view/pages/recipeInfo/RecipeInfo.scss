@@ -13,6 +13,13 @@
         overflow: hidden;
         margin: auto;
 
+        .backTo{
+            color: #b5739d;
+            float: left;
+            padding-top: 15px;
+            padding-left: 10px;
+        }
+
         .image {
             opacity: 40%;
             position: absolute;

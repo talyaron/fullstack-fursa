@@ -30,6 +30,17 @@ export const topRecipesReducer = createSlice({
     reducers:{
         addToTopRecipe : (state, action:PayloadAction<recipeInfo>) => {
             state.topRecipes = [...state.topRecipes, action.payload];
+        },
+        updateTopRecipes : (state, action:PayloadAction<Array<any>>) => {
+            const index = action.payload[1];
+            {state.topRecipes.filter((recipe:recipeInfo)=>{
+                if(recipe.id != index){
+                    return recipe
+                }   
+                else{
+                    return action.payload[0]
+                } 
+            })}
         }
     },
     extraReducers: (builder) => {
@@ -40,7 +51,7 @@ export const topRecipesReducer = createSlice({
     }
 })
 
-export const { addToTopRecipe } = topRecipesReducer.actions;
+export const { addToTopRecipe, updateTopRecipes } = topRecipesReducer.actions;
 
 export const topRecipes = (state:RootState) => state.topRecipes.topRecipes;
 //export const recentRecipes = (state:RootState) => state.topRecipes.recentRecipes;
