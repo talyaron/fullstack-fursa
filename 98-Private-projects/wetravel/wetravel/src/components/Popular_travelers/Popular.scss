@@ -1,0 +1,33 @@
+.popular {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(1, 1fr);
+  width: 60%;
+  height: fit-content;
+  font-size: 10px;
+  margin: 1rem;
+  font-weight: normal;
+  
+
+  .item1 {
+    display: flex;
+    flex-direction: row;
+    grid-area: 1;
+    background-color: white;
+    .details {
+      display: flex;
+      flex-direction: column;
+      margin-left:1rem ;
+    }
+  }
+  .item2 {
+    grid-row: 2 /4 span;
+    background-color: black;
+    color: white;
+  }
+
+  .item3 {
+    grid-area: 1;
+    background-color: white;
+  }
+}

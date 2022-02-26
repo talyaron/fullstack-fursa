@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@types/faker": "^6.6.9",
     "@types/mongoose": "^5.11.97",
     "@types/react": "^17.0.39",
     "axios": "^0.26.0",

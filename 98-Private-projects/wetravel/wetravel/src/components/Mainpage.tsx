@@ -3,13 +3,12 @@ import Rola from "../Images/Rola.jpeg";
 import Search from "../Images/search_logo.png";
 import Card from "./Card";
 import Bottombar from "../components/Bottombar";
-import Travelles from "./Travelers";
 import { data } from "./Bottombar";
-import { useEffect } from "react";
-import axios from "axios";
+import { useEffect, useState } from "react";
 import { useAppSelector } from "../hooks/hooks";
 import { userEmail, userName } from "../reducers/userSlice";
-
+import Travelers from "./Travelers";
+import faker from "@faker-js/faker";
 interface Hotel {
   id: string;
   src: string;
@@ -17,11 +16,11 @@ interface Hotel {
 }
 
 export interface Flights {
-  id: String,
-  name: String,
-  imgUrl: String,
-  from: String,
-  to: String,
+  id: String;
+  name: String;
+  imgUrl: String;
+  from: String;
+  to: String;
 }
 
 export interface travelers {
@@ -87,20 +86,13 @@ const arr: Array<Hotel> = [
   },
 ];
 
-
 function Mainpage() {
   const user_email = useAppSelector(userEmail);
-  console.log(user_email);
 
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:3004/posts")
-      .then(({ data }) => console.log(data));
-  }, []);
-  const name: data = { name: "Home" };
+  const name: data = { name: "mainpage" };
   return (
     <div className="wrapper">
+      {}
       <div className="mainpage">
         <div className="header">
           <div className="menu-icon">
@@ -133,7 +125,7 @@ function Mainpage() {
         <div className="grid__items">
           <div className="div_h">
             <h1>Right now at </h1>
-            <a href="">See all</a>
+            <a href="/post">See all</a>
           </div>
 
           <div className="list">
@@ -157,10 +149,10 @@ function Mainpage() {
           <div className="list">
             {travelers.map((traveler, index) => {
               return (
-                <Travelles
+                <Travelers
                   key={index}
-                  src={traveler.src}
-                  name={traveler.name}
+                  src={faker.image.avatar()}
+                  name={faker.name.findName()}
                   country={traveler.country}
                 />
               );

@@ -9,5 +9,4 @@ function Travelers(prop: travelers) {
     </div>
   );
 }
-
 export default Travelers;

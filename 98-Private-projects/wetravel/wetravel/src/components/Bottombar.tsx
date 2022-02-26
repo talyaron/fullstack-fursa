@@ -12,7 +12,7 @@ export interface data {
   name: string;
 }
 function Bottombar(prop: data) {
-  const [value, setValue] = React.useState("mainpage");
+  const [value, setValue] = React.useState(prop.name);
   //const [color, setColor] = React.useState(0);
   const navigate = useNavigate();
 
@@ -57,7 +57,7 @@ function Bottombar(prop: data) {
           label="Events"
           value="events"
           onClick={() => {
-            navigate("/events");
+            navigate("/post");
           }}
           icon={<EventIcon />}
         />

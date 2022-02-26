@@ -9,7 +9,7 @@ function Nearevents() {
   const name: data = { name: "events" };
   return (
     <div style={{ backgroundColor: "#F0F0F0" }}>
-      <Header />
+      <Header page ={"Near events"} />
       <div className="grid">
         <div className="grid__item">
           <img src={tent} />
