@@ -94,6 +94,11 @@
       "id": 2,
       "course": "Math",
       "examMaterial": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    {
+      "course": "Arabic",
+      "examMaterial": "test",
+      "id": 3
     }
   ],
   "teacherCourses": [
