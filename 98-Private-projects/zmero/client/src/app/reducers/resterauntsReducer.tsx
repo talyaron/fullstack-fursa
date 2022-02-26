@@ -12,11 +12,14 @@ interface Restaurant {
     city: string;
     category: string;
     photos: Array<string>;
+    open: string;
+    close: string;
+    description: string;
+    subCategory: Array<string>;
 }
 
 interface Restaurants {
     arrOfResteruants: Array<Restaurant>;
-
     arrOfFamousResteruants: Array<Restaurant>;
     status: 'idle' | 'loading' | 'failed';
 }

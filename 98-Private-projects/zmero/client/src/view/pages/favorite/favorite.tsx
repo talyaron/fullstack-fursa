@@ -21,7 +21,7 @@ function Favorite() {
             <div className="main">
                 <div className="main__content">
                     <header>
-                        <h2>Your Latest Reservations</h2>
+                        <h2>Your Favorites</h2>
                     </header>
                     <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                         {favorites.map((r, index) => {

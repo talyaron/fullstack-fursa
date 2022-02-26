@@ -52,6 +52,7 @@
 
     &__main {
         margin-top: 3rem;
+        margin-bottom: 3rem;
         width: 80%;
         display: flex;
         flex-direction: column;
@@ -109,8 +110,42 @@
 
             &__right {
                 display: flex;
+                flex-direction: column;
                 justify-content: center;
                 align-items: flex-start;
+
+                &__openings {
+                    h3 {
+                        margin-bottom: 1rem;
+                    }
+
+                    h4 {
+                        margin-top: 0.2rem;
+                        margin-bottom: 0.2rem;
+                        font-weight: bold;
+                    }
+
+                    span {
+                        color: #34353a;
+                        font-weight: 500;
+
+                    }
+                }
+            }
+        }
+
+        &__body {
+            display: flex;
+            flex-direction: column;
+
+            &__description {
+                width: 60%;
+
+                &__sub {
+                    display: flex;
+                    justify-content: flex-start;
+                    margin-top: 2rem;
+                }
             }
         }
     }
