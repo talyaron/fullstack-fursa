@@ -1,7 +1,9 @@
 import '../card/Card.scss'
-import { useState } from "react";
+import { useState , useEffect } from "react";
 // import Cart from './view/pages/cart/Cart';
 import axios from 'axios'; 
+import {useNavigate } from 'react-router-dom'
+
 
 
 interface product {
@@ -21,6 +23,8 @@ interface product {
 
 function AdminCard(prop: any) {
 
+  const nav=useNavigate();
+
   const [counter, setCounter] = useState(prop.amount); // useState(initial value);
   // const [q,setQ] = useState(0);
 
@@ -29,7 +33,18 @@ function AdminCard(prop: any) {
     tempCounter++;
     setCounter(tempCounter);
     axios.patch(`http://localhost:3004/products1/${id}`,{ amount:tempCounter}).then(({data})=>console.log(data));
+  }
+  function handelRemoveProduct(id:number){
+    axios.delete(`http://localhost:3004/products1/${id}`)  
+    .then(res => {  
+      console.log(res);  
+      console.log(res.data);   
+    })  
 
+    alert("Added product to the store")
+    nav("/Seller");
+    
+    
 
   }
   function handleRemveCounter(id:number) {
@@ -55,6 +70,7 @@ function AdminCard(prop: any) {
         <h3>{name}</h3>
         <p>Price : {price}</p>
         <p><button onClick={()=>handleRemveCounter(id)}>-</button>  {counter} <button onClick={()=>handleAddCounter(id)}>+</button> </p>
+        <button onClick={()=>handelRemoveProduct(id)}> Remove </button>
 
       </div>
   );

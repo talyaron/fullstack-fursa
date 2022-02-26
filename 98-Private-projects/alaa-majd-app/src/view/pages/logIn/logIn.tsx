@@ -42,10 +42,10 @@ function Login() {
                     Password <br />
                     <input type="password" onKeyUp={(e:any)=>{setPassword(e.target.value)}} />
                     <br /><br />
-                    <input type='submit' className='submit' value="submit" />
+                    <input type='submit' className='submit' value="Login" />
                     <br />
                 </form>
-                <Link to="/HomePage">cancle</Link>
+                <Link to="/HomePage">cancel</Link>
 
 
             </div>
