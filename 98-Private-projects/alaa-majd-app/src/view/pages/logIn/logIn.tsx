@@ -24,7 +24,7 @@ function Login() {
     }
 
     useEffect(() => {
-        console.log("aaa")
+        console.log(email)
     }, [])
 
     return (

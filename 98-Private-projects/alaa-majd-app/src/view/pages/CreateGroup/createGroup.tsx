@@ -1,19 +1,78 @@
 import './createGroup.scss';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import Header from '../../components/header/header';
+import axios from 'axios';
+import { ContactsOutlined } from '@material-ui/icons';
 
 
 
 
 
 
-const createGroup = () =>{
+function CreateGroup(){
+    
 
     function handelSubmit (ev:any){
+        ev.preventDefault();
+        // useEffect(()=>{axios.get('http://localhost:3004/group/').then(({data})=>{
+       
+        //axios.post("")
+        const members:string = ev.target.members.value;
+        const membersArray = members.split(",").map((str:any) => {
+            return {id:str}
+        });
+
+        if(membersArray.length < 3){
+            alert("need more members");
+            return;
+        }
+        axios.get('http://localhost:3004/users/').then(({data})=>{
+            const arr:string[] = [];
+           for(let obj of data){
+               arr.push(obj.id)
+           }
+           for(let memberId of membersArray){
+               if(arr.findIndex((id:any) => memberId===id) == -1){
+                alert(`${memberId.id} doesn't exist`);
+                return
+            }
+           }
+           const info={
+            id:"234",
+            groupName: ev.target.groupName.value,
+            adminId: "0000000",
+            groupMember: membersArray
+            }
+           
+            axios.post('http://localhost:3004/group',info)
+            .then((data)=>{
+                console.log("group 1")
+                // check repose if ok
+                return data;
+            }).catch(err=>{
+    
+            })
+
+        }).catch(e=>{
+            console.log(e)
+        })
         
+        setGroupDetails([...membersArray])
+    
     }
 
+    function handleOnClck(e:any){
+        e.preventDefault();
+        console.log("aadd clicked")
+        // ge text from input
+        // validate input: check id and sperator and if exisits
+        const t = e.target.value
+
+
+    }
+    const [groupDetails, setGroupDetails] = useState<Array<any>>([]);
+    
     return(
         <div>    <Header></Header>
         <div className='warpper'>
@@ -23,16 +82,17 @@ const createGroup = () =>{
               <h1> Create new Group </h1> <br /><br />
                 <form onSubmit={handelSubmit}>
                 Group Name: <br />
-                <input type="text" />
+                <input name="groupName" type="text" />
                 <br /><br />
                 Members :  <br />
-                <input type="email" placeholder='min 3 mumbers' />  <button>add</button>
+                <input name="members" type="text" placeholder='min 3 mumbers' /> 
+                 <button onClick={handleOnClck}>add</button>
                 <br /><br />
                
-                <Link type='submit' to="/Store">Login</Link>
+                <button type='submit' >Add group</button>
                 </form>
                 <br />
-                <Link to="/Group">cancle</Link>
+                <Link to="/Group">cancel</Link>
 
                </div>
         </div>
@@ -41,4 +101,4 @@ const createGroup = () =>{
 }
 
 
-export default createGroup;
+export default CreateGroup;
