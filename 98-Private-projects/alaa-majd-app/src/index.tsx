@@ -28,6 +28,7 @@ import Settings from "./view/pages/settings/settings"
 import GroupDetails from './view/pages/GroupDetails/GroupDetails';
 
 import AddProduct from './view/pages/AdminPages/AddProduct/AddProduct';
+import MyOrders from './view/pages/MyOrders/MyOrders';
 
 ReactDOM.render(
   <React.StrictMode>

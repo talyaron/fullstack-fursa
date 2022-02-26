@@ -40,7 +40,7 @@ function CreateGroup(){
             }
            }
            const info={
-            id:"234",
+            id:"099999",
             groupName: ev.target.groupName.value,
             adminId: user.ID,
             groupMember: membersArray
