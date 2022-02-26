@@ -43,6 +43,7 @@ require("react-time-picker/dist/TimePicker.css");
 var hooks_1 = require("../../../app/hooks");
 //import { selectTreatment } from '../../../features/treatment/treatmentSlice';
 var appointmentsSlice_1 = require("../../../features/appointment/appointmentsSlice");
+var axios_1 = require("axios");
 var locales = {
     "en-US": require("date-fns/locale/en-US")
 };
@@ -59,28 +60,13 @@ function CalendarFun() {
     var dispatch = hooks_1.useAppDispatch();
     react_1.useEffect(function () {
         dispatch(appointmentsSlice_1.getAppointmentsAsyn());
-        //console.log(date.getFullYear());
         //axios.get('http://localhost:3004/AppointmentData').then(({data})=>console.log(data));
     }, []);
     function handleAddEvent() {
         if (newEvent.name === "" || newEvent.phone === "" || newEvent.title === "")
             alert("Your Info Is Incomplete!!");
         else {
-            //     dispatch(addAppointment(newEvent));
-            //     console.log(appointments);
-            //      //console.log(newEvent.start);
-            //      var json ="2022-02-28T02:00:00.000Z";
-            //      var date=new Date(JSON.parse(json));
-            //      console.log(date);
-            //      //console.log(date.getFullYear());
             var result = appointments.find(function (appoint) {
-                // //var json1 = appoint.start;
-                // //var json2 = appoint.end;
-                // var dateStart = new Date(appoint.start)
-                // //console.log(json1);
-                // console.log(dateStart); 
-                // var dateEnd = (new Date(appoint.end));
-                // console.log(dateEnd); 
                 return (new Date(appoint.start)).getFullYear() === newEvent.start.getFullYear() &&
                     (new Date(appoint.start)).getMonth() === newEvent.start.getMonth() &&
                     (new Date(appoint.start)).getDate() === newEvent.start.getDate() &&
@@ -91,9 +77,9 @@ function CalendarFun() {
             if (result)
                 alert("Date Is Not Available!!");
             else {
-                // console.log(newEvent);
-                // console.log(appointments);
-                dispatch(appointmentsSlice_1.addAppointment({ title: newEvent.title, start: newEvent.start.toJSON(), end: newEvent.end.toJSON(), name: newEvent.name, phone: newEvent.phone }));
+                dispatch(appointmentsSlice_1.addAppointment({ id: appointments.length + 1, title: newEvent.title, start: newEvent.start.toJSON(), end: newEvent.end.toJSON(), name: newEvent.name, phone: newEvent.phone }));
+                var data = { id: appointments.length + 1, title: newEvent.title, start: newEvent.start.toJSON(), end: newEvent.end.toJSON(), name: newEvent.name, phone: newEvent.phone };
+                axios_1["default"].post('http://localhost:3004/AppointmentData', data);
             }
         }
     }

@@ -49,6 +49,7 @@ export interface appointment{
     reducers: {
       addAppointment : (state,action) =>{
         state.appointments = [...state.appointments, action.payload];
+        
 
       },
     },

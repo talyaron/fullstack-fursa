@@ -55,9 +55,6 @@ function CalendarFun() {
 
     useEffect(() => {
         dispatch(getAppointmentsAsyn());
-
-        //console.log(date.getFullYear());
-
         //axios.get('http://localhost:3004/AppointmentData').then(({data})=>console.log(data));
 
     }, []);
@@ -69,26 +66,8 @@ function CalendarFun() {
         if (newEvent.name === "" || newEvent.phone === "" || newEvent.title === "")
             alert("Your Info Is Incomplete!!");
 
-        else {
-        //     dispatch(addAppointment(newEvent));
-        //     console.log(appointments);
-        //      //console.log(newEvent.start);
-        //      var json ="2022-02-28T02:00:00.000Z";
-        //      var date=new Date(JSON.parse(json));
-        //      console.log(date);
-        //      //console.log(date.getFullYear());
-
-           
+        else {           
             const result: appointment | undefined = appointments.find((appoint: appointment) =>
-           
-            // //var json1 = appoint.start;
-            // //var json2 = appoint.end;
-            // var dateStart = new Date(appoint.start)
-            // //console.log(json1);
-            // console.log(dateStart); 
-            // var dateEnd = (new Date(appoint.end));
-            // console.log(dateEnd); 
-
             (new Date(appoint.start)).getFullYear() === newEvent.start.getFullYear() &&
             (new Date(appoint.start)).getMonth() === newEvent.start.getMonth() &&
             (new Date(appoint.start)).getDate() === newEvent.start.getDate() &&
@@ -100,9 +79,9 @@ function CalendarFun() {
                 alert("Date Is Not Available!!");
 
             else{ 
-                // console.log(newEvent);
-                // console.log(appointments);
-                dispatch(addAppointment({ title: newEvent.title, start: newEvent.start.toJSON(), end:newEvent.end.toJSON(), name: newEvent.name, phone: newEvent.phone }));
+                dispatch(addAppointment({ id:appointments.length+1 , title: newEvent.title, start: newEvent.start.toJSON(), end:newEvent.end.toJSON(), name: newEvent.name, phone: newEvent.phone }));
+                let data= { id:appointments.length+1 ,title:newEvent.title, start: newEvent.start.toJSON(),end:newEvent.end.toJSON(), name: newEvent.name, phone:newEvent.phone};
+                axios.post('http://localhost:3004/AppointmentData',data);
             }
         }
     }
