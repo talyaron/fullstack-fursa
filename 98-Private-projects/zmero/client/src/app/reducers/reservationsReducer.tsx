@@ -12,14 +12,7 @@ interface Reservation {
     restID: number;
 }
 
-interface Reservation2 {
-    hour: number | undefined;
-    min: number | undefined;
-    year: number | undefined;
-    month: number | undefined;
-    day: number | undefined;
-    restID: number | undefined;
-}
+
 
 interface Reservations {
     reservations: Array<Reservation>
@@ -61,7 +54,7 @@ export const cancelReservations = createAsyncThunk(
 
 export const AddReservation = createAsyncThunk(
     'reservation/AddReservation',
-    async (Reserve: Reservation2, thunkAPI) => {
+    async (Reserve: any, thunkAPI) => {
         try {
             const response = await axios.post(`http://localhost:3004/Reservations/`, Reserve)
             const data: any = response.data

@@ -89,7 +89,6 @@ function Restaurant() {
     function photoSlider() {
         setOpenPhoto(true);
     }
-    console.log(restaurant)
     return (
         <ScrollIntoView>
             <div>
@@ -159,7 +158,7 @@ function Restaurant() {
                     aria-describedby="parent-modal-description"
                 >
                     <Box sx={{
-                        top: '50%', left: '50%', position: 'absolute', transform: 'translate(-50%, -50%)', Width: "50%", maxHeight: "300",
+                        display: "flex", flexDirection: "column", width: "50%", justifyContent: "center", margin: "auto", position: "absolute", top: "25%", left: "25%"
                     }}>
                         <AutoPlaySwipeableViews
                             axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
@@ -171,14 +170,17 @@ function Restaurant() {
                                 <div key={index}>
                                     {Math.abs(activeStep - index) <= restaurant[0].photos.length ? (
                                         <Box
-                                            component="img"
+
                                             sx={{
-                                                height: "450px",
+                                                backgroundImage: `url(${step})`,
+                                                height: "400px",
                                                 width: "100%",
                                                 maxHeight: "700px",
-                                                display: "block"
+                                                backgroundPosition: "50%",
+                                                backgroundSize: "cover",
+
                                             }}
-                                            src={step}
+
 
                                         />
                                     ) : null}

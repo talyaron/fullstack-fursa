@@ -30,7 +30,6 @@ function ReservationCard(props: cardProp) {
     }
     let img = "";
     let title = ""
-    console.log(restaurant)
     if (restaurant.length != 0) {
         img = restaurant[0].image;
         title = restaurant[0].name;
