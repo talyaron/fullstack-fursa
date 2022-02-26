@@ -6,7 +6,7 @@ import UserReducer from './reducer/UserReducer';
 export const store = configureStore({
   reducer: {
     User :UserReducer,
-    NavText:NavtextSlice
+    NavText:NavtextSlice,
   },
 });
 

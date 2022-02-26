@@ -1,0 +1,22 @@
+.SUwrapper {
+  align-self: flex-end;
+  position: fixed;
+  top: 8%;
+  left: 15%;
+}
+.SUwrapper .Signupc {
+  background-color: #FF8074;
+  color: white;
+  font-size: 10px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 50%;
+  display: block;
+  height: 50px;
+  width: 50px;
+  border: 1px solid #FF8074;
+}
+.SUwrapper .Signupc img {
+  width: 50%;
+  height: 50%;
+}

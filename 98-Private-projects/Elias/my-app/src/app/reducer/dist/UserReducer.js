@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.GetUserinfo = exports.UserSlice = exports.getUserInfoAsync = void 0;
+exports.GetUser = exports.UserSlice = exports.getUserInfoAsync = void 0;
 var toolkit_1 = require("@reduxjs/toolkit");
 var axios_1 = require("axios");
 var initialState = {
@@ -93,5 +93,5 @@ exports.UserSlice = toolkit_1.createSlice({
 //export const{login} =UserSlice.actions;
 //export const{login} =UserSlice.actions;
 //export const{getUserInfoAsync} =UserSlice.caseReducers;
-exports.GetUserinfo = function (state) { return state.User.userInfo; };
+exports.GetUser = function (state) { return state.User; };
 exports["default"] = exports.UserSlice.reducer;

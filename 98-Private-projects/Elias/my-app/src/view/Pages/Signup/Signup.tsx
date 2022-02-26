@@ -2,7 +2,7 @@
 import { useEffect ,useState} from 'react';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { changeNavText } from '../../../app/reducer/NavTextReducer';
-import { GetUserinfo, getUserInfoAsync} from '../../../app/reducer/UserReducer';
+import { GetUser, getUserInfoAsync} from '../../../app/reducer/UserReducer';
 import './Signup.scss';
 
 //import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -18,7 +18,7 @@ function Signup(props: any) {
     //const[username,setusername]=useState("");
    // const user_name:string = username;
 
-    const user = useAppSelector(GetUserinfo);
+    const user = useAppSelector(GetUser);
 
     const dispatch = useAppDispatch();
 

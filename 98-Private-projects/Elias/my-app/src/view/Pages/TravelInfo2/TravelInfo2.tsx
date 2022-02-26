@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../../app/hooks';
 import { changeNavText } from '../../../app/reducer/NavTextReducer';
+import InputComp from '../../components/InputComp/InputComp';
+import SingupF from '../../components/SignupF/SingupF';
 
 
 
@@ -37,6 +39,8 @@ const TravelInfo2 = () => {
     <div className="wrapper">
       <div className="header"> Fill travel info</div>
       <form action="" className="TarvelInfo1Form">
+      <SingupF/>
+
 
         <div className="catg box1">
           <div className=" text Transport">Transport</div>
@@ -94,17 +98,6 @@ const TravelInfo2 = () => {
     </div>
   )
 
-}
-
-function InputComp(props: list) {
-  const { propsname } = props;
-  return (
-    <div>
-      <input id={propsname} type="checkbox" />
-      <label className={propsname} htmlFor={propsname}></label>
-    </div>
-
-  );
 }
 
 export default TravelInfo2;

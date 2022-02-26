@@ -6,6 +6,8 @@ var react_router_dom_1 = require("react-router-dom");
 var NavTextReducer_1 = require("../../../app/reducer/NavTextReducer");
 var hooks_1 = require("../../../app/hooks");
 var react_1 = require("react");
+var InputComp_1 = require("../../components/InputComp/InputComp");
+var SingupF_1 = require("../../components/SignupF/SingupF");
 var TravelInfo1 = function () {
     var TravelPList = [{ propsname: "leisure" }, { propsname: "business" }, { propsname: "roadTrip" }, { propsname: "family" }, { propsname: "study" }, { propsname: "grieving" }];
     var LuggagePList = [{ propsname: "trolly" }, { propsname: "suitcase" }, { propsname: "briefcase" }, { propsname: "backpack" }, { propsname: "handbag" }, { propsname: "multy" }];
@@ -24,6 +26,7 @@ var TravelInfo1 = function () {
     return (React.createElement("div", { className: "wrapper" },
         React.createElement("div", { className: "header" }, " Fill travel info"),
         React.createElement("form", { action: "", className: "TarvelInfo1Form" },
+            React.createElement(SingupF_1["default"], null),
             React.createElement("div", { className: " text whereHeader" }, "Where"),
             React.createElement("input", { type: "text", placeholder: 'Type here', className: 'whereInput' }),
             React.createElement("div", { className: "text whenHeader" }, "When"),
@@ -32,19 +35,12 @@ var TravelInfo1 = function () {
             React.createElement("input", { type: "text", placeholder: 'Type here', className: 'HowManyInput' }),
             React.createElement("div", { className: " text TravelP" }, "Travel Purpose"),
             React.createElement("div", { className: "grid-container" }, TravelPList.map(function (element, index) {
-                return (React.createElement(InputComp, { key: index, propsname: element.propsname }));
+                return (React.createElement(InputComp_1["default"], { key: index, propsname: element.propsname }));
             })),
             React.createElement("div", { className: "text ChooseL" }, "Choose Luggage"),
             React.createElement("div", { className: "grid-container" }, LuggagePList.map(function (element, index) {
-                return (React.createElement(InputComp, { key: index, propsname: element.propsname }));
+                return (React.createElement(InputComp_1["default"], { key: index, propsname: element.propsname }));
             })),
             React.createElement("button", { className: 'Proceedbtn', onClick: clickProceed }, "Proceed"))));
 };
-function InputComp(props) {
-    var propsname = props.propsname;
-    //const divname = 'divT ' + propsname;
-    return (React.createElement("div", { className: 'divT' },
-        React.createElement("input", { id: propsname, type: "checkbox" }),
-        React.createElement("label", { className: propsname, htmlFor: propsname })));
-}
 exports["default"] = TravelInfo1;

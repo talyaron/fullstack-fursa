@@ -69,5 +69,5 @@ export const UserSlice = createSlice({
 //export const{login} =UserSlice.actions;
 //export const{getUserInfoAsync} =UserSlice.caseReducers;
 
-export const GetUserinfo = (state: RootState) => state.User.userInfo;
+export const GetUser = (state: RootState) => state.User;
 export default UserSlice.reducer;

@@ -9,7 +9,7 @@ require("./Signup.scss");
 function Signup(props) {
     //const[username,setusername]=useState("");
     // const user_name:string = username;
-    var user = hooks_1.useAppSelector(UserReducer_1.GetUserinfo);
+    var user = hooks_1.useAppSelector(UserReducer_1.GetUser);
     var dispatch = hooks_1.useAppDispatch();
     react_1.useEffect(function () {
         dispatch(NavTextReducer_1.changeNavText("Sign up to save List"));

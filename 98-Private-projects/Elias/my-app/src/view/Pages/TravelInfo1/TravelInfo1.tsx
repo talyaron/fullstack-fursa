@@ -2,8 +2,11 @@ import './TravelInfo1.scss';
 import { CalendarComponent } from '@syncfusion/ej2-react-calendars';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { changeNavText } from '../../../app/reducer/NavTextReducer';
-import { useAppDispatch } from '../../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { useEffect } from 'react';
+import InputComp from '../../components/InputComp/InputComp';
+import SingupF from '../../components/SignupF/SingupF';
+
 
 
 interface list {
@@ -14,15 +17,17 @@ interface list {
 const TravelInfo1 = () => {
     const TravelPList: Array<list> = [{ propsname: "leisure" }, { propsname: "business" }, { propsname: "roadTrip" }, { propsname: "family" }, { propsname: "study" }, { propsname: "grieving" }];
     const LuggagePList: Array<list> = [{ propsname: "trolly" }, { propsname: "suitcase" }, { propsname: "briefcase" }, { propsname: "backpack" }, { propsname: "handbag" }, { propsname: "multy" }];
+   
+
 
 
     const nav = useNavigate();
     const { state }: any = useLocation();
     const dispatch = useAppDispatch();
 
-        useEffect(() => {
-            dispatch(changeNavText("Fill travel info"));
-        }, [dispatch]);
+    useEffect(() => {
+        dispatch(changeNavText("Fill travel info"));
+    }, [dispatch]);
 
     function clickProceed(e: any) {
         nav('/TravelInfo2', {
@@ -37,6 +42,7 @@ const TravelInfo1 = () => {
 
             <div className="header"> Fill travel info</div>
             <form action="" className="TarvelInfo1Form">
+                <SingupF/>
                 <div className=" text whereHeader">Where</div>
                 <input type="text" placeholder='Type here' className='whereInput' />
                 <div className="text whenHeader">When</div>
@@ -69,19 +75,6 @@ const TravelInfo1 = () => {
         </div>
     )
 }
-
-function InputComp(props: list) {
-    const { propsname } = props;
-    //const divname = 'divT ' + propsname;
-    return (
-        <div className='divT'>
-            <input id={propsname} type="checkbox" />
-            <label className={propsname} htmlFor={propsname}></label>
-        </div>
-
-    );
-}
-
 export default TravelInfo1;
 
 
