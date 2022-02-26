@@ -8,7 +8,7 @@ interface SchoolClassCardState {
 
 const initialState:SchoolClassCardState = {
     class_name:'',
-    teacher_name:'',
+    teacher_name:''
 };
 
 export const SchoolClassCardSlice = createSlice ({

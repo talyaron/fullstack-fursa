@@ -16,8 +16,9 @@ import NewCourseDialog from '../newCourseDialog/NewCourseDialog';
 import EditStudentsDialog from '../editStudentsDialog/EditStudentsDialog';
 import { useAppSelector, useAppDispatch } from '../../../../app/hooks';
 import { classCourses, classStudents, classTeachers, getCoursesAsync, getStudentsAsync, getTeachersAsync } from '../../../../app/reducers/school/ClassDetailsSlice';
-import { selectedTeacherName } from '../../../../app/reducers/school/ClassCardSlice';
+import { selectedClassName, selectedTeacherName } from '../../../../app/reducers/school/ClassCardSlice';
 import { schoolTeachers } from '../../../../app/reducers/school/SchoolSlice';
+import axios from 'axios';
 
 // const courses = [
 //     { name: "Arabic", teacher: "Manal Misherky" }, { name: "Mathmatics", teacher: "Manal Bisharat" },
@@ -37,6 +38,17 @@ import { schoolTeachers } from '../../../../app/reducers/school/SchoolSlice';
 //     { first: "Suzan", last: "Kassabry 9", id: "123456789", phone: "0537756044" },
 //     { first: "Suzan", last: "Kassabry 10", id: "123456789", phone: "0537756044" }
 // ]
+
+interface teacherObj {
+    id: 1,
+    info: {
+        firstName: string,
+        lastName: string,
+        teacherId: string,
+        phone: string,
+        email: string
+    }
+}
 
 const teachers = [
     { label: 'Suzan Kassabry' },
@@ -83,38 +95,60 @@ function a11yProps(index: number) {
 
 export default function ClassTabsBar() {
     const [value, setValue] = React.useState(0);
-    const [disableEditTeacher, setDisableEditTeacher] = useState(true);
-    const [editTeacherBtn, setEditTeacherBtn] = useState('Edit');
-    const [openCourseDialog, setOpenCourseDialog] = useState(false);
-    const [openStudentsDialog, setOpenStudentsDialog] = useState(false);
-    // const [newTeacherName, setNewTeacherName] = useState('');
+    const [disableEditTeacher, setDisableEditTeacher] = useState(true); //abling and disabiling teacher texfeild
+    const [editTeacherBtn, setEditTeacherBtn] = useState('Edit'); //to edit the txt on the button
+    const [openCourseDialog, setOpenCourseDialog] = useState(false); //opening and closing new course dialog
+    const [openStudentsDialog, setOpenStudentsDialog] = useState(false); //opening and closing editting students dialog
+    const [newTeacherName, setNewTeacherName] = useState({}); //the new selected teacher :obj
     const dispatch = useAppDispatch();
     useEffect(() => {
         dispatch(getCoursesAsync());
         dispatch(getStudentsAsync());
         dispatch(getTeachersAsync());
     }, [])
-    const courses = useAppSelector(classCourses);
-    const students = useAppSelector(classStudents);
-    const teachers = useAppSelector(schoolTeachers);
-    const teacherName = useAppSelector(selectedTeacherName);
+    const courses = useAppSelector(classCourses); //the class courses
+    const students = useAppSelector(classStudents); //the class students
+    const teachers = useAppSelector(schoolTeachers); //the school teachers
+    const teacherName = useAppSelector(selectedTeacherName); //the class teacher name : string
+    const className = useAppSelector(selectedClassName); //the class name :string
+    const [classId, setClassId] = useState(null);
+    const [newTeacher, setNewTeacher] = useState('');
+    const defaultTeacher = findDefaultTeacherObj(); //the class teacher : obj
+
+    useEffect(() => {
+        axios.get(`http://localhost:3004/schoolClasses?name=${className}`)
+            .then(({ data }) => setClassId(data[0].id));
+    }, [])
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);
     };
 
     function handleTeacherChange(ev: any, value: any) {
-        console.log(value);
-        // setNewTeacherName(value);
+        // console.log('selected teacher');
+        // console.log(value);
+        setNewTeacherName(value);
+        if (value !== null) {
+            setNewTeacher(value.info.firstName.concat(' ', value.info.lastName));
+        }
+        
     }
 
     function editTeacher() {
         const edit = !disableEditTeacher;
         setDisableEditTeacher(!disableEditTeacher);
-        if (!edit) {
+        if (!edit) { //let the user the option to edit 
             setEditTeacherBtn('Save');
-        } else {
+        } else { //save the user's edit
             setEditTeacherBtn('Edit')
+            if (newTeacherName === {} || newTeacherName === null) { //no teacher was selected
+                console.log('not selected')
+            } else { //new teacher was selected
+                console.log('selected');
+                console.log(newTeacherName)
+                axios.patch(`http://localhost:3004/schoolClasses/${classId}`,
+                    { teacher: `${newTeacher}` })
+            }
         }
     }
 
@@ -124,6 +158,17 @@ export default function ClassTabsBar() {
 
     function handleOpenStudentsDialog() {
         setOpenStudentsDialog(true);
+    }
+
+    function findDefaultTeacherObj() {
+        for (let i = 0; i < teachers.length; i++) {
+            if (teachers[i].info.firstName.concat(' ', teachers[i].info.lastName) === teacherName) {
+                return teachers[i];
+            }
+        }
+        console.log('null')
+
+        return null;
     }
 
     return (
@@ -173,10 +218,6 @@ export default function ClassTabsBar() {
                         {
                             students.map((student, i) => {
                                 const { first, last, studentId, phone } = student;
-                                // console.log(first)
-                                // console.log(last)
-                                // console.log(studentId)
-                                // console.log(phone)
                                 return (
                                     <ListItem key={i} className='studentsList__listItem' divider={true}>
                                         <ListItemText
@@ -218,7 +259,7 @@ export default function ClassTabsBar() {
                             disabled={disableEditTeacher}
                             options={teachers}
                             getOptionLabel={(option) => option.info.firstName.concat(' ', option.info.lastName)}
-                            // defaultValue={teacherName}
+                            defaultValue={defaultTeacher}
                             sx={{ width: 300 }}
                             renderInput={(params) => <TextField {...params} />}
                             size="small"

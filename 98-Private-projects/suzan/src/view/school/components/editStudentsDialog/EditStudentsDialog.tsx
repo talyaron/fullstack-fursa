@@ -50,7 +50,7 @@ export default function NewCourseDialog(props: dialogProps) {
     };
 
     function checkStudent(student:any) {
-        var i;
+        let i;
         for (i = 0; i < studentsOfClass.length; i++) {
             if (studentsOfClass[i].id === student.id) {
                 return true;
