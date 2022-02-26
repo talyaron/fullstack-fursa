@@ -16,6 +16,7 @@ interface Restaurant {
 
 interface Restaurants {
     arrOfResteruants: Array<Restaurant>;
+
     arrOfFamousResteruants: Array<Restaurant>;
     status: 'idle' | 'loading' | 'failed';
 }
@@ -91,6 +92,14 @@ export const restaurantReducer = createSlice({
                 state.status = 'idle';
                 state.arrOfFamousResteruants = action.payload;
             })
+            .addCase(fetchRestaurantsById.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(fetchRestaurantsById.fulfilled, (state, action) => {
+                state.status = 'idle';
+                state.arrOfFamousResteruants = action.payload;
+            })
+
     },
 })
 

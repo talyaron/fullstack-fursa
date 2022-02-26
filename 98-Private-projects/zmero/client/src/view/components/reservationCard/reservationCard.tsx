@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './reservationCard.scss'
 import { useAppSelector, useAppDispatch } from '../../../app/hooks';
 import { getAllRestaurants } from '../../../app/reducers/resterauntsReducer'
+import { cancelReservations, fetchUserReservations } from '../../../app/reducers/reservationsReducer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarDays } from '@fortawesome/free-solid-svg-icons'
 import Button from '@mui/material/Button';
@@ -17,12 +18,16 @@ interface cardProp {
 
 function ReservationCard(props: cardProp) {
     const restaurants = useAppSelector(getAllRestaurants)
+    const dispatch = useAppDispatch()
     const restaurant = restaurants.filter((rest, index) => {
         if (rest.id === props.id)
             return rest
     })
     function CancelReserve(e: any) {
         e.preventDefault();
+        dispatch(cancelReservations(props.id))
+        dispatch(fetchUserReservations())
+
 
     }
     let img = "";
@@ -37,7 +42,6 @@ function ReservationCard(props: cardProp) {
         .replace('d', "" + props.day)
         .replace('h', "" + props.hour)
         .replace('t', "" + props.min)
-    console.log(strDate)
     return (
         <div className="reservationcard">
             <div className="reservationcard__image" style={{ backgroundImage: `url(${img})` }}></div>
@@ -47,10 +51,10 @@ function ReservationCard(props: cardProp) {
                 </div>
                 <div className="reservationcard__date">
                     <FontAwesomeIcon style={{ color: 'rgb(38, 57, 77)' }} icon={faCalendarDays} />
-                    <div>{strDate}</div>
+                    <div className="reservationcard__date__date">{strDate}</div>
                 </div>
                 <div className="reservationcard__cancel">
-                    <Button style={{ backgroundColor: '#2a945b', width: '50%', padding: '0.1rem 0.1rem' }} fullWidth variant="contained" onClick={CancelReserve}>Cancel</Button>
+                    <Button style={{ backgroundColor: '#2a945b', width: '60%', padding: '0.1rem 0.1rem', whiteSpace: "nowrap" }} fullWidth variant="contained" onClick={CancelReserve}>Cancel</Button>
                 </div>
             </div>
 

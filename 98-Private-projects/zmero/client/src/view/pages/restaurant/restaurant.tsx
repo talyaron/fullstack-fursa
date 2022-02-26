@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import axios from 'axios'
 import './restaurant.scss'
 import Menu from '../../components/menu/menu'
 import Button from '@mui/material/Button'
@@ -10,35 +9,55 @@ import Favorite from '@mui/icons-material/Favorite';
 import ReserveModal from '../../components/reserveModal/reserveModal'
 import Modal from '@mui/material/Modal'
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 import { useTheme } from '@mui/material/styles';
 import MobileStepper from '@mui/material/MobileStepper';
+import { getAllRestaurants, fetchAllRestaurants } from '../../../app/reducers/resterauntsReducer'
+import { addFavorite, fetchUserFavorite, deleteFavorite, getFavorites } from '../../../app/reducers/favoriteReducer'
+import { useAppSelector, useAppDispatch } from '../../../app/hooks';
 
-interface cardProp {
-    id: number;
-    name: string;
-    image: string;
-    booking: number;
-    region: string;
-    stars: number;
-    category: string;
-    photos: Array<string>;
-}
+
 
 
 function Restaurant() {
+    const dispatch = useAppDispatch()
+    useEffect(() => {
+        dispatch(fetchAllRestaurants())
+        dispatch(fetchUserFavorite())
+    }, []);
     const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
     const theme = useTheme();
     const [activeStep, setActiveStep] = React.useState(0);
     const maxSteps = 2;
+    const [Restaurant, setRestaurant] = useState({ id: 0, name: "", image: "", booking: 0, region: "", stars: 0, category: "", photos: [], city: "" })
+    const { RestaurantId } = useParams();
+    const [openModal, setOpenModal] = useState(false);
+    const [openPhoto, setOpenPhoto] = useState(false);
+    const restaurants = useAppSelector(getAllRestaurants)
+    const favorites = useAppSelector(getFavorites)
+    const [checked, setChecked] = React.useState(false);
+    let restaurant = restaurants.filter((rest) => {
+        if ("" + rest.id == RestaurantId)
+            return rest
+    })
+    const favorite = favorites.filter((fav) => {
+        if ("" + fav.restId == RestaurantId)
+            return fav
+    })
+    if (restaurant.length == 0)
+        restaurant = [Restaurant];
+    if (favorite.length > 0 && checked === false) {
+        setChecked(true)
+    }
+    if (favorite.length == 0 && checked === true) {
+        setChecked(false)
+    }
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
     };
-
     const handleBack = () => {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
@@ -46,52 +65,49 @@ function Restaurant() {
     const handleStepChange = (step: any) => {
         setActiveStep(step);
     };
-    function addFavorite(e: any) {
-        console.log(e.target.checked)
-    }
+    function isFavorite(e: any) {
+        if (e.target.checked) {
+            dispatch(addFavorite(RestaurantId))
+            dispatch(fetchUserFavorite())
+        }
+        else {
+            dispatch(deleteFavorite(favorite[0].id))
+            dispatch(fetchUserFavorite())
+            setChecked(false)
+        }
 
-    const { RestaurantId } = useParams();
-    const [openModal, setOpenModal] = useState(false);
-    const [openPhoto, setOpenPhoto] = useState(false);
-    const [Restaurant, setRestaurant] = useState<cardProp>({ id: 0, name: "", image: "", booking: 0, region: "", stars: 0, category: "", photos: [] })
+    }
     function openReserve(e: any) {
         e.preventDefault();
         setOpenModal(true);
     }
-    useEffect(() => {
-        axios.get(`http://localhost:3004/Restaurants/${RestaurantId}`).then(({ data }) => {
-            setRestaurant(data)
-        }
-        );
-    }, []);
-
-    const images = [{ url: 'https://www.w3schools.com/howto/img_nature_wide.jpg' }, { url: 'https://www.w3schools.com/howto/img_snow_wide.jpg' }]
     function photoSlider() {
         setOpenPhoto(true);
     }
-
     return (
         <div>
             <Menu></Menu>
             <div className="rest">
                 <div className="rest__images" onClick={photoSlider}>
-                    <div className="rest__images__photo" style={{ backgroundImage: `url(${Restaurant.photos[0]})` }}></div>
-                    <div className="rest__images__photo" style={{ backgroundImage: `url(${Restaurant.photos[1]})` }}></div>
+                    <div className="rest__images__photo" style={{ backgroundImage: `url(${restaurant[0].photos[0]})` }}></div>
+                    <div className="rest__images__photo" style={{ backgroundImage: `url(${restaurant[0].photos[1]})` }}></div>
                 </div>
                 <div className="rest__main">
                     <div className="rest__main__header">
                         <div className="rest__main__header__left">
-                            <img src={Restaurant.image} alt="restaurant"></img>
+                            <img src={restaurant[0].image} alt="restaurant"></img>
                             <div className="rest__main__header__left__title">
-                                <h1>{Restaurant.name}</h1>
+                                <h1>{restaurant[0].name}</h1>
                                 <div className="rest__main__header__left__title__category">
-                                    <span>{Restaurant.region}</span>
+                                    <span>{restaurant[0].region}</span>
                                     <span className="dot"></span>
-                                    <span>{Restaurant.category.toUpperCase()}</span>
+                                    <span>{restaurant[0].city}</span>
+                                    <span className="dot"></span>
+                                    <span>{restaurant[0].category.toUpperCase()}</span>
                                 </div>
                             </div>
                             <div className="rest__main__header__left__favorite">
-                                <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} onChange={addFavorite} />
+                                <Checkbox checked={checked} icon={<FavoriteBorder />} checkedIcon={<Favorite />} onClick={isFavorite} />
                             </div>
                         </div>
                         <div className="rest__main__header__right">
@@ -117,9 +133,9 @@ function Restaurant() {
                         onChangeIndex={handleStepChange}
                         enableMouseEvents
                     >
-                        {Restaurant.photos.map((step, index) => (
+                        {restaurant[0].photos.map((step, index) => (
                             <div key={index}>
-                                {Math.abs(activeStep - index) <= Restaurant.photos.length ? (
+                                {Math.abs(activeStep - index) <= restaurant[0].photos.length ? (
                                     <Box
                                         component="img"
                                         sx={{

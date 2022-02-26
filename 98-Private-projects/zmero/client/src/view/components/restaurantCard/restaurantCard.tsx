@@ -54,7 +54,7 @@ function RestaurantCard(props: cardProp) {
                         </div>
                     </div>
                     <div className="restaurantCard__reserve">
-                        <Button style={{ backgroundColor: '#2a945b', width: '50%', padding: '0.1rem 0.1rem' }} fullWidth variant="contained" onClick={openReserve}>Reserve Now</Button>
+                        <Button style={{ backgroundColor: '#2a945b', width: '60%', padding: '0.1rem 0.1rem', whiteSpace: "nowrap" }} variant="contained" onClick={openReserve}>Reserve Now</Button>
                     </div>
                 </div>
                 <ReserveModal restaurantID={props.id} openModal={openModal} setOpenModal={setOpenModal} />

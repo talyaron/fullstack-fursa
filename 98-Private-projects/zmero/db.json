@@ -1,5 +1,6 @@
 {
-  "Restaurants": [{
+  "Restaurants": [
+    {
       "id": 1,
       "name": "shila-sharon cohen Kitchen & bar",
       "image": "https://media-cdn.tripadvisor.com/media/photo-s/03/7a/47/6d/shila.jpg",
@@ -70,57 +71,30 @@
       ]
     }
   ],
-  "Users": [{
-    "id": 1,
-    "email": "m.zmiro@hotmail.com",
-    "userName": "mohamed zmiro",
-    "favorite": [],
-    "password": "123123147"
-  }],
-  "Reservations": [{
+  "Users": [
+    {
+      "id": 1,
+      "email": "m.zmiro@hotmail.com",
+      "userName": "mohamed zmiro",
+      "favorite": [],
+      "password": "123123147"
+    }
+  ],
+  "Reservations": [
+    {
       "restID": 3,
-      "hour": 23,
+      "hour": 15,
       "year": 2022,
-      "min": 52,
-      "day": 23,
+      "min": 20,
+      "day": 26,
       "month": 1,
       "id": 1
-    },
+    }
+  ],
+  "Favorite": [
     {
-      "restID": 2,
-      "hour": 9,
-      "year": 2022,
-      "min": 20,
-      "day": 24,
-      "month": 1,
-      "id": 2
-    },
-    {
-      "restID": 2,
-      "hour": 9,
-      "year": 2022,
-      "min": 20,
-      "day": 24,
-      "month": 1,
-      "id": 3
-    },
-    {
-      "restID": 4,
-      "hour": 21,
-      "year": 2022,
-      "min": 51,
-      "day": 24,
-      "month": 1,
-      "id": 4
-    },
-    {
-      "restID": 1,
-      "hour": 22,
-      "year": 2022,
-      "min": 50,
-      "day": 25,
-      "month": 1,
-      "id": 5
+      "restId": "3",
+      "id": 1
     }
   ]
 }

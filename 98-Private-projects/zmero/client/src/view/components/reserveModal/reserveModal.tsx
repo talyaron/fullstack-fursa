@@ -31,17 +31,7 @@ function ReserveModal(props: details) {
         boxShadow: 24,
         p: 4,
     };
-    function openReserve(e: any) {
-        e.preventDefault();
-        props.setOpenModal(true);
-    }
     function handleReserve() {
-        console.log(props.restaurantID)
-        console.log(reserveTime?.getHours())
-        console.log(reserveTime?.getMinutes())
-        console.log(reserveDate?.getFullYear())
-        console.log(reserveDate?.getMonth())
-        console.log(reserveDate?.getDate())
         axios.post('http://localhost:3004/reservations/', {
             restID: props.restaurantID, hour: reserveTime?.getHours(), year: reserveDate?.getFullYear(),
             min: reserveTime?.getMinutes(), day: reserveDate?.getDate(), month: reserveDate?.getMonth()
@@ -49,6 +39,7 @@ function ReserveModal(props: details) {
         ).then(({ data }) => {
             console.log(data)
         })
+        props.setOpenModal(false)
     }
     return (
         <div>
