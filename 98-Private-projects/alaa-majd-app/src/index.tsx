@@ -24,8 +24,10 @@ import Cart from './view/components/Cart/Cart'
 import AboutUsIn from "./view/pages/aboutUsIn/aboutUsIn"
 import AboutUsAdmin from "./view/pages/AdminPages/aboutUsAdmin/aboutUsAdmin"
 import Help from "./view/pages/help/help"
+import HelpAdmin from "./view/pages/AdminPages/HelpAdmin/HelpAdmin"
 import Settings from "./view/pages/settings/settings"
 import GroupDetails from './view/pages/GroupDetails/GroupDetails';
+import EditProduct from './view/pages/AdminPages/EditProduct/EditProduct';
 
 import AddProduct from './view/pages/AdminPages/AddProduct/AddProduct';
 import MyOrders from './view/pages/MyOrders/MyOrders';
@@ -52,9 +54,11 @@ ReactDOM.render(
         <Route path="/users/:id" element={<Profile />} />
         <Route path="/GroupDetails" element={<GroupDetails />} />
         <Route path="/AddProduct" element={<AddProduct />} />
+        <Route path="/EditProduct" element={<EditProduct />} />
         <Route path="/aboutUsIn" element={<AboutUsIn />} />
         <Route path="/AboutUsAdmin" element={<AboutUsAdmin />} />
         <Route path="/help" element={<Help />} />
+        <Route path="/HelpAdmin" element={<HelpAdmin />} />
       </Routes>
     </BrowserRouter>
     </Provider>

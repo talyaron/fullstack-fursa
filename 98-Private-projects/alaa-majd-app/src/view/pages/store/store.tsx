@@ -33,13 +33,13 @@ function Store() {
     axios.get('http://localhost:3004/products1').then(({ data }) => {
       console.log(data);
       setProducts(data);
-      
+      setProductByCatagory(data);
     })
   }, []);
 
 
   // const products:any = axios.get('http://localhost:3004/products').then(({data})=>console.log(data));
-  const [catagory, setCatagory] = useState("")
+  const [catagory, setCatagory] = useState("All")
   const [products, setProducts] = useState([])
   const [productByCatagory, setProductByCatagory] = useState(products)
   
