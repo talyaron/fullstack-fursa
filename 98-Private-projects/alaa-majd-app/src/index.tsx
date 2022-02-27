@@ -30,6 +30,7 @@ import GroupDetails from './view/pages/GroupDetails/GroupDetails';
 import EditProduct from './view/pages/AdminPages/EditProduct/EditProduct';
 
 import AddProduct from './view/pages/AdminPages/AddProduct/AddProduct';
+import MyOrders from './view/pages/MyOrders/MyOrders';
 
 ReactDOM.render(
   <React.StrictMode>

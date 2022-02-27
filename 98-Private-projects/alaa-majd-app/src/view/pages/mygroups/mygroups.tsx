@@ -14,6 +14,8 @@ import { useState , useEffect} from "react";
 import  { Outlet,Link, useNavigate} from "react-router-dom";
 import GroupDetails from '../GroupDetails/GroupDetails';
 import ProductionQuantityLimitsSharpIcon from '@mui/icons-material/ProductionQuantityLimitsSharp';
+import { useAppSelector } from '../../../app/hooks';
+
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -44,6 +46,7 @@ interface GroupMember {
 interface group {
   id:string;
   groupName: string;
+  adminId:string
   groupMember: GroupMember[];
   }
 
@@ -55,36 +58,16 @@ interface group {
 
 
 export default function Mygroups() {
-  useEffect(()=>{axios.get('http://localhost:3004/group/').then(({data})=>{
-    //console.log(data);
-    //console.log(data[0].id,data[0].groupMember);
- 
-    const arr:Array<any> = [
-      {
-        id: data[0].id,
-        name: data[0].groupName
-      },
-      {
-        id: data[1].id,
-        name: data[1].groupName
-      },
-
-      {
-        id: data[2].id,
-        name: data[2].groupName
-      }
-      
-    ]
-    
-
-    setRows(arr);
-    console.log(rows);
-    setGroup(data);
+  const user = useAppSelector(state=> state.user)
+  useEffect(()=>{axios.get(`http://localhost:3004/group/${user.ID}`).then(({data})=>{
+    const arr = [...data];
+     console.log(data);
+     setRows(arr);
 
   })},[]);
 
   const [group,setGroup]=useState([]);
-  const [rows,setRows]=useState<Array<any>>([]);
+  const [rows,setRows]=useState<Array<group>>([]);
 
   let navigate = useNavigate();
  
@@ -98,7 +81,9 @@ export default function Mygroups() {
           <TableRow>
             <StyledTableCell align="center">Group ID </StyledTableCell>
             <StyledTableCell align="center"> Group Name</StyledTableCell>
+            <StyledTableCell align="center"> Admin ID </StyledTableCell>
             <StyledTableCell align="center"> Actions </StyledTableCell>
+      
           </TableRow>
         </TableHead>
         <TableBody>
@@ -108,6 +93,7 @@ export default function Mygroups() {
                 {row.id}
               </StyledTableCell>
               <StyledTableCell align="center">{row.groupName}</StyledTableCell>
+              <StyledTableCell align="center">{row.adminId}</StyledTableCell>
               <StyledTableCell align="center"> 
               <PeopleIcon onClick={()=>{
                 navigate(`/mygroups/${row.id}`);
