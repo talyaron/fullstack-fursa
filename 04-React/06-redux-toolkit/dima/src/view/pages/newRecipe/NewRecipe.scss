@@ -20,18 +20,18 @@
             position: relative;
             text-align: center;
 
-            .backTo{
+            .backTo {
                 float: left;
                 padding-left: 10px;
                 padding-top: 15px;
             }
 
-            .save{
+            .save {
                 float: right;
                 padding-top: 15px;
                 padding-right: 15px;
 
-                &:hover{
+                &:hover {
                     transform: scale(1.1);
                 }
             }
@@ -54,38 +54,61 @@
                         margin: auto;
                         grid-row: 1 / 4;
                         grid-column: 1 / 3;
-                        img{
-                            width: 100%;
-                            height: 50%;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+
+                        input {
+                            width: 300px;
+                            height: 30px;
+                            color: #b5739d;
+                            border-color: #b5739d;
+                            border-radius: 10px;
                         }
+
+                        button {
+                            color: rgb(181, 115, 157);
+                            border: 1px solid rgb(181, 115, 157);
+                            background-image: url('https://img.freepik.com/free-photo/purple-marble-texture-natural-pattern-with-high-resolution-background-design-art-work_38607-277.jpg?w=996');
+                            border-radius: 10px;
+                            width: 80px;
+                            height: 30px;
+                            margin: auto;
+                        }
+
+                        // img{
+                        //     width: 70%;
+                        //     height: 50%;
+                        // }
                     }
 
-                    .by{
+                    .by {
                         grid-column: 3 / 5;
                     }
 
-                    .item{
+                    .item {
                         display: flex;
                         gap: 10px;
                         justify-content: center;
                         align-content: center;
-                        p{
+
+                        p {
                             font-size: 1.2em;
                         }
                     }
                 }
 
-                .info2{
+                .info2 {
                     width: 90%;
                     display: grid;
                     margin: auto;
                     grid-template-columns: repeat(5, 1fr);
 
-                    .ingredients{
+                    .ingredients {
                         grid-column: 1 / 3;
                     }
 
-                    .steps{
+                    .steps {
                         grid-column: 3 / 6;
                     }
                 }

@@ -6,7 +6,7 @@ import { RootState } from "../../../app/store";
 export interface RecipeState {
   recipe: {
     id: number;
-    image: string;
+    image: any;
     name: string;
     time: string;
     people: string;
@@ -21,7 +21,7 @@ export interface RecipeState {
 const initialState: RecipeState = {
   recipe: {
     id: 0,
-    image: '',
+    image:'',
     name: '',
     time: '',
     people: '',

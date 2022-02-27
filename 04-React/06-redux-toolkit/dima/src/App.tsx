@@ -28,7 +28,7 @@ export const CssTextField = styled(TextField)({
 export interface recipeInfo{
   id:number;
   name:string;
-  image:string;
+  image:Blob;
   time:string;
   people:string;
   calories:string;
