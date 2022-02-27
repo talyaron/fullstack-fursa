@@ -4,6 +4,7 @@ import useCollapse from 'react-collapsed';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../../app/hooks';
 import { changeNavText } from '../../../app/reducer/NavTextReducer';
+import ItemInList from '../ItemInList/ItemInList'
 
 
 //to do side menu
@@ -69,7 +70,6 @@ function ViewList() {
     return (
         <div className="wrapper ">
 
-            <div className="date">NYC,oct 6th 2021,Trolly</div>
             <div className="listheader">
                 {listContent.map((element, index) => {
                     return (
@@ -77,15 +77,17 @@ function ViewList() {
                     );
                 })}
             </div>
-            <div className='congratMsgt'>
-                <h1>Congrats!</h1>
-                <p>to save/edit, plase sign up </p>
-            </div>
+            <div className="notlist">
+                <div className='congratMsgt'>
+                    <h1>Congrats!</h1>
+                    <p>to save/edit, plase sign up </p>
+                </div>
 
-            <button className='signUpbtn' onClick={clickSignup}> Free Sign up to save & edit</button>
-            <div>
-                {showResults ? <Results /> : null}
-            </div>
+                <button className='signUpbtn' onClick={clickSignup}> Free Sign up to save & edit</button>
+                <div>
+                    {showResults ? <Results /> : null}
+                </div></div>
+
 
         </div>
     );
@@ -118,8 +120,11 @@ function Collapsible(props: list) {
             </div>
             <div {...getCollapseProps()}>
                 <div className="content">
-                    Now you can see the hidden content. <br /><br />
-                    Click again to hide...
+                    {incatList.map((element, index) => {
+                        return (
+                            <ItemInList key={index} name={element.name} quantity={element.quantity} />
+                        );
+                    })}
                 </div>
             </div>
         </div>

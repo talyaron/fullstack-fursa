@@ -1,19 +1,33 @@
 .wrapper {
     background: #F9F9F9;
-    .congratMsgt{
-        
-        left: 30%;
-        right: 29.72%;
-        top: 60.94%;
-        bottom: 27.34%;
-        font-family: Poppins;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 20px;
-        line-height: 125.5%;
-        text-align: center;
-        color: rgba(2, 2, 5, 0.8);
 
+    //height: auto;
+    .notlist {
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .congratMsgt {
+        
+            font-family: 'Fira Sans', sans-serif;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 125.5%;
+            text-align: center;
+            color: rgba(2, 2, 5, 0.8);
+
+        }
+        .signUpbtn {
+            height: 47.75px;
+            width: 257px;
+            left: 0px;
+            top: 0px;
+            border-radius: 16px;
+            background: #FF8074;
+            border-radius: 16px;
+        }
     }
 
     .listheader {
@@ -22,6 +36,7 @@
         height: 238px;
         left: 0px;
         top: 129px;
+
         .collapsible {
             display: flex;
             flex-direction: column;
@@ -36,6 +51,7 @@
             cursor: pointer;
             color: #ffffff;
             margin: 2px;
+
             .header {
                 //width: 50vm;
                 font-family: Poppins;
@@ -43,7 +59,7 @@
                 font-weight: normal;
                 font-size: 20px;
                 line-height: 30px;
-                width: 100%;
+                width: 90vw;
                 background: #7572FC;
                 border-radius: 10px;
                 padding: 6px;
@@ -52,25 +68,19 @@
                     background-color: #504df7;
                 }
             }
-            .content {
-                padding: 6px;
-                width:100%;
-                border-radius: 10px;
-                background-color: #adaaf3;
 
-                &:hover {
-                    background-color: #adaaf3;
-                }
+            .content {
+                // // padding: 20px;
+                // // border-radius: 10px;
+                // // background-color: #adaaf3;
+                // &:hover {
+                //    // background-color: #adaaf3;
+                // }
+                width: 80vw;
+
             }
         }
     }
-    .signUpbtn{
-        height: 47.75px;
-        width: 257px;
-        left: 0px;
-        top: 0px;
-        border-radius: 16px;
-        background: #FF8074;
-        border-radius: 16px;
-    }
+
+   
 }

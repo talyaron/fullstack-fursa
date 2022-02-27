@@ -17,6 +17,7 @@ var react_collapsed_1 = require("react-collapsed");
 var react_router_dom_1 = require("react-router-dom");
 var hooks_1 = require("../../../app/hooks");
 var NavTextReducer_1 = require("../../../app/reducer/NavTextReducer");
+var ItemInList_1 = require("../ItemInList/ItemInList");
 function ViewList() {
     var listContent = [
         {
@@ -52,15 +53,15 @@ function ViewList() {
     var Results = function () { return (React.createElement("div", { id: "results", className: "search-results" },
         React.createElement("h2", null, "Travel is the only thing you buy that makes you richer"))); };
     return (React.createElement("div", { className: "wrapper " },
-        React.createElement("div", { className: "date" }, "NYC,oct 6th 2021,Trolly"),
         React.createElement("div", { className: "listheader" }, listContent.map(function (element, index) {
             return (React.createElement(Collapsible, { key: index, catInlListName: element.catInlListName, incatList: element.incatList }));
         })),
-        React.createElement("div", { className: 'congratMsgt' },
-            React.createElement("h1", null, "Congrats!"),
-            React.createElement("p", null, "to save/edit, plase sign up ")),
-        React.createElement("button", { className: 'signUpbtn', onClick: clickSignup }, " Free Sign up to save & edit"),
-        React.createElement("div", null, showResults ? React.createElement(Results, null) : null)));
+        React.createElement("div", { className: "notlist" },
+            React.createElement("div", { className: 'congratMsgt' },
+                React.createElement("h1", null, "Congrats!"),
+                React.createElement("p", null, "to save/edit, plase sign up ")),
+            React.createElement("button", { className: 'signUpbtn', onClick: clickSignup }, " Free Sign up to save & edit"),
+            React.createElement("div", null, showResults ? React.createElement(Results, null) : null))));
 }
 function Collapsible(props) {
     var catInlListName = props.catInlListName, incatList = props.incatList;
@@ -79,10 +80,8 @@ function Collapsible(props) {
     return (React.createElement("div", { className: "collapsible" },
         React.createElement("div", __assign({ className: "header" }, getToggleProps({ onClick: handleOnClick })), catTitle),
         React.createElement("div", __assign({}, getCollapseProps()),
-            React.createElement("div", { className: "content" },
-                "Now you can see the hidden content. ",
-                React.createElement("br", null),
-                React.createElement("br", null),
-                "Click again to hide..."))));
+            React.createElement("div", { className: "content" }, incatList.map(function (element, index) {
+                return (React.createElement(ItemInList_1["default"], { key: index, name: element.name, quantity: element.quantity }));
+            })))));
 }
 exports["default"] = ViewList;

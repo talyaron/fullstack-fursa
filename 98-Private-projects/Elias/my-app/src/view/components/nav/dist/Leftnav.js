@@ -21,6 +21,7 @@ var Leftnav = function (props) {
     function signoutfunc(e) {
         dispatch(UserReducer_1.logout({}));
         setName("Edit Profile");
+        console.log(user);
     }
     console.log(Name);
     if (Open)
