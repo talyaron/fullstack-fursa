@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 //components
 import AdminCard from '../../../components/AdminCard/AdminCard';
+import { useAppSelector } from '../../../../app/hooks';
 
 import Bar from '../../../components/productBar/bar';
 import { Console } from 'console';
@@ -15,7 +16,7 @@ interface product {
     name: string;
     price: number;
     catagory: string;
-    amount:string;
+    amount: string;
     quantity: number;
     description: string;
     Url: string;
@@ -25,19 +26,22 @@ interface product {
 
 const Seller = () => {
 
+    const admin = useAppSelector(state => state.user)
 
     useEffect(() => {
         axios.get('http://localhost:3004/products1').then(({ data }) => {
             console.log(data);
             setProducts(data);
+            setProductByCatagory(data);
         })
     }, []);
-    
+
     const [catagory, setCatagory] = useState("")
     const [products, setProducts] = useState([])
     const [productByCatagory, setProductByCatagory] = useState(products)
-    
+
     useEffect(() => {
+
         function handleClick() {
             // ev.preventDefault();
             console.log(catagory)
@@ -47,27 +51,26 @@ const Seller = () => {
                 }
             })
             setProductByCatagory([...arr]);
-            if (catagory === "All") {
+            if (catagory === "All" || catagory === "") {
                 setProductByCatagory([...products]);
             }
-    
             console.log(arr)
-    
+
         }
         handleClick();
     }, [catagory])
-    
+
     return (
         <div className="App">
             <div className="header">
-            <div className="header-right">
-        <a href="#contact">Requests</a>
-        <a href="#about">Profile</a>
-        <Link to="/settings">Settings</Link>
-        <Link to="/logIn">LogOut</Link>
-        <Link to="/help">help</Link>
-        <Link to="/aboutUsAdmin">About Us</Link>
-      </div>
+                <div className="header-right">
+                    <Link to="/users/:id">Profile</Link>
+                    <a href="#contact">Requests</a>
+
+                    <Link to="/logIn">LogOut</Link>
+                    <Link to="/HelpAdmin">help</Link>
+                    <Link to="/aboutUsAdmin">About Us</Link>
+                </div>
             </div>
             {/* <Bar></Bar> */}
             <div className="navbar">
@@ -86,15 +89,15 @@ const Seller = () => {
                         <a href="#" onClick={(ev: any) => { setCatagory("Snaks and Sweets") }}>Snaks and Sweets</a>
                     </div>
                 </div>
-              
+
                 <div className="search_product">
-                <Link to="/AddProduct">Add Product</Link>
+                    <Link to="/AddProduct">Add Product</Link>
                     <input className="searchDiv__bar__content__a__input" type="text" placeholder=" Search a product" name="search" />
                 </div>
             </div>
             <div className="wrapper">
                 {productByCatagory.map((product, i) => {
-                    const { id, name, price, catagory,amount, quantity, description, Url } = product;
+                    const { id, name, price, catagory, amount, quantity, description, Url } = product;
                     return <AdminCard key={i} id={id} name={name} price={price} catagory={catagory} quantity={quantity} amount={amount} description={description} Url={Url} />
                 })}
 
