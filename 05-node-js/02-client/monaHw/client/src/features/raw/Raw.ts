@@ -2,28 +2,25 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState, AppThunk } from '../../app/store';
 import axios from 'axios'
 
-export interface user{
+interface Raw{
     name:string;
-    phone:string;
-    location:string;
-
+    imgurl:string;
+    pricePerMeter:number;
 }
-
-export interface userState{
-    users:Array<user>;
+export interface rawState{
+    raws:Array<Raw>;
     status: 'idle' | 'loading' | 'failed';
 
 }
-const initialState: userState = {
-    users: [],
+const initialState: rawState = {
+    raws: [],
     status: 'idle'
   }
-
-  export const getUserAsync = createAsyncThunk(
-    'user/fetshUsers',
+  export const getRawAsync = createAsyncThunk(
+    'raw/fetshRaws',
     async (_, thunkApi) => {
       try {
-        const response = await axios.get('http://localhost:3004/userInfo')
+        const response = await axios.get('http://localhost:3004/woods')
         const data = response.data
         return data
   
@@ -34,8 +31,8 @@ const initialState: userState = {
   
     }
   );
-  export const userSlice = createSlice({
-    name: 'user',
+  export const rawSlice = createSlice({
+    name: 'raw',
     initialState,
     reducers: {
      
@@ -43,16 +40,16 @@ const initialState: userState = {
     },
     extraReducers: (builder) => {
       builder
-        .addCase(getUserAsync.pending, (state) => {
+        .addCase(getRawAsync.pending, (state) => {
           state.status = 'loading'
         })
-        .addCase(getUserAsync.fulfilled, (state, action) => {
+        .addCase(getRawAsync.fulfilled, (state, action) => {
           state.status = 'idle';
-          state.users = action.payload;
+          state.raws = action.payload;
         })
         
     }
   });
-export const selectUsers = (state: RootState) => state.user;
+export const selectRow = (state: RootState) => state.raw;
 
-export default userSlice.reducer;
+export default rawSlice.reducer;

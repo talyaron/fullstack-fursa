@@ -5,6 +5,10 @@ import {Link} from 'react-router-dom'
 import Navbar from '../../components/navbar/Navbar';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { getRawAsync, selectRow } from '../../../features/raw/Raw';
+import { useAppSelector } from '../../../app/hooks';
+import { CircularProgress } from '@mui/material';
 
 
 const woods = [{name:'pine wood',cardImg:'https://d2kxk2c617i0nn.cloudfront.net/image_resize/crop/mw1500/mh750/products/23_001--yellow_pine_softwood-s.jpg'},
@@ -14,11 +18,18 @@ const woodLogo:string="https://cdn2.iconfinder.com/data/icons/lightly-icons/30/s
 
 function Rawmaterial(){
   const [wood,setWood]=useState([]);
-useEffect(()  => {
-// axios.get('http://localhost:3004/RawMaterial').then(({data})=> setWood(data));
-axios.get('http://localhost:3004/woods').then(({data})=> setWood(data));
+  const dispatch=useDispatch()
+  useEffect(()=>{
+    dispatch(getRawAsync())
 
-}, []);
+},[])
+const raws=useAppSelector(selectRow);
+// useEffect(()  => {
+// // axios.get('http://localhost:3004/RawMaterial').then(({data})=> setWood(data));
+// axios.get('http://localhost:3004/woods').then(({data})=> setWood(data));
+
+// }, []);
+
     return(
         <div className="RawMaterial">
       <header className='RawMaterial_header'>
@@ -36,12 +47,13 @@ axios.get('http://localhost:3004/woods').then(({data})=> setWood(data));
         <Wood title={woodLogo} ></Wood>
         </div>
         <div className="RawMaterial_body">
-       
-        {wood.map((wood, index)=>{
+       {raws.status!=='loading'?
+        raws.raws.map((wood, index)=>{
           const{name,imgurl,pricePerMeter}=wood;
           return <Card key={index} wood={{name,imgurl,pricePerMeter}}/>
           
-        })}
+        }):<div><CircularProgress color="secondary" />
+        </div>}
               
   
         </div>
