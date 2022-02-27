@@ -20,7 +20,7 @@ const SignUp = () => {
         <Link to="/newAccount">
         <button className="Acoount">
           <LoginIcon className="Icon" />
-          Allready have account ? log in !
+          Sign Up with Email
         </button>
         </Link>
       </div>
