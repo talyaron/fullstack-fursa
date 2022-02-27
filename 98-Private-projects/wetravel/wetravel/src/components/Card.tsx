@@ -1,16 +1,13 @@
 import "../components/Card.scss";
+import { Hotel } from "../components/Mainpage";
 
-interface CardProp {
-  id: string;
-  src: string;
-  title: string;
-}
-function Card(prop: CardProp) {
-  const { id, src, title } = prop;
+function Card(prop: Hotel) {
   return (
     <div className="card">
-      <img src={src} alt=""/>
-      <p>{title}</p>
+      <img src={prop.images[0]} alt=""/>
+      <p>{prop.name}</p>
+      <p>{prop.country}</p>
+      <p>{prop.stars}</p>
     </div>
   );
 }

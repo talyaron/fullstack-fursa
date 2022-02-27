@@ -1,0 +1,48 @@
+.box{
+    flex:1 1 30rem;
+    border-radius: .5rem;
+    // overflow: hidden;
+    box-shadow: 0 1rem 2rem rgba(0,0,0,.1);
+    height: fit-content;
+    .box img{
+        height: fit-content;
+        width:70%;
+        object-fit: cover;
+      }
+      
+    .box .content{
+        padding:2rem;
+      }
+      
+     .box .content h3{
+        font-size:1rem;
+        color:#333;
+      }
+      
+    .box .content h3 i{
+        color:var(--orange);
+      }
+      
+    .box .content p{
+        font-size:1rem;
+        color:#666;
+        padding:1rem 0;
+      }
+      
+     .box .content .stars i{
+        font-size:1rem;
+        color:var(--orange);
+      }
+      
+       .box .content .price{
+        font-size: 1rem;
+        color:#333;
+        padding-top: 1rem;
+      }
+      
+     .box .content .price span{
+        color:#666;
+        font-size: 1rem;
+        text-decoration: line-through;
+      }
+  }

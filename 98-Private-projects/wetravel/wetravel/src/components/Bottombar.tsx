@@ -68,8 +68,11 @@ function Bottombar(prop: data) {
         />
 
         <BottomNavigationAction
-          label="Nearby"
-          value="nearby"
+          label="Packages"
+          value="packages"
+          onClick={() => {
+            navigate("/packages");
+          }}
           icon={<LocationOnIcon />}
         />
       </BottomNavigation>

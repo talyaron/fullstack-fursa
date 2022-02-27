@@ -138,6 +138,7 @@ $base-color: #ff4500;
     grid-template-rows: repeat(2, 1fr);
     grid-template-columns: repeat(1, 1fr);
     margin: 0;
+    row-gap: 2rem;
     width: 100%;
     position: relative;
     top:0;

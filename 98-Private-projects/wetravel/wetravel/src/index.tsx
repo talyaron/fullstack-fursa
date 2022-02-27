@@ -14,6 +14,8 @@ import  {store}  from "../src/store/store";
 import Popular from "./components/Popular_travelers/Popular";
 import PostReview from "./components/PostReview";
 import Posts from "./components/Posts";
+import ListPackages from "./components/ListPackages";
+import CreateEvent from "./components/CreateEvent";
 declare global {
   interface Window {
     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
@@ -29,6 +31,8 @@ ReactDOM.render(
         <Route path="/mainpage" element={<Mainpage />}></Route>
         <Route path="/popular" element={<Popular />}></Route>
         <Route path="/post" element={<Posts />}></Route>
+        <Route path="/packages" element={<ListPackages />}></Route>
+        <Route path="/create" element={<CreateEvent />}></Route>
 
       </Routes>
     </Router>

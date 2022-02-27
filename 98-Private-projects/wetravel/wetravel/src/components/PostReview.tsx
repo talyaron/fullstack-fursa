@@ -58,7 +58,7 @@ function PostReview(prop: {
           <IconButton aria-label="add to favorites">
             <FavoriteIcon
               onClick={() => {
-                setLiked("red");
+               liked!=="red"? setLiked("red"): setLiked("");
               }}
               style={{ color: liked }}
             />

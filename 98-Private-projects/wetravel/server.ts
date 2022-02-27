@@ -25,7 +25,7 @@ app.get("/", (req: any, res: any) => {
 });
 
 // flights
-app.get("/travelers/flights", (req: any, res: any) => {
+app.get("/travelers/flights/", (req: any, res: any) => {
   Flights.find((err: any, data: any) => {
     if (err) {
       res.status(500).send(err);
@@ -35,7 +35,7 @@ app.get("/travelers/flights", (req: any, res: any) => {
   });
 });
 // Flights collection
-app.post("/travelers/flights", (req: any, res: any) => {
+app.post("/travelers/flights/", (req: any, res: any) => {
   const dbFlight = req.body;
   Flights.create(dbFlight, (err: any, data: any) => {
     if (err) {
@@ -78,8 +78,8 @@ app.post("/travelers/hotels/", (req: any, res: any) => {
   });
 });
 
-app.get("travelers/hotels/", (req: any, res: any) => {
-  try {
+app.get("/travelers/hotels/", (req: any, res: any) => {
+ 
     Hotels.find({}, (err: any, data: any) => {
       try {
         res.status(200).send(data);
@@ -87,7 +87,7 @@ app.get("travelers/hotels/", (req: any, res: any) => {
         res.status(500).send(err);
       }
     });
-  } catch (error) {}
+  
 });
 
 app.listen(port, () => {
