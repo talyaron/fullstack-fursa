@@ -18,7 +18,7 @@ function Menu1() {
     <div className="navbar">
       <div className="navbar__box">
         <div className="navbar__left">
-          <div>
+          {/* <div>
             <Button
               aria-controls="simple-menu"
               aria-haspopup="true"
@@ -37,7 +37,7 @@ function Menu1() {
               <MenuItem onClick={handleClose}>My account</MenuItem>
               <MenuItem onClick={handleClose}>Logout</MenuItem>
             </Menu>
-          </div>
+          </div> */}
 
           <nav role="navigation"></nav>
           <span>
@@ -49,7 +49,11 @@ function Menu1() {
           {/* <a href="#home">Explore</a> */}
         </div>
         <div className="navbar__right">
-          <button className="navbar__right__signup" type="button">
+          {/* <Link to="/main/signin" className="give-classes">
+            <img src={logIn} alt="Estudar" />
+            log in
+          </Link> */}
+          <button  className="navbar__right__signup" type="button">
             <span>Shopping bag</span>
           </button>
           <a href="#home">help</a>
