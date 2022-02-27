@@ -82,6 +82,7 @@
     float: left;
     bottom: 5vh;
     z-index: 1;
+    pointer-events: none;
 
     button{
         border-radius: 50%;
@@ -94,5 +95,6 @@
         border: 0px;
         box-sizing: border-box;
         box-shadow: 5px 5px 5px rgba(37, 36, 36, 0.342);
+        pointer-events: visible;
     }
 }

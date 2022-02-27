@@ -45,19 +45,20 @@ function Login() {
                     <label className='haveAccount'>Have no account! <span><Link to="/register">Sign up here</Link></span></label>
                     <input className='templateButton signUpButton' type="submit" value="Login" />
                 </form>
-            </div>
-            {userLogin.status === 'loading' ?
-                <div className='loading'>
-                    <p>Loading</p>
-                </div> :
-                userLogin.status === 'failed' ?
+
+                {userLogin.status === 'loading' ?
                     <div className='loading'>
-                        <p>Failed</p>
+                        <p>Loading</p>
                     </div> :
-                    <div className='loading'>
-                        <p></p>
-                    </div>
-            }
+                    userLogin.status === 'failed' ?
+                        <div className='loading'>
+                            <p>Failed</p>
+                        </div> : null
+                        // <div className='loading'>
+                        //     <p></p>
+                        // </div>
+                }
+            </div>
         </div>
     );
 }
