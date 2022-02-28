@@ -5,8 +5,6 @@ import Header from '../../components/header/header';
 import axios from 'axios';
 import { ContactsOutlined } from '@material-ui/icons';
 import { useAppSelector } from '../../../app/hooks';
-import { convertCompilerOptionsFromJson, isJsxClosingFragment } from 'typescript';
-import { CleaningServices } from '@mui/icons-material';
 
 
 
@@ -25,6 +23,7 @@ function CreateGroup(){
         const membersArray = members.split(",").map((str:any) => {
             return {id:str}
         });
+
         if(membersArray.length < 3){
             alert("need more members");
             return;
