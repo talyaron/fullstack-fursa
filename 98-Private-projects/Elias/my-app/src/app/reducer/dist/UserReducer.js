@@ -56,10 +56,11 @@ exports.getUserInfoAsync = toolkit_1.createAsyncThunk('user/GetUserInfo', functi
             case 0:
                 _a.trys.push([0, 2, , 3]);
                 console.log("try");
-                return [4 /*yield*/, axios_1["default"].get('http://localhost:3004/Users/1')];
+                return [4 /*yield*/, axios_1["default"].get('http://localhost:3001/users')];
             case 1:
                 response = _a.sent();
                 data = response.data;
+                console.log("data from server 3001");
                 console.log(data);
                 return [2 /*return*/, data];
             case 2:

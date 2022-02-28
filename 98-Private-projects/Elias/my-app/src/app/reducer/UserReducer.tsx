@@ -33,8 +33,10 @@ export const getUserInfoAsync = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       console.log("try");
-      const response = await axios.get('http://localhost:3004/Users/1')
+      //const response = await axios.get('http://localhost:3004/Users/1')
+      const response = await axios.get('http://localhost:3001/users')
       const data: any = response.data
+      console.log("data from server 3001");
       console.log(data);
       return data
     } catch (error: any) {
