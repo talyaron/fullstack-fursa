@@ -54,3 +54,19 @@ function initApp() {
         });
     });
 }
+function handleAddUser() {
+    return __awaiter(this, void 0, void 0, function () {
+        var newUser, res;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    newUser = { name: "" + Math.random(), id: "" + Math.floor(Math.random() * 1e8) };
+                    return [4 /*yield*/, axios.post('add-user', newUser)];
+                case 1:
+                    res = _a.sent();
+                    console.log(res);
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
