@@ -1,5 +1,5 @@
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import {selectText, selectTextStauts} from './textSlice'; 
+import {selectText, selectTextStauts} from '../../app/reducers/textSlice'; 
 
 export default function TextShow() {
     const text = useAppSelector(selectText);
