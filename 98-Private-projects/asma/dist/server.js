@@ -5,8 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const app = express_1.default();
-const port = 3000;
-app.use(express_1.default.static('public'));
+const port = 4000;
+app.use(express_1.default.static('healthstore/build'));
 app.get('/get-user', (req, res) => {
     console.log("user request");
     res.status(202).send({ name: "asma", id: 123 });
