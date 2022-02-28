@@ -21,6 +21,7 @@ function Student(student:studentInfo) {
         <Link to={`/students/${id}`}>
             <div className="student">
                 <p className="student__name">{firstName} {lastName}</p>
+                <p> - </p>
                 <p className="student__id">{id}</p>
             </div>
         </Link>

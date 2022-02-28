@@ -1,5 +1,9 @@
 {
   "dependencies": {
-    "@mui/icons-material": "^5.4.2"
+    "@mui/icons-material": "^5.4.2",
+    "sass": "^1.49.7"
+  },
+  "devDependencies": {
+    "@types/react-dom": "^17.0.11"
   }
 }

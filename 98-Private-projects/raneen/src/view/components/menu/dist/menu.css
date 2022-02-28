@@ -26,6 +26,29 @@
   display: flex;
   width: 70%;
 }
+.navbar__left .categories {
+  display: flex;
+  border: none;
+  margin-top: 1.5vh;
+  margin-bottom: 1.5vh;
+  text-align: center;
+  justify-content: center;
+  color: #faf0f0;
+  font-size: 14px;
+  padding: 12px 24px;
+  white-space: nowrap;
+  font-weight: bold;
+}
+.navbar__left .categories img {
+  display: flex;
+  width: 20px;
+  align-content: center;
+  justify-content: center;
+  border-radius: 12px;
+  margin-right: 2vw;
+  margin-top: 1.5vh;
+  margin-bottom: 1.5vh;
+}
 .navbar__left img {
   display: flex;
   align-content: center;
@@ -85,7 +108,7 @@
   font-weight: bold;
 }
 .navbar__right__signup {
-  background-color: #010e04;
+  background-color: #141414;
   border: none;
   border-radius: 12px;
   margin-right: 2vw;

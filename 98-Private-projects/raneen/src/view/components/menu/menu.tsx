@@ -1,45 +1,106 @@
 import React from "react";
 import logo from "./logo.svg";
-import Button from "@material-ui/core/Button";
+import axios from 'axios';
+import { Console } from 'console';
 import Menu from "@material-ui/core/Menu";
+import Button from "@material-ui/core/Button";
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
+import Grow from "@material-ui/core/Grow";
+import Paper from "@material-ui/core/Paper";
+import Popper from "@material-ui/core/Popper";
 import MenuItem from "@material-ui/core/MenuItem";
+import MenuList from "@material-ui/core/MenuList";
+import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+import { useState, useEffect } from 'react';
 
+interface product {
+  id: number;
+  name: string;
+  price: number;
+  catagory: string;
+  quantity: number;
+  description: string;
+  Url: string;
+
+}
 function Menu1() {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
+
+  useEffect(() => {
+    axios.get('http://localhost:3004/products1').then(({ data }) => {
+      console.log(data);
+      setProducts(data);
+      
+    })
+  }, []); 
+  const [catagory, setCatagory] = useState("")
+  const [products, setProducts] = useState([])
+  const [productByCatagory, setProductByCatagory] = useState(products)
+  
+
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
+   
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+    useEffect(()=>{
+    function handleClose() {
+       setAnchorEl(null);
+      // ev.preventDefault();
+      console.log(catagory)
+      const arr = products.filter((element: any) => {
+        if (element.catagory === catagory) {
+          return element;
+        }
+      })
+      setProductByCatagory([...arr]);
+      if(catagory === "All"){
+        setProductByCatagory([...products]);
+      }
+
+      console.log(arr)
+  
+    }
+    handleClose();
+  },[catagory])
+  // const handleClose = () => {
+  //   setAnchorEl(null);
+  //    console.log("hi");
+  // };
   return (
     <div className="navbar">
       <div className="navbar__box">
         <div className="navbar__left">
-          {/* <div>
+          <nav role="navigation"></nav>
+          <div className="categories">
             <Button
-              aria-controls="simple-menu"
+              id="basic-button"
+              aria-controls={open ? "basic-menu" : undefined}
               aria-haspopup="true"
+              aria-expanded={open ? "true" : undefined}
               onClick={handleClick}
             >
-              Categories
+              <img
+                src="https://cdn.icon-icons.com/icons2/2751/PNG/512/menu_burger_icon_176150.png"
+                alt="Logo"
+              />
             </Button>
             <Menu
-              id="simple-menu"
+              id="basic-menu"
               anchorEl={anchorEl}
-              keepMounted
-              open={Boolean(anchorEl)}
+              open={open}
               onClose={handleClose}
+              MenuListProps={{
+                "aria-labelledby": "basic-button",
+              }}
             >
-              <MenuItem onClick={handleClose}>Profile</MenuItem>
-              <MenuItem onClick={handleClose}>My account</MenuItem>
-              <MenuItem onClick={handleClose}>Logout</MenuItem>
+              <MenuItem onClick={handleClose}>Clothes</MenuItem>
+              <MenuItem onClick={handleClose}>Shoes</MenuItem>
+              <MenuItem onClick={handleClose}>Accessories</MenuItem>
             </Menu>
-          </div> */}
-
-          <nav role="navigation"></nav>
+          </div>
           <span>
             <img
               src="https://i.pinimg.com/originals/6f/dd/03/6fdd0381fb24566c13af151a9c5a9ddc.jpg"
@@ -53,7 +114,7 @@ function Menu1() {
             <img src={logIn} alt="Estudar" />
             log in
           </Link> */}
-          <button  className="navbar__right__signup" type="button">
+          <button className="navbar__right__signup" type="button">
             <span>Shopping bag</span>
           </button>
           <a href="#home">help</a>
@@ -61,6 +122,7 @@ function Menu1() {
             Sign in
           </button>
         </div>
+        
       </div>
     </div>
   );

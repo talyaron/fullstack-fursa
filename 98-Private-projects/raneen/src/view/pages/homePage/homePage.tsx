@@ -11,6 +11,7 @@ const homePage = () =>{
 
         <div className='warpper'>
              <Mainbar></Mainbar>
+        
  
         </div>
     );
