@@ -29,7 +29,7 @@ const Leftnav = (props: openClose) => {
 
     dispatch(logout({}));
     setName("Edit Profile");
-    console.log(user)
+    console.log(user);
   
   }
   console.log(Name);
