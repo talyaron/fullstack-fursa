@@ -1,14 +1,16 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState, AppThunk } from '../../app/store';
+import { RootState, AppThunk } from '../store';
 import {getJoke} from './textApi';
 
 export interface TextProps {
   text: string;
   status: 'idle' | 'loading' | 'failed';
+  products:Array<any>;
 }
 
 const initialState: TextProps = {
   text: 'starting...',
+  products:[],
   status: 'idle',
 };
 
