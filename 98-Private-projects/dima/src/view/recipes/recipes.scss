@@ -1,0 +1,94 @@
+.recipes {
+    display: grid;
+    grid-template-rows: repeat(6);
+    margin: auto;
+    align-items: center;
+    //border : 2px solid rgb(181, 115, 157);
+    //color: rgb(181, 115, 157);
+    font-size: 1.2rem;
+    font-style: italic;
+    row-gap: 10px;
+
+    .row1 {
+        width: 60vw;
+        display: grid;
+        align-items: center;
+        justify-items: center;
+        margin: auto;
+        grid-row: 2 / 4;
+        grid-template-columns: repeat(3, 19vw);
+        gap: 5px;
+
+        .item {
+            display: grid;
+            grid-template-rows: repeat(3, 10vh);
+            //background-color: rgb(134, 82, 13);
+            height: 100%;
+
+            .itemImg {
+                grid-row: 1/3;
+                width: 120%;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .title {
+                text-align: center;
+                font-weight: bold;
+                width: 120%;
+                background-color: rgb(230, 208, 222);
+                grid-row: 3/3;
+            }
+        }
+    }
+
+    .row2 {
+        width: 60vw;
+        display: grid;
+        align-items: center;
+        justify-items: center;
+        grid-row: 4 / 6;
+        grid-template-columns: repeat(2, 30vw);
+        gap: 0px;
+
+        .item {
+            display: grid;
+            grid-template-rows: repeat(3, 10vh);
+            //background-color: rgb(134, 82, 13);
+            height: 100%;
+
+            .itemImg {
+                width: 120%;
+                grid-row: 1/3;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .title {
+                width: 120%;
+                font-weight: bold;
+                text-align: center;
+                background-color : #e6d0de;
+                grid-row: 3/3;
+            }
+        }
+    }
+
+    .add {
+        grid-row: 6 / 6;
+        height: 5vh;
+        width: 5vw;
+        img {
+            width: 60%;
+            height: 70%;
+            //margin-right: 10px;
+            margin-bottom: 10px;
+        }
+    }
+}

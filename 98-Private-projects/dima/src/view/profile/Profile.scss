@@ -1,0 +1,25 @@
+.profile{
+    margin : auto;
+    border : 2px solid rgb(181, 115, 157);
+    color: rgb(181, 115, 157);
+    font-size: 1.2rem;
+    font-style: italic;
+
+    img{
+        width: 20px;
+        height: 20px;
+        margin-top: 10px;
+        margin-left: 10px;
+    }
+
+    span{
+        font-weight: bold;
+    }
+
+    .profileImg{
+        img{
+            width: 70%;
+            height: 70%;
+        }
+    }
+}

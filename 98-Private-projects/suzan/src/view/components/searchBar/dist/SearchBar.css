@@ -1,0 +1,15 @@
+.searchBar {
+  display: flex;
+  margin: auto;
+  height: max-content;
+  justify-content: baseline;
+  margin-top: 40px;
+}
+.searchBar input {
+  margin-left: 40px;
+  width: 350px;
+  height: 20px;
+}
+.searchBar .sortby .popup {
+  box-shadow: 1px 1px 2px black;
+}
