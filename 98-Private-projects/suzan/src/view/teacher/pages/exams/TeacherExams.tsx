@@ -13,6 +13,8 @@ import Paper from '@mui/material/Paper';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './TeacherExams.scss';
+import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
+import { courseExams, getExamsAsync } from "../../../../app/reducers/teacher/CourseDataSlice";
 
 // const exams = [
 //     { course: "English", material: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' },
@@ -20,13 +22,11 @@ import './TeacherExams.scss';
 // ]
 
 export default function TeacherExams() {
-    const [exams, setExams] = useState([]);
+    const dispatch = useAppDispatch();
     useEffect(() => {
-        axios.get('http://localhost:3004/exams').then(({ data }) => {
-            console.log(data);
-            setExams(data);
-        })
+        dispatch(getExamsAsync());
     }, []);
+    const exams = useAppSelector(courseExams);
 
     const [selectedDate, setSelectedDate] = useState<Date | null>(
         new Date(),
@@ -67,14 +67,14 @@ export default function TeacherExams() {
                             <TableBody>
                                 {
                                     exams.map((exam, i) => {
-                                        const { course, material } = exam;
+                                        const { course, examMaterial } = exam;
                                         return (
                                             <TableRow
                                                 key={i}
                                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                             >
                                                 <TableCell align="center">{course}</TableCell>
-                                                <TableCell align="center">{material}</TableCell>
+                                                <TableCell align="center">{examMaterial}</TableCell>
                                             </TableRow>
                                         );
                                     })

@@ -1,7 +1,5 @@
 import Button from '@mui/material/Button';
-import react from 'react-router-dom';
 import SchoolResponsiveAppBar from '../../components/header/AppBar';
-import EditIcon from '@mui/icons-material/Edit';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import './NewClass.scss';
@@ -9,22 +7,59 @@ import Autocomplete from '@mui/material/Autocomplete';
 import Checkbox from '@mui/material/Checkbox';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import { useAppSelector, useAppDispatch } from '../../../../app/hooks';
+import { getSchoolClassesAsync, getSchoolStudentsAsync, getSchoolTeachersAsync, schoolClasses, schoolStudents, schoolTeachers } from '../../../../app/reducers/school/SchoolSlice';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
-const teachers = [
-    { label: 'Suzan Kassabry' },
-    { label: 'Lama Bisharat' },
-    { label: 'Rania Ateek' }
-]
+// const teachers = [
+//     { label: 'Suzan Kassabry' },
+//     { label: 'Lama Bisharat' },
+//     { label: 'Rania Ateek' }
+// ]
 
-const students = [
-    { name: 'Suzan Kassabry 1' }, { name: 'Suzan Kassabry 2' }, { name: 'Suzan Kassabry 3' }, { name: 'Suzan Kassabry 4' },
-    { name: 'Suzan Kassabry 5' }, { name: 'Suzan Kassabry 6' }, { name: 'Suzan Kassabry 7' }, { name: 'Suzan Kassabry 8' }
-]
+// const students = [
+//     { name: 'Suzan Kassabry 1' }, { name: 'Suzan Kassabry 2' }, { name: 'Suzan Kassabry 3' }, { name: 'Suzan Kassabry 4' },
+//     { name: 'Suzan Kassabry 5' }, { name: 'Suzan Kassabry 6' }, { name: 'Suzan Kassabry 7' }, { name: 'Suzan Kassabry 8' }
+// ]
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 export default function NewClass() {
+
+    const dispatch = useAppDispatch();
+    useEffect(() => {
+        dispatch(getSchoolClassesAsync());
+        dispatch(getSchoolStudentsAsync());
+        dispatch(getSchoolTeachersAsync());
+    }, []);
+    const students = useAppSelector(schoolStudents);
+    const teachers = useAppSelector(schoolTeachers);
+
+    const [className, setClassName] = useState('');
+    const [teacherName, setTeacherName] = useState('');
+
+    function handleClassName(ev: any) {
+        // console.log(ev.target.value);
+        setClassName(ev.target.value)
+    }
+
+    function handleTeacherName(ev: any, value: any) {
+        // console.log(value.info.firstName.concat(' ', value.info.lastName));
+        setTeacherName(value.info.firstName.concat(' ', value.info.lastName))
+    }
+
+    function handleStudent(ev: any, value: any) {
+        // console.log(value);
+    }
+
+    function addNewClass() {
+        axios.post('http://localhost:3004/schoolClasses', { 'name': className, 'teacher': teacherName })
+            .then(({ data }) => console.log(data));
+    }
+
     return (
         <div className='container'>
 
@@ -33,9 +68,12 @@ export default function NewClass() {
             </div>
 
             <div className="subContainer">
-                <Button className='createClassBtn' variant="contained" size='small'>
-                    Submit
-                </Button>
+                <Link to='../classes'>
+                    <Button className='createClassBtn' variant="contained" size='small' onClick={addNewClass}>
+                        Submit
+                    </Button>
+                </Link>
+
 
                 <div className="newClass">
                     <div className="newClass__section">
@@ -48,6 +86,7 @@ export default function NewClass() {
                             label="Class name required"
                             size='small'
                             className='inputField'
+                            onKeyUp={handleClassName}
                         />
                     </div>
 
@@ -59,10 +98,13 @@ export default function NewClass() {
                             disablePortal
                             id="combo-box-demo"
                             options={teachers}
+                            getOptionLabel={(option) => option.info.firstName.concat(' ', option.info.lastName)}
                             sx={{ width: 300 }}
                             renderInput={(params) => <TextField {...params} label="select or serch for teacher" />}
                             size="small"
                             className='inputField'
+                            isOptionEqualToValue={(option, value) => option.info.teacherId === value.info.teacherId}
+                            onChange={handleTeacherName}
                         />
                     </div>
 
@@ -75,7 +117,7 @@ export default function NewClass() {
                             id="checkboxes-tags-demo"
                             options={students}
                             disableCloseOnSelect
-                            getOptionLabel={(option) => option.name}
+                            getOptionLabel={(option) => option.info.firstName.concat(' ', option.info.lastName)}
                             renderOption={(props, option, { selected }) => (
                                 <li {...props}>
                                     <Checkbox
@@ -84,7 +126,7 @@ export default function NewClass() {
                                         style={{ marginRight: 8 }}
                                         checked={selected}
                                     />
-                                    {option.name}
+                                    {option.info.firstName.concat(' ', option.info.lastName)}
                                 </li>
                             )}
                             style={{ width: 500 }}
@@ -93,6 +135,8 @@ export default function NewClass() {
                             )}
                             size="small"
                             className='inputField'
+                            isOptionEqualToValue={(option, value) => option.info.studentId === value.info.studentId}
+                            onChange={handleStudent}
                         />
                     </div>
                 </div>

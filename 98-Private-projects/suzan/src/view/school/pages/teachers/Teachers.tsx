@@ -12,6 +12,8 @@ import EditIcon from '@mui/icons-material/Edit';
 import { Link } from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
+import { getSchoolTeachersAsync, schoolTeachers } from '../../../../app/reducers/school/SchoolSlice';
+import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
 
 
 export interface teacherInfo {
@@ -32,13 +34,19 @@ export default function SchoolTeachers() {
     //     { info: { firstName: 'Rania', lastName: 'Kassabry', teacherId: '634892469', phone: '0537756048', email: 'suzankassabry97@gmail.com' } }
     // ]
 
-    const [teachers, setTeachers] = useState([]);
+    // const [teachers, setTeachers] = useState([]);
+    // useEffect(() => {
+    //     axios.get('http://localhost:3004/schoolTeachers').then(({data})=>{
+    //         console.log(data);
+    //         setTeachers(data);
+    // })
+    // }, []);
+
+    const dispatch = useAppDispatch();
     useEffect(() => {
-        axios.get('http://localhost:3004/schoolTeachers').then(({data})=>{
-            console.log(data);
-            setTeachers(data);
-    })
+        dispatch(getSchoolTeachersAsync());
     }, []);
+    const teachers = useAppSelector(schoolTeachers);
 
     return (
         <div className='container'>

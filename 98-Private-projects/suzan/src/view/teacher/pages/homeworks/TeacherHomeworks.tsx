@@ -10,7 +10,9 @@ import CourseResponsiveAppBar from "../../components/courseHeader/CourseAppBar";
 import Paper from '@mui/material/Paper';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useAppSelector, useAppDispatch } from '../../../../app/hooks';
 import './TeacherHomeworks.scss';
+import { courseHomeworks, getHomeworksAsync } from "../../../../app/reducers/teacher/CourseDataSlice";
 
 // const homeworks = [
 //     { date: '20.2.2022', course: 'Math', description: 'questions from 1 to 15 page 225' },
@@ -20,13 +22,11 @@ import './TeacherHomeworks.scss';
 // ]
 
 export default function TeacherHomeworks() {
-    const [homeworks, setHomeworks] = useState([]);
+    const dispatch = useAppDispatch();
     useEffect(() => {
-        axios.get('http://localhost:3004/homeworks').then(({ data }) => {
-            console.log(data);
-            setHomeworks(data);
-        })
+        dispatch(getHomeworksAsync());
     }, []);
+    const homeworks = useAppSelector(courseHomeworks);
 
     return (
         <div>

@@ -88,12 +88,17 @@
     {
       "id": 1,
       "course": "English",
-      "material": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      "examMaterial": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
       "id": 2,
       "course": "Math",
-      "material": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      "examMaterial": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    {
+      "course": "Arabic",
+      "examMaterial": "test",
+      "id": 3
     }
   ],
   "teacherCourses": [
@@ -132,7 +137,7 @@
     {
       "id": 2,
       "name": "class 1B",
-      "teacher": "Suzan Kassabry"
+      "teacher": "Rania Ateek"
     },
     {
       "id": 3,
@@ -170,7 +175,7 @@
       "id": 1,
       "info": {
         "firstName": "Suzan",
-        "lastName": "Kassabry",
+        "lastName": "Kassabry 1",
         "father": "Emad",
         "mother": "Linda",
         "studentId": "207745638",
@@ -183,11 +188,11 @@
     {
       "id": 2,
       "info": {
-        "firstName": "Maria",
-        "lastName": "Kassabry",
+        "firstName": "Suzan",
+        "lastName": "Kassabry 2",
         "father": "Emad",
         "mother": "Linda",
-        "studentId": "218439247",
+        "studentId": "207745638",
         "phone": "0537756048",
         "fphone": "0537756048",
         "mphone": "0537756048",
@@ -197,11 +202,109 @@
     {
       "id": 3,
       "info": {
-        "firstName": "Nora",
-        "lastName": "Kassabry",
+        "firstName": "Suzan",
+        "lastName": "Kassabry 3",
         "father": "Emad",
         "mother": "Linda",
-        "studentId": "634892469",
+        "studentId": "207745638",
+        "phone": "0537756048",
+        "fphone": "0537756048",
+        "mphone": "0537756048",
+        "email": "suzankassabry97@gmail.com"
+      }
+    },
+    {
+      "id": 4,
+      "info": {
+        "firstName": "Suzan",
+        "lastName": "Kassabry 4",
+        "father": "Emad",
+        "mother": "Linda",
+        "studentId": "207745638",
+        "phone": "0537756048",
+        "fphone": "0537756048",
+        "mphone": "0537756048",
+        "email": "suzankassabry97@gmail.com"
+      }
+    },
+    {
+      "id": 5,
+      "info": {
+        "firstName": "Suzan",
+        "lastName": "Kassabry 5",
+        "father": "Emad",
+        "mother": "Linda",
+        "studentId": "207745638",
+        "phone": "0537756048",
+        "fphone": "0537756048",
+        "mphone": "0537756048",
+        "email": "suzankassabry97@gmail.com"
+      }
+    },
+    {
+      "id": 6,
+      "info": {
+        "firstName": "Suzan",
+        "lastName": "Kassabry 6",
+        "father": "Emad",
+        "mother": "Linda",
+        "studentId": "207745638",
+        "phone": "0537756048",
+        "fphone": "0537756048",
+        "mphone": "0537756048",
+        "email": "suzankassabry97@gmail.com"
+      }
+    },
+    {
+      "id": 7,
+      "info": {
+        "firstName": "Suzan",
+        "lastName": "Kassabry 7",
+        "father": "Emad",
+        "mother": "Linda",
+        "studentId": "207745638",
+        "phone": "0537756048",
+        "fphone": "0537756048",
+        "mphone": "0537756048",
+        "email": "suzankassabry97@gmail.com"
+      }
+    },
+    {
+      "id": 8,
+      "info": {
+        "firstName": "Suzan",
+        "lastName": "Kassabry 8",
+        "father": "Emad",
+        "mother": "Linda",
+        "studentId": "207745638",
+        "phone": "0537756048",
+        "fphone": "0537756048",
+        "mphone": "0537756048",
+        "email": "suzankassabry97@gmail.com"
+      }
+    },
+    {
+      "id": 9,
+      "info": {
+        "firstName": "Suzan",
+        "lastName": "Kassabry 9",
+        "father": "Emad",
+        "mother": "Linda",
+        "studentId": "207745638",
+        "phone": "0537756048",
+        "fphone": "0537756048",
+        "mphone": "0537756048",
+        "email": "suzankassabry97@gmail.com"
+      }
+    },
+    {
+      "id": 10,
+      "info": {
+        "firstName": "Suzan",
+        "lastName": "Kassabry 10",
+        "father": "Emad",
+        "mother": "Linda",
+        "studentId": "207745638",
         "phone": "0537756048",
         "fphone": "0537756048",
         "mphone": "0537756048",
@@ -213,8 +316,8 @@
     {
       "id": 1,
       "info": {
-        "firstName": "Suzan",
-        "lastName": "Kassabry",
+        "firstName": "Manal",
+        "lastName": "Misherky",
         "teacherId": "207745638",
         "phone": "0537756048",
         "email": "suzankassabry97@gmail.com"
@@ -223,8 +326,8 @@
     {
       "id": 2,
       "info": {
-        "firstName": "Lama",
-        "lastName": "Kassabry",
+        "firstName": "Manal",
+        "lastName": "Bisharat",
         "teacherId": "218439247",
         "phone": "0537756048",
         "email": "suzankassabry97@gmail.com"
@@ -233,12 +336,136 @@
     {
       "id": 3,
       "info": {
+        "firstName": "Areen",
+        "lastName": "Awwad",
+        "teacherId": "634892469",
+        "phone": "0537756048",
+        "email": "suzankassabry97@gmail.com"
+      }
+    },
+    {
+      "id": 4,
+      "info": {
         "firstName": "Rania",
+        "lastName": "Ateek",
+        "teacherId": "634892469",
+        "phone": "0537756048",
+        "email": "suzankassabry97@gmail.com"
+      }
+    },
+    {
+      "id": 5,
+      "info": {
+        "firstName": "Zahera",
+        "lastName": "Bisharat",
+        "teacherId": "634892469",
+        "phone": "0537756048",
+        "email": "suzankassabry97@gmail.com"
+      }
+    },
+    {
+      "id": 6,
+      "info": {
+        "firstName": "Doaa",
+        "lastName": "Marjieh",
+        "teacherId": "634892469",
+        "phone": "0537756048",
+        "email": "suzankassabry97@gmail.com"
+      }
+    },
+    {
+      "id": 7,
+      "info": {
+        "firstName": "Suzan",
         "lastName": "Kassabry",
         "teacherId": "634892469",
         "phone": "0537756048",
         "email": "suzankassabry97@gmail.com"
       }
+    }
+  ],
+  "teachers": [
+    {
+      "id": 1,
+      "label": "Manal Misherky"
+    },
+    {
+      "id": 2,
+      "label": "Manal Bisharat"
+    },
+    {
+      "id": 3,
+      "label": "Areen Awwad"
+    },
+    {
+      "id": 4,
+      "label": "Rania Ateek"
+    },
+    {
+      "id": 5,
+      "label": "Zahera Bisharat"
+    },
+    {
+      "id": 6,
+      "label": "Doaa Marjieh"
+    }
+  ],
+  "classStudents": [
+    {
+      "id": 1,
+      "first": "Suzan",
+      "last": "Kassabry 1",
+      "studentId": "123456789",
+      "phone": "0537756044"
+    },
+    {
+      "id": 2,
+      "first": "Suzan",
+      "last": "Kassabry 2",
+      "studentId": "123456789",
+      "phone": "0537756044"
+    },
+    {
+      "id": 3,
+      "first": "Suzan",
+      "last": "Kassabry 3",
+      "studentId": "123456789",
+      "phone": "0537756044"
+    },
+    {
+      "id": 4,
+      "first": "Suzan",
+      "last": "Kassabry 4",
+      "studentId": "123456789",
+      "phone": "0537756044"
+    },
+    {
+      "id": 5,
+      "first": "Suzan",
+      "last": "Kassabry 5",
+      "studentId": "123456789",
+      "phone": "0537756044"
+    },
+    {
+      "id": 6,
+      "first": "Suzan",
+      "last": "Kassabry 6",
+      "studentId": "123456789",
+      "phone": "0537756044"
+    },
+    {
+      "id": 7,
+      "first": "Suzan",
+      "last": "Kassabry 7",
+      "studentId": "123456789",
+      "phone": "0537756044"
+    },
+    {
+      "id": 8,
+      "first": "Suzan",
+      "last": "Kassabry 8",
+      "studentId": "123456789",
+      "phone": "0537756044"
     }
   ],
   "comments": [

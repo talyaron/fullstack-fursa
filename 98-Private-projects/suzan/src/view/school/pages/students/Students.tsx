@@ -11,6 +11,8 @@ import Button from '@mui/material/Button';
 import EditIcon from '@mui/icons-material/Edit';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { getSchoolStudentsAsync, schoolStudents } from '../../../../app/reducers/school/SchoolSlice';
+import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
 
 
 export interface studentInfo {
@@ -35,13 +37,19 @@ export default function SchoolStudents() {
     //     { info: { firstName: 'Nora', lastName: 'Kassabry', father: 'Emad', mother: 'Linda', id: '634892469', phone: '0537756048', fphone: '0537756048', mphone: '0537756048', email: 'suzankassabry97@gmail.com' } }
     // ]
 
-    const [students, setStudents] = useState([]);
+    // const [students, setStudents] = useState([]);
+    // useEffect(() => {
+    //     axios.get('http://localhost:3004/schoolStudents').then(({ data }) => {
+    //         console.log(data);
+    //         setStudents(data);
+    //     })
+    // }, []);
+
+    const dispatch = useAppDispatch();
     useEffect(() => {
-        axios.get('http://localhost:3004/schoolStudents').then(({ data }) => {
-            console.log(data);
-            setStudents(data);
-        })
+        dispatch(getSchoolStudentsAsync());
     }, []);
+    const students = useAppSelector(schoolStudents);
 
     return (
         <div className='container'>
