@@ -26,19 +26,11 @@
     },
     {
       "id": 4,
-      "title": "Facial Treatment",
-      "start": "2022-02-27T09:11:00.000Z",
-      "end": "2022-02-27T10:11:00.000Z",
+      "title": "Cupping Therapy",
+      "start": "2022-02-28T23:30:00.000Z",
+      "end": "2022-03-01T00:30:00.000Z",
       "name": "asma",
-      "phone": "1111"
-    },
-    {
-      "id": 5,
-      "title": "Hopi Ear Candles",
-      "start": "2022-02-22T09:59:00.000Z",
-      "end": "2022-02-22T10:59:00.000Z",
-      "name": "asma",
-      "phone": "111"
+      "phone": "11"
     }
   ]
 }
