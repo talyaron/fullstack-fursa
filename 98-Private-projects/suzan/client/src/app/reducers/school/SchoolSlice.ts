@@ -48,11 +48,24 @@ const initialState :SchoolData = {
     status: 'idle'
 }
 
+// export const getSchoolClassesAsync = createAsyncThunk (
+//     'schoolData/fetchClasses',
+//     async(_, thunkAPI) => {
+//         try{
+//             const response = await axios.get('http://localhost:3004/schoolClasses');
+//             const data = response.data;
+//             return data;
+//         } catch (error:any) {
+//             thunkAPI.rejectWithValue(error.response.data)
+//         }
+//     }    
+// );
+
 export const getSchoolClassesAsync = createAsyncThunk (
     'schoolData/fetchClasses',
     async(_, thunkAPI) => {
         try{
-            const response = await axios.get('http://localhost:3004/schoolClasses');
+            const response = await axios.get('/get-classes');
             const data = response.data;
             return data;
         } catch (error:any) {

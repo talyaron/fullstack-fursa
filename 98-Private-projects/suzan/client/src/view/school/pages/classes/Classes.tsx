@@ -31,6 +31,7 @@ export default function SchoolClasses() {
         dispatch(getSchoolTeachersAsync());
     }, []);
     const classes = useAppSelector(schoolClasses);
+    console.log(classes);
     
     return (
 
@@ -50,7 +51,9 @@ export default function SchoolClasses() {
 
 
                 <div className="classesContainer">
+                {/* console.log(classes); */}
                     {
+                        
                         classes.map((classroom, index) => {
                             const { name, teacher } = classroom;
                             return (
