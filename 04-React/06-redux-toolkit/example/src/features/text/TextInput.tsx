@@ -1,5 +1,5 @@
 import { useAppDispatch } from "../../app/hooks";
-import {update, getJokeAsync} from './textSlice'; 
+import {update, getJokeAsync} from '../../app/reducers/textSlice'; 
 
 export default function TextShow() {
     const dispatch = useAppDispatch();
