@@ -28,6 +28,16 @@ useEffect(() => {
   axios.get('http://localhost:3004/courses').then(({ data }) => setDetails(data));
 }, []);
 
+function handleDelete(event:any){
+  event.preventDefault();
+  const id=event.target.value;
+  axios.delete(`http://localhost:3004/courses/${id}`)
+  .then(res => {
+    console.log(res);
+    console.log(res.data);
+  })
+}
+
  
   return (
       
@@ -66,7 +76,7 @@ useEffect(() => {
                       <ButtonGroup className='grpbtn' variant="contained" aria-label="outlined small button group">
                       {/* <Link to={`/addCourse`}>    <Button className='addbtn'>Add</Button> </Link> */}
       <Button>Edit</Button>
-      <Button>Delete</Button>
+      <Button onClick={handleDelete}>Delete</Button>
     </ButtonGroup>
                         </td>
                   </tr>

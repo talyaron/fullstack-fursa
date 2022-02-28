@@ -9,7 +9,7 @@ function TableDatePicker() {
     var _c = react_1.useState(new Date()), endDate = _c[0], setEndDate = _c[1];
     var _d = react_1.useState(new Date()), value = _d[0], onChange = _d[1];
     var dt = new Date('02 15 2020');
-    var includeDatesArray = [new Date('02-25-2022'), new Date('02-24-2022')];
+    var includeDatesArray = [new Date('02-27-2022'), new Date('02-28-2022')];
     var maxDate = dt.setDate(dt.getDate() + 5);
     //  const date=new Date(any);
     function changeStartDate(date) {

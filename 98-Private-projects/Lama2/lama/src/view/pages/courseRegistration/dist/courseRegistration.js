@@ -45,7 +45,7 @@ function CourseRegistration() {
     var _h = react_2.useState(coursesRegis), allReg = _h[0], setAllReg = _h[1];
     var dt = new Date(2022, 3, 22, 7, 30);
     var maxTime = dt.setDate(dt.getDate() + 5);
-    var includeDatesArray = [new Date('02-25-2022'), new Date('02-26-2022')];
+    var includeDatesArray = [new Date('02-27-2022'), new Date('02-28-2022')];
     var dispatch = hooks_1.useAppDispatch();
     var changeDate = function (e) {
         setDateState(e);
@@ -54,13 +54,16 @@ function CourseRegistration() {
         setAllReg(__spreadArrays(allReg, [registration]));
         console.log(allReg);
     }
+    function handleRegister() {
+        alert("you seccessfully registered!");
+    }
     var handleChange = function (event) {
         setCourse(event.target.value);
     };
     return (react_1["default"].createElement("div", { className: 'mydiv' },
         react_1["default"].createElement(react_router_dom_1.Link, { to: "/" },
             react_1["default"].createElement("button", { className: 'backbtn' }, "back ")),
-        react_1["default"].createElement("div", { className: 'inputDiv' },
+        react_1["default"].createElement("form", { onSubmit: handleRegister, className: 'inputDiv' },
             react_1["default"].createElement(Box_1["default"], { className: 'mybox', sx: { minWidth: 120 } },
                 react_1["default"].createElement(FormControl_1["default"], { required: true, fullWidth: true },
                     react_1["default"].createElement(InputLabel_1["default"], { id: "demo-simple-select-label" }, "Course"),
@@ -70,6 +73,6 @@ function CourseRegistration() {
                         react_1["default"].createElement(MenuItem_1["default"], { value: 30 }, "single lesson")))),
             react_1["default"].createElement(TextField_1["default"], { className: "txtfield", autoComplete: "given-name", name: "Name", required: true, id: "Name", label: "Name", autoFocus: true }),
             react_1["default"].createElement("input", { type: "datetime-local", id: "meeting-time", name: "meeting-time" }),
-            react_1["default"].createElement(Button_1["default"], { variant: "contained", className: "regBtn" }, "register"))));
+            react_1["default"].createElement(Button_1["default"], { variant: "contained", type: "submit", className: "regBtn", onClick: handleRegister }, "register"))));
 }
 exports["default"] = CourseRegistration;

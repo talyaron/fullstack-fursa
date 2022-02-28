@@ -10,7 +10,7 @@ export default function TableDatePicker() {
   const [endDate, setEndDate] = useState(new Date());
   const [value, onChange] = useState(new Date());
   let dt = new Date('02 15 2020');
-  const includeDatesArray = [new Date('02-25-2022'), new Date('02-24-2022')]
+  const includeDatesArray = [new Date('02-27-2022'), new Date('02-28-2022')]
   const maxDate = dt.setDate(dt.getDate() + 5);
   //  const date=new Date(any);
 

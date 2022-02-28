@@ -15,14 +15,12 @@ export interface registration{
   export interface registrationArr{
     //[x: string]: any;
     registrations:Array<registration>;
-    // status: 'idle' | 'loading' | 'failed';
   
   }
 
 
   const initialState:registrationArr  = {
     registrations :CourseRegistData,
-    // status:'idle',
   };
 
 

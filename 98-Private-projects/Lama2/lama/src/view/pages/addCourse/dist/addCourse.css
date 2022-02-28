@@ -6,3 +6,6 @@
 .addCourse .formAddCourse {
   width: 20vw;
 }
+.addCourse .textfield1 {
+  height: 10vh;
+}

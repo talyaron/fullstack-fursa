@@ -16,6 +16,15 @@ function AdminCourses() {
             return setDetails(data);
         });
     }, []);
+    function handleDelete(event) {
+        event.preventDefault();
+        var id = event.target.value;
+        axios_1["default"]["delete"]("http://localhost:3004/courses/" + id)
+            .then(function (res) {
+            console.log(res);
+            console.log(res.data);
+        });
+    }
     return (React.createElement("div", { className: 'admCouDiv' },
         React.createElement(adminHeader_1["default"], null),
         React.createElement("h4", null, "courses"),
@@ -39,7 +48,7 @@ function AdminCourses() {
                         React.createElement("td", null,
                             React.createElement(ButtonGroup_1["default"], { className: 'grpbtn', variant: "contained", "aria-label": "outlined small button group" },
                                 React.createElement(Button_1["default"], null, "Edit"),
-                                React.createElement(Button_1["default"], null, "Delete")))));
+                                React.createElement(Button_1["default"], { onClick: handleDelete }, "Delete")))));
                 })))),
         React.createElement(react_router_dom_1.Link, { to: "/addCourse" },
             "    ",

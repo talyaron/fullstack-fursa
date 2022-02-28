@@ -1,10 +1,10 @@
-.mainheader{
+.mainheader {
     position: relative;
     display: flex;
     width: 100vw;
     height: 4rem;
     border-style: solid;
-    background-color: #3635347c;
+    background-color: #cfc4ba7c;
 
     &__left {
         position: absolute;
@@ -20,7 +20,7 @@
             padding: 20px 24px;
             font-size: 15px;
             font-family: Inter;
-            height: 4rem;
+            height: 6rem;
 
             &:hover {
                 //background-color: #2a945b;
@@ -33,20 +33,20 @@
     &__right {
         position: absolute;
         right: 0%;
-         width: 10%;
-        height: 3rem;
+        width: 10%;
+        height: 5rem;
         // justify-content: left;
         display: flex;
         margin-top: 10px;
-  
 
-        img{
+
+        img {
             width: 30px;
             height: 30px;
             border-radius: 50px;
         }
 
-        #basic-menu{
+        #basic-menu {
             width: 20vw;
             height: 10vh;
 
@@ -58,8 +58,8 @@
 }
 
 
-.menu{
-  //  background-color: rgb(230, 208, 222);
+.menu {
+    //  background-color: rgb(230, 208, 222);
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -69,7 +69,7 @@
     align-items: center;
     gap: 180px;
 
-    &__left{
+    &__left {
         display: flex;
         gap: 30px;
         width: 80%;
@@ -77,8 +77,8 @@
         margin-left: 10px;
         margin-top: 20px;
 
-   
-        img{
+
+        img {
             margin-top: 20px;
             width: 3%;
             height: 70%;
@@ -88,7 +88,7 @@
 
 }
 
-#basic-menu{
+#basic-menu {
     width: 10vw;
     height: 20vh;
 

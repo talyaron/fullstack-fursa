@@ -50,9 +50,9 @@ function Header() {
                 <Link to="/TableDatePicker">
                     Register2
                 </Link>
-                <Link to="/courseregistration2">
+                {/* <Link to="/courseregistration2">
                     Register3
-                </Link>
+                </Link> */}
             </div>
             <div className="mainheader__right">
                 <Button

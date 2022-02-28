@@ -27,6 +27,7 @@ import startOfWeek from "date-fns/startOfWeek";
 import "react-datepicker/dist/react-datepicker.css";
 import 'react-time-picker/dist/TimePicker.css';
 import { useAppSelector, useAppDispatch } from '../../../app/hooks';
+import axios from 'axios';
 
 
 interface TimeManagement {
@@ -59,7 +60,7 @@ function CourseRegistration() {
   const [allReg, setAllReg] = useState(coursesRegis);
   let dt = new Date(2022, 3, 22, 7, 30);
   const maxTime = dt.setDate(dt.getDate() + 5);
-  const includeDatesArray = [new Date('02-25-2022'), new Date('02-26-2022')]
+  const includeDatesArray = [new Date('02-27-2022'), new Date('02-28-2022')]
 
 
   const dispatch = useAppDispatch();
@@ -74,6 +75,10 @@ function CourseRegistration() {
 
   }
 
+  function handleRegister(){
+    alert("you seccessfully registered!");
+  }
+
   const handleChange = (event: any) => {
     setCourse(event.target.value);
   };
@@ -85,7 +90,7 @@ function CourseRegistration() {
           back </button>
       </Link>
       {/* //registration inputs */}
-      <div className='inputDiv'>
+      <form onSubmit={handleRegister} className='inputDiv'>
    
         <Box className='mybox' sx={{ minWidth: 120 }}>
           <FormControl required fullWidth>
@@ -121,8 +126,8 @@ function CourseRegistration() {
         name="meeting-time"></input>
 
            {/* <Register /> */}
-           <Button variant="contained" className="regBtn">register</Button>
-      </div>
+           <Button variant="contained" type="submit" className="regBtn" onClick={handleRegister}>register</Button>
+      </form>
    
 
 

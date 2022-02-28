@@ -5,14 +5,14 @@
     width: 100vw;
     height: 4rem;
     border-style: solid;
-    background-color: #3635347c;
+    background-color: #eed9c4a8;
 
     &__left {
         position: absolute;
         left: 0%;
         display: flex;
         width: 50%;
-        height: 3rem;
+        height: 5rem;
         justify-content: left;
 
         a {
@@ -21,7 +21,7 @@
             padding: 20px 24px;
             font-size: 15px;
             font-family: Inter;
-            height: 4rem;
+            height: 6rem;
 
             &:hover {
                 //background-color: #2a945b;
@@ -35,7 +35,7 @@
         position: absolute;
         right: 0%;
          width: 10%;
-        height: 5rem;
+        height: 6rem;
         // justify-content: left;
         display: flex;
         margin-top: 10px;
@@ -65,7 +65,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     width: 100vw;
-    height: 7vh;
+    height: 5vh;
     justify-content: center;
     align-items: center;
     gap: 180px;

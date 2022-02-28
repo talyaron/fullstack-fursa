@@ -8,7 +8,10 @@ $padding:20px;
 
 .App {
   text-align: center;
-  background-color: rgb(255, 255, 255);
+ // background-color: rgba(235, 215, 178, 0.178);
+  // background-image: url(https://i.pinimg.com/736x/5b/00/42/5b00429c05e44210160ed118dc648433.jpg);
+
+  //  background-repeat: no-repeat;
 }
 
 .App-logo {
@@ -41,12 +44,13 @@ $padding:20px;
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
-button{
+button {
   // width: 10px;
   padding: 10px 20px;
   font-size: 1rem;

@@ -8,12 +8,14 @@ import { useState } from 'react';
 import axios from 'axios';
 
 function AddCourse(){
+
     function handleAdd(ev:any){
       ev.prevenntDefault();
       console.dir(ev.target);
       const form=ev.target
       console.log(form[0]);
-        axios.post('http://localhost:3004/courses',{'name':form[0].value, 'participants':form[2].value,'lessons':form[3].value,'cost':form[1].value}).then(({data})=>console.log(data));
+        axios.post('http://localhost:3004/courses',{'name':form[0].value, 'participants':form[2].value,'lessons':form[3].value,'cost':form[1].value}).
+        then(({data})=>console.log(data));
 alert("course added successfully");
     }
 

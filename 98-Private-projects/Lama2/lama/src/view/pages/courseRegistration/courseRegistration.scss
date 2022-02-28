@@ -1,4 +1,6 @@
 .mydiv {
+    background-image: url(https://i.pinimg.com/736x/0d/e5/09/0de5098fa5b9ba72a8b0b4c5e31b801f.jpg);
+    background-repeat: no-repeat;
    
     width: 80%;
     .backbtn {
@@ -10,13 +12,16 @@
     }
     .inputDiv{
         // background-color: rgba(65, 61, 56, 0.26);
+        background-image: url(https://i.pinimg.com/736x/0d/94/af/0d94af013ad5ea0311d40b78e76ce0e2.jpg);
+        background-repeat: no-repeat;
+        // background-size: 90%;
         margin: auto;
         padding: 10px;
         position: absolute;
         top: 100px;
         left: 40%;
         width: 30vw;
-        height: 30vh;
+        height: 70vh;
         // border-style: double;
         justify-content: center;
        
@@ -24,13 +29,13 @@
         .mybox {
             position: absolute;
             // top: 150px;
-            left: 25%;
+            // left: 25%;
             width: 50%;
           }
     
         .txtfield {
             position: absolute;
-            left: 25%;
+          left: 10px;
             top: 80px;
             width: 50%;
             height: 7vh;
@@ -46,7 +51,7 @@
         }
         #meeting-time{
             position: absolute;
-            left: 25%;
+            left: 10px;
             top: 150px;
             width: 50%;
 
@@ -55,7 +60,7 @@
     .regBtn {
         position: absolute;
         left: 40%;
-        top: 180px;
+        top: 480px;
         width: 5vw;
         font-size: small;
 

@@ -88,15 +88,15 @@ function CalendarFun() {
                                     value={newEvent.title}
                                     onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value as string })}
                                 >
-                                    <MenuItem value="Cupping Therapy">Group lessons</MenuItem>
-                                    <MenuItem value="Facial Treatment">Private lessons</MenuItem>
-                                    <MenuItem value="Hopi Ear Candles">Single lesson</MenuItem>
+                                    <MenuItem value="Group lessons">Group lessons</MenuItem>
+                                    <MenuItem value="Private lessons">Private lessons</MenuItem>
+                                    <MenuItem value="Single lesson">Single lesson</MenuItem>
                                 </Select>
                             </FormControl>
                         </Box>
                     </div>
                     <DateTimePicker className="date" value={newEvent.start} onChange={(value) => setNewEvent({ ...newEvent, start: value, end: (new Date(value.getFullYear(), value.getMonth(), value.getDate(), value.getHours() + 0.5, value.getMinutes())) })} />
-                    <Button className="button" onClick={handleAddEvent} variant="contained" >Book Now!</Button>
+                    <Button className="button" onClick={handleAddEvent} variant="contained" >Register</Button>
                 </div>
                 <div className="table">
                     <Calendar localizer={localizer} events={appointments} startAccessor="start" endAccessor="end" />

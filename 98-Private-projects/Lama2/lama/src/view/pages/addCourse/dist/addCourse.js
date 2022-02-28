@@ -11,7 +11,8 @@ function AddCourse() {
         console.dir(ev.target);
         var form = ev.target;
         console.log(form[0]);
-        axios_1["default"].post('http://localhost:3004/courses', { 'name': form[0].value, 'participants': form[2].value, 'lessons': form[3].value, 'cost': form[1].value }).then(function (_a) {
+        axios_1["default"].post('http://localhost:3004/courses', { 'name': form[0].value, 'participants': form[2].value, 'lessons': form[3].value, 'cost': form[1].value }).
+            then(function (_a) {
             var data = _a.data;
             return console.log(data);
         });

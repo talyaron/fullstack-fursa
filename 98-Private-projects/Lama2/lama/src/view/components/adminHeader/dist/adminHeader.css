@@ -4,7 +4,7 @@
   width: 100vw;
   height: 4rem;
   border-style: solid;
-  background-color: #3635347c;
+  background-color: #cfc4ba7c;
 }
 .mainheader__left {
   position: absolute;
@@ -20,7 +20,7 @@
   padding: 20px 24px;
   font-size: 15px;
   font-family: Inter;
-  height: 4rem;
+  height: 6rem;
 }
 .mainheader__left a:hover {
   font-size: 20px;
@@ -30,7 +30,7 @@
   position: absolute;
   right: 0%;
   width: 10%;
-  height: 3rem;
+  height: 5rem;
   display: flex;
   margin-top: 10px;
 }

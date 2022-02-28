@@ -80,11 +80,11 @@ function CalendarFun() {
                         react_1["default"].createElement(FormControl_1["default"], { fullWidth: true },
                             react_1["default"].createElement(InputLabel_1["default"], { id: "demo-simple-select-label" }, "Courses"),
                             react_1["default"].createElement(Select_1["default"], { labelId: "demo-simple-select-label", id: "demo-simple-select", value: newEvent.title, onChange: function (e) { return setNewEvent(__assign(__assign({}, newEvent), { title: e.target.value })); } },
-                                react_1["default"].createElement(MenuItem_1["default"], { value: "Cupping Therapy" }, "Group lessons"),
-                                react_1["default"].createElement(MenuItem_1["default"], { value: "Facial Treatment" }, "Private lessons"),
-                                react_1["default"].createElement(MenuItem_1["default"], { value: "Hopi Ear Candles" }, "Single lesson"))))),
+                                react_1["default"].createElement(MenuItem_1["default"], { value: "Group lessons" }, "Group lessons"),
+                                react_1["default"].createElement(MenuItem_1["default"], { value: "Private lessons" }, "Private lessons"),
+                                react_1["default"].createElement(MenuItem_1["default"], { value: "Single lesson" }, "Single lesson"))))),
                 react_1["default"].createElement(react_datetime_picker_1["default"], { className: "date", value: newEvent.start, onChange: function (value) { return setNewEvent(__assign(__assign({}, newEvent), { start: value, end: (new Date(value.getFullYear(), value.getMonth(), value.getDate(), value.getHours() + 0.5, value.getMinutes())) })); } }),
-                react_1["default"].createElement(core_1.Button, { className: "button", onClick: handleAddEvent, variant: "contained" }, "Book Now!")),
+                react_1["default"].createElement(core_1.Button, { className: "button", onClick: handleAddEvent, variant: "contained" }, "Register")),
             react_1["default"].createElement("div", { className: "table" },
                 react_1["default"].createElement(react_big_calendar_1.Calendar, { localizer: localizer, events: appointments, startAccessor: "start", endAccessor: "end" })))));
 }
