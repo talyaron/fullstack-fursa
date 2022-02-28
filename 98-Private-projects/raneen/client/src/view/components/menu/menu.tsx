@@ -13,30 +13,11 @@ import MenuList from "@material-ui/core/MenuList";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { useState, useEffect } from 'react';
 
-interface product {
-  id: number;
-  name: string;
-  price: number;
-  catagory: string;
-  quantity: number;
-  description: string;
-  Url: string;
 
-}
 function Menu1() {
 
 
-  useEffect(() => {
-    axios.get('http://localhost:3004/products1').then(({ data }) => {
-      console.log(data);
-      setProducts(data);
-      
-    })
-  }, []); 
-  const [catagory, setCatagory] = useState("")
-  const [products, setProducts] = useState([])
-  const [productByCatagory, setProductByCatagory] = useState(products)
-  
+
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -45,30 +26,10 @@ function Menu1() {
    
   };
 
-    useEffect(()=>{
-    function handleClose() {
-       setAnchorEl(null);
-      // ev.preventDefault();
-      console.log(catagory)
-      const arr = products.filter((element: any) => {
-        if (element.catagory === catagory) {
-          return element;
-        }
-      })
-      setProductByCatagory([...arr]);
-      if(catagory === "All"){
-        setProductByCatagory([...products]);
-      }
-
-      console.log(arr)
-  
-    }
-    handleClose();
-  },[catagory])
-  // const handleClose = () => {
-  //   setAnchorEl(null);
-  //    console.log("hi");
-  // };
+  const handleClose = () => {
+    setAnchorEl(null);
+     console.log("hi");
+  };
   return (
     <div className="navbar">
       <div className="navbar__box">
