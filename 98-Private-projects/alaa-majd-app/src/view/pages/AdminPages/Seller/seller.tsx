@@ -64,7 +64,7 @@ const Seller = () => {
         <div className="App">
             <div className="header">
                 <div className="header-right">
-                    <Link to="/users/:id">Profile</Link>
+                    <Link to="/AdminProfile">Profile</Link>
                     <a href="#contact">Requests</a>
 
                     <Link to="/logIn">LogOut</Link>

@@ -19,6 +19,8 @@ import CreateGroup from "./view/pages/CreateGroup/createGroup";
 import Store from "./view/pages/store/store";
 import Mygroups from './view/pages/mygroups/mygroups';
 import Profile from './view/pages/profile/profile';
+import AdminProfile from './view/pages/AdminPages/AdminProfile/profile';
+
 import Seller from './view/pages/AdminPages/Seller/seller';
 import Cart from './view/components/Cart/Cart'
 import AboutUsIn from "./view/pages/aboutUsIn/aboutUsIn"
@@ -52,6 +54,7 @@ ReactDOM.render(
         <Route path="/mygroups" element={<Mygroups />} />
         <Route path="/mygroups/:id" element={<GroupDetails />} />
         <Route path="/users/:id" element={<Profile />} />
+        <Route path="/AdminProfile" element={<AdminProfile />} />
         <Route path="/GroupDetails" element={<GroupDetails />} />
         <Route path="/AddProduct" element={<AddProduct />} />
         <Route path="/EditProduct" element={<EditProduct />} />
