@@ -17,7 +17,7 @@ export interface productProp{
     width?:number;
     thick?:number;
     doorType?:string;
-    id:any;
+    id:number;
    
  }
  
@@ -35,16 +35,13 @@ export interface productProp{
      const dispatch=useAppDispatch();
      function RemoveHandler()
      {
-         console.log(id)
-         const productID={"id":id};
+        //  const obj={"productId":id}
         axios.delete('/delete-order')
         // dispatch(deleteCartAsync())
         // axios.delete(`http://localhost:3004/userOrder/${id}`).then(({data})=>dispatch(getCartAsync()));
         // comp=<Cart></Cart>
     
     }
-    //    if(!width)
-    //       {console.log('sss')}
      return(
          <div className="cartProducts">
            <div className="item details">

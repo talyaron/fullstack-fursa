@@ -45,11 +45,9 @@ app.post('/add-orders',(req,res)=>{
 })
 app.delete('/delete-order',(req,res)=>{
   try{
-  const {id}=req.body;
-  console.log(req.body)
-  if(!id) throw new Error("no id")
+  
 
-  axios.delete(`http://localhost:3004/userOrder/${id}`)
+  axios.delete(`http://localhost:3004/userOrder`)
   }
   catch(error){
     res.send({ error: error.message });

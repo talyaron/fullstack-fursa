@@ -68,16 +68,6 @@
   ],
   "userOrder": [
     {
-      "woodName": "Bed Frames",
-      "woodlength": "250",
-      "width": "160",
-      "thick": "22",
-      "color": "yellow",
-      "amount": "1",
-      "doorType": "no back",
-      "id": 3
-    },
-    {
       "woodName": "multilayer wood white 150X150",
       "woodlength": "300",
       "amount": "4",
@@ -99,13 +89,6 @@
       "id": 6
     },
     {
-      "woodName": "multilayer wood white 150X150",
-      "woodlength": "10",
-      "amount": "10",
-      "price": "10",
-      "id": 7
-    },
-    {
       "woodName": "pine wood multilayer 210X105 ",
       "woodlength": "20",
       "amount": "20",
@@ -114,24 +97,10 @@
     },
     {
       "woodName": "pine wood multilayer 210X105 ",
-      "woodlength": "40",
-      "amount": "4",
-      "price": "13",
-      "id": 9
-    },
-    {
-      "woodName": "pine wood multilayer 210X105 ",
       "woodlength": "50",
       "amount": "60",
       "price": "13",
       "id": 10
-    },
-    {
-      "woodName": "pine wood multilayer 210X105 ",
-      "woodlength": "22",
-      "amount": "4",
-      "price": "13",
-      "id": 11
     }
   ],
   "userInfo": [

@@ -26,7 +26,7 @@ app.get('/get-orders', (req, res) => __awaiter(void 0, void 0, void 0, function*
     try {
         const response = yield axios_1.default.get('http://localhost:3004/userOrder');
         const { data } = response;
-        console.log(data);
+        //  console.log(data)
         res.status(200).send(data);
     }
     catch (error) {
@@ -34,6 +34,27 @@ app.get('/get-orders', (req, res) => __awaiter(void 0, void 0, void 0, function*
         res.send({ error });
     }
 }));
+app.post('/add-orders', (req, res) => {
+    try {
+        const { orderObj } = req.body;
+        console.log(orderObj);
+        if (!orderObj)
+            throw new Error("no order");
+        axios_1.default.post('http://localhost:3004/userOrder', orderObj);
+        res.send({ ok: true });
+    }
+    catch (error) {
+        res.send({ error: error.message });
+    }
+});
+app.delete('/delete-order', (req, res) => {
+    try {
+        axios_1.default.delete(`http://localhost:3004/userOrder`);
+    }
+    catch (error) {
+        res.send({ error: error.message });
+    }
+});
 //console.log(process.env.USER);
 app.get('/', (req, res) => {
     console.log(req);
