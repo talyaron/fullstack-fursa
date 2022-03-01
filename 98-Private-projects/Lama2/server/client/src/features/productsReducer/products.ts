@@ -11,13 +11,13 @@ interface Product {
 }
 
 interface Products {
-    arrProducrs: Array<Product>,
+    arrProducts: Array<Product>,
     status: 'idle' | 'loading' | 'failed';
 
 }
 
 const initialState: Products = {
-    arrProducrs: [],
+    arrProducts: [],
     status: 'idle',
 };
 
@@ -49,10 +49,16 @@ export const ProductsReducer = createSlice({
         })
             .addCase(getProductAsync.fulfilled, (state, action) => {
                 state.status = 'idle';
-                state.arrProducrs = action.payload;
+                state.arrProducts = action.payload;
+            })
+            .addCase(getProductAsync.rejected, (state, action) => {
+                state.status = 'failed';
+               // state.arrProducrs = action.payload;
             })
     }
 
 });
+
+export const selectProducts=(state:RootState)=>state.products
 
 export default ProductsReducer.reducer
