@@ -5,7 +5,8 @@ import axios from 'axios'
 interface userProb {
     userinfo: {
         id: number;
-        userName: string;
+        fName: string;
+        lName: string;
         email: string;
     };
     userIsLogIn: boolean;
@@ -15,7 +16,8 @@ interface userProb {
 const initialState: userProb = {
     userinfo: {
         id: -1,
-        userName: "",
+        fName: " ",
+        lName: " ",
         email: "",
     },
     userIsLogIn: false,
@@ -25,7 +27,6 @@ const initialState: userProb = {
 export const getUserInfoAsync = createAsyncThunk(
     'user/GetUserInfo',
     async (user: any, thunkAPI) => {
-        console.log(user)
         try {
             const response = await axios.get('/get-user', { params: user })
             const data: any = response.data
@@ -37,6 +38,19 @@ export const getUserInfoAsync = createAsyncThunk(
     }
 );
 
+export const signUpUser = createAsyncThunk(
+    'user/signUpUser',
+    async (user: any, thunkAPI) => {
+        try {
+            const response = await axios.post('/sign-up', user)
+            const data: any = response.data
+            return data
+        } catch (e) {
+            thunkAPI.rejectWithValue(e)
+        }
+
+    }
+);
 
 
 export const userReducer = createSlice({
@@ -55,7 +69,16 @@ export const userReducer = createSlice({
             .addCase(getUserInfoAsync.fulfilled, (state, action) => {
                 state.status = 'idle';
                 if (action.payload.log == true) {
-                    console.log(action.payload)
+                    state.userinfo = action.payload.user;
+                    state.userIsLogIn = true;
+                }
+            })
+            .addCase(signUpUser.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(signUpUser.fulfilled, (state, action) => {
+                state.status = 'idle';
+                if (action.payload.log == true) {
                     state.userinfo = action.payload.user;
                     state.userIsLogIn = true;
                 }
@@ -66,6 +89,6 @@ export const userReducer = createSlice({
 
 export const { updateLogIn } = userReducer.actions
 export const selectUser = (state: RootState) => state.user
-export const selecUserName = (state: RootState) => state.user.userinfo.userName
+export const selecUserName = (state: RootState) => state.user.userinfo.fName + " " + state.user.userinfo.lName
 export const checkUser = (state: RootState) => state.user.userIsLogIn
 export default userReducer.reducer;

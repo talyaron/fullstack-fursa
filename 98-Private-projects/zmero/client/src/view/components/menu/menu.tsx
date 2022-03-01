@@ -21,7 +21,7 @@ import User from '../user/user'
 import Alert from '@mui/material/Alert'
 import Snackbar from '@mui/material/Snackbar'
 import { useAppSelector, useAppDispatch } from '../../../app/hooks';
-import { checkUser, getUserInfoAsync, updateLogIn, selectUser } from '../../../app/reducers/userReducer'
+import { checkUser, getUserInfoAsync, signUpUser, selectUser } from '../../../app/reducers/userReducer'
 
 
 
@@ -68,7 +68,9 @@ function Menu() {
         e.preventDefault();
         openSignInModal(false);
         dispatch(getUserInfoAsync(loginState))
-        setOpenAlert(true)
+        if (isLoggedIn) {
+            setOpenAlert(true)
+        }
     }
     function onChangeSignup(e: any) {
         setSigupnState({
@@ -78,8 +80,11 @@ function Menu() {
     }
     function handleSignup(e: any) {
         e.preventDefault();
-        openSignUpModal(false)
-
+        dispatch(signUpUser(sigupState))
+        if (isLoggedIn) {
+            setOpenAlert(true)
+            openSignUpModal(false)
+        }
     }
     let comp;
     if (isLoggedIn) {

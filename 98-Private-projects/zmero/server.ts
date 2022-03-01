@@ -86,13 +86,17 @@ const Restaurants = [{
     ]
 }]
 
-const Users = [{ "id": 1, "email": "m.zmiro@hotmail.com", "userName": "mohamed zmiro", "password": "123123147" }]
+const Users = [{
+    "id": 1, "email": "m.zmiro@hotmail.com", "fName": "mohamed", "lName": "zmiro", "password": "123123147", "phone": "0549074119", "region": "Israel"
+}]
 
 //gets
 
 app.get('/get-all-restaurants', (req, res) => {
     try {
-        res.send({ Restaurants })
+        if (Restaurants)
+            res.send({ Restaurants })
+        else res.send({ Restaurants: [] })
     } catch (error) {
         res.send({ error });
     }
@@ -118,6 +122,28 @@ app.get('/get-user', (req, res) => {
 
 })
 
+
+
+//posts
+
+app.post('/sign-up', (req, res) => {
+    try {
+        const user = req.body
+        const temp = Users.filter((u: any) => {
+            if (user.email === u.email)
+                return u;
+        })
+        if (temp.length > 0)
+            res.send({ "log": false })
+        else {
+            Users.push(user)
+            res.send({ "log": true, "user": user })
+        }
+    } catch (error) {
+        res.send({ error });
+    }
+
+})
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
