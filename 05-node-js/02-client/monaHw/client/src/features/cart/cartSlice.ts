@@ -34,7 +34,6 @@ export const getCartAsync = createAsyncThunk(
     try {
       const response = await axios.get('/get-orders')
       const data = response.data
-      console.log(response)
       return data
 
     }

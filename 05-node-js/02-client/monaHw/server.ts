@@ -12,12 +12,15 @@ app.get('/get-wood-type', (req, res) => {
 
   res.send(woods)
 })
+app.use(express.static('client/build'));
+app.use(express.json());
 
-const orders= axios.get('http://localhost:3004/userOrder') 
-console.log(orders)
-app.get('/get-orders',(req,res)=>{
+
+app.get('/get-orders',async (req,res)=>{
   try {
-    res.status(200).send({ orders });
+   const orders= await axios.get('http://localhost:3004/userOrder') 
+   console.log(orders)
+    res.status(200).send(orders);
   } catch (error) {
     console.info(error);
     res.send({ error });
@@ -26,7 +29,6 @@ app.get('/get-orders',(req,res)=>{
 
 
 //console.log(process.env.USER);
-app.use(express.static('client/build'));
 app.get('/',(req,res)=>{
     console.log(req);
     res.send('Hello World! all');
