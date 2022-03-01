@@ -5,6 +5,9 @@ var react_1 = require("react");
 //components
 var Card_1 = require("./view/components/card/Card");
 var menu_1 = require("./view/components/menu/menu");
+var Counter_1 = require("./features/counter/Counter");
+var TextShow_1 = require("./features/text/TextShow");
+var TextInput_1 = require("./features/text/TextInput");
 //import Coats from './view/pages/Coats/Coats';
 var clothes = [{ name: 'WOOL BLEND HIGH NECK COAT', price: 500, img: 'https://static.zara.net/photos///2022/V/0/1/p/2096/289/802/2/w/830/2096289802_1_1_1.jpg?ts=1637256490476' },
     { name: 'COAT WITH DETACHABLE FAUX FUR DETAIL ON THE COLLAR', price: 200, img: 'https://static.zara.net/photos///2022/V/0/1/p/2179/289/704/2/w/1126/2179289704_1_1_1.jpg?ts=1640000139595' }];
@@ -21,6 +24,9 @@ function App() {
             clothes.map(function (item1, index) {
                 var name = item1.name, price = item1.price, img = item1.img;
                 return react_1["default"].createElement(Card_1["default"], { key: index, info: { name: name, price: price, img: img } });
-            }))));
+            }),
+            react_1["default"].createElement(TextInput_1["default"], null),
+            react_1["default"].createElement(TextShow_1["default"], null),
+            react_1["default"].createElement(Counter_1.Counter, null))));
 }
 exports["default"] = App;

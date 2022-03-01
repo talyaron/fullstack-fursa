@@ -1,4 +1,14 @@
 import { useState } from "react";
+import { useAppSelector, useAppDispatch } from '../../../app/hooks';
+//import {update, getJokeAsync} from '../../../app/reducers/textSlice'; 
+import {
+  decrement,
+  increment,
+  incrementByAmount,
+  incrementAsync,
+  incrementIfOdd,
+  selectBag,
+} from '../../../app/reducers/bagSlice';
 
 
 interface CardProp {
@@ -12,7 +22,8 @@ interface CardProp {
 
 
 function Card(prop: CardProp) {
- 
+     const count = useAppSelector(selectBag);
+  const dispatch = useAppDispatch();
   
   const{name, price,img} = prop.info;
   const [color, setColor] = useState('red'); // useState(initial value);
@@ -31,9 +42,11 @@ function Card(prop: CardProp) {
     setColor(getRandomColor());
     
     
+    
   }
 function handleAdd(){
-  alert("added to favourites")
+
+ // alert("added to favourites")
   
 }
 
@@ -42,7 +55,7 @@ function handleAdd(){
       <img src={img} alt={name} />
       <h3>{name}</h3>
       <p>Price: {price}</p>
-      <button  className="card_add" type="button" onClick={handleAdd}>add to favourites</button>
+      <button  className="card_add" type="button" onClick={() => dispatch(increment())}>add to favourites</button>
     </div>
   );
 } 

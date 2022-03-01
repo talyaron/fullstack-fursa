@@ -12,11 +12,22 @@ import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { useState, useEffect } from 'react';
+import { useAppSelector, useAppDispatch } from '../../../app/hooks';
+//import {update, getJokeAsync} from '../../../app/reducers/textSlice'; 
+import {
+  decrement,
+  increment,
+  incrementByAmount,
+  incrementAsync,
+  incrementIfOdd,
+  selectBag,
+} from '../../../app/reducers/bagSlice';
 
 
 function Menu1() {
 
-
+   const bag = useAppSelector(selectBag);
+  const dispatch = useAppDispatch();
 
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -82,6 +93,9 @@ function Menu1() {
           <button className="navbar__right__signin" type="button">
             Sign in
           </button>
+             <button className="navbar__right__signin" type="button">
+         {bag}
+         </button>
         </div>
         
       </div>

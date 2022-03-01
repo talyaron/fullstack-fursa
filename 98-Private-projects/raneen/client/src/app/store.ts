@@ -1,11 +1,13 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
-import textReducer from './features/text2/textSlice';
+import counterReducer from './reducers/counterSlice';
+import textReducer from './reducers/textSlice';
+import bagReducer from './reducers/bagSlice';
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
-    text2: textReducer,
+     text:textReducer,
+     bag: bagReducer,
 
   },
 });

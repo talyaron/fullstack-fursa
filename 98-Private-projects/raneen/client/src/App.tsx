@@ -3,6 +3,9 @@ import React from 'react';
 //components
 import Card from './view/components/card/Card';
 import Mainbar from './view/components/menu/menu';
+import { Counter } from "./features/counter/Counter";
+import TextShow from "./features/text/TextShow";
+import TextInput from "./features/text/TextInput";
 
 //import Coats from './view/pages/Coats/Coats';
 
@@ -40,6 +43,9 @@ function App() {
         const {name,price,img}= item1;
         return <Card key={index} info ={{name,price,img} } />
       })}
+        <TextInput />
+        <TextShow />
+        <Counter />
       </header>
       
     </div>
