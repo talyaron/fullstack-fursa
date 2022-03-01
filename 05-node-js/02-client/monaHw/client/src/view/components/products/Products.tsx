@@ -17,7 +17,7 @@ export interface productProp{
     width?:number;
     thick?:number;
     doorType?:string;
-    id:number;
+    id:any;
    
  }
  
@@ -31,12 +31,15 @@ export interface productProp{
     //    axios.get('http://localhost:3004/userOrder').then(({data})=> setOrder(data));
     //     }, []);
      const {woodName,woodlength,amount,color,id,price,width,thick,doorType}=prop;
-     let comp;
+     
      const dispatch=useAppDispatch();
      function RemoveHandler()
      {
+         console.log(id)
+         const productID={"id":id};
+        axios.delete('/delete-order')
         // dispatch(deleteCartAsync())
-        axios.delete(`http://localhost:3004/userOrder/${id}`).then(({data})=>dispatch(getCartAsync()));
+        // axios.delete(`http://localhost:3004/userOrder/${id}`).then(({data})=>dispatch(getCartAsync()));
         // comp=<Cart></Cart>
     
     }

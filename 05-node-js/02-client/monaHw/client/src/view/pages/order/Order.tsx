@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import './Order.scss'
 import IconButton from '@mui/material/IconButton';
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 // import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import Alert from '@mui/material/Alert';
 import * as React from 'react';
@@ -16,6 +16,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { height, width } from '@mui/system';
 import { useDispatch } from 'react-redux';
 import { getCartAsync } from '../../../features/cart/cartSlice';
+import { useAppDispatch } from '../../../app/hooks';
 
 // const woods = [{name:'pine wood',height:70,width:70, thick:70,cardImg:'https://d2kxk2c617i0nn.cloudfront.net/image_resize/crop/mw1500/mh750/products/23_001--yellow_pine_softwood-s.jpg'},
 // {name:'insulation wood',height:70,width:70, thick:70,cardImg:'https://www.greenspec.co.uk/images/web/materials/boards/board.jpg'},
@@ -42,7 +43,10 @@ const currencies = [
 function Order() {
     // const { product, setProduct } = props;
     const [currency, setCurrency] = React.useState('cm');
-     const dispatch=useDispatch();
+     const dispatch =useAppDispatch();
+   useEffect(()=>{
+    dispatch(getCartAsync());
+  },[])
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCurrency(event.target.value);
   };
@@ -52,12 +56,12 @@ function Order() {
   
     function handleSubmit(ev: any) {
         ev.preventDefault();
-       console.dir(ev.target);
+      //  console.dir(ev.target);
         const form = ev.target;
         const obj: any = {};
         obj['woodName']=name;
         for (let i = 0; i < form.length; i++) {
-            console.log(form[i].value, form[i].name, form[i].type);
+           // console.log(form[i].value, form[i].name, form[i].type);
             if (form[i].type !== "submit") {
                 obj[form[i].name] = form[i].value;
             }
@@ -65,7 +69,11 @@ function Order() {
         // let copy = Object.assign([], product);
         // copy.push(obj);
         // setProduct(copy);
-        axios.post('http://localhost:3004/userOrder',{"woodName":name,"woodlength":form[0].value,"amount":form[1].value,"price":pricePerMeter}).then(({data})=>dispatch(getCartAsync()));
+        const orderObj={"woodName":name,"woodlength":form[0].value,"amount":form[1].value,"price":pricePerMeter};
+        axios.post('/add-orders',{orderObj})
+        .then((res) => console.log(res))
+        .catch((err) => console.error(err));
+        // axios.post('http://localhost:3004/userOrder',{"woodName":name,"woodlength":form[0].value,"amount":form[1].value,"price":pricePerMeter}).then(({data})=>dispatch(getCartAsync()));
 
         setShow('block')
         // console.log(copy)
