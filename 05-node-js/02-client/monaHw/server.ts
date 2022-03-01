@@ -13,8 +13,7 @@ app.get('/get-wood-type', (req, res) => {
   res.send(woods)
 })
 
-const x = 6;
-console.log(x*4);
+
 //console.log(process.env.USER);
 app.use(express.static('client/build'));
 app.get('/',(req,res)=>{
