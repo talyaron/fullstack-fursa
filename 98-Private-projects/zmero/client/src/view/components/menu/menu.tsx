@@ -32,7 +32,7 @@ function Menu() {
     const [modalSignInsOpen, setSignINModal] = useState(false);
     const [modalSignUpModal, setSignUpModal] = useState(false);
     const [navbarindex, setNavbarindex] = useState(1);
-    const [loginState, setLoginState] = useState({ user: "" })
+    const [loginState, setLoginState] = useState({})
     const [sigupState, setSigupnState] = useState({})
     const [openAlert, setOpenAlert] = React.useState(false);
     const dispatch = useAppDispatch();
@@ -67,7 +67,7 @@ function Menu() {
     function handleLogin(e: any) {
         e.preventDefault();
         openSignInModal(false);
-        dispatch(getUserInfoAsync())
+        dispatch(getUserInfoAsync(loginState))
         setOpenAlert(true)
     }
     function onChangeSignup(e: any) {
@@ -140,7 +140,7 @@ function Menu() {
                         </div>
                         <div className="signModal__content__right__middle">
                             <form onSubmit={handleLogin}>
-                                <TextField required id="login__account" label="Account" name="user" variant="standard" onChange={onChangeLogIn} />
+                                <TextField required id="login__account" label="Account" name="email" variant="standard" onChange={onChangeLogIn} />
                                 <TextField required id="login__password" label="Password" name="password" type="password" variant="standard" onChange={onChangeLogIn} />
                                 <FormGroup>
                                     <FormControlLabel control={<Checkbox defaultChecked />} label="Remember me" />

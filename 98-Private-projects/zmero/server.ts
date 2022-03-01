@@ -86,13 +86,32 @@ const Restaurants = [{
     ]
 }]
 
-const Users = [{ "id": 1, "email": "m.zmiro@hotmail.com", "userName": "mohamed zmiro", "favorite": [], "password": "123123147" }]
+const Users = [{ "id": 1, "email": "m.zmiro@hotmail.com", "userName": "mohamed zmiro", "password": "123123147" }]
 
 //gets
 
 app.get('/get-all-restaurants', (req, res) => {
     try {
         res.send({ Restaurants })
+    } catch (error) {
+        res.send({ error });
+    }
+
+})
+
+app.get('/get-user', (req, res) => {
+    try {
+        if (Users) {
+            const user = req.query
+            const temp = Users.filter((u: any) => {
+                if (user.email === u.email && user.password === u.password)
+                    return u;
+            })
+            if (temp.length > 0)
+                res.send({ "log": true, "user": temp[0] })
+            else res.send({ "log": false })
+        }
+        else res.send({ "log": false })
     } catch (error) {
         res.send({ error });
     }
