@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios'
 
 interface Restaurant {
-    id: number;
+    id: string;
     name: string;
     image: string;
     booking: number;

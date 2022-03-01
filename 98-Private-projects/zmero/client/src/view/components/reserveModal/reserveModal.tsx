@@ -12,15 +12,17 @@ import Stack from '@mui/material/Stack';
 import axios from 'axios'
 import { AddReservation } from '../../../app/reducers/reservationsReducer';
 import { useAppSelector, useAppDispatch } from '../../../app/hooks';
+import { selectUserId } from '../../../app/reducers/userReducer';
 
 interface details {
-    restaurantID: number;
+    restaurantID: string | undefined;
     openModal: any;
     setOpenModal: any;
 }
 
 function ReserveModal(props: details) {
     const dispatch = useAppDispatch()
+    const userId = useAppSelector(selectUserId)
     const [reserveDate, setReserveDate] = React.useState<Date | null>(new Date());
     const [reserveTime, setReserveTime] = useState<Date | null>(new Date())
     const style = {
@@ -35,8 +37,9 @@ function ReserveModal(props: details) {
         p: 4,
     };
     function handleReserve() {
+        console.log()
         dispatch(AddReservation({
-            restID: props.restaurantID, hour: reserveTime?.getHours(), year: reserveDate?.getFullYear(),
+            userId: userId, restId: props.restaurantID, hour: reserveTime?.getHours(), year: reserveDate?.getFullYear(),
             min: reserveTime?.getMinutes(), day: reserveDate?.getDate(), month: reserveDate?.getMonth()
         }))
         props.setOpenModal(false)

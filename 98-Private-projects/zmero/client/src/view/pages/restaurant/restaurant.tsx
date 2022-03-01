@@ -24,20 +24,22 @@ import Map from 'react-map-gl';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import ScrollIntoView from "../../components/ScrollIntoView/ScrollIntoView";
+import { selectUserId } from '../../../app/reducers/userReducer';
 
 
 
 function Restaurant() {
     const dispatch = useAppDispatch()
+    const userId: string = useAppSelector(selectUserId)
     useEffect(() => {
         dispatch(fetchAllRestaurants())
-        dispatch(fetchUserFavorite())
+        dispatch(fetchUserFavorite(userId))
     }, []);
     const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
     const theme = useTheme();
     const [activeStep, setActiveStep] = React.useState(0);
     const maxSteps = 2;
-    const [Restaurant, setRestaurant] = useState({ id: 0, name: "", image: "", booking: 0, region: "", stars: 0, category: "", photos: [], city: "", open: "", close: "", description: "", subCategory: [] })
+    const [Restaurant, setRestaurant] = useState({ id: "0", name: "", image: "", booking: 0, region: "", stars: 0, category: "", photos: [], city: "", open: "", close: "", description: "", subCategory: [] })
     const { RestaurantId } = useParams();
     const [openModal, setOpenModal] = useState(false);
     const [openPhoto, setOpenPhoto] = useState(false);
@@ -45,11 +47,12 @@ function Restaurant() {
     const favorites = useAppSelector(getFavorites)
     const [checked, setChecked] = React.useState(false);
     let restaurant = restaurants.filter((rest) => {
-        if ("" + rest.id == RestaurantId)
+        if (rest.id == RestaurantId)
             return rest
     })
+    console.log(favorites)
     const favorite = favorites.filter((fav) => {
-        if ("" + fav.restId == RestaurantId)
+        if (fav.restId == RestaurantId)
             return fav
     })
     if (restaurant.length == 0)
@@ -72,12 +75,11 @@ function Restaurant() {
     };
     function isFavorite(e: any) {
         if (e.target.checked) {
-            dispatch(addFavorite(RestaurantId))
-            dispatch(fetchUserFavorite())
+            dispatch(addFavorite({ "userId": userId, 'restId': RestaurantId }))
         }
         else {
             dispatch(deleteFavorite(favorite[0].id))
-            dispatch(fetchUserFavorite())
+            dispatch(fetchUserFavorite(userId))
             setChecked(false)
         }
 
@@ -150,7 +152,7 @@ function Restaurant() {
                     </div>
 
                 </div >
-                <ReserveModal restaurantID={Number(RestaurantId)} openModal={openModal} setOpenModal={setOpenModal} />
+                <ReserveModal restaurantID={RestaurantId} openModal={openModal} setOpenModal={setOpenModal} />
                 <Modal
                     open={openPhoto}
                     onClose={() => setOpenPhoto(false)}

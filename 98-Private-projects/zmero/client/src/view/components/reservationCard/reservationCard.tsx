@@ -7,26 +7,25 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarDays } from '@fortawesome/free-solid-svg-icons'
 import Button from '@mui/material/Button';
 interface cardProp {
-    id: number;
+    id: string;
     hour: number;
     min: number;
     year: number;
     month: number;
     day: number;
-    restID: number;
+    restId: string;
 }
 
 function ReservationCard(props: cardProp) {
     const restaurants = useAppSelector(getAllRestaurants)
     const dispatch = useAppDispatch()
     const restaurant = restaurants.filter((rest, index) => {
-        if (rest.id === props.restID)
+        if (rest.id === props.restId)
             return rest
     })
     function CancelReserve(e: any) {
         e.preventDefault();
         dispatch(cancelReservations(props.id))
-        dispatch(fetchUserReservations())
     }
     let img = "";
     let title = ""
@@ -36,7 +35,7 @@ function ReservationCard(props: cardProp) {
     }
     let strDate = 'y/m/d h:t'
         .replace('y', "" + props.year)
-        .replace('m', "" + props.month + 1)
+        .replace('m', "" + props.month)
         .replace('d', "" + props.day)
         .replace('h', "" + props.hour)
         .replace('t', "" + props.min)

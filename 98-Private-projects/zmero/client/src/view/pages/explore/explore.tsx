@@ -16,8 +16,8 @@ import Grid from '@mui/material/Grid';
 function Explore() {
     const dispatch = useAppDispatch()
     const famousRestaurants = useAppSelector(getFamousRestaurants)
-    const [trendingRestaurants, setTrendingRestaurant] = useState([{ id: 0, name: "", image: "", booking: 0, region: "", stars: 0, city: "" }]);
-    const [seaRestaurants, setSeaRestaurant] = useState([{ id: 0, name: "", image: "", booking: 0, region: "", stars: 0, city: "" }]);
+    const [trendingRestaurants, setTrendingRestaurant] = useState([{ id: "0", name: "", image: "", booking: 0, region: "", stars: 0, city: "" }]);
+    const [seaRestaurants, setSeaRestaurant] = useState([{ id: "0", name: "", image: "", booking: 0, region: "", stars: 0, city: "" }]);
     const [userRegion, setUserRegion] = useState('Israel');
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);

@@ -8,14 +8,18 @@ import { useAppSelector, useAppDispatch } from '../../../app/hooks';
 import { fetchUserReservations, getUserReservations } from '../../../app/reducers/reservationsReducer'
 import { fetchAllRestaurants } from '../../../app/reducers/resterauntsReducer'
 import Grid from '@mui/material/Grid';
+import { selectUserId } from '../../../app/reducers/userReducer';
 
 function Reservations() {
     const dispatch = useAppDispatch()
+    const userId = useAppSelector(selectUserId)
+    console.log(userId)
     useEffect(() => {
-        dispatch(fetchUserReservations())
+        dispatch(fetchUserReservations(userId))
         dispatch(fetchAllRestaurants())
     }, []);
     const reservations = useAppSelector(getUserReservations)
+    console.log(reservations)
     return (
         <div>
             <Navbar></Navbar>
@@ -27,7 +31,7 @@ function Reservations() {
                     <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                         {reservations.map((r, index) => {
                             return (<Grid item xs={12} sm={4} md={3} key={index}>
-                                <ReservationCard key={index} restID={r.restID} id={r.id} hour={r.hour} min={r.min} year={r.year} month={r.month} day={r.day}></ReservationCard>
+                                <ReservationCard key={index} restId={r.restId} id={r.id} hour={r.hour} min={r.min} year={r.year} month={r.month} day={r.day}></ReservationCard>
                             </Grid>)
                         })}
                     </Grid>

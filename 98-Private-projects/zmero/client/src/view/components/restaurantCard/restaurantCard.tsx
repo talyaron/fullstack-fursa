@@ -6,7 +6,7 @@ import Rating from '@mui/material/Rating'
 import ReserveModal from '../../components/reserveModal/reserveModal'
 import Button from '@mui/material/Button';
 interface cardProp {
-    id: number;
+    id: string;
     name: string;
     image: string;
     booking: number;

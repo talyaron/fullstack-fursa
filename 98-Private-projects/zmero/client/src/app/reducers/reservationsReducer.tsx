@@ -3,13 +3,13 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios'
 
 interface Reservation {
-    id: number;
+    id: string;
     hour: number;
     min: number;
     year: number;
     month: number;
     day: number;
-    restID: number;
+    restId: string;
 }
 
 
@@ -26,9 +26,9 @@ const initialState: Reservations = {
 
 export const fetchUserReservations = createAsyncThunk(
     'reservation/fetchUserReservations',
-    async (_, thunkAPI) => {
+    async (userId: string, thunkAPI) => {
         try {
-            const response = await axios.get('http://localhost:3004/Reservations')
+            const response = await axios.get('/get-user-reservations', { params: { "userId": userId } })
             const data: any = response.data
             return data
         } catch (e) {
@@ -40,7 +40,7 @@ export const fetchUserReservations = createAsyncThunk(
 
 export const cancelReservations = createAsyncThunk(
     'reservation/cancelReservations',
-    async (reserveationID: number, thunkAPI) => {
+    async (reserveationID: string, thunkAPI) => {
         try {
             const response = await axios.delete(`http://localhost:3004/Reservations/${reserveationID}`)
             const data: any = response.data
@@ -56,7 +56,7 @@ export const AddReservation = createAsyncThunk(
     'reservation/AddReservation',
     async (Reserve: any, thunkAPI) => {
         try {
-            const response = await axios.post(`http://localhost:3004/Reservations/`, Reserve)
+            const response = await axios.post(`add-user-reservation`, Reserve)
             const data: any = response.data
             return data
         } catch (e) {
@@ -78,8 +78,10 @@ export const reservationReducer = createSlice({
                 state.status = 'loading';
             })
             .addCase(fetchUserReservations.fulfilled, (state, action) => {
-                state.status = 'idle';
-                state.reservations = action.payload;
+                if (action.payload.log === true) {
+                    state.status = 'idle';
+                    state.reservations = action.payload.reservations;
+                }
             });
     },
 })

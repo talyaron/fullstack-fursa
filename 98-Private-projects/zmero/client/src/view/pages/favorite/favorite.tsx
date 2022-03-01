@@ -7,12 +7,14 @@ import { getFavorites, fetchUserFavorite } from '../../../app/reducers/favoriteR
 import { fetchAllRestaurants } from '../../../app/reducers/resterauntsReducer'
 import Grid from '@mui/material/Grid';
 import FavoriteCard from '../../components/favoriteCard/favoriteCard'
+import { selectUserId } from '../../../app/reducers/userReducer';
 
 function Favorite() {
     const dispatch = useAppDispatch()
+    const userId = useAppSelector(selectUserId)
     useEffect(() => {
         dispatch(fetchAllRestaurants())
-        dispatch(fetchUserFavorite())
+        dispatch(fetchUserFavorite(userId))
     }, []);
     const favorites = useAppSelector(getFavorites)
     return (
@@ -26,7 +28,7 @@ function Favorite() {
                     <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                         {favorites.map((r, index) => {
                             return (<Grid item xs={12} sm={4} md={3} key={index}>
-                                <FavoriteCard key={index} id={r.id} restId={r.restId} />
+                                <FavoriteCard key={index} restId={r.restId} />
                             </Grid>)
                         })}
                     </Grid>
