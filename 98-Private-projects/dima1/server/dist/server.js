@@ -16,13 +16,28 @@ const express_1 = __importDefault(require("express"));
 const axios_1 = __importDefault(require("axios"));
 const app = express_1.default();
 const port = 4000;
+require('dotenv').config();
 const mongoose = require('mongoose');
 main().catch(err => console.log(err));
+const db = mongoose.connection;
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
-        yield mongoose.connect('mongodb://localhost:27017/test');
+        const password = process.env.MONGODB_PASSWORD;
+        console.log(password);
+        yield mongoose.connect(`mongodb+srv://Dima1:${password}@cluster0.tmxpm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`);
     });
 }
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", () => {
+    console.log("connected to DB!");
+});
+const kittySchema = new mongoose.Schema({
+    name: String
+});
+//the collection
+const Kitten = mongoose.model('Kitten', kittySchema);
+const mitzy = new Kitten({ name: 'Mitzy' });
+console.log(mitzy.name);
 app.use(express_1.default.static('../client/build'));
 app.use(express_1.default.json());
 app.get('/get-user', (req, res) => {
