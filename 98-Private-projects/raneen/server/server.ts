@@ -63,14 +63,23 @@ const mitzy = new Kitten({
 });
 console.log(mitzy.name);
 
-// mitzy.save().then(res=>{console.log(res)}).catch(err=>console.log(err));
+mitzy.save().then(res=>{console.log(res)}).catch(err=>console.log(err));
 
-async function getKitens() {
-  const kittens = await Kitten.find({address:{city:'Um al fahm'} });
-  console.log(kittens);
+async function getKitens():Promise<any> {
+  try{
+   
+  const kittens = await Kitten.find({ });
+  return kittens;
+  } catch(err:any){
+    console.error(err)
+    return false
+  }
 }
 
-getKitens();
+app.get('/get-all-kitens',async (req, res)=>{
+    const kittens = await getKitens();
+    res.send(kittens);
+})
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

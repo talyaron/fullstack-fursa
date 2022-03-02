@@ -6,6 +6,7 @@ import Mainbar from './view/components/menu/menu';
 import { Counter } from "./features/counter/Counter";
 import TextShow from "./features/text/TextShow";
 import TextInput from "./features/text/TextInput";
+import {useState, useEffect} from 'react';
 
 //import Coats from './view/pages/Coats/Coats';
 
@@ -25,9 +26,31 @@ interface item{
 // }
 
 function App() {
+  const [kitttens, setKittens] = useState([]);
+  useEffect(()=>{
+    fetch('/get-all-users').then(res=>res.json()).then(data=>{
+         console.log(data)
+      
+    })
+
+    //fetch kittens
+    fetch('/get-all-kitens')
+    .then(res=>res.json())
+    .then(data=>{
+      console.log(data);
+      setKittens(data);
+    }).catch(err=>{
+      console.error(err);
+    })
+  },[])
   return (
+
     <div className="App">
+       {kitttens.map((kity:any)=>{
+      return<p key={kity._id}>{kity.name}</p>
+    })}
       <header className="App-header">
+    
       <Mainbar></Mainbar>
       <img src="https://static.zara.net/photos///contents/mkt/spots/ss22-north-woman-shoes-bags/subhome-xmedia-08//w/1728/IMAGE-large-landscape-b1c8fbe8-bf41-4aa7-bad0-794f0713c4b9-default_0.jpg?ts=1645713783552" alt="" />
 {/*      
@@ -38,7 +61,8 @@ function App() {
         />
         Your browser does not support the video tag.
       </video> */}
-     
+      
+ 
       {clothes.map((item1, index)=>{
         const {name,price,img}= item1;
         return <Card key={index} info ={{name,price,img} } />

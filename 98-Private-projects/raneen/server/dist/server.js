@@ -56,14 +56,23 @@ const mitzy = new Kitten({
     },
 });
 console.log(mitzy.name);
-// mitzy.save().then(res=>{console.log(res)}).catch(err=>console.log(err));
+mitzy.save().then(res => { console.log(res); }).catch(err => console.log(err));
 function getKitens() {
     return __awaiter(this, void 0, void 0, function* () {
-        const kittens = yield Kitten.find({ address: { city: 'Um al fahm' } });
-        console.log(kittens);
+        try {
+            const kittens = yield Kitten.find({});
+            return kittens;
+        }
+        catch (err) {
+            console.error(err);
+            return false;
+        }
     });
 }
-getKitens();
+app.get('/get-all-kitens', (req, res) => __awaiter(this, void 0, void 0, function* () {
+    const kittens = yield getKitens();
+    res.send(kittens);
+}));
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 });
