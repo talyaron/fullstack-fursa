@@ -9,7 +9,7 @@ const appRouter = (app, fs) => {
     });
     app.get('get-user',(req,res)=>{
         res.send({Name:'Elias from sarver'});
-    })
+    });
 
     // // other routes
     userRoutes(app, fs);

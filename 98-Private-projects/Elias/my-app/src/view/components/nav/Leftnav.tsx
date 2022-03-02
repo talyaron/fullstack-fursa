@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { GetUser ,logout} from '../../../app/reducer/UserReducer';
+import { GetUser, logout } from '../../../app/reducer/UserReducer';
 import ETIcon from '../../../icons/travel_app_person_purple1.png';
 import './Leftnav.scss';
 
@@ -11,28 +11,37 @@ interface openClose {
 
 
 const Leftnav = (props: openClose) => {
-  const[userimgUrl,setuserimgUrl] =useState(ETIcon);
-  const[Name,setName] =useState("Edit Profile");
+  const [userimgUrl, setuserimgUrl] = useState(ETIcon);
+  const [LoggedOut, setLoggedOut] = useState(false);
+  const [Name, setName] = useState("Edit Profile");
+
   const { state }: any = useLocation();
-    const user = useAppSelector(GetUser);
-    const dispatch = useAppDispatch();
+
+  const user = useAppSelector(GetUser);
+  const dispatch = useAppDispatch();
 
 
-  const { Open } = props
-  console.log(user);
-  useEffect(()=>{
-    setName(user.userInfo.Fname +' '+user.userInfo.Lname);
+  const { Open } = props;
+  useEffect(() => {
+    setName(user.userInfo.Fname + ' ' + user.userInfo.Lname);
     console.log(Name);
-  },[])
 
-  function signoutfunc(e:any){
 
-    dispatch(logout({}));
-    setName("Edit Profile");
-    console.log(user);
-  
+    if (LoggedOut == true) {
+      dispatch(logout({}));
+      setName("Edit Profile");
+
+    }
+
+
+  }, [user, LoggedOut])
+
+
+  function signoutfunc(e: any) {
+    setLoggedOut(user.Islogin);
+    console.log(LoggedOut);
+    console.log(user.Islogin);
   }
-  console.log(Name);
 
 
   if (Open)

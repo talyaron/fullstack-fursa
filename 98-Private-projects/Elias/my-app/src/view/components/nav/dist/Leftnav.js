@@ -8,22 +8,25 @@ var travel_app_person_purple1_png_1 = require("../../../icons/travel_app_person_
 require("./Leftnav.scss");
 var Leftnav = function (props) {
     var _a = react_1.useState(travel_app_person_purple1_png_1["default"]), userimgUrl = _a[0], setuserimgUrl = _a[1];
-    var _b = react_1.useState("Edit Profile"), Name = _b[0], setName = _b[1];
+    var _b = react_1.useState(false), LoggedOut = _b[0], setLoggedOut = _b[1];
+    var _c = react_1.useState("Edit Profile"), Name = _c[0], setName = _c[1];
     var state = react_router_dom_1.useLocation().state;
     var user = hooks_1.useAppSelector(UserReducer_1.GetUser);
     var dispatch = hooks_1.useAppDispatch();
     var Open = props.Open;
-    console.log(user);
     react_1.useEffect(function () {
         setName(user.userInfo.Fname + ' ' + user.userInfo.Lname);
         console.log(Name);
-    }, []);
+        if (LoggedOut == true) {
+            dispatch(UserReducer_1.logout({}));
+            setName("Edit Profile");
+        }
+    }, [user, LoggedOut]);
     function signoutfunc(e) {
-        dispatch(UserReducer_1.logout({}));
-        setName("Edit Profile");
-        console.log(user);
+        setLoggedOut(user.Islogin);
+        console.log(LoggedOut);
+        console.log(user.Islogin);
     }
-    console.log(Name);
     if (Open)
         return (react_1["default"].createElement("ul", { className: 'Open' },
             react_1["default"].createElement("li", null,

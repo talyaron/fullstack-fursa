@@ -1,24 +1,4 @@
-// .SUwrapper {
-//     align-self: flex-end;
-//     position: fixed;
-//     top: 8%;
-//     left: 9%;
-    
-//     .Signupc {
-//         background-color: #FF8074;
-//         color: white;
-//         //padding: 20px;
-//         //text-align: center;
-//         //display: inline-block;
-//         font-size: 16px;
-//         margin: 4px 2px;
-//         cursor: pointer;
-//         border-radius: 50%;
-//         display: block;
-//         height: 80px;
-//         width: 80px;
-//         border: 1px solid #FF8074;
-
-        
-//     }
-// }
+.my-collapse {
+    overflow: hidden;
+    transition: height 0.2s ease-in-out;
+  }
