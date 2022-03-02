@@ -3,6 +3,15 @@ import axios from 'axios';
 const app = express();
 const port = 4000;
 
+
+const mongoose = require('mongoose');
+
+main().catch(err => console.log(err));
+
+async function main() {
+  await mongoose.connect('mongodb://localhost:27017/test');
+}
+
 app.use(express.static('../client/build'));
 app.use(express.json());
 

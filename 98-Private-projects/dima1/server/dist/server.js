@@ -16,6 +16,13 @@ const express_1 = __importDefault(require("express"));
 const axios_1 = __importDefault(require("axios"));
 const app = express_1.default();
 const port = 4000;
+const mongoose = require('mongoose');
+main().catch(err => console.log(err));
+function main() {
+    return __awaiter(this, void 0, void 0, function* () {
+        yield mongoose.connect('mongodb://localhost:27017/test');
+    });
+}
 app.use(express_1.default.static('../client/build'));
 app.use(express_1.default.json());
 app.get('/get-user', (req, res) => {
