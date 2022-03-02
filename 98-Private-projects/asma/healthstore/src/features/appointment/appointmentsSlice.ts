@@ -61,8 +61,8 @@ export const getAppointmentsAsyn = createAsyncThunk(
       const appointmentDB = await getAppointments();
       if (Array.isArray(appointmentDB))
         return appointmentDB;
-      thunkAPI.rejectWithValue("No appointments"); 
-      return; 
+      thunkAPI.rejectWithValue("No appointments");
+      return;
     } catch (error: any) {
       thunkAPI.rejectWithValue(error.message);
     }
@@ -78,16 +78,27 @@ export const appointmentsSlice = createSlice({
   reducers: {
     addAppointment: (state, action) => {
       state.appointments = [...state.appointments, action.payload];
-
+      //console.log("add appoinment")
+      try {
+        const appointment = action.payload;
+        //console.log(appointment.id)
+        if (!appointment) throw new Error("No appointment in payload");
+        axios
+          .post("/add-appointment", { appointment })
+          .then((res) => console.log(res))
+          .catch((err) => console.error(err));
+      } catch (error) {
+        console.error(error);
+      }
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getAppointmentsAsyn.fulfilled, (state, action) => {  
+      .addCase(getAppointmentsAsyn.fulfilled, (state, action) => {
         if (Array.isArray(action.payload)) {
           state.appointments = action.payload;
         } else {
-          console.log("action");
+          //console.log("action");
           console.error("payload is not an array");
           console.log(action.payload);
         }

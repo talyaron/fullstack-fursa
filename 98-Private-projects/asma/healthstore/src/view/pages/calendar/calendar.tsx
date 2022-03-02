@@ -80,8 +80,8 @@ function CalendarFun() {
 
             else{ 
                 dispatch(addAppointment({ id:appointments.length+1 , title: newEvent.title, start: newEvent.start.toJSON(), end:newEvent.end.toJSON(), name: newEvent.name, phone: newEvent.phone }));
-                let data= { id:appointments.length+1 ,title:newEvent.title, start: newEvent.start.toJSON(),end:newEvent.end.toJSON(), name: newEvent.name, phone:newEvent.phone};
-                axios.post('http://localhost:3004/AppointmentData',data);
+                // let data= { id:appointments.length+1 ,title:newEvent.title, start: newEvent.start.toJSON(),end:newEvent.end.toJSON(), name: newEvent.name, phone:newEvent.phone};
+                // axios.post('http://localhost:3004/AppointmentData',data);
             }
         }
     }
