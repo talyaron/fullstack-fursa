@@ -27,6 +27,17 @@ app.get('/get-orders',async (req,res)=>{
     res.send({ error });
   }
 })
+app.get('/get-raws',async (req,res)=>{
+  try {
+   const response= await axios.get('http://localhost:3004/woods') 
+   const {data}=response;
+  //  console.log(data)
+    res.status(200).send(data)
+  } catch (error) {
+    console.info(error);
+    res.send({ error });
+  }
+})
 app.post('/add-orders',(req,res)=>{
   try{
     const {orderObj}=req.body;
@@ -43,10 +54,9 @@ app.post('/add-orders',(req,res)=>{
   }
 
 })
+
 app.delete('/delete-order',(req,res)=>{
   try{
-  
-
   axios.delete(`http://localhost:3004/userOrder`)
   }
   catch(error){

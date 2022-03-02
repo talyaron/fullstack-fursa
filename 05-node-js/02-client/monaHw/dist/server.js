@@ -34,6 +34,18 @@ app.get('/get-orders', (req, res) => __awaiter(void 0, void 0, void 0, function*
         res.send({ error });
     }
 }));
+app.get('/get-raws', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const response = yield axios_1.default.get('http://localhost:3004/woods');
+        const { data } = response;
+        //  console.log(data)
+        res.status(200).send(data);
+    }
+    catch (error) {
+        console.info(error);
+        res.send({ error });
+    }
+}));
 app.post('/add-orders', (req, res) => {
     try {
         const { orderObj } = req.body;

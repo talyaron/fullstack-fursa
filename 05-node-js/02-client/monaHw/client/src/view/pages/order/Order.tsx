@@ -1,4 +1,3 @@
-
 import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import './Order.scss'
@@ -71,7 +70,7 @@ function Order() {
         // setProduct(copy);
         const orderObj={"woodName":name,"woodlength":form[0].value,"amount":form[1].value,"price":pricePerMeter};
         axios.post('/add-orders',{orderObj})
-        .then((res) => dispatch(getCartAsync()))
+        .then((res) => console.log(res))
         .catch((err) => console.error(err));
         // axios.post('http://localhost:3004/userOrder',{"woodName":name,"woodlength":form[0].value,"amount":form[1].value,"price":pricePerMeter}).then(({data})=>dispatch(getCartAsync()));
 

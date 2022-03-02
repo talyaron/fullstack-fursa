@@ -24,8 +24,6 @@ export interface productProp{
  
  
  function Product(prop:productProp){
-    // const dispatch = useAppDispatch();
-
     const [order,setOrder]=useState([]);
     // useEffect(()  => {
     //    axios.get('http://localhost:3004/userOrder').then(({data})=> setOrder(data));
@@ -37,9 +35,9 @@ export interface productProp{
      {
         //  const obj={"productId":id}
         axios.delete('/delete-order')
-        // dispatch(deleteCartAsync())
+        .then((res) => console.log(res))
+        .catch((err) => console.error(err));
         // axios.delete(`http://localhost:3004/userOrder/${id}`).then(({data})=>dispatch(getCartAsync()));
-        // comp=<Cart></Cart>
     
     }
      return(

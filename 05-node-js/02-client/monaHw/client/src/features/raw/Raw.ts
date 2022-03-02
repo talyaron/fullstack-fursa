@@ -20,7 +20,7 @@ const initialState: rawState = {
     'raw/fetshRaws',
     async (_, thunkApi) => {
       try {
-        const response = await axios.get('http://localhost:3004/woods')
+        const response = await axios.get('/get-raws')
         const data = response.data
         return data
   
