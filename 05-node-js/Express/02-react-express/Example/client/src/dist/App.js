@@ -27,7 +27,12 @@ function App() {
             var user = ev.target.elements.name.value;
             if (!user)
                 throw new Error("No use in input");
-            axios_1["default"].post('/add-user', { user: user }).then(function (res) { return console.log(res); })["catch"](function (err) { return console.error(err); });
+            axios_1["default"].post('/add-user', { user: user }).then(function (res) {
+                console.log(res);
+                if (res.data.users) {
+                    setUsers(res.data.users);
+                }
+            })["catch"](function (err) { return console.error(err); });
         }
         catch (error) {
             console.error(error);
