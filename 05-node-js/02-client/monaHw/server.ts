@@ -1,4 +1,6 @@
-declare function require(name:string);
+// declare function require(name:string);
+require('dotenv').config();
+
 import axios from 'axios';
 const express = require('express');
 const app = express();
@@ -65,6 +67,36 @@ app.delete('/delete-order',(req,res)=>{
   }
 })
 
+//mongoose
+const mongoose = require("mongoose");
+
+main().catch((err) => console.log(err));
+
+const db = mongoose.connection;
+
+
+
+
+async function main() {
+  const password=process.env.MONGODB_PASSWORD;
+  console.log(password)
+  await mongoose.connect(`mongodb+srv://Mona1:${password}@cluster0.qlk4d.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`);
+}
+
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", () => {
+  console.log("connected to DB!");
+});
+
+const kittySchema = new mongoose.Schema({
+  name: String
+});
+
+//the collection
+const Kitten = mongoose.model('Kitten', kittySchema);
+
+const mitzy = new Kitten({ name: 'Mitzy' });
+console.log(mitzy.name);
 
 //console.log(process.env.USER);
 app.get('/',(req,res)=>{
