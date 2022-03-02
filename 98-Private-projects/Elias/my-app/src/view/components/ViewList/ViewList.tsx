@@ -42,6 +42,9 @@ function ViewList() {
             }
         ];
     const [showResults, setShowResults] = useState(false);
+
+    const [isExpanded, setExpanded] = useState(true);
+    const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded });
     const nav = useNavigate();
     const { state }: any = useLocation();
 
@@ -76,17 +79,31 @@ function ViewList() {
                         <Collapsible key={index} catInlListName={element.catInlListName} incatList={element.incatList} />
                     );
                 })}
-            </div>
-            <div className="notlist">
-                <div className='congratMsgt'>
-                    <h1>Congrats!</h1>
-                    <p>to save/edit, plase sign up </p>
-                </div>
+                <div className="collapsible notlist ">
+                    <div className="notlist" {...getToggleProps()}>
+                    </div>
+                    <div {...getCollapseProps()}>
+                        <div className="content">
+                            <div className="notlist">
+                                <div className='congratMsgt'>
+                                    <h1>Congrats!</h1>
+                                    <p>to save/edit, plase sign up
+                                    </p>
+                                </div>
 
-                <button className='signUpbtn' onClick={clickSignup}> Free Sign up to save & edit</button>
-                <div>
-                    {showResults ? <Results /> : null}
-                </div></div>
+                                <button className='signUpbtn' onClick={clickSignup}>
+                                    Free Sign up to save & edit</button>
+                                <div>
+                                    {showResults ?
+                                        <Results />
+                                        : null}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
 
         </div>
