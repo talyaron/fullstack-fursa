@@ -33,9 +33,9 @@ main().catch((err) => console.log(err));
 const db = mongoose.connection;
 
 async function main() {
-  const password = process.env.MONOGODB_PASSWORD;
+  const password = process.env.MONGODB_PASSWORD;
   await mongoose.connect(
-    `mongodb+srv://Raneen:${password}@cluster0.heyoj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
+    `mongodb+srv://tal1:${password}@tal-test1.m39if.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
   );
 }
 
