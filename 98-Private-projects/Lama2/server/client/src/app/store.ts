@@ -3,12 +3,14 @@ import counterReducer from '../features/counter/counterSlice';
 //import treatmentReducer from '../features/treatment/treatmentSlice';
 import registartionReducer from '../features/coursesRegistrations/registrationSlice';
 import productsReducer from '../features/productsReducer/products';
+import { TrainersReducer } from '../features/trainersReducer/trainer';
 
 export const store = configureStore({
   reducer: {
     registrations: registartionReducer,
     counter: counterReducer,
     products:productsReducer,
+    trainers:TrainersReducer,
   },
 });
 

@@ -10,6 +10,7 @@ import ProfileButton from './view/pages/signIn/signin';
 // import TextInput from "./features/text/TextInput";
 import { useAppSelector, useAppDispatch } from '../src/app/hooks';
 import { selectProducts } from './features/productsReducer/products'
+import { selectrainers } from './features/trainersReducer/trainer'
 
 // const students:Array<Place> = [{name:'Saleem', place:'Mashad'},{name:'Mona',place:"Nazereth"}];
 // interface Place{
@@ -21,6 +22,7 @@ const text = "hii all";
 function App() {
   const dispatch = useAppDispatch();
   const products = useAppSelector(selectProducts)
+  const trainers=useAppSelector(selectrainers)
 
   return (
     <div className="App">

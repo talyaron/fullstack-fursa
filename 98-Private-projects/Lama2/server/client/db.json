@@ -72,5 +72,19 @@
       "password":"332211"
     }
 
+  ],
+  "trainers":[
+    {
+      "id":1,
+      "name":"Ross",
+      "img":"https://m.media-amazon.com/images/M/MV5BMTQ2Mjg5ODIzNF5BMl5BanBnXkFtZTgwNjIwMjI0ODE@._V1_UX214_CR0,0,214,317_AL_.jpg",
+      "description":"5 years of experience"
+    },
+    {
+      "id":2,
+      "name": "Joey",
+       "image": "https://m.media-amazon.com/images/M/MV5BODQ0NTI0OTk0M15BMl5BanBnXkFtZTcwMDk2MDg5Nw@@._V1_UX214_CR0,0,214,317_AL_.jpg",
+        "description": "2 years of experience" 
+    }
   ]
 }
