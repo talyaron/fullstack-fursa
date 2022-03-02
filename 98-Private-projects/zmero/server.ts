@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+require('dotenv').config()
 const port = 4000;
 
 app.use(express.static('client/build'));
@@ -264,6 +265,17 @@ app.post('/add-user-reservation', (req, res) => {
     }
 
 })
+
+
+const mongoose = require('mongoose');
+
+main().catch(err => console.log(err));
+
+const password = process.env.MONGODB_PASSWORD
+
+async function main() {
+    await mongoose.connect(`mongodb+srv://zmero123:${password}@cluster0.acxtd.mongodb.net/test`)
+}
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
