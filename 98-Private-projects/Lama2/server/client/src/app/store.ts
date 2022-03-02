@@ -10,7 +10,7 @@ export const store = configureStore({
     registrations: registartionReducer,
     counter: counterReducer,
     products:productsReducer,
-    trainers:TrainersReducer,
+    // trainers:TrainersReducer,
   },
 });
 

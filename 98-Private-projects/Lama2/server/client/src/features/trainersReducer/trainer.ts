@@ -59,6 +59,6 @@ export const TrainersReducer = createSlice({
 
 });
 
-export const selectrainers=(state:RootState)=>state.trainers
+// export const selectrainers=(state:RootState)=>state.trainers
 
 export default TrainersReducer.reducer

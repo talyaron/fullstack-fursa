@@ -3,6 +3,14 @@ const bodyParser = require('body-parser');
 const app = express();
 const fs = require('fs');
 
+const mongoose = require('mongoose');
+
+main().catch(err => console.log(err));
+
+async function main() {
+  await mongoose.connect('mongodb://localhost:27017/test');
+}
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
