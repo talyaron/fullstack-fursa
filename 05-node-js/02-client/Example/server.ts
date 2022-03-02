@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const port = 4000;
-require('dotenv').config()
+require("dotenv").config();
 
 //routes for data
 
@@ -32,12 +32,11 @@ main().catch((err) => console.log(err));
 
 const db = mongoose.connection;
 
-
-
-
 async function main() {
-  const password=process.env.MONGODB_PASSWORD;
-  await mongoose.connect(`mongodb+srv://tal1:${password}@tal-test1.m39if.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`);
+  const password = process.env.MONGODB_PASSWORD;
+  await mongoose.connect(
+    `mongodb+srv://tal1:${password}@tal-test1.m39if.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
+  );
 }
 
 db.on("error", console.error.bind(console, "connection error:"));
@@ -46,17 +45,32 @@ db.once("open", () => {
 });
 
 const kittySchema = new mongoose.Schema({
-  name: String
+  name: String,
+  address:{
+    city:String
+  }
 });
 
 //the collection
-const Kitten = mongoose.model('Kitten', kittySchema);
+const Kitten = mongoose.model("Kitten", kittySchema);
 
-const mitzy = new Kitten({ name: 'Mitzy' });
+const mitzy = new Kitten({
+  name: "Mitzy3",
+  address: {
+    city:"Um al fahm",
+    street:"Jaberin"
+  },
+});
 console.log(mitzy.name);
 
-// mitzy.save().then(res=>{console.log(res)});
+// mitzy.save().then(res=>{console.log(res)}).catch(err=>console.log(err));
 
+async function getKitens() {
+  const kittens = await Kitten.find({address:{city:'Um al fahm'} });
+  console.log(kittens);
+}
+
+getKitens();
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
