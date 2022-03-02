@@ -15,7 +15,9 @@
   },
   "dependencies": {
     "axios": "^0.26.0",
+    "dotenv": "^16.0.0",
     "express": "^4.17.1",
+    "mongoose": "^6.2.4",
     "ts-node": "^10.5.0"
   }
 }

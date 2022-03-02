@@ -37,6 +37,27 @@ app.post('/add-appointment',(req,res)=>{
 });
 
 
+
+const mongoose = require('mongoose');
+
+main().catch(err => console.log(err));
+
+async function main() {
+  await mongoose.connect(`mongodb+srv://Asma1:KJHwN2tNRofki2hi@cluster0.ct7iu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`);
+}
+
+
+const kittySchema = new mongoose.Schema({
+  name: String
+});
+
+const Kitten = mongoose.model('Kitten', kittySchema);
+const silence = new Kitten({ name: 'Silence' });
+console.log(silence.name);
+silence.save();
+
+
+
 app.listen(port, () => {
   return console.log(`Express is listening at http://localhost:${port}`);
 });
