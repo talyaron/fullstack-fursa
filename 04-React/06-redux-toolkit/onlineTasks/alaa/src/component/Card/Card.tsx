@@ -17,7 +17,7 @@ function Card(props: any) {
         ev.preventDefault();
         dispatch(select({url:url, title: content.title, data: content.data}));
 
-    }
+    } 
     
     function handleGetProducts() {
         dispatch(getProductAsync());

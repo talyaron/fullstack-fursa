@@ -7,16 +7,20 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import PeopleIcon from '@mui/icons-material/People';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
-import { Box, TextField } from '@mui/material';
+import ArrowBackSharpIcon from '@mui/icons-material/ArrowBackSharp';
+import { Box, Dialog, DialogTitle, TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { useState, useEffect } from 'react';
-import RecipeInfo from '../../pages/recipeInfo/RecipeInfo';
-import { recipeProp } from '../../../App';
 import { Link } from 'react-router-dom';
 import Tooltip from '@mui/material/Tooltip';
 import axios from 'axios';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { selectedRecipe ,selectedFrom, selectedIsNew, updateRecipe } from '../../features/item/itemSlice';
+import { selectedRecipe, selectedFrom, selectedIsNew, updateRecipe, getSelectAsync } from '../../features/item/itemSlice';
+import { addToMyRecipe } from '../../features/myRecipes/MyRecipes';
+import { selectPage, updateName } from '../../features/pgaeName/NamePage';
+import { updateTopRecipes } from '../../features/topRecipes/TopRecipes';
+import { updateRecent } from '../../features/recentRecipes/RecentRecipes';
+import { updateMyRecipe } from '../../features/myRecipes/MyRecipes';
 
 const Standard = styled(TextField)({
     '& label.Mui-focused': {
@@ -57,65 +61,49 @@ const CssTextField = styled(TextField)({
     },
 });
 
-interface recipeInfo{
-    id? : number;
-    name? : string;
-    image? : string;
-    time? : string;
-    people? : string;
-    calories? : string;
-    ingredients? : string;
-    method? : string;
+interface recipeInfo {
+    id: number;
+    name: string;
+    image: string;
+    time: string;
+    people: string;
+    calories: string;
+    ingredients: string;
+    method: string;
 }
 
 export default function NewRecipe() {
-
-    //const [recipe, setRecipe] = useState<recipeInfo>({});
-    const [linkTo, setLink] = useState('/RecipeInfo');
-    const [from_, setFrom] = useState('');
-
     //Redux
+    const dispatch = useAppDispatch();
+
     const recipe_ = useAppSelector(selectedRecipe);
     const from = useAppSelector(selectedFrom);
-    const isNew = useAppSelector(selectedIsNew); 
-    const dispatch = useAppDispatch();
-    let to = '';
-    //console.log(recipe_);
+    const isNew = useAppSelector(selectedIsNew);
+    const pageName = useAppSelector(selectPage)
 
     const [recipe, setRecipe] = useState<recipeInfo>(recipe_);
-    console.log(recipe);
+    const [open, setOpen] = useState<boolean>(false);
 
-    if(from === 'recipe' && isNew)
-        to = '/User';
-    else to = '/RecipeInfo';
-    console.log(to);
 
-    //console.log(recipe_);
-    //console.log(from);
-    //console.log(isNew);
+    let to = '';
 
     useEffect(() => {
-        axios.get('http://localhost:3004/edit/1').then(res => {
-            //console.log(res.data);
-            const data = res.data.recipe;
-            const new_ = res.data.new;
-            const f = res.data.from;
-            console.log(new_)
-            setRecipe(data);
-            setFrom(f);
-            if(!new_)
-                setLink('/RecipeInfo');
-            else {
-                console.log("yes")
-                setLink('/User');
+        axios.get('http://localhost:3004/select/1').then(data => {
+            const recipe1 = data.data.recipe;
+            const from_ = data.data.from;
+            const isNew_ = data.data.isNew;
+            if (!isNew_) {
+                dispatch(getSelectAsync([recipe1, from_, isNew_]));
             }
-        });
-        axios.delete('http://localhost:3004/edit/1');
+        })
+    }, [])
 
-    }, []);
+    if (from === 'myRecipe' && isNew)
+        to = '/User';
+    else to = '/RecipeInfo';
 
     function handleChange(ev: any) {
-        console.dir(recipe);
+        //console.dir(recipe);
         switch (ev.target.name) {
             case 'recipeName':
                 setRecipe({ ...recipe, name: ev.target.value });
@@ -135,29 +123,33 @@ export default function NewRecipe() {
             case 'method':
                 setRecipe({ ...recipe, method: ev.target.value });
                 break;
+            case 'image':
+                setRecipe({ ...recipe, image: ev.target.value });
         }
+        dispatch(updateRecipe(recipe))
     }
 
     function handleSave() {
-        const newRecipe = recipe;
-        setRecipe(newRecipe);
-        if(to === '/User'){
-             axios.post('http://localhost:3004/'+`${from}`, newRecipe);
-        }  
-        else{
-            axios.put('http://localhost:3004/'+`${from}`+'/'+`${newRecipe.id}`, newRecipe);
-        } 
-        // else {
-        //     console.log(recipe);
-        //     console.log(from_);
-        //     axios.post('http://localhost:3004/selected', {recipe, from: from_});
-        //     axios.put('http://localhost:3004/'+`${from_}`+'/'+`${recipe.id}`, recipe);
-        //     //axios.post('http://localhost:3004/selected', {recipe, from: from_});
-        // }
+        dispatch(updateRecipe(recipe))
+        if (to === '/User') {
+            axios.post('http://localhost:3004/' + `${from}`, recipe_);
+            dispatch(addToMyRecipe(recipe_));
+        }
+        else {
+            //add a action to udpate a recipe in the array
+            axios.put('http://localhost:3004/' + `${from}` + '/' + `${recipe_.id}`, recipe);
+            axios.patch('http://localhost:3004/select/1', { recipe });
+            dispatch(updateRecipe(recipe))
+            if (from === 'top10')
+                dispatch(updateTopRecipes([recipe, recipe.id]))
+            else if (from === 'recent')
+                dispatch(updateRecent([recipe, recipe.id]))
+            else dispatch(updateMyRecipe([recipe, recipe.id]))
+        }
+    }
 
-        //Redux
-        console.log(newRecipe)
-        dispatch(updateRecipe(newRecipe));
+    function handleTo() {
+        dispatch(updateName('/NewRecipe'));
     }
 
     return (
@@ -168,19 +160,23 @@ export default function NewRecipe() {
             <div className="content">
                 <img className='image' src={background} />
                 <div className='boxInfo'>
-                    <div className="save">
-                        <Tooltip title='save'>
-                            <Link to={to}>
-                                <BookmarkAddIcon sx={{
-                                    color: '#b5739d', fontSize: 35
-                                }} onClick={handleSave} />
-                            </Link>
-                        </ Tooltip>
-                    </div>
+                    <Link className='backTo' to={pageName}>
+                        <ArrowBackSharpIcon sx={{ color: '#b5739d', fontSize: 30 }} onClick={handleTo} />
+                    </Link>
+
                     <Box className='box' component="form"
                         sx={{ '& .MuiTextField-root': { m: 1 }, }}
                         autoComplete="off"
                     >
+                        <div className="save">
+                            <Tooltip title='save'>
+                                <Link to={to}>
+                                    <BookmarkAddIcon sx={{
+                                        color: '#b5739d', fontSize: 35
+                                    }} onClick={handleSave} type="submit" />
+                                </Link>
+                            </ Tooltip>
+                        </div>
                         <Standard id="standard-basic" variant="standard"
                             focused
                             placeholder="Insert your recipe's name"
@@ -193,7 +189,9 @@ export default function NewRecipe() {
                         <br />
                         <div className='info1'>
                             <div className='insertPhotos'>
-                                <InsertPhotoIcon sx={{ fontSize: 250, color: '#b5739d' }} />
+                                <input type="text" placeholder='Upload Image by URL' name='image'
+                                    value={undefined} onChange={handleChange} />
+                                {/* <InsertPhotoIcon sx={{ fontSize: 250, color: '#b5739d' }} /> */}
                             </div>
                             <h2 className='by'>By : Dima Abbas</h2>
                             <div className='item'>
@@ -236,6 +234,8 @@ export default function NewRecipe() {
                                     onChange={handleChange} />
                             </div>
                         </div>
+                        <br />
+                        <br />
                         <div className='info2'>
                             <CssTextField className='ingredients'
                                 focused

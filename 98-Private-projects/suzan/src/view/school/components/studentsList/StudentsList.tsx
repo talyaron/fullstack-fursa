@@ -21,16 +21,16 @@ export default function StudentsList(studentsArray: studentsArray) {
             <List className='studentsList' dense={true}>
                 {
                     students.map((student, i) => {
-                        const { id } = student.info;
+                        const { studentId } = student.info;
                         return (
-                            <Link to={`/students/${id}`}>
+                            <Link to={`/students/${studentId}`}>
                                 <ListItem className='studentsList__listItem'>
                                     <ListItemText
                                         className='studentsList__listItem__text'
                                         primary={student.info.firstName.concat(' ', student.info.lastName)}
                                         secondary={
                                             <div className='secondary'>
-                                                <div>{'id: '.concat(student.info.id)}</div>
+                                                <div>{'id: '.concat(student.info.studentId)}</div>
                                                 <div>{'phone: '.concat(student.info.phone)}</div>
                                             </div>
                                         }
