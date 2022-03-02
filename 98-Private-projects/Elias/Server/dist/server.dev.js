@@ -50,6 +50,18 @@ db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function () {
   console.log("connected to DB!");
 });
+var kittySchema = new mongoose.Schema({
+  name: String
+}); //the collection
+
+var Kitten = mongoose.model('Kitten', kittySchema);
+var mitzy = new Kitten({
+  name: 'Mitzy'
+});
+console.log(mitzy.name);
+mitzy.save().then(function (res) {
+  console.log(res);
+});
 var server = app.listen(3001, function () {
   console.log('listening on port %s...', server.address().port);
 });
