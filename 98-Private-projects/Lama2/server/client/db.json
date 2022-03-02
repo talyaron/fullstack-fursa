@@ -86,5 +86,17 @@
        "image": "https://m.media-amazon.com/images/M/MV5BODQ0NTI0OTk0M15BMl5BanBnXkFtZTcwMDk2MDg5Nw@@._V1_UX214_CR0,0,214,317_AL_.jpg",
         "description": "2 years of experience" 
     }
+  ],
+  "offers":[
+    {"id":1,
+      "name":"Horse day care",
+      "description":"taking care of your horse for a day ! includes feeding,cleaning,etc..",
+      "cost":400
+    },  
+    {"id":2,
+      "name":"Horse Hoel",
+      "description":"taking care of your horse for a period of time according to your choice ! the price is per day",
+      "cost":100
+    }
   ]
 }

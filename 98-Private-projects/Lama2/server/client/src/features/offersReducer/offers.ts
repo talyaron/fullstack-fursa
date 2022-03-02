@@ -3,29 +3,29 @@ import internal from 'stream';
 import { RootState, AppThunk } from '../../app/store';
 import axios from "axios";
 
-interface Trainer {
+interface Offer {
     id: number;
-    description: string;
-    img: string;
     name: string;
+    description: string;
+    cost: number;
 }
 
-interface Trainers {
-    arrTrainers: Array<Trainer>,
+interface Offers {
+    arrOffers: Array<Offer>,
     status: 'idle' | 'loading' | 'failed';
 
 }
 
-const initialState: Trainers = {
-    arrTrainers: [],
+const initialState: Offers = {
+    arrOffers: [],
     status: 'idle',
 };
 
-export const getTrainersAsync = createAsyncThunk(
-    'trainers/fetchTrainers',
+export const getOfferAsync = createAsyncThunk(
+    'offers/fetchOffers',
     async (_, thunkAPI) => {
         try {
-            const response = await axios.get('http://localhost:3004/trainers')
+            const response = await axios.get('http://localhost:3004/offers')
             const data = response.data
             return data;
 
@@ -37,21 +37,21 @@ export const getTrainersAsync = createAsyncThunk(
     }
 );
 
-export const TrainersReducer = createSlice({
-    name: 'trainers',
+export const offersReducer = createSlice({
+    name: 'offers',
     initialState,
     reducers: {
 
     },
     extraReducers: (builder) => {
-        builder.addCase(getTrainersAsync.pending, (state) => {
+        builder.addCase(getOfferAsync.pending, (state) => {
             state.status = 'loading';
         })
-            .addCase(getTrainersAsync.fulfilled, (state, action) => {
+            .addCase(getOfferAsync.fulfilled, (state, action) => {
                 state.status = 'idle';
-                state.arrTrainers = action.payload;
+                state.arrOffers = action.payload;
             })
-            .addCase(getTrainersAsync.rejected, (state, action) => {
+            .addCase(getOfferAsync.rejected, (state, action) => {
                 state.status = 'failed';
                // state.arrProducrs = action.payload;
             })
@@ -59,6 +59,6 @@ export const TrainersReducer = createSlice({
 
 });
 
-export const selectrainers=(state:RootState)=>state.trainers
+export const selectOffers=(state:RootState)=>state.offers
 
-export default TrainersReducer.reducer
+export default offersReducer.reducer

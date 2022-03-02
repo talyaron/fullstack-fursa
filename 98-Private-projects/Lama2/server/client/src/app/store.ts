@@ -4,13 +4,15 @@ import counterReducer from '../features/counter/counterSlice';
 import registartionReducer from '../features/coursesRegistrations/registrationSlice';
 import productsReducer from '../features/productsReducer/products';
 import { TrainersReducer } from '../features/trainersReducer/trainer';
+import { offersReducer } from '../features/offersReducer/offers';
 
 export const store = configureStore({
   reducer: {
     registrations: registartionReducer,
     counter: counterReducer,
     products:productsReducer,
-    // trainers:TrainersReducer,
+    offers:offersReducer,
+     trainers:TrainersReducer,
   },
 });
 
