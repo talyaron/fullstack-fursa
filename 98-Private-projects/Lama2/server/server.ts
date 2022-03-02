@@ -5,8 +5,12 @@ const bodyParser = require('body-parser');
 const app = express();
 const fs = require('fs');
 
+
+app.use(express.static("client/build"));
+
 const mongoose = require('mongoose');
 const internal = require('stream');
+
 
 main().catch(err => console.log(err));
 
@@ -57,12 +61,29 @@ const kittySchema = new mongoose.Schema({
      console.log(gucci.name);
      console.log(groupCourse.cost); // 'Silence'
 
-async function getKittens(){
-    const kittens =await Kitten.find({name:"Gucci"});
-    const city =await Kitten.find({address:{city:"Haifa"}});
-    console.log(kittens);
-    console.log(city)
-}
+// async function getKittens(){
+//     const kittens =await Kitten.find({name:"Gucci"});
+//     const city =await Kitten.find({address:{city:"Haifa"}});
+//     console.log(kittens);
+//     console.log(city)
+// }
+
+  async function getKitens():Promise<any> {
+    try{
+     
+    const kittens = await Kitten.find({});
+    return kittens;
+    } catch(err:any){
+      console.error(err)
+      return false;
+    }
+  }
+
+  app.get('/get-all-kitens',async (req:any, res:any)=>{
+    const kittens = await getKitens();
+    res.send({kittens:kittens});
+})
+
 
 async function getCourses(){
     const course =await Course.find({name:"group course"});
@@ -75,7 +96,7 @@ async function getCourses(){
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/lama',(req,res)=>{
+app.get('/lama',(req:any,res:any)=>{
     res.send("Hi,Lama");
 });
 

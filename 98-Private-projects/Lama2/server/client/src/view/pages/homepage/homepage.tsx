@@ -6,12 +6,12 @@ import * as React from 'react';
 // import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Card from '../../components/card/Card';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Nav from '../../components/nav/Nav';
 import Courses from "../courses/courses";
 import { getProductAsync } from '../../../features/productsReducer/products';
 import { useAppSelector, useAppDispatch } from '../../../app/hooks';
+import {useState, useEffect} from 'react';
 
 
 const horses: Array<horse> = [{ name: 'Zoro', age: 5, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRnVjp6dcfqRT0CGg5Q89VXbV0RsfJ-Y9png&usqp=CAU' },
@@ -29,6 +29,26 @@ function Homepage() {
   const [pics, Setphoto] = useState("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1yr60poUFJojpky70RI6hrTBtWx5Dm3ifwQ&usqp=CAU");
   const names2 = ["Simba", "Ice", "Gucci", "Sun", "Ben"];
   const dispatch = useAppDispatch();
+  const [kitttens, setKittens] = useState([]);
+
+  useEffect(()=>{
+    // fetch('/get-all-users').then(res=>res.json()).then(data=>{
+      
+    //   console.log(data)
+    //   setPpls(data);
+      
+    // })
+
+    //fetch kittens
+    fetch('/get-all-kitens')
+    .then(res=>res.json())
+    .then(data=>{
+      console.log(data);
+      setKittens(data);
+    }).catch(err=>{
+      console.error(err);
+    })
+  },[])
 
   function changename(e: any) {
     e.preventDefault();
@@ -64,6 +84,14 @@ function Homepage() {
          return <Card key={index} info={{name,age,img}}/>
         })} */}
       {/* </div> */}
+
+
+      <h1>Kittens</h1>
+    {kitttens.map((kity:any)=>{
+      return<p key={kity._id}>{kity.name}</p>
+    })}
+
+    
       <Courses />
       <div className="ani">
         <div className='animation'>

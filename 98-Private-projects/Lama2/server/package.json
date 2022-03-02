@@ -2,9 +2,9 @@
   "name": "api-server-starter",
   "version": "1.0.0",
   "description": "A lightweight starter kit for building a Node-based API server",
-  "main": "server.js",
+  "main": "server.ts",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "nodemon server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -32,6 +32,8 @@
     "mongoose": "^6.2.4"
   },
   "devDependencies": {
-    "nodemon": "2.0.12"
+    "nodemon": "2.0.12",
+    "ts-node": "^10.6.0",
+    "typescript": "^4.6.2"
   }
 }
