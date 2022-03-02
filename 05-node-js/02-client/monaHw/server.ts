@@ -105,7 +105,11 @@ async function getKittens(){
 const kitten=await Kitten.find({address:{city:"Nazareth"}})
 console.log(kitten)
 }
-getKittens();
+
+app.get('/get-all-kittens',async (req,res)=>{
+  const kittens=await getKittens();
+  res.send(kittens);
+})
 //console.log(process.env.USER);
 app.get('/',(req,res)=>{
     console.log(req);
