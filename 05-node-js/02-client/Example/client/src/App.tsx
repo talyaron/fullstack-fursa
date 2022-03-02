@@ -18,13 +18,23 @@ interface Place{
 }
 
 function App() {
-
+const [kitttens, setKittens] = useState([]);
   useEffect(()=>{
     fetch('/get-all-users').then(res=>res.json()).then(data=>{
       
       console.log(data)
       setPpls(data);
       
+    })
+
+    //fetch kittens
+    fetch('/get-all-kitens')
+    .then(res=>res.json())
+    .then(data=>{
+      console.log(data);
+      setKittens(data);
+    }).catch(err=>{
+      console.error(err);
     })
   },[])
 const [ppls,setPpls ] = useState([])
@@ -36,7 +46,10 @@ const [ppls,setPpls ] = useState([])
           return <p key={index}>{ppl.name}</p>
         })}
       
-    
+    <h1>Kittens</h1>
+    {kitttens.map((kity:any)=>{
+      return<p key={kity._id}>{kity.name}</p>
+    })}
         <h1>Number of counts:{genralCounter}</h1>
       {students.map((student, index)=>{
         const {name, place, img} = student; //deconstractor 
