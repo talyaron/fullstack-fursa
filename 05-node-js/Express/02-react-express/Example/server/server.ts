@@ -1,6 +1,9 @@
+// import {conf} from "dotenv"
+// const config = conf()
 const express = require("express");
 const app = express();
 const port = 4000; // default port to listen
+require('dotenv').config();
 
 // define a route handler for the default home page
 app.use(express.static("../client/build"));
@@ -42,7 +45,25 @@ app.post("/add-user", (req, res) => {
   }
 });
 
+const mongoose = require('mongoose');
+
+main().catch(err => console.log(err));
+
+async function main() {
+  // const password = process.env.MONGODB_PASSWORD;
+  console.log(password)
+  await mongoose.connect(`mongodb+srv://Suzan:${password}@cluster0.skxqu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`);
+}
+
 // start the Express server
 app.listen(port, () => {
   console.log(`server started at http://localhost:${port}`);
 });
+
+const db = mongoose.connection;
+
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", () => {
+  console.log("connected to DB!");
+});
+
