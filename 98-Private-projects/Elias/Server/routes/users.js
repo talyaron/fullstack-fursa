@@ -35,7 +35,7 @@ const userRoutes = (app, fs) => {
 
         //     res.send(JSON.parse(data));
         // });
-        res.send({Name:'Elias from sarver'});
+        res.send({Name:'Elias from server'});
 
     });
 

@@ -38,7 +38,7 @@ var userRoutes = function userRoutes(app, fs) {
     //     res.send(JSON.parse(data));
     // });
     res.send({
-      Name: 'Elias from sarver'
+      Name: 'Elias from server'
     });
   }); // CREATE
 
