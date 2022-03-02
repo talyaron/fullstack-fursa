@@ -89,15 +89,23 @@ db.once("open", () => {
 });
 
 const kittySchema = new mongoose.Schema({
-  name: String
+  name: String,
+  address:{
+    city:String
+  }
 });
 
 //the collection
 const Kitten = mongoose.model('Kitten', kittySchema);
 
-const mitzy = new Kitten({ name: 'Mitzy' });
-console.log(mitzy.name);
-
+const mitzy = new Kitten({ name: 'Mitzy' ,address:{city:"Nazareth"}});
+// console.log(mitzy.name);
+// mitzy.save()
+async function getKittens(){
+const kitten=await Kitten.find({address:{city:"Nazareth"}})
+console.log(kitten)
+}
+getKittens();
 //console.log(process.env.USER);
 app.get('/',(req,res)=>{
     console.log(req);
