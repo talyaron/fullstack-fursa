@@ -3,39 +3,38 @@ import { useState, useEffect } from "react";
 import logo from "./logo.svg";
 import { Counter } from "./features/counter/Counter";
 import "./App.css";
+import { getUsersAsync, usersSelect } from "./features/users/usersSlice";
+import { useAppDispatch, useAppSelector } from "./app/hooks";
 
 function App() {
-  const [usersState, setUsers] = useState<any>([]);
-  useEffect(() => {
-    axios
-      .get("/get-users")
-      .then((res) => {
-        console.log(res);
-        const { data } = res;
-        console.log(data);
-        const { users } = data;
-        if (users) {
-          setUsers(users);
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
+ 
+  const usersState = useAppSelector(usersSelect)
+  const dispatch = useAppDispatch();
+  useEffect(()=>{
+    dispatch(getUsersAsync());
+  },[])
+  
 
   function handleAddUser(ev: any) {
     ev.preventDefault();
     try {
       const user = ev.target.elements.name.value;
       if (!user) throw new Error("No use in input");
+<<<<<<< HEAD
       axios.post('/add-user', { user }).then(res => {
         console.log(res);
         if (res.data.users) {
           setUsers(res.data.users);
         }
       }).catch(err => console.error(err))
+=======
+      axios
+        .post("/add-user", { user })
+        .then((res) => console.log(res))
+        .catch((err) => console.error(err));
+>>>>>>> dev
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
   }
 
@@ -45,6 +44,7 @@ function App() {
         <Counter />
         <div className="users">
           {usersState.map((user: any, index: number) => {
+            console.log(user)
             return (
               <p key={index}>
                 {user.name} with id {user.id}
