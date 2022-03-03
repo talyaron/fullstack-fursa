@@ -102,6 +102,6 @@ app.get('/lama',(req:any,res:any)=>{
 
 // const routes = require('./routes/routes.js')(app, fs);
 
-const server = app.listen(3001, () => {
+const server = app.listen(4000, () => {
     console.log('listening on port %s...', server.address().port);
 });

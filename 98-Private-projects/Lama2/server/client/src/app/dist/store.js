@@ -13,7 +13,7 @@ exports.store = toolkit_1.configureStore({
         registrations: registrationSlice_1["default"],
         counter: counterSlice_1["default"],
         products: products_1["default"],
-        offers: offers_1.offersReducer,
-        trainers: trainer_1.TrainersReducer
+        offers: offers_1["default"],
+        trainers: trainer_1["default"]
     }
 });

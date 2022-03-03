@@ -3,8 +3,8 @@ import counterReducer from '../features/counter/counterSlice';
 //import treatmentReducer from '../features/treatment/treatmentSlice';
 import registartionReducer from '../features/coursesRegistrations/registrationSlice';
 import productsReducer from '../features/productsReducer/products';
-import { TrainersReducer } from '../features/trainersReducer/trainer';
-import { offersReducer } from '../features/offersReducer/offers';
+import  TrainersReducer  from '../features/trainersReducer/trainer';
+import  offersReducer  from '../features/offersReducer/offers';
 
 export const store = configureStore({
   reducer: {
@@ -12,7 +12,7 @@ export const store = configureStore({
     counter: counterReducer,
     products:productsReducer,
     offers:offersReducer,
-     trainers:TrainersReducer,
+    trainers:TrainersReducer,
   },
 });
 
