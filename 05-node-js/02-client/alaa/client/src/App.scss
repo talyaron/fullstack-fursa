@@ -1,0 +1,14 @@
+$mainColor:rgb(21, 87, 109);
+$borderRadius:10px;
+$padding:20px;
+
+@import 'view/components/card/Card.scss';
+.App{
+  .wrapper{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+  }
+ 
+}
+
