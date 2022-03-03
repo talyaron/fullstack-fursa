@@ -50,18 +50,21 @@ const kittySchema = new mongoose.Schema({
   name: String,
   address:{
     city:String
-  }
+  },
+  lifes:Number,
+  extraLife:Boolean
 });
 
 //the collection
 const Kitten = mongoose.model("Kitten", kittySchema);
 
 const mitzy = new Kitten({
-  name: "Mitzy3",
+  name: "Mitzy4",
   address: {
     city:"Um al fahm",
     street:"Jaberin"
   },
+  lifes:9
 });
 console.log(mitzy.name);
 
@@ -69,14 +72,34 @@ console.log(mitzy.name);
 
 async function getKitens():Promise<any> {
   try{
-   
-  const kittens = await Kitten.find({ });
+   const nameRegEx = new RegExp('hu','i')
+  const kittens = await Kitten.find({name:{
+    $regex: nameRegEx
+  } });
+  console.log(kittens)
   return kittens;
   } catch(err:any){
     console.error(err)
     return false
   }
 }
+
+async function aggragateKittensLives(){
+  const filter = { extraLife: true };
+  let docs = await Kitten.aggregate([
+    { $match: filter },
+    {$group:{
+      _id:'$extraLife',
+      numberOfCats:{$sum:1},
+      count:{$sum:'$lifes'},
+      avg:{$avg:'$lifes'}
+    }}
+  ]);
+  console.log('----');
+  console.log(docs)
+}
+
+aggragateKittensLives()
 
 app.get('/get-all-kitens',async (req, res)=>{
     const kittens = await getKitens();
