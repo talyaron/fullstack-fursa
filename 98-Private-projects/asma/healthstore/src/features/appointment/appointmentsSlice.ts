@@ -1,23 +1,18 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState, AppThunk } from '../../app/store';
 import axios from "axios"
-//import { AppointmentData } from './data';
-
 
 export interface appointment {
   title: string;
-  start: string;
-  end: string;
+  start: Date,
+  end: Date,
   name: string;
   phone: string;
 }
 
-
 export interface appointmentArr {
-  //[x: string]: any;
   appointments: Array<any>;
   // status: 'idle' | 'loading' | 'failed';
-
 }
 
 
@@ -27,21 +22,19 @@ const initialState: appointmentArr = {
 };
 
 
-
 export function getAppointments(): Promise<any> {
   return new Promise((resolve, reject) => {
     try {
       axios.get("/get-appointments")
         .then((res) => {
-          const data = res.data.data;
+          console.log(res);
+          const data = res.data;
           console.log(data);
           if (data) {
             resolve(data);
           }
         })
         .catch((err) => {
-          ///console.log("res22");
-          //console.log(res);
           reject(err.message);
         });
     } catch (err: any) {
@@ -49,9 +42,6 @@ export function getAppointments(): Promise<any> {
     }
   });
 }
-
-
-
 
 
 export const getAppointmentsAsyn = createAsyncThunk(
@@ -70,15 +60,12 @@ export const getAppointmentsAsyn = createAsyncThunk(
 );
 
 
-
-
 export const appointmentsSlice = createSlice({
   name: 'selectedAppointmen',
   initialState,
   reducers: {
     addAppointment: (state, action) => {
       state.appointments = [...state.appointments, action.payload];
-      //console.log("add appoinment")
       try {
         const appointment = action.payload;
         //console.log(appointment.id)

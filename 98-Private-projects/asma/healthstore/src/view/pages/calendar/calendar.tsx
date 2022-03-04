@@ -18,9 +18,10 @@ import format from "date-fns/format";
 import getDay from "date-fns/getDay";
 import parse from "date-fns/parse";
 import startOfWeek from "date-fns/startOfWeek";
-import React, { useState ,useEffect } from "react";
-import { Calendar, dateFnsLocalizer } from "react-big-calendar";
+import React, { useState, useEffect } from "react";
+import { Calendar, momentLocalizer, dateFnsLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
+import moment from 'moment';
 //import DatePicker from "react-datepicker";
 import DateTimePicker from 'react-datetime-picker';
 import "react-datetime-picker/dist/DateTimePicker.css";
@@ -33,16 +34,40 @@ import { addAppointment, getAppointmentsAsyn, selectAppointment } from '../../..
 import { appointment } from '../../../features/appointment/appointmentsSlice';
 import axios from 'axios';
 
-const locales = {
-    "en-US": require("date-fns/locale/en-US"),
-};
-const localizer = dateFnsLocalizer({
-    format,
-    parse,
-    startOfWeek,
-    getDay,
-    locales,
-});
+// const locales = {
+//     "en-US": require("date-fns/locale/en-US"),
+// };
+// const localizer = dateFnsLocalizer({
+//     format,
+//     parse,
+//     startOfWeek,
+//     getDay,
+//     locales,
+// });
+const localizer = momentLocalizer(moment);
+
+
+
+// interface eventInt{
+//     title: string;
+//     start: Date;
+//     end: Date;
+//     name: string;
+//     phone: string;
+// }
+
+// const events:Array<eventInt> = [
+//     {
+//         title: "Cupping  Therapy",
+//         start: new Date('2022-03-07T04:30:00.000Z'),
+//         end: new Date('2022-03-07T05:30:00.000Z'),
+//         name: "Asma",
+//         phone:"123" ,            
+//     }
+// ];
+
+
+
 
 
 function CalendarFun() {
@@ -50,12 +75,44 @@ function CalendarFun() {
     const [newEvent, setNewEvent] = useState({ title: "", start: new Date(), end: new Date(), name: "", phone: "" });
     const appointments = useAppSelector(selectAppointment);
     const dispatch = useAppDispatch();
-    
 
+    // const [arr, setArr] = useState([]);
 
     useEffect(() => {
+
+        // fetch('/get-appointments')
+        // .then(res => res.json())
+        // .then(data => {
+        //     console.log("app");
+        //     console.log(data.data);
+        //     let {title,start,end,name,phone}=data.data[0];
+        //     events.push({title:title,start:new Date(start),end:new Date(end),name,phone});
+        //     //console.log(title,new Date(start),end);
+        //     //setArr(data.data);
+        // }).catch(err => {
+        //     console.error(err);
+        // })
+
+        // console.log("events");
+        // console.log(events);
+        // console.log(arr);
+
+
+
         dispatch(getAppointmentsAsyn());
+
         //axios.get('http://localhost:3004/AppointmentData').then(({data})=>console.log(data));
+        // //fetch kittens
+        // fetch('/get-all-kitens')
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         console.log("data");
+        //         console.log(data);
+        //         //setKittens(data);
+        //     }).catch(err => {
+        //         console.error(err);
+        //     })
+
 
     }, []);
 
@@ -63,27 +120,38 @@ function CalendarFun() {
 
 
     function handleAddEvent() {
-        if (newEvent.name === "" || newEvent.phone === "" || newEvent.title === "")
-            alert("Your Info Is Incomplete!!");
 
-        else {           
-            const result: appointment | undefined = appointments.find((appoint: appointment) =>
+        //missing info
+        if (newEvent.name === "" || newEvent.phone === "" || newEvent.title === "") { alert("Your Info Is Incomplete!!"); return; }
+
+        //past date
+        const cuurentDay = new Date();
+        if (newEvent.start.getFullYear() < cuurentDay.getFullYear() ||
+            (newEvent.start.getFullYear() === cuurentDay.getFullYear() && newEvent.start.getMonth() < cuurentDay.getMonth()) ||
+            (newEvent.start.getFullYear() === cuurentDay.getFullYear() && newEvent.start.getMonth() === cuurentDay.getMonth() && newEvent.start.getDate() <= cuurentDay.getDate())) { alert("Date Is Not Available!!"); return; }
+
+        //Out of Openning Hours    
+        if (newEvent.start.getHours() < 8 || newEvent.start.getHours() > 16 || newEvent.start.getDay() === 5 || newEvent.start.getDay() === 6) { alert("Out of Openning Hours!!\nSun-Thu 08:00-18:00"); return; }
+
+        //dates collision
+        const result: appointment | undefined = appointments.find((appoint: appointment) =>
             (new Date(appoint.start)).getFullYear() === newEvent.start.getFullYear() &&
             (new Date(appoint.start)).getMonth() === newEvent.start.getMonth() &&
             (new Date(appoint.start)).getDate() === newEvent.start.getDate() &&
-                ((new Date(appoint.start)).getHours() === newEvent.start.getHours() ||
-                    ((new Date(appoint.end)).getHours() === newEvent.start.getHours() && (new Date(appoint.end)).getMinutes() > newEvent.start.getMinutes()) ||
-                    ((new Date(appoint.start)).getHours() === newEvent.end.getHours() && (new Date(appoint.start)).getMinutes() < newEvent.end.getMinutes()))
-           )
-            if (result)
-                alert("Date Is Not Available!!");
+            ((new Date(appoint.start)).getHours() === newEvent.start.getHours() ||
+                ((new Date(appoint.end)).getHours() === newEvent.start.getHours() && (new Date(appoint.end)).getMinutes() > newEvent.start.getMinutes()) ||
+                ((new Date(appoint.start)).getHours() === newEvent.end.getHours() && (new Date(appoint.start)).getMinutes() < newEvent.end.getMinutes()))
+        )
+        if (result)
+            alert("Date Is Not Available!!");
 
-            else{ 
-                dispatch(addAppointment({ id:appointments.length+1 , title: newEvent.title, start: newEvent.start.toJSON(), end:newEvent.end.toJSON(), name: newEvent.name, phone: newEvent.phone }));
-                // let data= { id:appointments.length+1 ,title:newEvent.title, start: newEvent.start.toJSON(),end:newEvent.end.toJSON(), name: newEvent.name, phone:newEvent.phone};
-                // axios.post('http://localhost:3004/AppointmentData',data);
-            }
+        else {
+            dispatch(addAppointment({ title: newEvent.title, start: newEvent.start.toJSON(), end: newEvent.end.toJSON(), name: newEvent.name, phone: newEvent.phone }));
+            // let data= { id:appointments.length+1 ,title:newEvent.title, start: newEvent.start.toJSON(),end:newEvent.end.toJSON(), name: newEvent.name, phone:newEvent.phone};
+            // axios.post('http://localhost:3004/AppointmentData',data);
         }
+
+
     }
 
     return (
@@ -114,7 +182,7 @@ function CalendarFun() {
                     <Button className="button" onClick={handleAddEvent} startIcon={<EventNoteTwoToneIcon />} variant="contained" >Book Now!</Button>
                 </div>
                 <div className="table">
-                    <Calendar localizer={localizer} events={appointments} startAccessor="start" endAccessor="end" />
+                    <Calendar views={["month", "agenda"]} localizer={localizer} events={appointments} startAccessor="start" endAccessor="end" />
                 </div>
             </div>
         </div>
