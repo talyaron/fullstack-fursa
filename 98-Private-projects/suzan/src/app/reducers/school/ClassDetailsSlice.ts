@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState, AppThunk } from '../../store';
-import axios from 'axios';
+//import axios from 'axios';
 
 interface Course {
     id:number,
@@ -38,13 +38,13 @@ const initialState: ClassDetails = {
 export const getCoursesAsync = createAsyncThunk (
     'classDetails/fetchCourses',
     async(_, thunkAPI) => {
-        try{
-            const response = await axios.get('http://localhost:3004/studentCourses');
-            const data = response.data;
-            return data;
-        } catch (error:any) {
-            thunkAPI.rejectWithValue(error.response.data)
-        }
+        // try{
+        //     const response = await axios.get('http://localhost:3004/studentCourses');
+        //     const data = response.data;
+        //     return data;
+        // } catch (error:any) {
+        //     thunkAPI.rejectWithValue(error.response.data)
+        // }
     }    
 );
 
