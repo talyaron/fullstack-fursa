@@ -14,7 +14,7 @@ const db = mongoose.connection;
 
 async function main() {
   const password = process.env.MONGODB_PASSWORD;
-  await mongoose.connect(`mongodb+srv://Dima1:${password}@cluster0.tmxpm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`);
+  await mongoose.connect(`mongodb+srv://Dima1:${password}@cluster0.tmxpm.mongodb.net/test`);
 }
 
 db.on("error", console.error.bind(console, "connection error:"));
@@ -29,17 +29,36 @@ const kittySchema = new mongoose.Schema({
   }
 });
 
+const recipeInfo = new mongoose.Schema({
+  id: Number,
+  name: String,
+  image: String,
+  time: String,
+  people: String,
+  calories: String,
+  ingredients: String,
+  method: String
+})
+
+const selectRecipe = new mongoose.Schema({
+  info: {
+    id: Number,
+    name: String,
+    image: String,
+    time: String,
+    people: String,
+    calories: String,
+    ingredients: String,
+    method: String
+  },
+  from: String,
+  isNew_: Boolean
+})
+
 //the collection
 const Kitten = mongoose.model('Kitten', kittySchema);
 
-const mitzy = new Kitten({
-  name: "Mitzy3",
-  address: {
-    city: "Um al fahm",
-    street: "Jaberin"
-  },
-});
-console.log(mitzy.name);
+const select = mongoose.model('select recipe', recipeInfo);
 
 //mitzy.save().then(res=>{console.log(res)}).catch(err=>console.log(err));
 
@@ -75,6 +94,20 @@ app.get('/get-select-recipe', async (req, res) => {
   } catch (error: any) {
     console.info(error)
     res.send({ error })
+  }
+})
+
+app.patch('/update-recipe', async (req, res) => {
+  try {
+    const { recipe } = req.body;
+    console.log(recipe);
+    const filter = {_id: 1}
+    const update = {info:recipe.info, from:recipe.from, isNew_:recipe.isNew}
+    let doc = await select.findOneAndUpdate(filter, update);
+    res.send({ ok: true, doc });
+  } catch (err) {
+    console.error(err);
+    res.status(400).send({ error: err.message });
   }
 })
 

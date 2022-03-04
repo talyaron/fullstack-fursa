@@ -33,30 +33,20 @@ export default function MainScreen() {
         dispatch(updateName('/MainScreen'));
     }, []);
 
-    const imageClick = (recipe:any, row:number) => {
+    async function imageClick(recipe:any, row:number){
         let from = '';
         if(row == 1)
             from = 'top10'
         else from = 'recent'
         try {
-            axios.patch('http://localhost:3004/select/1', {recipe, from:from, isNew:false});
+            //axios.patch('http://localhost:3004/select/1', {recipe, from:from, isNew:false});
+            axios.patch('/update-recipe', {recipe, from:from, isNew:false});
         } catch (error) {
             console.error();
         }
         dispatch(updateRecipe(recipe));
         dispatch(updateFrom(from));
     } 
-
-    // const imageClick2 = (recipe:any) => {
-    //     try {
-            
-    //     } catch (error) {
-            
-    //     }
-    //     axios.post('http://localhost:3004/select', {recipe, from:'recent', isNew:false});
-    //     dispatch(updateRecipe(recipe));
-    //     dispatch(updateFrom('recent'));
-    // } 
 
     return (
         <div className="wrapper">
