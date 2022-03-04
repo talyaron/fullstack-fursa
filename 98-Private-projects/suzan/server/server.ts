@@ -26,6 +26,7 @@ app.get('/get-classes', async (req, res) => {
 
 })
 
+//mongoose
 const mongoose = require('mongoose');
 
 main().catch(err => console.log(err));
@@ -46,3 +47,40 @@ db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
   console.log("connected to DB!");
 });
+
+const kittySchema = new mongoose.Schema({
+  name: String,
+  address:{
+    city:String
+  }
+});
+
+//the collection
+const Kitten = mongoose.model("Kitten", kittySchema);
+
+const mitzy = new Kitten({
+  name : "Mitzy3",
+  address: {
+    city: "Um al fahem",
+    street: "Jaberin"
+  },
+});
+
+console.log(mitzy.name);
+
+// mitzy.save().then(res=>{console.log(res)});
+
+async function getKitens():Promise<any> {
+  try {
+    const kittens = await Kitten.find({});
+    return kittens;
+  } catch(err:any){
+    console.error(err)
+    return false;
+  }
+}
+
+app.get('/get-all-kitens', async(req, res) => {
+  const kittens = await getKitens();
+  res.send(kittens);
+})
