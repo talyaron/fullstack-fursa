@@ -28,6 +28,24 @@
             overflow: hidden;
             transform: scale(2.0);
             margin-right: 3vw;
+            animation: fadeIn 1s infinite alternate;
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    animation: spin;
+                }
+            }
+
+            @keyframes spin {
+                from {
+                    transform: rotate(0deg);
+                }
+
+                to {
+                    transform: rotate(360deg);
+                }
+            }
         }
 
         a {

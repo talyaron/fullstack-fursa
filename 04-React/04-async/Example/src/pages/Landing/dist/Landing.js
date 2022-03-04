@@ -55,8 +55,15 @@ function Landing(props) {
         react_1["default"].createElement("h1", null, "Albums"),
         react_1["default"].createElement("button", { onClick: handleCounter }, counter),
         react_1["default"].createElement("div", { className: "albums" }, albums.map(function (album, i) {
+<<<<<<< Updated upstream
             return (react_1["default"].createElement("div", { key: album.id, className: "album" },
                 react_1["default"].createElement("h3", null, album.title)));
+=======
+            return react_1["default"].createElement("div", { key: album.id, className: "album" },
+                react_1["default"].createElement("h1", null, album.id),
+                react_1["default"].createElement("h2", null, album.name),
+                react_1["default"].createElement("h3", null, album.title));
+>>>>>>> Stashed changes
         }))));
 }
 exports["default"] = Landing;

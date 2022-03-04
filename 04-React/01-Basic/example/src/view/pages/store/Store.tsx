@@ -7,7 +7,7 @@ import Product from "./Product";
 
 const products = [{id:1,name:'cattle'}, {id:2,name:'finjan'},{id:3,name:'coffee'}];
 
-const Store = () => {
+const Store = () => { 
   return <div>
       <h1>Store</h1>
       {products.map((product:ProductProps, i)=>{
