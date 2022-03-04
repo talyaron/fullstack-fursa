@@ -14,7 +14,7 @@ const db = mongoose.connection;
 
 async function main() {
   const password = process.env.MONGODB_PASSWORD;
-  await mongoose.connect(`mongodb+srv://Dima1:${password}@cluster0.tmxpm.mongodb.net/test`);
+  await mongoose.connect(`mongodb+srv://Dima1:${password}@cluster0.tmxpm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`);
 }
 
 db.on("error", console.error.bind(console, "connection error:"));
@@ -58,7 +58,7 @@ const selectRecipe = new mongoose.Schema({
 //the collection
 const Kitten = mongoose.model('Kitten', kittySchema);
 
-const select = mongoose.model('select recipe', recipeInfo);
+const select = mongoose.model('select recipe', selectRecipe);
 
 //mitzy.save().then(res=>{console.log(res)}).catch(err=>console.log(err));
 
@@ -99,10 +99,10 @@ app.get('/get-select-recipe', async (req, res) => {
 
 app.patch('/update-recipe', async (req, res) => {
   try {
-    const { recipe } = req.body;
+    const { recipe, from, isNew } = req.body;
     console.log(recipe);
     const filter = {_id: 1}
-    const update = {info:recipe.info, from:recipe.from, isNew_:recipe.isNew}
+    const update = {info:recipe, from:from, isNew_:isNew}
     let doc = await select.findOneAndUpdate(filter, update);
     res.send({ ok: true, doc });
   } catch (err) {

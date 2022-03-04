@@ -35,12 +35,13 @@ export default function MainScreen() {
 
     async function imageClick(recipe:any, row:number){
         let from = '';
+        let isNew_ = false;
         if(row == 1)
             from = 'top10'
         else from = 'recent'
         try {
             //axios.patch('http://localhost:3004/select/1', {recipe, from:from, isNew:false});
-            axios.patch('/update-recipe', {recipe, from:from, isNew:false});
+            axios.patch('/update-recipe', {recipe, from, isNew_});
         } catch (error) {
             console.error();
         }
