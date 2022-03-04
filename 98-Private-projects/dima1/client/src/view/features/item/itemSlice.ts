@@ -4,7 +4,7 @@ import { RootState } from "../../../app/store";
 
 
 export interface RecipeState {
-  recipe: {
+  info: {
     id: number;
     image: any;
     name: string;
@@ -19,7 +19,7 @@ export interface RecipeState {
 }
 
 const initialState: RecipeState = {
-  recipe: {
+  info: {
     id: 0,
     image:'',
     name: '',
@@ -34,11 +34,23 @@ const initialState: RecipeState = {
 }
 
 export const getSelectAsync = createAsyncThunk(
-  'select/fetchselect',
+  'getRecipe/fetchGet',
   async (_, thunkAPI) => {
     try {
       const response = await axios.get('/get-select-recipe');
-      console.log(response.data)
+      const data = response.data;
+      return data;
+    } catch (error: any) {
+      thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const updateSelectAsync = createAsyncThunk(
+  'updateRecipe/fetchSet',
+  async (recipeInfo:any, thunkAPI) => {
+    try {
+      const response = await axios.patch('/update-select-recipe', {info:recipeInfo.info, from:recipeInfo.from, isNew:recipeInfo.isNew});
       const data = response.data;
       return data;
     } catch (error: any) {
@@ -53,7 +65,7 @@ export const itemReducer = createSlice({
   initialState,
   reducers: {
     updateRecipe: (state, action) => {
-      state.recipe = action.payload;
+      state.info = action.payload;
     },
     updateFrom: (state, action) => {
       state.from = action.payload;
@@ -65,15 +77,20 @@ export const itemReducer = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getSelectAsync.fulfilled, (state, action) => {
-        state.recipe = action.payload.recipe;
+        state.info = action.payload.info;
         state.from = action.payload.from;
-        state.isNew = action.payload.isNew;
+        state.isNew = action.payload.isNew_;
+      })
+      .addCase(updateSelectAsync.fulfilled, (state, action) => {
+        state.info = action.payload.info;
+        state.from = action.payload.from;
+        state.isNew = action.payload.isNew_;
       })
   }
 });
 
 export const { updateRecipe, updateFrom, updateNew } = itemReducer.actions;
-export const selectedRecipe = (state: RootState) => state.item.recipe;
+export const selectedRecipe = (state: RootState) => state.item.info;
 export const selectedIsNew = (state: RootState) => state.item.isNew;
 export const selectedFrom = (state: RootState) => state.item.from;
 

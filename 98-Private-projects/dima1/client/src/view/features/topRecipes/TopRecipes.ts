@@ -12,12 +12,11 @@ const initialState : recipesState = {
 };
 
 export const getTopRecipesAsync = createAsyncThunk(
-    'top10/fetchTop',
+    'top10/fetchTop10',
     async (_, thunkAPI) => {
         try {
-            const response = await axios.get('http://localhost:3004/top10');
-            const data = response.data;
-            return data;
+            const response = await axios.get('/get-top10');
+            return response.data;
         } catch (error:any) {
             thunkAPI.rejectWithValue(error.response.data);
         }
@@ -25,7 +24,7 @@ export const getTopRecipesAsync = createAsyncThunk(
 );
 
 export const topRecipesReducer = createSlice({
-    name:'recipes',
+    name:'topRecipes',
     initialState,
     reducers:{
         addToTopRecipe : (state, action:PayloadAction<recipeInfo>) => {
@@ -46,7 +45,7 @@ export const topRecipesReducer = createSlice({
     extraReducers: (builder) => {
         builder
         .addCase(getTopRecipesAsync.fulfilled, (state, action) => {
-                state.topRecipes = action.payload;
+            state.topRecipes = action.payload;
         })
     }
 })
@@ -54,6 +53,5 @@ export const topRecipesReducer = createSlice({
 export const { addToTopRecipe, updateTopRecipes } = topRecipesReducer.actions;
 
 export const topRecipes = (state:RootState) => state.topRecipes.topRecipes;
-//export const recentRecipes = (state:RootState) => state.topRecipes.recentRecipes;
 
 export default topRecipesReducer.reducer

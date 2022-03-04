@@ -15,7 +15,7 @@ import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper";
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { updateRecipe, updateFrom } from '../../features/item/itemSlice';
+import { updateRecipe, updateFrom, updateSelectAsync } from '../../features/item/itemSlice';
 import { getTopRecipesAsync, topRecipes } from '../../features/topRecipes/TopRecipes';
 import { getRecentRecipesAsync, recentRecipes } from '../../features/recentRecipes/RecentRecipes';
 import { updateName } from '../../features/pgaeName/NamePage';
@@ -33,20 +33,18 @@ export default function MainScreen() {
         dispatch(updateName('/MainScreen'));
     }, []);
 
-    async function imageClick(recipe:any, row:number){
+    function imageClick(recipe:any, row:number){
         let from = '';
         let isNew_ = false;
         if(row == 1)
             from = 'top10'
         else from = 'recent'
         try {
-            //axios.patch('http://localhost:3004/select/1', {recipe, from:from, isNew:false});
-            axios.patch('/update-recipe', {recipe, from, isNew_});
+            console.log(recipe)
+            dispatch(updateSelectAsync({info:recipe, from:from, isNew:isNew_}))
         } catch (error) {
             console.error();
         }
-        dispatch(updateRecipe(recipe));
-        dispatch(updateFrom(from));
     } 
 
     return (
@@ -98,9 +96,9 @@ export default function MainScreen() {
                             className="mySwiper"
                         >
                             {recent.map((recipe:any, index:number) => {
-                                return(<SwiperSlide key={index}>
+                                return(<SwiperSlide key={index}  onClick={(ev:any) => imageClick(recipe, 2)}>
                                     <Link to='/RecipeInfo'>
-                                        <img src={recipe.image} alt='' onClick={() => imageClick(recipe, 2)}/>
+                                        <img src={recipe.image} alt=''/>
                                     </Link>
                                     <p>{recipe.name}</p>
                                 </SwiperSlide>);
