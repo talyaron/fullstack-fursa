@@ -36,8 +36,8 @@ export const fetchAllRestaurants = createAsyncThunk(
         try {
             const response = await axios.get('/get-all-restaurants')
             const data: any = response.data
-            const { Restaurants } = data;
-            return Restaurants
+            const { resteraunt } = data;
+            return resteraunt
         } catch (err) {
             thunkAPI.rejectWithValue(err)
         }
@@ -51,8 +51,8 @@ export const fetchFamousRestaurants = createAsyncThunk(
         try {
             const response = await axios.get('/get-all-restaurants')
             const data: any = response.data
-            const { Restaurants } = data;
-            return Restaurants.filter((rest: Restaurant) => {
+            const { resteraunt } = data;
+            return resteraunt.filter((rest: Restaurant) => {
                 if (rest.region === region)
                     return rest;
             });
@@ -63,19 +63,6 @@ export const fetchFamousRestaurants = createAsyncThunk(
     }
 );
 
-export const fetchRestaurantsById = createAsyncThunk(
-    'fetchRestaurantsById',
-    async (id: number) => {
-        try {
-            const response = await axios.get(`/Restaurants/${id}`)
-            const data: any = response.data
-            return data;
-        } catch (err) {
-            console.log(err)
-        }
-
-    }
-);
 export const restaurantReducer = createSlice({
     name: 'restaurant',
     initialState,
@@ -94,13 +81,6 @@ export const restaurantReducer = createSlice({
                 state.status = 'loading';
             })
             .addCase(fetchFamousRestaurants.fulfilled, (state, action) => {
-                state.status = 'idle';
-                state.arrOfFamousResteruants = action.payload;
-            })
-            .addCase(fetchRestaurantsById.pending, (state) => {
-                state.status = 'loading';
-            })
-            .addCase(fetchRestaurantsById.fulfilled, (state, action) => {
                 state.status = 'idle';
                 state.arrOfFamousResteruants = action.payload;
             })

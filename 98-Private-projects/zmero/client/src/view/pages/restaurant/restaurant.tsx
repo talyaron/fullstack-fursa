@@ -30,7 +30,7 @@ import { selectUserId } from '../../../app/reducers/userReducer';
 
 function Restaurant() {
     const dispatch = useAppDispatch()
-    const userId: string = useAppSelector(selectUserId)
+    const userId = useAppSelector(selectUserId)
     useEffect(() => {
         dispatch(fetchAllRestaurants())
         dispatch(fetchUserFavorite(userId))
@@ -50,7 +50,6 @@ function Restaurant() {
         if (rest.id == RestaurantId)
             return rest
     })
-    console.log(favorites)
     const favorite = favorites.filter((fav) => {
         if (fav.restId == RestaurantId)
             return fav
@@ -78,8 +77,7 @@ function Restaurant() {
             dispatch(addFavorite({ "userId": userId, 'restId': RestaurantId }))
         }
         else {
-            dispatch(deleteFavorite(favorite[0].id))
-            dispatch(fetchUserFavorite(userId))
+            dispatch(deleteFavorite({ "restId": RestaurantId, "userId": userId }))
             setChecked(false)
         }
 

@@ -34,7 +34,7 @@ function RestaurantCard(props: cardProp) {
         setOpenModal(true);
     }
     return (
-        <Link to={`/Restaurant/${props.id}`}>
+        <Link to={`${props.id}`}>
             <div className="restaurantCard">
                 <div className="reservationcard__image" style={{ backgroundImage: `url(${props.image})` }}></div>
                 <div className="reservationcard__main">

@@ -37,7 +37,6 @@ function ReserveModal(props: details) {
         p: 4,
     };
     function handleReserve() {
-        console.log()
         dispatch(AddReservation({
             userId: userId, restId: props.restaurantID, hour: reserveTime?.getHours(), year: reserveDate?.getFullYear(),
             min: reserveTime?.getMinutes(), day: reserveDate?.getDate(), month: reserveDate?.getMonth()

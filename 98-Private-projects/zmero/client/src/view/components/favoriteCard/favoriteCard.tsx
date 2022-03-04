@@ -29,7 +29,7 @@ function FavoriteCard(props: cardProp) {
 
     }
     return (
-        <Link to={`/Restaurant/${props.restId}`}>
+        <Link to={`/${props.restId}`}>
             <div className="restaurantCard">
                 <div className="reservationcard__image" style={{ backgroundImage: `url(${img})` }}></div>
                 <div className="reservationcard__main">

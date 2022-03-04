@@ -4,7 +4,7 @@ import axios from 'axios'
 
 interface userProb {
     userinfo: {
-        id: string;
+        _id: string;
         fName: string;
         lName: string;
         email: string;
@@ -15,7 +15,7 @@ interface userProb {
 
 const initialState: userProb = {
     userinfo: {
-        id: "-1",
+        _id: "-1",
         fName: " ",
         lName: " ",
         email: "",
@@ -89,7 +89,7 @@ export const userReducer = createSlice({
 
 export const { updateLogIn } = userReducer.actions
 export const selectUser = (state: RootState) => state.user
-export const selectUserId = (state: RootState) => state.user.userinfo.id
+export const selectUserId = (state: RootState) => state.user.userinfo._id
 export const selecUserName = (state: RootState) => state.user.userinfo.fName + " " + state.user.userinfo.lName
 export const checkUser = (state: RootState) => state.user.userIsLogIn
 export default userReducer.reducer;

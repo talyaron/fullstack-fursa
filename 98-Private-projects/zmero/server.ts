@@ -1,3 +1,5 @@
+import { error } from "console";
+
 const express = require('express');
 const app = express();
 require('dotenv').config()
@@ -5,118 +7,93 @@ const port = 4000;
 
 app.use(express.static('client/build'));
 app.use(express.json());
-//data
-const Restaurants = [{
-    "id": "1", "name": "shila-sharon cohen Kitchen & bar", "image": "https://media-cdn.tripadvisor.com/media/photo-s/03/7a/47/6d/shila.jpg", "booking": 27, "region": "Israel",
-    "city": "TelAviv", "stars": 5, "category": "bar", "open": "4:00pm", "close": "2:00am",
-    "description": "We feature fresh, innovated cuisine that is locally sourced when possible including grass-fed beef, and many gluten-free, vegetarian and vegan options.",
-    "subCategory": ["Serves alcohol", "Dinner", "Casual", "Cash", "Credit Cards"],
-    "photos": [
-        "https://i.pinimg.com/736x/4b/06/c8/4b06c812537fc655c3c0bfaed6b37538.jpg",
-        "https://baranowitz-goldberg.com/wp-content/uploads/2017/04/SHILA_REST_020.jpg"
-    ]
-},
-{
-    "id": "2", "name": "Cafe Popular", "image": "https://cdn.archilovers.com/projects/c_383_f83bb625-ff28-414b-a700-8e4bebde941b.jpg", "booking": 22,
-    "region": "Israel", "city": "TelAviv", "stars": 4, "category": "cafe", "open": "12:00am", "close": "1:00am",
-    "description": "Cafe Popular is a House of Fun. The place is spread over two floors in the Jacob Samuel boutique hotel, at the intersection of Dizengoff-Arlozorov streets.",
-    "subCategory": ["Serves alcohol", "lunch", "Cash", "outdoor Seating", "Dinner", "Special Occasion"],
-    "photos": [
-        "https://media-cdn.tripadvisor.com/media/photo-s/0e/9a/be/4d/doun-stairvibe.jpg",
-        "https://cdn.thespaces.com/wp-content/uploads/2018/12/claro-photo-by-afik-gbay-2-%D7%A2%D7%95%D7%AA%D7%A7.jpg"
-    ]
-},
-{
-    "id": "3", "name": "Taizu", "image": "https://bestrest.rest/wp-content/uploads/2019/05/TAIZU_017.jpg", "booking": 20, "region": "Israel", "city": "TelAviv",
-    "stars": 5, "category": "bar", "open": "6:00pm", "close": "3:00am",
-    "description": "Contemporary restaurant serving specialty cocktails & Southeast Asian street food with a twist.",
-    "subCategory": ["Take Away", "Serves alcohol", "Sea Food", "indian Food", "Brunch", "Dinner"],
-    "photos": [
-        "https://d23qgbgns5g2dp.cloudfront.net/wp-content/uploads/2019/09/THUMB-Taizu.jpg",
-        "https://eatintlv.com/wp-content/uploads/2017/07/taizu1.jpg"
-    ]
-},
-{
-    "id": "4", "name": "La Regence", "image": "https://images.jpost.com/image/upload/f_auto,fl_lossy/t_JM_ArticleMainImageFaceDetect/399693", "booking": 5,
-    "region": "Israel", "city": "Jerusalem", "stars": 5, "category": "fine dining", "open": "1:00pm", "close": "11:00pm", "description": "",
-    "subCategory": ["Dinner", "Serves alcohol", "Credit Cards", "Special Occasion", "Cash", "Credit Cards"],
-    "photos": [
-        "https://www.booster2success.com/wp-content/uploads/2020/09/Image-2-restaurant-caf%C3%A9-la-r%C3%A9gence.jpg",
-        "https://media.timeout.com/images/105331194/750/422/image.jpg"
-    ]
-},
-{
-    "id": "5", "name": "Hakosem", "image": "https://cdn.istores.co.il/image/upload/if_ar_gt_2:1/c_fill,h_662,w_555/c_fill,h_662,w_555/if_else/c_fill,q_100,w_555/if_end/dpr_2/v1614106887/clients/109701/5e9b9717137eea988b88592d0861cc3a64d59fcd.jpg", "booking": 15,
-    "region": "Israel", "city": "TelAviv", "stars": 4, "category": "fast food", "open": "9:00am", "close": "10:00pm",
-    "description": "",
-    "subCategory": [],
-    "photos": [
-        "https://media-cdn.tripadvisor.com/media/photo-s/12/c1/e3/f3/falafel-hakosem-tel-aviv.jpg",
-        "https://media-cdn.tripadvisor.com/media/photo-s/0f/91/a6/b4/caption.jpg"
-    ]
-},
-{
-    "id": "6", "name": "Scarlet Green", "image": "https://media-cdn.tripadvisor.com/media/photo-s/13/22/fb/b1/bar.jpg", "booking": 33,
-    "region": "UK", "city": "London", "stars": 5, "category": "fast food", "open": "9:00am", "close": "12:00pm",
-    "description": "Spend intimate evenings chatting and indulging in our ‘Scarlett Nights’ menu; our BBQ meat board featuring an HG Walter prime lamb tomahawk, 28 day dry aged onglet steak, our fennel, chilli and herb sausages, and smoky BBQ back ribs. Alternatively, our vegan board featuring a smoky BBQ tofu steak and fire roasted veg is also a huge hit! Alongside both comes an impressive Pornstar martini fountain, choice of two sides and our famous Melbourne Mars bar cheesecake ball.",
-    "subCategory": ["Outdoor Seating", "Highchairs Available", "Serves", "Alcohol", "Bar", "Free Wifi"],
-    "photos": [
-        "https://f3e6t7k9.stackpathcdn.com/wp-content/uploads/2018/04/scarlettgreen-loti.jpg?x94640",
-        "https://media-cdn.tripadvisor.com/media/photo-s/13/22/fc/63/downstairs-main-dining.jpg"
-    ]
-},
-{
-    "id": "7", "name": "Pizza Union Aldgate", "image": "https://media-cdn.tripadvisor.com/media/photo-s/16/c7/b8/09/street-view.jpg", "booking": 70,
-    "region": "UK", "city": "London", "stars": 4, "category": "fast food", "open": "2:00pm", "close": "2:00am",
-    "description": "Italian pizza bar serving fire-baked Roman-style thin & crispy 12 pizzas all day. Superfast pizzas made fresh to order. Eat-in or take-away from £4.2",
-    "subCategory": ["Takeout", "Outdoor Seating", "Seating", "Wheelchair Accessible", "Serves Alcohol", "Free Wifi", "Credit Cards"],
-    "photos": [
-        "https://d1ralsognjng37.cloudfront.net/f8a75f03-7c69-4fc9-bb2c-1cfd40ed40fa.jpeg",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMw5gdGiTN8pz2NOCHs2YB43OJb9DvRg_5BQ&usqp=CAU"
-    ]
-},
-{
-    "id": "8", "name": "Revolution Parsonage Gardens", "image": "https://media-cdn.tripadvisor.com/media/photo-s/0e/26/40/34/ocean-booths.jpg", "booking": 150,
-    "region": "UK", "city": "Manchester", "stars": 5, "category": "Bar", "open": "10:30am", "close": "12:00pm",
-    "description": "Revolution Parsonage Gardens is centrally located within the city, great for dining in the day or nights out in Manchester. With delicious cocktails and funky DJs, no wonder it’s one of Manchester’s best-loved cocktail bars and restaurants. Step inside and experience a bright, open-plan space with plush seating to sink into, plenty of bookable areas and a big dancefloor to get your groove on. It’s the perfect place to drink, dance or lunch with friends and colleagues.",
-    "subCategory": ["Seating", "Highchairs Available", "Serves Alcohol", "Full Bar", "Free Wifi", "Credit Cards", "Table Service", "Live Music"],
-    "photos": [
-        "https://eu-assets.simpleview-europe.com/manchester2016/imageresizer/?image=%2Fdmsimgs%2Frevs1_2100490054.jpg&action=ProductDetail",
-        "https://licklist.s3-eu-west-2.amazonaws.com/images/original/000/000/073/119/432-se4ytoujycz0o3ic.jpg"
-    ]
-}]
 
-const Users = [{
-    "id": "1", "email": "m.zmiro@hotmail.com", "fName": "mohamed", "lName": "zmiro", "password": "123123147", "phone": "0549074119", "region": "Israel"
-}]
+// mongodb
+const mongoose = require('mongoose');
 
-const Favorite = []
-const Reservations = []
+main().catch(err => console.log(err));
+const db = mongoose.connection;
+
+
+async function main() {
+    const password = process.env.MONGODB_PASSWORD
+    await mongoose.connect(`mongodb+srv://zmero123:${password}@cluster0.b4hx9.mongodb.net/fursaProject`)
+}
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", () => {
+    console.log("connected to DB!");
+});
+
+
+
+
+//db collections and schema
+const RestaurantsSchema = new mongoose.Schema({
+    id: String,
+    name: String,
+    image: String,
+    booking: Number,
+    region: String,
+    stars: Number,
+    city: String,
+    category: String,
+    photos: [{
+        type: String
+    }],
+    open: String,
+    close: String,
+    description: String,
+    subCategory: [{
+        type: String
+    }],
+});
+const UsersSchema = mongoose.Schema({
+    fName: String,
+    lName: String,
+    email: String,
+    password: String,
+    phone: String,
+    region: String,
+});
+const FavoritesSchema = mongoose.Schema({
+    userId: String,
+    restId: String,
+});
+
+const ReservationsSchema = mongoose.Schema({
+    hour: Number,
+    min: Number,
+    year: Number,
+    month: Number,
+    day: Number,
+    restId: String,
+    userId: String,
+});
+
+//the collection
+const Resteraunts = mongoose.model('restaurants', RestaurantsSchema);
+const Users = mongoose.model('users', UsersSchema);
+const Favorites = mongoose.model('favorites', FavoritesSchema);
+const Reservations = mongoose.model('reservations', ReservationsSchema);
+
 //gets
-
-app.get('/get-all-restaurants', (req, res) => {
+app.get('/get-all-restaurants', async (req, res) => {
     try {
-        if (Restaurants)
-            res.send({ Restaurants })
-        else res.send({ Restaurants: [] })
+        const resteraunt = await Resteraunts.find({});
+        res.send({ resteraunt })
     } catch (error) {
         res.send({ error });
     }
 
 })
 
-app.get('/get-user', (req, res) => {
+app.get('/get-user', async (req, res) => {
     try {
-        if (Users) {
-            const user = req.query
-            const temp = Users.filter((u: any) => {
-                if (user.email === u.email && user.password === u.password)
-                    return u;
-            })
-            if (temp.length > 0)
-                res.send({ "log": true, "user": temp[0] })
-            else res.send({ "log": false })
-        }
+        const { email, password } = req.query
+        if (!email || !password) throw "invalid fields"
+        const result = await Users.find({ "email": email, "password": password });
+        if (result.length > 0)
+            res.send({ "log": true, "user": result[0] })
         else res.send({ "log": false })
     } catch (error) {
         res.send({ error });
@@ -124,47 +101,30 @@ app.get('/get-user', (req, res) => {
 
 })
 
-app.get('/get-user-favorite', (req, res) => {
+app.get('/get-user-favorite', async (req, res) => {
     try {
-        if (Favorite) {
-            const { user } = req.query
-            const temp = Users.filter((u: any) => {
-                if (user == u.id)
-                    return u;
-            })
-            if (temp.length > 0) {
-                const fav = Favorite.filter((f: any) => {
-                    if (f.userId == user)
-                        return f.restId
-                })
-                res.send({ "log": true, "favorite": fav })
-            }
-            else res.send({ "log": false })
-        }
-        else res.send({ "log": false })
+
+        const { userId } = req.query
+        if (!userId) throw "invalid fields"
+        const result = await Users.find({ "_id": userId });
+        if (result.length > 0) {
+            const fav = await Favorites.find({ "userId": userId });
+            res.send({ "log": true, "favorite": fav })
+        } else res.send({ "log": false })
     } catch (error) {
         res.send({ error });
     }
 
 })
 
-app.get('/get-user-reservations', (req, res) => {
+app.get('/get-user-reservations', async (req, res) => {
     try {
-        if (Reservations) {
-            const { userId } = req.query
-            console.log(userId)
-            const temp = Users.filter((u: any) => {
-                if (userId === u.id)
-                    return u;
-            })
-            if (temp.length > 0) {
-                const reservation = Reservations.filter((reserve: any) => {
-                    if (reserve.userId === userId)
-                        return reserve
-                })
-                res.send({ "log": true, "reservations": reservation })
-            }
-            else res.send({ "log": false })
+        const { userId } = req.query
+        if (!userId) throw "invalid fields"
+        const result = await Users.find({ "_id": userId });
+        if (result.length > 0) {
+            const reservation = await Reservations.find({ "userId": userId });
+            res.send({ "log": true, "reservations": reservation })
         }
         else res.send({ "log": false })
     } catch (error) {
@@ -176,17 +136,16 @@ app.get('/get-user-reservations', (req, res) => {
 
 //posts
 
-app.post('/sign-up', (req, res) => {
+app.post('/sign-up', async (req, res) => {
     try {
-        const user = req.body
-        const temp = Users.filter((u: any) => {
-            if (user.email === u.email)
-                return u;
-        })
-        if (temp.length > 0)
+        const { fName, lName, email, phone, region, password } = req.body
+        if (!fName || !lName || !email || !phone || !region || !password) throw "invalid fields"
+        const result = await Users.find({ email: email });
+        if (result.length > 0)
             res.send({ "log": false })
         else {
-            Users.push(user)
+            const user = new Users({ "fName": fName, "lName": lName, "email": email, "phone": phone, "region": region, "password": password })
+            user.save()
             res.send({ "log": true, "user": user })
         }
     } catch (error) {
@@ -195,71 +154,47 @@ app.post('/sign-up', (req, res) => {
 
 })
 
-app.post('/add-user-favorite', (req, res) => {
+app.post('/add-user-favorite', async (req, res) => {
     try {
         const { userId, restId } = req.body
-        const temp = Users.filter((u: any) => {
-            if (userId == u.id)
-                return u;
-        })
-        if (temp.length == 0)
-            res.send({ "log": false })
-        else {
-            Favorite.push({ "userId": userId, "restId": restId })
-            const fav = Favorite.filter((f: any) => {
-                if (f.userId == userId)
-                    return f.restId
-            })
-            res.send({ "log": true, "favorite": fav })
-        }
-    } catch (error) {
-        res.send({ error });
-    }
-
-})
-
-app.post('/delete-user-favorite', (req, res) => {
-    try {
-        const { userId, restId } = req.body
-        const temp = Users.filter((u: any) => {
-            if (userId == u.id)
-                return u;
-        })
-        if (temp.length == 0)
-            res.send({ "log": false })
-        else {
-            //remove object from here
-            const fav = Favorite.filter((f: any) => {
-                if (f.userId == userId)
-                    return f.restId
-            })
-            res.send({ "log": true, "favorite": fav })
-        }
-    } catch (error) {
-        res.send({ error });
-    }
-
-})
-app.post('/add-user-reservation', (req, res) => {
-    try {
-        if (Reservations) {
-            const { userId, restId, hour, year, min, day, month } = req.body
-            const temp = Users.filter((u: any) => {
-                if (userId === u.id)
-                    return u;
-            })
-            if (temp.length > 0) {
-                Reservations.push({ "id": 1, "userId": userId, "restId": restId, "hour": hour, "year": year, "min": min, "day": day, "month": month + 1 })
-                const reservation = Reservations.filter((reserve: any) => {
-                    if (reserve.userId === userId)
-                        return reserve
-                })
-                console.log(day)
-                res.send({ "log": true, "reservations": reservation })
+        if (!userId || !restId) throw "invalid fields"
+        const result = await Users.find({ "_id": userId });
+        if (result.length > 0) {
+            const fav = await Favorites.find({ "userId": userId, "restId": restId });
+            if (fav.length > 0) {
+                res.send({ "log": true, "add": false })
+            } else {
+                const userFavorite = new Favorites({ "userId": userId, "restId": restId })
+                await userFavorite.save()
+                const favs = await Favorites.find({ "userId": userId });
+                res.send({ "log": true, "add": true, "favorite": favs })
             }
-            else res.send({ "log": false })
+        } else res.send({ "log": false })
+    } catch (error) {
+        res.send({ error });
+    }
+
+})
+
+
+app.post('/add-user-reservation', async (req, res) => {
+    try {
+
+        const { userId, restId, hour, year, min, day, month } = req.body
+        if (!userId || !restId || !hour || !year || !min || !day || !month) throw "invalid fields"
+        const result = await Users.find({ "_id": userId });
+        if (result.length > 0) {
+            const check = await Reservations.find({ "userId": userId, "restId": restId, "year": year, "day": day, "month": month + 1 })
+            if (check.length == 0) {
+                const userReservation = new Reservations({ "userId": userId, "restId": restId, "hour": hour, "year": year, "min": min, "day": day, "month": month + 1 })
+                await userReservation.save()
+                const reservation = await Reservations.find({ "userId": userId })
+                res.send({ "log": true, "add": true, "reservations": reservation })
+            }
+            else res.send({ "log": true, "add": false })
         }
         else res.send({ "log": false })
+
     } catch (error) {
         res.send({ error });
     }
@@ -267,35 +202,52 @@ app.post('/add-user-reservation', (req, res) => {
 })
 
 
-const mongoose = require('mongoose');
+//deletes
+app.delete('/delete-user-favorite', async (req, res) => {
+    try {
+        const { userId, restId } = req.body
+        if (!userId || !restId) throw "invalid fields"
+        const result = await Users.find({ "_id": userId });
+        if (result.length > 0) {
+            const fav = await Favorites.find({ "userId": userId, "restId": restId });
+            if (fav.length === 0) {
+                res.send({ "log": true, "delete": false })
+            } else {
+                await Favorites.deleteOne({ "userId": userId, "restId": restId })
+                const favs = await Favorites.find({ "userId": userId });
+                res.send({ "log": true, "favorite": favs })
+            }
+        } else res.send({ "log": false })
+    } catch (error) {
+        res.send({ error });
+    }
 
-main().catch(err => console.log(err));
-const db = mongoose.connection;
+})
 
+app.delete('/delete-user-reservation', async (req, res) => {
+    try {
 
-async function main() {
-    const password = process.env.MONGODB_PASSWORD
-    await mongoose.connect(`mongodb+srv://zmero123:${password}@cluster0.acxtd.mongodb.net/test`)
-}
-db.on("error", console.error.bind(console, "connection error:"));
-db.once("open", () => {
-    console.log("connected to DB!");
-});
-const kittySchema = new mongoose.Schema({
-    name: String
-});
+        const { userId, restId, id } = req.body
+        if (!userId || !restId || !id) throw "invalid fields"
+        const result = await Users.find({ "_id": userId });
+        if (result.length > 0) {
+            const check = await Reservations.find({ "userId": userId, "restId": restId, "_id": id })
+            if (check.length > 0) {
+                await Reservations.deleteOne({ "_id": id })
+                const reservation = await Reservations.find({ "userId": userId })
+                res.send({ "log": true, "delete": true, "reservations": reservation })
+            }
+            else res.send({ "log": true, "delete": false })
+        }
+        else res.send({ "log": false })
 
-//the collection
-const Kitten = mongoose.model('Kitten', kittySchema);
+    } catch (error) {
+        res.send({ error });
+    }
 
-const mitzy = new Kitten({ name: 'Mitzy' });
-//mitzy.save().then(res => { console.log(res) }).catch(err => console.log(err));
-async function getKitens() {
-    const kittens = await Kitten.find({ name: "Mitzy" });
-    console.log(kittens);
-}
+})
 
-getKitens();
+//listen
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })

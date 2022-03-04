@@ -3,13 +3,14 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios'
 
 interface Reservation {
-    id: string;
+    _id: string;
     hour: number;
     min: number;
     year: number;
     month: number;
     day: number;
     restId: string;
+    userId: string;
 }
 
 
@@ -40,9 +41,11 @@ export const fetchUserReservations = createAsyncThunk(
 
 export const cancelReservations = createAsyncThunk(
     'reservation/cancelReservations',
-    async (reserveationID: string, thunkAPI) => {
+    async (obj: any, thunkAPI) => {
         try {
-            const response = await axios.delete(`http://localhost:3004/Reservations/${reserveationID}`)
+            const { userId, id, restId } = obj
+            if (!userId || !id || !restId) throw 'invalid fields'
+            const response = await axios.delete(`/delete-user-reservation`, { data: { "userId": userId, "id": id, "restId": restId } })
             const data: any = response.data
             return data
         } catch (e) {
@@ -78,6 +81,24 @@ export const reservationReducer = createSlice({
                 state.status = 'loading';
             })
             .addCase(fetchUserReservations.fulfilled, (state, action) => {
+                if (action.payload.log === true) {
+                    state.status = 'idle';
+                    state.reservations = action.payload.reservations;
+                }
+            })
+            .addCase(AddReservation.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(AddReservation.fulfilled, (state, action) => {
+                if (action.payload.log === true) {
+                    state.status = 'idle';
+                    state.reservations = action.payload.reservations;
+                }
+            })
+            .addCase(cancelReservations.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(cancelReservations.fulfilled, (state, action) => {
                 if (action.payload.log === true) {
                     state.status = 'idle';
                     state.reservations = action.payload.reservations;

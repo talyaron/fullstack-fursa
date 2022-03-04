@@ -1,12 +1,11 @@
 import { RootState, AppThunk } from '../store';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios'
-import { useAppDispatch, useAppSelector } from '../hooks';
-import { selectUserId } from './userReducer';
+
 
 interface Favorite {
     restId: string;
-    id: number;
+    userId: string;
 }
 interface Favorites {
     arrOfFavorite: Array<Favorite>;
@@ -22,9 +21,8 @@ export const fetchUserFavorite = createAsyncThunk(
     'favorite/fetchUserFavorite',
     async (userId: string, thunkAPI) => {
         try {
-            const response = await axios.get('/get-user-favorite', { params: { user: userId } })
+            const response = await axios.get('/get-user-favorite', { params: { "userId": userId } })
             const data: any = response.data
-            console.log(data)
             return data
         } catch (e) {
             thunkAPI.rejectWithValue(e)
@@ -49,9 +47,11 @@ export const addFavorite = createAsyncThunk(
 
 export const deleteFavorite = createAsyncThunk(
     'favorite/deleteFavorite',
-    async (id: number | undefined, thunkAPI) => {
+    async (obj: any | undefined, thunkAPI) => {
         try {
-            const response = await axios.post(`/delete-user-favorite`)
+            const { userId, restId } = obj
+            if (!userId || !restId) throw console.error("invalid fields");
+            const response = await axios.delete(`/delete-user-favorite`, { data: { "userId": userId, "restId": restId } })
             const data: any = response.data
             return data
         } catch (e) {

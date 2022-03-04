@@ -6,6 +6,7 @@ import { cancelReservations, fetchUserReservations } from '../../../app/reducers
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarDays } from '@fortawesome/free-solid-svg-icons'
 import Button from '@mui/material/Button';
+import { selectUserId } from '../../../app/reducers/userReducer';
 interface cardProp {
     id: string;
     hour: number;
@@ -18,6 +19,7 @@ interface cardProp {
 
 function ReservationCard(props: cardProp) {
     const restaurants = useAppSelector(getAllRestaurants)
+    const userId = useAppSelector(selectUserId)
     const dispatch = useAppDispatch()
     const restaurant = restaurants.filter((rest, index) => {
         if (rest.id === props.restId)
@@ -25,7 +27,8 @@ function ReservationCard(props: cardProp) {
     })
     function CancelReserve(e: any) {
         e.preventDefault();
-        dispatch(cancelReservations(props.id))
+        console.log("ok")
+        dispatch(cancelReservations({ "id": props.id, "restId": props.restId, "userId": userId }))
     }
     let img = "";
     let title = ""
