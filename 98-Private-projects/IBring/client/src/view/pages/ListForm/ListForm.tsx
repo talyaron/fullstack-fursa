@@ -7,18 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { addMeetingDetails } from '../../../features/curListSelector/curListReducer';
 
-//URL.createObjectURL(selectedImage)
-
-interface listFormIF {
-    imgURL: any;
-    groupName: string;
-    meetType: string;
-    date: Date;
-    time: Date;
-    reminder: string;
-    place: string;
-    fewWords: string;
-}
+// import FileBase64 from 'react-file-base64';
 
 function ListForm() {
     const userLogin = useAppSelector(state => state.logged);

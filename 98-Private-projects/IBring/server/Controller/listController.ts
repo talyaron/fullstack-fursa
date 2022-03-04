@@ -37,23 +37,13 @@ exports.getListByUser = async (req, res) => {
         if (!_user) {
             res.send({ ok: false, message: "user doesn't exists!" });
         } else {
-            list.find({}, function (err, allLists) {
-                let listMap = [];
-                allLists.forEach(function (_list) {
-                    if (_list.meetingAdmin.email !== email) {
-                        const whoIsThereFound = _list.whoIsThere.filter(element => {
-                            if (element.email === email)
-                                return element;
-                        });
-                        if (JSON.stringify(whoIsThereFound) !== JSON.stringify([])) {
-                            listMap.push(_list);
-                        }
-                    } else {
-                        listMap.push(_list);
-                    }
-                });
-                res.send({ ok: true, lists: listMap });
-            });
+            const foundLists = await list.find({
+                $or: [
+                    { "meetingAdmin.email": email },
+                    { whoIsThere: { $elemMatch: { email: email } } }
+                ]
+            })
+            res.send({ ok: true, lists: foundLists });
         }
     } catch (err) {
         res.send({ ok: false, message: "Error!" });
@@ -111,7 +101,6 @@ exports.updateListByID = async (req, res) => {
     }
 }
 
-
 exports.updateFrindList = async (req, res) => {
     console.log("updateFrindList!");
     const { id, updatedList } = req.body;
@@ -129,5 +118,38 @@ exports.updateFrindList = async (req, res) => {
         }
     } catch (error) {
 
+    }
+}
+
+
+/**
+ * In database document looks like this:
+ * "postImg" : { "$binary" : "/9j/4AAQS.blaBla.long.binary.string.."}
+ * 
+ * Then on client:
+ * <img src={`data:image/png;base64,${props.postImgBase64}`} alt="a"/>
+ * 
+ * The image seems to be fetched as a node.js Buffer type, which is then encoded as an array of bytes and sent to client.
+ *  You need base64 string on the client.
+ * The easiest way to get there would be to convert buffer to base64 string on your backend, and then send that to client. Eg.
+ * 
+    const post = await getPostImgFromDatabase();
+    res.send({
+    ...post
+    postImgBase64: Buffer.from(post.postImg).toString('base64')
+    });
+ * 
+ */
+exports.testImageInsert = async (req, res) => {
+    console.log('get items')
+    const url = req.body;
+    try {
+        let newListUpdate = await list.findOneAndUpdate(
+            {},
+            { "meetingDetails.imgURL": url }
+        )
+        res.status(200).send(newListUpdate);
+    } catch (error) {
+        res.status(404).send({ message: error.message });
     }
 }

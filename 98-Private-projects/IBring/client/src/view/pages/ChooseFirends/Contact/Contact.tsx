@@ -18,12 +18,19 @@ function Contact() {
     const nav = useNavigate();
 
     const [contact, setContact] = useState([]);
-    const [selectedFriends, setSelectedFriends] = useState<Array<any>>([]);
+    const [selectedFriends, setSelectedFriends] = useState<Array<any>>([{ email: userLogin.value.email }]);
 
     useEffect(() => {
         axios.get("/user/getAllUsers").then(data => {
-            if (data.data.ok)
-                setContact(data.data.users);
+            if (data.data.ok) {
+                const { users } = data.data;
+                const found = users.filter((friend: any) => {
+                    if (friend.email !== userLogin.value.email) {
+                        return friend;
+                    }
+                })
+                setContact(found);
+            }
         })
     }, []);
 
@@ -67,7 +74,14 @@ function Contact() {
     function handleAddFriend(ev: any, elem: any) {
         ev.preventDefault();
         console.log("inside form!");
-        setSelectedFriends([...selectedFriends, elem]);
+        const found = selectedFriends.find(friend => {
+            if (Object.is(friend, elem)) {
+                return friend;
+            }
+        })
+        if (!found) {
+            setSelectedFriends([...selectedFriends, elem]);
+        }
     }
 
     return (

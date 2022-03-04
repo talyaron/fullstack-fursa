@@ -31,7 +31,7 @@ function FriendsInGroup() {
     }, [])
 
     useEffect(() => {
-        if(userLogin.status !== 'logged'){
+        if (userLogin.status !== 'logged') {
             nav('/login')
         }
     }, [userLogin])
@@ -48,15 +48,22 @@ function FriendsInGroup() {
             });
             const responseUpdate = await axios.patch('/meeting/updateFrindList', { id: curList.list, updatedList: selectedFriends });
             nav(`/list/${responseUpdate.data.list._id}`)
-        } catch (error:any) {
-            
+        } catch (error: any) {
+
         }
     }
 
     function handleAddFriend(ev: any, elem: any) {
         ev.preventDefault();
         console.log("inside form!");
-        setSelectedFriends([...selectedFriends, elem]);
+        const found = selectedFriends.find(friend => {
+            if (Object.is(friend, elem)) {
+                return friend;
+            }
+        })
+        if (!found) {
+            setSelectedFriends([...selectedFriends, elem]);
+        }
     }
 
     function handleHome(ev: any) {
@@ -66,18 +73,18 @@ function FriendsInGroup() {
 
     return (
         <div className="mainTemplate">
-           <div className="mainHeader withHome">
-                    <div className="homeDiv">
-                        <div className="homeLogo">
-                            <img onClick={handleHome} src={homeLogo} alt="" />
-                        </div>
-                        <div className="settingsLogo">
-                            {/* <img onClick={handleSettings} src={settings} alt="" /> */}
-                            <Sidebar />
-                        </div>
+            <div className="mainHeader withHome">
+                <div className="homeDiv">
+                    <div className="homeLogo">
+                        <img onClick={handleHome} src={homeLogo} alt="" />
                     </div>
-                    <img className='registerLogo listLogo' alt="" src={sentImage} />
+                    <div className="settingsLogo">
+                        {/* <img onClick={handleSettings} src={settings} alt="" /> */}
+                        <Sidebar />
+                    </div>
                 </div>
+                <img className='registerLogo listLogo' alt="" src={sentImage} />
+            </div>
             <div className="mainContent">
                 <label className='marginTitleNormal'></label>
                 <div className="whoIsThere">
@@ -95,25 +102,27 @@ function FriendsInGroup() {
                         })}
                     </div>
                 </div>
-                <div className="whoIsThere">
-                    <h3>add friends</h3>
-                    <form onSubmit={handleSendInvitation} className="friendsList">
-                        {contact.map((elem: any, index) => {
-                            return (
-                                <div key={index} className="contact">
-                                    <div className="img_name">
-                                        <img src={contactIcon} alt="" />
-                                        <label>{elem.email}</label>
+                {(curList.list.meetingAdmin.email !== userLogin.value.email) ? null :
+                    <div className="whoIsThere">
+                        <h3>add friends</h3>
+                        <form onSubmit={handleSendInvitation} className="friendsList">
+                            {contact.map((elem: any, index) => {
+                                return (
+                                    <div key={index} className="contact">
+                                        <div className="img_name">
+                                            <img src={contactIcon} alt="" />
+                                            <label>{elem.email}</label>
+                                        </div>
+                                        <button className='addFriend' onClick={(ev: any) => handleAddFriend(ev, elem)}>+</button>
+                                        {/* <div className="selectFriend">+</div> */}
                                     </div>
-                                    <button className='addFriend' onClick={(ev: any) => handleAddFriend(ev, elem)}>+</button>
-                                    {/* <div className="selectFriend">+</div> */}
-                                </div>
-                            );
-                        })}
+                                );
+                            })}
 
-                        <input className='templateButton' type="submit" value="Send the invitation" />
-                    </form>
-                </div>
+                            <input className='templateButton' type="submit" value="Send the invitation" />
+                        </form>
+                    </div>
+                }
             </div>
         </div >
     )
