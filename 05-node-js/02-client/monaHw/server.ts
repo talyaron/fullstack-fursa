@@ -95,6 +95,10 @@ const kittySchema = new mongoose.Schema({
   }
 });
 
+const orderSchema=new mongoose.Schema({
+
+});
+
 //the collection
 const Kitten = mongoose.model('Kitten', kittySchema);
 
