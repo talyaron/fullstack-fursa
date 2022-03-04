@@ -63,6 +63,12 @@ console.log(groupCourse.cost); // 'Silence'
 //     console.log(kittens);
 //     console.log(city)
 // }
+// async function getCourses(){
+//     const course =await Course.find({name:"group course"});
+//     const hours =await Course.find({hours:5});
+//     console.log(course);
+//     console.log(hours)
+// }
 function getKitens() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -75,24 +81,32 @@ function getKitens() {
         }
     });
 }
+function getCourses() {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const courses = yield Course.find({});
+            return courses;
+        }
+        catch (err) {
+            console.error(err);
+            return false;
+        }
+    });
+}
 app.get('/get-all-kitens', (req, res) => __awaiter(this, void 0, void 0, function* () {
     const kittens = yield getKitens();
     res.send({ kittens: kittens });
 }));
-function getCourses() {
-    return __awaiter(this, void 0, void 0, function* () {
-        const course = yield Course.find({ name: "group course" });
-        const hours = yield Course.find({ hours: 5 });
-        console.log(course);
-        console.log(hours);
-    });
-}
+app.get('/get-all-courses', (req, res) => __awaiter(this, void 0, void 0, function* () {
+    const courses = yield getCourses();
+    res.send({ courses: courses });
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/lama', (req, res) => {
     res.send("Hi,Lama");
 });
 // const routes = require('./routes/routes.js')(app, fs);
-const server = app.listen(4000, () => {
+const server = app.listen(4002, () => {
     console.log('listening on port %s...', server.address().port);
 });

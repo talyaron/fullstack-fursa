@@ -35,6 +35,7 @@ const kittySchema = new mongoose.Schema({
     }
   });
 
+
   const CourseSchema = new mongoose.Schema({
     name: String,
     cost:Number,
@@ -68,6 +69,13 @@ const kittySchema = new mongoose.Schema({
 //     console.log(city)
 // }
 
+// async function getCourses(){
+//     const course =await Course.find({name:"group course"});
+//     const hours =await Course.find({hours:5});
+//     console.log(course);
+//     console.log(hours)
+// }
+
   async function getKitens():Promise<any> {
     try{
      
@@ -79,18 +87,29 @@ const kittySchema = new mongoose.Schema({
     }
   }
 
+  async function getCourses():Promise<any> {
+    try{
+     
+    const courses = await Course.find({});
+    return courses;
+    } catch(err:any){
+      console.error(err)
+      return false;
+    }
+  }
+
   app.get('/get-all-kitens',async (req:any, res:any)=>{
     const kittens = await getKitens();
     res.send({kittens:kittens});
 })
 
+app.get('/get-all-courses',async (req:any, res:any)=>{
+  const courses = await getCourses();
+  res.send({courses:courses});
+})
 
-async function getCourses(){
-    const course =await Course.find({name:"group course"});
-    const hours =await Course.find({hours:5});
-    console.log(course);
-    console.log(hours)
-}
+
+
 
 
 app.use(bodyParser.json());
@@ -102,6 +121,6 @@ app.get('/lama',(req:any,res:any)=>{
 
 // const routes = require('./routes/routes.js')(app, fs);
 
-const server = app.listen(4000, () => {
+const server = app.listen(4002, () => {
     console.log('listening on port %s...', server.address().port);
 });
