@@ -6,10 +6,10 @@ import { Link } from 'react-router-dom';
 interface cardProp {
     name: string;
     description: string;
-    cost: string;
+    cost: number;
 }
 
-function offersCard(prop: cardProp) {
+function OffersCard(prop: cardProp) {
     return (
         <div className="offersCard">
         
@@ -23,4 +23,4 @@ function offersCard(prop: cardProp) {
 
     )
 }
-export default offersCard;
+export default OffersCard;

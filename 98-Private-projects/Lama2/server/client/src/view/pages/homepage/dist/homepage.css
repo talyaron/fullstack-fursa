@@ -9,6 +9,11 @@ div .firstP {
   margin-left: 100px;
   width: 60vw;
 }
+div .offersDiv {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(2, auto);
+}
 div .h {
   font-size: large;
   margin: 50px;
