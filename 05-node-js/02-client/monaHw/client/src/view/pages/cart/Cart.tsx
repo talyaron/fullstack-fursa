@@ -14,6 +14,8 @@ import {getCartAsync,order} from '../../../features/cart/cartSlice';
 import CircularProgress from '@mui/material/CircularProgress';
 import { set } from 'immer/dist/internal';
 import { display } from '@mui/system';
+import { Backdrop } from '@mui/material';
+import ChekOutOrder from '../checkOutOrder/CheckOutOrder';
 
 // interface cartProps {
 //     product: any;
@@ -28,6 +30,13 @@ function Cart(){
     // useEffect(()  => {
     // axios.get('http://localhost:3004/userOrder').then(({data})=> setOrder(data));
     // }, []);
+    const [open, setOpen] = useState(false);
+    const handleClose = () => {
+      setOpen(false);
+    };
+    const handleToggle = () => {
+      setOpen(!open);
+    };
     const dispatch = useAppDispatch();
     useEffect(()=>{
         dispatch(getCartAsync())
@@ -75,9 +84,17 @@ function Cart(){
                 }):  <div><CircularProgress color="secondary" />
                 </div>}
 
-                <Button variant="contained"  style={{ backgroundColor: 'rgb(47, 143, 90)'}} size="medium">
-                    <Link to="/cart/checkOutOrder"> order </Link>
+                <Button variant="contained"   onClick={handleToggle} style={{ backgroundColor: 'rgb(47, 143, 90)'}} size="medium">
+                    {/* <Link to="/cart/checkOutOrder"> order </Link> */}order
                 </Button>
+                <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={open}
+        onClick={handleClose}
+      >
+        {/* <CircularProgress color="inherit" /> */}
+        <ChekOutOrder></ChekOutOrder>
+      </Backdrop>
 
 
 

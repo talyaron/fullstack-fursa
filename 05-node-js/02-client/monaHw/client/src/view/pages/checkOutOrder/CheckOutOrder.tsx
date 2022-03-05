@@ -52,9 +52,7 @@ function handlepick()
        <Link to="/cart/checkOutOrder"> checkout  </Link>  
        
        </Button> 
-       <button onClick={handler}>
-         back to cart
-       </button>
+      
        </div>  
         </div>
     )

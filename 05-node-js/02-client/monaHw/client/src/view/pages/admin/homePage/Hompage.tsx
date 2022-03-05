@@ -1,10 +1,19 @@
 import './HomePage.scss'
 import axios from 'axios';
 import Button from '@mui/material/Button';
+import { Alert,Backdrop,Box, CircularProgress } from '@mui/material';
+import { useState } from 'react';
+import { ShowRaw } from '../ShowRaw';
   function HomePage()
 {
-  
-   
+    const [show,setShow]=useState('none')
+    const [open, setOpen] = useState(false);
+    const handleClose = () => {
+      setOpen(false);
+    };
+    const handleToggle = () => {
+      setOpen(!open);
+    };
     function handleSubmit(ev:any)
     {
         ev.preventDefault();
@@ -16,6 +25,7 @@ import Button from '@mui/material/Button';
       }).catch(err => {
         console.error(err);
       })
+      setShow('block')
 
 }
     function handleProductSubmit(ev:any)
@@ -43,7 +53,19 @@ import Button from '@mui/material/Button';
                         <Button type="submit" variant="contained" style={{backgroundColor: 'rgb(47, 143, 90)'}}size="medium">add
                         </Button>
                         </form>
+                        <Box sx={{ display:show }}>
+            <Alert  severity="success">item added successfully — check it out!</Alert></Box>
+            <Button variant="contained" style={{backgroundColor: 'rgb(47, 143, 90)'}}size="medium" onClick={handleToggle}>existing raw material</Button>
                 </div>
+                <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={open}
+        // onClick={handleClose}
+      >
+        {/* <CircularProgress color="inherit" /> */}
+        <button onClick={handleClose}>close</button>
+        <ShowRaw></ShowRaw>
+      </Backdrop>
                 <div className="homepage_body_products">
                     <h1>Wood Products</h1>
                 <form onSubmit={handleProductSubmit}>
