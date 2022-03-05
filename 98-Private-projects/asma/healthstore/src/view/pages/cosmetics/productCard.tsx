@@ -7,11 +7,11 @@ export interface ProductProps {
     name: string;
     id: number;
     img: string;
-   // text: string;
+    text: string;
 }
 
 function ProductCard(props: ProductProps){
-    const { name, id, img } = props;
+    const { name, id, img, text } = props;
     return(
         <div className="card">
         <Link to={`/cosmetics/${name}`}>
