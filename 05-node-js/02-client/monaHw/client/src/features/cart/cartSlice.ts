@@ -32,7 +32,7 @@ export const getCartAsync = createAsyncThunk(
   'order/fetshOrders',
   async (_, thunkApi) => {
     try {
-      const response = await axios.get('/get-orders')
+      const response = await axios.get('/get-order')
       const data = response.data
       return data
 

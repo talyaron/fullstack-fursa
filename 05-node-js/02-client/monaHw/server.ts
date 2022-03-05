@@ -57,15 +57,15 @@ app.post('/add-orders',(req,res)=>{
 
 })
 
-app.delete('/delete-order',(req,res)=>{
-  try{
-  axios.delete(`http://localhost:3004/userOrder`)
-  }
-  catch(error){
-    res.send({ error: error.message });
+// app.delete('/delete-order',(req,res)=>{
+//   try{
+//   axios.delete(`http://localhost:3004/userOrder`)
+//   }
+//   catch(error){
+//     res.send({ error: error.message });
 
-  }
-})
+//   }
+// })
 
 //mongoose
 const mongoose = require("mongoose");
@@ -160,7 +160,7 @@ app.post('/add-order',async (req,res)=>{
   try{
     const order=req.body;
     console.log(order)
-    const newOrder=new Order();
+    const newOrder=new Order(order);
     await newOrder.save().then((res)=>{
       console.log(res);
     });
@@ -168,6 +168,30 @@ app.post('/add-order',async (req,res)=>{
   }catch(error:any){
     res.status(400).send({error:error.message})
   }
+})
+app.get('/get-order',async (req,res)=>{
+  try{
+  const orders=await Order.find({});
+  // console.log(Raws)
+  res.status(200).send(orders)
+}
+catch (error) {
+  console.info(error);
+  res.send({ error });
+}
+
+})
+app.post('/delete-order',async(req,res)=>{
+  try{
+    const {id}=req.body;
+    const filter={_id:id};
+    let doc=await Order.deleteOne(filter);
+    res.send({ok:true,doc});
+  }catch(err){
+    console.error(err)
+    res.status(400).send({error:err.message})
+  }
+  
 })
 //console.log(process.env.USER);
 app.get('/',(req,res)=>{

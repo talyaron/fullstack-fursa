@@ -32,7 +32,10 @@ function Door()
         // let copy = Object.assign([], product);
         // copy.push(obj);
         // setProduct(copy);
-        axios.post('http://localhost:3004/userOrder',{"woodName":woodproname,"woodlength":form[0].value, "width":form[1].value, "thick":form[2].value, "color":form[3].value,"amount":form[4].value}).then(({data})=>console.log(data));
+        // axios.post('http://localhost:3004/userOrder',{"woodName":woodproname,"woodlength":form[0].value, "width":form[1].value, "thick":form[2].value, "color":form[3].value,"amount":form[4].value}).then(({data})=>console.log(data));
+        axios.post('/add-order',{woodName:woodproname,woodlength:form[0].value,width:form[1].value,"thick":form[2].value, "color":form[3].value,amount:form[4].value})
+        .then((res) => console.log(res))
+        .catch((err) => console.error(err));
         setShow('block')
 
     }
