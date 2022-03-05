@@ -7,12 +7,14 @@ import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Accident from './view/pages/accident/Accident';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
+          <Route path='/accidents' element={<Accident />} />
           <Route path="/" element={<App />} />
         </Routes>
       </BrowserRouter>

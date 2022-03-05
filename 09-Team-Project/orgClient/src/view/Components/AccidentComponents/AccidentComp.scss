@@ -1,0 +1,35 @@
+.AccidentCompContainer {
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px;
+    padding: 15px;
+    width: 90%;
+
+    .firstConnect {
+
+    }
+
+    .accidentDetails {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 55%;
+        height: 100%;
+        padding: 5px;
+
+        .targetName {
+            font-weight: bolder;
+            font-size: larger;
+        }
+
+        .accidentDetails_details {
+            font-weight: 400;
+        }
+    }
+
+    .notifications {
+
+    }
+}
