@@ -14,10 +14,11 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import { Button } from '@material-ui/core';
 import EventNoteTwoToneIcon from '@material-ui/icons/EventNoteTwoTone';
-import format from "date-fns/format";
-import getDay from "date-fns/getDay";
-import parse from "date-fns/parse";
-import startOfWeek from "date-fns/startOfWeek";
+import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
+// import format from "date-fns/format";
+// import getDay from "date-fns/getDay";
+// import parse from "date-fns/parse";
+// import startOfWeek from "date-fns/startOfWeek";
 import React, { useState, useEffect } from "react";
 import { Calendar, momentLocalizer, dateFnsLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
@@ -73,7 +74,7 @@ const localizer = momentLocalizer(moment);
 function CalendarFun() {
 
     const [newEvent, setNewEvent] = useState({ title: "", start: new Date(), end: new Date(), name: "", phone: "" });
-    const appointments = useAppSelector(selectAppointment);
+    let appointments = useAppSelector(selectAppointment);
     const dispatch = useAppDispatch();
 
     // const [arr, setArr] = useState([]);
@@ -117,9 +118,34 @@ function CalendarFun() {
     }, []);
 
 
+    async function handleDeleteEvent(){
+        //missing info
+        if (newEvent.name === "" || newEvent.phone === "" || newEvent.title === "") { alert("Your Info Is Incomplete!!"); return; }
+        
+        const result: appointment | undefined = appointments.find((appoint: appointment) =>
+            (new Date(appoint.start)).getFullYear() === newEvent.start.getFullYear() &&
+            (new Date(appoint.start)).getMonth() === newEvent.start.getMonth() &&
+            (new Date(appoint.start)).getDate() === newEvent.start.getDate() &&
+            (new Date(appoint.start)).getHours() === newEvent.start.getHours() && 
+            (new Date(appoint.end)).getMinutes() === newEvent.start.getMinutes()&&
+            appoint.name === newEvent.name &&
+            appoint.phone === newEvent.phone &&
+            appoint.title === newEvent.title )
+            
+        if (!result)
+            alert("There Is No Matching Appointment!!");
 
+        else {
+            alert("An Appointment Found!!");
+            console.log('deleted')
+            //console.log(newEvent.start)
+            const {data} = await axios.post('/delete-appointment',{ title: newEvent.title, start: newEvent.start, end: newEvent.end, name: newEvent.name, phone: newEvent.phone });
+            console.log(data);
+            dispatch(getAppointmentsAsyn());
+        }
+    }
 
-    function handleAddEvent() {
+    function handleAddEvent() {  
 
         //missing info
         if (newEvent.name === "" || newEvent.phone === "" || newEvent.title === "") { alert("Your Info Is Incomplete!!"); return; }
@@ -180,6 +206,7 @@ function CalendarFun() {
                     </div>
                     <DateTimePicker className="date" value={newEvent.start} onChange={(value) => setNewEvent({ ...newEvent, start: value, end: (new Date(value.getFullYear(), value.getMonth(), value.getDate(), value.getHours() + 1, value.getMinutes())) })} />
                     <Button className="button" onClick={handleAddEvent} startIcon={<EventNoteTwoToneIcon />} variant="contained" >Book Now!</Button>
+                    <Button className="button" onClick={handleDeleteEvent} startIcon={<DeleteOutlineIcon />} variant="contained" >Delete Appointment!</Button>
                 </div>
                 <div className="table">
                     <Calendar views={["month", "agenda"]} localizer={localizer} events={appointments} startAccessor="start" endAccessor="end" />

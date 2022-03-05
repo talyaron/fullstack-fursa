@@ -71,7 +71,7 @@ async function getAppointments(): Promise<any> {
     return appointments;
   } catch (err: any) {
     console.error(err)
-    return false
+    return false;
   }
 }
 
@@ -88,11 +88,28 @@ app.post('/add-appointment', (req, res) => {
     if (!appointment) throw new Error("No appointment in request");
     const event = new Appointment({ title: appointment.title, start: appointment.start, end: appointment.end, name: appointment.name, phone: appointment.phone });
     event.save();
-    res.send({ message: 'Done'! });
+    res.send({ message: 'Done' });
+  } catch (error) {
+    res.send({ error });
+  }
+}); 
+
+app.post('/delete-appointment',async (req, res)=>{
+  try {
+    const appointment = req.body;
+    if (!appointment) throw new Error("No appointment in request");
+    const filter = { title: appointment.title, start: appointment.start, end: appointment.end, name: appointment.name, phone: appointment.phone };
+    console.log(filter);
+    let doc = await Appointment.deleteOne(filter);
+    console.log('Deleted!!');
+    res.send({ message: 'Deleted' });
   } catch (error) {
     res.send({ error });
   }
 });
+
+
+
 
 
 app.listen(port, () => {
