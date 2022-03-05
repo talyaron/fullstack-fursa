@@ -156,6 +156,32 @@ catch (error) {
 }
 
 })
+app.patch('/update-raw',async(req,res)=>{
+  try{
+    console.log(req.body)
+    const{name,pricePerMeter,id}=req.body;
+    const filter={_id:id};
+    console.log(pricePerMeter)
+    const update={name:name,pricePerMeter:pricePerMeter}
+    let doc = await Raw.findOneAndUpdate(filter, update);
+    res.send({ ok: true, doc });
+  } catch (err) {
+    console.error(err);
+    res.status(400).send({ error: err.message });
+  }
+})
+app.post('/delete-raw',async (req,res)=>{
+  try{
+    const {id}=req.body;
+    const filter={_id:id};
+    console.log(filter)
+    let doc=await Raw.deleteOne(filter);
+    res.send({ok:true,doc});
+  }catch(err){
+    console.error(err)
+    res.status(400).send({error:err.message})
+  }
+})
 app.post('/add-order',async (req,res)=>{
   try{
     const order=req.body;
