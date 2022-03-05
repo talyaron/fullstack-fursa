@@ -36,25 +36,26 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.selectText = exports.update = exports.textSlice = exports.getJokeAsync = void 0;
+exports.selectTextStauts = exports.selectText = exports.update = exports.textReducer = exports.getJokeAsync = void 0;
 var toolkit_1 = require("@reduxjs/toolkit");
-var textApi_1 = require("./textApi");
+var helpApi_1 = require("./helpApi");
 var initialState = {
     text: 'starting...',
+    products: [],
     status: 'idle'
 };
 exports.getJokeAsync = toolkit_1.createAsyncThunk('text/fetchJoke', function () { return __awaiter(void 0, void 0, void 0, function () {
     var response;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, textApi_1.getJoke()];
+            case 0: return [4 /*yield*/, helpApi_1.getJoke()];
             case 1:
                 response = _a.sent();
                 return [2 /*return*/, response];
         }
     });
 }); });
-exports.textSlice = toolkit_1.createSlice({
+exports.textReducer = toolkit_1.createSlice({
     name: 'text',
     initialState: initialState,
     reducers: {
@@ -75,6 +76,7 @@ exports.textSlice = toolkit_1.createSlice({
         });
     }
 });
-exports.update = exports.textSlice.actions.update;
+exports.update = exports.textReducer.actions.update;
 exports.selectText = function (state) { return state.text.text; };
-exports["default"] = exports.textSlice.reducer;
+exports.selectTextStauts = function (state) { return state.text.status; };
+exports["default"] = helpReducer.reducer;

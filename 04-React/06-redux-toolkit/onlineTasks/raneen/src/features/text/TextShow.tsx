@@ -1,15 +1,14 @@
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import {selectText, selectImg} from './textSlice'; 
+import {selectText, selectTextStauts} from '../../app/reducers/textSlice'; 
 
 export default function TextShow() {
     const text = useAppSelector(selectText);
-    //const status = useAppSelector(selectTextStauts);
-    const img = useAppSelector(selectImg);
+    const status = useAppSelector(selectTextStauts);
 
   return (
-    <div className="text2">
-    <img src={img} alt="" />
+    <div className="outputBox">
      <h3>{text}</h3>
+     <h4>{status}</h4>
     </div>
   );
 }
