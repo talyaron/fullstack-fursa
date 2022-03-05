@@ -5,16 +5,12 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { selectedRecipe, updateFrom, updateRecipe, updateNew } from '../../features/item/itemSlice';
+import { selectedRecipe, updateFrom, updateRecipe, updateNew, updateSelectAsync } from '../../features/item/itemSlice';
 import { getMyRecipesAsync, myRecipes } from '../../features/myRecipes/MyRecipes';
 import { updateName } from '../../features/pgaeName/NamePage';
 
 export default function Recipes() {
-
-    //const [recipes, setRecipes] = useState([]);
-
     //Redux
-    //const recipe_ = useAppSelector(selectedRecipe);
     const dispatch = useAppDispatch();
     const myRecipe = useAppSelector(myRecipes);
 
@@ -22,18 +18,27 @@ export default function Recipes() {
         dispatch(getMyRecipesAsync());
     },[])
 
-    const imageClick = (recipe:any) => {
-        axios.patch('http://localhost:3004/select/1', {recipe, from:'myRecipe', isNew:false});
-        dispatch(updateRecipe(recipe));
-        dispatch(updateFrom('myRecipe'));
+    async function imageClick(recipe:any){
+        //axios.patch('http://localhost:3004/select/1', {recipe, from:'myRecipe', isNew:false});
+        
         dispatch(updateName('/User'))
+        try {
+            dispatch(updateSelectAsync({info:recipe, from:'myRecipe', isNew:false}))
+        } catch (error) {
+            console.error();
+        }
     } 
 
-    const addClick = () => {
-        axios.patch('http://localhost:3004/select/1', {recipe:{}, from: 'myRecipe', isNew: true});
-        dispatch(updateRecipe({}));
-        dispatch(updateFrom('myRecipe'));
-        dispatch(updateNew(true));
+    async function addClick(){
+        try {
+            dispatch(updateSelectAsync({info:{}, from:'myRecipe', isNew:true}))
+        } catch (error) {
+            console.error();
+        }
+        //axios.patch('http://localhost:3004/select/1', {recipe:{}, from: 'myRecipe', isNew: true});
+        // dispatch(updateRecipe({}));
+        // dispatch(updateFrom('myRecipe'));
+        // dispatch(updateNew(true));
     }
 
     return (

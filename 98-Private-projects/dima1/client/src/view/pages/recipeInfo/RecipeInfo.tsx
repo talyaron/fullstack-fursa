@@ -47,17 +47,10 @@ export default function RecipeInfo() {
     const dispatch = useAppDispatch();
     const recipe_ = useAppSelector(selectedRecipe);
     const from_ = useAppSelector(selectedFrom);
-    console.log(from_)
     const isNew = useAppSelector(selectedIsNew);
     const pageName = useAppSelector(selectPage);
 
     useEffect(() => {
-        // axios.get('http://localhost:3004/select/1').then(data => {
-        //     const recipe = data.data.recipe;
-        //     const from = data.data.from;
-        //     const isNew_ = data.data.isNew;
-        //     dispatch(getSelectAsync([recipe, from, isNew_]));
-        // })
         dispatch(getSelectAsync());
     }, [])
 

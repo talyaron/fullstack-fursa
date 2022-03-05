@@ -1,12 +1,17 @@
 import './LogIn.scss';
-import { styled } from '@mui/material/styles';
-import { Box, TextField } from "@mui/material";
+import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import { CssTextField } from '../../../App';
 import background from '../../images/background.jpg';
 import logo from '../../images/logo.jpg';
 
 function LogIn() {
+    let navigate = useNavigate();
+
+    function handleLogIn(ev:any){
+        ev.preventDefault();
+        navigate('MainScreen');
+    }
 
     return (
         <div className="logIn">
@@ -15,21 +20,24 @@ function LogIn() {
                 <img className="logo" src={logo} alt="" />
                 <h1>Welcome <br /> to Recipes App</h1>
                 <h3>Sign In</h3>
-                <Box component="form" sx={{ '& .MuiTextField-root': { m: 1 }, }}>
+                <form onSubmit={handleLogIn}>
                     <CssTextField label="E-mail Address" focused
+                        required
                         id="custom-css-outlined-input"
                         defaultValue=""
                         size="small" />
+                    <br />
+                    <br />
                     <CssTextField label="Password" focused
-                        id="custom-css-outlined-input"
+                        required
+                        id="custom-css-outlined-password-input"
                         defaultValue=""
+                        type="password"
                         size="small" />
                     <br />
                     <br />
-                    <Link to='MainScreen'>
-                        <button type="submit">Log In</button>
-                    </Link>
-                </Box>
+                    <button type="submit">Log In</button>
+                </form>
                 <br/>
                 <Link to='ResetPassword'>Forget Password ?</Link>
                 <p>New in Recipes App ? <Link to='SignUp'><span>Sign Up Now</span></Link></p>
