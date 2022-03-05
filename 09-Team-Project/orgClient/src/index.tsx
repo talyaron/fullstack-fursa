@@ -8,6 +8,7 @@ import * as serviceWorker from './serviceWorker';
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Accident from './view/pages/accident/Accident';
+import ProfileInfo from "./view/pages/profileInfo/profileInfo";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -16,6 +17,7 @@ ReactDOM.render(
         <Routes>
           <Route path='/accidents' element={<Accident />} />
           <Route path="/" element={<App />} />
+          <Route path="profileInfo" element={<ProfileInfo />} />
         </Routes>
       </BrowserRouter>
     </Provider>
