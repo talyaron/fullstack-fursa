@@ -8,7 +8,7 @@ export interface order {
   // thick: number;
   amount: number;
   price:number;
-  id: number;
+  // id: number;
   color?:string;
   width?:number;
   thick?:number;

@@ -74,7 +74,7 @@ function Cart(){
                 {orders.status!=='loading' ?
                 orders.orders.map((products: order, i: any) => {
 
-                    return <Product key={i} woodName={products.woodName} woodlength={products.woodlength}  amount={products.amount} price={products.price} id={products.id} color={products.color} width={products.width} thick={products.thick} doorType={products.doorType}/>
+                    return <Product key={products._id} woodName={products.woodName} woodlength={products.woodlength}  amount={products.amount} price={products.price} id={products.id} color={products.color} width={products.width} thick={products.thick} doorType={products.doorType}/>
                 }):  <div><CircularProgress color="secondary" />
                 </div>}
 
