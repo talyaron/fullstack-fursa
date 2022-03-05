@@ -31,7 +31,7 @@ export default function SchoolClasses() {
         dispatch(getSchoolTeachersAsync());
     }, []);
     const classes = useAppSelector(schoolClasses);
-    console.log(classes);
+    // console.log(classes);
     
     return (
 
@@ -57,7 +57,7 @@ export default function SchoolClasses() {
                         classes.map((classroom, index) => {
                             const { name, teacher } = classroom;
                             return (
-                                <Link to='/class'>
+                                <Link to='/class' key={index}>
                                     <ClassCard key={index} info={classroom} />
                                 </Link>
 

@@ -117,7 +117,9 @@ export default function ClassTabsBar() {
 
     useEffect(() => {
         axios.get(`http://localhost:3004/schoolClasses?name=${className}`)
-            .then(({ data }) => setClassId(data[0].id));
+            .then(({ data }) => {
+                setClassId(data[0].id)
+            });
     }, [])
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -192,7 +194,7 @@ export default function ClassTabsBar() {
                     <NewCourseDialog open={openCourseDialog} setOpen={setOpenCourseDialog} />
 
                     <div className="coursesWrapper">
-                        {
+                        {   
                             courses.map((course, i) => {
                                 const { name, teacher } = course;
                                 return (

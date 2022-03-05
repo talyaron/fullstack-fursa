@@ -56,8 +56,15 @@ export default function NewClass() {
     }
 
     function addNewClass() {
-        axios.post('http://localhost:3004/schoolClasses', { 'name': className, 'teacher': teacherName })
-            .then(({ data }) => console.log(data));
+        // axios.post('http://localhost:3004/schoolClasses', { 'name': className, 'teacher': teacherName })
+        //     .then(({ data }) => console.log(data));
+
+        axios.post('/add-class', { name: className, teacher: teacherName })
+            .then(data => {
+                console.log(data);
+            }).catch(err => {
+                console.error(err)
+            })
     }
 
     return (
