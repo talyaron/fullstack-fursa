@@ -1,0 +1,97 @@
+.wrapper {
+    margin: auto;
+    color: #b5739d;
+    font-style: italic;
+    height: fit-content;
+
+    .menuBar {
+        width: 100vw;
+        display: flex;
+    }
+
+    .contentBox {
+        position: relative;
+        overflow: hidden;
+
+        .image {
+            position: absolute;
+            opacity: 40%;
+            width: 100%;
+            height: 100%;
+        }
+
+        .content {
+            width: 100vw;
+            position: relative;
+
+            .title1 {
+                margin-top: 70px;
+                margin-left: 50px;
+            }
+
+            .content1 {
+                height: 40vh;
+                width: 80vw;
+                margin: auto;
+
+                .swiper {
+                    width: 100%;
+                    height: 100%;
+                    --swiper-navigation-size: 35px;
+                    --swiper-theme-color: #b5739d;
+
+                    .swiper-slide {
+                        height: 80%;
+                        text-align: center;
+                        font-size: 18px;
+                        background: rgb(230, 208, 222);
+    
+                        /* Center slide text vertically */
+                        display: -webkit-box;
+                        display: -ms-flexbox;
+                        display: -webkit-flex;
+                        display: flex;
+                        flex-direction: column;
+                        -webkit-box-pack: center;
+                        -ms-flex-pack: center;
+                        -webkit-justify-content: center;
+                        justify-content: center;
+                        -webkit-box-align: center;
+                        -ms-flex-align: center;
+                        -webkit-align-items: center;
+                        align-items: center;
+    
+                        a{
+                            height: 70%;
+                            width: 100%;
+                            img {
+                                height: 100%;
+                                width: 100%;
+                            }
+                        }
+    
+                        img {
+                            margin: auto;
+                            height: 70%;
+                            width: 100%;
+                        }
+                        
+                        &:hover{
+                            box-shadow: 5px 5px #b5739d;
+                        }
+                    }
+
+                    .swiper-button-next{
+                        color: #b5739d;
+                    }
+
+                    .swiper-button-prev{
+                        color: #b5739d;
+                    }
+                }
+
+            }
+
+        }
+    }
+}
