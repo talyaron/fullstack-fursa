@@ -16,7 +16,7 @@ import { useNavigate } from "react-router";
 import Tooltip from '@mui/material/Tooltip';
 import axios from 'axios';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { selectedRecipe, selectedFrom, selectedIsNew, updateRecipe, getSelectAsync } from '../../features/item/itemSlice';
+import { selectedRecipe, selectedFrom, selectedIsNew, updateRecipe, getSelectAsync, updateSelectAsync } from '../../features/item/itemSlice';
 import { addToMyRecipe } from '../../features/myRecipes/MyRecipes';
 import { selectPage, updateName } from '../../features/pgaeName/NamePage';
 import { updateTopRecipes } from '../../features/topRecipes/TopRecipes';
@@ -91,7 +91,7 @@ export default function NewRecipe() {
         dispatch(getSelectAsync())
     }, [])
 
-    if (from === 'myRecipe' && isNew)
+    if (from === 'userRecipes' && isNew)
         to = '/User';
     else to = '/RecipeInfo';
 
@@ -122,22 +122,27 @@ export default function NewRecipe() {
     }
 
     function handleSave(ev:any) {
-        dispatch(updateRecipe(recipe))
+        ev.preventDefault();
+        //dispatch(updateRecipe(recipe))
         if (to === '/User') {
-            axios.post('add-new-userRecipe', recipe_);
+            axios.post('/add-new-userRecipe', recipe_);
             //dispatch(addToMyRecipe(recipe_));
         }
         else {
             //add a action to udpate a recipe in the array
-            axios.put('http://localhost:3004/' + `${from}` + '/' + `${recipe_.id}`, recipe);
-            axios.patch('http://localhost:3004/select/1', { recipe });
-            dispatch(updateRecipe(recipe))
-            if (from === 'top10')
-                dispatch(updateTopRecipes([recipe, recipe.id]))
-            else if (from === 'recent')
-                dispatch(updateRecent([recipe, recipe.id]))
-            else dispatch(updateMyRecipe([recipe, recipe.id]))
+            console.log(recipe_)
+            //axios.put('http://localhost:3004/' + `${from}` + '/' + `${recipe_.id}`, recipe);
+            axios.patch('/edit-select-recipe', recipe_);
+            axios.put(`/edit-${from}`, recipe_)
+            dispatch(updateSelectAsync({info:recipe_, from:from, isNew:isNew}))
+            //dispatch(updateRecipe(recipe))
+            // if (from === 'top10')
+            //     dispatch(updateTopRecipes([recipe, recipe.id]))
+            // else if (from === 'recent')
+            //     dispatch(updateRecent([recipe, recipe.id]))
+            // else dispatch(updateMyRecipe([recipe, recipe.id]))
         }
+        navigate(to);
     }
 
     function handleTo() {
@@ -156,18 +161,21 @@ export default function NewRecipe() {
                         <ArrowBackSharpIcon sx={{ color: '#b5739d', fontSize: 30 }} onClick={handleTo} />
                     </Link>
 
-                    <Box className='box' component="form"
+                    {/* <Box className='box' component="form"
                         sx={{ '& .MuiTextField-root': { m: 1 }, }}
                         autoComplete="off"
                         onSubmit={handleSave}
-                    >
+                    > */}
+                    <form className='box' onSubmit={handleSave}>
                         <div className="save">
                             <Tooltip title='save'>
-                                <Link to={to}>
+                                {/* <Link to={to}> */}
+                                <button type='submit'>
                                     <BookmarkAddIcon sx={{
                                         color: '#b5739d', fontSize: 35
-                                    }} type="submit" />
-                                </Link>
+                                    }} />
+                                </button>
+                                {/* </Link> */}
                             </ Tooltip>
                         </div>
                         <Standard id="standard-basic" variant="standard"
@@ -263,7 +271,8 @@ export default function NewRecipe() {
                             //maxRows={50}
                             />
                         </div>
-                    </Box>
+                    </form>
+                    {/* </Box> */}
                 </div>
             </div>
         </div>

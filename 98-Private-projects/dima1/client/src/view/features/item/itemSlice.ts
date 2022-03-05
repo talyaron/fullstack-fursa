@@ -50,7 +50,7 @@ export const updateSelectAsync = createAsyncThunk(
   'updateRecipe/fetchSet',
   async (recipeInfo:any, thunkAPI) => {
     try {
-      const response = await axios.patch('/update-select-recipe', {info:recipeInfo.info, from:recipeInfo.from, isNew:recipeInfo.isNew});
+      const response = await axios.post('/update-select-recipe', {info:recipeInfo.info, from:recipeInfo.from, isNew:recipeInfo.isNew});
       const data = response.data;
       return data;
     } catch (error: any) {
@@ -82,6 +82,7 @@ export const itemReducer = createSlice({
         state.isNew = action.payload.isNew_;
       })
       .addCase(updateSelectAsync.fulfilled, (state, action) => {
+        console.log(action.payload)
         state.info = action.payload.info;
         state.from = action.payload.from;
         state.isNew = action.payload.isNew_;

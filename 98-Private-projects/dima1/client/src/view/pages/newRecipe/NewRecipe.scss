@@ -40,6 +40,13 @@
                 padding-top: 40px;
                 color: #b5739d;
 
+                .save{
+                    button{
+                        background: none;
+                        border: none;
+                    }
+                }
+
                 .info1 {
                     width: 90%;
                     display: grid;
@@ -75,11 +82,6 @@
                             height: 30px;
                             margin: auto;
                         }
-
-                        // img{
-                        //     width: 70%;
-                        //     height: 50%;
-                        // }
                     }
 
                     .by {
@@ -101,6 +103,7 @@
                 .info2 {
                     width: 90%;
                     display: grid;
+                    column-gap: 20px;
                     margin: auto;
                     grid-template-columns: repeat(5, 1fr);
 

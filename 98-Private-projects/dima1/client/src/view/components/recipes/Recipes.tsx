@@ -18,20 +18,19 @@ export default function Recipes() {
         dispatch(getMyRecipesAsync());
     },[])
 
-    async function imageClick(recipe:any){
-        //axios.patch('http://localhost:3004/select/1', {recipe, from:'myRecipe', isNew:false});
+    function imageClick(recipe:any){
         
         dispatch(updateName('/User'))
         try {
-            dispatch(updateSelectAsync({info:recipe, from:'myRecipe', isNew:false}))
+            dispatch(updateSelectAsync({info:recipe, from:'userRecipes', isNew:false}))
         } catch (error) {
             console.error();
         }
     } 
 
-    async function addClick(){
+    function addClick(){
         try {
-            dispatch(updateSelectAsync({info:{}, from:'myRecipe', isNew:true}))
+            dispatch(updateSelectAsync({info:{}, from:'userRecipes', isNew:true}))
         } catch (error) {
             console.error();
         }
@@ -55,7 +54,7 @@ export default function Recipes() {
             {myRecipe.map((recipe:any, index:number) => {
                 return(<div key={index} className="item">
                         <Link to='/RecipeInfo'>
-                            <div className='itemImg'><img src={recipe.image} alt="" onClick={() => imageClick(recipe)}/></div>
+                            <div className='itemImg' onClick={() => imageClick(recipe)}><img src={recipe.image} alt=""/></div>
                         </Link>
                         <div className='title'><p>{recipe.name}</p></div>
                     </div>);

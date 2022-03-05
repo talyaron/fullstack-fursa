@@ -71,7 +71,7 @@ export default function MainScreen() {
                             className="mySwiper"
                         >
                             {top10.map((recipe:any, index:number) => {
-                                return(<SwiperSlide key={index} onClick={(ev:any) => imageClick(recipe, 1)}>
+                                return(<SwiperSlide key={index} onClick={() => imageClick(recipe, 1)}>
                                     <Link to='/RecipeInfo'>
                                         <img src={recipe.image} alt=''/>
                                     </Link>
