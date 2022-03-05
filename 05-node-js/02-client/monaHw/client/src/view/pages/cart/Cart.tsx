@@ -23,7 +23,7 @@ import { display } from '@mui/system';
 function Cart(){
     // const { product, setProduct } = props;
     //console.log(product)
-    //     const [order,setOrder]=useState([]);
+    //const [order,setOrder]=useState([]);
 
     // useEffect(()  => {
     // axios.get('http://localhost:3004/userOrder').then(({data})=> setOrder(data));
@@ -37,9 +37,6 @@ function Cart(){
     //     axios.get('http://localhost:3004/userOrder').then(({ data }) => dispatch(update(data)));
     // }, []);
     const orders = useAppSelector(selectorders);
-//    useEffect(()=>{
-//        orders.orders
-//    },[]);
 
     return (
 
