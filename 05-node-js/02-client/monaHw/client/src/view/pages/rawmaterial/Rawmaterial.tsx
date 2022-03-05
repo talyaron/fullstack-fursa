@@ -49,8 +49,8 @@ const raws=useAppSelector(selectRow);
         <div className="RawMaterial_body">
        {raws.status!=='loading'?
         raws.raws.map((wood, index)=>{
-          const{name,imgurl,pricePerMeter}=wood;
-          return <Card key={index} wood={{name,imgurl,pricePerMeter}}/>
+          const{name,imageUrl,pricePerMeter}=wood;
+          return <Card key={index} wood={{name,imageUrl,pricePerMeter}}/>
           
         }):<div><CircularProgress color="secondary" />
         </div>}

@@ -101,10 +101,23 @@ imageUrl:String,
 pricePerMeter:Number,
 
 });
+const OrderSchema=new mongoose.Schema({
+  woodName: String,
+  woodlength: Number,
+  amount: Number,
+  price:Number,
+  id: Number,
+  color:String,
+  width:Number,
+  thick:Number,
+  doorType:String,
+});
 
 //the collection
 const Kitten = mongoose.model('Kitten', kittySchema);
 const Raw=mongoose.model('Raw',RawSchema)
+const Order=mongoose.model('Order',OrderSchema)
+
 const mitzy = new Kitten({ name: 'Mitzy' ,address:{city:"Nazareth"}});
 // console.log(mitzy.name);
 // mitzy.save()
@@ -132,8 +145,29 @@ app.post('/add-Raw-Material',async (req,res)=>{
   }
 })
 app.get('/get-Raw-Material',async (req,res)=>{
+  try{
   const Raws=await Raw.find({});
-  
+  // console.log(Raws)
+  res.status(200).send(Raws)
+}
+catch (error) {
+  console.info(error);
+  res.send({ error });
+}
+
+})
+app.post('/add-order',async (req,res)=>{
+  try{
+    const order=req.body;
+    console.log(order)
+    const newOrder=new Order();
+    await newOrder.save().then((res)=>{
+      console.log(res);
+    });
+    res.send({val:"OK"})
+  }catch(error:any){
+    res.status(400).send({error:error.message})
+  }
 })
 //console.log(process.env.USER);
 app.get('/',(req,res)=>{

@@ -4,7 +4,7 @@ import axios from 'axios'
 
 interface Raw{
     name:string;
-    imgurl:string;
+    imageUrl:string;
     pricePerMeter:number;
 }
 export interface rawState{
@@ -20,7 +20,7 @@ const initialState: rawState = {
     'raw/fetshRaws',
     async (_, thunkApi) => {
       try {
-        const response = await axios.get('/get-raws')
+        const response = await axios.get('/get-Raw-Material')
         const data = response.data
         return data
   
