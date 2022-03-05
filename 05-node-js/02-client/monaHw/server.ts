@@ -118,9 +118,10 @@ app.get('/get-all-kittens',async (req,res)=>{
   res.send(kittens);
 })
 
-app.post('add-Raw-Material',async (req,res)=>{
+app.post('/add-Raw-Material',async (req,res)=>{
   try{
     const raw=req.body;
+    console.log(raw)
     const newRaw=new Raw(raw);
     await newRaw.save().then((res)=>{
       console.log(res);
@@ -129,6 +130,10 @@ app.post('add-Raw-Material',async (req,res)=>{
   }catch(error:any){
     res.status(400).send({error:error.message})
   }
+})
+app.get('/get-Raw-Material',async (req,res)=>{
+  const Raws=await Raw.find({});
+  
 })
 //console.log(process.env.USER);
 app.get('/',(req,res)=>{
