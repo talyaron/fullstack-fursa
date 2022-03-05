@@ -10,7 +10,7 @@ app.use(express.static("client/build"));
 
 const mongoose = require('mongoose');
 const internal = require('stream');
-
+app.use(express.json());
 
 main().catch(err => console.log(err));
 
@@ -29,10 +29,13 @@ db.once("open", () => {
 });
 
 const kittySchema = new mongoose.Schema({
+    // name: String,
+    // address:{
+    //     city:String
+    // }
     name: String,
-    address:{
-        city:String
-    }
+    city: String,
+    street: String,
   });
 
 
@@ -45,6 +48,7 @@ const kittySchema = new mongoose.Schema({
   });
 
   const Kitten = mongoose.model('Kitten', kittySchema);
+  //the collection
   const Course = mongoose.model('Course', CourseSchema);
 
   const gucci = new Kitten({
@@ -109,7 +113,26 @@ app.get('/get-all-courses',async (req:any, res:any)=>{
 })
 
 
-
+app.post("/add-new-course", async (req, res) => {
+  try {
+    const { name, cost, participants,lessons,hours } = req.body;
+    if (!name || !cost || !participants || !lessons || !hours) throw new Error("No data");
+    console.log(name);
+    const newCourse = new Course({
+      name: name,
+      cost: cost,
+      participants: participants,
+      lessons:lessons,
+      hours:hours,
+    });
+    await newCourse.save().then((res) => {
+      console.log(res);
+    });
+    res.send({ val: "OK" });
+  } catch (err) {
+    res.send({ error: err.message });
+  }
+});
 
 
 app.use(bodyParser.json());
@@ -121,6 +144,6 @@ app.get('/lama',(req:any,res:any)=>{
 
 // const routes = require('./routes/routes.js')(app, fs);
 
-const server = app.listen(4002, () => {
+const server = app.listen(4010, () => {
     console.log('listening on port %s...', server.address().port);
 });
