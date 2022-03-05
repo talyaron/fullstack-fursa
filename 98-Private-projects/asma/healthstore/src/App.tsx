@@ -12,6 +12,7 @@ import Treatment from "./view/pages/treatment/treatment";
 import {TreatmentInt} from "./view/pages/treatment/treatment";
 import CalendarFun from "./view/pages/calendar/calendar";
 import Navbar from "./view/components/navbar/Navbar";
+import ProfileInfo from "./view/pages/profileInfo/profileInfo";
 
 
 function App() {
@@ -51,6 +52,8 @@ function App() {
         <Route path="facial%20treatment" element={<Treatment id={facial.id} name={facial.name} img={facial.img} text={facial.text} />} />
         <Route path="hopi%20candles" element={<Treatment id={candles.id} name={candles.name} img={candles.img} text={candles.text} />} />
         <Route path="calendar" element={<CalendarFun />} />
+        <Route path="profileInfo" element={<ProfileInfo />} />
+        
       </Routes>
     </BrowserRouter>
   );
