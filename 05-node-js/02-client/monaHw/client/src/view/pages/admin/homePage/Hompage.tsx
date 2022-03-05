@@ -9,8 +9,10 @@ import Button from '@mui/material/Button';
     {
         ev.preventDefault();
         const form = ev.target;
-    axios.post('http://localhost:3004/woods',{"name":form[0].value, "imgurl":form[1].value,"pricePerMeter":form[2].value}).then(({data})=>console.log(data));
-    }
+    // axios.post('http://localhost:3004/woods',{"name":form[0].value, "imgurl":form[1].value,"pricePerMeter":form[2].value}).then(({data})=>console.log(data));
+    axios.post('add-Raw-Material',{name:form[0].value,imageUrl:form[1].value,pricePerMeter:form[2].value})
+
+}
     function handleProductSubmit(ev:any)
     {
         ev.preventDefault();
