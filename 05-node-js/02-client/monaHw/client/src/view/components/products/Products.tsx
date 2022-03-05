@@ -31,11 +31,10 @@ export interface productProp{
      const {woodName,woodlength,amount,color,id,price,width,thick,doorType}=prop;
      
      const dispatch=useAppDispatch();
-     async function RemoveHandler()
+     async function RemoveHandler(id:any)
      {
         //  const obj={"productId":id}
-        // const {data}=await axios.post('/delete-order',{id:id})
-        // axios.delete('/delete-order')
+        const {data}=await axios.post('/delete-order',{id:id})
         // .then((res) => console.log(res))
         // .catch((err) => console.error(err));
         // axios.delete(`http://localhost:3004/userOrder/${id}`).then(({data})=>dispatch(getCartAsync()));
@@ -50,7 +49,7 @@ export interface productProp{
            <div className="item">{price}₪</div>
            <div className="item">{amount*price}₪</div>
 
-           <Button onClick={()=>RemoveHandler()} type="submit" variant="contained" style={{backgroundColor: 'rgb(248, 140, 38) '}} size="small">
+           <Button onClick={()=>RemoveHandler(id)} type="submit" variant="contained" style={{backgroundColor: 'rgb(248, 140, 38) '}} size="small">
           remove
        </Button>
 

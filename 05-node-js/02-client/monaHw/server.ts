@@ -185,6 +185,7 @@ app.post('/delete-order',async(req,res)=>{
   try{
     const {id}=req.body;
     const filter={_id:id};
+    console.log(filter)
     let doc=await Order.deleteOne(filter);
     res.send({ok:true,doc});
   }catch(err){
