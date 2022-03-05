@@ -38,6 +38,21 @@ const userRoutes = (app, fs) => {
         res.send({Name:'Elias from server'});
 
     });
+    app.get('/users/:id', (req, res) => {
+
+        readFile(data => {
+
+            // add the new user
+            const userId = req.params["id"];
+            data[userId] = req.body;
+
+            writeFile(JSON.stringify(data, null, 2), () => {
+                res.status(200).send(`users id:${userId} updated`);
+            });
+        },
+            true);
+    });
+    
 
     // CREATE
     app.post('/users', (req, res) => {
