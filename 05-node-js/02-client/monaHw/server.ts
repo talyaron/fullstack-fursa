@@ -95,13 +95,16 @@ const kittySchema = new mongoose.Schema({
   }
 });
 
-const orderSchema=new mongoose.Schema({
+const RawSchema=new mongoose.Schema({
+name:String,
+imageUrl:String,
+pricePerMeter:Number,
 
 });
 
 //the collection
 const Kitten = mongoose.model('Kitten', kittySchema);
-
+const Raw=mongoose.model('Raw',RawSchema)
 const mitzy = new Kitten({ name: 'Mitzy' ,address:{city:"Nazareth"}});
 // console.log(mitzy.name);
 // mitzy.save()
