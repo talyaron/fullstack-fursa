@@ -1,0 +1,14 @@
+.nav{
+    background-color: rgba(17, 0, 255, 0.712);
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+    margin-top: 20px;
+
+    button{
+        font-weight: bold;
+    }
+}
