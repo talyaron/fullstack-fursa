@@ -28,7 +28,7 @@ export const getUserInfoAsync = createAsyncThunk(
     'user/GetUserInfo',
     async (user: any, thunkAPI) => {
         try {
-            const response = await axios.get('/get-user', { params: user })
+            const response = await axios.get('/users/get-user', { params: user })
             const data: any = response.data
             return data
         } catch (e) {
@@ -42,7 +42,7 @@ export const signUpUser = createAsyncThunk(
     'user/signUpUser',
     async (user: any, thunkAPI) => {
         try {
-            const response = await axios.post('/sign-up', user)
+            const response = await axios.post('/users/sign-up', user)
             const data: any = response.data
             return data
         } catch (e) {

@@ -29,7 +29,7 @@ export const fetchUserReservations = createAsyncThunk(
     'reservation/fetchUserReservations',
     async (userId: string, thunkAPI) => {
         try {
-            const response = await axios.get('/get-user-reservations', { params: { "userId": userId } })
+            const response = await axios.get('/reservations/get-user-reservations', { params: { "userId": userId } })
             const data: any = response.data
             return data
         } catch (e) {
@@ -45,7 +45,7 @@ export const cancelReservations = createAsyncThunk(
         try {
             const { userId, id, restId } = obj
             if (!userId || !id || !restId) throw 'invalid fields'
-            const response = await axios.delete(`/delete-user-reservation`, { data: { "userId": userId, "id": id, "restId": restId } })
+            const response = await axios.delete(`/reservations/delete-user-reservation`, { data: { "userId": userId, "id": id, "restId": restId } })
             const data: any = response.data
             return data
         } catch (e) {
@@ -59,7 +59,7 @@ export const AddReservation = createAsyncThunk(
     'reservation/AddReservation',
     async (Reserve: any, thunkAPI) => {
         try {
-            const response = await axios.post(`add-user-reservation`, Reserve)
+            const response = await axios.post(`/reservations/add-user-reservation`, Reserve)
             const data: any = response.data
             return data
         } catch (e) {

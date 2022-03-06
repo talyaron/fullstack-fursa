@@ -34,7 +34,7 @@ export const fetchAllRestaurants = createAsyncThunk(
     'fetchRestaurants',
     async (_, thunkAPI) => {
         try {
-            const response = await axios.get('/get-all-restaurants')
+            const response = await axios.get('/restaurants/get-all-restaurants')
             const data: any = response.data
             const { resteraunt } = data;
             return resteraunt
@@ -49,7 +49,7 @@ export const fetchFamousRestaurants = createAsyncThunk(
     'fetchFamousRestaurants',
     async (region: string) => {
         try {
-            const response = await axios.get('/get-all-restaurants')
+            const response = await axios.get('/restaurants/get-all-restaurants')
             const data: any = response.data
             const { resteraunt } = data;
             return resteraunt.filter((rest: Restaurant) => {
