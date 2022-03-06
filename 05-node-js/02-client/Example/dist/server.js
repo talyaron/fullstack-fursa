@@ -1,4 +1,3 @@
-"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -8,11 +7,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
 const app = express();
 const port = 4000;
-require("dotenv").config();
+require('dotenv').config();
 //routes for data
 //static files
 app.use(express.static("client/build"));
@@ -43,62 +41,13 @@ db.once("open", () => {
     console.log("connected to DB!");
 });
 const kittySchema = new mongoose.Schema({
-    name: String,
-    address: {
-        city: String
-    },
-    lifes: Number,
-    extraLife: Boolean
+    name: String
 });
 //the collection
-const Kitten = mongoose.model("Kitten", kittySchema);
-const mitzy = new Kitten({
-    name: "Mitzy4",
-    address: {
-        city: "Um al fahm",
-        street: "Jaberin"
-    },
-    lifes: 9
-});
+const Kitten = mongoose.model('Kitten', kittySchema);
+const mitzy = new Kitten({ name: 'Mitzy' });
 console.log(mitzy.name);
-// mitzy.save().then(res=>{console.log(res)}).catch(err=>console.log(err));
-function getKitens() {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            const nameRegEx = new RegExp('hu', 'i');
-            const kittens = yield Kitten.find({ name: {
-                    $regex: nameRegEx
-                } });
-            console.log(kittens);
-            return kittens;
-        }
-        catch (err) {
-            console.error(err);
-            return false;
-        }
-    });
-}
-function aggragateKittensLives() {
-    return __awaiter(this, void 0, void 0, function* () {
-        const filter = { extraLife: true };
-        let docs = yield Kitten.aggregate([
-            { $match: filter },
-            { $group: {
-                    _id: '$extraLife',
-                    numberOfCats: { $sum: 1 },
-                    count: { $sum: '$lifes' },
-                    avg: { $avg: '$lifes' }
-                } }
-        ]);
-        console.log('----');
-        console.log(docs);
-    });
-}
-aggragateKittensLives();
-app.get('/get-all-kitens', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const kittens = yield getKitens();
-    res.send(kittens);
-}));
+// mitzy.save().then(res=>{console.log(res)});
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 });

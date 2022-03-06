@@ -1,0 +1,15 @@
+.App{
+    margin: auto;
+    .circle{
+        display: flex;
+        width: 200px;
+        border-radius: 50%;
+        border: 2px solid black;
+        height: 200px;
+
+        button{
+            width: fit-content;
+            height: fit-content;
+        }
+    }    
+}

@@ -1,6 +1,7 @@
 import './TelAviv.scss';
 import { useEffect, useState } from 'react';
 import Card from '../../component/card/Card';
+import Home from '../Home/Home';
 
 interface weather {
     current: { temperature: number; };
@@ -13,7 +14,14 @@ function TelAviv() {
 
     // }, [])
     return (
-        <Card query="query=Tel Aviv" />
+
+        <div>
+            <Home/>
+            <div>
+                <Card query="query=Tel Aviv" />
+            </div>
+        </div>
+
     );
 }
 
