@@ -21,7 +21,7 @@ function App() {
   return(
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} />
+        <Route path="/" element={<Page1 setState={setState} state={state}  />} />
         <Route path="page1" element={<Page1 setState={setState} state={state} />} />
         <Route path="page2" element={<Page2 setState={setState} state={state} />} />
       </Routes>
@@ -38,7 +38,7 @@ export default App;
 
         return <Card key={index} info={{name, place, img}}/>
       })} */
-
+//<Route path="/" element={<App />} />
 
 
 
