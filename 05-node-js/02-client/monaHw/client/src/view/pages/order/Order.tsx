@@ -69,7 +69,7 @@ function Order() {
         // copy.push(obj);
         // setProduct(copy);
         // const orderObj={"woodName":name,"woodlength":form[0].value,"amount":form[1].value,"price":pricePerMeter};
-        axios.post('/add-order',{woodName:name,woodlength:form[0].value,amount:form[1].value,price:pricePerMeter})
+        axios.post('/order/add-order',{woodName:name,woodlength:form[0].value,amount:form[1].value,price:pricePerMeter})
         .then((res) => console.log(res))
         .catch((err) => console.error(err));
         // axios.post('http://localhost:3004/userOrder',{"woodName":name,"woodlength":form[0].value,"amount":form[1].value,"price":pricePerMeter}).then(({data})=>dispatch(getCartAsync()));

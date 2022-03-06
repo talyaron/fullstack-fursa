@@ -2,6 +2,8 @@
 require('dotenv').config();
 
 import axios from 'axios';
+import Order from './model/schema/orderSchema';
+import Raw from './model/schema/rawSchema';
 const express = require('express');
 const app = express();
 const port = 4000;
@@ -95,28 +97,28 @@ const kittySchema = new mongoose.Schema({
   }
 });
 
-const RawSchema=new mongoose.Schema({
-name:String,
-imageUrl:String,
-pricePerMeter:Number,
+// const RawSchema=new mongoose.Schema({
+// name:String,
+// imageUrl:String,
+// pricePerMeter:Number,
 
-});
-const OrderSchema=new mongoose.Schema({
-  woodName: String,
-  woodlength: Number,
-  amount: Number,
-  price:Number,
-  id: Number,
-  color:String,
-  width:Number,
-  thick:Number,
-  doorType:String,
-});
+// });
+// const OrderSchema=new mongoose.Schema({
+//   woodName: String,
+//   woodlength: Number,
+//   amount: Number,
+//   price:Number,
+//   id: Number,
+//   color:String,
+//   width:Number,
+//   thick:Number,
+//   doorType:String,
+// });
 
 //the collection
 const Kitten = mongoose.model('Kitten', kittySchema);
-const Raw=mongoose.model('Raw',RawSchema)
-const Order=mongoose.model('Order',OrderSchema)
+// const Raw=mongoose.model('Raw',RawSchema)
+// const Order=mongoose.model('Order',OrderSchema)
 
 const mitzy = new Kitten({ name: 'Mitzy' ,address:{city:"Nazareth"}});
 // console.log(mitzy.name);
@@ -182,19 +184,22 @@ app.post('/delete-raw',async (req,res)=>{
     res.status(400).send({error:err.message})
   }
 })
-app.post('/add-order',async (req,res)=>{
-  try{
-    const order=req.body;
-    console.log(order)
-    const newOrder=new Order(order);
-    await newOrder.save().then((res)=>{
-      console.log(res);
-    });
-    res.send({val:"OK"})
-  }catch(error:any){
-    res.status(400).send({error:error.message})
-  }
-})
+
+const orderRoute=require('./routes/orderRoute')
+app.use('/order',orderRoute)
+// app.post('/add-order',async (req,res)=>{
+//   try{
+//     const order=req.body;
+//     console.log(order)
+//     const newOrder=new Order(order);
+//     await newOrder.save().then((res)=>{
+//       console.log(res);
+//     });
+//     res.send({val:"OK"})
+//   }catch(error:any){
+//     res.status(400).send({error:error.message})
+//   }
+// })
 app.get('/get-order',async (req,res)=>{
   try{
   const orders=await Order.find({});
