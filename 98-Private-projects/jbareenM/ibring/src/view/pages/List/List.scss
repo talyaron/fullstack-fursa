@@ -1,0 +1,181 @@
+.mainTemplate{
+    .withHome{
+        display: flex;
+        flex-direction: column;
+        .homeDiv{
+            width: 70%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+
+            .homeLogo{
+                img{
+                    width: 40px;
+                }
+            }
+
+            .settingsLogo{
+                img{
+                    width: 40px;
+                }
+            }
+        }
+        .listLogo{
+            width: 100%;
+            height: 80%;
+            border-radius: 20px;
+        }
+    }
+    .mainContent{
+        
+       .listHeader{
+           margin-top: 5%;
+           max-width: 700px;
+           .marginTitleNormal{
+               font-size: 2.4rem;
+               font-weight: 600;
+           }
+            .listInformation{
+                margin-top: 15px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                gap: 20px;
+                font-size: 1.3rem;
+                font-weight: 400;
+                text-align: left;
+
+                padding-bottom: 30px;
+                border-bottom: 1px solid rgba(128, 128, 128, 0.555);
+
+                .info{
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    gap: 10px;
+                    color: #555656;
+
+                    img{
+                        width: 25px;
+                    }
+                }
+            }
+       }
+       .invitedFriends{
+            width: 100%;
+            height: fit-content;
+        
+            button{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                background-color: #F0F0FF;
+                border-radius: 8px;
+                border: 0px;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                font-size: large;
+                color: #7065F2;
+
+                .logoWithWords{
+                    display: flex;
+                    align-items: center;
+                    gap: 15px;
+                    img{
+                        width: 40px;
+                        height: 100%;
+                    }
+                }
+
+                #addButton{
+                    font-size: 2rem;
+                }
+            }
+        }
+
+        .whatToBring{
+            .whatToBring_header{
+                display: flex;
+                margin-top: 30px;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: 2px solid rgba(128, 128, 128, 0.445);
+                padding-bottom: 20px;
+                text-align: left;
+                color: #A5A6F6;
+                .whatToBring_input{
+                    width: 70%;
+                    font-size: 100px;
+                }
+
+                .whatToBring_addOrNot{
+                    display: flex;
+                    gap: 5px;
+                    .addOrNot{
+                        background-color: #A5A6F6;
+                        border-radius: 50%;
+                        border: 0px;
+                        width: 30px;
+                        height: 30px;
+                        font-size: 20px;
+                        text-align: center;
+                    }
+                }
+            }
+
+            .whatToBring_items{
+                border-bottom: 1px solid rgba(128, 128, 128, 0.445);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding-bottom: 15px;
+                padding-top: 15px;
+
+                .whatToBring_items_user{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+
+                    #userName{
+                        color: #555656;
+                    }
+                }
+
+                .whatToBring_items_logo{
+                    display: flex;
+                    gap: 10px;
+                    img{
+                        width: 30px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 700px){
+    .mainTemplate{
+        .withHome{
+           
+            .homeDiv{
+               
+            }
+            .listLogo{
+                
+            }
+        }
+        .mainContent{
+            
+           .listHeader{
+               width: 85vw;
+               .marginTitleNormal{
+                  
+               }
+                .listInformation{
+                   
+                }
+           }
+        }
+    }
+}

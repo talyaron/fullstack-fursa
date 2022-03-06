@@ -1,0 +1,31 @@
+*{background-color: white;}
+.home {
+    text-align: center;
+    //min-height: 200vh;
+  }
+  .App-header {
+    //background-color: #282c34;
+    color: rgb(6, 77, 71);
+    padding-top: 20px;
+    .header-image{
+      img{
+        width: 30rem;
+        max-height: 15rem;
+      }
+    }
+    .row{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin: 5rem;
+      //width: 90vw;
+      .text{
+        position: absolute;
+        top: -50px;
+        right: 15rem;
+        font-size: 24px;
+      }
+    }
+  }
