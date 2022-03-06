@@ -1,51 +1,90 @@
 "use strict";
 exports.__esModule = true;
-require("./App.scss");
 var react_1 = require("react");
-//components
-var Card_1 = require("./view/components/card/Card");
-var menu_1 = require("./view/components/menu/menu");
-var Counter_1 = require("./features/counter/Counter");
-var TextShow_1 = require("./features/text/TextShow");
-var TextInput_1 = require("./features/text/TextInput");
-var react_2 = require("react");
-//import Coats from './view/pages/Coats/Coats';
-var clothes = [{ name: 'WOOL BLEND HIGH NECK COAT', price: 500, img: 'https://static.zara.net/photos///2022/V/0/1/p/2096/289/802/2/w/830/2096289802_1_1_1.jpg?ts=1637256490476' },
-    { name: 'COAT WITH DETACHABLE FAUX FUR DETAIL ON THE COLLAR', price: 200, img: 'https://static.zara.net/photos///2022/V/0/1/p/2179/289/704/2/w/1126/2179289704_1_1_1.jpg?ts=1640000139595' }];
-// interface prob{
-//   children: React.ReactNode;
-//   open: false;
-//   onClose:()=>void;
+require("./index.scss");
+require("./App.scss");
+var react_router_dom_1 = require("react-router-dom");
+var HomePage_1 = require("./view/pages/HomePage/HomePage");
+var SignUp_1 = require("./view/pages/SignUp/SignUp");
+// import AboutUs from "./view/pages/AboutUs/AboutUs";
+// import Store from "./view/pages/Store/Store";
+// import Help from "./view/pages/Help/Help"
+// const clothes:Array<item> = [{name:'WOOL BLEND HIGH NECK COAT', price:500,img:'https://static.zara.net/photos///2022/V/0/1/p/2096/289/802/2/w/830/2096289802_1_1_1.jpg?ts=1637256490476'}
+// ,{name:'COAT WITH DETACHABLE FAUX FUR DETAIL ON THE COLLAR',price:200, img:'https://static.zara.net/photos///2022/V/0/1/p/2179/289/704/2/w/1126/2179289704_1_1_1.jpg?ts=1640000139595'}];
+// interface item{
+//   name:string;
+//   price:number;
+//   img:string;
 // }
+// function App() {
+//   return (
+//     <div className="App">
+//       <header className="App-header">
+//       <Mainbar></Mainbar>
+//       <img src="https://static.zara.net/photos///contents/mkt/spots/ss22-north-woman-shoes-bags/subhome-xmedia-08//w/1728/IMAGE-large-landscape-b1c8fbe8-bf41-4aa7-bad0-794f0713c4b9-default_0.jpg?ts=1645713783552" alt="" />
+// {/*      
+//      <video loop autoPlay>
+//         <source
+//           src="https://github.com/talyaron/fullstack-fursa/blob/main/98-Private-projects/raneen/src/RPReplay_Final1645900869.mp4"
+//           type="video/mp4"
+//         />
+//         Your browser does not support the video tag.
+//       </video> */}
+//       {clothes.map((item1, index)=>{
+//         const {name,price,img}= item1;
+//         return <Card key={index} info ={{name,price,img} } />
+//       })}
+//         <TextInput />
+//         <TextShow />
+//         <Counter />
+//       </header>
+//     </div>
+//   );
+// }
+// export default App;
 function App() {
-    var _a = react_2.useState([]), kitttens = _a[0], setKittens = _a[1];
-    react_2.useEffect(function () {
-        fetch('/get-all-users').then(function (res) { return res.json(); }).then(function (data) {
-            console.log(data);
-        });
-        //fetch kittens
-        fetch('/get-all-kitens')
-            .then(function (res) { return res.json(); })
-            .then(function (data) {
-            console.log(data);
-            setKittens(data);
-        })["catch"](function (err) {
-            console.error(err);
-        });
-    }, []);
-    return (react_1["default"].createElement("div", { className: "App" },
-        kitttens.map(function (kity) {
-            return react_1["default"].createElement("p", { key: kity._id }, kity.name);
-        }),
-        react_1["default"].createElement("header", { className: "App-header" },
-            react_1["default"].createElement(menu_1["default"], null),
-            react_1["default"].createElement("img", { src: "https://static.zara.net/photos///contents/mkt/spots/ss22-north-woman-shoes-bags/subhome-xmedia-08//w/1728/IMAGE-large-landscape-b1c8fbe8-bf41-4aa7-bad0-794f0713c4b9-default_0.jpg?ts=1645713783552", alt: "" }),
-            clothes.map(function (item1, index) {
-                var name = item1.name, price = item1.price, img = item1.img;
-                return react_1["default"].createElement(Card_1["default"], { key: index, info: { name: name, price: price, img: img } });
-            }),
-            react_1["default"].createElement(TextInput_1["default"], null),
-            react_1["default"].createElement(TextShow_1["default"], null),
-            react_1["default"].createElement(Counter_1.Counter, null))));
+    return (react_1["default"].createElement(react_router_dom_1.BrowserRouter, null,
+        react_1["default"].createElement(react_router_dom_1.Routes, null,
+            react_1["default"].createElement(react_router_dom_1.Route, { path: "/", element: react_1["default"].createElement(HomePage_1["default"], null) }),
+            react_1["default"].createElement(react_router_dom_1.Route, { path: "SignUp", element: react_1["default"].createElement(SignUp_1["default"], null) }),
+            react_1["default"].createElement(react_router_dom_1.Route, { path: "HomePage", element: react_1["default"].createElement(HomePage_1["default"], null) })))
+    //     <div>
+    //     <BrowserRouter>
+    //       <Routes>
+    //        {/* <Mainbar></Mainbar> */}
+    //         {/* <Route path="/" element={<HomePage />} />
+    //         <Route path="SignUp" element={<SignUp />} /> */}
+    //         {/* <Route path="AboutUs" element={<AboutUs />} /> */}
+    //         {/* <Route path="HomePage" element={<HomePage />} /> */}
+    //         {/* <Route path="Store" element={<Store />} > */}
+    //       </Routes>
+    //     </BrowserRouter>
+    // </div>
+    // <img src="https://static.zara.net/photos///contents/mkt/spots/ss22-north-woman-shoes-bags/subhome-xmedia-08//w/1728/IMAGE-large-landscape-b1c8fbe8-bf41-4aa7-bad0-794f0713c4b9-default_0.jpg?ts=1645713783552" alt="" />
+    // {clothes.map((item1, index)=>{
+    //   const {name,price,img}= item1;
+    //   return <Card key={index} info ={{name,price,img} } />
+    // })}
+    );
 }
 exports["default"] = App;
+// // function App() {
+// //   return (
+// //     <BrowserRouter>
+// //       <Routes>
+// //         <Route path="/" element={<HomePage />} />
+// //         {/* <Route path="SignUp" element={<SignUp />} /> */}
+// //         {/* <Route path="AboutUs" element={<AboutUs />} /> */}
+// //         <Route path="HomePage" element={<HomePage />} />
+//         {/* <Route path="Store" element={<Store />} >
+//       </Routes>
+//     </BrowserRouter>
+//       <Mainbar></Mainbar>
+//       <img src="https://static.zara.net/photos///contents/mkt/spots/ss22-north-woman-shoes-bags/subhome-xmedia-08//w/1728/IMAGE-large-landscape-b1c8fbe8-bf41-4aa7-bad0-794f0713c4b9-default_0.jpg?ts=1645713783552" alt="" />
+//       {clothes.map((item1, index)=>{
+//         const {name,price,img}= item1;
+//         return <Card key={index} info ={{name,price,img} } />
+//       })}
+//   );
+// }
+// export default App;

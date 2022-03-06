@@ -1,3 +1,4 @@
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -7,12 +8,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
 const app = express();
 const port = 4000;
 require("dotenv").config();
 //routes for data
 //static files
+app.use(express.json());
 app.use(express.static("client/build"));
 //data
 app.get("/get-all-users", (req, res) => {
@@ -22,18 +25,14 @@ app.get("/get-all-users", (req, res) => {
     ];
     res.send(users);
 });
-app.get("/", (req, res) => {
-    console.log(req);
-    res.send("Hello World! all");
-});
 //mongoose
 const mongoose = require("mongoose");
 main().catch((err) => console.log(err));
 const db = mongoose.connection;
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
-        const password = process.env.MONOGODB_PASSWORD;
-        yield mongoose.connect(`mongodb+srv://Raneen:${password}@cluster0.heyoj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`);
+        const password = process.env.MONGODB_PASSWORD;
+        yield mongoose.connect(`mongodb+srv://tal1:${password}@tal-test1.m39if.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`);
     });
 }
 db.on("error", console.error.bind(console, "connection error:"));
@@ -45,80 +44,27 @@ const kittySchema = new mongoose.Schema({
     address: {
         city: String,
     },
+    lifes: Number,
+    extraLife: Boolean,
 });
-const userSchema = new mongoose.Schema({
-    //id: String,
-    name: String,
-    password: String,
-    address: {
-        city: String,
-    },
-});
-const User = mongoose.model("User", userSchema);
-function getUsers() {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            const users = yield User.find({});
-            return users;
-        }
-        catch (err) {
-            console.error(err);
-            return false;
-        }
-    });
-}
-app.get("/get-all-users", (req, res) => __awaiter(this, void 0, void 0, function* () {
-    const users = yield getUsers();
-    res.send(users);
-}));
-// async function addUser():Promise<any> {
-//   try{
-//   const users = await User.find({ });
-//   return users;
-//   } catch(err:any){
-//     console.error(err)
-//     return false
-//   }
-// }
-app.get("/add-user", (req, res) => __awaiter(this, void 0, void 0, function* () {
-    const { body } = req;
-    console.log(body);
-    User.post({ body });
-    res.send({ message: "user created", User });
-}));
-const raneen = new User({
-    name: "Raneen",
-    password: "ba",
-    address: {
-        city: "Kafar Manda",
-    },
-});
-raneen
-    .save()
-    .then((res) => {
-    console.log(res);
-})
-    .catch((err) => console.log(err));
 //the collection
 const Kitten = mongoose.model("Kitten", kittySchema);
 const mitzy = new Kitten({
-    name: "Mitzy3",
+    name: "Mitzy4",
     address: {
         city: "Um al fahm",
         street: "Jaberin",
     },
+    lifes: 9,
 });
 console.log(mitzy.name);
-mitzy
-    .save()
-    .then((res) => {
-    console.log(res);
-})
-    .catch((err) => console.log(err));
+// mitzy.save().then(res=>{console.log(res)}).catch(err=>console.log(err));
 function getKitens() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
+            const nameRegEx = new RegExp("hu", "i");
             const kittens = yield Kitten.find({});
+            console.log(kittens);
             return kittens;
         }
         catch (err) {
@@ -127,9 +73,56 @@ function getKitens() {
         }
     });
 }
-app.get("/get-all-kitens", (req, res) => __awaiter(this, void 0, void 0, function* () {
+function aggragateKittensLives() {
+    return __awaiter(this, void 0, void 0, function* () {
+        const filter = { extraLife: true };
+        let docs = yield Kitten.aggregate([
+            { $match: filter },
+            {
+                $group: {
+                    _id: "$extraLife",
+                    numberOfCats: { $sum: 1 },
+                    count: { $sum: "$lifes" },
+                    avg: { $avg: "$lifes" },
+                },
+            },
+        ]);
+        console.log("----");
+        console.log(docs);
+    });
+}
+aggragateKittensLives();
+app.get("/get-all-kitens", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const kittens = yield getKitens();
     res.send(kittens);
+}));
+//update (PATCH)
+app.patch("/update-cat", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { name, city, id } = req.body;
+        const filter = { _id: id };
+        const update = { name: name, address: { city: city } };
+        //update the DB
+        let doc = yield Kitten.findOneAndUpdate(filter, update);
+        res.send({ ok: true, doc });
+    }
+    catch (err) {
+        console.error(err);
+        res.status(400).send({ error: err.message });
+    }
+}));
+app.post("/delete-cat", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { id } = req.body;
+        const filter = { _id: id };
+        //delet on  DB
+        let doc = yield Kitten.deleteOne(filter);
+        res.send({ ok: true, doc });
+    }
+    catch (err) {
+        console.error(err);
+        res.status(400).send({ error: err.message });
+    }
 }));
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);

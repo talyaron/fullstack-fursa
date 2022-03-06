@@ -46,10 +46,69 @@ db.once("open", () => {
 
 const kittySchema = new mongoose.Schema({
   name: String,
-  address:{
-    city:String
-  }
+  address: {
+    city: String,
+  },
 });
+
+const userSchema = new mongoose.Schema({
+  //id: String,
+  name: String,
+  password: String,
+  address: {
+    city: String,
+  },
+  // email: String,
+  // phone: String,
+});
+const User = mongoose.model("User", userSchema);
+
+async function getUsers(): Promise<any> {
+  try {
+    const users = await User.find({});
+    return users;
+  } catch (err: any) {
+    console.error(err);
+    return false;
+  }
+}
+
+app.get("/get-all-users", async (req, res) => {
+  const users = await getUsers();
+  res.send(users);
+});
+
+// async function addUser():Promise<any> {
+//   try{
+
+//   const users = await User.find({ });
+//   return users;
+//   } catch(err:any){
+//     console.error(err)
+//     return false
+//   }
+// }
+
+app.get("/add-user", async (req, res) => {
+  const { body } = req;
+  console.log(body);
+  User.post({ body });
+  res.send({ message: "user created", User});
+});
+const raneen = new User({
+  name: "Raneen",
+  password: "ba",
+  address: {
+    city: "Kafar Manda",
+  },
+});
+raneen
+  .save()
+  .then((res) => {
+    console.log(res);
+  })
+  .catch((err) => console.log(err));
+
 
 //the collection
 const Kitten = mongoose.model("Kitten", kittySchema);
@@ -57,29 +116,34 @@ const Kitten = mongoose.model("Kitten", kittySchema);
 const mitzy = new Kitten({
   name: "Mitzy3",
   address: {
-    city:"Um al fahm",
-    street:"Jaberin"
+    city: "Um al fahm",
+    street: "Jaberin",
   },
 });
+
 console.log(mitzy.name);
 
-mitzy.save().then(res=>{console.log(res)}).catch(err=>console.log(err));
+mitzy
+  .save()
+  .then((res) => {
+    console.log(res);
+  })
+  .catch((err) => console.log(err));
 
-async function getKitens():Promise<any> {
-  try{
-   
-  const kittens = await Kitten.find({ });
-  return kittens;
-  } catch(err:any){
-    console.error(err)
-    return false
+async function getKitens(): Promise<any> {
+  try {
+    const kittens = await Kitten.find({});
+    return kittens;
+  } catch (err: any) {
+    console.error(err);
+    return false;
   }
 }
 
-app.get('/get-all-kitens',async (req, res)=>{
-    const kittens = await getKitens();
-    res.send(kittens);
-})
+app.get("/get-all-kitens", async (req, res) => {
+  const kittens = await getKitens();
+  res.send(kittens);
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
