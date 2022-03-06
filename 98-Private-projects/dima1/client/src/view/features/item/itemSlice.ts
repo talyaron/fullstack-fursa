@@ -37,7 +37,7 @@ export const getSelectAsync = createAsyncThunk(
   'getRecipe/fetchGet',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get('/get-select-recipe');
+      const response = await axios.get('/selectRecipe/get-select-recipe');
       const data = response.data;
       return data;
     } catch (error: any) {
@@ -50,7 +50,7 @@ export const updateSelectAsync = createAsyncThunk(
   'updateRecipe/fetchSet',
   async (recipeInfo:any, thunkAPI) => {
     try {
-      const response = await axios.post('/update-select-recipe', {info:recipeInfo.info, from:recipeInfo.from, isNew:recipeInfo.isNew});
+      const response = await axios.post('/selectRecipe/update-select-recipe', {info:recipeInfo.info, from:recipeInfo.from, isNew:recipeInfo.isNew});
       const data = response.data;
       return data;
     } catch (error: any) {

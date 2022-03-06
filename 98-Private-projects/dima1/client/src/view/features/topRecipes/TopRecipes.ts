@@ -15,7 +15,7 @@ export const getTopRecipesAsync = createAsyncThunk(
     'top10/fetchTop10',
     async (_, thunkAPI) => {
         try {
-            const response = await axios.get('/get-top10');
+            const response = await axios.get('/topRecipes/get-top10');
             return response.data;
         } catch (error:any) {
             thunkAPI.rejectWithValue(error.response.data);

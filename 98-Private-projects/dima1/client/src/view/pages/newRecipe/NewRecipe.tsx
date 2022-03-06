@@ -125,14 +125,14 @@ export default function NewRecipe() {
         ev.preventDefault();
         //dispatch(updateRecipe(recipe))
         if (to === '/User') {
-            axios.post('/add-new-userRecipe', recipe_);
+            axios.post('/userRecipes/add-new-userRecipe', recipe_);
             //dispatch(addToMyRecipe(recipe_));
         }
         else {
             //add a action to udpate a recipe in the array
             console.log(recipe_)
             //axios.put('http://localhost:3004/' + `${from}` + '/' + `${recipe_.id}`, recipe);
-            axios.patch('/edit-select-recipe', recipe_);
+            axios.patch('/selectRecipe/edit-select-recipe', recipe_);
             axios.put(`/edit-${from}`, recipe_)
             dispatch(updateSelectAsync({info:recipe_, from:from, isNew:isNew}))
             //dispatch(updateRecipe(recipe))
