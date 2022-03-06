@@ -1,9 +1,10 @@
 import express from 'express';
-import axios from 'axios';
+//import axios from 'axios';
+//import Appointment from './model/schema/appointmentsModel';
+
 const app = express();
 const port = 4000;
 require('dotenv').config();
-
 
 app.use(express.static('healthstore/build'));
 app.use(express.json());
@@ -39,13 +40,6 @@ app.use(express.json());
 // });
 
 const mongoose = require('mongoose');
-const appointmentSchema = new mongoose.Schema({
-  title: String,
-  start: Date,
-  end: Date,
-  name: String,
-  phone: String
-});
 
 main().catch(err => console.log(err));
 
@@ -60,56 +54,8 @@ db.once("open", () => {
 });
 
 
-const Appointment = mongoose.model('appointment', appointmentSchema);
-//const event = new Appointment({ title: "Hopi Candles", name: 'asma', start: new Date(2022, 2, 26, 5), end: new Date(2022, 2, 26, 6), phone: "123" });
-//console.log(event.title);
-//event.save();
-
-async function getAppointments(): Promise<any> {
-  try {
-    const appointments = await Appointment.find({});
-    return appointments;
-  } catch (err: any) {
-    console.error(err)
-    return false;
-  }
-}
-
-app.get('/get-appointments', async (req, res) => {
-  const appointments = await getAppointments();
-  res.send(appointments);
-})
-
-
-app.post('/add-appointment', (req, res) => {
-  try {
-    const appointment = req.body.appointment;
-    console.log(req.body);
-    if (!appointment) throw new Error("No appointment in request");
-    const event = new Appointment({ title: appointment.title, start: appointment.start, end: appointment.end, name: appointment.name, phone: appointment.phone });
-    event.save();
-    res.send({ message: 'Done' });
-  } catch (error) {
-    res.send({ error });
-  }
-}); 
-
-app.post('/delete-appointment',async (req, res)=>{
-  try {
-    const appointment = req.body;
-    if (!appointment) throw new Error("No appointment in request");
-    const filter = { title: appointment.title, start: appointment.start, end: appointment.end, name: appointment.name, phone: appointment.phone };
-    console.log(filter);
-    let doc = await Appointment.deleteOne(filter);
-    console.log('Deleted!!');
-    res.send({ message: 'Deleted' });
-  } catch (error) {
-    res.send({ error });
-  }
-});
-
-
-
+const appointmentsRoutes = require('./routes/appointmentsRoutes')
+app.use('/appointments', appointmentsRoutes);
 
 
 app.listen(port, () => {

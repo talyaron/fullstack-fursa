@@ -139,7 +139,7 @@ function CalendarFun() {
             alert("An Appointment Found!!");
             console.log('deleted')
             //console.log(newEvent.start)
-            const {data} = await axios.post('/delete-appointment',{ title: newEvent.title, start: newEvent.start, end: newEvent.end, name: newEvent.name, phone: newEvent.phone });
+            const {data} = await axios.post('/appointments/delete-appointment',{ title: newEvent.title, start: newEvent.start, end: newEvent.end, name: newEvent.name, phone: newEvent.phone });
             console.log(data);
             dispatch(getAppointmentsAsyn());
         }
