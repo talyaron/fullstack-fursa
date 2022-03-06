@@ -17,7 +17,7 @@ function Login() {
     function hadleSubmit(e: any) {
         e.preventDefault();
 
-        dispatch(login([ID, password, true]));
+        // dispatch(login([ID, password, true]));
             if(ID === "314763467" && password==="123456")
             {  nav("/Seller");}
              else if(ID !== "" && password!=="")
