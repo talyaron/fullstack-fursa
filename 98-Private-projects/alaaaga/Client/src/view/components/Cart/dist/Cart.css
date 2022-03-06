@@ -1,0 +1,12 @@
+.cart {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background-color: #b3baff;
+}
+
+@media screen and (max-width: 500px) {
+  .App .wrapper {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

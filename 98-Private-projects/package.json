@@ -1,6 +1,10 @@
 {
   "dependencies": {
+<<<<<<< HEAD
     "mongodb": "^4.4.1",
+=======
+    "@mui/icons-material": "^5.4.2",
+>>>>>>> tal
     "sass": "^1.49.7"
   },
   "devDependencies": {

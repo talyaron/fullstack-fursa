@@ -1,0 +1,19 @@
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.student {
+  display: flex;
+  width: max-content;
+  justify-content: space-between;
+  width: 250px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.144);
+}
+.student__name {
+  padding-left: 10px;
+}
+.student__id {
+  padding-right: 10px;
+}
