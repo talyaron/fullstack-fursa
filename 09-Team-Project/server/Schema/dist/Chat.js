@@ -7,8 +7,9 @@ var client = require('./ClientSchema');
 var contentSchema = new mongoose.Schema({
     from: orgClient | client,
     to: orgClient | client,
-    data: String,
-    date: Date
+    message: String,
+    date: { type: Date, "default": new Date() },
+    seen: { type: Boolean }
 });
 var chatSchema = new mongoose.Schema({
     // from: orgClient | client,

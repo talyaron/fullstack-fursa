@@ -5,16 +5,17 @@ const orgClient = require('./OrgClientSchema');
 const client = require('./ClientSchema');
 
 const contentSchema = new mongoose.Schema({
-    from: orgClient | client,
+    from: orgClient | client, // to send the whole user or just ID/type
     to: orgClient | client,
-    data: String,
-    date: Date
+    message: String,
+    date: {type:Date,default:new Date()},
+    seen:{type:Boolean},
 })
 
 const chatSchema = new mongoose.Schema({
     // from: orgClient | client,
     // to: orgClient | client,
-    chatMembers:{first:client, second:orgClient}
+    chatMembers:{first:client, second:orgClient},
     content: [contentSchema]
 })
 
