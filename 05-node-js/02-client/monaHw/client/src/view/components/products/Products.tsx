@@ -44,10 +44,10 @@ function Product(prop: productProp) {
     }
     
         async function handleChange (event: React.ChangeEvent<HTMLInputElement>){
-            
-            setAmount(parseInt(event.target.value));
-            setPrice(editAmount * price)
-            const {data} = await axios.patch('/update-order',{_id,editAmount});
+            const temp=parseInt(event.target.value);
+             setAmount(parseInt(event.target.value));
+             setPrice( parseInt(event.target.value)* price)
+            const {data} = await axios.patch('/update-order',{_id,temp});
             console.log(data)
           };
     

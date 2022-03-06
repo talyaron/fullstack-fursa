@@ -214,11 +214,12 @@ catch (error) {
 })
 app.patch('/update-order',async(req,res)=>{
   try{
-  const {id,editAmount}=req.body;
+  const {_id,temp}=req.body;
   console.log(req.body)
-  const filter={_id:id};
-  const update={amount:editAmount};
+  const filter={_id:_id};
+  const update={amount:temp};
   console.log(update)
+  console.log(filter)
   let doc = await Order.findOneAndUpdate(filter, update);
   res.send({ ok: true, doc });
   }catch(error){
