@@ -8,17 +8,26 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TextField from "@mui/material/TextField";
-import { useState } from "react";
 import CourseResponsiveAppBar from "../../components/courseHeader/CourseAppBar";
 import Paper from '@mui/material/Paper';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import './TeacherExams.scss';
+import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
+import { courseExams, getExamsAsync } from "../../../../app/reducers/teacher/CourseDataSlice";
 
-const exams = [
-    { course: "English", material: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' },
-    { course: "Math", material: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' }
-]
+// const exams = [
+//     { course: "English", material: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' },
+//     { course: "Math", material: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' }
+// ]
 
 export default function TeacherExams() {
+    const dispatch = useAppDispatch();
+    useEffect(() => {
+        dispatch(getExamsAsync());
+    }, []);
+    const exams = useAppSelector(courseExams);
+
     const [selectedDate, setSelectedDate] = useState<Date | null>(
         new Date(),
     );
@@ -56,15 +65,20 @@ export default function TeacherExams() {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {exams.map((exam, i) => (
-                                    <TableRow
-                                        key={i}
-                                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                    >
-                                        <TableCell align="center">{exam.course}</TableCell>
-                                        <TableCell align="center">{exam.material}</TableCell>
-                                    </TableRow>
-                                ))}
+                                {
+                                    exams.map((exam, i) => {
+                                        const { course, examMaterial } = exam;
+                                        return (
+                                            <TableRow
+                                                key={i}
+                                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                            >
+                                                <TableCell align="center">{course}</TableCell>
+                                                <TableCell align="center">{examMaterial}</TableCell>
+                                            </TableRow>
+                                        );
+                                    })
+                                }
                             </TableBody>
                         </Table>
                     </TableContainer>

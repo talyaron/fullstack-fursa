@@ -3,13 +3,16 @@ import { RootState } from "../../app/store";
 
 export interface ItemState {
     text: string;
+    title:string;
     img: string;
 }
 
 
 const initialState : ItemState = {
     img : '',
-    text : 'text',
+    title:'',
+    text : '',
+
 }
 
 export const itemReducer = createSlice({
@@ -19,12 +22,18 @@ export const itemReducer = createSlice({
       update: (state, action) => {
         //state.text = action.payload;
         state.img = action.payload;
+      },
+      updateText: (state, action) => {
+        state.text = action.payload;
       }
     }
-  });
+});
 
-export const { update  } = itemReducer.actions;
+
+
+export const { update, updateText  } = itemReducer.actions;
 export const selectImage = (state: RootState) => state.item.img;
-//export const selectText = (state:RootState) => state.item.text;
+export const selectText = (state:RootState) => state.item.text;
+//export const selectImage = (state: RootState) => state.item.img;
   
 export default itemReducer.reducer;

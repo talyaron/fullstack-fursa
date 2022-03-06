@@ -1,12 +1,22 @@
-interface actionIF{
+interface actionIF {
     type: string;
-    payload: boolean;
+    payload: {
+        status: boolean;
+        user?: object;
+    };
 }
 
-const loggedReducer = (state:boolean = false, action: actionIF) => {
+interface stateIF {
+    status: boolean;
+    user?: object;
+}
+
+const loggedReducer = (state: stateIF = {status: false, user: undefined}, action: actionIF) => {
     switch (action.type) {
         case 'signIn':
-            return !state;
+            state.status = true;
+            state.user = action.payload.user;
+            return state;
         default:
             return state;
     }

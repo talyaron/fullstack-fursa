@@ -1,5 +1,5 @@
-import { useAppDispatch } from "../../app/hooks";
-import { update } from "./ItemSlice";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { selectText, update } from "./ItemSlice";
 import './ItemImage.scss';
 
 const images = [{image: "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg", title: 'image1'},
@@ -8,9 +8,9 @@ const images = [{image: "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736
 
 export default function ItemImage() {
     const dispatch = useAppDispatch();
+    const text = useAppSelector(selectText);
 
     function handleSelect(ev:any){
-        console.log(ev.target.src);
         const item = ev.target.src;
         dispatch(update(item));
     }
@@ -22,6 +22,7 @@ export default function ItemImage() {
                     <div key={index} className='box'>
                         <img src={item.image} alt="" onClick={handleSelect}/>
                         <p>{item.title}</p>
+                        <p>{text}</p>
                     </div>
                 )
             })}

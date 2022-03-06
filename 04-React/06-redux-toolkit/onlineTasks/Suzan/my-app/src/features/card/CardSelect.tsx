@@ -1,5 +1,6 @@
 import { useAppDispatch } from "../../app/hooks";
 import { update } from './CardSlice';
+import './CardSelect.scss';
 
 export default function CardShow() {
     const dispatch = useAppDispatch();

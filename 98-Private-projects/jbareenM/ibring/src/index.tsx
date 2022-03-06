@@ -2,15 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
-import Expenses from "./view/pages/expenses/Expenses";
-import Invoices from "./view/pages/Invoices/Invoices";
-import Store from './view/pages/store/Store';
-import Product from "./view/pages/product/Product";
 
 import Register from './view/pages/Register/Register';
 import ListForm from './view/pages/ListForm/ListForm';
 import Greetings from './view/pages/Greetings/Greetings';
 import TypeList from './view/pages/TypeList/TypeList';
+import Login from './view/pages/Login/Login';
+import List from './view/pages/List/List';
+
 import reportWebVitals from './reportWebVitals';
 
 import {
@@ -18,37 +17,26 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-
-import { createStore, applyMiddleware, compose } from 'redux';
-import allReducers from './reducers/allReducers';
-import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 
-declare global {
-  interface Window {
-    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
-  }
-}
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(allReducers, composeEnhancers(
-  applyMiddleware(thunk)
-));
+import store from './redux/store';
+import Home from './view/pages/Home/Home';
+import ChooseFriends from './view/pages/ChooseFirends/ChooseFriends';
+import Contact from './view/pages/ChooseFirends/Contact/Contact';
 
 ReactDOM.render((
   <Provider store={store}>
     <BrowserRouter>
       <Routes>
+        <Route path='/Contact' element={<Contact />} />
+        <Route path='/ChooseFriends' element={<ChooseFriends />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/list/:listId" element={<List />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/TypeList" element={<TypeList />} />
         <Route path="/register" element={<Register />} />
         <Route path="/ListForm" element={<ListForm />} />
         <Route path="/greetings" element={<Greetings />} />
-
-        <Route path="/expenses" element={<Expenses />} />
-        <Route path="invoices" element={<Invoices />} />
-        <Route path="store" element={<Store />} >
-          <Route path=":productId" element={<Product />} />
-        </Route>
 
         <Route path="/" element={<App />} />
       </Routes>

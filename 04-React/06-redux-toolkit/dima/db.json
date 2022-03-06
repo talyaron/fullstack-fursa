@@ -1,47 +1,30 @@
 {
-  "posts": [
-    {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  },
   "top10": [
     {
       "id": 1,
       "name": "Cast Iron Skillet Pizza",
       "image": "https://www.simplyrecipes.com/thmb/2yg01vDLZM4pKWxhmZrQzR71LxQ=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Simply-Recipes-Cast-Iron-Skillet-Pizza-LEAD-7-57c1f65409244ae587bcf4c23ef7904f.jpg",
       "time": "36 min",
-      "people": "4",
+      "people": "4 servings",
       "calories": "400 calories",
-      "ingredients": "1 tablespoon olive oil\n1 pound (454g) pizza dough, store-bought or homemade\nAll-purpose flour, for dusting \n1 1/2 cups (170g) shredded low-moisture mozzarella cheese \n1/3 cup pizza sauce, store-bought or homemade\n2 tablespoons finely grated Parmesan cheese\n3 to 4 fresh basil leaves",
+      "ingredients": "* 1 tablespoon olive oil\n* 1 pound (454g) pizza dough, store-bought or homemade\nAll-purpose flour, for dusting \n* 1 1/2 cups (170g) shredded low-moisture mozzarella cheese \n* 1/3 cup pizza sauce, store-bought or homemade\n* 2 tablespoons finely grated Parmesan cheese\n6. 3 to 4 fresh basil leaves",
       "method": "1. Preheat the oven and prepare the skillet: \nPosition oven racks in the upper and lower third of the oven. Heat the oven to 475°F. Coat the inside of a 10-inch cast iron or ovenproof skillet with olive oil. \n 2. Stretch the pizza dough:\nLightly dust your kitchen counter or a large cutting board with flour. Place the dough on it and use your hands to stretch it into an 8-inch disc. Transfer it into the prepared skillet and use your fingers to stretch the dough to fit the skillet. Use your fingertips to gently dimple the surface of the dough.\n 3. Assemble the pizza:\nSprinkle half of the cheese over the dough. Spoon the pizza sauce over the cheese and evenly spread it with the back of the spoon. Some spots without sauce are okay. Sprinkle the remaining cheese over the sauce.\n4.  Bake the pizza:\nPlace the skillet on the bottom oven rack and bake until the edges are golden brown and the cheese has melted, 15 to 20 minutes. \n5. Broil the pizza: \n Switch the oven to broil on high and transfer the skillet to the top rack. Broil until the cheese is browned in spots, about 1 minute, keeping an eye on it so that it does not burn. \n 6. Serve the pizza: \nOut of the oven, sprinkle the pizza with Parmesan cheese, and let it cool for 5 minutes. Run a spatula around the edges of the pizza to release it from the skillet. Gently lift and transfer it to a cutting board. Tear and sprinkle the basil leaves on top. Cut into wedges and serve."
     },
     {
       "id": 2,
       "name": "Sigeumchi Namul",
       "image": "https://www.simplyrecipes.com/thmb/TkcoxydQESTL7uVKmvXozs_1HZE=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Simply-Recipes-Spinach-Banchan-LEAD-2-6d22429517024d20a899e5a0f5eed764.jpg",
-      "time": "16 min",
+      "time": "20 min",
       "people": "4 to 6 servings",
       "calories": "89 calories",
-      "ingredients": "* 2 large bunches (14 ounces) spinach, rinsed\n* 3 scallions, thinly sliced\n* 3 cloves garlic, finely chopped\n* 1 tablespoon toasted sesame seeds\n* 2 tablespoons toasted sesame oil\n* 2 teaspoons sugar\n* 1/2 teaspoon kosher salt",
+      "ingredients": "\n* 2 large bunches (14 ounces) spinach, rinsed\n* 3 scallions, thinly sliced\n* 3 cloves garlic, finely chopped\n* 1 tablespoon toasted sesame seeds\n* 2 tablespoons toasted sesame oil\n* 2 teaspoons sugar\n* 1/2 teaspoon kosher salt",
       "method": "1. Boil water and prepare ice bath: \n Fill a large pot with water and bring it up to a boil over high heat. Prepare a large ice bath. Set it on the counter next to the pot. \n 2. Blanch the spinach:\nUsing tongs and working in batches, dunk the spinach in the pot of boiling water. Swish it around until the spinach is bright green and the stems have softened a bit, about 10 seconds.\nImmediately transfer the blanched spinach into the ice bath to stop the cooking. Swish the spinach around in the ice bath to loosen it up. Repeat until all the spinach is cooked and cooled.\n 3. Dry the spinach:\nDrain the spinach into a colander set in the sink. Working in batches, grab handfuls of the spinach with your hands and wring out as much water as possible. Place the dried spinach on a cutting board.\n4. Chop the spinach:\nRoughly chop the spinach into bite-size pieces. Transfer the spinach into a medium bowl and use your fingers to loosen them if lumped together.\n5. Season the spinach: \n Add the scallions, garlic, sesame seeds, sesame oil, sugar, and salt. Toss to combine. Taste and decide if you want to add more salt or leave it as it is. \n 6. Serve: \nServe immediately or store it tightly covered in the refrigerator until ready to serve."
     },
     {
       "id": 3,
       "name": "Air Fryer Chicken Wings",
       "image": "https://www.simplyrecipes.com/thmb/kijjE5mgx42XXMRNWlAEHtEQeWE=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2019__12__Air-Fryer-Chicken-LEAD-12-143ef1081ffc4a6681fc14ace3c10698.jpg",
-      "time": "80 min",
+      "time": "90 min",
       "people": "4 to 6 servings",
       "calories": "666 calories",
       "ingredients": "For the wings:\n3 pounds chicken wing drumettes and flats\n3 teaspoons baking powder\n2 teaspoons kosher salt\nFor the sauce:\n2 tablespoons gochujang\n2 tablespoons soy sauce\n1 tablespoon rice wine vinegar\n2 teaspoons sesame oil\n1 teaspoon sugar\n3 tablespoons butter, melted and kept warm\nFor the sesame mayonnaise dipping sauce:\n1 cup mayonnaise\n1 tablespoon toasted sesame oil\n3/4 teaspoon sugar\n1/8 teaspoon sriracha\nTo garnish:\nThinly sliced scallions, for garnish\nToasted sesame seeds, for garnish\nThin spears of cucumber\nThin slices of radish",
@@ -70,7 +53,7 @@
       "method": "1. Prepare the oven and baking sheet:\nSet an oven rack in the center of the oven and preheat it to 375°F. Line 2 large baking sheets with parchment paper.\n2. Prepare the coconut oil and chocolate:\nIn a small skillet or saucepan over low heat, add the coconut oil. As soon as the oil fully melts, turn the heat off, remove the skillet from the heat, and let cool a bit while you prepare the other ingredients.\nAlternatively, add the coconut oil into a medium heatproof bowl and microwave on 50 percent power in 30-second intervals, just until melted.\nPlace the chocolate on a cutting board and use a large knife to roughly chop it. The biggest pieces should be about 1/2-inch chunks, but you should mostly have smaller pieces and shards. You can leave it on the cutting board until you’re ready to add it to the dough.\n 3. Mix the dry ingredients:\nIn a medium bowl, add the flour, baking powder, and salt. Whisk together to combine.\n4. Mix the wet ingredients:\nIn a large bowl, combine the melted and cooled coconut oil, brown sugar, sugar, non-dairy milk, and vanilla extract. Whisk until fully combined and creamy, about 2 minutes.\n5. Make the cookie dough:\nAdd the flour mixture into the wet ingredients. Use a wooden spoon or rubber spatula to mix just until a dough forms and no streaks of flour remain. Don’t overmix the dough. Add the chopped chocolate and mix to combine.\n6. Form the cookies:\nUse a #30 cookie scoop or a spoon to divide the dough into 2-tablespoon (43g) portions. Roll each between your palms to form it into a ball.\nPlace it on a prepared baking sheet, about 2 inches apart. Use your hand to gently flatten the dough just slightly and sprinkle the tops with a little flaky sea salt.\nPlace the baking sheet in the freezer for 10 minutes. Meanwhile, form more cookies and add them to the second baking sheet.\n7. Bake the cookies:\nTake the first baking sheet out of the freezer and place it in the oven. Place the second baking sheet in the freezer while the first batch bakes.\nBake until the cookies have doubled in width and are lightly brown around the edges, 9 to 11 minutes. Don’t overbake these cookies. Let them cool on the baking sheet for 3 minutes before transferring them to a cooling rack to finish cooling.\nMove the second batch from the freezer to the oven and bake. Repeat with any remaining cookie dough, if needed."
     }
   ],
-  "recipe": [
+  "myRecipe": [
     {
       "id": 1,
       "name": "Grapefruit Margarita",
@@ -88,7 +71,7 @@
       "time": "40 min",
       "people": "20 servings",
       "calories": "150 calories",
-      "ingredients": "2/3 cup refined coconut oil\n6 ounces (170g) vegan dark chocolate bar\n2 cups (250g) all-purpose flour\n1 1/2 teaspoons baking powder\n1/2 teaspoon salt\n2/3 cup (140g) light brown sugar, tightly packed\n1/3 cup (75g) sugar\n1/4 cup non-dairy milk, like almond, oat, or soy\n1 teaspoon vanilla extract\n1 teaspoon flaky sea salt, for sprinkling\n...",
+      "ingredients": "* 2/3 cup refined coconut oil\n* 6 ounces (170g) vegan dark chocolate bar\n* 2 cups (250g) all-purpose flour\n* 1 1/2 teaspoons baking powder\n* 1/2 teaspoon salt\n* 2/3 cup (140g) light brown sugar, tightly packed\n* 1/3 cup (75g) sugar\n* 1/4 cup non-dairy milk, like almond, oat, or soy\n* 1 teaspoon vanilla extract\n* 1 teaspoon flaky sea salt, for sprinkling",
       "method": "1. Prepare the oven and baking sheet:\nSet an oven rack in the center of the oven and preheat it to 375°F. Line 2 large baking sheets with parchment paper.\n2. Prepare the coconut oil and chocolate:\nIn a small skillet or saucepan over low heat, add the coconut oil. As soon as the oil fully melts, turn the heat off, remove the skillet from the heat, and let cool a bit while you prepare the other ingredients.\nAlternatively, add the coconut oil into a medium heatproof bowl and microwave on 50 percent power in 30-second intervals, just until melted.\nPlace the chocolate on a cutting board and use a large knife to roughly chop it. The biggest pieces should be about 1/2-inch chunks, but you should mostly have smaller pieces and shards. You can leave it on the cutting board until you’re ready to add it to the dough.\n 3. Mix the dry ingredients:\nIn a medium bowl, add the flour, baking powder, and salt. Whisk together to combine.\n4. Mix the wet ingredients:\nIn a large bowl, combine the melted and cooled coconut oil, brown sugar, sugar, non-dairy milk, and vanilla extract. Whisk until fully combined and creamy, about 2 minutes.\n5. Make the cookie dough:\nAdd the flour mixture into the wet ingredients. Use a wooden spoon or rubber spatula to mix just until a dough forms and no streaks of flour remain. Don’t overmix the dough. Add the chopped chocolate and mix to combine.\n6. Form the cookies:\nUse a #30 cookie scoop or a spoon to divide the dough into 2-tablespoon (43g) portions. Roll each between your palms to form it into a ball.\nPlace it on a prepared baking sheet, about 2 inches apart. Use your hand to gently flatten the dough just slightly and sprinkle the tops with a little flaky sea salt.\nPlace the baking sheet in the freezer for 10 minutes. Meanwhile, form more cookies and add them to the second baking sheet.\n7. Bake the cookies:\nTake the first baking sheet out of the freezer and place it in the oven. Place the second baking sheet in the freezer while the first batch bakes.\nBake until the cookies have doubled in width and are lightly brown around the edges, 9 to 11 minutes. Don’t overbake these cookies. Let them cool on the baking sheet for 3 minutes before transferring them to a cooling rack to finish cooling.\nMove the second batch from the freezer to the oven and bake. Repeat with any remaining cookie dough, if needed."
     },
     {
@@ -113,5 +96,12 @@
     }
   ],
   "edit": [],
-  "selected": []
+  "select": [
+    {
+      "recipe": {},
+      "from": "myRecipe",
+      "isNew": true,
+      "id": 1
+    }
+  ]
 }

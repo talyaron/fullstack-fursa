@@ -1,10 +1,12 @@
 import { combineReducers } from "redux";
 import counterReducer from "./counter";
 import loggedReducer from "./isLogged";
+import listFormReducer from "./listFormReducer";
 
 const allReducers = combineReducers({
-    counterReducer: counterReducer,
-    loggedReducer: loggedReducer
+    listFormReducer: listFormReducer,
+    loggedReducer: loggedReducer,
+    counterReducer: counterReducer
 })
 
 export default allReducers;
