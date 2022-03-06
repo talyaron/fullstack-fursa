@@ -1,0 +1,14 @@
+.cardSelect{
+    width: 80vw;
+    height: 50vh;
+    display: flex;
+    gap: 10px;
+
+    .card{
+        width: 30%;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

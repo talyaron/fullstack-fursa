@@ -1,0 +1,12 @@
+.subContainer{
+    margin-top: 20vh;
+
+    .course{
+
+        &__recentUpdates{
+            .title{
+                margin-top: 0;
+            }
+        }
+    }
+}
