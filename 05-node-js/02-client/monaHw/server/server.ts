@@ -212,6 +212,21 @@ catch (error) {
 }
 
 })
+app.patch('/update-order',async(req,res)=>{
+  try{
+  const {id,editAmount}=req.body;
+  console.log(req.body)
+  const filter={_id:id};
+  const update={amount:editAmount};
+  console.log(update)
+  let doc = await Order.findOneAndUpdate(filter, update);
+  res.send({ ok: true, doc });
+  }catch(error){
+    console.info(error);
+    res.send({error});
+  }
+
+})
 app.post('/delete-order',async(req,res)=>{
   try{
     const {id}=req.body;
