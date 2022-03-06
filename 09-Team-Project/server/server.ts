@@ -15,6 +15,8 @@ app.use(express.json());
 app.use(cors())
 require('dotenv').config();
 
+
+
 mongoose.connect(`mongodb+srv://${process.env.ATLAS_NAME}:${process.env.CLUSTER_PASS}@cluster0.qqi5o.mongodb.net/test`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -25,7 +27,6 @@ db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
     console.log("connected to DB!");
 });
-
 
 const io = require('socket.io')(http)
 
