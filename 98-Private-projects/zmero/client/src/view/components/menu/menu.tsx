@@ -21,7 +21,7 @@ import User from '../user/user'
 import Alert from '@mui/material/Alert'
 import Snackbar from '@mui/material/Snackbar'
 import { useAppSelector, useAppDispatch } from '../../../app/hooks';
-import { checkUser, getUserInfoAsync, signUpUser, selectUser } from '../../../app/reducers/userReducer'
+import { checkUser, getUserInfoAsync, signUpUser, checkType } from '../../../app/reducers/userReducer'
 
 
 
@@ -37,7 +37,6 @@ function Menu() {
     const [openAlert, setOpenAlert] = React.useState(false);
     const dispatch = useAppDispatch();
     const isLoggedIn = useAppSelector(checkUser)
-    const userInfo = useAppSelector(selectUser)
     function openSearchModal(bool: boolean) {
         if (bool === false)
             setNavbarindex(1)
@@ -111,13 +110,13 @@ function Menu() {
                         <div className="navbar__left__links">
                             <Link to="/Reservations">
                                 Reservation
-                    </Link>
+                            </Link>
                             <Link to="/Favorite">
                                 Favorite
-                    </Link>
+                            </Link>
                             <Link to="/Maps">
                                 Maps
-                    </Link></div> : <div className="navbar__left__disable"> <span>Reservation</span><span>Favorite</span><span >Maps</span></div>
+                            </Link></div> : <div className="navbar__left__disable"> <span>Reservation</span><span>Favorite</span><span >Maps</span></div>
                     }
                 </div>
                 <div className="navbar__right">
@@ -205,7 +204,7 @@ function Menu() {
                 }} open={openAlert} autoHideDuration={6000} onClose={() => setOpenAlert(false)}>
                 <Alert onClose={() => setOpenAlert(false)} severity="success" sx={{ width: '100%' }}>
                     You have logged in Successfully!
-                            </Alert>
+                </Alert>
             </Snackbar>
         </div >
     );

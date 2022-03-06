@@ -7,6 +7,7 @@ const UsersSchema = mongoose.Schema({
     password: String,
     phone: String,
     region: String,
+    type: String,
 });
 
 const Users = mongoose.model('users', UsersSchema);

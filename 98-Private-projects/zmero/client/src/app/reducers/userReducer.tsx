@@ -8,6 +8,7 @@ interface userProb {
         fName: string;
         lName: string;
         email: string;
+        type: string;
     };
     userIsLogIn: boolean;
     status: 'idle' | 'loading' | 'failed';
@@ -19,6 +20,7 @@ const initialState: userProb = {
         fName: " ",
         lName: " ",
         email: "",
+        type: "",
     },
     userIsLogIn: false,
     status: 'idle',
@@ -52,6 +54,19 @@ export const signUpUser = createAsyncThunk(
     }
 );
 
+export const signUpRestaurateur = createAsyncThunk(
+    'user/signUpRestaurateur',
+    async (user: any, thunkAPI) => {
+        try {
+            const response = await axios.post('/users/add-restaurateur', user)
+            const data: any = response.data
+            return data
+        } catch (e) {
+            thunkAPI.rejectWithValue(e)
+        }
+
+    }
+);
 
 export const userReducer = createSlice({
     name: 'user',
@@ -82,6 +97,11 @@ export const userReducer = createSlice({
                     state.userinfo = action.payload.user;
                     state.userIsLogIn = true;
                 }
+            }).addCase(signUpRestaurateur.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(signUpRestaurateur.fulfilled, (state, action) => {
+                state.status = 'idle';
             });
     },
 })
@@ -92,4 +112,5 @@ export const selectUser = (state: RootState) => state.user
 export const selectUserId = (state: RootState) => state.user.userinfo._id
 export const selecUserName = (state: RootState) => state.user.userinfo.fName + " " + state.user.userinfo.lName
 export const checkUser = (state: RootState) => state.user.userIsLogIn
+export const checkType = (state: RootState) => state.user.userinfo.type
 export default userReducer.reducer;

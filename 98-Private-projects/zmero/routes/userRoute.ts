@@ -24,7 +24,7 @@ router.post('/sign-up', async (req, res) => {
         if (result.length > 0)
             res.send({ "log": false })
         else {
-            const user = new Users({ "fName": fName, "lName": lName, "email": email, "phone": phone, "region": region, "password": password })
+            const user = new Users({ "fName": fName, "lName": lName, "email": email, "phone": phone, "region": region, "password": password, "type": "regular" })
             user.save()
             res.send({ "log": true, "user": user })
         }
@@ -34,5 +34,23 @@ router.post('/sign-up', async (req, res) => {
 
 })
 
+
+router.post('/add-restaurateur', async (req, res) => {
+    try {
+        const { fName, lName, email, phone, region, password } = req.body
+        if (!fName || !lName || !email || !phone || !region || !password) throw "invalid fields"
+        const result = await Users.find({ email: email });
+        if (result.length > 0 && result.type != "admin")
+            res.send({ "log": false })
+        else {
+            const user = new Users({ "fName": fName, "lName": lName, "email": email, "phone": phone, "region": region, "password": password, "type": "restaurateur" })
+            user.save()
+            res.send({ "log": true, "user": user })
+        }
+    } catch (error) {
+        res.send({ error });
+    }
+
+})
 
 module.exports = router;

@@ -7,11 +7,13 @@ import {
 } from "react-router-dom";
 import App from "./App";
 import Reservation from "./view/pages/reservations/reservations";
-//import Explore from './view/pages/explore/explore'
 import Favorite from "./view/pages/favorite/favorite";
 import Restaurant from "./view/pages/restaurant/restaurant";
 import Maps from "./view/pages/maps/maps"
-//<Route path=":productId" element={<Product />} />
+import Admin from './view/pages/admin/admin'
+import Restaurateur from './view/pages/restaurateur/restaurateur'
+import AddRestaurant from './view/pages/addRestaurant/addRestaurant'
+import AddRestaurateur from './view/pages/addRestaurateur/addRestaurateur'
 import { store } from './app/store';
 import { Provider } from 'react-redux';
 const rootElement = document.getElementById("root");
@@ -23,6 +25,10 @@ render(
         <Route path="Reservations" element={<Reservation />} />
         <Route path="Favorite" element={<Favorite />} />
         <Route path="Maps" element={<Maps />} />
+        <Route path="Admin" element={<Admin />} />
+        <Route path="Restaurateur" element={<Restaurateur />} />
+        <Route path="AddRestaurant" element={<AddRestaurant />} />
+        <Route path="AddRestaurateur" element={<AddRestaurateur />} />
         <Route path="/:RestaurantId" element={<Restaurant />} />
       </Routes>
     </BrowserRouter ></Provider>,

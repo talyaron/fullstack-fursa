@@ -1,24 +1,26 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import './user.scss'
 import Menu from '@mui/material/Menu';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import PersonAdd from '@mui/icons-material/PersonAdd';
+import AssessmentIcon from '@mui/icons-material/Assessment';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
-import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import Divider from '@mui/material/Divider';
-import { selecUserName } from '../../../app/reducers/userReducer'
+import { selecUserName, checkType } from '../../../app/reducers/userReducer'
 import { useAppSelector } from '../../../app/hooks';
 
 function User() {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const userName = useAppSelector(selecUserName)
     const open = Boolean(anchorEl);
+    const userType = useAppSelector(checkType)
     const handleClick = (event: any) => {
         setAnchorEl(event.currentTarget);
     };
@@ -53,6 +55,32 @@ function User() {
                 children: `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`,
             };
         }
+    }
+    let adminPage;
+    let addRestaurant;
+    let addRestaurateur;
+    if (userType === 'admin') {
+        adminPage = (< Link to="/Admin"><MenuItem>
+            <Avatar /> Admin
+        </MenuItem></Link>)
+        addRestaurant = (< Link to="/AddRestaurateur"><MenuItem>
+            <ListItemIcon>
+                <PersonAdd fontSize="small" />
+            </ListItemIcon> Add Restaurant
+        </MenuItem></Link>)
+        addRestaurateur = (< Link to="/AddRestaurateur"><MenuItem>
+            <ListItemIcon>
+                <PersonAdd fontSize="small" />
+            </ListItemIcon> Add Restaurateur
+        </MenuItem></Link>)
+    }
+    let restaurateur
+    if (userType == "restaurateur") {
+        restaurateur = (< Link to="/Restaurateur"><MenuItem>
+            <ListItemIcon>
+                <AssessmentIcon fontSize="small" />
+            </ListItemIcon> Restaurant Statistics
+        </MenuItem></Link>)
     }
     return (
         <div className="user">
@@ -107,29 +135,24 @@ function User() {
             >
                 <MenuItem>
                     <Avatar /> Profile
-        </MenuItem>
-                <MenuItem>
-                    <Avatar /> My account
-        </MenuItem>
+                </MenuItem>
+                {adminPage}
                 <Divider />
-                <MenuItem>
-                    <ListItemIcon>
-                        <PersonAdd fontSize="small" />
-                    </ListItemIcon>
-          Add another account
-        </MenuItem>
+                {addRestaurant}
+                {addRestaurateur}
+                {restaurateur}
                 <MenuItem>
                     <ListItemIcon>
                         <Settings fontSize="small" />
                     </ListItemIcon>
-          Settings
-        </MenuItem>
+                    Settings
+                </MenuItem>
                 <MenuItem>
                     <ListItemIcon>
                         <Logout fontSize="small" />
                     </ListItemIcon>
-          Logout
-        </MenuItem>
+                    Logout
+                </MenuItem>
             </Menu>
         </div>
 
