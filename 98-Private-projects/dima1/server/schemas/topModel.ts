@@ -12,8 +12,6 @@ const recipeInfo = new mongoose.Schema({
 
 
 const top10 = mongoose.model('Top10', recipeInfo);
-const recent = mongoose.model('Recent Recipes', recipeInfo);
-const userRecipes = mongoose.model('My Recipes', recipeInfo);
 
-export default top10; recent; userRecipes;
+export default top10;
 

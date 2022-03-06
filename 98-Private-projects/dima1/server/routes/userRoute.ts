@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-import userRecipes from '../schemas/recipeInfoModel';
+import userRecipes from '../schemas/userRecipeModel';
 
 router.get('/get-user-recipes', async (req, res) => {
     try {

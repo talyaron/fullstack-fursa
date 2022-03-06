@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-import recent from '../schemas/recipeInfoModel';
+import recent from '../schemas/recentModel';
 
 router.get('/get-recent', async (req, res) => {
     try {

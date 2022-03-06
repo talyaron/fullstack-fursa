@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-import top10 from '../schemas/recipeInfoModel';
+import top10 from '../schemas/topModel';
 
 router.get('/get-top10', async (req, res) => {
     try {
