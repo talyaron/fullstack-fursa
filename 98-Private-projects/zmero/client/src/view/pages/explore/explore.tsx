@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { useAppSelector, useAppDispatch } from '../../../app/hooks';
-import { getFamousRestaurants, fetchFamousRestaurants } from '../../../app/reducers/resterauntsReducer'
+import { getFamousRestaurants, fetchFamousRestaurants, getRegions, fetchRegion } from '../../../app/reducers/resterauntsReducer'
 
 import './explore.scss'
 import Grid from '@mui/material/Grid';
@@ -16,6 +16,7 @@ import Grid from '@mui/material/Grid';
 function Explore() {
     const dispatch = useAppDispatch()
     const famousRestaurants = useAppSelector(getFamousRestaurants)
+    const arrOfRegions = useAppSelector(getRegions)
     const [trendingRestaurants, setTrendingRestaurant] = useState([{ id: "0", name: "", image: "", booking: 0, region: "", stars: 0, city: "" }]);
     const [seaRestaurants, setSeaRestaurant] = useState([{ id: "0", name: "", image: "", booking: 0, region: "", stars: 0, city: "" }]);
     const [userRegion, setUserRegion] = useState('Israel');
@@ -23,6 +24,7 @@ function Explore() {
     const open = Boolean(anchorEl);
     useEffect(() => {
         dispatch(fetchFamousRestaurants(userRegion))
+        dispatch(fetchRegion())
     }, []);
     const handleClick = (event: any) => {
         setAnchorEl(event.currentTarget);
@@ -35,13 +37,19 @@ function Explore() {
             dispatch(fetchFamousRestaurants(newRegion))
         }
     };
-
-
+    const pictureOfRegion = arrOfRegions.filter((e) => {
+        if (e.region === userRegion)
+            return e
+    })
+    let img = ""
+    if (pictureOfRegion.length > 0)
+        img = pictureOfRegion[0].url
     return (
         <div>
             <Navbar></Navbar>
-            <Search></Search>
             <div className="exploremain">
+                <div className="exploremain__region" style={{ backgroundImage: `url(${img})` }}>
+                    <div className="exploremain__region__title">Reserve at the best restaurants in {userRegion}</div></div>
                 <div className="exploremain__location">
                     <h5>It looks like you're in {userRegion}. Not Correct?</h5>
                     <div className="exploremain__location__get">

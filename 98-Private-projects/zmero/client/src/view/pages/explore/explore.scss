@@ -6,6 +6,26 @@
     flex-direction: column;
     text-align: center;
 
+    &__region {
+        margin-top: 4rem;
+        background-position: 50%;
+        background-size: cover;
+        height: 20rem;
+        border-radius: 8px;
+        position: relative;
+        display: flex;
+        justify-content: flex-start;
+
+        &__title {
+            position: absolute;
+            bottom: 0rem;
+            font-size: x-large;
+            color: white;
+            padding: 2rem;
+            font-family: fantasy;
+        }
+    }
+
     &__location {
         border-bottom: .0625rem solid #d8d9db;
         display: flex;

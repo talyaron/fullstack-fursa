@@ -17,16 +17,21 @@ interface Restaurant {
     description: string;
     subCategory: Array<string>;
 }
-
+interface Region {
+    region: string;
+    url: string;
+}
 interface Restaurants {
     arrOfResteruants: Array<Restaurant>;
     arrOfFamousResteruants: Array<Restaurant>;
+    arrOfRegions: Array<Region>
     status: 'idle' | 'loading' | 'failed';
 }
 
 const initialState: Restaurants = {
     arrOfResteruants: [],
     arrOfFamousResteruants: [],
+    arrOfRegions: [],
     status: 'idle',
 }
 
@@ -63,6 +68,20 @@ export const fetchFamousRestaurants = createAsyncThunk(
     }
 );
 
+export const fetchRegion = createAsyncThunk(
+    'fetchRegion',
+    async () => {
+        try {
+            const response = await axios.get('/restaurants/get-regions')
+            const data: any = response.data
+            const { regions } = data;
+            return regions
+        } catch (err) {
+            console.log(err)
+        }
+
+    }
+);
 export const restaurantReducer = createSlice({
     name: 'restaurant',
     initialState,
@@ -84,6 +103,13 @@ export const restaurantReducer = createSlice({
                 state.status = 'idle';
                 state.arrOfFamousResteruants = action.payload;
             })
+            .addCase(fetchRegion.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(fetchRegion.fulfilled, (state, action) => {
+                state.status = 'idle';
+                state.arrOfRegions = action.payload;
+            })
 
     },
 })
@@ -93,4 +119,5 @@ export const restaurantReducer = createSlice({
 
 export const getAllRestaurants = (state: RootState) => state.restaurant.arrOfResteruants
 export const getFamousRestaurants = (state: RootState) => state.restaurant.arrOfFamousResteruants
+export const getRegions = (state: RootState) => state.restaurant.arrOfRegions
 export default restaurantReducer.reducer;
