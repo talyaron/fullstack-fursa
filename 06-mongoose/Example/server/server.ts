@@ -1,4 +1,6 @@
-import assert from "assert";
+import Cats from './model/schema/cats'
+import Owners from './model/schema/ownerModel';
+
 const express = require("express");
 const app = express();
 const port = 4000;
@@ -40,19 +42,10 @@ db.once("open", () => {
   console.log("connected to DB!");
 });
 
-const kittySchema = new mongoose.Schema({
-  name: String,
-  address: {
-    city: String,
-  },
-  lifes: Number,
-  extraLife: Boolean,
-});
 
-//the collection
-const Kitten = mongoose.model("Kitten", kittySchema);
 
-const mitzy = new Kitten({
+
+const mitzy = new Cats({
   name: "Mitzy4",
   address: {
     city: "Um al fahm",
@@ -67,7 +60,7 @@ console.log(mitzy.name);
 async function getKitens(): Promise<any> {
   try {
     const nameRegEx = new RegExp("hu", "i");
-    const kittens = await Kitten.find({});
+    const kittens = await Cats.find({});
     console.log(kittens);
     return kittens;
   } catch (err: any) {
@@ -76,9 +69,9 @@ async function getKitens(): Promise<any> {
   }
 }
 
-async function aggragateKittensLives() {
+async function aggragateCatsLives() {
   const filter = { extraLife: true };
-  let docs = await Kitten.aggregate([
+  let docs = await Cats.aggregate([
     { $match: filter },
     {
       $group: {
@@ -93,7 +86,7 @@ async function aggragateKittensLives() {
   console.log(docs);
 }
 
-aggragateKittensLives();
+aggragateCatsLives();
 
 app.get("/get-all-kitens", async (req, res) => {
   const kittens = await getKitens();
@@ -105,10 +98,10 @@ app.patch("/update-cat", async (req, res) => {
   try {
     const { name, city, id } = req.body;
 
-    const filter = {_id:id}
-    const update = {name:name, address:{city:city}}
+    const filter = { _id: id };
+    const update = { name: name, address: { city: city } };
     //update the DB
-    let doc = await Kitten.findOneAndUpdate(filter, update);
+    let doc = await Cats.findOneAndUpdate(filter, update);
 
     res.send({ ok: true, doc });
   } catch (err) {
@@ -119,12 +112,12 @@ app.patch("/update-cat", async (req, res) => {
 
 app.post("/delete-cat", async (req, res) => {
   try {
-    const {  id } = req.body;
+    const { id } = req.body;
 
-    const filter = {_id:id}
-  
+    const filter = { _id: id };
+
     //delet on  DB
-    let doc = await Kitten.deleteOne(filter);
+    let doc = await Cats.deleteOne(filter);
 
     res.send({ ok: true, doc });
   } catch (err) {
@@ -132,6 +125,11 @@ app.post("/delete-cat", async (req, res) => {
     res.status(400).send({ error: err.message });
   }
 });
+
+const ownerRoute = require('./routes/ownersRoute')
+app.use('/owenrs', ownerRoute);
+
+//query
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
