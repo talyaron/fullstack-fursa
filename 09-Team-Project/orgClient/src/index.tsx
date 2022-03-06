@@ -8,7 +8,7 @@ import * as serviceWorker from './serviceWorker';
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Accident from './view/pages/accident/Accident';
-import ProfileInfo from "./view/pages/profileInfo/profileInfo";
+import ProfileInfo from "./view/pages/profileInfo/ProfileInfo";
 
 ReactDOM.render(
   <React.StrictMode>
