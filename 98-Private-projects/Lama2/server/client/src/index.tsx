@@ -39,6 +39,7 @@ ReactDOM.render(
       </Route>
       <Route path="homepage" element={<HomePage />} />
       <Route path="signIn" element={<SignIn />} />
+  
       <Route path="signUp" element={<SignUp />} />
       <Route path="trainers" element={<Trainers />} />
       <Route path="horses" element={<Horses />} />
