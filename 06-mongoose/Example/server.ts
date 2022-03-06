@@ -105,8 +105,8 @@ app.patch("/update-cat", async (req, res) => {
   try {
     const { name, city, id } = req.body;
 
-    const filter = {_id:id}
-    const update = {name:name, address:{city:city}}
+    const filter = { _id: id };
+    const update = { name: name, address: { city: city } };
     //update the DB
     let doc = await Kitten.findOneAndUpdate(filter, update);
 
@@ -119,10 +119,10 @@ app.patch("/update-cat", async (req, res) => {
 
 app.post("/delete-cat", async (req, res) => {
   try {
-    const {  id } = req.body;
+    const { id } = req.body;
 
-    const filter = {_id:id}
-  
+    const filter = { _id: id };
+
     //delet on  DB
     let doc = await Kitten.deleteOne(filter);
 
@@ -132,6 +132,53 @@ app.post("/delete-cat", async (req, res) => {
     res.status(400).send({ error: err.message });
   }
 });
+
+const OwnerSchema = new mongoose.Schema({
+  name: String,
+  id: String,
+});
+
+//the collection
+const Owners = mongoose.model("Owners", OwnerSchema);
+
+// const mitzy = new Kitten({
+//   name: "Mitzy4",
+//   address: {
+//     city: "Um al fahm",
+//     street: "Jaberin",
+//   },
+//   lifes: 9,
+// });
+
+app.post("/add-owner", async (req, res) => {
+  try {
+    const { id, name } = req.body;
+
+    
+    if (!id) throw new Error("No id in body");
+    if (!name) throw new Error("No name in body");
+
+    const ownerDB = new Owners({
+      name,
+      id,
+    });
+
+    const query = { id: id },
+  
+      options = { upsert: true, new: true, setDefaultsOnInsert: true };
+  
+    const oldItem = await Owners.findOneAndUpdate(query,ownerDB,options);
+    console.log(oldItem);
+    res.send(oldItem);
+  } catch (error) {
+    console.info('ON app.post("/add-owner"')
+    console.log(req.body);
+    console.error(error.message);
+    res.send({ error: error.message });
+  }
+});
+
+//query
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
