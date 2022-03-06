@@ -65,7 +65,7 @@ export const getSchoolClassesAsync = createAsyncThunk (
     'schoolData/fetchClasses',
     async(_, thunkAPI) => {
         try{
-            const response = await axios.get('/get-classes');
+            const response = await axios.get('school/get-classes');
             const data = response.data;
             return data;
         } catch (error:any) {
