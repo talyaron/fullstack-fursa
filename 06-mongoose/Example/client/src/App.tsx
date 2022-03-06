@@ -27,7 +27,7 @@ function App() {
       if (name && id) {
         setOwnerName(name);
         setOwnerId(id);
-        axios.post('/add-owner',{id, name})
+        axios.post('/owenrs/add-owner',{id, name})
         .then(({data})=>{
           console.log(data)
         })
