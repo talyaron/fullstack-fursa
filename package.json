@@ -1,8 +1,11 @@
 {
   "dependencies": {
-    "cookie-parser": "^1.4.6",
-    "express": "^4.17.3",
-    "mongoose": "^6.2.3",
-    "redux-thunk": "^2.4.1"
+    "axios": "^0.26.0",
+    "react-redux": "^7.2.6",
+    "react-router-dom": "^6.2.1",
+    "sass": "^1.49.9"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.39"
   }
 }

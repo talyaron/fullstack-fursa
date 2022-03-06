@@ -1,0 +1,31 @@
+.home {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.App-header {
+  color: #064d47;
+  padding-top: 20px;
+}
+.App-header .header-image img {
+  width: 30rem;
+  max-height: 15rem;
+  margin-bottom: 7px;
+}
+.App-header .row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 5rem;
+}
+.App-header .row .text {
+  position: absolute;
+  top: -55px;
+  left: 0rem;
+  font-size: 24px;
+  font-weight: bold;
+}

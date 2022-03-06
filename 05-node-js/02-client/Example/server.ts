@@ -1,3 +1,5 @@
+
+import assert from 'assert';
 const express = require("express");
 const app = express();
 const port = 4000;
@@ -48,29 +50,61 @@ const kittySchema = new mongoose.Schema({
   name: String,
   address:{
     city:String
-  }
+  },
+  lifes:Number,
+  extraLife:Boolean
 });
 
 //the collection
 const Kitten = mongoose.model("Kitten", kittySchema);
 
 const mitzy = new Kitten({
-  name: "Mitzy3",
+  name: "Mitzy4",
   address: {
     city:"Um al fahm",
     street:"Jaberin"
   },
+  lifes:9
 });
 console.log(mitzy.name);
 
 // mitzy.save().then(res=>{console.log(res)}).catch(err=>console.log(err));
 
-async function getKitens() {
-  const kittens = await Kitten.find({address:{city:'Um al fahm'} });
-  console.log(kittens);
+async function getKitens():Promise<any> {
+  try{
+   const nameRegEx = new RegExp('hu','i')
+  const kittens = await Kitten.find({name:{
+    $regex: nameRegEx
+  } });
+  console.log(kittens)
+  return kittens;
+  } catch(err:any){
+    console.error(err)
+    return false
+  }
 }
 
-getKitens();
+async function aggragateKittensLives(){
+  const filter = { extraLife: true };
+  let docs = await Kitten.aggregate([
+    { $match: filter },
+    {$group:{
+      _id:'$extraLife',
+      numberOfCats:{$sum:1},
+      count:{$sum:'$lifes'},
+      avg:{$avg:'$lifes'}
+    }}
+  ]);
+  console.log('----');
+  console.log(docs)
+}
+
+aggragateKittensLives()
+
+app.get('/get-all-kitens',async (req, res)=>{
+    const kittens = await getKitens();
+    res.send(kittens);
+})
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

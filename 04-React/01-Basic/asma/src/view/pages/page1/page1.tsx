@@ -2,7 +2,7 @@ import {Link} from 'react-router-dom';
 import ProductCard from './productCard'
 import { ProductProps } from './productCard';
 
-const products = [{ id: 1, name: 'Vitamin D', img: 'https://img.mako.co.il/2016/03/14/shutterstock_59410978_i.jpg' ,setState:'',
+const products = [{ id: 1, name: 'Vitamin-D', img: 'https://img.mako.co.il/2016/03/14/shutterstock_59410978_i.jpg' ,setState:'',
 state:'' },
 { id: 2, name: 'Chlorella', img: 'https://eatwell.co.il/wp-content/uploads/2017/12/Chlorella-eatwell-123.jpg',setState:'',
 state:'' }, 
@@ -25,7 +25,7 @@ function Page1(prop: CardProp){
             {products.map((product: ProductProps, i) => {
                 return <ProductCard key={i} name={product.name} id={product.id} img={product.img} setState={setState} state={state} />
             })}     
-            <Link to='/page2'>Click to go to  selected products page!</Link>
+            <Link to='/page2'>Go to Cart!</Link>
         </div>
     )
 }

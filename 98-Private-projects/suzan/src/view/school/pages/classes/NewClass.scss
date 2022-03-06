@@ -1,0 +1,27 @@
+.container{
+    .subContainer{
+        .createClassBtn{
+        position: absolute;
+        right: 60px;
+        margin-top: 30px;
+    }
+
+    .newClass{
+        margin: 60px;
+        // border: 1px black solid;
+
+        &__section{
+            display: flex;
+            align-content: center;
+            align-items: center;
+            margin-top: 20px;
+
+            .inputField{
+                margin-left: 70px;
+            }
+        }
+    }
+    }
+
+    
+}
