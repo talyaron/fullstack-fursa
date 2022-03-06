@@ -1,0 +1,6 @@
+"use strict";
+exports.__esModule = true;
+exports.FETCH_USER_FAILURE = exports.FETCH_USER_SUCCESS = exports.FETCH_USER_REQUEST = void 0;
+exports.FETCH_USER_REQUEST = "FETCH_USER_REQUEST";
+exports.FETCH_USER_SUCCESS = "FETCH_USER_SUCCESS";
+exports.FETCH_USER_FAILURE = "FETCH_USER_FAILURE";

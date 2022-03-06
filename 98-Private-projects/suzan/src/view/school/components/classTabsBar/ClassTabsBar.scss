@@ -1,0 +1,37 @@
+.courses {
+    // border: 1px blue solid;
+    // position: relative;
+
+    .coursesWrapper {
+        // border: 1px blue solid;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        // margin-top: 0;
+    }
+}
+
+.studentsList {
+    // border: 1px red solid;
+    // position: relative;
+
+    .list {
+        // border: 1px black solid;
+        width: fit-content;
+        margin-left: 30px;
+    }
+}
+
+.teacher {
+    // border: 1px black solid;
+
+    &__info{
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+
+        .inputField{
+            margin-left: 10px;
+        }
+    }
+}
