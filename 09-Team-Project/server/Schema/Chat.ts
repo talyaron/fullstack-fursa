@@ -12,8 +12,9 @@ const contentSchema = new mongoose.Schema({
 })
 
 const chatSchema = new mongoose.Schema({
-    from: orgClient | client,
-    to: orgClient | client,
+    // from: orgClient | client,
+    // to: orgClient | client,
+    chatMembers:{first:client, second:orgClient}
     content: [contentSchema]
 })
 

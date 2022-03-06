@@ -5,6 +5,9 @@ var accident = require('./AccidentsSchema');
 var clientSchema = new mongoose.Schema({
     userName: { type: String, require: true },
     password: { type: String, require: true },
+    name: { type: String, require: true },
+    phone: { type: String, require: true },
+    city: { type: String, require: true },
     accidents: [accident]
 });
 var client = mongoose.model('clientSchema', clientSchema);

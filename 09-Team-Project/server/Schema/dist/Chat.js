@@ -11,8 +11,9 @@ var contentSchema = new mongoose.Schema({
     date: Date
 });
 var chatSchema = new mongoose.Schema({
-    from: orgClient | client,
-    to: orgClient | client,
+    // from: orgClient | client,
+    // to: orgClient | client,
+    chatMembers: { first: client, second: orgClient },
     content: [contentSchema]
 });
 var chat = mongoose.model('clientSchema', chatSchema);
