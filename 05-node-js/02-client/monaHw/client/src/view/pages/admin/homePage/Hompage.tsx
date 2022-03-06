@@ -4,8 +4,10 @@ import Button from '@mui/material/Button';
 import { Alert,Backdrop,Box, CircularProgress } from '@mui/material';
 import { useState } from 'react';
 import { ShowRaw } from '../ShowRaw';
+import { useAppDispatch } from '../../../../app/hooks';
+import { getRawAsync } from '../../../../features/raw/Raw';
   function HomePage()
-{
+{   const dispatch=useAppDispatch();
     const [show,setShow]=useState('none')
     const [open, setOpen] = useState(false);
     const handleClose = () => {
@@ -19,8 +21,9 @@ import { ShowRaw } from '../ShowRaw';
         ev.preventDefault();
         const form = ev.target;
     // axios.post('http://localhost:3004/woods',{"name":form[0].value, "imgurl":form[1].value,"pricePerMeter":form[2].value}).then(({data})=>console.log(data));
-    axios.post('/add-Raw-Material',{name:form[0].value,imageUrl:form[1].value,pricePerMeter:form[2].value})
+    axios.post('/raw/add-Raw-Material',{name:form[0].value,imageUrl:form[1].value,pricePerMeter:form[2].value})
     .then(data => {
+      dispatch(getRawAsync())
         console.log(data);
       }).catch(err => {
         console.error(err);

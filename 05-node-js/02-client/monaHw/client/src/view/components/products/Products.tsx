@@ -36,7 +36,7 @@ function Product(prop: productProp) {
     const dispatch = useAppDispatch();
     async function RemoveHandler(id: any) {
         //  const obj={"productId":id}
-        const { data } = await axios.post('/delete-order', { id: id })
+        const { data } = await axios.post('/order/delete-order', { id: id })
         dispatch(getCartAsync())
         // .then((res) => console.log(res))
         // .catch((err) => console.error(err));
@@ -47,7 +47,7 @@ function Product(prop: productProp) {
             const temp=parseInt(event.target.value);
              setAmount(parseInt(event.target.value));
              setPrice( parseInt(event.target.value)* price)
-            const {data} = await axios.patch('/update-order',{_id,temp});
+            const {data} = await axios.patch('/order/update-order',{_id,temp});
             console.log(data)
           };
     

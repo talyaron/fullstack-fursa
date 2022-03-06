@@ -12,14 +12,14 @@ export function RawCard(props:any){
         console.log(id)
         const name = ev.target.elements.name.value;
         const pricePerMeter = ev.target.elements.price.value;    
-       const {data} = await axios.patch('/update-raw',{name, pricePerMeter, id});
+       const {data} = await axios.patch('/raw/update-raw',{name, pricePerMeter, id});
        console.log(data)
     }
     function handleEdit() {
         setEdit(!edit);
       }
       async function handelDelete(id:any){
-        const { data } = await axios.post('/delete-raw', { id: id })
+        const { data } = await axios.post('/raw/delete-raw', { id: id })
         dispatch(getRawAsync())
 
       }

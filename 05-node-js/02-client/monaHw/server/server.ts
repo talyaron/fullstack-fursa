@@ -133,60 +133,63 @@ app.get('/get-all-kittens',async (req,res)=>{
   res.send(kittens);
 })
 
-app.post('/add-Raw-Material',async (req,res)=>{
-  try{
-    const raw=req.body;
-    console.log(raw)
-    const newRaw=new Raw(raw);
-    await newRaw.save().then((res)=>{
-      console.log(res);
-    });
-    res.send({val:"OK"})
-  }catch(error:any){
-    res.status(400).send({error:error.message})
-  }
-})
-app.get('/get-Raw-Material',async (req,res)=>{
-  try{
-  const Raws=await Raw.find({});
-  // console.log(Raws)
-  res.status(200).send(Raws)
-}
-catch (error) {
-  console.info(error);
-  res.send({ error });
-}
+// app.post('/add-Raw-Material',async (req,res)=>{
+//   try{
+//     const raw=req.body;
+//     console.log(raw)
+//     const newRaw=new Raw(raw);
+//     await newRaw.save().then((res)=>{
+//       console.log(res);
+//     });
+//     res.send({val:"OK"})
+//   }catch(error:any){
+//     res.status(400).send({error:error.message})
+//   }
+// })
+// app.get('/get-Raw-Material',async (req,res)=>{
+//   try{
+//   const Raws=await Raw.find({});
+//   // console.log(Raws)
+//   res.status(200).send(Raws)
+// }
+// catch (error) {
+//   console.info(error);
+//   res.send({ error });
+// }
 
-})
-app.patch('/update-raw',async(req,res)=>{
-  try{
-    console.log(req.body)
-    const{name,pricePerMeter,id}=req.body;
-    const filter={_id:id};
-    console.log(pricePerMeter)
-    const update={name:name,pricePerMeter:pricePerMeter}
-    let doc = await Raw.findOneAndUpdate(filter, update);
-    res.send({ ok: true, doc });
-  } catch (err) {
-    console.error(err);
-    res.status(400).send({ error: err.message });
-  }
-})
-app.post('/delete-raw',async (req,res)=>{
-  try{
-    const {id}=req.body;
-    const filter={_id:id};
-    console.log(filter)
-    let doc=await Raw.deleteOne(filter);
-    res.send({ok:true,doc});
-  }catch(err){
-    console.error(err)
-    res.status(400).send({error:err.message})
-  }
-})
+// })
+// app.patch('/update-raw',async(req,res)=>{
+//   try{
+//     console.log(req.body)
+//     const{name,pricePerMeter,id}=req.body;
+//     const filter={_id:id};
+//     console.log(pricePerMeter)
+//     const update={name:name,pricePerMeter:pricePerMeter}
+//     let doc = await Raw.findOneAndUpdate(filter, update);
+//     res.send({ ok: true, doc });
+//   } catch (err) {
+//     console.error(err);
+//     res.status(400).send({ error: err.message });
+//   }
+// })
+// app.post('/delete-raw',async (req,res)=>{
+//   try{
+//     const {id}=req.body;
+//     const filter={_id:id};
+//     console.log(filter)
+//     let doc=await Raw.deleteOne(filter);
+//     res.send({ok:true,doc});
+//   }catch(err){
+//     console.error(err)
+//     res.status(400).send({error:err.message})
+//   }
+// })
 
 const orderRoute=require('./routes/orderRoute')
 app.use('/order',orderRoute)
+
+const rawRoute=require('./routes/rawRoute')
+app.use('/raw',rawRoute)
 // app.post('/add-order',async (req,res)=>{
 //   try{
 //     const order=req.body;
@@ -200,47 +203,47 @@ app.use('/order',orderRoute)
 //     res.status(400).send({error:error.message})
 //   }
 // })
-app.get('/get-order',async (req,res)=>{
-  try{
-  const orders=await Order.find({});
-  // console.log(Raws)
-  res.status(200).send(orders)
-}
-catch (error) {
-  console.info(error);
-  res.send({ error });
-}
+// app.get('/get-order',async (req,res)=>{
+//   try{
+//   const orders=await Order.find({});
+//   // console.log(Raws)
+//   res.status(200).send(orders)
+// }
+// catch (error) {
+//   console.info(error);
+//   res.send({ error });
+// }
 
-})
-app.patch('/update-order',async(req,res)=>{
-  try{
-  const {_id,temp}=req.body;
-  console.log(req.body)
-  const filter={_id:_id};
-  const update={amount:temp};
-  console.log(update)
-  console.log(filter)
-  let doc = await Order.findOneAndUpdate(filter, update);
-  res.send({ ok: true, doc });
-  }catch(error){
-    console.info(error);
-    res.send({error});
-  }
+// })
+// app.patch('/update-order',async(req,res)=>{
+//   try{
+//   const {_id,temp}=req.body;
+//   console.log(req.body)
+//   const filter={_id:_id};
+//   const update={amount:temp};
+//   console.log(update)
+//   console.log(filter)
+//   let doc = await Order.findOneAndUpdate(filter, update);
+//   res.send({ ok: true, doc });
+//   }catch(error){
+//     console.info(error);
+//     res.send({error});
+//   }
 
-})
-app.post('/delete-order',async(req,res)=>{
-  try{
-    const {id}=req.body;
-    const filter={_id:id};
-    console.log(filter)
-    let doc=await Order.deleteOne(filter);
-    res.send({ok:true,doc});
-  }catch(err){
-    console.error(err)
-    res.status(400).send({error:err.message})
-  }
+// })
+// app.post('/delete-order',async(req,res)=>{
+//   try{
+//     const {id}=req.body;
+//     const filter={_id:id};
+//     console.log(filter)
+//     let doc=await Order.deleteOne(filter);
+//     res.send({ok:true,doc});
+//   }catch(err){
+//     console.error(err)
+//     res.status(400).send({error:err.message})
+//   }
   
-})
+// })
 //console.log(process.env.USER);
 app.get('/',(req,res)=>{
     console.log(req);
