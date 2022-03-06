@@ -1,45 +1,7 @@
 "use strict";
-// import React, { useEffect, useRef, useState } from "react";
 exports.__esModule = true;
-// interface IProps {
-//   open?: boolean;
-//   title: string;
-// }
-// const Test = () => {
-//   // const [isOpen, setIsOpen] = useState(true);
-//   // const handleFilterOpening = () => {
-//   //   setIsOpen((prev) => !prev);
-//   // };
-//   // const ref = useRef<HTMLDivElement>(null);
-//   // useEffect(() => {
-//   //   if (isOpen) setHeight(ref.current?.getBoundingClientRect().height);
-//   //   else setHeight(0);
-//   // }, [isOpen]);
-//   return (
-//     <>
-//     <div className="card">
-//       {/* <div>
-//         <div className="p-3 border-bottom d-flex justify-content-between">
-//           <h6 className="font-weight-bold">title</h6>
-//           <button type="button" className="btn" onClick={handleFilterOpening}>
-//           {!isOpen ? (
-//               '▲'
-//             ) : (
-//               '▼'
-//             )}
-//           </button>
-//         </div>
-//       </div>
-//       <div className="border-bottom">
-//         <div>{isOpen && <div className="p-3">children</div>}</div>
-//       </div> */}
-//     </div>
-//   </>
-// );
-// }
-// export default Test
 var react_1 = require("react");
-var Test = function () {
+var AdminPanel = function () {
     var _a = react_1.useState(""), Fname = _a[0], setFname = _a[1];
     var _b = react_1.useState(""), Lname = _b[0], setLname = _b[1];
     var _c = react_1.useState(""), Email = _c[0], setEmail = _c[1];
@@ -67,4 +29,4 @@ var Test = function () {
             react_1["default"].createElement("label", { htmlFor: "AdminUser" }, " New Admin User")),
         react_1["default"].createElement("button", { type: "submit", form: "UserInfo", value: "Submit", onSubmit: handleSubmit }, "Creat a new  User")));
 };
-exports["default"] = Test;
+exports["default"] = AdminPanel;
