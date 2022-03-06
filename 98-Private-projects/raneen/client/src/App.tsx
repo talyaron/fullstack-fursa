@@ -4,7 +4,8 @@ import { render } from "react-dom";
 import "./index.scss";
 import "./App.scss";
 import Card from './view/components/card/Card';
-//  import Mainbar from './view/components/menu/menu';
+import Mainbar from './view/components/menu/menu';
+import Menu1 from './view/components/menu/menu';
 import { Counter } from "./features/counter/Counter";
 import TextShow from "./features/text/TextShow";
 import TextInput from "./features/text/TextInput";
@@ -67,7 +68,7 @@ function App() {
   return (
       <BrowserRouter>
     <Routes>
-        {/* <Mainbar></Mainbar>  */}
+        {/* <Menu1></Menu1>   */}
         <Route path="/" element={<HomePage />}/>
        <Route path="SignUp" element={<SignUp />} /> 
        

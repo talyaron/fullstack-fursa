@@ -7,12 +7,26 @@ import axios from "axios";
 
 async function handleAdd(ev: any) {
   ev.preventDefault();
-  const password = ev.target.elements.password.value;
-  const name = ev.target.elements.name.value;
-  const city = ev.target.elements.city.value;
+ 
+    try {
+      const name = ev.target.elements.name.value;
+      const password = ev.target.elements.password.value;
+            const city = ev.target.elements.city.value;
+      console.log(name, password, city);
+      if (name && password && city) {
+        axios.post('/User/add-user',{name,password,city})
+        .then(({data})=>{
+          console.log(data)
+        })
+        .catch(err=>{
+          console.error(err)
+        })
+        ev.target.reset();
+      }
+    } catch (error) {
+      console.error(error)
+    }
 
-  const { data } = await axios.post("/add-user", { name, city});
-  console.log(data);
 }
 function SignUp() {
   // async function handleAdd(id:any){

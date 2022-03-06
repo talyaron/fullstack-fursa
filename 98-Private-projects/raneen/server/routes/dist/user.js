@@ -36,49 +36,17 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-var axios_1 = require("axios");
-//   function handleEdit() {
-//     setEdit(!edit);
-//   }
-function handleAdd(ev) {
-    return __awaiter(this, void 0, void 0, function () {
-        var name, password, city;
-        return __generator(this, function (_a) {
-            ev.preventDefault();
-            try {
-                name = ev.target.elements.name.value;
-                password = ev.target.elements.password.value;
-                city = ev.target.elements.city.value;
-                console.log(name, password, city);
-                if (name && password && city) {
-                    axios_1["default"].post('/User/add-user', { name: name, password: password, city: city })
-                        .then(function (_a) {
-                        var data = _a.data;
-                        console.log(data);
-                    })["catch"](function (err) {
-                        console.error(err);
-                    });
-                    ev.target.reset();
-                }
-            }
-            catch (error) {
-                console.error(error);
-            }
-            return [2 /*return*/];
-        });
+var express = require('express');
+var router = express.Router();
+var User_1 = require("../model/schema/User");
+router.post("/add-user", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var body;
+    return __generator(this, function (_a) {
+        body = req.body;
+        console.log(body);
+        User_1["default"].post({ body: body });
+        res.send({ message: "user created", user: User_1["default"] });
+        return [2 /*return*/];
     });
-}
-function SignUp() {
-    // async function handleAdd(id:any){
-    //     console.log('Add')
-    //     const {data} = await axios.post('/add-user',{name:name,city:city,password:password});
-    //     console.log(data)
-    // }
-    return (React.createElement("div", { className: "userCard" },
-        React.createElement("form", { onSubmit: handleAdd },
-            React.createElement("input", { type: "text", placeholder: "Name", name: "name" }),
-            React.createElement("input", { type: "text", placeholder: "password", name: "password" }),
-            React.createElement("input", { type: "text", placeholder: "City", name: "city" }),
-            React.createElement("button", { type: "submit" }, "Register"))));
-}
-exports["default"] = SignUp;
+}); });
+module.exports = router;

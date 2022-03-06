@@ -46,31 +46,30 @@ const kittySchema = new mongoose.Schema({
         city: String,
     },
 });
-const userSchema = new mongoose.Schema({
-    //id: String,
-    name: String,
-    password: String,
-    address: {
-        city: String,
-    },
-});
-const User = mongoose.model("User", userSchema);
-function getUsers() {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            const users = yield User.find({});
-            return users;
-        }
-        catch (err) {
-            console.error(err);
-            return false;
-        }
-    });
-}
-app.get("/get-all-users", (req, res) => __awaiter(this, void 0, void 0, function* () {
-    const users = yield getUsers();
-    res.send(users);
-}));
+// const userSchema = new mongoose.Schema({
+//   //id: String,
+//   name: String,
+//   password: String,
+//   address: {
+//     city: String,
+//   },
+//   // email: String,
+//   // phone: String,
+// });
+// const User = mongoose.model("User", userSchema);
+// async function getUsers(): Promise<any> {
+//   try {
+//     const users = await User.find({});
+//     return users;
+//   } catch (err: any) {
+//     console.error(err);
+//     return false;
+//   }
+// }
+// app.get("/get-all-users", async (req, res) => {
+//   const users = await getUsers();
+//   res.send(users);
+// });
 // async function addUser():Promise<any> {
 //   try{
 //   const users = await User.find({ });
@@ -80,25 +79,25 @@ app.get("/get-all-users", (req, res) => __awaiter(this, void 0, void 0, function
 //     return false
 //   }
 // }
-app.get("/add-user", (req, res) => __awaiter(this, void 0, void 0, function* () {
-    const { body } = req;
-    console.log(body);
-    User.post({ body });
-    res.send({ message: "user created", User });
-}));
-const raneen = new User({
-    name: "Raneen",
-    password: "ba",
-    address: {
-        city: "Kafar Manda",
-    },
-});
-raneen
-    .save()
-    .then((res) => {
-    console.log(res);
-})
-    .catch((err) => console.log(err));
+// app.get("/add-user", async (req, res) => {
+//   const { body } = req;
+//   console.log(body);
+//   User.post({ body });
+//   res.send({ message: "user created", User});
+// });
+// const raneen = new User({
+//   name: "Raneen",
+//   password: "ba",
+//   address: {
+//     city: "Kafar Manda",
+//   },
+// });
+// raneen
+//   .save()
+//   .then((res) => {
+//     console.log(res);
+//   })
+//   .catch((err) => console.log(err));
 //the collection
 const Kitten = mongoose.model("Kitten", kittySchema);
 const mitzy = new Kitten({
@@ -131,6 +130,8 @@ app.get("/get-all-kitens", (req, res) => __awaiter(this, void 0, void 0, functio
     const kittens = yield getKitens();
     res.send(kittens);
 }));
+const user = require('./routes/user');
+app.use('/User', user);
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 });
