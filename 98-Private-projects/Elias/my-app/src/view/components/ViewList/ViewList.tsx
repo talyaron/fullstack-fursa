@@ -1,6 +1,7 @@
 import './ViewList.scss';
 import{useState} from'react';
 import useCollapse from 'react-collapsed';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 //to do side menu
@@ -14,8 +15,15 @@ interface list{
 function ViewList() {
     const listContent:Array<list>=[{catInlList:"Essentials"},{catInlList:"Clothes"},{catInlList:"Care"},{catInlList:"Accessories"}];
     const [showResults, setShowResults] = useState(false);
-    function showSingMessage(e:any){
+    const nav = useNavigate();
+    const {state}:any = useLocation();
+
+
+    function clickSignup(e:any){
         setShowResults(true);
+        nav('/Signup', {
+            state: state
+        });
 
 }
 const Results = () => (
@@ -38,7 +46,7 @@ const Results = () => (
 
             <h1>Congrats! to save/edit, plase sign up </h1>
 
-            <button className='signUpbtn' onMouseOver={showSingMessage}> Free Sign up to save & edit</button>
+            <button className='signUpbtn' onClick={clickSignup}> Free Sign up to save & edit</button>
             <div>
                  { showResults ? <Results /> : null }
             </div>

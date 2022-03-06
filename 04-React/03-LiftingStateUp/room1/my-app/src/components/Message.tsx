@@ -1,8 +1,10 @@
-import React from 'react'
-
-function Message() {
+import '../components/Input.scss'
+interface Msg {
+  value : string;
+}
+function Message(prop : Msg) {
   return (
-    <div>Message</div>
+    <div>{prop.value}</div>
   )
 }
 
