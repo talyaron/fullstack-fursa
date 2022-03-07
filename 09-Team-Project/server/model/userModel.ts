@@ -10,7 +10,7 @@ export const UserSchema=new mongoose.Schema({
     phone:String,
     location:String,
     gender:String,
-    type:'admin'||'org'||'public',
+    type:{type: String, enum: 'admin'||'org'||'public'},
     org:OrgSchema
 
 })
