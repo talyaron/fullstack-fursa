@@ -1,32 +1,21 @@
-import { render } from "react-dom";
-import {
-  BrowserRouter,
-  Routes,
-  Route
-} from "react-router-dom";
-import App from "./App";
-import Login from "./view/pages/login/Login";
-import Store from "./view/pages/store/Store";
-import Product from "./view/pages/product/Product";
-import Order from "./view/pages/order/Order";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.scss';
+import App from './App';
+import { store } from './app/store';
+import { Provider } from 'react-redux';
+import * as serviceWorker from './serviceWorker';
 
-
-
-const rootElement = document.getElementById("root");
-render(
-  <BrowserRouter>
-    <Routes>
-     <Route path="/" element={<Login />} />
-      <Route path="login" element={<Login />} />
-      <Route path="store" element={<Store />} >
-      <Route path=":productId" element={<Product />} />
-      </Route>
-      <Route path="product/:productId" element={<Product />} />
-      
-      <Route path="order/:name" element={<Order />} />
-
-
-    </Routes>
-  </BrowserRouter>,
-  rootElement
+ReactDOM.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById('root')
 );
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();

@@ -1,0 +1,35 @@
+.caldiv {
+  position: absolute;
+  margin: 50px;
+  left: 40%;
+}
+
+.aaa {
+  position: relative;
+  top: 350px;
+  left: 70px;
+}
+
+.backbtn {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 5vw;
+}
+
+.mybox {
+  position: absolute;
+  top: 150px;
+  left: 60px;
+}
+
+.txtfield {
+  position: absolute;
+  top: 210px;
+  width: 20vw;
+}
+
+.regBtn {
+  position: absolute;
+  top: 500px;
+}

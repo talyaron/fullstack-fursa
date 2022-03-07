@@ -1,0 +1,97 @@
+.Middle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 620px) {
+    /* For mobile phones: */
+    .Middle {
+      width: 100%;
+      float: none;
+    }
+}
+
+.Header{
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.Header__HeadTitle{
+    position: sticky;
+    font-size: 80px;
+    display : flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Header__SecondTitle{
+    position: sticky;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 25px;
+    color: red
+}
+
+.HeaderImg{
+    position: sticky;
+    height:200px;
+    margin:10px;
+}
+
+.flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    /* display: inline-block; */
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.grid-container {
+    /* overflow-y: scroll; */
+    display: grid;
+    grid-template-columns: auto auto auto;
+    /* background-color: #2196F3; */
+    padding: 10px;
+  }
+  .grid-item {
+    /* background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8); */
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+  }
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.imgExercise{
+    width: 350px; 
+    height: 200px;
+ }
+
+.nameExercise{
+    font-size: 30px;
+    float: left;
+    font-weight: bold;
+}
+
+.btnExercise{
+    font-size: 30px;
+    width: 140px;
+}
+
+.PlanTitle{
+    font-size: x-large;
+    font-weight:bold ;
+    color: rgb(255, 0, 0);
+}

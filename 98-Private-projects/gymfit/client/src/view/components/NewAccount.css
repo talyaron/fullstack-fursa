@@ -1,0 +1,28 @@
+.Input{
+    width: 200px;
+    height: 30px;
+    border-radius: 6px;
+    border-color: black;
+}
+
+.Input1{
+    width:290px;
+    height:50px;
+    border-radius: 4px;
+}
+
+.Acount{
+    background-color: grey;
+    width: 350px;
+    height:50px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    margin:10px
+}
+
+.Acount:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    box-shadow: 20px 12px 16px 0 rgba(0,0,0,0.24), 20px 17px 50px 0 rgba(0, 0, 0, 0.19);
+}

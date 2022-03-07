@@ -3,8 +3,16 @@ import './Navbar.scss';
 function Navbar() {
   return (
     <nav>
-      <Link to="/store">Store</Link>
-      <Link to="/login">Login</Link>
+      <div className="dropdown">
+      <Link className="toStore" to="/store">home
+      <div className="dropdown-content">
+    <Link to="/rawmaterial">Raw Material</Link>
+    <Link to="/woodproduct">Wood Products</Link>
+    <Link to="/rawmaterial">Delivery</Link>
+  </div>
+      </Link>
+      </div>
+      {/* <Link to="/login">Login</Link> */}
     </nav>
   );
 }

@@ -6,10 +6,20 @@ import { store } from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Accident from './view/pages/accident/Accident';
+import ProfileInfo from "./view/pages/profileInfo/ProfileInfo";
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <Routes>
+          <Route path='/accidents' element={<Accident />} />
+          <Route path="/" element={<App />} />
+          <Route path="profileInfo" element={<ProfileInfo />} />
+        </Routes>
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
