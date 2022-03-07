@@ -1,16 +1,19 @@
 
+import userSchema from "./userModel";
 const mongoose = require("mongoose");
-
 const accidentSchema = new mongoose.Schema({
-    type: String,
-    userId: String,
-    date: Date,
-    family: Boolean,
-    chatId: String,
-});
+    accidentId:Number,
+    accidentType: String,
+    emergency : String || null,
+    accidentDate: String,
+    accidentAddress:Location,
+    accidentPic: String,
+    accidentVideo:String,
+    voiceCall: Object,
+    accidentDescription: String,
+    accidentUser: userSchema,
+})
+const accident = mongoose.model("accident",accidentSchema);
+export default accidentSchema;
 
 
-
-const Accidents = mongoose.model("Accidents", accidentSchema);
-
-export default Accidents
