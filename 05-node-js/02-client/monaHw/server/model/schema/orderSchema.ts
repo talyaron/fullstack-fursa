@@ -10,6 +10,7 @@ const OrderSchema=new mongoose.Schema({
     width:Number,
     thick:Number,
     doorType:String,
+    // user:userSchema
   });
   
   const Order=mongoose.model('Order',OrderSchema);
