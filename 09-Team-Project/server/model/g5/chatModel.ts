@@ -1,4 +1,4 @@
-import Messages from './messageModel'
+import Messages from '../messageModel'
 const mongoose = require("mongoose");
 
 

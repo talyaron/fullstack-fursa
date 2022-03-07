@@ -1,11 +1,14 @@
-
-$mainColor:rgb(53, 85, 73);
-@import 'view/components/card/Card.scss';
-@import 'view/components/signUp/index.scss';
+$borderRadius:10px;
+$padding:20px;
+// $mainColor:rgb(53, 85, 73);
+// @import 'view/components/card/Card.scss';
+// @import 'view/pages/signUp/signup.scss';
+// @import 'view/pages/signIn/index.scss';
 
 
 .App {
   text-align: center;
+  background-color: white;
 }
 
 .App-logo {
@@ -19,16 +22,16 @@ $mainColor:rgb(53, 85, 73);
   }
 }
 
-.App-header {
-  background-color: #bdae99;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+// .App-header {
+//   // background-color: #bdae99;
+//   min-height: 100vh;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   font-size: calc(10px + 2vmin);
+//   color: white;
+// }
 
 .App-link {
   color: #61dafb;
@@ -41,4 +44,10 @@ $mainColor:rgb(53, 85, 73);
   to {
     transform: rotate(360deg);
   }
+}
+
+button{
+  // width: 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
 }

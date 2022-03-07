@@ -1,0 +1,107 @@
+@import url("https://cdn.syncfusion.com/ej2/material.css");
+.wrapper {
+  margin: 4px, 4px;
+  padding: 4px;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-bottom: 60px;
+  text-align: justify;
+  width: 100%;
+}
+.wrapper .text {
+  padding: 10px;
+  color: #7572FC;
+  font-family: Monospace;
+  font-size: 20px;
+  font-weight: 550;
+}
+.wrapper .TarvelInfo1Form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.wrapper .TarvelInfo1Form input {
+  height: 38px;
+  width: 100%;
+  border-radius: 9px;
+}
+.wrapper .TarvelInfo1Form .grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+  row-gap: 5px;
+  column-gap: 5px;
+}
+.wrapper .TarvelInfo1Form .grid-container .divT .leisure {
+  background-image: url("../../../icons/Vector.png");
+}
+.wrapper .TarvelInfo1Form .grid-container .divT .business {
+  background-image: url("../../../icons/Vector-2.png");
+}
+.wrapper .TarvelInfo1Form .grid-container .divT .roadTrip {
+  background-image: url("../../../icons/Vector-4.png");
+}
+.wrapper .TarvelInfo1Form .grid-container .divT .family {
+  background-image: url("../../../icons/Vector-1.png");
+}
+.wrapper .TarvelInfo1Form .grid-container .divT .study {
+  background-image: url("../../../icons/Vector-5.png");
+}
+.wrapper .TarvelInfo1Form .grid-container .divT .grieving {
+  background-image: url("../../../icons/Vector-6.png");
+}
+.wrapper .TarvelInfo1Form .grid-container .divT .trolly {
+  background-image: url("../../../icons/Stroke.png");
+}
+.wrapper .TarvelInfo1Form .grid-container .divT .suitcase {
+  background-image: url("../../../icons/Vector-7.png");
+}
+.wrapper .TarvelInfo1Form .grid-container .divT .briefcase {
+  background-image: url("../../../icons/Vector-3.png");
+}
+.wrapper .TarvelInfo1Form .grid-container .divT .backpack {
+  background-image: url("../../../icons/Vector-8.png");
+}
+.wrapper .TarvelInfo1Form .grid-container .divT .handbag {
+  background-image: url("../../../icons/Vector-9.png");
+}
+.wrapper .TarvelInfo1Form .grid-container .divT .multy {
+  background-image: url("../../../icons/Vector-10.png");
+}
+.wrapper .TarvelInfo1Form .Proceedbtn {
+  color: white;
+  font-family: Poppins;
+  font-style: normal;
+  text-align: center;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  background-color: #FF8074;
+  border: #FF8074;
+  border-radius: 16px;
+  height: 47.75px;
+  width: 124px;
+}
+.wrapper .TarvelInfo1Form .Proceedbtn:hover {
+  background-color: #fa6f63;
+}
+.wrapper label {
+  display: block;
+  border: solid 2px grey;
+  width: 50px;
+  height: 50px;
+  margin-top: 10px;
+  text-align: center;
+  line-height: 40px;
+  background-size: contain;
+  border-radius: 13pX;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.wrapper input[type=checkbox] {
+  display: none;
+}
+.wrapper input:checked + label {
+  border: solid 2px #01adcc;
+}
