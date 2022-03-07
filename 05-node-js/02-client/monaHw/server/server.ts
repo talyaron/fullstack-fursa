@@ -1,4 +1,4 @@
--// declare function require(name:string);
+declare function require(name:string);
 require('dotenv').config();
 
 import axios from 'axios';
