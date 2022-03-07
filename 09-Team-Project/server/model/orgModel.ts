@@ -1,10 +1,8 @@
 const mongoose = require('mongoose');
 
-const OrgSchema = new mongoose.Schema({
-    id:String,
+export const OrgSchema = new mongoose.Schema({
     orgName: String,
     email: String,
-    isAdmin : Boolean,
     password: String,
     phone: String,
     city: String,

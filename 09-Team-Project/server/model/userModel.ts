@@ -1,7 +1,8 @@
-export {}
+import { OrgSchema } from "./orgModel";
+
 const mongoose = require("mongoose");
 
-const userSchema=new mongoose.Schema({
+export const UserSchema=new mongoose.Schema({
     userID:Number,
     name:String,
     email:String,
@@ -9,10 +10,11 @@ const userSchema=new mongoose.Schema({
     phone:String,
     location:String,
     gender:String,
-    type:String
+    type:'admin'||'org'||'public',
+    org:OrgSchema
 
 })
 
-const Users = mongoose.model("Users", userSchema);
+const Users = mongoose.model("Users", UserSchema);
 
 export default Users
