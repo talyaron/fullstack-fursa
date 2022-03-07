@@ -1,6 +1,8 @@
 
-import UserSchema from "./userModel";
+import {UserSchema} from "./userModel";
+
 import MediaSchema from './mediaSchema';
+import { OrgSchema } from "./orgModel";
 const mongoose = require("mongoose");
 
 
@@ -14,6 +16,7 @@ const accidentSchema = new mongoose.Schema({
     call: Object,
     description: String,
     user: UserSchema,
+    org:OrgSchema
 })
 const accident = mongoose.model("accident",accidentSchema);
 export default accidentSchema;
