@@ -1,3 +1,6 @@
+import Owners from './model/schema/ownerModel';
+import Users from './model/schema/UserSchema';
+
 const express = require("express");
 const app = express();
 const port = 4000;
@@ -6,7 +9,7 @@ require("dotenv").config();
 //routes for data
 
 //static files
-
+app.use(express.json());
 app.use(express.static("client/build"));
 
 //data
@@ -146,8 +149,11 @@ app.get("/get-all-kitens", async (req, res) => {
 });
 
 
-const user = require('./routes/user')
-app.use('/User', user);
+const ownerRoute = require('./routes/ownersRoute')
+app.use('/owenrs', ownerRoute);
+
+const UserRoute = require('./routes/UserRoute')
+app.use('/users', UserRoute);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

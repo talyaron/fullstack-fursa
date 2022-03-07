@@ -6,9 +6,9 @@ var Button_1 = require("@material-ui/core/Button");
 var MenuItem_1 = require("@material-ui/core/MenuItem");
 var hooks_1 = require("../../../app/hooks");
 var react_router_dom_1 = require("react-router-dom");
-//import {update, getJokeAsync} from '../../../app/reducers/textSlice'; 
+//import {update, getJokeAsync} from '../../../app/reducers/textSlice';
 var bagSlice_1 = require("../../../app/reducers/bagSlice");
-function Menu1() {
+function Mainbar() {
     var bag = hooks_1.useAppSelector(bagSlice_1.selectBag);
     var dispatch = hooks_1.useAppDispatch();
     var _a = react_1["default"].useState(null), anchorEl = _a[0], setAnchorEl = _a[1];
@@ -43,5 +43,5 @@ function Menu1() {
                     react_1["default"].createElement("button", { className: "navbar__right__signin", type: "button" }, "Sign in")),
                 react_1["default"].createElement("button", { className: "navbar__right__signin", type: "button" }, bag)))));
 }
-exports["default"] = Menu1;
-// export{}
+exports["default"] = Mainbar;
+// export {};

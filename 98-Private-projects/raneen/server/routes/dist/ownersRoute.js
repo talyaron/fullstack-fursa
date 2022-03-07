@@ -38,13 +38,43 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 exports.__esModule = true;
 var express = require('express');
 var router = express.Router();
-router.post("/add-user", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var body;
+var ownerModel_1 = require("../model/schema/ownerModel");
+router.post("/add-owner", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var _a, id, name, ownerDB, query, options, oldItem, error_1;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
+            case 0:
+                _b.trys.push([0, 2, , 3]);
+                _a = req.body, id = _a.id, name = _a.name;
+                console.log("fuck you");
+                if (!id)
+                    throw new Error("No id in body");
+                if (!name)
+                    throw new Error("No name in body");
+                ownerDB = new ownerModel_1["default"]({
+                    name: name,
+                    id: id
+                });
+                query = { id: id }, options = { upsert: true, "new": true, setDefaultsOnInsert: true };
+                return [4 /*yield*/, ownerModel_1["default"].findOneAndUpdate(query, ownerDB, options)];
+            case 1:
+                oldItem = _b.sent();
+                console.log(oldItem);
+                res.send(oldItem);
+                return [3 /*break*/, 3];
+            case 2:
+                error_1 = _b.sent();
+                console.info('ON app.post("/add-owner"');
+                console.log(req.body);
+                console.error(error_1.message);
+                res.send({ error: error_1.message });
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
+router.get('/get-users', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
-        body = req.body;
-        console.log(body);
-        user.post({ body: body });
-        res.send({ message: "user created", user: user });
         return [2 /*return*/];
     });
 }); });

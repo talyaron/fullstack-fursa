@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
-import axios from 'axios';
-import { Console } from 'console';
+import axios from "axios";
+import { Console } from "console";
 import Menu from "@material-ui/core/Menu";
 import Button from "@material-ui/core/Button";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
@@ -11,10 +11,10 @@ import Popper from "@material-ui/core/Popper";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import { useState, useEffect } from 'react';
-import { useAppSelector, useAppDispatch } from '../../../app/hooks';
+import { useState, useEffect } from "react";
+import { useAppSelector, useAppDispatch } from "../../../app/hooks";
 import { Link } from "react-router-dom";
-//import {update, getJokeAsync} from '../../../app/reducers/textSlice'; 
+//import {update, getJokeAsync} from '../../../app/reducers/textSlice';
 import {
   decrement,
   increment,
@@ -22,26 +22,22 @@ import {
   incrementAsync,
   incrementIfOdd,
   selectBag,
-} from '../../../app/reducers/bagSlice';
+} from "../../../app/reducers/bagSlice";
 
-
-function Menu1() {
-
-   const bag = useAppSelector(selectBag);
+function Mainbar() {
+  const bag = useAppSelector(selectBag);
   const dispatch = useAppDispatch();
-
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
-   
-  };
+  }
 
   const handleClose = () => {
     setAnchorEl(null);
-     console.log("hi");
-  };
+    console.log("hi");
+  }
   return (
     <div className="navbar">
       <div className="navbar__box">
@@ -91,19 +87,18 @@ function Menu1() {
             <span>Shopping bag</span>
           </button>
           <a href="#home">help</a>
-          <Link to="/SignUp" >
-          <button className="navbar__right__signin" type="button">
-            Sign in
-          </button>
+          <Link to="/SignUp">
+            <button className="navbar__right__signin" type="button">
+              Sign in
+            </button>
           </Link>
-             <button className="navbar__right__signin" type="button">
-         {bag}
-         </button>
+          <button className="navbar__right__signin" type="button">
+            {bag}
+          </button>
         </div>
-        
       </div>
     </div>
   );
 }
-export default Menu1;
-// export{}
+export default Mainbar;
+// export {};

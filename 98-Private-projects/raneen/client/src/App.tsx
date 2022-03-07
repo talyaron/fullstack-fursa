@@ -4,8 +4,8 @@ import { render } from "react-dom";
 import "./index.scss";
 import "./App.scss";
 import Card from './view/components/card/Card';
-import Mainbar from './view/components/menu/menu';
-import Menu1 from './view/components/menu/menu';
+ import Mainbar from './view/components/menu/menu';
+ import Menu1 from './view/components/menu/menu';
 import { Counter } from "./features/counter/Counter";
 import TextShow from "./features/text/TextShow";
 import TextInput from "./features/text/TextInput";
@@ -65,13 +65,17 @@ import SignUp from "./view/pages/SignUp/SignUp";
 
 
 function App() {
+    //const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   return (
+    
       <BrowserRouter>
+       <Mainbar></Mainbar> 
     <Routes>
-        {/* <Menu1></Menu1>   */}
+   
+       {/* <Mainbar></Mainbar>  */}
         <Route path="/" element={<HomePage />}/>
        <Route path="SignUp" element={<SignUp />} /> 
-       
+       {/* <Route path="Mainbar" element={<Mainbar />} /> */}
         {/* <Route path="AboutUs" element={<AboutUs />} /> */}
         <Route path="HomePage" element={<HomePage /> }/>
        

@@ -3,6 +3,7 @@ exports.__esModule = true;
 var react_1 = require("react");
 require("./index.scss");
 require("./App.scss");
+var menu_1 = require("./view/components/menu/menu");
 var react_router_dom_1 = require("react-router-dom");
 var HomePage_1 = require("./view/pages/HomePage/HomePage");
 var SignUp_1 = require("./view/pages/SignUp/SignUp");
@@ -43,7 +44,9 @@ var SignUp_1 = require("./view/pages/SignUp/SignUp");
 // }
 // export default App;
 function App() {
+    //const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     return (react_1["default"].createElement(react_router_dom_1.BrowserRouter, null,
+        react_1["default"].createElement(menu_1["default"], null),
         react_1["default"].createElement(react_router_dom_1.Routes, null,
             react_1["default"].createElement(react_router_dom_1.Route, { path: "/", element: react_1["default"].createElement(HomePage_1["default"], null) }),
             react_1["default"].createElement(react_router_dom_1.Route, { path: "SignUp", element: react_1["default"].createElement(SignUp_1["default"], null) }),

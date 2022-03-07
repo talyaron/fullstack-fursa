@@ -1,3 +1,4 @@
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -7,12 +8,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
 const app = express();
 const port = 4000;
 require("dotenv").config();
 //routes for data
 //static files
+app.use(express.json());
 app.use(express.static("client/build"));
 //data
 app.get("/get-all-users", (req, res) => {
@@ -126,12 +129,14 @@ function getKitens() {
         }
     });
 }
-app.get("/get-all-kitens", (req, res) => __awaiter(this, void 0, void 0, function* () {
+app.get("/get-all-kitens", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const kittens = yield getKitens();
     res.send(kittens);
 }));
-const user = require('./routes/user');
-app.use('/User', user);
+const ownerRoute = require('./routes/ownersRoute');
+app.use('/owenrs', ownerRoute);
+const UserRoute = require('./routes/UserRoute');
+app.use('/users', UserRoute);
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 });

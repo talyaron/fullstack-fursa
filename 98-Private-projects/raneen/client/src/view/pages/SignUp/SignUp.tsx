@@ -5,16 +5,40 @@ import axios from "axios";
 //     setEdit(!edit);
 //   }
 
-async function handleAdd(ev: any) {
+async function handleAddOwner(ev: any) {
   ev.preventDefault();
  
-    try {
+   try {
+      const name = ev.target.elements.name.value;
+      const id = ev.target.elements.id.value;
+      console.log(name, id);
+      if (name && id) {
+        axios.post('/owenrs/add-owner',{id, name})
+        .then(({data})=>{
+          console.log(data)
+        })
+        .catch(err=>{
+          console.error(err)
+        })
+        ev.target.reset();
+      }
+    } catch (error) {
+      console.error(error)
+    }
+
+}
+
+
+async function handleAddUSER(ev: any) {
+  ev.preventDefault();
+ 
+   try {
       const name = ev.target.elements.name.value;
       const password = ev.target.elements.password.value;
-            const city = ev.target.elements.city.value;
+      const city = ev.target.elements.city.value;
       console.log(name, password, city);
       if (name && password && city) {
-        axios.post('/User/add-user',{name,password,city})
+        axios.post('/users/add-user',{name,password,city})
         .then(({data})=>{
           console.log(data)
         })
@@ -36,12 +60,17 @@ function SignUp() {
   // }
   return (
     <div className="userCard">
-      <form onSubmit={handleAdd}>
-        <input type="text" placeholder="Name" name="name" />
-        <input type="text" placeholder="password" name="password" />
-        <input type="text" placeholder="City" name="city" />
+    <form onSubmit={handleAddOwner}>
+        <input type="text" name="name" placeholder="Name of Owner" />
+        <input type="text" name="id" placeholder="id of the woner" />
+        <button type="submit">ADD</button>
+      </form>
 
-        <button type="submit">Register</button>
+          <form onSubmit={handleAddUSER}>
+        <input type="text" name="name" placeholder="Name of Owner" />
+        <input type="text" name="password" placeholder="password" />
+               <input type="text" name="city" placeholder="city" />
+        <button type="submit">ADD USER</button>
       </form>
     </div>
   );

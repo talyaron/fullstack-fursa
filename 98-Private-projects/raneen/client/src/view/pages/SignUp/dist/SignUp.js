@@ -40,7 +40,34 @@ var axios_1 = require("axios");
 //   function handleEdit() {
 //     setEdit(!edit);
 //   }
-function handleAdd(ev) {
+function handleAddOwner(ev) {
+    return __awaiter(this, void 0, void 0, function () {
+        var name, id;
+        return __generator(this, function (_a) {
+            ev.preventDefault();
+            try {
+                name = ev.target.elements.name.value;
+                id = ev.target.elements.id.value;
+                console.log(name, id);
+                if (name && id) {
+                    axios_1["default"].post('/owenrs/add-owner', { id: id, name: name })
+                        .then(function (_a) {
+                        var data = _a.data;
+                        console.log(data);
+                    })["catch"](function (err) {
+                        console.error(err);
+                    });
+                    ev.target.reset();
+                }
+            }
+            catch (error) {
+                console.error(error);
+            }
+            return [2 /*return*/];
+        });
+    });
+}
+function handleAddUSER(ev) {
     return __awaiter(this, void 0, void 0, function () {
         var name, password, city;
         return __generator(this, function (_a) {
@@ -51,7 +78,7 @@ function handleAdd(ev) {
                 city = ev.target.elements.city.value;
                 console.log(name, password, city);
                 if (name && password && city) {
-                    axios_1["default"].post('/User/add-user', { name: name, password: password, city: city })
+                    axios_1["default"].post('/users/add-user', { name: name, password: password, city: city })
                         .then(function (_a) {
                         var data = _a.data;
                         console.log(data);
@@ -75,10 +102,14 @@ function SignUp() {
     //     console.log(data)
     // }
     return (React.createElement("div", { className: "userCard" },
-        React.createElement("form", { onSubmit: handleAdd },
-            React.createElement("input", { type: "text", placeholder: "Name", name: "name" }),
-            React.createElement("input", { type: "text", placeholder: "password", name: "password" }),
-            React.createElement("input", { type: "text", placeholder: "City", name: "city" }),
-            React.createElement("button", { type: "submit" }, "Register"))));
+        React.createElement("form", { onSubmit: handleAddOwner },
+            React.createElement("input", { type: "text", name: "name", placeholder: "Name of Owner" }),
+            React.createElement("input", { type: "text", name: "id", placeholder: "id of the woner" }),
+            React.createElement("button", { type: "submit" }, "ADD")),
+        React.createElement("form", { onSubmit: handleAddUSER },
+            React.createElement("input", { type: "text", name: "name", placeholder: "Name of Owner" }),
+            React.createElement("input", { type: "text", name: "password", placeholder: "password" }),
+            React.createElement("input", { type: "text", name: "city", placeholder: "city" }),
+            React.createElement("button", { type: "submit" }, "ADD USER"))));
 }
 exports["default"] = SignUp;
