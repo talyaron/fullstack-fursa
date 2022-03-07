@@ -1,0 +1,30 @@
+.signin {
+  background-color: white;
+  color: black;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  padding: 30px;
+  margin: auto;
+  margin-top: 20px;
+  width: 30vw;
+  height: 80vh;
+  font-size: large;
+}
+.signin img {
+  width: 20vw;
+  height: 20vh;
+  border-radius: 30px;
+}
+.signin .icon {
+  width: 10vw;
+  height: 20vh;
+  border-radius: 100px;
+}
+.signin .btn {
+  width: 10vw;
+  color: black;
+  font-weight: bold;
+}
+.signin p {
+  font-size: 1rem;
+}

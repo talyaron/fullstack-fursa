@@ -14,9 +14,9 @@ function Products(prop:ProductProps){
     
     <div className="product">
         <img src={image}></img>
+        <div className="product_link">
         <Link to={`/product/${id}`}>{name}</Link>
-        
-       
+        </div>
     </div>
      
         
