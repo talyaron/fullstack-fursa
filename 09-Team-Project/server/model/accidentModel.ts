@@ -1,4 +1,4 @@
-
+export {}
 import {UserSchema} from "./userModel";
 
 import MediaSchema from './mediaSchema';
@@ -19,6 +19,6 @@ const accidentSchema = new mongoose.Schema({
     org:OrgSchema
 })
 const accident = mongoose.model("accident",accidentSchema);
-export default accidentSchema;
+export default accident;
 
 
