@@ -26,11 +26,14 @@ export const pageReducer = createSlice({
         select: (state, action: PayloadAction<any>) => {
             state.value = action.payload;
         },
+        changeText: (state, action: PayloadAction<any>) => {
+            state.value.data = action.payload;
+        }
     }
 });
 
 
-export const { select } = pageReducer.actions;
+export const { select, changeText } = pageReducer.actions;
 export const selectURL = (state: RootState) => state.selectImg;
 
 export default pageReducer.reducer;
