@@ -1,7 +1,12 @@
 "use strict";
-// import React from "react";
-// //components
-// import Card from "./view/components/card/Card";
-// import Mainbar from "./view/components/menu/menu";
-// import { useState, useEffect } from "react";
 exports.__esModule = true;
+require("./Store.scss");
+var react_router_dom_1 = require("react-router-dom");
+function Store() {
+    var coatsId = react_router_dom_1.useParams().coatsId;
+    console.log(coatsId);
+    return (React.createElement("div", null,
+        "name:",
+        coatsId));
+}
+exports["default"] = Store;

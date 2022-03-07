@@ -55,7 +55,7 @@ function handleAdd(){
       <img src={img} alt={name} />
       <h3>{name}</h3>
       <p>Price: {price}</p>
-      <button  className="card_add" type="button" onClick={() => dispatch(increment())}>add to favourites</button>
+      <button  className="card_add"  onClick={() => dispatch(increment())}>add to favourites</button>
     </div>
   );
 } 

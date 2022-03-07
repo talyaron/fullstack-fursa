@@ -25,6 +25,9 @@ import {
 } from "../../../app/reducers/bagSlice";
 
 function Mainbar() {
+
+  const coatsId = 'COATS';
+
   const bag = useAppSelector(selectBag);
   const dispatch = useAppDispatch();
 
@@ -42,8 +45,8 @@ function Mainbar() {
     <div className="navbar">
       <div className="navbar__box">
         <div className="navbar__left">
-          <nav role="navigation"></nav>
-          <div className="categories">
+          {/* <nav role="navigation"></nav> */}
+        <div className="categories">
             <Button
               id="basic-button"
               aria-controls={open ? "basic-menu" : undefined}
@@ -56,7 +59,9 @@ function Mainbar() {
                 alt="Logo"
               />
             </Button>
-            <Menu
+            <Menu 
+            className = "menuItem"
+            
               id="basic-menu"
               anchorEl={anchorEl}
               open={open}
@@ -65,9 +70,24 @@ function Mainbar() {
                 "aria-labelledby": "basic-button",
               }}
             >
-              <MenuItem onClick={handleClose}>Clothes</MenuItem>
-              <MenuItem onClick={handleClose}>Shoes</MenuItem>
-              <MenuItem onClick={handleClose}>Accessories</MenuItem>
+               
+          {/* <Route path="/:coatsId" children={<Store />} /> */}
+       
+               <Link to={`/Store/${coatsId}`}>
+              <MenuItem className = "menuItem" onClick={handleClose}>
+              <p>COATS</p>
+              </MenuItem>
+               </Link >
+              <MenuItem className = "menuItem" onClick={handleClose}>
+              <p>
+                JACKETS
+              </p>
+              
+              </MenuItem>
+              <MenuItem className = "menuItem" onClick={handleClose}>
+               <p>
+                PANTS
+              </p></MenuItem>
             </Menu>
           </div>
           <span>
@@ -86,12 +106,21 @@ function Mainbar() {
           <button className="navbar__right__signup" type="button">
             <span>Shopping bag</span>
           </button>
-          <a href="#home">help</a>
-          <Link to="/SignUp">
-            <button className="navbar__right__signin" type="button">
+          <Link to="/Help">
+          <a >help</a>
+          </Link>
+           <button className="navbar__right__signin" type="button">
               Sign in
             </button>
-          </Link>
+          
+            <button  className="navbar__right__signin" type="button">
+                Sign in
+            {/* <Link to="/SignUp">
+           
+              Sign in
+              // </Link> */}
+            </button>
+         
           <button className="navbar__right__signin" type="button">
             {bag}
           </button>

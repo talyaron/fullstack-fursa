@@ -1,3 +1,64 @@
-.wrapper{
+// .wrapper{
+//     display:flex;
+//     background-color:yellow;
+//     flex-wrap: wrap;
+//     justify-content: center;
+//     width: 100%;
+//     height: 8.6vh;
+// }
+
+// @media only screen and (max-width: 800px){
+.homePage {
+  margin-top: 40px;
+    text-align: center;
     display:flex;
+    // grid-template-columns: repeat(1, 16rem);
+    // grid-template-rows: repeat(5, 1fr);
+    display: flex;
+
+    flex-direction: column; 
+    background-color: black;
+    img{
+        display:flex;
+        justify-content: center;
+    }
 }
+//   }
+
+  
+  .homePage-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    .homePage-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+  
+  .homePage-header {
+    //background-color: #282c34;
+    //min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    //justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .homePage-link {
+    color: #61dafb;
+  }
+  
+  @keyframes homePage-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+  
+    to {
+      transform: rotate(360deg);
+    }
+  }
+

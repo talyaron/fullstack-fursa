@@ -1,3 +1,43 @@
+import './Store.scss';
+import {useParams} from 'react-router-dom';
+
+
+function Store() {
+  const {coatsId}= useParams();
+      console.log(coatsId);
+    return(
+        <div >
+        name:{coatsId}
+        </div>
+    );
+}
+
+export default Store;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // import React from "react";
 // //components
 // import Card from "./view/components/card/Card";

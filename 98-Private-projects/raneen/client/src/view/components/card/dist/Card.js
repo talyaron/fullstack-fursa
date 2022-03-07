@@ -29,6 +29,6 @@ function Card(prop) {
         React.createElement("p", null,
             "Price: ",
             price),
-        React.createElement("button", { className: "card_add", type: "button", onClick: function () { return dispatch(bagSlice_1.increment()); } }, "add to favourites")));
+        React.createElement("button", { className: "card_add", onClick: function () { return dispatch(bagSlice_1.increment()); } }, "add to favourites")));
 }
 exports["default"] = Card;

@@ -1,4 +1,4 @@
-import './HomePage.scss';
+import './homePage.scss';
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import Mainbar from '../../components/menu/menu';
@@ -19,13 +19,14 @@ interface item{
 function HomePage() {
 
     return(
-        <div >
-             {/* <Mainbar></Mainbar>  */}
+        <div className="homePage">
+        
+       
              <img src="https://static.zara.net/photos///contents/mkt/spots/ss22-north-woman-shoes-bags/subhome-xmedia-08//w/1728/IMAGE-large-landscape-b1c8fbe8-bf41-4aa7-bad0-794f0713c4b9-default_0.jpg?ts=1645713783552" alt="" />
            {clothes.map((item1, index)=>{
         const {name,price,img}= item1;
         return <Card key={index} info ={{name,price,img} } />
-      })} 
+      })}
  
         </div>
     );

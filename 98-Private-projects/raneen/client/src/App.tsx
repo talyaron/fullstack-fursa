@@ -14,7 +14,9 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import HomePage from "./view/pages/HomePage/HomePage";
+import HomePage from "./view/pages/homePage/homePage";
+import Store from "./view/pages/Store/Store";
+import Help from "./view/pages/Help/Help";
 import SignUp from "./view/pages/SignUp/SignUp";
 // import AboutUs from "./view/pages/AboutUs/AboutUs";
 // import Store from "./view/pages/Store/Store";
@@ -73,8 +75,12 @@ function App() {
     <Routes>
    
        {/* <Mainbar></Mainbar>  */}
+            
         <Route path="/" element={<HomePage />}/>
+        <Route path="Store/:coatsId" element={<Store />} />
+         {/* <Route path="Store" element={<Store />} /> */}
        <Route path="SignUp" element={<SignUp />} /> 
+       <Route path="Help" element={<Help />} /> 
        {/* <Route path="Mainbar" element={<Mainbar />} /> */}
         {/* <Route path="AboutUs" element={<AboutUs />} /> */}
         <Route path="HomePage" element={<HomePage /> }/>

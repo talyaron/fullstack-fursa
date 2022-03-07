@@ -1,3 +1,43 @@
-.wrapper {
+.homePage {
+  margin-top: 40px;
+  text-align: center;
   display: flex;
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+}
+.homePage img {
+  display: flex;
+  justify-content: center;
+}
+
+.homePage-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .homePage-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+.homePage-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.homePage-link {
+  color: #61dafb;
+}
+
+@keyframes homePage-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

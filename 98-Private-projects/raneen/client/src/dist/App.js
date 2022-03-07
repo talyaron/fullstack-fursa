@@ -5,7 +5,9 @@ require("./index.scss");
 require("./App.scss");
 var menu_1 = require("./view/components/menu/menu");
 var react_router_dom_1 = require("react-router-dom");
-var HomePage_1 = require("./view/pages/HomePage/HomePage");
+var homePage_1 = require("./view/pages/homePage/homePage");
+var Store_1 = require("./view/pages/Store/Store");
+var Help_1 = require("./view/pages/Help/Help");
 var SignUp_1 = require("./view/pages/SignUp/SignUp");
 // import AboutUs from "./view/pages/AboutUs/AboutUs";
 // import Store from "./view/pages/Store/Store";
@@ -48,9 +50,11 @@ function App() {
     return (react_1["default"].createElement(react_router_dom_1.BrowserRouter, null,
         react_1["default"].createElement(menu_1["default"], null),
         react_1["default"].createElement(react_router_dom_1.Routes, null,
-            react_1["default"].createElement(react_router_dom_1.Route, { path: "/", element: react_1["default"].createElement(HomePage_1["default"], null) }),
+            react_1["default"].createElement(react_router_dom_1.Route, { path: "/", element: react_1["default"].createElement(homePage_1["default"], null) }),
+            react_1["default"].createElement(react_router_dom_1.Route, { path: "Store/:coatsId", element: react_1["default"].createElement(Store_1["default"], null) }),
             react_1["default"].createElement(react_router_dom_1.Route, { path: "SignUp", element: react_1["default"].createElement(SignUp_1["default"], null) }),
-            react_1["default"].createElement(react_router_dom_1.Route, { path: "HomePage", element: react_1["default"].createElement(HomePage_1["default"], null) })))
+            react_1["default"].createElement(react_router_dom_1.Route, { path: "Help", element: react_1["default"].createElement(Help_1["default"], null) }),
+            react_1["default"].createElement(react_router_dom_1.Route, { path: "HomePage", element: react_1["default"].createElement(homePage_1["default"], null) })))
     //     <div>
     //     <BrowserRouter>
     //       <Routes>
