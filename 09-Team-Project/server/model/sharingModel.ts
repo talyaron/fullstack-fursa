@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
-import Messages from './messageModel'
+import Messages, { MessageSchema } from './messageModel'
+import { UserSchema } from './userModel';
 
 
 
 const SharingSchema = new mongoose.Schema({
-    orgUserId: String,
-    messages: { type: Array, "default": [Messages] },// got accident Id inside
+    from: UserSchema,
+    messages: { type: Array, "default": [MessageSchema] },// got accident Id inside
     content: String,
     to: String, //destination could be email ....
     chatId: String,
