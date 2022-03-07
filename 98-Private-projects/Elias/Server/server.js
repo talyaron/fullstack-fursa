@@ -33,34 +33,35 @@ db.once("open", () => {
 });
 
 
-const kittySchema = new mongoose.Schema({
-    name: String,
-    address:{
-        city:String
-      }
-});
+// const kittySchema = new mongoose.Schema({
+//     name: String,
+//     address:{
+//         city:String
+//       }
+// });
 
 //the collection
-const Kitten = mongoose.model('Kitten', kittySchema);
 
-const mitzy = new Kitten({
-    name: "Mitzy3",
-    address: {
-      city:"Um al fahm",
-      street:"Jaberin"
-    },
-  });
-console.log(mitzy.name);
+// const Kitten = mongoose.model('Kitten', kittySchema);
+
+// const mitzy = new Kitten({
+//     name: "Mitzy3",
+//     address: {
+//       city:"Um al fahm",
+//       street:"Jaberin"
+//     },
+//   });
+// console.log(mitzy.name);
 
 //mitzy.save().then(res => { console.log(res) });
 
 
-async function getKitens() {
-    const kittens = await Kitten.find({address:{city:'Um al fahm'} });
-    console.log(kittens);
-  }
+// async function getKitens() {
+//     const kittens = await Kitten.find({address:{city:'Um al fahm'} });
+//     console.log(kittens);
+//   }
   
-  getKitens();
+//   getKitens();
 
 
 const server = app.listen(3001, () => {

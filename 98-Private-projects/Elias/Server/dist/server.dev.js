@@ -23,6 +23,7 @@ app.use(bodyParser.urlencoded({
 
 var routes = require('./routes/routes.js')(app, fs);
 
+var db = mongoose.connection;
 main()["catch"](function (err) {
   return console.log(err);
 });
@@ -45,23 +46,32 @@ function main() {
   });
 }
 
-var db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function () {
   console.log("connected to DB!");
-});
-var kittySchema = new mongoose.Schema({
-  name: String
-}); //the collection
+}); // const kittySchema = new mongoose.Schema({
+//     name: String,
+//     address:{
+//         city:String
+//       }
+// });
+//the collection
+// const Kitten = mongoose.model('Kitten', kittySchema);
+// const mitzy = new Kitten({
+//     name: "Mitzy3",
+//     address: {
+//       city:"Um al fahm",
+//       street:"Jaberin"
+//     },
+//   });
+// console.log(mitzy.name);
+//mitzy.save().then(res => { console.log(res) });
+// async function getKitens() {
+//     const kittens = await Kitten.find({address:{city:'Um al fahm'} });
+//     console.log(kittens);
+//   }
+//   getKitens();
 
-var Kitten = mongoose.model('Kitten', kittySchema);
-var mitzy = new Kitten({
-  name: 'Mitzy'
-});
-console.log(mitzy.name);
-mitzy.save().then(function (res) {
-  console.log(res);
-});
 var server = app.listen(3001, function () {
   console.log('listening on port %s...', server.address().port);
 });
