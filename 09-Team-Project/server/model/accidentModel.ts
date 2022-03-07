@@ -11,7 +11,7 @@ const accidentSchema = new mongoose.Schema({
     type: String,
     emergency : Boolean || null,
     date: String,
-    address:Location,
+    address:String,
     media: [MediaSchema],
     call: Object,
     description: String,
