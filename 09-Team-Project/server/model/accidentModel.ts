@@ -6,7 +6,7 @@ import { OrgSchema } from "./orgModel";
 const mongoose = require("mongoose");
 
 
-const accidentSchema = new mongoose.Schema({
+export const AccidentSchema = new mongoose.Schema({
 
     type: String,
     emergency : Boolean || null,
@@ -18,7 +18,7 @@ const accidentSchema = new mongoose.Schema({
     user: UserSchema,
     org:OrgSchema
 })
-const accident = mongoose.model("accident",accidentSchema);
-export default accident;
+const AccidentModel = mongoose.model("accidents",AccidentSchema);
+export default AccidentModel;
 
 

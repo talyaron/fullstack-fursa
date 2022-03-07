@@ -1,3 +1,4 @@
+import { OrgSchema } from "./orgModel";
 
 const mongoose = require("mongoose");
 
@@ -9,7 +10,10 @@ export const MessageSchema = new mongoose.Schema({
     video: String,
     picture: String,
     message: String,
-    location: { lat: String, lng: String }
+    location: { lat: String, lng: String },
+    communicationType:{ type: String, enum: ['org', 'user'] }, //user = communication between org-user; org = comm.between org-org
+    accidentId:String,
+    orgId:String
 });
 
 
