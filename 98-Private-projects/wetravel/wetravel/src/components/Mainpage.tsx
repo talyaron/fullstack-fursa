@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 import { useAppSelector } from "../hooks/hooks";
 import { userEmail, userName } from "../reducers/userSlice";
 import Travelers from "./Travelers";
-import faker from "@faker-js/faker";
 import axios from "../axios/axios";
 export interface Hotel {
   name: string;
@@ -33,12 +32,10 @@ export interface travelers {
   events: [];
 }
 
-
 function Mainpage() {
   const [travelers, setTravelers] = useState<any[]>([]);
   const [hotels, setHotels] = useState<any[]>([]);
 
-  
   useEffect(() => {
     async function get_travelers() {
       try {

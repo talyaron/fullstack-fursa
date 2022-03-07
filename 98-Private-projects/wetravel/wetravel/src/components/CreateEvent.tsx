@@ -6,7 +6,6 @@ import "../components/CreateEvent.scss";
 import camp from '../Images/camp.jpeg'
 
 function CreateEvent() {
-  const handleChange = () => {};
   let history = useNavigate();
   const [value, setValue] = React.useState([null, null]);
   return (
@@ -15,7 +14,7 @@ function CreateEvent() {
           <TextField
             id="outlined-name"
             label="Event title"
-            onChange={handleChange}
+            
             style={{
               borderRadius: "1rem",
               width: "90%",
