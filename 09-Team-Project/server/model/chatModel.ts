@@ -4,21 +4,22 @@ const accident = require('./AccidentsSchema');
 const orgClient = require('./OrgClientSchema');
 const user = require('./ClientSchema');
 
-const contentSchema = new mongoose.Schema({
+const messagesSchema = new mongoose.Schema({
     from: orgClient | user, // to send the whole user or just ID/type
     to: orgClient | user,
     message: String,
     date: {type:Date,default:new Date()},
-    seen:{type:Boolean},
+    toSeenMessage:{type:Boolean},
+    accidentId:String
 })
 
-const chatSchema = new mongoose.Schema({
-    // from: orgClient | client,
-    // to: orgClient | client,
-    chatMembers:{first:user, second:orgClient},
-    content: [contentSchema]
-})
+// const chatSchema = new mongoose.Schema({
+//     // from: orgClient | client,
+//     // to: orgClient | client,
+//     chatMembers:{first:user, second:orgClient},
+//     content: [contentSchema]
+// })
 
-const chat = mongoose.model('clientSchema', chatSchema);
+const chat = mongoose.model('clientSchema', messagesSchema);
 
 module.exports = chat;
