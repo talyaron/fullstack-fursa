@@ -28,7 +28,7 @@ app.post("/add-user", (req, res) => {
         };
         users.push(userObj);
         console.log(users);
-        res.send({ ok: true });
+        res.send({ ok: true, users: users });
     }
     catch (error) {
         res.send({ error: error.message });

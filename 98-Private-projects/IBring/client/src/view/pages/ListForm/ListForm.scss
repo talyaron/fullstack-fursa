@@ -1,15 +1,31 @@
-.mainTemplate{
+.mainTemplate {
 
-    .mainHeader{
+    .addImage {
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-        .toDo{
+        .toDo {
             width: 20%;
             opacity: 0.5;
         }
+
+        .custom-file-upload {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 6px 12px;
+            height: 100%;
+            cursor: pointer;
+
+            input[type="file"] {
+                display: none;
+            }
+        }
     }
 
-    .mainContent{
-        .next{
+    .mainContent {
+        .next {
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -19,18 +35,16 @@
         }
 
 
-        .fewWords{
+        .fewWords {
             height: 100px;
         }
 
     }
 }
 
-@media only screen and (max-width: 700px){
-    .mainTemplate{
+@media only screen and (max-width: 700px) {
+    .mainTemplate {
 
-        .mainContent{
-
-        }
+        .mainContent {}
     }
 }

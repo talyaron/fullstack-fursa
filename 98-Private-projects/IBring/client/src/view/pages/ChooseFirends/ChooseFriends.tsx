@@ -2,29 +2,16 @@ import React from 'react'
 import './ChooseFriends.scss';
 import '../MainTemplate/MainTemplate.scss';
 import { useState } from "react";
-import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { RootState } from '../../../redux/store';
-import { UserState } from '../../../redux/reducers/userReducer';
-import { ListState } from '../../../redux/reducers/listReducer';
-import axios from 'axios';
-
 import whatsapp from '../../logoAndPhotos/whatsapp.jpg';
 import LinkIcon from '../../logoAndPhotos/link-icon.jpg';
 import contact from '../../logoAndPhotos/contact.jpg';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 
-interface _List {
-    imgUrl: string;
-    title: string;
-    data: string;
-    redirectTo: string;
-}
 
 function ChooseFriends() {
-    const userLogin = useSelector<RootState, UserState>(state => state.user);
-    const _list = useSelector<RootState, ListState>(state => state.list);
-    const dispatch = useDispatch();
-    const { listInfo } = _list;
+    const userLogin = useAppSelector(state => state.logged);
+    const dispatch = useAppDispatch();
     const nav = useNavigate();
 
     const [typeList, setTypeList] = useState([

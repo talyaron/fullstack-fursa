@@ -19,10 +19,19 @@ function App() {
     try {
       const user = ev.target.elements.name.value;
       if (!user) throw new Error("No use in input");
+<<<<<<< HEAD
+      axios.post('/add-user', { user }).then(res => {
+        console.log(res);
+        if (res.data.users) {
+          setUsers(res.data.users);
+        }
+      }).catch(err => console.error(err))
+=======
       axios
         .post("/add-user", { user })
         .then((res) => console.log(res))
         .catch((err) => console.error(err));
+>>>>>>> dev
     } catch (error) {
       console.error(error);
     }

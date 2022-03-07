@@ -1,13 +1,15 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import counterReducer from '../features/counter/counterSlice';
 import pageReducer from '../features/pageSelector/pageReducer';
-import { ShopReducer } from '../features/storeSelector/storeReducer';
+import  ShopReducer from '../features/storeSelector/storeReducer';
+import testReducer from '../features/test/testReducer';
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
     selectImg: pageReducer,
-    shop: ShopReducer.reducer
+    shop: ShopReducer,
+    test: testReducer
   },
 });
 

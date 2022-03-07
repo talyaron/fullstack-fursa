@@ -6,23 +6,20 @@ import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { logintAsync } from '../../../features/userLogin/userLoginReducer';
 import axios from 'axios';
-
-interface actionIF {
-    type: string;
-    payload: boolean;
-}
-
-interface userIF {
-    email: string;
-    pass: string;
-}
+import { Link } from "react-router-dom";
 
 function Register() {
-    const loggedReducer = useAppSelector(state => state.logged);
+    const userLogin = useAppSelector(state => state.logged);
     const dispatch = useAppDispatch();
+    const nav = useNavigate();
+
     useEffect(() => {
-        console.log({ "Logged": loggedReducer });
-    }, [loggedReducer]);
+        console.log(userLogin);
+        if (userLogin.status === 'logged') {
+            nav('/greetings');
+            console.log("logged");
+        }
+    }, [userLogin]);
 
     function signUp() {
         return new Promise(async (resolve, reject) => {
@@ -39,7 +36,7 @@ function Register() {
         })
     }
 
-    const nav = useNavigate();
+
 
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
@@ -53,9 +50,8 @@ function Register() {
             .then((json) => {
                 console.log("isUer:", json);
                 if (json) {
-
                     dispatch(logintAsync({ email: email, pass: pass }));
-                    nav('/greetings');
+                    // nav('/greetings');
                 } else {
                     console.log("user doesn't exists!");
                 }
@@ -93,9 +89,14 @@ function Register() {
                 <form onSubmit={handleEmailPassSignUp} className='loginWithEmailAndPass' >
                     <input className='templateInput EmailRegistered' placeholder="Email" type="email" required onKeyUp={(ev: any) => { setEmail(ev.target.value) }} />
                     <input className='templateInput passRegistered' placeholder="Password" type="password" required onKeyUp={(ev: any) => { setPass(ev.target.value) }} />
-                    <label className='haveAccount'>Already have an Account? <span>Sign in here</span></label>
+                    <label className='haveAccount'>Already have an Account? <span><Link to="/login">Sign in here</Link></span></label>
                     <input className='templateButton signUpButton' type="submit" value="sign up" />
                 </form>
+
+                {userLogin.status === 'loading' ?
+                    <div>Loading</div>
+                    : <></>
+                }
             </div>
         </div>
     );

@@ -6,7 +6,7 @@ interface userIF {
 }
 
 export function fetchUser(user: userIF) {
-    return new Promise<{ data: userIF }>(async (resolve) => {
+    return new Promise<{ data: any }>(async (resolve, rejected) => {
         try {
             const response = await axios.post('/user/login', {
                 body: JSON.stringify({ email: user.email?.toLowerCase(), pass: user.pass })
@@ -18,10 +18,10 @@ export function fetchUser(user: userIF) {
                 resolve({ data: userData });
             }
             else {
-                resolve({ data: {} });
+                rejected({ data: {} });
             }
         } catch (error: any) {
-
+            rejected(error.response.data)
         }
     });
 }

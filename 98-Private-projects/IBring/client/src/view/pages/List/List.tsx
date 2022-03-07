@@ -10,73 +10,40 @@ import chef from '../../logoAndPhotos/chef.jpg';
 import homeLogo from '../../logoAndPhotos/homeLogo.jpg';
 import settings from '../../logoAndPhotos/settings.jpg';
 import sentImage from '../../logoAndPhotos/sentImage.jpg';
-import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { RootState } from '../../../redux/store';
-import { UserState } from '../../../redux/reducers/userReducer';
 import TextField from '@mui/material/TextField';
 import axios from 'axios';
-
-interface ListIF {
-    imgURL?: string;
-    groupName: string;
-    meetType: string;
-    date: Date;
-    time: Date;
-    reminder: string;
-    place: string;
-    fewWords: string;
-}
-interface ListState {
-    loading?: boolean,
-    error?: string,
-    listInfo: ListIF
-}
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { curListAsync } from '../../../features/curListSelector/curListReducer';
+import Sidebar from '../../components/Sidebar/Sidebar';
 
 function List() {
     const nav = useNavigate();
     const { listId } = useParams();
-    const [list, setList] = useState<Array<ListIF>>([]);
     const [whatToBring, setWhatToBring] = useState("");
 
-    const userLogin = useSelector<RootState, UserState>(state => state.user);
-    const _list = useSelector<RootState, ListState>(state => state.list);
-    const dispatch = useDispatch();
-    const listInfo: ListIF = _list.listInfo;
+    const userLogin = useAppSelector(state => state.logged);
+    const curList = useAppSelector(state => state.curList);
+    const dispatch = useAppDispatch();
 
-    const { userInfo } = userLogin;
-
-    const [listInfoFromLocalStorage, setListInfoFromLocalStorage] = useState(localStorage.getItem('curList') ? JSON.parse(localStorage.getItem('curList')!) : undefined);
     const [updatePage, setUpdatePage] = useState(0);
-    /**
-     * upcoming list 
-     * search list by id from list store in redux
-     * useEffect fetch data from last week
-     */
-
-    // const listInfoFromLocalStorage = localStorage.getItem('curList') ? JSON.parse(localStorage.getItem('curList')!) : undefined;
 
     useEffect(() => {
         console.log("listId:", listId);
-        console.log("curList:", listInfoFromLocalStorage);
-
-        axios.post('/meeting/getListByID', { id: listId }).then(data => {
-            if (data.data.ok) {
-                console.log(data.data);
-                setListInfoFromLocalStorage(data.data.list);
-                localStorage.setItem('curList', JSON.stringify(data.data.list));
-            }
-        })
-        if (userInfo == undefined) {
-            nav('/login');
+        if (listId === "") {
+            nav('/home');
         }
-        if (listInfo != undefined) {
-            setList([listInfo]);
+
+        dispatch(curListAsync(listId));
+
+        if (userLogin.status !== "logged") {
+            nav('/login');
         }
     }, [updatePage]);
 
     function handleAddFriends(ev: any) {
         ev.preventDefault();
+        nav('/FriendsInGroup')
     }
 
     function handleHome(ev: any) {
@@ -89,6 +56,12 @@ function List() {
         nav('/home');
     }
 
+    useEffect(() => {
+        if (userLogin.status === 'idle') {
+            nav('/login');
+        }
+    }, [userLogin])
+
     function handleAddOrNot(ev: any, flag: boolean) {
         ev.preventDefault();
         flag ? console.log("add") : console.log("not");
@@ -98,7 +71,7 @@ function List() {
                 updatedList: {
                     items: whatToBring,
                     userName: {
-                        email: userInfo.email
+                        email: userLogin.value.email
                     }
                 }
             }
@@ -110,7 +83,7 @@ function List() {
     }
 
     return (
-        <>{userInfo !== undefined ?
+        <>{userLogin.status === "logged" ?
             <div className="mainTemplate">
                 <div className="mainHeader withHome">
                     <div className="homeDiv">
@@ -118,38 +91,39 @@ function List() {
                             <img onClick={handleHome} src={homeLogo} alt="" />
                         </div>
                         <div className="settingsLogo">
-                            <img onClick={handleSettings} src={settings} alt="" />
+                            {/* <img onClick={handleSettings} src={settings} alt="" /> */}
+                            <Sidebar />
                         </div>
                     </div>
                     <img className='registerLogo listLogo' alt="" src={sentImage} />
                 </div>
                 <div className="mainContent">
-                    {listInfoFromLocalStorage !== undefined ?
+                    {curList.list !== undefined ?
                         <div className="listHeader">
-                            <label className='templateTitle marginTitleNormal'>{listInfoFromLocalStorage.meetingDetails.groupName}</label>
+                            <label className='templateTitle marginTitleNormal'>{curList.list.meetingDetails?.groupName}</label>
                             <div className="listInformation">
                                 <label className="info">
                                     <img src={calendar} alt="" />
-                                    <label>{listInfoFromLocalStorage.meetingDetails.date.toString().split("T")[0]}</label>
+                                    <label>{curList.list.meetingDetails?.date?.toString().split("T")[0]}</label>
                                 </label>
                                 <label className="info">
                                     <img src={clock} alt="" />
-                                    <label>{listInfoFromLocalStorage.meetingDetails.time}</label>
+                                    <label>{curList.list.meetingDetails?.time}</label>
                                 </label>
                                 <label className="info">
                                     <img src={location} alt="" />
-                                    <label>{listInfoFromLocalStorage.meetingDetails.place}</label>
+                                    <label>{curList.list.meetingDetails?.place}</label>
                                 </label>
                             </div>
                             <div className="listFewWords">
-                                <p style={{ color: 'grey' }}>{listInfoFromLocalStorage.meetingDetails.fewWords}</p>
+                                <p style={{ color: 'grey' }}>{curList.list.meetingDetails?.fewWords}</p>
                             </div>
 
                             <form onSubmit={handleAddFriends} className='invitedFriends'>
                                 <button type="submit">
                                     <div className="logoWithWords">
                                         <img src={people} alt="" />
-                                        <label>{listInfoFromLocalStorage.whoIsThere.length} Friends in the group</label>
+                                        <label>{curList.list.whoIsThere?.length} Friends in the group</label>
                                     </div>
 
                                     <label id="addButton">+</label>
@@ -167,7 +141,7 @@ function List() {
                                         <button onClick={(ev: any) => handleAddOrNot(ev, false)} className='addOrNot'>-</button>
                                     </div>
                                 </div>
-                                {listInfoFromLocalStorage.bringItems.map((elem: any, index: number) => {
+                                {curList.list.bringItems?.map((elem: any, index: number) => {
                                     return (
                                         <div key={index} className="whatToBring_items">
                                             <div className="whatToBring_items_user">
@@ -198,97 +172,3 @@ function List() {
 }
 
 export default List;
-
-
-{/* {list.map((elem: any, index: number) => {
-                    return (
-                        <div key={index} className="listForm">
-                            <div className="rowList">
-                                <label>date: <span>{elem.date}</span></label>
-                            </div>
-                            <div className="rowList">
-                                <label>groupName: <span>{elem.groupName}</span></label>
-                            </div>
-                            <div className="rowList">
-                                <label>meetType: <span>{elem.meetType}</span></label>
-                            </div>
-                            <div className="rowList">
-                                <label>time: <span>{elem.time}</span></label>
-                            </div>
-                            <div className="rowList">
-                                <label>reminder: <span>{elem.reminder}</span></label>
-                            </div>
-                            <div className="rowList">
-                                <label>place: <span>{elem.place}</span></label>
-                            </div>
-                            <div className="rowList">
-                                <label>fewWords: <span>{elem.fewWords}</span></label>
-                            </div>
-                        </div>
-                    );
-                })} */}
-
-
-                // <div className="mainContent">
-                // {listInfo != undefined ?
-                //     <div className="listHeader">
-                //         <label className='templateTitle marginTitleNormal'>{listInfo.groupName}</label>
-                //         <div className="listInformation">
-                //             <label className="info">
-                //                 <img src={calendar} alt="" />
-                //                 <label>{listInfo && listInfo.date}</label>
-                //             </label>
-                //             <label className="info">
-                //                 <img src={clock} alt="" />
-                //                 <label>{listInfo && listInfo.time}</label>
-                //             </label>
-                //             <label className="info">
-                //                 <img src={location} alt="" />
-                //                 <label>{listInfo && listInfo.place}</label>
-                //             </label>
-                //         </div>
-                //         <div className="listFewWords">
-                //             <p style={{ color: 'grey' }}>{listInfo && listInfo.fewWords}</p>
-                //         </div>
-
-                //         <form onSubmit={handleAddFriends} className='invitedFriends'>
-                //             <button type="submit">
-                //                 <div className="logoWithWords">
-                //                     <img src={people} alt="" />
-                //                     <label>{numberOfPeople} Friends in the group</label>
-                //                 </div>
-
-                //                 <label id="addButton">+</label>
-                //             </button>
-                //         </form>
-                //         <div className='whatToBring'>
-                //             <div className="whatToBring_header">
-                //                 {/* What do you want to bring? */}
-                //                 <TextField className='whatToBring_input' id="standard-basic"
-                //                     label="What do you want to bring?"
-                //                     sx={{ input: { color: '#7065F2' } }}
-                //                     variant="standard" onKeyUp={(ev: any) => { setWhatToBring(ev.target.value); }} />
-                //                 <div className="whatToBring_addOrNot">
-                //                     <button onClick={(ev: any) => handleAddOrNot(ev, true)} className='addOrNot'>+</button>
-                //                     <button onClick={(ev: any) => handleAddOrNot(ev, false)} className='addOrNot'>-</button>
-                //                 </div>
-                //             </div>
-                //             {bringList.map((elem, index) => {
-                //                 return (
-
-                //                     <div key={index} className="whatToBring_items">
-                //                         <div className="whatToBring_items_user">
-                //                             <label id='userName'>{elem != undefined && elem.userName}</label>
-                //                             {elem.items.map((item) => {
-                //                                 return (<label>{item}</label>);
-                //                             })}
-                //                         </div>
-                //                         <div className="whatToBring_items_logo">
-                //                             <img src={home} />
-                //                             <img src={chef} />
-                //                         </div>
-                //                     </div>
-                //                 );
-                //             })}
-                //         </div>
-                //     </div>

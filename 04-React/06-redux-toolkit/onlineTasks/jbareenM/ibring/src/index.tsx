@@ -12,12 +12,14 @@ import {
   Routes,
   Route
 } from "react-router-dom";
+import SocketIO from './components/page/SocketIO/SocketIO';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
+          <Route path='/socketio' element={<SocketIO />} />
           <Route path='/Shop' element={<Shop />} />
           {/* <Route path="/list/:listId" element={<List />} /> */}
           <Route path="/" element={<App />} />

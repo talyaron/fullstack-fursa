@@ -3,38 +3,34 @@ import './Contact.scss';
 import '../../MainTemplate/MainTemplate.scss';
 
 import { useState } from "react";
-import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { RootState } from '../../../../redux/store';
-import { UserState } from '../../../../redux/reducers/userReducer';
-import { ListState } from '../../../../redux/reducers/listReducer';
 import axios from 'axios';
-
-import whatsapp from '../../../logoAndPhotos/whatsapp.jpg';
-import LinkIcon from '../../../logoAndPhotos/link-icon.jpg';
 import contactIcon from '../../../logoAndPhotos/contact.jpg';
+import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
+import { addWhoIsThere } from '../../../../features/curListSelector/curListReducer';
 
-interface _List {
-    imgUrl: string;
-    title: string;
-    data: string;
-    redirectTo: string;
-}
 
 function Contact() {
-    const userLogin = useSelector<RootState, UserState>(state => state.user);
-    const _list = useSelector<RootState, ListState>(state => state.list);
-    const dispatch = useDispatch();
-    const { listInfo } = _list;
+    const userLogin = useAppSelector(state => state.logged);
+    const _list = useAppSelector(state => state.curList);
+    const dispatch = useAppDispatch();
+    const listInfo = _list.list;
     const nav = useNavigate();
 
     const [contact, setContact] = useState([]);
-    const [selectedFriends, setSelectedFriends] = useState<Array<any>>([]);
+    const [selectedFriends, setSelectedFriends] = useState<Array<any>>([{ email: userLogin.value.email }]);
 
     useEffect(() => {
         axios.get("/user/getAllUsers").then(data => {
-            if (data.data.ok)
-                setContact(data.data.users);
+            if (data.data.ok) {
+                const { users } = data.data;
+                const found = users.filter((friend: any) => {
+                    if (friend.email !== userLogin.value.email) {
+                        return friend;
+                    }
+                })
+                setContact(found);
+            }
         })
     }, []);
 
@@ -42,32 +38,35 @@ function Contact() {
         console.log(selectedFriends);
     }, [selectedFriends]);
 
-    function handleTypeList() {
+    function handleTypeList(ev: any) {
+        ev.preventDefault();
         if (userLogin && listInfo != undefined) {
             const listData = {
-                email: userLogin.userInfo.email,
+                email: userLogin.value.email,
                 allUsers: selectedFriends,
                 bringItems: [],
-                details: listInfo
+                details: listInfo.meetingDetails
             }
             axios.post("/meeting/addNewMeeting", {
                 email: listData.email, allUsers: listData.allUsers, bringItems: listData.bringItems, details: listData.details
             }).then(data => {
                 console.log(data);
+                console.log(listData.details)
+                dispatch(addWhoIsThere(selectedFriends));
+                console.log(data.data.id)
+                handleSendInvitation(data.data.id);
+                nav(`/list/${data.data.id}`);
             });
         }
-        nav('/list');
     }
 
-    function handleSendInvitation(ev: any) {
-        ev.preventDefault();
+    function handleSendInvitation(id: string) {
         console.log("outSide form!");
         if (userLogin) {
             axios.post("/user/sendInvitation", {
-                meetingAdmin: userLogin.userInfo, friendList: selectedFriends
+                meetingAdmin: userLogin.value, friendList: selectedFriends, id: id
             }).then(data => {
                 console.log(data);
-                handleTypeList();
             });
         }
     }
@@ -75,7 +74,14 @@ function Contact() {
     function handleAddFriend(ev: any, elem: any) {
         ev.preventDefault();
         console.log("inside form!");
-        setSelectedFriends([...selectedFriends, elem]);
+        const found = selectedFriends.find(friend => {
+            if (Object.is(friend, elem)) {
+                return friend;
+            }
+        })
+        if (!found) {
+            setSelectedFriends([...selectedFriends, elem]);
+        }
     }
 
     return (
@@ -86,7 +92,7 @@ function Contact() {
             <div className="mainContent">
                 <label className='marginTitleNormal'>Please choose friends</label>
 
-                <form onSubmit={handleSendInvitation} className="friendsList">
+                <form onSubmit={handleTypeList} className="friendsList">
                     {contact.map((elem: any, index) => {
                         return (
                             <div key={index} className="contact">

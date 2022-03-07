@@ -1,19 +1,67 @@
-import React, { useEffect } from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import './App.scss';
-import { useAppDispatch } from './app/hooks';
-import { logintAsync } from './features/userLogin/userLoginReducer';
+import Sidebar from './view/components/Sidebar/Sidebar';
+import env from "react-dotenv";
+import storage from './FireBase';
+import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 
 function App() {
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(logintAsync({ email: "jbareen@a", pass: "123" }));
-  }, []);
+  const [file, setFile] = useState<any>(null);
+  const [url, setURL] = useState<any>("");
+  const [progress, setProgress] = useState(0);
+  const [progressShow, setProgressShow] = useState(false);
+
+  function handleChange(e: any) {
+    setFile(e.target.files[0]);
+  }
+
+  function handleUpload(e: any) {
+    e.preventDefault();
+    setProgressShow(true);
+    const fileName = new Date().getTime() + file.name;
+    const storageRef = ref(
+      storage, `/images/${fileName}`
+    )
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
+    uploadTask.on(
+      'state_changed',
+      (snapshot: any) => {
+        const uploaded = Math.floor(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+        setProgress(uploaded);
+      }, (error: any) => {
+        console.log(error);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((url: any) => {
+          setFile(null);
+          setURL(url);
+        })
+      }
+    )
+  }
 
   return (
-    <div className="App">
-      app
+    <div>
+      <form onSubmit={handleUpload}>
+        <input type="file" onChange={handleChange} />
+        <button disabled={!file}>upload to firebase</button>
+      </form>
+
+      {progressShow && progress < 100 && (
+        <div>
+          <p>{progress}%</p>
+        </div>
+      )}
+
+      {progress === 100 && (
+        <div>
+          <img src={url} />
+        </div>
+      )}
     </div>
   );
 }

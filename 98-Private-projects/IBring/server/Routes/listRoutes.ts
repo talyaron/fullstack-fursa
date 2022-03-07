@@ -19,5 +19,12 @@ router
     .route("/updateListByID")
     .patch(listController.updateListByID);
 
+router
+    .route("/updateFrindList")
+    .patch(listController.updateFrindList);
+
+router
+    .route("/testImageInsert")
+    .post(listController.testImageInsert);
 
 module.exports = router;

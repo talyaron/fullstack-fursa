@@ -1,4 +1,7 @@
 .mainTemplate{
+
+
+
     .HomePage{
         display: flex;
         flex-direction: column;
@@ -66,5 +69,32 @@
                width: 85vw;
            }
         }
+    }
+}
+
+
+.addListButton{
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: left;
+    bottom: 5vh;
+    z-index: 1;
+    pointer-events: none;
+
+    button{
+        border-radius: 50%;
+        background-color: #7065F2;
+        color: white;
+        width: 100px;
+        height: 100px;
+        font-size: 50px;
+        text-align: center;
+        border: 0px;
+        box-sizing: border-box;
+        box-shadow: 5px 5px 5px rgba(37, 36, 36, 0.342);
+        pointer-events: visible;
     }
 }
