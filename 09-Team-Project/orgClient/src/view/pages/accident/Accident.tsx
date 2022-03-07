@@ -25,7 +25,7 @@ function Accident() {
       <div className="accidentsContent">
         {accidents.map((accident, index) => {
           return (
-            <AccidentComp connect={"connect"} details={accident.details} notifications={accident.notifications} />
+            <AccidentComp key={index} connect={"connect"} details={accident.details} notifications={accident.notifications} />
           );
         })}
       </div>
