@@ -5,8 +5,6 @@ export { }
 import express from 'express';
 const router = express.Router();
 
-
-
 async function getOrganizations(): Promise<any> {
     try {
       const organizations = await Organizations.find({});
@@ -17,7 +15,7 @@ async function getOrganizations(): Promise<any> {
     }
   }
   
-  router.get('/get-appointments', async (req, res) => {
+  router.get('/get-organizations', async (req, res) => {
     const organizations = await getOrganizations();
     res.send(organizations);
   })
