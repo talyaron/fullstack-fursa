@@ -1,7 +1,7 @@
 import './profile.scss';
 import { useState , useEffect,useCallback } from "react";
 import {useParams, Link, useNavigate} from 'react-router-dom';
-import Header from '../../components/header/header';
+import Header from '../../../components/header/header';
 import axios from 'axios';
 import WhatsappSharpIcon from '@mui/icons-material/WhatsappSharp';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';

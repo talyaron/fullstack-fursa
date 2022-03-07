@@ -1,0 +1,23 @@
+.BottomNav{
+    position: fixed;
+    bottom: 30px;
+    /* display: felx;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center; */
+
+    }
+
+    .BackButton{
+        line-height: 12px;
+         width: 150px;
+         height: 30px;
+         font-size: 20pt;
+         font-family: tahoma;
+         /* margin-top: 10px;
+         margin-right: 200px; */
+         position:absolute;
+         margin: 20px;
+         top:0;
+         left:0;
+    }

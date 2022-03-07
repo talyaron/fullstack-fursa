@@ -2,6 +2,7 @@
 exports.__esModule = true;
 var axios_1 = require("axios");
 var react_1 = require("react");
+//import logo from "./logo.svg";
 var Counter_1 = require("./features/counter/Counter");
 require("./App.css");
 function App() {
@@ -32,6 +33,19 @@ function App() {
         catch (error) {
             console.error(error);
         }
+        axios_1["default"]
+            .get("/get-users")
+            .then(function (res) {
+            console.log(res);
+            var data = res.data;
+            console.log(data);
+            var users = data.users;
+            if (users) {
+                setUsers(users);
+            }
+        })["catch"](function (err) {
+            console.error(err);
+        });
     }
     return (React.createElement("div", { className: "App" },
         React.createElement("header", { className: "App-header" },
@@ -43,7 +57,7 @@ function App() {
                     user.id));
             })),
             React.createElement("form", { onSubmit: handleAddUser },
-                React.createElement("input", { type: "text", name: "name", placeholder: "enter user name" }),
+                React.createElement("input", { required: true, type: "text", name: "name", placeholder: "enter user name" }),
                 React.createElement("button", { type: "submit" }, "ADD")),
             React.createElement("span", null,
                 React.createElement("span", null, "Learn "),
