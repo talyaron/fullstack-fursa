@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
 
-const OwnerSchema = new mongoose.Schema({
+export const OwnerSchema = new mongoose.Schema({
   name: String,
   id: String,
+  city:String,
 });
 
 //the collection
