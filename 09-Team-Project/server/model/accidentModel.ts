@@ -1,5 +1,5 @@
 
-import userSchema from "./userModel";
+import userSchema from "./g5/userModel";
 const mongoose = require("mongoose");
 const accidentSchema = new mongoose.Schema({
     accidentId:Number,
