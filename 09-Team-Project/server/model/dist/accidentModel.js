@@ -8,7 +8,7 @@ var accidentSchema = new mongoose.Schema({
     type: String,
     emergency: Boolean || null,
     date: String,
-    address: Location,
+    address: String,
     media: [mediaSchema_1["default"]],
     call: Object,
     description: String,
