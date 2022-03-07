@@ -2,7 +2,11 @@
 declare function require(name:string);
 require('dotenv').config();
 =======
+<<<<<<< HEAD
 >>>>>>> tal
+=======
+>>>>>>> dev
+>>>>>>> omar
 
 import assert from 'assert';
 const express = require("express");
@@ -113,7 +117,11 @@ aggragateKittensLives()
 app.get('/get-all-kitens',async (req, res)=>{
     const kittens = await getKitens();
     res.send(kittens);
+<<<<<<< HEAD
 >>>>>>> tal
+=======
+>>>>>>> dev
+>>>>>>> omar
 })
 
 app.listen(port, () => {

@@ -1,7 +1,14 @@
 {
   "dependencies": {
+<<<<<<< HEAD
     "react-router-dom": "^6.2.1",
     "sass": "^1.49.7"
+=======
+    "axios": "^0.26.0",
+    "react-redux": "^7.2.6",
+    "react-router-dom": "^6.2.1",
+    "sass": "^1.49.9"
+>>>>>>> omar
   },
   "devDependencies": {
     "@types/react": "^17.0.39"

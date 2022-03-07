@@ -1,5 +1,6 @@
-*{background-color: white;}
+//*{background-color: rgba(139, 201, 160, 0.926);}
 .home {
+   // background-color: #b1e2b5;
     text-align: center;
     //min-height: 200vh;
   }
@@ -11,6 +12,7 @@
       img{
         width: 30rem;
         max-height: 15rem;
+        margin-bottom: 7px;
       }
     }
     .row{
@@ -20,12 +22,13 @@
       justify-content: center;
       position: relative;
       margin: 5rem;
-      //width: 90vw;
+      width: 90vw;
       .text{
         position: absolute;
-        top: -50px;
-        right: 15rem;
+        top: -55px;
+        left: 17rem;
         font-size: 24px;
+        font-weight: bold;
       }
     }
   }

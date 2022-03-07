@@ -12,7 +12,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 const express = require("express");
+<<<<<<< HEAD
 >>>>>>> tal
+=======
+>>>>>>> dev
+>>>>>>> omar
 const app = express();
 const port = 4000;
 require('dotenv').config();
