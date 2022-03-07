@@ -1,4 +1,4 @@
-
+export {}
 import {UserSchema} from "./userModel";
 
 import MediaSchema from './mediaSchema';
@@ -11,7 +11,7 @@ export const AccidentSchema = new mongoose.Schema({
     type: String,
     emergency : Boolean || null,
     date: String,
-    address:Location,
+    address:String,
     media: [MediaSchema],
     call: Object,
     description: String,
