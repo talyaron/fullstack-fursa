@@ -6,12 +6,16 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import { Button } from '@material-ui/core';
+import './style.scss'
+
 
 function MessagesBetweenOrg() {
     const [org, setOrg] = useState("");
     const [user, setUser] = useState("");
+    const [orgs, setOrgs] = useState([]);
 
-    const orgArr = ['org1', 'org2', 'org3'];
+    
+    const orgArr = ['org1', 'org2', 'org35'];
     const userArr = ['user1', 'user2', 'user3'];
 
     function handleClick() { }
