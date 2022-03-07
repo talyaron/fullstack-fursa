@@ -1,11 +1,27 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState, AppThunk } from '../../app/store';
 import axios from 'axios'
-export interface UserInfo {
+export interface User {
+    userInfo: {
+        name: string;
+        email: string;
+        phone: string;
+        location: string;
+        gender: string;
+    }
+    isLogIn: boolean;
     status: 'idle' | 'loading' | 'failed';
 }
 
-const initialState: UserInfo = {
+const initialState: User = {
+    userInfo: {
+        name: "",
+        email: "",
+        phone: "",
+        location: "",
+        gender: "",
+    },
+    isLogIn: false,
     status: 'idle',
 };
 
@@ -37,6 +53,7 @@ export const userReducer = createSlice({
             })
             .addCase(fetchUser.fulfilled, (state, action) => {
                 state.status = 'idle';
+                state.userInfo = action.payload;
             });
     },
 });
