@@ -6,19 +6,40 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import { Button } from '@material-ui/core';
+import { useAppSelector, useAppDispatch } from '../../../app/hooks';
+import { setSharing } from '../../../app/reducer/sharingReducer';
 import './style.scss'
 
 
 function MessagesBetweenOrg() {
     const [org, setOrg] = useState("");
     const [user, setUser] = useState("");
+    const [description, setDescription] = useState("");
     const [orgs, setOrgs] = useState([]);
 
     
     const orgArr = ['org1', 'org2', 'org35'];
     const userArr = ['user1', 'user2', 'user3'];
 
-    function handleClick() { }
+    // const selectedAccident = useAppSelector(sharedAccident)
+    // const currentUser = useAppSelector(currentUser)
+
+    //---------------//
+    const currentUser = "";
+    const selectedAccident = null;
+    //---------------//
+
+    function handleClick() {
+        const dispatch = useAppDispatch();
+        dispatch(setSharing({
+            sender: currentUser, reciver: user, content: description,
+            date: Date(), accident: selectedAccident,
+        }))
+    }
+
+    function handleDescription (ev:any) {
+        setDescription(ev.target.value)
+    }
 
     return (
         <div className='container' >
@@ -34,7 +55,7 @@ function MessagesBetweenOrg() {
                         >
                             {orgArr.map((item, index) => {
                                 return (
-                                    <MenuItem value="org">{item}</MenuItem>                                );
+                                    <MenuItem value="org">{item}</MenuItem>);
                             })}
 
                         </Select>
@@ -51,9 +72,21 @@ function MessagesBetweenOrg() {
                         >
                             {userArr.map((item, index) => {
                                 return (
-                                    <MenuItem value="user">{item}</MenuItem>                                );
+                                    <MenuItem value="user">{item}</MenuItem>);
                             })}
                         </Select>
+                    </FormControl>
+                </Box>
+                <Box className="box" sx={{ width: 200 }}>
+                    <FormControl fullWidth>
+                        <InputLabel id="demo-simple-select-label">add description</InputLabel>
+                        <TextField
+                            id="outlined-multiline-static"
+                            label="description"
+                            multiline
+                            rows={4}
+                            onKeyUp={handleDescription}
+                        />
                     </FormControl>
                 </Box>
                 <Button className="button" onClick={handleClick} variant="contained" >Send Meassage</Button>
