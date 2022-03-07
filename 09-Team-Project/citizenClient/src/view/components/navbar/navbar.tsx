@@ -132,6 +132,11 @@ function Navbar() {
                                     <Typography textAlign="center">profile</Typography>
                                 </MenuItem>
                             </Link>
+                            <Link to="/">
+                                <MenuItem key="profile" onClick={handleCloseUserMenu}>
+                                    <Typography textAlign="center">Log out</Typography>
+                                </MenuItem>
+                            </Link>
                         </Menu>
                     </Box>
                 </Toolbar>
