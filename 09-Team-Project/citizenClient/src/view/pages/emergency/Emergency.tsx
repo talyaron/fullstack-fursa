@@ -4,7 +4,7 @@ import './Emergency.scss'
 
 export function Emergency(){
     const [type, setType] =useState('harassment');
-    const [image,setImage]=useState('');
+    const [image,setImage]=useState<Array<any>>([]);
 
     const accidentType=[
         {
@@ -41,7 +41,6 @@ export function Emergency(){
                </div>
                <div className="emergency_body">
                <TextField
-          id="outlined-select-currency"
           select  
           label="Select accident type"
           value={type}
@@ -54,14 +53,14 @@ export function Emergency(){
           ))}
         </TextField>
                    <input type='file' onChange={selectfileHandler}></input>
-               <Button style={{ borderColor: "#eb4034", color: "#eb655b" }} variant="outlined">confirm location</Button>
+                   <input type='location' placeholder='add location'></input>
+               {/* <Button style={{ borderColor: "#eb4034", color: "#eb655b" }} variant="outlined">confirm location</Button>
                <Button style={{ borderColor: "#eb4034", color: "#eb655b" }} variant="outlined">upload video</Button>
                <Button style={{ borderColor: "#eb4034", color: "#eb655b" }} variant="outlined">upload picture</Button>
                <Button style={{ borderColor: "#eb4034", color: "#eb655b" }} variant="outlined">voice call</Button>
-               <Button style={{ borderColor: "#eb4034", color: "#eb655b" }} variant="outlined">report case</Button>
+               <Button style={{ borderColor: "#eb4034", color: "#eb655b" }} variant="outlined">report case</Button> */}
                <input type='text' placeholder='accident description'></input>
-               <img src={image}></img>
-              
+               
                  
 
                  
