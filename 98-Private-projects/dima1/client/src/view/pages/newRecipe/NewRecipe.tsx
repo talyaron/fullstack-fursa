@@ -63,7 +63,7 @@ const CssTextField = styled(TextField)({
 });
 
 interface recipeInfo {
-    id: number;
+    _id: String;
     name: string;
     image: string;
     time: string;

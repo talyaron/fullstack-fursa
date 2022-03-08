@@ -11,7 +11,7 @@ import { useState, useEffect } from 'react';
 import { TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Tooltip from '@mui/material/Tooltip';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { getSelectAsync, selectedFrom, selectedIsNew, selectedRecipe } from '../../features/item/itemSlice';
@@ -42,13 +42,22 @@ const styles = StyleSheet.create({
 })
 
 export default function RecipeInfo() {
+    console.log("Hiiiii")
     const [like, setLike] = useState(0);
+    const { recipeId } = useParams();
     //Redux toolkit
     const dispatch = useAppDispatch();
     const recipe_ = useAppSelector(selectedRecipe);
     const from_ = useAppSelector(selectedFrom);
     const isNew = useAppSelector(selectedIsNew);
     const pageName = useAppSelector(selectPage);
+
+    if(recipe_._id === recipeId){
+        console.log("True");
+    }
+    else{
+        console.log("False")
+    }
 
     useEffect(() => {
         dispatch(getSelectAsync());

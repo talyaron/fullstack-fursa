@@ -96,12 +96,14 @@ export default function MainScreen() {
                             className="mySwiper"
                         >
                             {recent.map((recipe:any, index:number) => {
-                                return(<SwiperSlide key={index}  onClick={(ev:any) => imageClick(recipe, 2)}>
-                                    <Link to='/RecipeInfo'>
-                                        <img src={recipe.image} alt=''/>
-                                    </Link>
-                                    <p>{recipe.name}</p>
-                                </SwiperSlide>);
+                                return(
+                                    <SwiperSlide key={index}  onClick={(ev:any) => imageClick(recipe, 2)}>
+                                        <Link to={`/${recipe._id}`}>
+                                            <img src={recipe.image} alt=''/>
+                                        </Link>
+                                        <p>{recipe.name}</p>
+                                    </SwiperSlide>
+                                );
                             })}
                         </Swiper>
                     </div>
