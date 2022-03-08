@@ -1,3 +1,4 @@
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -7,15 +8,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const fs = require('fs');
+const port = 4007;
+app.use(express.json());
 app.use(express.static("client/build"));
 const mongoose = require('mongoose');
 const internal = require('stream');
-app.use(express.json());
 main().catch(err => console.log(err));
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -90,6 +93,7 @@ function getCourses() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const courses = yield Course.find({});
+            console.log(courses);
             return courses;
         }
         catch (err) {
@@ -98,42 +102,50 @@ function getCourses() {
         }
     });
 }
-app.get('/get-all-kitens', (req, res) => __awaiter(this, void 0, void 0, function* () {
+app.get('/get-all-kitens', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const kittens = yield getKitens();
     res.send({ kittens: kittens });
 }));
-// app.get('/get-all-courses',async (req:any, res:any)=>{
-//   const courses = await getCourses();
-//   res.send({courses:courses});
-// })
-// app.post("/add-new-course", async (req, res) => {
-//   try {
-//     const { name, cost, participants,lessons,hours } = req.body;
-//     if (!name || !cost || !participants || !lessons || !hours) throw new Error("No data");
-//     console.log(name);
-//     const newCourse = new Course({
-//       name: name,
-//       cost: cost,
-//       participants: participants,
-//       lessons:lessons,
-//       hours:hours,
-//     });
-//     await newCourse.save().then((res) => {
-//       console.log(res);
-//     });
-//     res.send({ val: "OK" });
-//   } catch (err) {
-//     res.send({ error: err.message });
-//   }
-// });
+app.get('/get-all-courses', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const courses = yield getCourses();
+    console.log("faaat");
+    res.send({ courses: courses });
+    // res.send(courses);
+}));
+app.post("/add-new-course", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { name, cost, participants, lessons, hours } = req.body;
+        if (!name || !cost || !participants || !lessons || !hours)
+            throw new Error("No data");
+        console.log(name);
+        const newCourse = new Course({
+            name: name,
+            cost: cost,
+            participants: participants,
+            lessons: lessons,
+            hours: hours,
+        });
+        yield newCourse.save().then((res) => {
+            console.log(res);
+        });
+        res.send({ val: "OK" });
+    }
+    catch (err) {
+        res.send({ error: err.message });
+    }
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/lama', (req, res) => {
     res.send("Hi,Lama");
 });
-const courseRoute = require('./routes/courses');
+const courseRoute = require('./routes/coursesRoute');
 app.use('/courses', courseRoute);
 // const routes = require('./routes/routes.js')(app, fs);
-const server = app.listen(4010, () => {
-    console.log('listening on port %s...', server.address().port);
+// app.use('/courses', routes);
+// const server = app.listen(4010, () => {
+//     console.log('listening on port %s...', server.address().port);
+// });
+app.listen(port, () => {
+    return console.log(`Express is listening at http://localhost:${port}`);
 });
