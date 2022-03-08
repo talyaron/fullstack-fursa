@@ -9,7 +9,7 @@ export const store = configureStore({
     counter: counterReducer,
     accidents: AccidentsReducer,
     sharing: sharingReducer,
-    accident: accidentInfoReducer
+    accident: accidentInfoReducer,
   },
 });
 
