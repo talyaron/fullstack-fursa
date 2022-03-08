@@ -8,13 +8,17 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { Button } from '@material-ui/core';
 import { useAppSelector, useAppDispatch } from '../../../app/hooks';
 import { setSharing } from '../../../app/reducer/sharingReducer';
+import './style.scss'
+
 
 function MessagesBetweenOrg() {
     const [org, setOrg] = useState("");
     const [user, setUser] = useState("");
     const [description, setDescription] = useState("");
+    const [orgs, setOrgs] = useState([]);
 
-    const orgArr = ['org1', 'org2', 'org3'];
+    
+    const orgArr = ['org1', 'org2', 'org35'];
     const userArr = ['user1', 'user2', 'user3'];
 
     // const selectedAccident = useAppSelector(sharedAccident)
