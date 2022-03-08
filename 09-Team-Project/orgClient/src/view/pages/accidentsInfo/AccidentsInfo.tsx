@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 function AccidentsInfo() {
   const accidentId = useParams();
   const dispatch = useAppDispatch();
-  const accident_ = useAppSelector(accident);
+  const accident_:any = useAppSelector(accident);
 
   useEffect(()=>{
     dispatch(findAccidentAsync(accidentId))
