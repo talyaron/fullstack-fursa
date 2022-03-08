@@ -16,6 +16,7 @@ function MessagesBetweenOrg() {
     const [user, setUser] = useState("");
     const [description, setDescription] = useState("");
     const [orgs, setOrgs] = useState([]);
+    const [users, setUsers] = useState([]);
 
     
     const orgArr = ['org1', 'org2', 'org35'];
@@ -29,11 +30,34 @@ function MessagesBetweenOrg() {
     const selectedAccident = null;
     //---------------//
 
+    
+    useEffect(() => {
+
+        fetch('/get-organizations')
+        .then(res => res.json())
+        .then(data => {
+            setOrgs(data.data);
+        }).catch(err => {
+            console.error(err);
+        })
+    }, []);
+
+    function handleOrgChange(ev:any) {
+        setOrg(ev.target.value);
+        fetch('/get-Users-byOrgName')
+        .then(res => res.json())
+        .then(data => {
+            setUsers(data.data);
+        }).catch(err => {
+            console.error(err);
+        })
+    }
+
+    const dispatch = useAppDispatch();
     function handleClick() {
-        const dispatch = useAppDispatch();
         dispatch(setSharing({
-            sender: currentUser, reciver: user, content: description,
-            date: Date(), accident: selectedAccident,
+            from: currentUser, to: user, content: description,
+            date: new Date(), accident: selectedAccident,
         }))
     }
 
@@ -51,11 +75,11 @@ function MessagesBetweenOrg() {
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
                             value={org}
-                            onChange={(e) => setOrg(e.target.value as string)}
+                            onChange={handleOrgChange}
                         >
                             {orgArr.map((item, index) => {
                                 return (
-                                    <MenuItem value="org">{item}</MenuItem>);
+                                    <MenuItem value={item}>{item}</MenuItem>);
                             })}
 
                         </Select>
@@ -72,19 +96,18 @@ function MessagesBetweenOrg() {
                         >
                             {userArr.map((item, index) => {
                                 return (
-                                    <MenuItem value="user">{item}</MenuItem>);
+                                    <MenuItem value={item}>{item}</MenuItem>);
                             })}
                         </Select>
                     </FormControl>
                 </Box>
                 <Box className="box" sx={{ width: 200 }}>
                     <FormControl fullWidth>
-                        <InputLabel id="demo-simple-select-label">add description</InputLabel>
                         <TextField
                             id="outlined-multiline-static"
-                            label="description"
                             multiline
-                            rows={4}
+                            label="add description"
+                            // rows={4}
                             onKeyUp={handleDescription}
                         />
                     </FormControl>

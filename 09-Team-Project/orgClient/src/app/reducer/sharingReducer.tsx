@@ -1,19 +1,18 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState, AppThunk } from '../../app/store';
-// import axios from 'axios'
-import {useAppDispatch, useAppSelector} from '../hooks';
+import axios from 'axios';
 
-interface Sharing {
+interface SharingInt {
     from:String | null  ; //edit, 
     to:String | null;
     content:String;
     //chatId:String;
     date:Date | null;
-    accident:String | null; //edit
+    accident:any | null; //edit
     status: 'idle' | 'loading' | 'failed';
 }
 
-const initialState: Sharing = {
+const initialState: SharingInt = {
     from:null,
     to: null,
     content:"",
@@ -34,19 +33,33 @@ export const sharingReducer = createSlice({
             || !action.payload.content || !action.payload.date
             || !action.payload.accident) throw new Error('Missing parameter on request');
 
-        state.from = action.payload.sender;
-        state.to = action.payload.reciver;
+        state.from = action.payload.from;
+        state.to = action.payload.to;
         state.content = action.payload.content;
         state.date = action.payload.date;
         state.accident = action.payload.accident;
         state.status = 'idle';
+        
+        const newsharing = {
+            from: state.from,
+            content:state.content,
+            to:state.to,
+            chatId: "123",
+            date:state.date,
+            accident:state.accident,
+        };
+
+        axios
+          .post("/add-sharing", { newsharing })
+          .then((res) => console.log(res))
+          .catch((err) => console.error(err));
+
         } catch(error) {
             console.log(error)
         }
         
     },
-
-   } 
+   }
 })
 
 export const {setSharing} = sharingReducer.actions;
