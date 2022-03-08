@@ -17,6 +17,14 @@ function PreviousAccident() {
     //     console.log("Accident");
     //   }, [])
 
+    async function handleGetAccident(e:any)
+    {
+      const response= await  axios.get("/get-previous-accidents").then(({ data }) => {
+        console.log(data);
+        setAccident(data);
+      });
+      
+    }
     useEffect(() => {
         axios.get("/get-previous-accidents").then(({ data }) => {
           console.log(data);
@@ -32,6 +40,7 @@ function PreviousAccident() {
           <div className="accidentHeader_search">search</div>
           <div className="accidentHeader_settings">settings</div>
         </div>
+        <button onClick={handleGetAccident}> get previous accidents </button>
         <div className="accidentsContent">
           {accidents.map((accident:any, index:any) => {
             return (
