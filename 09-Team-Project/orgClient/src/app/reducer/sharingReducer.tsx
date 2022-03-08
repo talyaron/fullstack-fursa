@@ -50,7 +50,7 @@ export const sharingReducer = createSlice({
         };
 
         axios
-          .post("/add-sharing", { newsharing })
+          .post("/messagesBetweemOrg/add-sharing", { newsharing })
           .then((res) => console.log(res))
           .catch((err) => console.error(err));
 

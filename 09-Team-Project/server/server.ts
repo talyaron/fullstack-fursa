@@ -48,6 +48,9 @@ app.get('/', (req, res) => {
 const accidentRouter = require('./routers/accidentRouter');
 app.use('/accidents', accidentRouter);
 
+const messagesBetweemOrgRouter = require('./routers/messagesBetweemOrgRouter');
+app.use('/messagesBetweemOrg', messagesBetweemOrgRouter);
+
 server.listen(port, () => {
     console.log(`Listening on port ${port} 🔥`)
 })
