@@ -8,12 +8,30 @@ var Button_1 = require("@mui/material/Button");
 var react_router_dom_1 = require("react-router-dom");
 var ButtonGroup_1 = require("@mui/material/ButtonGroup");
 var adminHeader_1 = require("../../components/adminHeader/adminHeader");
+// interface courses {
+//   id: number;
+//   name:string;
+//   participants: number;
+//   lessons:number;
+//hours:number
+//   cost:number;
+// }
 function AdminCourses() {
-    var _a = react_2.useState([{ id: 0, name: "", participants: 0, lessons: 0, cost: 0 }]), details = _a[0], setDetails = _a[1];
+    var _a = react_2.useState([{ name: "", participants: 0, lessons: 0, hours: 0, cost: 0 }]), courses = _a[0], setCourses = _a[1];
+    var _b = react_2.useState([{ id: 0, name: "", participants: 0, lessons: 0, cost: 0 }]), details = _b[0], setDetails = _b[1];
+    //using json db
+    // useEffect(() => {
+    //   axios.get('http://localhost:3004/courses').then(({ data }) => setDetails(data));
+    // }, []);
     react_1.useEffect(function () {
-        axios_1["default"].get('http://localhost:3004/courses').then(function (_a) {
-            var data = _a.data;
-            return setDetails(data);
+        //fetch courses using mongo
+        fetch('/get-all-courses')
+            .then(function (res) { return res.json(); })
+            .then(function (data) {
+            console.log(data);
+            setCourses(data.courses);
+        })["catch"](function (err) {
+            console.error(err);
         });
     }, []);
     function handleDelete(event) {
@@ -32,18 +50,18 @@ function AdminCourses() {
             React.createElement("table", { className: "table table-striped" },
                 React.createElement("thead", null,
                     React.createElement("tr", null,
-                        React.createElement("th", null, "Id"),
                         React.createElement("th", null, "Name"),
                         React.createElement("th", null, "participants"),
                         React.createElement("th", null, "lessons"),
-                        React.createElement("th", null, "Cost"),
+                        React.createElement("th", null, "hours"),
+                        React.createElement("th", null, "cost"),
                         React.createElement("th", null, "Edit/Delete"))),
-                React.createElement("tbody", null, details.map(function (info, index) {
+                React.createElement("tbody", null, courses.map(function (info, index) {
                     return (React.createElement("tr", { key: index },
-                        React.createElement("td", null, info.id),
                         React.createElement("td", null, info.name),
                         React.createElement("td", null, info.participants),
                         React.createElement("td", null, info.lessons),
+                        React.createElement("td", null, info.hours),
                         React.createElement("td", null, info.cost),
                         React.createElement("td", null,
                             React.createElement(ButtonGroup_1["default"], { className: 'grpbtn', variant: "contained", "aria-label": "outlined small button group" },

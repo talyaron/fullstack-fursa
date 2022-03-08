@@ -9,6 +9,8 @@ function OffersCard(prop) {
             " ",
             react_1["default"].createElement("br", null),
             react_1["default"].createElement("p", null, prop.description),
-            prop.cost)));
+            react_1["default"].createElement("p", null,
+                " the cost is: ",
+                prop.cost))));
 }
 exports["default"] = OffersCard;

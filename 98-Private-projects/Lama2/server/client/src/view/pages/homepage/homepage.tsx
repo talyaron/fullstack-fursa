@@ -66,10 +66,10 @@ function Homepage() {
   }
 
   //using redux
-  function handleGetProducts(){
-    dispatch(getProductAsync());
+  // function handleGetProducts(){
+  //   dispatch(getProductAsync());
 
-  }
+  // }
 
   function handleGetOffers(){
     dispatch(getOfferAsync());

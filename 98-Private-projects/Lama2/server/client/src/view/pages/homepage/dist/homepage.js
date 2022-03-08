@@ -4,7 +4,6 @@ require("./homepage.scss");
 var React = require("react");
 var courses_1 = require("../courses/courses");
 var offers_1 = require("../../components/offersCard/offers");
-var products_1 = require("../../../features/productsReducer/products");
 var hooks_1 = require("../../../app/hooks");
 var react_1 = require("react");
 var trainer_1 = require("../../../features/trainersReducer/trainer");
@@ -48,9 +47,9 @@ function Homepage() {
         Setname(nameInArr);
     }
     //using redux
-    function handleGetProducts() {
-        dispatch(products_1.getProductAsync());
-    }
+    // function handleGetProducts(){
+    //   dispatch(getProductAsync());
+    // }
     function handleGetOffers() {
         dispatch(offers_3.getOfferAsync());
     }

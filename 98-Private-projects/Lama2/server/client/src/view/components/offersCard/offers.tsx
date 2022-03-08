@@ -17,7 +17,7 @@ function OffersCard(prop: cardProp) {
                 {prop.name} <br />
                 <p>{prop.description}</p>
                
-                {prop.cost}
+            <p> the cost is: {prop.cost}</p>  
             </p>
         </div>
 

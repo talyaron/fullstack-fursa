@@ -13,20 +13,36 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import AdminHeader from '../../components/adminHeader/adminHeader';
 import AddCourse from '../addCourse/addCourse'
 
-interface courses {
-  id: number;
-  name:string;
-  participants: number;
-  lessons:number;
-  cost:number;
-}
+// interface courses {
+//   id: number;
+//   name:string;
+//   participants: number;
+//   lessons:number;
+//hours:number
+//   cost:number;
+// }
 
 function AdminCourses() {
+  const [courses, setCourses] = useState<Array<any>>([{name:"", participants:0,lessons:0,hours:0,cost:0}])
   const [details, setDetails] = useState<Array<any>>([{id: 0, name:"", participants:0,lessons:0,cost:0}]);
 
-useEffect(() => {
-  axios.get('http://localhost:3004/courses').then(({ data }) => setDetails(data));
-}, []);
+  //using json db
+// useEffect(() => {
+//   axios.get('http://localhost:3004/courses').then(({ data }) => setDetails(data));
+// }, []);
+
+useEffect(()=>{
+
+  //fetch courses using mongo
+fetch('/get-all-courses')
+  .then(res=>res.json())
+  .then(data=>{
+    console.log(data);
+    setCourses(data.courses);
+  }).catch(err=>{
+    console.error(err);
+  })
+},[])
 
 function handleDelete(event:any){
   event.preventDefault();
@@ -54,23 +70,25 @@ function handleDelete(event:any){
      <table className="table table-striped">
                 <thead>
                     <tr>
-                    <th>Id</th>
+                    {/* <th>Id</th> */}
                     <th>Name</th>
                     <th>participants</th>
                     <th>lessons</th>
-                    <th>Cost</th>
+                    <th>hours</th>
+                    <th>cost</th>
                     <th>Edit/Delete</th>
                     </tr>
                 </thead>
                 <tbody>
                  
-              {details.map((info,index)=>{
+              {courses.map((info,index)=>{
               return(
                   <tr key={index}>
-                      <td>{info.id}</td>
+                      {/* <td>{info.id}</td> */}
                       <td>{info.name}</td>
                       <td>{info.participants}</td>
                       <td>{info.lessons}</td>
+                      <td>{info.hours}</td>
                       <td>{info.cost}</td>
                       <td>
                       <ButtonGroup className='grpbtn' variant="contained" aria-label="outlined small button group">
