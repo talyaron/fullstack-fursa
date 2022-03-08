@@ -1,8 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState, AppThunk } from '../../app/store';
 import axios from 'axios';
-import {useAppDispatch, useAppSelector} from '../hooks';
-import Sharing from '../../../../server/model/accidentModel';
 
 interface SharingInt {
     from:String | null  ; //edit, 
@@ -42,14 +40,15 @@ export const sharingReducer = createSlice({
         state.accident = action.payload.accident;
         state.status = 'idle';
         
-        const newsharing = new Sharing({
+        const newsharing = {
             from: state.from,
             content:state.content,
             to:state.to,
             chatId: "123",
             date:state.date,
             accident:state.accident,
-        })
+        };
+
         axios
           .post("/add-sharing", { newsharing })
           .then((res) => console.log(res))
