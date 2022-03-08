@@ -9,6 +9,8 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Accident from './view/pages/accident/Accident';
 import ProfileInfo from "./view/pages/profileInfo/ProfileInfo";
+import MessagesBetweenOrg from './view/pages/messagesBetweenOrg/MessagesBetweenOrg';
+import AccidentsInfo from './view/pages/accidentsInfo/AccidentsInfo';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -18,6 +20,8 @@ ReactDOM.render(
           <Route path='/accidents' element={<Accident />} />
           <Route path="/" element={<App />} />
           <Route path="profileInfo" element={<ProfileInfo />} />
+          <Route path="/:accidentId" element={<AccidentsInfo />} />
+          <Route path="messagesBetweenOrg" element={<MessagesBetweenOrg />} />
         </Routes>
       </BrowserRouter>
     </Provider>
