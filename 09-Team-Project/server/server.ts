@@ -40,6 +40,8 @@ io.of('/api/socket').on('connection', socket => {
         console.log(`socket ${socket.id} disconnected`);
     })
 })
+//const a = require('/getAccidenstByLocation');
+//app.use("/getAccidents", a);
 
 app.get('/', (req, res) => {
     res.send('Hello World!');

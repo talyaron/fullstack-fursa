@@ -35,6 +35,19 @@ exports.getAccidenstByUserName = async (req, res) => {
     }
 }
 
+exports.getAccidenstByLocation = async (req, res) => {
+    console.log('getAccidenstByLocation');
+    const { location } = req.body;
+    if (!location) throw new Error("No location in body");
+    console.log(location)
+    try {
+        const _acc = await accident.find({ "accident.address": location });
+        res.send({ ok: true, accidents: _acc });
+    } catch (error: any) {
+        res.send({ ok: false, error: error.message });
+    }
+}
+
 exports.addNewAccident = async (req, res) => {
     console.log('addNewAccident');
     const { type,
