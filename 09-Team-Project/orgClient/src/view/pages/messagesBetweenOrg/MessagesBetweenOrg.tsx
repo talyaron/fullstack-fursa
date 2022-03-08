@@ -25,11 +25,24 @@ function MessagesBetweenOrg() {
     const selectedAccident = null;
     //---------------//
 
+    
+    useEffect(() => {
+
+        fetch('/get-organizations')
+        .then(res => res.json())
+        .then(data => {
+            setOrg(data.data);
+        }).catch(err => {
+            console.error(err);
+        })
+    }, []);
+
+
     function handleClick() {
         const dispatch = useAppDispatch();
         dispatch(setSharing({
-            sender: currentUser, reciver: user, content: description,
-            date: Date(), accident: selectedAccident,
+            from: currentUser, to: user, content: description,
+            date: new Date(), accident: selectedAccident,
         }))
     }
 
