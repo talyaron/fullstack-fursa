@@ -1,9 +1,10 @@
 import "./App.css";
+import Chat from "./view/pages/chat/Chat";
 
 function App() {
   return (
     <div>
-      App2
+      <Chat></Chat>
     </div>
   );
 }
