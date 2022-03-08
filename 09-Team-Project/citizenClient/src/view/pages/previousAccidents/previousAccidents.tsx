@@ -1,18 +1,46 @@
 import React from "react"
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Navbar from '../../components/navbar/navbar'
 
-function previousAccident() {
-    const [accident, setAccident] = useState("");
+import AccidentComp from '../../components/previousAccidents/previousAccidentComponent';
+
+function PreviousAccident() {
+    const [accidents, setAccident] = useState([]);
+    // const [accidents, setAccidents] = useState<Array<any>>([
+    //     { details: { name: "test 1", content: text }, notifications: 10 },
+    //     { details: { name: "test 2", content: text }, notifications: 5 },
+    //     { details: { name: "test 3", content: text }, notifications: 4 },
+    //   ]);
+    
+    //   useEffect(() => {
+    //     console.log("Accident");
+    //   }, [])
+
     useEffect(() => {
         axios.get("/get-previous-accidents").then(({ data }) => {
           console.log(data);
-        //   setKitties(data);
+          setAccident(data);
         });
       }, []);
 
-    return (<div></div>
+    return (
+        <div className='AccidentContainer'>
+             <Navbar />
+        <div className="accidentHeader">
+          <div className="accidentHeader_home">Home</div>
+          <div className="accidentHeader_search">search</div>
+          <div className="accidentHeader_settings">settings</div>
+        </div>
+        <div className="accidentsContent">
+          {accidents.map((accident:any, index:any) => {
+            return (
+              <AccidentComp key={index} connect={"connect"} details={accident.details} notifications={accident.notifications} />
+            );
+          })}
+        </div>
+      </div>
     )
 
 }
-export default previousAccident;
+export default PreviousAccident;
