@@ -11,7 +11,7 @@ interface accidentInfo{
     address: String;
     call: Object;
     description: String;
-    user: User;
+    user: Object;
     org:Object;
     status: 'idle' | 'loading' | 'failed'
 }
