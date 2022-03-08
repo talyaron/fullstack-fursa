@@ -36,48 +36,88 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-var express = require('express');
+var express = require("express");
 var router = express.Router();
+var productSchema_1 = require("../model/schema/productSchema");
 router.post("/add-product", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, name, typeId, url, price, description, quantity, ownerDB, query, options, oldItem, error_1;
+    var _a, name, typeId, url, price, description, quantity, newProduct;
     return __generator(this, function (_b) {
-        switch (_b.label) {
+        try {
+            console.log("hi ra");
+            _a = req.body, name = _a.name, typeId = _a.typeId, url = _a.url, price = _a.price, description = _a.description, quantity = _a.quantity;
+            console.log("hi raneen");
+            if (!name)
+                throw new Error("No name in body");
+            if (!typeId)
+                throw new Error("No typeId in body");
+            if (!url)
+                throw new Error("No url in body");
+            if (!price)
+                throw new Error("No price in body");
+            if (!description)
+                throw new Error("No description in body");
+            if (!quantity)
+                throw new Error("No quantity in body");
+            console.log("hi raneen123");
+            newProduct = new productSchema_1["default"]({
+                name: name,
+                typeId: typeId,
+                url: url,
+                price: price,
+                description: description,
+                quantity: quantity
+            });
+            // const query = { name:name},
+            //   options = { upsert: true, new: true, setDefaultsOnInsert: true };
+            //  const oldItem = await Users.findOneAndUpdate(query,ownerDB,options);
+            console.log(newProduct);
+            res.send(newProduct);
+            newProduct.save();
+            console.log("Hello World! all");
+        }
+        catch (error) {
+            // console.info('ON app.post("/add-product"');
+            // console.log(req.body);
+            // console.error(error.message);
+            // res.send({ error: error.message });
+        }
+        return [2 /*return*/];
+    });
+}); });
+router.patch("/get-product", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var typeID, filter, products, err_1;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
             case 0:
-                _b.trys.push([0, 2, , 3]);
-                _a = req.body, name = _a.name, typeId = _a.typeId, url = _a.url, price = _a.price, description = _a.description, quantity = _a.quantity;
-                if (!name)
-                    throw new Error("No name in body");
-                if (!typeId)
-                    throw new Error("No typeId in body");
-                if (!url)
-                    throw new Error("No url in body");
-                if (!price)
-                    throw new Error("No price in body");
-                if (!description)
-                    throw new Error("No description in body");
-                if (!quantity)
-                    throw new Error("No quantity in body");
-                ownerDB = new Users({
-                    name: name,
-                    typeId: typeId,
-                    city: city
-                });
-                query = { name: name }, options = { upsert: true, "new": true, setDefaultsOnInsert: true };
-                return [4 /*yield*/, Users.findOneAndUpdate(query, ownerDB, options)];
+                _a.trys.push([0, 2, , 3]);
+                typeID = req.body.typeID;
+                console.log(typeID);
+                console.log("typeID");
+                filter = { _typeID: typeID };
+                return [4 /*yield*/, productSchema_1["default"].find({ typeId: typeID })];
             case 1:
-                oldItem = _b.sent();
-                console.log(oldItem);
-                res.send(oldItem);
-                return [3 /*break*/, 3];
+                products = _a.sent();
+                console.log(products);
+                return [2 /*return*/, products];
             case 2:
-                error_1 = _b.sent();
-                console.info('ON app.post("/add-user"');
-                console.log(req.body);
-                console.error(error_1.message);
-                res.send({ error: error_1.message });
-                return [3 /*break*/, 3];
+                err_1 = _a.sent();
+                console.error(err_1);
+                return [2 /*return*/, false];
             case 3: return [2 /*return*/];
         }
     });
 }); });
+// app.patch("/update-cat", async (req, res) => {
+//   try {
+//     const { name, city, id } = req.body;
+//     const filter = { _id: id };
+//     const update = { name: name, address: { city: city } };
+//     //update the DB
+//     let doc = await Cats.findOneAndUpdate(filter, update);
+//     res.send({ ok: true, doc });
+//   } catch (err) {
+//     console.error(err);
+//     res.status(400).send({ error: err.message });
+//   }
+// });
 module.exports = router;

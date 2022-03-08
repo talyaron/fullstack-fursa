@@ -137,6 +137,8 @@ const ownerRoute = require('./routes/ownersRoute');
 app.use('/owenrs', ownerRoute);
 const UserRoute = require('./routes/UserRoute');
 app.use('/users', UserRoute);
+const productRoute = require('./routes/productRoute');
+app.use('/products', productRoute);
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 });

@@ -97,7 +97,6 @@ app.get("/get-all-kitens", async (req, res) => {
 app.patch("/update-cat", async (req, res) => {
   try {
     const { name, city, id } = req.body;
-
     const filter = { _id: id };
     const update = { name: name, address: { city: city } };
     //update the DB

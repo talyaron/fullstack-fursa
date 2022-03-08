@@ -6,7 +6,7 @@ router.post("/add-owner", async (req, res)=>{
     try {
         const { id, name } = req.body;
     
-        console.log("fuck you");
+       
         if (!id) throw new Error("No id in body");
         if (!name) throw new Error("No name in body");
     

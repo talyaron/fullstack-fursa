@@ -1,5 +1,6 @@
 import Owners from './model/schema/ownerModel';
 import Users from './model/schema/UserSchema';
+import Products from './model/schema/productSchema';
 
 const express = require("express");
 const app = express();
@@ -154,6 +155,9 @@ app.use('/owenrs', ownerRoute);
 
 const UserRoute = require('./routes/UserRoute')
 app.use('/users', UserRoute);
+
+const productRoute = require('./routes/productRoute')
+app.use('/products', productRoute);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

@@ -5,8 +5,8 @@
   grid-template-columns: repeat(1, 16rem);
   grid-template-rows: repeat(5, 1fr);
   justify-content: center;
-  width: 70wh;
-  height: 8.6vh;
+  width: 90vw;
+  height: 10vh;
   /*
   * Made by Erik Terwan
   * 24th of November 2015
@@ -27,6 +27,15 @@
 .navbar__left {
   display: flex;
   width: 70%;
+  margin-top: 20px;
+  height: 9vh;
+  argin: auto;
+}
+.navbar__left .img {
+  margin: auto;
+  padding-top: 30px;
+  margin-bottom: 1.5vh;
+  width: 100px;
 }
 .navbar__left .categories {
   display: flex;
@@ -104,13 +113,17 @@
 .navbar__right {
   display: flex;
   width: 30%;
+  padding-left: 10%;
+  justify-content: flex-start;
 }
 .navbar__right__signin {
   background-color: #000804;
+  background-image: url("https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn.icon-icons.com%2Ficons2%2F1875%2FPNG%2F512%2Fshoppingbag_120393.png&imgrefurl=https%3A%2F%2Ficon-icons.com%2Ficon%2Fshopping-bag%2F120393&tbnid=x0zRteiJeLKHwM&vet=12ahUKEwjJxfC4wbb2AhWNtSoKHSYFBEcQMygWegUIARD3AQ..i&docid=nMQvCLE6MjExxM&w=512&h=512&q=shopping%20bag%20icon&ved=2ahUKEwjJxfC4wbb2AhWNtSoKHSYFBEcQMygWegUIARD3AQ");
   border: none;
   border-radius: 12px;
-  margin-top: 1.5vh;
-  margin-bottom: 1.5vh;
+  margin-top: 35px;
+  margin-bottom: 40px;
+  height: 40px;
   padding: 12px 24px;
   text-align: center;
   color: white;
@@ -120,8 +133,10 @@
 }
 .navbar__right__signup {
   background-color: #141414;
+  background: url("https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn.icon-icons.com%2Ficons2%2F1875%2FPNG%2F512%2Fshoppingbag_120393.png&imgrefurl=https%3A%2F%2Ficon-icons.com%2Ficon%2Fshopping-bag%2F120393&tbnid=x0zRteiJeLKHwM&vet=12ahUKEwjJxfC4wbb2AhWNtSoKHSYFBEcQMygWegUIARD3AQ..i&docid=nMQvCLE6MjExxM&w=512&h=512&q=shopping%20bag%20icon&ved=2ahUKEwjJxfC4wbb2AhWNtSoKHSYFBEcQMygWegUIARD3AQ");
   border: none;
   border-radius: 12px;
+  padding-top: 0.5em;
   margin-right: 2vw;
   margin-top: 1.5vh;
   margin-bottom: 1.5vh;
@@ -133,12 +148,17 @@
   font-weight: bold;
 }
 .navbar__right a {
+  margin-top: 100px;
+  height: 40px;
   color: black;
   text-align: center;
   padding: 20px 24px;
   text-decoration: none;
   font-size: 15px;
   font-family: Inter;
+  margin: auto;
+}
+.navbar__right a img {
   margin: auto;
 }
 .navbar__right a:hover {

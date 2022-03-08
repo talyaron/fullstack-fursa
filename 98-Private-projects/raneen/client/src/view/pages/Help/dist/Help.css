@@ -4,6 +4,8 @@
   margin-top: 100px;
   justify-content: flex;
   justify-content: center;
+  text-align: center;
+  text-decoration: center;
   padding-left: 50px;
   /* grid-row: inherit; */
   grid-template-rows: repeat(2, 1fr);
@@ -19,6 +21,7 @@
 .wrapper p {
   justify-content: flex;
   justify-content: center;
+  padding: center;
   padding-left: 50px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }

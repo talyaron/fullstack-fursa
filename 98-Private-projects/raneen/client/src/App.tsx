@@ -18,6 +18,7 @@ import HomePage from "./view/pages/homePage/homePage";
 import Store from "./view/pages/Store/Store";
 import Help from "./view/pages/Help/Help";
 import SignUp from "./view/pages/SignUp/SignUp";
+import SignIn from "./view/pages/SignIn/SignIn";
 // import AboutUs from "./view/pages/AboutUs/AboutUs";
 // import Store from "./view/pages/Store/Store";
 // import Help from "./view/pages/Help/Help"
@@ -78,8 +79,12 @@ function App() {
             
         <Route path="/" element={<HomePage />}/>
         <Route path="Store/:coatsId" element={<Store />} />
+         <Route path="Store/:jacketsId" element={<Store />} />
+          <Route path="Store/:pantsId" element={<Store />} />
+        {/* <Route path="Store/JACKETS" element={<Store />} /> */}
          {/* <Route path="Store" element={<Store />} /> */}
        <Route path="SignUp" element={<SignUp />} /> 
+       <Route path="SignIn" element={<SignIn/>} /> 
        <Route path="Help" element={<Help />} /> 
        {/* <Route path="Mainbar" element={<Mainbar />} /> */}
         {/* <Route path="AboutUs" element={<AboutUs />} /> */}

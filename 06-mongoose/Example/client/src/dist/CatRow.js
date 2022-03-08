@@ -36,45 +36,58 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-var express = require('express');
-var router = express.Router();
-var ownerModel_1 = require("../model/schema/ownerModel");
-router.post("/add-owner", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, id, name, ownerDB, query, options, oldItem, error_1;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
-            case 0:
-                _b.trys.push([0, 2, , 3]);
-                _a = req.body, id = _a.id, name = _a.name;
-                if (!id)
-                    throw new Error("No id in body");
-                if (!name)
-                    throw new Error("No name in body");
-                ownerDB = new ownerModel_1["default"]({
-                    name: name,
-                    id: id
-                });
-                query = { id: id }, options = { upsert: true, "new": true, setDefaultsOnInsert: true };
-                return [4 /*yield*/, ownerModel_1["default"].findOneAndUpdate(query, ownerDB, options)];
-            case 1:
-                oldItem = _b.sent();
-                console.log(oldItem);
-                res.send(oldItem);
-                return [3 /*break*/, 3];
-            case 2:
-                error_1 = _b.sent();
-                console.info('ON app.post("/add-owner"');
-                console.log(req.body);
-                console.error(error_1.message);
-                res.send({ error: error_1.message });
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
-        }
-    });
-}); });
-router.get('/get-users', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        return [2 /*return*/];
-    });
-}); });
-module.exports = router;
+var react_1 = require("react");
+var axios_1 = require("axios");
+function CatRow(props) {
+    var _a;
+    var cat = props.cat;
+    var _b = react_1.useState(false), edit = _b[0], setEdit = _b[1];
+    function handleEdit() {
+        setEdit(!edit);
+    }
+    function handleUpdate(ev) {
+        return __awaiter(this, void 0, void 0, function () {
+            var id, name, city, data;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        ev.preventDefault();
+                        id = ev.target.id;
+                        name = ev.target.elements.name.value;
+                        city = ev.target.elements.city.value;
+                        return [4 /*yield*/, axios_1["default"].patch("/update-cat", { name: name, city: city, id: id })];
+                    case 1:
+                        data = (_a.sent()).data;
+                        console.log(data);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    }
+    function handleDelete(id) {
+        return __awaiter(this, void 0, void 0, function () {
+            var data;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        console.log("delete");
+                        return [4 /*yield*/, axios_1["default"].post("/delete-cat", { id: id })];
+                    case 1:
+                        data = (_a.sent()).data;
+                        console.log(data);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    }
+    return (React.createElement("div", { className: "catCard" }, edit ? (React.createElement("form", { onSubmit: handleUpdate, id: cat._id },
+        React.createElement("input", { type: "text", placeholder: "name of cat", name: "name" }),
+        React.createElement("input", { type: "text", placeholder: "city", name: "city" }),
+        React.createElement("button", { type: "submit" }, "Update"),
+        React.createElement("button", { onClick: function () { return handleDelete(cat._id); } }, "Delete"))) : (React.createElement("p", { key: cat._id },
+        cat.name,
+        ", lives in ", (_a = cat.address) === null || _a === void 0 ? void 0 :
+        _a.city,
+        React.createElement("button", { onClick: handleEdit }, "Edit")))));
+}
+exports["default"] = CatRow;

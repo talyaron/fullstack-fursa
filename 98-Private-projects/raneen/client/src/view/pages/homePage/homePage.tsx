@@ -8,6 +8,8 @@ import TextInput from "../../../features/text/TextInput";
 // import {useState, useEffect} from 'react';
 import Card from '../../components/card/Card';
 
+import RecipeReviewCard from '../../components/productCard/productCard';
+
 const clothes:Array<item> = [{name:'WOOL BLEND HIGH NECK COAT', price:500,img:'https://static.zara.net/photos///2022/V/0/1/p/2096/289/802/2/w/830/2096289802_1_1_1.jpg?ts=1637256490476'}
 ,{name:'COAT WITH DETACHABLE FAUX FUR DETAIL ON THE COLLAR',price:200, img:'https://static.zara.net/photos///2022/V/0/1/p/2179/289/704/2/w/1126/2179289704_1_1_1.jpg?ts=1640000139595'}];
 interface item{
@@ -20,13 +22,30 @@ function HomePage() {
 
     return(
         <div className="homePage">
+        <div >
+        <img src="https://i.pinimg.com/originals/68/05/ef/6805ef9b55da5090985bcaf8d0130097.gif" alt="" />
+        </div>
+      
         
-       
-             <img src="https://static.zara.net/photos///contents/mkt/spots/ss22-north-woman-shoes-bags/subhome-xmedia-08//w/1728/IMAGE-large-landscape-b1c8fbe8-bf41-4aa7-bad0-794f0713c4b9-default_0.jpg?ts=1645713783552" alt="" />
+            {/* <div className="product">
+       <RecipeReviewCard/>
+      
+       </div>
+            <div className="product">
+       <RecipeReviewCard/>
+      
+       </div>
+            <div className="product">
+       <RecipeReviewCard/>
+      
+       </div> */}
+             {/* <img src="https://static.zara.net/photos///contents/mkt/spots/ss22-north-woman-shoes-bags/subhome-xmedia-08//w/1728/IMAGE-large-landscape-b1c8fbe8-bf41-4aa7-bad0-794f0713c4b9-default_0.jpg?ts=1645713783552" alt="" />
            {clothes.map((item1, index)=>{
         const {name,price,img}= item1;
         return <Card key={index} info ={{name,price,img} } />
-      })}
+        
+        
+      })} */}
  
         </div>
     );

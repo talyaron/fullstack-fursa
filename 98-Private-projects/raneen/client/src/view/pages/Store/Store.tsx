@@ -1,42 +1,94 @@
-import './Store.scss';
-import {useParams} from 'react-router-dom';
+import "./Store.scss";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import RecipeReviewCard from "../../components/productCard/productCard";
+
+async function add() {
+  const name = "WARM WOOL PREMIUM COAT - LIMITED EDITION";
+  const typeId = "COATS";
+  const url =
+    "https://static.zara.net/photos///2022/V/0/1/p/2584/747/436/2/w/1500/2584747436_2_3_1.jpg?ts=1642604108776";
+  const price = 750;
+  const description =
+    "Coat made of a top-quality warm wool blend. Lapel collar and long sleeves. Tied belt in the same fabric. Front pockets. Contrast interior lining. ";
+  const quantity = 100;
+
+  axios
+    .post("/products/add-product", {
+      name,
+      typeId,
+      url,
+      price,
+      description,
+      quantity,
+    })
+    .then(({ data }) => {
+      console.log(data);
+    });
+  console.log("aa");
+
+
+   const { data } = await axios.patch("/products/get-product",  {name,} );
+    console.log(data);
+  }
+
+
+
+
 
 
 function Store() {
-  const {coatsId}= useParams();
-      console.log(coatsId);
-    return(
-        <div >
-        name:{coatsId}
-        </div>
-    );
+  
+
+  const { coatsId } = useParams();
+  add();
+
+  // axios.get('/user', {
+  //   params: {
+  //     ID: 12345
+  //   }
+  // })
+    // axios
+    // .patch("/products/get-product", {
+    //    coatsId,
+    // })
+    // .then(({ data }) => {
+    //   console.log(data);
+    // });
+
+  console.log(coatsId);
+  return (
+    // <div >
+    // name:{coatsId}
+    // </div>
+    
+    <div className="wrapper">
+      <div>
+        <RecipeReviewCard />
+      </div>
+      <div>
+        <RecipeReviewCard />
+      </div>
+      <div>
+        <RecipeReviewCard />
+      </div>
+      <div>
+        <RecipeReviewCard />
+      </div>
+      <div>
+        <RecipeReviewCard />
+      </div>
+      <div>
+        <RecipeReviewCard />
+      </div>
+      <div>
+        <RecipeReviewCard />
+      </div>
+    </div>
+  );
 }
 
 export default Store;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import React from "react";
 // //components
@@ -99,7 +151,7 @@ export default Store;
 
 //       <Mainbar></Mainbar>
 
-//       {/*      
+//       {/*
 //      <video loop autoPlay>
 //         <source
 //           src="https://github.com/talyaron/fullstack-fursa/blob/main/98-Private-projects/raneen/src/RPReplay_Final1645900869.mp4"
@@ -120,4 +172,4 @@ export default Store;
 // }
 
 // export default App;
-export {}
+export {};
