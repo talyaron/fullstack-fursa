@@ -24,7 +24,7 @@ function main() {
     return __awaiter(this, void 0, void 0, function* () {
         const password = process.env.MONGODB_PASSWORD;
         console.log(password);
-        yield mongoose.connect(`mongodb+srv://Lama:${password}@cluster0.bve7t.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`);
+        yield mongoose.connect(`mongodb+srv://Lama:vzDULOmy6x5WxrqL@cluster0.bve7t.mongodb.net/test`);
         // mongodb+srv://Lama:<password>@cluster0.bve7t.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
     });
 }

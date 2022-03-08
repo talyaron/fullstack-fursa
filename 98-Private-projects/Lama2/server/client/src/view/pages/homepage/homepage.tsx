@@ -88,9 +88,9 @@ function Homepage() {
 
 
       {/* <h1>Kittens</h1> */}
-    {kitttens.map((kity:any)=>{
+    {/* {kitttens.map((kity:any)=>{
       return<p key={kity._id}>{kity.name}</p>
-    })}
+    })} */}
 
 
 <div className="offersDiv">

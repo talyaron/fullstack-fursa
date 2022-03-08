@@ -20,7 +20,7 @@ main().catch(err => console.log(err));
 async function main() {
     const password=process.env.MONGODB_PASSWORD;
     console.log(password)
-  await mongoose.connect(`mongodb+srv://Lama:${password}@cluster0.bve7t.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`);
+  await mongoose.connect(`mongodb+srv://Lama:vzDULOmy6x5WxrqL@cluster0.bve7t.mongodb.net/test`);
  // mongodb+srv://Lama:<password>@cluster0.bve7t.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 }
 
