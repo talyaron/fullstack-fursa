@@ -8,12 +8,13 @@ const listRouter = require("./Routes/listRoutes");
 
 app.use(express.static("client/build"));
 app.use(express.json());
+app.use(cookieParser());
 
 require('dotenv').config();
 
 mongoose.connect(`mongodb+srv://${process.env.MONGODB_EMAIL}:${process.env.MONGODB_PASS}@cluster0.sqzq0.mongodb.net/test`, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 const db = mongoose.connection;
 
@@ -26,7 +27,7 @@ app.use("/user", userRouter);
 app.use("/meeting", listRouter);
 
 app.get("/", (req, res) => {
-    res.send("hello world!");
+  res.send("hello world!");
 });
 
 const port = process.env.PORT || 3001;

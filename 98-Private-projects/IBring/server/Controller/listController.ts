@@ -8,7 +8,8 @@ exports.addNewMeeting = async (req, res) => {
     const { email, allUsers, bringItems, details } = req.body;
 
     try {
-        const _user = await user.findOne({ email: email });
+        const { userInfo } = req.cookies;
+        const _user = await user.findOne({ _id: userInfo.id });
         if (!_user) {
             res.send({ ok: false, message: "user doesn't exists!" });
         } else {
@@ -33,7 +34,8 @@ exports.getListByUser = async (req, res) => {
     const { email } = req.body;
 
     try {
-        const _user = await user.findOne({ email: email });
+        const { userInfo } = req.cookies;
+        const _user = await user.findOne({ _id: userInfo.id });
         if (!_user) {
             res.send({ ok: false, message: "user doesn't exists!" });
         } else {
@@ -55,11 +57,18 @@ exports.getListByID = async (req, res) => {
     const { id } = req.body;
 
     try {
-        const _list = await list.findOne({ _id: id });
-        if (!_list) {
-            res.send({ ok: false, message: "list doesn't exists!" });
+        const { userInfo } = req.cookies;
+        const _user = await user.findOne({ _id: userInfo.id });
+        if (!_user) {
+            res.send({ ok: false, message: "user doesn't exists!" });
         } else {
-            res.send({ ok: true, list: _list, message: "fetch successfully!" });
+
+            const _list = await list.findOne({ _id: id });
+            if (!_list) {
+                res.send({ ok: false, message: "list doesn't exists!" });
+            } else {
+                res.send({ ok: true, list: _list, message: "fetch successfully!" });
+            }
         }
     } catch (err) {
         res.send({ ok: false, message: "Error!" });
