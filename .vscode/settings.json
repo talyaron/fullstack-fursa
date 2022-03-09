@@ -7,6 +7,10 @@
     }
 =======
 {
+<<<<<<< HEAD
     "compile-hero.disable-compile-files-on-did-save-code": false
 >>>>>>> dev
+=======
+    "compile-hero.disable-compile-files-on-did-save-code": true
+>>>>>>> sp2-dev2
 }
