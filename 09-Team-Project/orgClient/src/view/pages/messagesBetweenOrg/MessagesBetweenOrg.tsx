@@ -13,6 +13,7 @@ function MessagesBetweenOrg() {
     const [org, setOrg] = useState("");
     const [user, setUser] = useState("");
     const [description, setDescription] = useState("");
+    const dispatch = useAppDispatch();
 
     const orgArr = ['org1', 'org2', 'org3'];
     const userArr = ['user1', 'user2', 'user3'];
@@ -26,7 +27,6 @@ function MessagesBetweenOrg() {
     //---------------//
 
     function handleClick() {
-        const dispatch = useAppDispatch();
         dispatch(setSharing({
             sender: currentUser, reciver: user, content: description,
             date: Date(), accident: selectedAccident,
