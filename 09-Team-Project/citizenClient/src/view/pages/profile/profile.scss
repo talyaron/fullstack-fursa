@@ -14,4 +14,13 @@
             height: 100%;
         }
     }
+
+    &__title {
+        display: flex;
+        align-items: center;
+    }
+
+    &__links {
+        margin-top: 4rem;
+    }
 }

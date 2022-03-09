@@ -36,27 +36,39 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.userReducer = exports.fetchUser = void 0;
+exports.getUserEmail = exports.getGender = exports.getName = exports.userReducer = exports.fetchUser = void 0;
 var toolkit_1 = require("@reduxjs/toolkit");
 var axios_1 = require("axios");
 var initialState = {
+    userInfo: {
+        name: "",
+        email: "",
+        phone: "",
+        location: "",
+        gender: "",
+        password: ""
+    },
+    isLogIn: false,
     status: 'idle'
 };
-exports.fetchUser = toolkit_1.createAsyncThunk('user/fetchUser', function () { return __awaiter(void 0, void 0, void 0, function () {
-    var response, err_1;
+exports.fetchUser = toolkit_1.createAsyncThunk('user/fetchUser', function (obj) { return __awaiter(void 0, void 0, void 0, function () {
+    var email, password, response, err_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, axios_1["default"].get('/user/get-user')];
+                email = obj.email, password = obj.password;
+                _a.label = 1;
             case 1:
+                _a.trys.push([1, 3, , 4]);
+                return [4 /*yield*/, axios_1["default"].post('http://localhost:3001/users/get-user', { "email": email, "password": password })];
+            case 2:
                 response = _a.sent();
                 return [2 /*return*/, response.data];
-            case 2:
+            case 3:
                 err_1 = _a.sent();
                 console.log(err_1.message);
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
         }
     });
 }); });
@@ -73,7 +85,12 @@ exports.userReducer = toolkit_1.createSlice({
         })
             .addCase(exports.fetchUser.fulfilled, function (state, action) {
             state.status = 'idle';
+            state.userInfo = action.payload.user;
+            console.log(action.payload);
         });
     }
 });
+exports.getName = function (state) { return state.user.userInfo.name; };
+exports.getGender = function (state) { return state.user.userInfo.gender; };
+exports.getUserEmail = function (state) { return state.user.userInfo.email; };
 exports["default"] = exports.userReducer.reducer;

@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3001;
+const port = 4010;
 const mongoose = require('mongoose');
 const nodemailer = require("nodemailer");
 
@@ -47,6 +47,13 @@ app.get('/', (req, res) => {
 
 const accidentRouter = require('./routers/accidentRouter');
 app.use('/accidents', accidentRouter);
+
+const userRouter = require('./routers/userRouter');
+app.use('/users', userRouter);
+
+const previousAccidentRouter = require('./routers/previousAccidentsRouter');
+app.use('/previousAccidents', previousAccidentRouter);
+
 
 const messagesBetweemOrgRouter = require('./routers/messagesBetweemOrgRouter');
 app.use('/messagesBetweemOrg', messagesBetweemOrgRouter);

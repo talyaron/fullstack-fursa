@@ -3,11 +3,13 @@ import { RootState, AppThunk } from '../../app/store';
 import axios from 'axios'
 export interface User {
     userInfo: {
+        _id:string,
         name: string;
         email: string;
         phone: string;
         location: string;
         gender: string;
+        password: string;
     }
     isLogIn: boolean;
     status: 'idle' | 'loading' | 'failed';
@@ -15,11 +17,13 @@ export interface User {
 
 const initialState: User = {
     userInfo: {
+        _id:"",
         name: "",
         email: "",
         phone: "",
         location: "",
         gender: "",
+        password: "",
     },
     isLogIn: false,
     status: 'idle',
@@ -28,9 +32,10 @@ const initialState: User = {
 
 export const fetchUser = createAsyncThunk(
     'user/fetchUser',
-    async () => {
+    async (obj: any) => {
+        const { email, password } = obj
         try {
-            const response = await axios.get('/user/get-user')
+            const response = await axios.post('http://localhost:3001/users/get-user', { "email": email, "password": password })
             return response.data;
         }
         catch (err: any) {
@@ -53,11 +58,19 @@ export const userReducer = createSlice({
             })
             .addCase(fetchUser.fulfilled, (state, action) => {
                 state.status = 'idle';
-                state.userInfo = action.payload;
+                console.log(action)
+                state.userInfo = action.payload.user;
+                console.log(action.payload)
             });
     },
 });
 
 
+export const getName = (state: RootState) => state.user.userInfo.name;
+export const getGender = (state: RootState) => state.user.userInfo.gender;
+export const getID = (state: RootState) => state.user.userInfo._id;
 
+export const userInfo = (state: RootState) => state.user.userInfo;
+
+export const getUserEmail = (state: RootState) => state.user.userInfo.email;
 export default userReducer.reducer;
