@@ -51,8 +51,7 @@ app.use('/accidents', accidentRouter);
 const userRouter = require('./routers/userRouter');
 app.use('/users', userRouter);
 
-const mediaRouter=require('./routers/mediaRouter')
-app.use('/media',mediaRouter)
+
 
 server.listen(port, () => {
     console.log(`Listening on port ${port} 🔥`)
