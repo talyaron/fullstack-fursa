@@ -1,3 +1,4 @@
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -7,21 +8,23 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const fs = require('fs');
+const port = 4007;
+app.use(express.json());
 app.use(express.static("client/build"));
 const mongoose = require('mongoose');
 const internal = require('stream');
-app.use(express.json());
 main().catch(err => console.log(err));
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
         const password = process.env.MONGODB_PASSWORD;
         console.log(password);
-        yield mongoose.connect(`mongodb+srv://Lama:${password}@cluster0.bve7t.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`);
+        yield mongoose.connect(`mongodb+srv://Lama:vzDULOmy6x5WxrqL@cluster0.bve7t.mongodb.net/test`);
         // mongodb+srv://Lama:<password>@cluster0.bve7t.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
     });
 }
@@ -90,6 +93,7 @@ function getCourses() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const courses = yield Course.find({});
+            console.log(courses);
             return courses;
         }
         catch (err) {
@@ -98,15 +102,17 @@ function getCourses() {
         }
     });
 }
-app.get('/get-all-kitens', (req, res) => __awaiter(this, void 0, void 0, function* () {
+app.get('/get-all-kitens', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const kittens = yield getKitens();
     res.send({ kittens: kittens });
 }));
-app.get('/get-all-courses', (req, res) => __awaiter(this, void 0, void 0, function* () {
+app.get('/get-all-courses', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const courses = yield getCourses();
+    console.log("faaat");
     res.send({ courses: courses });
+    // res.send(courses);
 }));
-app.post("/add-new-course", (req, res) => __awaiter(this, void 0, void 0, function* () {
+app.post("/add-new-course", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { name, cost, participants, lessons, hours } = req.body;
         if (!name || !cost || !participants || !lessons || !hours)
@@ -133,7 +139,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/lama', (req, res) => {
     res.send("Hi,Lama");
 });
+const courseRoute = require('./routes/coursesRoute');
+app.use('/courses', courseRoute);
 // const routes = require('./routes/routes.js')(app, fs);
-const server = app.listen(4010, () => {
-    console.log('listening on port %s...', server.address().port);
+// app.use('/courses', routes);
+// const server = app.listen(4010, () => {
+//     console.log('listening on port %s...', server.address().port);
+// });
+app.listen(port, () => {
+    return console.log(`Express is listening at http://localhost:${port}`);
 });

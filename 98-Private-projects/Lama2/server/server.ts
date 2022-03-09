@@ -1,23 +1,26 @@
+import Courses from './model/schema/coursesModel';
 require('dotenv').config();
 
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const fs = require('fs');
+const port = 4007;
 
-
+app.use(express.json());
 app.use(express.static("client/build"));
 
 const mongoose = require('mongoose');
 const internal = require('stream');
-app.use(express.json());
+
+
 
 main().catch(err => console.log(err));
 
 async function main() {
     const password=process.env.MONGODB_PASSWORD;
     console.log(password)
-  await mongoose.connect(`mongodb+srv://Lama:${password}@cluster0.bve7t.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`);
+  await mongoose.connect(`mongodb+srv://Lama:vzDULOmy6x5WxrqL@cluster0.bve7t.mongodb.net/test`);
  // mongodb+srv://Lama:<password>@cluster0.bve7t.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 }
 
@@ -95,12 +98,14 @@ const kittySchema = new mongoose.Schema({
     try{
      
     const courses = await Course.find({});
+    console.log(courses);
     return courses;
     } catch(err:any){
       console.error(err)
       return false;
     }
   }
+
 
   app.get('/get-all-kitens',async (req:any, res:any)=>{
     const kittens = await getKitens();
@@ -109,7 +114,9 @@ const kittySchema = new mongoose.Schema({
 
 app.get('/get-all-courses',async (req:any, res:any)=>{
   const courses = await getCourses();
-  res.send({courses:courses});
+  console.log("faaat");
+ res.send({courses:courses});
+ // res.send(courses);
 })
 
 
@@ -142,8 +149,15 @@ app.get('/lama',(req:any,res:any)=>{
     res.send("Hi,Lama");
 });
 
+const courseRoute = require('./routes/coursesRoute')
+app.use('/courses', courseRoute);
 // const routes = require('./routes/routes.js')(app, fs);
+// app.use('/courses', routes);
 
-const server = app.listen(4010, () => {
-    console.log('listening on port %s...', server.address().port);
+// const server = app.listen(4010, () => {
+//     console.log('listening on port %s...', server.address().port);
+// });
+
+app.listen(port, () => {
+  return console.log(`Express is listening at http://localhost:${port}`);
 });
