@@ -3,9 +3,11 @@ import { RootState, AppThunk } from '../../app/store';
 import axios from 'axios'
 
 export interface user{
+    _id:string
     name:string;
     phone:string;
-    location:string;
+    email:string;
+    password:string;                                                        
 
 }
 

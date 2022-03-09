@@ -34,7 +34,12 @@ function Login() {
         const email=form[1].value;
         const password=form[2].value;
         const {data}=await axios.post('/user/login',{name:name,email:email,password:password})
-
+        if(data.ok){
+        navigate("/store")
+        }
+        else{
+            alert('user not found')
+        }
         // const form = ev.target;
         // axios.post('http://localhost:3004/userInfo', { "name": form[0].value, "phone": form[1].value, "location": form[2].value }).then(({ data }) => dispatch(getUserAsync()));
         // if(form[0].value=='admin'){
@@ -54,8 +59,8 @@ function Login() {
                 <Box sx={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'column', alignitems: 'center', width: '30%', margin: 'auto', border: 'solid', backgroundColor: 'white', borderRadius: '10px', padding: '20px', boxShadow: '2px 2px 10px rgb(245, 202, 9)' }}
                 >
                     <TextField id="outlined-basic" label="Name" required variant="standard" color="warning"  sx={{ margin: '5px' }} />
-                    <TextField id="outlined-basic" label="Phone Number" required variant="standard" color="warning" sx={{ margin: '5px' }} />
-                    <TextField id="outlined-basic" label="email" required variant="standard" color="warning" sx={{ margin: '5px' }} />
+                    <TextField id="outlined-basic" label="Email" required variant="standard" color="warning" sx={{ margin: '5px' }} />
+                    <TextField id="outlined-basic" label="Password" required variant="standard" color="warning" sx={{ margin: '5px' }} />
                     
                     <Button variant="contained" type='submit' size='medium' style={{ backgroundColor: 'rgb(245, 202, 9)' }} sx={{ m: 1, width: '20%', marginLeft: '40%' }}>
                         login

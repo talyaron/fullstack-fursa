@@ -4,10 +4,10 @@ import { appendFile } from "fs";
 import User from "../model/schema/userSchema";
 
 router.post('/register',async (req,res)=>{
-    const {name,email,password}=req.body;
+    const {name,email,phone,password}=req.body;
     if(!name||!email||!password) throw 'ivalid field values'
     try{
-    const user=new User({name:name,email:email,password:password})
+    const user=new User({name:name,email:email,phone:phone,password:password})
     user.save().then((res)=>{
         console.log(res);
       });
@@ -19,12 +19,20 @@ router.post('/register',async (req,res)=>{
 
 })
 router.post('/login', async (req,res)=>{
+  try{
     const {name,email,password}=req.body;
     if(!name||!email||!password) throw 'ivalid field values'
-    try{
-        res.cookie("secretPassword",{id:name})
-        res.send({name,email,password})
-
+    const filter={email:email,password:password}
+    const user=await User.findOne({email:email,password:password})
+      if(user){
+        console.log('found')
+        res.cookie("login",{id:user._id})
+        res.status(200).send({ok:true})
+      }
+      else{
+        console.log('not found')
+        res.send({ok:false})
+      }
     }
     catch(error:any){
         res.status(400).send({error:error.message})
