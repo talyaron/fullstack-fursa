@@ -1,15 +1,16 @@
 import Cats from './model/schema/cats'
 import Owners from './model/schema/ownerModel';
-
+const cookieParser = require('cookie-parser'); 
 const express = require("express");
 const app = express();
-const port = 4000;
+const port = 4001;
 require("dotenv").config();
 
 //routes for data
 
 //static files
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.static("client/build"));
 
 //data
@@ -127,6 +128,9 @@ app.post("/delete-cat", async (req, res) => {
 
 const ownerRoute = require('./routes/ownersRoute')
 app.use('/owenrs', ownerRoute);
+
+const usersRoute = require('./routes/usersRoute');
+app.use('/users',usersRoute)
 
 //query
 

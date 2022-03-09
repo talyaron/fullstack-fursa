@@ -1,0 +1,141 @@
+.wrapper {
+  margin: 4px, 4px;
+  padding: 4px;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-bottom: 60px;
+  text-align: justify;
+  width: 100%;
+}
+.wrapper .text {
+  padding: 10px;
+  color: #7572FC;
+  font-family: Monospace;
+  font-size: 20px;
+  font-weight: 550;
+}
+.wrapper form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.wrapper form .catg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid gray;
+  background-color: white;
+  border-radius: 20px;
+  margin: 10px;
+}
+.wrapper form .catg .grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+  row-gap: 5px;
+  column-gap: 5px;
+}
+.wrapper form .catg .grid-container .Plane {
+  background-image: url("../../../icons/Property 1=OFF Plane+icon.png");
+}
+.wrapper form .catg .grid-container .Bus {
+  background-image: url("../../../icons/Property 1=OFF Bus+icon.png");
+}
+.wrapper form .catg .grid-container .Car {
+  background-image: url("../../../icons/Property 1=OFF Car+icon.png");
+}
+.wrapper form .catg .grid-container .Ship {
+  background-image: url("../../../icons/Property 1=OFF Ship+icon.png");
+}
+.wrapper form .catg .grid-container .Metro {
+  background-image: url("../../../icons/Property 1=ON Metro+icon.png");
+}
+.wrapper form .catg .grid-container .Taxi {
+  background-image: url("../../../icons/Property 1=OFF Taxi+icon.png");
+}
+.wrapper form .catg .grid-container .Glof {
+  background-image: url("../../../icons/Property 1=OFF Golf+icon.png");
+}
+.wrapper form .catg .grid-container .Club {
+  background-image: url("../../../icons/Property 1=OFF Club+icon.png");
+}
+.wrapper form .catg .grid-container .Photography {
+  background-image: url("../../../icons/Property 1=OFF Photography+icon.png");
+}
+.wrapper form .catg .grid-container .Swimming {
+  background-image: url("../../../icons/Property 1=OFF Swimming+icon.png");
+}
+.wrapper form .catg .grid-container .Hiking {
+  background-image: url("../../../icons/Property 1=OFF Hiking+icon.png");
+}
+.wrapper form .catg .grid-container .Biking {
+  background-image: url("../../../icons/Property 1=OFF Biking+icon.png");
+}
+.wrapper form .catg .grid-container .Hotel {
+  background-image: url("../../../icons/Property 1=OFF Hotel+icon.png");
+}
+.wrapper form .catg .grid-container .BNB {
+  background-image: url("../../../icons/Property 1=OFF BB+icon.png");
+}
+.wrapper form .catg .grid-container .ShortTerm {
+  background-image: url("../../../icons/Property 1=OFF Shorterm+icon.png");
+}
+.wrapper form .catg .grid-container .Van {
+  background-image: url("../../../icons/Property 1=OFF Van+icon.png");
+}
+.wrapper form .catg .grid-container .Tent {
+  background-image: url("../../../icons/Property 1=OFF Tent+icon.png");
+}
+.wrapper form .catg .grid-container .Sofa {
+  background-image: url("../../../icons/Property 1=OFF Sofa+icon.png");
+}
+.wrapper form .catg .grid-container .Baby {
+  background-image: url("../../../icons/Property 1=OFF Baby+icon.png");
+}
+.wrapper form .catg .grid-container .Toddlers {
+  background-image: url("../../../icons/Property 1=OFF Toddlers+icon.png");
+}
+.wrapper form .catg .grid-container .Pets {
+  background-image: url("../../../icons/Property 1=OFF Pets+icon.png");
+}
+.wrapper form .catg .grid-container .Med {
+  background-image: url("../../../icons/Property 1=OFF Med+icon.png");
+}
+.wrapper form .catg .grid-container .Merchandise {
+  background-image: url("../../../icons/Property 1=OFF Merchandise+icon.png");
+}
+.wrapper form .catg .grid-container .Valuable {
+  background-image: url("../../../icons/Property 1=OFF Valuable+icon.png");
+}
+.wrapper form .Proceedbtn {
+  color: white;
+  font-family: Poppins;
+  font-style: normal;
+  text-align: center;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  background-color: #FF8074;
+  border: #FF8074;
+  border-radius: 16px;
+  height: 47.75px;
+  width: 124px;
+}
+.wrapper form .Proceedbtn:hover {
+  background-color: #fa6f63;
+}
+.wrapper label {
+  border: solid 2px grey;
+  margin-top: 10px;
+  text-align: center;
+  line-height: 40px;
+  background-size: contain;
+  border-radius: 13pX;
+}
+.wrapper input[type=checkbox] {
+  display: none;
+}
+.wrapper input:checked + label {
+  border: solid 2px #01adcc;
+}

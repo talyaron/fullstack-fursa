@@ -1,0 +1,45 @@
+
+.signup{
+    background-image: url(https://i.pinimg.com/736x/09/12/1a/09121ad06a3f102099ce22f36c463313.jpg);
+    background-repeat: no-repeat;
+    font-size: small;
+    margin-top: 20px;
+    justify-content: center;
+    border-style: double;
+    border-width: 10px;
+    width: 30vw;
+    height: 90vh;
+    border-color: black;
+    position: relative;
+    left: 500px;
+    color: white;
+    // background-color: rgb(149, 127, 155);
+
+    .avatar{
+        position: relative;
+        top: 10px;
+        left: 45%;
+        background-color: 'secondary.main';
+    }
+    .typ{
+        position: absolute;
+        top: 10%;
+        left: 40%;
+    }
+    
+.signupform{
+    position: relative;
+    top: 60px;
+    .textfield{
+        width:20vw;
+        height:10vh;
+        position: relative;
+        text-align: center;
+    }
+
+}
+
+  
+
+    
+}

@@ -1,0 +1,20 @@
+.offersCard {
+  justify-content: center;
+  border: 0.0625rem solid #4164b1;
+  border-radius: 0px;
+  border-style: double;
+  margin: 5px;
+  height: 30vh;
+  width: 10vw;
+}
+.offersCard:hover {
+  transform: translateY(-1rem);
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}

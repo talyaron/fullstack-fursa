@@ -12,16 +12,19 @@ import Favorite from "./view/pages/favorite/favorite";
 import Restaurant from "./view/pages/restaurant/restaurant";
 import Maps from "./view/pages/maps/maps"
 //<Route path=":productId" element={<Product />} />
+import { store } from './app/store';
+import { Provider } from 'react-redux';
 const rootElement = document.getElementById("root");
 render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="Reservations" element={<Reservation />} />
-      <Route path="Favorite" element={<Favorite />} />
-      <Route path="Maps" element={<Maps />} />
-      <Route path="Restaurant/:RestaurantId" element={<Restaurant />} />
-    </Routes>
-  </BrowserRouter>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="Reservations" element={<Reservation />} />
+        <Route path="Favorite" element={<Favorite />} />
+        <Route path="Maps" element={<Maps />} />
+        <Route path="Restaurant/:RestaurantId" element={<Restaurant />} />
+      </Routes>
+    </BrowserRouter ></Provider>,
   rootElement
 );

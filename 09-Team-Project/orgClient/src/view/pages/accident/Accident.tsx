@@ -2,32 +2,39 @@ import React, { useEffect, useState } from 'react'
 import './Accident.scss';
 
 import AccidentComp from '../../Components/AccidentComponents/AccidentComp';
+import search from '../../photos/search.png';
+import settings from '../../photos/settings.png';
+import home from '../../photos/home.png';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { fetchAccidentsAsync } from '../../../features/accidents/accidentsReducer';
+import { useNavigate } from 'react-router-dom';
 
 function Accident() {
-  const text = "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi repudiandae esse voluptatem libero totam cumque, amet, maxime vitae dolore minima nesciunt laudantium beatae rerum odit possimus. Dolore quod veniam dolorem?";
-  const [accidents, setAccidents] = useState<Array<any>>([
-    { details: { name: "test 1", content: text }, notifications: 10 },
-    { details: { name: "test 2", content: text }, notifications: 5 },
-    { details: { name: "test 3", content: text }, notifications: 4 },
-  ]);
+  const accidentsReducer = useAppSelector(state => state.accidents);
+  const dispatch = useAppDispatch();
+  const nav = useNavigate();
 
   useEffect(() => {
-    console.log("Accident");
+    dispatch(fetchAccidentsAsync())
   }, [])
 
   return (
     <div className='AccidentContainer'>
       <div className="accidentHeader">
-        <div className="accidentHeader_home">Home</div>
-        <div className="accidentHeader_search">search</div>
-        <div className="accidentHeader_settings">settings</div>
+        <div className="accidentHeader_home"><img onClick={()=> nav('/accidents')} style={{ width: 50 }} src={home} alt="" /></div>
+        <div className="accidentHeader_search"><img onClick={()=> nav('/accidents')} style={{ width: 50 }} src={search} alt="" /></div>
+        <div className="accidentHeader_settings"><img onClick={()=> nav('/accidents')} style={{ width: 50 }} src={settings} alt="" /></div>
       </div>
       <div className="accidentsContent">
-        {accidents.map((accident, index) => {
-          return (
-            <AccidentComp connect={"connect"} details={accident.details} notifications={accident.notifications} />
-          );
-        })}
+        {accidentsReducer.status === 'loading' ? <div>Loading...</div> :
+          accidentsReducer.value.accidents.map((accident, index) => {
+            return (
+              // <AccidentComp key={index} connect={"connect"} emergency={accident.emergency} details={accident.description} notifications={accident.address} />
+              <AccidentComp key={index} accident={accident} />
+
+            );
+          })
+        }
       </div>
     </div>
   )

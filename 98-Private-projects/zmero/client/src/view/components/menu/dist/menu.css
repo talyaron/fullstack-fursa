@@ -1,30 +1,36 @@
 .navbar {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   width: 100%;
-  height: 4rem;
+  height: 3.7rem;
+  background-color: white;
   box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
-  z-index: 0;
+  position: sticky;
+  top: 0;
 }
 .navbar__box {
   display: flex;
-  max-width: 90%;
+  width: 90%;
   height: 100%;
+  justify-content: space-between;
+}
+.navbar__bar {
+  display: none;
 }
 .navbar__left {
   display: flex;
-  width: 70%;
 }
-.navbar__left img {
+.navbar__left__logo {
+  display: flex;
+  max-width: 20%;
+}
+.navbar__left__logo img {
   height: auto;
   width: auto;
   max-height: 100%;
   max-width: 100%;
-  align-items: flex-start;
   overflow: hidden;
   transform: scale(2);
-  margin-right: 3vw;
   animation: fadeIn 1s infinite alternate;
 }
 @keyframes fadeIn {
@@ -46,7 +52,6 @@
   text-align: center;
   padding: 20px 24px;
   text-decoration: none;
-  font-size: 15px;
   font-family: Inter;
 }
 .navbar__left a:hover {
@@ -55,34 +60,45 @@
 }
 .navbar__right {
   display: flex;
-  width: 30%;
 }
 .navbar__right__signin {
   background-color: #2a945b;
-  border: none;
   border-radius: 12px;
-  margin-top: 1.5vh;
-  margin-bottom: 1.5vh;
+  margin-top: 0.6rem;
+  margin-bottom: 0.6rem;
   padding: 12px 24px;
   text-align: center;
   color: white;
   font-size: 14px;
   white-space: nowrap;
   font-weight: bold;
+  border: 1px solid #2a945b;
+  transition-duration: 0.4s;
+}
+.navbar__right__signin:hover {
+  color: #2a945b;
+  background-color: white;
+  border: 1px solid #2a945b;
 }
 .navbar__right__signup {
   background-color: #dff2e4;
-  border: none;
   border-radius: 12px;
   margin-right: 2vw;
-  margin-top: 1.5vh;
-  margin-bottom: 1.5vh;
+  margin-top: 0.6rem;
+  margin-bottom: 0.6rem;
   text-align: center;
   color: black;
   font-size: 14px;
   padding: 12px 24px;
   white-space: nowrap;
   font-weight: bold;
+  border: 1px solid #dff2e4;
+  transition-duration: 0.4s;
+}
+.navbar__right__signup:hover {
+  color: #381753;
+  background-color: white;
+  border: 1px solid #381753;
 }
 .navbar__right__search {
   transform: scale(0.5);
@@ -136,4 +152,102 @@
 }
 .Modal .searchDiv__title {
   color: black;
+}
+
+.signModal {
+  margin: auto;
+  margin-top: 5rem;
+  width: 70%;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+.signModal__content {
+  width: 100%;
+  height: 30rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.signModal__content__left {
+  background-image: url(https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/table-full-of-traditional-mexican-food-enchiladas-royalty-free-image-1628282971.jpg);
+  height: 100%;
+  width: 50%;
+  background-size: cover;
+  background-position: 50%;
+}
+.signModal__content__leftUp {
+  background-image: url(https://images.squarespace-cdn.com/content/v1/53b839afe4b07ea978436183/1608506169128-S6KYNEV61LEP5MS1UIH4/traditional-food-around-the-world-Travlinmad.jpg);
+  height: 100%;
+  width: 50%;
+  background-size: cover;
+  background-position: 50%;
+}
+.signModal__content__right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+.signModal__content__right__title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.signModal__content__right__title img {
+  border-radius: 50%;
+  color: white;
+  padding: 0.3rem;
+  background-color: #2a945b;
+}
+.signModal__content__right__middle form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 800px) {
+  .navbar__bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .navbar__left {
+    width: 100%;
+  }
+  .navbar__left a {
+    display: none;
+  }
+  .navbar__left__logo {
+    width: 100%;
+    justify-content: center;
+    max-width: 100%;
+  }
+  .navbar__right__signin {
+    display: none;
+  }
+  .navbar__right__signup {
+    display: none;
+  }
+
+  .signModal__content__left {
+    display: none;
+  }
+  .signModal__content__leftUp {
+    display: none;
+  }
+  .signModal__content__right {
+    width: 100%;
+  }
+  .signModal__content__rightUp {
+    width: 100%;
+  }
 }

@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import logo from "./logo.svg";
 import { Counter } from "./features/counter/Counter";
 import "./App.css";
 
@@ -32,6 +31,22 @@ function App() {
     } catch (error) {
       console.error(error)
     }
+    
+      axios
+        .get("/get-users")
+        .then((res) => {
+          console.log(res);
+          const { data } = res;
+          console.log(data);
+          const { users } = data;
+          if (users) {
+            setUsers(users);
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    
   }
 
   return (
@@ -48,7 +63,7 @@ function App() {
           })}
         </div>
         <form onSubmit={handleAddUser}>
-          <input type="text" name="name" placeholder="enter user name" />
+          <input required type="text" name="name" placeholder="enter user name" />
           <button type="submit">ADD</button>
         </form>
         <span>
