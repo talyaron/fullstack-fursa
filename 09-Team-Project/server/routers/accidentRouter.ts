@@ -18,7 +18,7 @@ router.
 
 router.
     route('/getAccidenstByLocation').
-    get(accidentController.getAccidenstByLocation);
+    post(accidentController.getAccidenstByLocation);
 
     router.
     route('/addNewAccident').
