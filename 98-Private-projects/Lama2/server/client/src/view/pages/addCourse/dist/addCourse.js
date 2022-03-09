@@ -9,7 +9,7 @@ var axios_1 = require("axios");
 function AddCourse() {
     var _a = react_1.useState([]), courses = _a[0], setCourses = _a[1];
     react_1.useEffect(function () {
-        //fetch kittens
+        //fetch courses
         fetch('/get-all-courses')
             .then(function (res) { return res.json(); })
             .then(function (data) {

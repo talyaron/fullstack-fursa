@@ -132,6 +132,11 @@ function Navbar() {
                                     <Typography textAlign="center">profile</Typography>
                                 </MenuItem>
                             </Link>
+                            <Link to="/previousAccidents">
+                                <MenuItem key="previousAccidents" onClick={handleCloseUserMenu}>
+                                    <Typography textAlign="center">previousAccidents</Typography>
+                                </MenuItem>
+                            </Link>
                             <Link to="/">
                                 <MenuItem key="profile" onClick={handleCloseUserMenu}>
                                     <Typography textAlign="center">Log out</Typography>
