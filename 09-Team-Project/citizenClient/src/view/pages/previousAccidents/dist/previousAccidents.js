@@ -38,39 +38,36 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 exports.__esModule = true;
 var react_1 = require("react");
 var react_2 = require("react");
-var axios_1 = require("axios");
+var hooks_1 = require("../../../app/hooks");
 var navbar_1 = require("../../components/navbar/navbar");
+var userReducer_1 = require("../../../app/reducer/userReducer");
 var previousAccidentComponent_1 = require("../../components/previousAccidents/previousAccidentComponent");
+var accidentReducer_1 = require("../../../app/reducer/accidentReducer");
+var accidentReducer_2 = require("../../../app/reducer/accidentReducer");
 function PreviousAccident() {
     var _a = react_2.useState([]), accidents = _a[0], setAccident = _a[1];
+    var dispatch = hooks_1.useAppDispatch();
+    var user = hooks_1.useAppSelector(userReducer_1.userInfo);
+    var preAccidents = hooks_1.useAppSelector(accidentReducer_2.getAccident);
+    var email = user.email;
     function handleGetAccident(e) {
         return __awaiter(this, void 0, void 0, function () {
-            var response;
             return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, axios_1["default"].get("/get-previous-accidents").then(function (_a) {
-                            var data = _a.data;
-                            console.log(data);
-                            setAccident(data);
-                        })];
-                    case 1:
-                        response = _a.sent();
-                        return [2 /*return*/];
-                }
+                dispatch(accidentReducer_1.fetchPreviousAccident({ "userEmail": email }));
+                return [2 /*return*/];
             });
         });
     }
-    react_2.useEffect(function () {
-        axios_1["default"].get("/previousAccidents/get-previous-accidents").then(function (_a) {
-            var data = _a.data;
-            console.log(data);
-            setAccident(data);
-        });
-    }, []);
+    // useEffect(() => {
+    //     axios.get("/previousAccidents/get-previous-accidents").then(({ data }) => {
+    //       console.log(data);
+    //       setAccident(data);
+    //     });
+    //   }, []);
     return (react_1["default"].createElement("div", { className: 'AccidentContainer' },
         react_1["default"].createElement(navbar_1["default"], null),
         react_1["default"].createElement("button", { onClick: handleGetAccident }, " get previous accidents "),
-        react_1["default"].createElement("div", { className: "accidentsContent" }, accidents.map(function (accident, index) {
+        react_1["default"].createElement("div", { className: "accidentsContent" }, preAccidents.map(function (accident, index) {
             return (react_1["default"].createElement(previousAccidentComponent_1["default"], { key: index, connect: "connect", details: accident.details, notifications: accident.notifications }));
         }))));
 }

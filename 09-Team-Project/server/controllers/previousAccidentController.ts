@@ -7,9 +7,9 @@ exports.getPreviousAccidents = async (req, res) => {
     try {
         const  id = req.body;
         // const userid=Users.userID;
-        const userID=23132132;
+        const userEmail="m.zmiro@hotmail.com";
         const filter ={id:id}
-        const _acc = await accidents.findOne({ _id: userID });
+        const _acc = await accidents.findOne({user:{email: userEmail}});
      //   await accident.find({_id:id});
      console.log(_acc);
         res.send({ok :true, accident: _acc });

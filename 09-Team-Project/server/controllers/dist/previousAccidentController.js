@@ -38,7 +38,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 exports.__esModule = true;
 var accidentModel_1 = require("../model/accidentModel");
 exports.getPreviousAccidents = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var id, userID, filter, _acc, error_1;
+    var id, userEmail, filter, _acc, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -47,9 +47,9 @@ exports.getPreviousAccidents = function (req, res) { return __awaiter(void 0, vo
             case 1:
                 _a.trys.push([1, 3, , 4]);
                 id = req.body;
-                userID = 23132132;
+                userEmail = "m.zmiro@hotmail.com";
                 filter = { id: id };
-                return [4 /*yield*/, accidentModel_1["default"].findOne({ _id: userID })];
+                return [4 /*yield*/, accidentModel_1["default"].findOne({ user: { email: userEmail } })];
             case 2:
                 _acc = _a.sent();
                 //   await accident.find({_id:id});
