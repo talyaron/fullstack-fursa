@@ -11,12 +11,14 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import { Link } from 'react-router-dom'
+
+import './navbar.scss'
 
 function Navbar() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
     const pages = ['Home', 'Info', 'Stories', 'Chat'];
-    const settings = ['Profile', 'Logout'];
 
 
     const handleOpenNavMenu = (event: any) => {
@@ -125,11 +127,16 @@ function Navbar() {
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
                         >
-                            {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">{setting}</Typography>
+                            <Link to="/profile">
+                                <MenuItem key="profile" onClick={handleCloseUserMenu}>
+                                    <Typography textAlign="center">profile</Typography>
                                 </MenuItem>
-                            ))}
+                            </Link>
+                            <Link to="/">
+                                <MenuItem key="profile" onClick={handleCloseUserMenu}>
+                                    <Typography textAlign="center">Log out</Typography>
+                                </MenuItem>
+                            </Link>
                         </Menu>
                     </Box>
                 </Toolbar>
