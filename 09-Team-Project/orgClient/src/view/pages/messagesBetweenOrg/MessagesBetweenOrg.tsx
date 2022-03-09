@@ -24,9 +24,9 @@ function MessagesBetweenOrg() {
     const currentUser = "";
     const selectedAccident = null;
     //---------------//
-
+    const dispatch = useAppDispatch();
     function handleClick() {
-        const dispatch = useAppDispatch();
+        
         dispatch(setSharing({
             sender: currentUser, reciver: user, content: description,
             date: Date(), accident: selectedAccident,
