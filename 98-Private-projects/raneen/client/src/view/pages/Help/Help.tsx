@@ -1,16 +1,20 @@
 import react from "react";
 import "./Help.scss";
-
+import { Link } from "react-router-dom";
 function Help() {
   return (
     <div className="wrapper">
+
       <div>
+      <Link to={`/Help1`}>
         <img
           src="https://static.zara.net/photos///mkt/misc/help/icons//icon-80-help-bag.svg?ts=1550654368093"
           alt=""
         />
+          </Link>
         <p>SHOP AT ZARA.COM</p>
       </div>
+      
       <div>
         <img
           src="https://static.zara.net/photos///mkt/misc/help/icons//icon-80-help-product.svg?ts=1550654368093"

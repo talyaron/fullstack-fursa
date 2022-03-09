@@ -1,10 +1,12 @@
 "use strict";
 exports.__esModule = true;
 require("./Help.scss");
+var react_router_dom_1 = require("react-router-dom");
 function Help() {
     return (React.createElement("div", { className: "wrapper" },
         React.createElement("div", null,
-            React.createElement("img", { src: "https://static.zara.net/photos///mkt/misc/help/icons//icon-80-help-bag.svg?ts=1550654368093", alt: "" }),
+            React.createElement(react_router_dom_1.Link, { to: "/Help1" },
+                React.createElement("img", { src: "https://static.zara.net/photos///mkt/misc/help/icons//icon-80-help-bag.svg?ts=1550654368093", alt: "" })),
             React.createElement("p", null, "SHOP AT ZARA.COM")),
         React.createElement("div", null,
             React.createElement("img", { src: "https://static.zara.net/photos///mkt/misc/help/icons//icon-80-help-product.svg?ts=1550654368093", alt: "" }),

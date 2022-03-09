@@ -52,7 +52,7 @@ router.patch("/get-product", async (req, res) => {
     const { typeID } = req.body;
     console.log(typeID);
      console.log("typeID");
-    const filter = { _typeID: typeID };
+    // const filter = { typeId: typeID };
 
     const products = await Products.find({ typeId: typeID });
     console.log(products);

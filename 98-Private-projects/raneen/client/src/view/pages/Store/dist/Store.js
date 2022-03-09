@@ -66,7 +66,7 @@ function add() {
                         console.log(data);
                     });
                     console.log("aa");
-                    return [4 /*yield*/, axios_1["default"].patch("/products/get-product", { name: name })];
+                    return [4 /*yield*/, axios_1["default"].patch("/products/get-product", { typeId: typeId })];
                 case 1:
                     data = (_a.sent()).data;
                     console.log(data);

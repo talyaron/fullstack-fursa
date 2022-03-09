@@ -49,7 +49,7 @@ function Mainbar() {
         <div className="navbar__left">
           {/* <nav role="navigation"></nav> */}
           <div className="categories">
-       
+
             <Button
               id="basic-button"
               aria-controls={open ? "basic-menu" : undefined}
@@ -62,7 +62,6 @@ function Mainbar() {
                 alt="Logo"
               />
             </Button>
-                   
             <Menu
               className="menuItem"
               id="basic-menu"
@@ -92,16 +91,17 @@ function Mainbar() {
               </Link>
             </Menu>
           </div>
-          <Link to={`/homePage`}>
+          <span>
+                    <Link to={`/homePage`}>
               <img
         
-             height="100px"
+             height="70vh"
+             width="70vh"
               
                 src="https://download.logo.wine/logo/Zara_(retailer)/Zara_(retailer)-Logo.wine.png"
                 alt="Logo"
               />
             </Link>
-          <span>
             {/* <Link to={`/homePage`}>
               <img
                height="100vh"

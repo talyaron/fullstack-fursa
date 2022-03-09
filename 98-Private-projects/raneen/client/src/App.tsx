@@ -17,6 +17,7 @@ import {
 import HomePage from "./view/pages/homePage/homePage";
 import Store from "./view/pages/Store/Store";
 import Help from "./view/pages/Help/Help";
+import Help1 from "./view/pages/Help/Help1";
 import SignUp from "./view/pages/SignUp/SignUp";
 import SignIn from "./view/pages/SignIn/SignIn";
 // import AboutUs from "./view/pages/AboutUs/AboutUs";
@@ -86,6 +87,7 @@ function App() {
        <Route path="SignUp" element={<SignUp />} /> 
        <Route path="SignIn" element={<SignIn/>} /> 
        <Route path="Help" element={<Help />} /> 
+             <Route path="Help1" element={<Help1 />} />
        {/* <Route path="Mainbar" element={<Mainbar />} /> */}
         {/* <Route path="AboutUs" element={<AboutUs />} /> */}
         <Route path="HomePage" element={<HomePage /> }/>

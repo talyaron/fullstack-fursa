@@ -85,7 +85,7 @@ router.post("/add-product", function (req, res) { return __awaiter(void 0, void 
     });
 }); });
 router.patch("/get-product", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var typeID, filter, products, err_1;
+    var typeID, products, err_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -93,7 +93,6 @@ router.patch("/get-product", function (req, res) { return __awaiter(void 0, void
                 typeID = req.body.typeID;
                 console.log(typeID);
                 console.log("typeID");
-                filter = { _typeID: typeID };
                 return [4 /*yield*/, productSchema_1["default"].find({ typeId: typeID })];
             case 1:
                 products = _a.sent();

@@ -28,7 +28,7 @@ async function add() {
   console.log("aa");
 
 
-   const { data } = await axios.patch("/products/get-product",  {name,} );
+   const { data } = await axios.patch("/products/get-product",  {typeId} );
     console.log(data);
   }
 
