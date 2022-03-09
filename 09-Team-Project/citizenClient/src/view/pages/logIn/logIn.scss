@@ -1,0 +1,11 @@
+.Center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .profile-img-card{
+        border-radius: 200px;
+        height: 120px;
+    }
+   
+}

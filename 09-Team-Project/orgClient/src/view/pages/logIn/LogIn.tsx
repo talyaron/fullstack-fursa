@@ -26,29 +26,38 @@ function Login() {
 
 
     return (
-        <div className='warpper'>
-            <div>
-                <form onSubmit={hadleSubmit}>
-                    Login <br /><br />
-                    <br /><br />
-                    ID <br />
-                    <input type="text" onKeyUp={(e:any)=>{setID(e.target.value)}} />
-                    <br /><br />
-                    Password <br />
-                    <input type="password" onKeyUp={(e:any)=>{setPassword(e.target.value)}} />
-                    <br /><br />
-                    <input type='submit' className='submit' value="Login" />
-                    <br />
-                </form>
-                <Link to="/HomePage">cancel</Link>
-
-
-            </div>
-
+      <div className="warpper">
+        <div>
+          <form onSubmit={hadleSubmit}>
+            Login <br />
+            <br />
+            <br />
+            <br />
+            ID <br />
+            <input
+              type="text"
+              onKeyUp={(e: any) => {
+                setID(e.target.value);
+              }}
+            />
+            <br />
+            <br />
+            Password <br />
+            <input
+              type="password"
+              onKeyUp={(e: any) => {
+                setPassword(e.target.value);
+              }}
+            />
+            <br />
+            <br />
+            <input type="submit" className="submit" value="Login" />
+            <br />
+          </form>
+          <Link to="/HomePage">cancel</Link>
         </div>
-
-
-    )
+      </div>
+    );
 }
 
 
