@@ -26,6 +26,7 @@
     "@types/react-dom": "^16.9.14",
     "@types/react-redux": "^7.1.22",
     "axios": "^0.26.0",
+    "cookie-parser": "^1.4.6",
     "moment": "^2.29.1",
     "react": "^17.0.2",
     "react-big-calendar": "^0.38.9",

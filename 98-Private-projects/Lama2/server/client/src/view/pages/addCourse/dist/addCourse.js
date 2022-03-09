@@ -23,7 +23,7 @@ function AddCourse() {
         ev.preventDefault();
         var form = ev.target;
         var obj = { name: form[0].value, cost: form[1].value, participants: form[2].value, lessons: form[3].value, hours: form[4].value };
-        axios_1["default"].post('/add-new-course', { name: form[0].value, cost: form[1].value, participants: form[2].value, lessons: form[3].value, hours: form[4].value })
+        axios_1["default"].post('/courses/add-new-course', { name: form[0].value, cost: form[1].value, participants: form[2].value, lessons: form[3].value, hours: form[4].value })
             .then(function (data) {
             console.log(data);
         })["catch"](function (err) {

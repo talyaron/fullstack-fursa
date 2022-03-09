@@ -27,7 +27,7 @@ function AddCourse(){
     ev.preventDefault();
     const form = ev.target;
     const obj: any = { name: form[0].value, cost: form[1].value, participants: form[2].value,lessons:form[3].value,hours:form[4].value }
-    axios.post('/add-new-course', { name: form[0].value, cost: form[1].value, participants: form[2].value,lessons:form[3].value,hours:form[4].value})
+    axios.post('/courses/add-new-course', { name: form[0].value, cost: form[1].value, participants: form[2].value,lessons:form[3].value,hours:form[4].value})
       .then(data => {
         console.log(data);
       }).catch(err => {

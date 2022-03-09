@@ -13,8 +13,22 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import axios from 'axios';
+
 
 function SignUp() {
+
+  function handleSignUp(ev:any){
+  ev.preventDefault();
+  const form = ev.target;
+  const obj: any = { firstName: form[0].value,lastName:form[1] ,email: form[2].value, password: form[3].value,phoneNumber:form[4].value }
+  axios.post('/user/add-new-user', {firstName: form[0].value,lastName:form[1] ,email: form[2].value, password: form[3].value,phoneNumber:form[4].value})
+    .then(data => {
+      console.log(data);
+    }).catch(err => {
+      console.error(err);
+    })
+  }
 
   return (
     <div className="signup">
@@ -26,7 +40,7 @@ function SignUp() {
         Sign up
       </Typography>
 
-      <form className="signupform">
+      <form className="signupform" onSubmit={handleSignUp}>
 
         <TextField
           className="textfield"
@@ -68,12 +82,23 @@ function SignUp() {
           label="Password"
           autoFocus
         />
+   
+               <TextField
+          className="textfield"
+          autoComplete="given-name"
+          name="phone_number"
+          required
+          fullWidth
+          id="phone_number"
+          label="phone number"
+          autoFocus
+        />
 
         {/* </Grid> */}
         <br />
         <br />
         <Link to={`/signIn`}>
-          <button className='subbtn'>submit</button>
+          <button className='subbtn' type='submit'>submit</button>
         </Link>
       </form>
     </div>
