@@ -3,6 +3,7 @@ import Users from './model/schema/UserSchema';
 import Products from './model/schema/productSchema';
 
 const express = require("express");
+const cookieParser = require('cookie-parser'); 
 const app = express();
 const port = 4000;
 require("dotenv").config();
@@ -148,6 +149,18 @@ app.get("/get-all-kitens", async (req, res) => {
   const kittens = await getKitens();
   res.send(kittens);
 });
+
+// app.get("/privateInfo",async (req, res) => {
+//     //get cookie
+//     const { mySecretPassword } = req.cookies;
+//     const { id } = mySecretPassword;
+//     //get user from database
+//     // if exists, responce with user's data
+
+//     res.send({ ok: true });
+//     console.log("private");
+//   });
+
 
 
 const ownerRoute = require('./routes/ownersRoute')

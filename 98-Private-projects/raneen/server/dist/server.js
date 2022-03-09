@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
+const cookieParser = require('cookie-parser');
 const app = express();
 const port = 4000;
 require("dotenv").config();
@@ -133,6 +134,15 @@ app.get("/get-all-kitens", (req, res) => __awaiter(void 0, void 0, void 0, funct
     const kittens = yield getKitens();
     res.send(kittens);
 }));
+// app.get("/privateInfo",async (req, res) => {
+//     //get cookie
+//     const { mySecretPassword } = req.cookies;
+//     const { id } = mySecretPassword;
+//     //get user from database
+//     // if exists, responce with user's data
+//     res.send({ ok: true });
+//     console.log("private");
+//   });
 const ownerRoute = require('./routes/ownersRoute');
 app.use('/owenrs', ownerRoute);
 const UserRoute = require('./routes/UserRoute');
