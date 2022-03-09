@@ -1,17 +1,22 @@
 import express from 'express';
 const app = express();
 const port = 4000;
-import axios from 'axios';
 import SchoolClass from './model/schema/school/SchoolClass';
 require('dotenv').config();
 
+const cookieParser = require('cookie-parser')
 app.use(express.static('../client/build'));
 app.use(express.json());
+app.use(cookieParser())
+
+
 
 app.get('/get-user' , (req, res) => {
   console.log('user-request')
   res.status(202).send({name:'suzan', id:12345})
 })
+
+
 
 // app.get('/get-classes', async (req, res) => {
 //   console.log('get classes - server');
@@ -45,6 +50,47 @@ db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
   console.log("connected to DB!");
 });
+
+// the collection
+const userSchema = new mongoose.Schema({
+  email:String,
+  password: String,
+});
+
+const user = mongoose.model("users", userSchema);
+
+const newUser = new user({
+  email: "suzankassabry97@gmail.com",
+  password: "123",
+});
+
+// console.log(schoolClass.className)
+
+// newUser.save().then(res => {console.log(res)}).catch(err=>console.log(err));
+
+app.post('/user/login', async (req, res) => {
+  try {
+    const {password, email} = req.body;
+    res.cookie("mySecretInfo", {id: email});
+    res.send({password, email});
+  } catch (error) {
+    console.log(req.body);
+    console.error(error.message);
+    res.send({error: error.message});
+  }
+})
+
+app.get('/get-private-info', async (req, res) => {
+  console.log("server private data")
+  const {mySecretInfo} = req.cookies;
+  const {id} = mySecretInfo;
+  const result = await user.find({email:id});
+  if (result.length > 0) {
+    res.send({ok:true});
+  }else {
+    res.send({ok:false});
+  }
+})
 
 const classesRoute = require('./routes/school/ClassesRoutes')
 app.use('/school', classesRoute);

@@ -27,6 +27,7 @@ import StudentHomeworks from './view/student/pages/homeworks/Homworks';
 import StudentExams from './view/student/pages/exams/StudentExams';
 import TeacherHomeworks from './view/teacher/pages/homeworks/TeacherHomeworks';
 import TeacherExams from './view/teacher/pages/exams/TeacherExams';
+import LogIn from './view/pages/login/login';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
         {/* <Route path="teachers" element={<Teachers />} />
         <Route path="schoolsEvents" element={<SchoolsEvents />} /> */}
 
+        <Route path="/testlogin" element={<LogIn />} />
         <Route path="/" element={<SchoolClasses />} />
 
         <Route path="classes" element={<SchoolClasses />} />
@@ -57,7 +59,7 @@ function App() {
         <Route path="class" element={<ClassInfo />} />
 
         <Route path="teacherUser/courses" element={<Courses />} />
-        <Route path="teacherUser/home" element={<TeacherMainPage/>} />
+        <Route path="teacherUser/home" element={<TeacherMainPage />} />
         <Route path="teacherUser/coursePage" element={<Course />} />
         <Route path="teacherUser/homeworks" element={<TeacherHomeworks />} />
         <Route path="teacherUser/exams" element={<TeacherExams />} />
