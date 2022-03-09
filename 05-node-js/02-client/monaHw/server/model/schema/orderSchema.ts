@@ -1,8 +1,10 @@
-import User from "./userSchema";
 
+import User from './userSchema';
+import  {UserSchema}  from './userSchema';
 const mongoose = require("mongoose");
 
-const OrderSchema=new mongoose.Schema({
+
+export const OrderSchema=new mongoose.Schema({
     woodName: String,
     woodlength: Number,
     amount: Number,
@@ -12,7 +14,7 @@ const OrderSchema=new mongoose.Schema({
     width:Number,
     thick:Number,
     doorType:String,
-    user:User
+    user:UserSchema
   });
   
   const Order=mongoose.model('Order',OrderSchema);

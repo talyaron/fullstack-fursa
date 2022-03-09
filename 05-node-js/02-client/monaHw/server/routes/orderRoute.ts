@@ -4,9 +4,10 @@ import Order from "../model/schema/orderSchema";
 
 router.post('/add-order',async (req,res)=>{
     try{
-      const order=req.body;
-      console.log(order)
-      const newOrder=new Order(order);
+      const {woodName,woodlength,amount,price,user}=req.body;
+      const newOrder=new Order({
+        woodName:woodName,woodlength:woodlength,amount:amount,price:price,user:user
+      });
       await newOrder.save().then((res)=>{
         console.log(res);
       });

@@ -36,7 +36,7 @@ const initialState: User = {
     async (obj:any ) => {
       const {email,password}=obj;
       try {
-        const response = await axios.post('http://localhost:3001/user/get-user',{email:email,password:password})
+        const response = await axios.post('/user/get-user',{email:email,password:password})
         const data = response.data
         return data
   

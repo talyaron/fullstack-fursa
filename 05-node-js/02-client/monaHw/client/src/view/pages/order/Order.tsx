@@ -43,10 +43,11 @@ import { fetchUser, getUser } from '../../../features/user/userReducer';
 // }
 function Order() {
   const dispatch=useAppDispatch();
-const user=useAppSelector(getUser)
 useEffect(() => {
   dispatch(fetchUser({ "email": "mona_arabiya@hotmail.com", "password": "123" }))
 }, [])
+const user=useAppSelector(getUser)
+
     // const { product, setProduct } = props;
     const [currency, setCurrency] = React.useState('cm');
    useEffect(()=>{
@@ -75,7 +76,7 @@ useEffect(() => {
         // copy.push(obj);
         // setProduct(copy);
         // const orderObj={"woodName":name,"woodlength":form[0].value,"amount":form[1].value,"price":pricePerMeter};
-        axios.post('/order/add-order',{woodName:name,woodlength:form[0].value,amount:form[1].value,price:pricePerMeter,user:user})
+        axios.post('/order/add-order',{woodName:name,woodlength:form[0].value,amount:form[1].value,price:pricePerMeter,user:{user}})
         .then((res) => console.log(res))
         .catch((err) => console.error(err));
         // axios.post('http://localhost:3004/userOrder',{"woodName":name,"woodlength":form[0].value,"amount":form[1].value,"price":pricePerMeter}).then(({data})=>dispatch(getCartAsync()));

@@ -1,6 +1,6 @@
 const mongoose=require('mongoose')
 
-const userSchema=new mongoose.Schema({
+export const UserSchema=new mongoose.Schema({
     id:String,
     name:String,
     phone:String,
@@ -9,5 +9,5 @@ const userSchema=new mongoose.Schema({
 
 });
 
-const User=mongoose.model('User',userSchema)
+const User=mongoose.model('User',UserSchema)
 export default User;
