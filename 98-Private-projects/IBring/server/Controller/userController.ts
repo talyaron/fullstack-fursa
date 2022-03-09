@@ -17,7 +17,7 @@ exports.Login = async (req, res) => {
             const hashPassword = crypto.createHash('sha256').update(pass).digest('base64');
             if (hashPassword === _user.password) {
                 const curretUser = { email: _user.email };
-                res.cookie('userInfo', { id: _user._id });
+                res.cookie('userInfo', { value: { email: email, id: _user._id }, status: "logged" });
                 res.send({ ok: true, user: curretUser, message: "login successfully!" });
             }
             else {
@@ -44,7 +44,7 @@ exports.SignUp = async (req, res) => {
             userToAdd.save().then(() => {
                 console.log("user saved");
             });
-            res.cookie('userInfo', { id: userToAdd._id });
+            res.cookie('userInfo', { value: { email: userToAdd.email, id: userToAdd._id }, status: "logged" });
             res.send({ ok: true, message: "signUp successfully!" });
         } else {
             res.send({ ok: false, message: "signUp failed user already exists!" });

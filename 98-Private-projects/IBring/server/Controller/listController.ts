@@ -9,7 +9,7 @@ exports.addNewMeeting = async (req, res) => {
 
     try {
         const { userInfo } = req.cookies;
-        const _user = await user.findOne({ _id: userInfo.id });
+        const _user = await user.findOne({ _id: userInfo.value.id });
         if (!_user) {
             res.send({ ok: false, message: "user doesn't exists!" });
         } else {
@@ -35,7 +35,7 @@ exports.getListByUser = async (req, res) => {
 
     try {
         const { userInfo } = req.cookies;
-        const _user = await user.findOne({ _id: userInfo.id });
+        const _user = await user.findOne({ _id: userInfo.value.id });
         if (!_user) {
             res.send({ ok: false, message: "user doesn't exists!" });
         } else {
@@ -58,7 +58,7 @@ exports.getListByID = async (req, res) => {
 
     try {
         const { userInfo } = req.cookies;
-        const _user = await user.findOne({ _id: userInfo.id });
+        const _user = await user.findOne({ _id: userInfo.value.id });
         if (!_user) {
             res.send({ ok: false, message: "user doesn't exists!" });
         } else {
