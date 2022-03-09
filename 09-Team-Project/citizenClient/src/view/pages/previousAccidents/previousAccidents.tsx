@@ -7,15 +7,7 @@ import AccidentComp from '../../components/previousAccidents/previousAccidentCom
 
 function PreviousAccident() {
     const [accidents, setAccident] = useState([]);
-    // const [accidents, setAccidents] = useState<Array<any>>([
-    //     { details: { name: "test 1", content: text }, notifications: 10 },
-    //     { details: { name: "test 2", content: text }, notifications: 5 },
-    //     { details: { name: "test 3", content: text }, notifications: 4 },
-    //   ]);
-    
-    //   useEffect(() => {
-    //     console.log("Accident");
-    //   }, [])
+
 
     async function handleGetAccident(e:any)
     {
@@ -26,7 +18,7 @@ function PreviousAccident() {
       
     }
     useEffect(() => {
-        axios.get("/get-previous-accidents").then(({ data }) => {
+        axios.get("/previousAccidents/get-previous-accidents").then(({ data }) => {
           console.log(data);
           setAccident(data);
         });
@@ -35,11 +27,7 @@ function PreviousAccident() {
     return (
         <div className='AccidentContainer'>
              <Navbar />
-        <div className="accidentHeader">
-          <div className="accidentHeader_home">Home</div>
-          <div className="accidentHeader_search">search</div>
-          <div className="accidentHeader_settings">settings</div>
-        </div>
+  
         <button onClick={handleGetAccident}> get previous accidents </button>
         <div className="accidentsContent">
           {accidents.map((accident:any, index:any) => {

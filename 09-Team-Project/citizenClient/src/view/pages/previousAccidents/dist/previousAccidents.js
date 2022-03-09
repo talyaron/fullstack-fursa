@@ -43,14 +43,6 @@ var navbar_1 = require("../../components/navbar/navbar");
 var previousAccidentComponent_1 = require("../../components/previousAccidents/previousAccidentComponent");
 function PreviousAccident() {
     var _a = react_2.useState([]), accidents = _a[0], setAccident = _a[1];
-    // const [accidents, setAccidents] = useState<Array<any>>([
-    //     { details: { name: "test 1", content: text }, notifications: 10 },
-    //     { details: { name: "test 2", content: text }, notifications: 5 },
-    //     { details: { name: "test 3", content: text }, notifications: 4 },
-    //   ]);
-    //   useEffect(() => {
-    //     console.log("Accident");
-    //   }, [])
     function handleGetAccident(e) {
         return __awaiter(this, void 0, void 0, function () {
             var response;
@@ -69,7 +61,7 @@ function PreviousAccident() {
         });
     }
     react_2.useEffect(function () {
-        axios_1["default"].get("/get-previous-accidents").then(function (_a) {
+        axios_1["default"].get("/previousAccidents/get-previous-accidents").then(function (_a) {
             var data = _a.data;
             console.log(data);
             setAccident(data);
@@ -77,10 +69,6 @@ function PreviousAccident() {
     }, []);
     return (react_1["default"].createElement("div", { className: 'AccidentContainer' },
         react_1["default"].createElement(navbar_1["default"], null),
-        react_1["default"].createElement("div", { className: "accidentHeader" },
-            react_1["default"].createElement("div", { className: "accidentHeader_home" }, "Home"),
-            react_1["default"].createElement("div", { className: "accidentHeader_search" }, "search"),
-            react_1["default"].createElement("div", { className: "accidentHeader_settings" }, "settings")),
         react_1["default"].createElement("button", { onClick: handleGetAccident }, " get previous accidents "),
         react_1["default"].createElement("div", { className: "accidentsContent" }, accidents.map(function (accident, index) {
             return (react_1["default"].createElement(previousAccidentComponent_1["default"], { key: index, connect: "connect", details: accident.details, notifications: accident.notifications }));

@@ -65,4 +65,5 @@ export const userReducer = createSlice({
 
 export const getName = (state: RootState) => state.user.userInfo.name;
 export const getGender = (state: RootState) => state.user.userInfo.gender;
+export const getUserEmail = (state: RootState) => state.user.userInfo.email;
 export default userReducer.reducer;
