@@ -5,14 +5,15 @@ import Users from '../model/schema/userModel'
 
 router.get('/get-user-reservations', async (req, res) => {
     try {
-        const { userId } = req.query
+        const { MyId } = req.cookies;
+        const { userId } = MyId
         if (!userId) throw "invalid fields"
         const result = await Users.find({ "_id": userId });
         if (result.length > 0) {
             const reservation = await Reservations.find({ "userId": userId });
             res.send({ "log": true, "reservations": reservation })
         }
-        else res.send({ "log": false })
+        else res.sendStatus(403)
     } catch (error) {
         res.send({ error });
     }

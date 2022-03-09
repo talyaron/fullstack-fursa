@@ -16,7 +16,6 @@ router.get('/get-all-restaurants', async (req, res) => {
 router.get('/get-regions', async (req, res) => {
     try {
         const regions = await Regions.find({});
-        console.log(regions)
         res.send({ regions })
     } catch (error) {
         res.send({ error });

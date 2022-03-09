@@ -7,8 +7,10 @@ router.get('/get-user', async (req, res) => {
         const { email, password } = req.query
         if (!email || !password) throw "invalid fields"
         const result = await Users.find({ "email": email, "password": password });
-        if (result.length > 0)
+        if (result.length > 0) {
+            res.cookie('MyId', { userId: result[0]._id })
             res.send({ "log": true, "user": result[0] })
+        }
         else res.send({ "log": false })
     } catch (error) {
         res.send({ error });

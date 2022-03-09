@@ -4,11 +4,13 @@ import Favorites from './model/schema/favoritesModel'
 import Reservations from './model/schema/reservationsmModel';
 
 const express = require('express');
+const cookieParser = require('cookie-parser')
 const app = express();
 require('dotenv').config()
 const port = 4000;
 
 app.use(express.static('client/build'));
+app.use(cookieParser())
 app.use(express.json());
 
 // mongodb
