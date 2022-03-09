@@ -33,7 +33,7 @@ async function getOrganizations(): Promise<any> {
     }
   }
   
-  router.get('/get-Users-byOrgName', async (req, res) => {
+  router.post('/get-Users-byOrgName', async (req, res) => {
     const { orgName } = req.body;
     const users = await getUsers(orgName);
     res.send(users);
@@ -42,19 +42,20 @@ async function getOrganizations(): Promise<any> {
 
   router.post('/add-sharing', (req, res) => {
     try {
-      const newsharing = req.body.newsharing;
-      console.log(req.body);
-      if (!newsharing) throw new Error("No sharing in request");
+      console.log("server")
+      const {newSharing} = req.body;
+      console.log(newSharing);
+      if (!newSharing) throw new Error("No sharing in request");
       const event  = new Sharing({
-        from: newsharing.from,
-        content:newsharing.content,
-        to:newsharing.to,
+        from: newSharing.from,
+        content:newSharing.content,
+        to:newSharing.to,
         chatId: "123",
-        date:newsharing.date,
-        accident:newsharing.accident,
+        date:newSharing.date,
+        accident:newSharing.accident,
     });
       event.save();
-      res.send({ message: 'Done' });
+      res.send(event);
     } catch (error) {
       res.send({ error });
     }

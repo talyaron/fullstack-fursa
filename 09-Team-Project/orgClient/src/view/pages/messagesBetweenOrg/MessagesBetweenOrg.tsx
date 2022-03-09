@@ -7,14 +7,14 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import { Button } from '@material-ui/core';
 import { useAppSelector, useAppDispatch } from '../../../app/hooks';
-import { setSharing } from '../../../app/reducer/sharingReducer';
+import { addNewSharingAsync, setSharing } from '../../../app/reducer/sharingReducer';
 import './style.scss'
 import axios from 'axios';
 
 
 function MessagesBetweenOrg() {
-    const [org, setOrg] = useState("");
-    const [user, setUser] = useState("");
+    const [org, setOrg] = useState<any>({});
+    const [user, setUser] = useState<any>({});
     const [description, setDescription] = useState("");
     const [orgs, setOrgs] = useState([]);
     const [users, setUsers] = useState([]);
@@ -23,12 +23,12 @@ function MessagesBetweenOrg() {
     const orgArr = ['org1', 'org2', 'org35'];
     const userArr = ['user1', 'user2', 'user3'];
 
-    // const selectedAccident = useAppSelector(sharedAccident)
-    // const currentUser = useAppSelector(currentUser)
+    const selectedAccident = useAppSelector(state => state.accident)
+    const currentUser = useAppSelector(state => state.orgUser)
 
     //---------------//
-    const currentUser = "";
-    const selectedAccident = null;
+    // const currentUser = "";
+    // const selectedAccident = null;
     //---------------//
 
 
@@ -37,23 +37,21 @@ function MessagesBetweenOrg() {
         fetch('/messagesBetweemOrg/get-organizations')
             .then(res => res.json())
             .then(data => {
-                setOrgs(data.data);
+                setOrgs(data);
             }).catch(err => {
                 console.error(err);
             })
     }, []);
 
     function handleOrgChange(ev: any) {
+        ev.preventDefault();
         setOrg(ev.target.value);
         axios
-            .get('/messagesBetweemOrg/get-Users-byOrgName', {
-                params: {
-                    orgName: { org }
-                }
-            })
+            .post('/messagesBetweemOrg/get-Users-byOrgName',  { orgName:ev.target.value.orgName })
             .then((res) => {
                 const data = res.data;
-                setUsers(data.name);
+                console.log(data);
+                setUsers(data);
             }).catch(err => {
                 console.error(err);
             })
@@ -61,10 +59,13 @@ function MessagesBetweenOrg() {
 
     const dispatch = useAppDispatch();
     function handleClick() {
-        dispatch(setSharing({
-            from: currentUser, to: user, content: description,
-            date: new Date(), accident: selectedAccident,
-        }))
+        const newSharing = {
+            from: currentUser.value, to: user.email, content: description,
+            date: (new Date()).toJSON(), accident: selectedAccident.value,
+        };
+        console.log(newSharing);
+        dispatch(setSharing(newSharing));
+        dispatch(addNewSharingAsync(newSharing));
     }
 
     function handleDescription(ev: any) {
@@ -83,9 +84,9 @@ function MessagesBetweenOrg() {
                             value={org}
                             onChange={handleOrgChange}
                         >
-                            {orgArr.map((item, index) => {
+                            {orgs.map((item:any, index) => {
                                 return (
-                                    <MenuItem value={item}>{item}</MenuItem>);
+                                    <MenuItem key={index} value={item}>{item.orgName}</MenuItem>);
                             })}
 
                         </Select>
@@ -100,9 +101,9 @@ function MessagesBetweenOrg() {
                             value={user}
                             onChange={(e) => setUser(e.target.value as string)}
                         >
-                            {userArr.map((item, index) => {
+                            {users.map((item:any, index) => {
                                 return (
-                                    <MenuItem value={item}>{item}</MenuItem>);
+                                    <MenuItem key={index} value={item}>{item.name}</MenuItem>);
                             })}
                         </Select>
                     </FormControl>
