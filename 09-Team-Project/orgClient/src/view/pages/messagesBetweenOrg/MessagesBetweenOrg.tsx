@@ -7,33 +7,68 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import { Button } from '@material-ui/core';
 import { useAppSelector, useAppDispatch } from '../../../app/hooks';
-import { setSharing } from '../../../app/reducer/sharingReducer';
+import { addNewSharingAsync, setSharing } from '../../../app/reducer/sharingReducer';
+import './style.scss'
+import axios from 'axios';
+
 
 function MessagesBetweenOrg() {
-    const [org, setOrg] = useState("");
-    const [user, setUser] = useState("");
+    const [org, setOrg] = useState<any>({});
+    const [user, setUser] = useState<any>({});
     const [description, setDescription] = useState("");
-    const dispatch = useAppDispatch();
+    const [orgs, setOrgs] = useState([]);
+    const [users, setUsers] = useState([]);
 
-    const orgArr = ['org1', 'org2', 'org3'];
+
+    const orgArr = ['org1', 'org2', 'org35'];
     const userArr = ['user1', 'user2', 'user3'];
 
-    // const selectedAccident = useAppSelector(sharedAccident)
-    // const currentUser = useAppSelector(currentUser)
+    const selectedAccident = useAppSelector(state => state.accident)
+    const currentUser = useAppSelector(state => state.orgUser)
 
     //---------------//
-    const currentUser = "";
-    const selectedAccident = null;
+    // const currentUser = "";
+    // const selectedAccident = null;
     //---------------//
-    const dispatch = useAppDispatch();
-    function handleClick() {
-        dispatch(setSharing({
-            sender: currentUser, reciver: user, content: description,
-            date: Date(), accident: selectedAccident,
-        }))
+
+
+    useEffect(() => {
+
+        fetch('/messagesBetweemOrg/get-organizations')
+            .then(res => res.json())
+            .then(data => {
+                setOrgs(data);
+            }).catch(err => {
+                console.error(err);
+            })
+    }, []);
+
+    function handleOrgChange(ev: any) {
+        ev.preventDefault();
+        setOrg(ev.target.value);
+        axios
+            .post('/messagesBetweemOrg/get-Users-byOrgName',  { orgName:ev.target.value.orgName })
+            .then((res) => {
+                const data = res.data;
+                console.log(data);
+                setUsers(data);
+            }).catch(err => {
+                console.error(err);
+            })
     }
 
-    function handleDescription (ev:any) {
+    const dispatch = useAppDispatch();
+    function handleClick() {
+        const newSharing = {
+            from: currentUser.value, to: user.email, content: description,
+            date: (new Date()).toJSON(), accident: selectedAccident.value,
+        };
+        console.log(newSharing);
+        dispatch(setSharing(newSharing));
+        dispatch(addNewSharingAsync(newSharing));
+    }
+
+    function handleDescription(ev: any) {
         setDescription(ev.target.value)
     }
 
@@ -47,11 +82,11 @@ function MessagesBetweenOrg() {
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
                             value={org}
-                            onChange={(e) => setOrg(e.target.value as string)}
+                            onChange={handleOrgChange}
                         >
-                            {orgArr.map((item, index) => {
+                            {orgs.map((item:any, index) => {
                                 return (
-                                    <MenuItem value="org">{item}</MenuItem>);
+                                    <MenuItem key={index} value={item}>{item.orgName}</MenuItem>);
                             })}
 
                         </Select>
@@ -66,21 +101,20 @@ function MessagesBetweenOrg() {
                             value={user}
                             onChange={(e) => setUser(e.target.value as string)}
                         >
-                            {userArr.map((item, index) => {
+                            {users.map((item:any, index) => {
                                 return (
-                                    <MenuItem value="user">{item}</MenuItem>);
+                                    <MenuItem key={index} value={item}>{item.name}</MenuItem>);
                             })}
                         </Select>
                     </FormControl>
                 </Box>
                 <Box className="box" sx={{ width: 200 }}>
                     <FormControl fullWidth>
-                        <InputLabel id="demo-simple-select-label">add description</InputLabel>
                         <TextField
                             id="outlined-multiline-static"
-                            label="description"
                             multiline
-                            rows={4}
+                            label="add description"
+                            // rows={4}
                             onKeyUp={handleDescription}
                         />
                     </FormControl>
@@ -92,3 +126,4 @@ function MessagesBetweenOrg() {
 }
 
 export default MessagesBetweenOrg;
+

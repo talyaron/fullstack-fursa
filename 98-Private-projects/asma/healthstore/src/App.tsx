@@ -6,7 +6,7 @@ import Cosmetics from './view/pages/cosmetics/cosmetics';
 import SugerFree from './view/pages/sugerfree/sugerfree';
 import { ProductInt } from "./view/pages/product/product";
 import Treatment from "./view/pages/treatment/treatment";
-import { TreatmentInt } from "./view/pages/treatment/treatment";
+// import { TreatmentInt } from "./view/pages/treatment/treatment";
 import CalendarFun from "./view/pages/calendar/calendar";
 import Navbar from "./view/components/navbar/Navbar";
 import ProfileInfo from "./view/pages/profileInfo/profileInfo";
@@ -29,20 +29,20 @@ function App() {
   { id: 3, name: 'product3', img: "https://sibuchocolate.com/wp-content/uploads/2019/12/Sugar-Free-Chocolate.jpg", text: ""  }
   ];
 
-  const cupping: TreatmentInt = {
-    id: 1, name: 'Cupping Therapy', img: 'https://media.wsimag.com/attachments/193b9b637c3a7dfcb27b91a14ed0d47878d88ca1/store/fill/1090/613/4621d5afb058b57330ba40e4d8ba23534743e5c727f3e6d06d5eceda4452/Cupping-therapy.jpg',
-    text: "Cupping therapy is an ancient form of alternative medicine in which a therapist puts special cups on your skin for a few minutes to create suction. People get it for many purposes, including to help with pain, inflammation, blood flow, relaxation and well-being, and as a type of deep-tissue massage."
-  };
+  // const cupping: TreatmentInt = {
+  //   id: 1, name: 'Cupping Therapy', img: 'https://media.wsimag.com/attachments/193b9b637c3a7dfcb27b91a14ed0d47878d88ca1/store/fill/1090/613/4621d5afb058b57330ba40e4d8ba23534743e5c727f3e6d06d5eceda4452/Cupping-therapy.jpg',
+  //   text: "Cupping therapy is an ancient form of alternative medicine in which a therapist puts special cups on your skin for a few minutes to create suction. People get it for many purposes, including to help with pain, inflammation, blood flow, relaxation and well-being, and as a type of deep-tissue massage."
+  // };
 
-  const facial: TreatmentInt = {
-    id: 1, name: 'Facial Treatment', img: 'https://5.imimg.com/data5/VW/YX/GLADMIN-63916043/herbal-face-clean-up-treatment-500x500.png',
-    text: "Skin care is the range of practices that support skin integrity, enhance its appearance and relieve skin conditions. Practices that enhance appearance include the use of cosmetics, botulinum, exfoliation, fillers, laser resurfacing, microdermabrasion, peels, retinol therapy and ultrasonic skin treatment."
-  };
+  // const facial: TreatmentInt = {
+  //   id: 1, name: 'Facial Treatment', img: 'https://5.imimg.com/data5/VW/YX/GLADMIN-63916043/herbal-face-clean-up-treatment-500x500.png',
+  //   text: "Skin care is the range of practices that support skin integrity, enhance its appearance and relieve skin conditions. Practices that enhance appearance include the use of cosmetics, botulinum, exfoliation, fillers, laser resurfacing, microdermabrasion, peels, retinol therapy and ultrasonic skin treatment."
+  // };
 
-  const candles: TreatmentInt = {
-    id: 1, name: 'Hopi Ear Candles', img: 'https://saltandcrystal.com/wp-content/uploads/2019/03/viber-image-3_E.jpg',
-    text: "Do you suffer from conditions related to your ear, nose or throat? Hopi ear candles are an ancient and natural therapy that can offer relief from issues such as sinus problems, compacted ear wax, tinnitus and headaches. Hopi ear candle treatments can also help to reduce inflammation in the ears and sinuses, relieve the symptoms of hay fever, rebalance your body’s natural flow, and generally calm and relax you when life is stressful. "
-  };
+  // const candles: TreatmentInt = {
+  //   id: 1, name: 'Hopi Ear Candles', img: 'https://saltandcrystal.com/wp-content/uploads/2019/03/viber-image-3_E.jpg',
+  //   text: "Do you suffer from conditions related to your ear, nose or throat? Hopi ear candles are an ancient and natural therapy that can offer relief from issues such as sinus problems, compacted ear wax, tinnitus and headaches. Hopi ear candle treatments can also help to reduce inflammation in the ears and sinuses, relieve the symptoms of hay fever, rebalance your body’s natural flow, and generally calm and relax you when life is stressful. "
+  // };
 
   return (
     <BrowserRouter>
@@ -58,9 +58,9 @@ function App() {
         <Route path="sugerfree" element={<SugerFree />} >
           <Route path=":productId" element={<Product products={sugerFreeProducts} />} />
         </Route>
-        <Route path="cupping%20therapy" element={<Treatment id={cupping.id} name={cupping.name} img={cupping.img} text={cupping.text} />} />
-        <Route path="facial%20treatment" element={<Treatment id={facial.id} name={facial.name} img={facial.img} text={facial.text} />} />
-        <Route path="hopi%20candles" element={<Treatment id={candles.id} name={candles.name} img={candles.img} text={candles.text} />} />
+        <Route path="cupping%20therapy" element={<Treatment title="CuppingTherapy" />} />
+        <Route path="facial%20treatment" element={<Treatment title="FacialTreatment"/>} />
+        <Route path="hopi%20candles" element={<Treatment title="HopiEarCandles" />} />
         <Route path="calendar" element={<CalendarFun />} />
         <Route path="profileInfo" element={<ProfileInfo />} />
 
