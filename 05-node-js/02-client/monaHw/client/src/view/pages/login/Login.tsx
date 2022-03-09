@@ -14,15 +14,7 @@ import Store from '../store/Store';
 function Login() {
     const dispatch=useDispatch();
     const navigate=useNavigate();
-    const[kittens,setKittens]=useState([]);
-    fetch('/get-all-kittens')
-    .then(res=>res.json())
-    .then(data=>{
-        console.log(data);
-        setKittens(data)
-    }).catch(err=>{
-    console.error(err)
-    })
+ 
     // axios.get('http://localhost:3004/posts').then(({data})=>console.log(data));
 
     // const [wood,setWood]=useState([]);
@@ -35,16 +27,20 @@ function Login() {
     //     })
     //   },[]);
     //   console.log(wood)
-    function userLoginHandler(ev: any) {
-
+    async function userLoginHandler(ev: any) {
         ev.preventDefault();
-        const form = ev.target;
-        console.dir(ev.target);
+        const form=ev.target;
+        const name=form[0].value;
+        const email=form[1].value;
+        const password=form[2].value;
+        const {data}=await axios.post('/user/login',{name:name,email:email,password:password})
+
+        // const form = ev.target;
         // axios.post('http://localhost:3004/userInfo', { "name": form[0].value, "phone": form[1].value, "location": form[2].value }).then(({ data }) => dispatch(getUserAsync()));
-        if(form[0].value=='admin'){
-            navigate("/homepage");
-        }
-        else{navigate("/store")};
+        // if(form[0].value=='admin'){
+        //     navigate("/homepage");
+        // }
+        // else{navigate("/store")};
     }
     return (
 
@@ -59,7 +55,7 @@ function Login() {
                 >
                     <TextField id="outlined-basic" label="Name" required variant="standard" color="warning"  sx={{ margin: '5px' }} />
                     <TextField id="outlined-basic" label="Phone Number" required variant="standard" color="warning" sx={{ margin: '5px' }} />
-                    <TextField id="outlined-basic" label="Location" required variant="standard" color="warning" sx={{ margin: '5px' }} />
+                    <TextField id="outlined-basic" label="email" required variant="standard" color="warning" sx={{ margin: '5px' }} />
                     
                     <Button variant="contained" type='submit' size='medium' style={{ backgroundColor: 'rgb(245, 202, 9)' }} sx={{ m: 1, width: '20%', marginLeft: '40%' }}>
                         login

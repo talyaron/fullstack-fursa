@@ -5,6 +5,7 @@ import axios from 'axios';
 import Order from './model/schema/orderSchema';
 import Raw from './model/schema/rawSchema';
 const express = require('express');
+const cookieParser=require('cookie-parser')
 const app = express();
 const port = 4000;
 
@@ -17,6 +18,7 @@ app.get('/get-wood-type', (req, res) => {
   res.send(woods)
 })
 app.use(express.static('client/build'));
+app.use(cookieParser())
 app.use(express.json());
 
 
@@ -190,6 +192,8 @@ app.use('/order',orderRoute)
 
 const rawRoute=require('./routes/rawRoute')
 app.use('/raw',rawRoute)
+const userRoute=require('./routes/userRoute')
+app.use('/user',userRoute)
 // app.post('/add-order',async (req,res)=>{
 //   try{
 //     const order=req.body;

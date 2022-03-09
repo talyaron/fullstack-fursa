@@ -22,6 +22,7 @@ import Closet from "./view/pages/woodProduct/Closet";
 import WoodProduct from "./view/pages/woodProduct/WoodProduct";
 import NavProduct from "./view/pages/product/NavProduct";
 import ChekOutOrder from './view/pages/checkOutOrder/CheckOutOrder';
+import { Register } from './view/pages/register/Register';
 
 function App() {
   const [product, setProduct] = useState([])
@@ -30,7 +31,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
         <Route path="homepage" element={<HomePage />} />
         <Route path="rawmaterial" element={<Rawmaterial />} />
         <Route path="woodproduct" element={<WoodProduct />} />
