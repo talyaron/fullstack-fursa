@@ -5,6 +5,8 @@ import Order from "../model/schema/orderSchema";
 router.post('/add-order',async (req,res)=>{
     try{
       const {woodName,woodlength,amount,price,user}=req.body;
+      if(!woodName||!woodlength||!amount||!price||!user) throw 'invalid fields'
+    
       const newOrder=new Order({
         woodName:woodName,woodlength:woodlength,amount:amount,price:price,user:user
       });
