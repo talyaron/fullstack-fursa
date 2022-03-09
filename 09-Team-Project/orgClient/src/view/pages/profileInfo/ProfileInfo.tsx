@@ -1,8 +1,10 @@
 import React from 'react';
 import './style.scss'
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 
 function ProfileInfo() {
 
+  const accident_ = useAppSelector(state => state.accident);
     const info ={name:"Name",city:"some city",phone:" 0527-***-***"}
 
     return (
