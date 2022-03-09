@@ -5,12 +5,19 @@ import { Link } from 'react-router-dom';
 import background from '../../images/background.jpg';
 import logo from '../../images/logo.jpg';
 import { useNavigate } from "react-router";
+import axios from "axios";
+import { useState } from 'react';
 
 export default function SignUp() {
     let navigate = useNavigate();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
-    function handleSignUp(ev:any){
+    async function handleSignUp(ev:any){
         ev.preventDefault();
+        const results = await axios.post('/userRecipes/register',{email, password})
+        console.log(results.data)
+
         navigate('/');
     }
 
@@ -37,7 +44,8 @@ export default function SignUp() {
                             required
                             id="custom-css-outlined-email-input"
                             defaultValue=""
-                            size="small" />
+                            size="small" onChange={(e) => setEmail(e.target.value)}
+                            />
                         <br />
                         <br />
                         <CssTextField label="Password" focused
@@ -45,7 +53,7 @@ export default function SignUp() {
                             id="custom-css-outlined-password-input"
                             type='password'
                             defaultValue=""
-                            size="small" /> 
+                            size="small" onChange={(e) => setPassword(e.target.value)}/> 
                         <br />
                         <br />
                         <CssTextField label="Confirm Password" focused

@@ -4,13 +4,25 @@ import { Link } from 'react-router-dom';
 import { CssTextField } from '../../../App';
 import background from '../../images/background.jpg';
 import logo from '../../images/logo.jpg';
+import { useState } from 'react';
+import axios from 'axios';
 
 function LogIn() {
     let navigate = useNavigate();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
-    function handleLogIn(ev:any){
+    async function handleLogIn(ev:any){
         ev.preventDefault();
-        navigate('MainScreen');
+        const result = await axios.post('/userRecipes/LogIn', {email: email, password: password})
+        console.log(result);
+        const data = result.data;
+        if(data.ok){
+            navigate('MainScreen');
+        }
+        else{
+            alert('wrong email or password')
+        }
     }
 
     return (
@@ -25,7 +37,7 @@ function LogIn() {
                         required
                         id="custom-css-outlined-input"
                         defaultValue=""
-                        size="small" />
+                        size="small" onChange={(e) => setEmail(e.target.value)}/>
                     <br />
                     <br />
                     <CssTextField label="Password" focused
@@ -33,7 +45,7 @@ function LogIn() {
                         id="custom-css-outlined-password-input"
                         defaultValue=""
                         type="password"
-                        size="small" />
+                        size="small" onChange={(e) => setPassword(e.target.value)}/>
                     <br />
                     <br />
                     <button type="submit">Log In</button>

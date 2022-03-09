@@ -5,10 +5,12 @@ import {recipeInfo} from '../../../App';
 
 interface recipesState{
     myRecipes:Array<recipeInfo>;
+    status: 'idle' | 'loading' | 'failed'
 }
 
 const initialState : recipesState = {
-    myRecipes:[]
+    myRecipes:[],
+    status : 'idle'
 };
 
 export const getMyRecipesAsync = createAsyncThunk(
@@ -17,7 +19,10 @@ export const getMyRecipesAsync = createAsyncThunk(
         try {
             const response = await axios.get('/userRecipes/get-user-recipes');
             const data = response.data;
-            return data;
+            console.log(data)
+            if(data.ok)
+                return data.recipes;
+            else return thunkAPI.rejectWithValue("failed")
         } catch (error:any) {
             thunkAPI.rejectWithValue(error.response.data);
         }
@@ -42,8 +47,15 @@ export const myRecipesReducer = createSlice({
     },
     extraReducers: (builder) => {
         builder
+        .addCase(getMyRecipesAsync.pending, (state, action) => {
+            state.status = 'loading';
+        })
         .addCase(getMyRecipesAsync.fulfilled, (state, action) => {
             state.myRecipes = action.payload;
+            state.status = 'idle';
+        })
+        .addCase(getMyRecipesAsync.rejected, (state, action) => {
+            state.status = 'failed';
         })
     }
 })

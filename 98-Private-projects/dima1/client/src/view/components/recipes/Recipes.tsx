@@ -1,7 +1,7 @@
 import Tooltip from '@mui/material/Tooltip';
 import './Recipes.scss';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
@@ -11,9 +11,16 @@ import { updateName } from '../../features/pgaeName/NamePage';
 
 export default function Recipes() {
     //Redux
+    const navigate = useNavigate()
     const dispatch = useAppDispatch();
-    const myRecipe = useAppSelector(myRecipes);
+    const myRecipe = useAppSelector(state => state.myRecipes);
 
+    useEffect(() => {
+        console.log(myRecipes)
+        if(myRecipe.status === 'failed')
+            navigate('/');
+         
+    })
     useEffect(() => {
         dispatch(getMyRecipesAsync());
     },[])
@@ -51,7 +58,7 @@ export default function Recipes() {
                 </Tooltip>
             </div>
 
-            {myRecipe.map((recipe:any, index:number) => {
+            {myRecipe.myRecipes.map((recipe:any, index:number) => {
                 return(<div key={index} className="item">
                         <Link to='/RecipeInfo'>
                             <div className='itemImg' onClick={() => imageClick(recipe)}><img src={recipe.image} alt=""/></div>

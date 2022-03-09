@@ -4,6 +4,7 @@ import recipeInfo from './schemas/topModel';
 import express from 'express';
 import axios from 'axios';
 const app = express();
+const cookieParser = require('cookie-parser');
 const port = 4000;
 require('dotenv').config()
 
@@ -27,6 +28,7 @@ db.once("open", () => {
 
 
 app.use(express.static('../client/build'));
+app.use(cookieParser());
 app.use(express.json());
 
 //mitzy.save().then(res=>{console.log(res)}).catch(err=>console.log(err));
