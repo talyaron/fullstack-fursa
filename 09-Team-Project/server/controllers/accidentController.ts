@@ -14,8 +14,7 @@ exports.getAccidentByID = async (req, res) => {
     console.log('getAccidentByID');
     const { id } = req.body;
     try {
-        const _acc = await accident.findOne({ _id: id });
-        // const _acc = await accident.findOne({ });
+        const _acc = await accident.findOne({ _id: id.accidentId });
         res.send({ ok: true, accident: _acc });
     } catch (error: any) {
         res.send({ ok: false, error: error.message });

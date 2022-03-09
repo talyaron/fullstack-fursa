@@ -11,12 +11,14 @@ import Accident from './view/pages/accident/Accident';
 import ProfileInfo from "./view/pages/profileInfo/ProfileInfo";
 import MessagesBetweenOrg from './view/pages/messagesBetweenOrg/MessagesBetweenOrg';
 import AccidentsInfo from './view/pages/accidentsInfo/AccidentsInfo';
+import Login from './view/pages/logIn/LogIn';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
+          <Route path='/login' element={<Login />} />
           <Route path='/accidents' element={<Accident />} />
           <Route path="/" element={<App />} />
           <Route path="profileInfo" element={<ProfileInfo />} />

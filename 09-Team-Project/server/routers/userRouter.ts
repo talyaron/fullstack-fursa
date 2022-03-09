@@ -7,12 +7,19 @@ router.post("/get-user", async (req, res) => {
         const { email, password } = req.body;
         console.log(email, password)
         if (!password || !email) throw ' invalid fields'
-        const _user = await Users.find({ "email": email, "password": password });
-        if (_user.length > 0)
-            res.send({ "log": true, "user": _user[0] })
-        else res.send({ "log": false })
+        const _user = await Users.findOne({ email: email });
+        if (_user) {
+            if (_user.password === password) {
+                res.send({ ok: true, user: _user })
+            }
+            else{
+                res.send({ ok: false, message: "wrong email or password!" });
+            }
+        }
+        else {
+            res.send({ ok: false })
+        }
     } catch (error) {
-        console.error(error.message);
         res.send({ error: error.message });
     }
 })
