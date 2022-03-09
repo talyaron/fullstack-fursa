@@ -52,7 +52,9 @@ function App(){
         <Route path="ResetPassword" element={<ResetPassword />} />
         <Route path="MainScreen" element={<MainScreen />} />
         <Route path="NewRecipe" element={<NewRecipe />} />
-        <Route path="RecipeInfo" element={<RecipeInfo />} />
+        {/* <Route path="RecipeInfo" element={<RecipeInfo />} /> */}
+        <Route path="/:recipeId" element={<RecipeInfo />} />
+        
       </Routes>
     </BrowserRouter>
   );

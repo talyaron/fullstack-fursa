@@ -1,0 +1,81 @@
+.reservationcard {
+    border: .0625rem solid #d8d9db;
+    max-width: 19.25rem;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &:hover {
+        transform: translateY(-0.4rem);
+        transition-duration: 0.6s;
+        box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    }
+
+    &__main {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        align-items: flex-start;
+    }
+
+    &__image {
+        background-position: 50%;
+        background-size: cover;
+        min-height: 9rem;
+        width: 100%;
+        border-top-right-radius: 8px;
+        border-top-left-radius: 8px;
+    }
+
+    &__title {
+        h3 {
+            display: inline-block;
+            text-overflow: ellipsis;
+            overflow: hidden !important;
+            white-space: nowrap;
+            width: 12rem;
+        }
+    }
+
+    &__date {
+        display: flex;
+        //justify-content: space-f;
+        width: 100%;
+
+        &__date {
+            margin-left: 0.3rem;
+        }
+    }
+
+    &__cancel {
+        width: 100%;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        display: flex;
+        flex-direction: row-reverse;
+
+        &__btn {
+            background-color: white;
+            color: #2a945b;
+            border: .0625rem solid #2a945b;
+            font-size: 16px;
+            padding: 0.25rem 1rem;
+            z-index: 1;
+
+            &:hover {
+                background-color: rgb(0, 0, 0, .06);
+            }
+        }
+    }
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+    text-decoration: none;
+    color: inherit;
+
+}

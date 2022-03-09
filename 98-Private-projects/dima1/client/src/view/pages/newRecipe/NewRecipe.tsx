@@ -12,10 +12,11 @@ import { Box, Dialog, DialogTitle, TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router";
 import Tooltip from '@mui/material/Tooltip';
 import axios from 'axios';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { selectedRecipe, selectedFrom, selectedIsNew, updateRecipe, getSelectAsync } from '../../features/item/itemSlice';
+import { selectedRecipe, selectedFrom, selectedIsNew, updateRecipe, getSelectAsync, updateSelectAsync } from '../../features/item/itemSlice';
 import { addToMyRecipe } from '../../features/myRecipes/MyRecipes';
 import { selectPage, updateName } from '../../features/pgaeName/NamePage';
 import { updateTopRecipes } from '../../features/topRecipes/TopRecipes';
@@ -62,7 +63,7 @@ const CssTextField = styled(TextField)({
 });
 
 interface recipeInfo {
-    id: number;
+    _id: String;
     name: string;
     image: string;
     time: string;
@@ -75,6 +76,7 @@ interface recipeInfo {
 export default function NewRecipe() {
     //Redux
     const dispatch = useAppDispatch();
+    let navigate = useNavigate();
 
     const recipe_ = useAppSelector(selectedRecipe);
     const from = useAppSelector(selectedFrom);
@@ -82,28 +84,18 @@ export default function NewRecipe() {
     const pageName = useAppSelector(selectPage)
 
     const [recipe, setRecipe] = useState<recipeInfo>(recipe_);
-    const [open, setOpen] = useState<boolean>(false);
-
 
     let to = '';
 
     useEffect(() => {
-        axios.get('http://localhost:3004/select/1').then(data => {
-            const recipe1 = data.data.recipe;
-            const from_ = data.data.from;
-            const isNew_ = data.data.isNew;
-            if (!isNew_) {
-                dispatch(getSelectAsync());
-            }
-        })
+        dispatch(getSelectAsync())
     }, [])
 
-    if (from === 'myRecipe' && isNew)
+    if (from === 'userRecipes' && isNew)
         to = '/User';
     else to = '/RecipeInfo';
 
     function handleChange(ev: any) {
-        //console.dir(recipe);
         switch (ev.target.name) {
             case 'recipeName':
                 setRecipe({ ...recipe, name: ev.target.value });
@@ -129,23 +121,28 @@ export default function NewRecipe() {
         dispatch(updateRecipe(recipe))
     }
 
-    function handleSave() {
-        dispatch(updateRecipe(recipe))
+    function handleSave(ev:any) {
+        ev.preventDefault();
+        //dispatch(updateRecipe(recipe))
         if (to === '/User') {
-            axios.post('http://localhost:3004/' + `${from}`, recipe_);
-            dispatch(addToMyRecipe(recipe_));
+            axios.post('/userRecipes/add-new-userRecipe', recipe_);
+            //dispatch(addToMyRecipe(recipe_));
         }
         else {
             //add a action to udpate a recipe in the array
-            axios.put('http://localhost:3004/' + `${from}` + '/' + `${recipe_.id}`, recipe);
-            axios.patch('http://localhost:3004/select/1', { recipe });
-            dispatch(updateRecipe(recipe))
-            if (from === 'top10')
-                dispatch(updateTopRecipes([recipe, recipe.id]))
-            else if (from === 'recent')
-                dispatch(updateRecent([recipe, recipe.id]))
-            else dispatch(updateMyRecipe([recipe, recipe.id]))
+            console.log(recipe_)
+            //axios.put('http://localhost:3004/' + `${from}` + '/' + `${recipe_.id}`, recipe);
+            axios.patch('/selectRecipe/edit-select-recipe', recipe_);
+            axios.put(`/edit-${from}`, recipe_)
+            dispatch(updateSelectAsync({info:recipe_, from:from, isNew:isNew}))
+            //dispatch(updateRecipe(recipe))
+            // if (from === 'top10')
+            //     dispatch(updateTopRecipes([recipe, recipe.id]))
+            // else if (from === 'recent')
+            //     dispatch(updateRecent([recipe, recipe.id]))
+            // else dispatch(updateMyRecipe([recipe, recipe.id]))
         }
+        navigate(to);
     }
 
     function handleTo() {
@@ -164,21 +161,26 @@ export default function NewRecipe() {
                         <ArrowBackSharpIcon sx={{ color: '#b5739d', fontSize: 30 }} onClick={handleTo} />
                     </Link>
 
-                    <Box className='box' component="form"
+                    {/* <Box className='box' component="form"
                         sx={{ '& .MuiTextField-root': { m: 1 }, }}
                         autoComplete="off"
-                    >
+                        onSubmit={handleSave}
+                    > */}
+                    <form className='box' onSubmit={handleSave}>
                         <div className="save">
                             <Tooltip title='save'>
-                                <Link to={to}>
+                                {/* <Link to={to}> */}
+                                <button type='submit'>
                                     <BookmarkAddIcon sx={{
                                         color: '#b5739d', fontSize: 35
-                                    }} onClick={handleSave} type="submit" />
-                                </Link>
+                                    }} />
+                                </button>
+                                {/* </Link> */}
                             </ Tooltip>
                         </div>
                         <Standard id="standard-basic" variant="standard"
                             focused
+                            required
                             placeholder="Insert your recipe's name"
                             size="small" sx={{ width: '30ch' }}
                             //onKeyUp={handleUpdate}
@@ -190,7 +192,7 @@ export default function NewRecipe() {
                         <div className='info1'>
                             <div className='insertPhotos'>
                                 <input type="text" placeholder='Upload Image by URL' name='image'
-                                    value={undefined} onChange={handleChange} />
+                                    value={undefined} required onChange={handleChange} />
                                 {/* <InsertPhotoIcon sx={{ fontSize: 250, color: '#b5739d' }} /> */}
                             </div>
                             <h2 className='by'>By : Dima Abbas</h2>
@@ -202,6 +204,7 @@ export default function NewRecipe() {
                                 <AccessTimeIcon sx={{ fontSize: 40, color: '#b5739d', paddingTop: '10px' }} />
                                 <Standard id="standard-basic" variant="standard"
                                     focused
+                                    required
                                     placeholder=""
                                     size="small" sx={{ width: '20ch' }}
                                     name='time'
@@ -214,6 +217,7 @@ export default function NewRecipe() {
                                 <PeopleIcon sx={{ fontSize: 40, color: '#b5739d', paddingTop: '10px' }} />
                                 <Standard id="standard-basic" variant="standard"
                                     focused
+                                    required
                                     placeholder=""
                                     size="small" sx={{ width: '20ch' }}
                                     name='people'
@@ -226,6 +230,7 @@ export default function NewRecipe() {
                                 <LocalFireDepartmentIcon sx={{ fontSize: 40, color: '#b5739d', paddingTop: '10px' }} />
                                 <Standard id="standard-basic" variant="standard"
                                     focused
+                                    required
                                     placeholder=""
                                     size="small" sx={{ width: '20ch' }}
                                     name='cal'
@@ -239,6 +244,7 @@ export default function NewRecipe() {
                         <div className='info2'>
                             <CssTextField className='ingredients'
                                 focused
+                                required
                                 id="custom-css-outlined-input"
                                 label="Recipe's ingredients"
                                 placeholder="Write your recipe ingredients here"
@@ -252,6 +258,7 @@ export default function NewRecipe() {
                             />
                             <CssTextField className='steps'
                                 focused
+                                required
                                 id="custom-css-outlined-input"
                                 label="The Method"
                                 placeholder="Write here the steps for preparing the recipe"
@@ -264,7 +271,8 @@ export default function NewRecipe() {
                             //maxRows={50}
                             />
                         </div>
-                    </Box>
+                    </form>
+                    {/* </Box> */}
                 </div>
             </div>
         </div>

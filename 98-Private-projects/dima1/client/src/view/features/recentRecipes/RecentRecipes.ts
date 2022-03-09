@@ -15,7 +15,7 @@ export const getRecentRecipesAsync = createAsyncThunk(
     'recent/fetchRecent',
     async (_, thunkAPI) => {
         try {
-            const response = await axios.get('http://localhost:3004/recent');
+            const response = await axios.get('/recentRecipes/get-recent');
             const data = response.data;
             return data;
         } catch (error:any) {
@@ -25,7 +25,7 @@ export const getRecentRecipesAsync = createAsyncThunk(
 );
 
 export const recentRecipesReducer = createSlice({
-    name:'recipes',
+    name:'recentRecipes',
     initialState,
     reducers:{
         addToRecentRecipe(state, action:PayloadAction<recipeInfo>){
