@@ -9,6 +9,7 @@ import { Button } from '@material-ui/core';
 import { useAppSelector, useAppDispatch } from '../../../app/hooks';
 import { setSharing } from '../../../app/reducer/sharingReducer';
 import './style.scss'
+import axios from 'axios';
 
 
 function MessagesBetweenOrg() {
@@ -18,7 +19,7 @@ function MessagesBetweenOrg() {
     const [orgs, setOrgs] = useState([]);
     const [users, setUsers] = useState([]);
 
-    
+
     const orgArr = ['org1', 'org2', 'org35'];
     const userArr = ['user1', 'user2', 'user3'];
 
@@ -30,27 +31,32 @@ function MessagesBetweenOrg() {
     const selectedAccident = null;
     //---------------//
 
-    
+
     useEffect(() => {
 
-        fetch('/get-organizations')
-        .then(res => res.json())
-        .then(data => {
-            setOrgs(data.data);
-        }).catch(err => {
-            console.error(err);
-        })
+        fetch('/messagesBetweemOrg/get-organizations')
+            .then(res => res.json())
+            .then(data => {
+                setOrgs(data.data);
+            }).catch(err => {
+                console.error(err);
+            })
     }, []);
 
-    function handleOrgChange(ev:any) {
+    function handleOrgChange(ev: any) {
         setOrg(ev.target.value);
-        fetch('/get-Users-byOrgName')
-        .then(res => res.json())
-        .then(data => {
-            setUsers(data.data);
-        }).catch(err => {
-            console.error(err);
-        })
+        axios
+            .get('/messagesBetweemOrg/get-Users-byOrgName', {
+                params: {
+                    orgName: { org }
+                }
+            })
+            .then((res) => {
+                const data = res.data;
+                setUsers(data.name);
+            }).catch(err => {
+                console.error(err);
+            })
     }
 
     const dispatch = useAppDispatch();
@@ -61,7 +67,7 @@ function MessagesBetweenOrg() {
         }))
     }
 
-    function handleDescription (ev:any) {
+    function handleDescription(ev: any) {
         setDescription(ev.target.value)
     }
 
@@ -119,3 +125,4 @@ function MessagesBetweenOrg() {
 }
 
 export default MessagesBetweenOrg;
+
