@@ -15,34 +15,40 @@ import MenuItem from '@mui/material/MenuItem';
 import { height, width } from '@mui/system';
 import { useDispatch } from 'react-redux';
 import { getCartAsync } from '../../../features/cart/cartSlice';
-import { useAppDispatch } from '../../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { fetchUser, getUser } from '../../../features/user/userReducer';
 
 // const woods = [{name:'pine wood',height:70,width:70, thick:70,cardImg:'https://d2kxk2c617i0nn.cloudfront.net/image_resize/crop/mw1500/mh750/products/23_001--yellow_pine_softwood-s.jpg'},
 // {name:'insulation wood',height:70,width:70, thick:70,cardImg:'https://www.greenspec.co.uk/images/web/materials/boards/board.jpg'},
 // {name:'multiLayer wood',height:70,width:70, thick:70,cardImg:'https://user-assets.sxlcdn.com/images/609056/FkbWNKuLffuq6lYY2qFlQ5bAGYJY.jpg?imageMogr2/strip/auto-orient/thumbnail/1200x9000%3E/quality/90!/interlace/1/format/jpg'}];
-const currencies = [
-    {
-      value: 'm',
-      label: 'm',
-    },
-    {
-      value: 'mm',
-      label: 'mm',
-    },
-    {
-      value: 'cm',
-      label: 'cm',
-    },
+
+// const currencies = [
+//     {
+//       value: 'm',
+//       label: 'm',
+//     },
+//     {
+//       value: 'mm',
+//       label: 'mm',
+//     },
+//     {
+//       value: 'cm',
+//       label: 'cm',
+//     },
   
-  ];
-// interface orderProps {
+//   ];
+// interface orderProsps {
 //     product: any;
 //     setProduct: any;
 // }
 function Order() {
+  const dispatch=useAppDispatch();
+const user=useAppSelector(getUser)
+useEffect(() => {
+  dispatch(fetchUser({ "email": "mona_arabiya@hotmail.com", "password": "123" }))
+}, [])
     // const { product, setProduct } = props;
     const [currency, setCurrency] = React.useState('cm');
-     const dispatch =useAppDispatch();
    useEffect(()=>{
     dispatch(getCartAsync());
   },[])
@@ -69,7 +75,7 @@ function Order() {
         // copy.push(obj);
         // setProduct(copy);
         // const orderObj={"woodName":name,"woodlength":form[0].value,"amount":form[1].value,"price":pricePerMeter};
-        axios.post('/order/add-order',{woodName:name,woodlength:form[0].value,amount:form[1].value,price:pricePerMeter})
+        axios.post('/order/add-order',{woodName:name,woodlength:form[0].value,amount:form[1].value,price:pricePerMeter,user:user})
         .then((res) => console.log(res))
         .catch((err) => console.error(err));
         // axios.post('http://localhost:3004/userOrder',{"woodName":name,"woodlength":form[0].value,"amount":form[1].value,"price":pricePerMeter}).then(({data})=>dispatch(getCartAsync()));

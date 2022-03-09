@@ -42,8 +42,8 @@ router.post('/login', async (req,res)=>{
 
 router.post('/get-user',async (req,res)=>{
     try{
-    const{email}=req.body;
-    const filter={email:email};
+    const{email,password}=req.body;
+    const filter={email:email,password:password};
     const user=await User.find({filter})
     // console.log(Raws)
     res.status(200).send(user)

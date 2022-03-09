@@ -1,3 +1,5 @@
+import User from "./userSchema";
+
 const mongoose = require("mongoose");
 
 const OrderSchema=new mongoose.Schema({
@@ -10,7 +12,7 @@ const OrderSchema=new mongoose.Schema({
     width:Number,
     thick:Number,
     doorType:String,
-    // user:userSchema
+    user:User
   });
   
   const Order=mongoose.model('Order',OrderSchema);

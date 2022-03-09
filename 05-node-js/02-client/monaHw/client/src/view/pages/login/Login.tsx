@@ -9,7 +9,7 @@ import Navbar from '../../components/navbar/Navbar';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { getUserAsync } from '../../../features/user/userReducer';
+import { fetchUser } from '../../../features/user/userReducer';
 import Store from '../store/Store';
 function Login() {
     const dispatch=useDispatch();
