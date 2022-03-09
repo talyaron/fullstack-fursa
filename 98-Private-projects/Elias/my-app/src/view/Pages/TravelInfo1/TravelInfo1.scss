@@ -1,0 +1,175 @@
+@import url("https://cdn.syncfusion.com/ej2/material.css");
+
+
+.wrapper {
+
+    margin: 4px, 4px;
+    padding: 4px;
+    // background-color: green;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-bottom: 60px;
+    text-align: justify;
+    width: 100%;
+
+    .text {
+        padding: 10px;
+        color: #7572FC;
+        font-family: Monospace;
+        font-size: 20px;
+        font-weight: 550;
+        //text-shadow: 1px 1px grey;
+
+    }
+
+    .TarvelInfo1Form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        input {
+            height: 38px;
+            width: 100%;
+            border-radius: 9px;
+
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            padding: 10px;
+            row-gap: 5px;
+            column-gap: 5px;
+
+            .divT {
+
+                .leisure {
+                    background-image: url('../../../icons/Vector.png');
+
+                }
+
+                .business {
+                    background-image: url('../../../icons/Vector-2.png');
+                   
+
+                }
+
+                .roadTrip {
+                    background-image: url('../../../icons/Vector-4.png');
+                }
+
+                .family {
+                    background-image: url('../../../icons/Vector-1.png');
+                }
+
+                .study {
+                    background-image: url('../../../icons/Vector-5.png');
+                }
+
+                .grieving {
+                    background-image: url('../../../icons/Vector-6.png');
+                }
+
+                //--------------------------
+                .trolly {
+                    background-image: url('../../../icons/Stroke.png');
+                }
+
+                .suitcase {
+                    background-image: url('../../../icons/Vector-7.png');
+                }
+
+                .briefcase {
+                    background-image: url('../../../icons/Vector-3.png');
+                }
+
+                .backpack {
+                    background-image: url('../../../icons/Vector-8.png');
+                }
+
+                .handbag {
+                    background-image: url('../../../icons/Vector-9.png');
+                }
+
+                .multy {
+                    background-image: url('../../../icons/Vector-10.png');
+                }
+
+
+
+
+            }
+
+
+            // .grid-item {
+            //     border: 1px solid gray;
+            //     background-color: white;
+            //     padding: 10px;
+            //     font-size: 30px;
+            //     text-align: center;
+            //     border-radius: 13pX;
+            //     img {
+            //         height: 100%;
+            //         width:80%;
+            //     }
+            //     &:hover{
+            //         border: 2px solid rgb(0, 217, 255);
+
+            //     }
+
+            // }
+        }
+
+        .Proceedbtn {
+            color: white;
+            font-family: Poppins;
+            font-style: normal;
+            text-align: center;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 27px;
+            background-color: #FF8074;
+            border: #FF8074;
+            border-radius: 16px;
+            height: 47.75px;
+            width: 124px;
+
+            &:hover {
+                background-color: #fa6f63;
+
+            }
+        }
+
+
+    }
+
+    label {
+        display: block;
+        border: solid 2px grey;
+        width: 50px;
+        height: 50px;
+        margin-top: 10px;
+        text-align: center;
+        line-height: 40px;
+        background-size: contain;
+        border-radius: 13pX;
+        background-size:contain;
+        background-repeat: no-repeat;
+
+
+    }
+
+    input[type=checkbox] {
+        display: none;
+
+    }
+
+
+    input:checked+label {
+        border: solid 2px rgb(1, 173, 204);
+
+
+    }
+
+}

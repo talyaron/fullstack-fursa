@@ -1,9 +1,48 @@
-import React from 'react'
+import React, { useState } from 'react';
 
-function AdminPanel() {
+const AdminPanel = () => {
+  const [Fname, setFname] = useState("");
+  const [Lname, setLname] = useState("");
+  const [Email, setEmail] = useState("");
+  const [IsAdmin, setIsAdmin] = useState("NormalUser");
+
+  const handleSubmit = () => {
+
+    alert(`The name you entered was: ${Fname}`);
+    alert(`The name you entered was: ${Lname}`);
+    alert(`The name you entered was: ${Email}`);
+    alert(`The name you entered was: ${IsAdmin}`);
+
+
+    // to do --->send to DB 
+  }
+  
+
   return (
-    <div>AdminPanel</div>
+
+
+    <div className='Wrapper'>
+      <h1>Admon Panel : Add new Users</h1>
+
+      <form action="submit" method="get" id="UserInfo">
+        <label htmlFor="fname">First name:</label>
+        <input type="text" id="fname" name="fname" placeholder="First Name" value={Fname} onChange={(e:any) => setFname(e.target.value)}></input>
+        <br></br>
+        <label htmlFor="lname">Last name:</label>
+        <input type="text" id="lname" name="lname" placeholder="Last name"value={Lname}  onChange={(e:any) => setLname(e.target.value)}></input>
+        <br></br>
+        <label htmlFor="Email">Email:</label>
+        <input type="text" id="Email" name="Email" placeholder="Email" value={Email}  onChange={(e:any) => setEmail(e.target.value)}></input>
+        <br></br>
+        <input type="checkbox" id="AdminUser" name="AdminUser" value="Admin"  onChange={(e:any) => setIsAdmin("AdminUser")}></input>
+        <label htmlFor="AdminUser"> New Admin User</label>
+
+      </form>
+      <button type="submit" form="UserInfo" value="Submit"  onSubmit={handleSubmit}>Creat a new  User</button>
+
+
+    </div>
   )
 }
 
-export default AdminPanel
+export default AdminPanel;

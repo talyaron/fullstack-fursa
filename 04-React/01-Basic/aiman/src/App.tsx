@@ -3,34 +3,18 @@ import logo from "./logo.svg";
 import "./App.scss";
 import Card from "./components/views/Card";
 import { useState } from "react";
-interface Cards {
-  title: string;
-  src: string;
-}
-const arr: Array<Cards> = [
-  {
-    title: "Nature",
-    src: "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aHVtYW58ZW58MHx8MHx8&w=1000&q=80",
-  },
-
-  {
-    title: "Liverpool",
-    src: "https://imageio.forbes.com/specials-images/imageserve/1153850565/Liverpool-Parade-to-Celebrate-Winning-UEFA-Champions-League/960x0.jpg?fit=bounds&format=jpg&width=960",
-  },
-];
-
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Homepage from "./components/views/Homepage";
+import Cardlist from "./components/views/Cardlist";
 function App() {
-  
-  return (
+  return ( 
     <div className="App">
-      <header className="App-header">
-      
-        {
-          arr.map((card, index) => {
-            const { title, src } = card;
-            return <Card key={index} info={{ title, src }} />;
-          })}
-      </header>
+      <div className="nav">
+      <Link to ="/homepage">Home page</Link>
+      <Link to ="/">App</Link>
+      <Link to = "/cardlist"> Card list</Link>
+        </div>  
+    
     </div>
   );
 }

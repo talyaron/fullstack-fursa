@@ -1,0 +1,21 @@
+.product{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5px;
+
+    h1{
+        margin-bottom: 20px;
+    }
+    img{
+        width: 30rem;
+        max-height: 30rem;
+    }
+    p{
+        max-width: 25rem; 
+        font-size: 18px;
+    }
+}
+
+

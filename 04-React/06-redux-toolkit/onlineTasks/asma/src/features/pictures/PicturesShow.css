@@ -1,0 +1,9 @@
+.pictures{
+    display: flex;
+    flex-direction: column;
+
+}   
+ .pictures img{
+        max-width: 8rem;
+        margin: 5px;
+ }

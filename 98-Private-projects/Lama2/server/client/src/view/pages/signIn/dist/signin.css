@@ -1,0 +1,35 @@
+.signin {
+  background-color: white;
+  background-image: url(https://i.pinimg.com/736x/d9/39/c8/d939c8f4c6a600f67f4f9e99556af4b9.jpg);
+  background-repeat: no-repeat;
+  color: black;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  padding: 30px;
+  margin: auto;
+  margin-top: 20px;
+  width: 30vw;
+  height: 80vh;
+  border-style: double;
+  font-size: large;
+  position: relative;
+  top: 10px;
+}
+.signin img {
+  width: 20vw;
+  height: 20vh;
+  border-radius: 30px;
+}
+.signin .icon {
+  width: 10vw;
+  height: 20vh;
+  border-radius: 100px;
+}
+.signin .btn {
+  width: 10vw;
+  color: black;
+  font-weight: bold;
+}
+.signin p {
+  font-size: 1rem;
+}

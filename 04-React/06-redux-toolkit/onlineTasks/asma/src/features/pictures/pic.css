@@ -1,0 +1,9 @@
+.outputBox{
+    display: flex;
+    flex-direction: column;
+}
+
+img{
+    max-width: 15rem;
+    margin: 10px;
+}
