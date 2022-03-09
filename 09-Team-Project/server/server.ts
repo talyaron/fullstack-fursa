@@ -28,28 +28,18 @@ db.once("open", () => {
     console.log("connected to DB!");
 });
 
-const io = require('socket.io')(http)
-
-io.of('/api/socket').on('connection', socket => {
-    console.log('A user is connected');
-    socket.on('message', ({ name, message }) => {
-        io.emit('message', { name, message })
-    })
-
-    socket.on('disconnect', () => {
-        console.log(`socket ${socket.id} disconnected`);
-    })
-})
-
 app.get('/', (req, res) => {
     res.send('Hello World!');
 })
 
-const accidentRouter = require('./routers/accidentRouter');
-app.use('/accidents', accidentRouter);
+//const accidentRouter = require('./routers/accidentRouter');
+//app.use('/accidents', accidentRouter);
 
 const userRouter = require('./routers/userRouter');
 app.use('/users', userRouter);
+
+const chatRouter = require('./routers/chat');
+app.use('/chat', chatRouter);
 
 server.listen(port, () => {
     console.log(`Listening on port ${port} 🔥`)
