@@ -64,7 +64,7 @@ function MessagesBetweenOrg() {
             date: (new Date()).toJSON(), accident: selectedAccident.value,
         };
         console.log(newSharing);
-        dispatch(setSharing(newSharing));
+        // dispatch(setSharing(newSharing));
         dispatch(addNewSharingAsync(newSharing));
     }
 
