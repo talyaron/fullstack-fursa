@@ -45,6 +45,19 @@ app.get('/', (req, res) => {
     res.send('Hello World!');
 })
 
+const accidentRouter = require('./routers/accidentRouter');
+app.use('/accidents', accidentRouter);
+
+const userRouter = require('./routers/userRouter');
+app.use('/users', userRouter);
+
+const previousAccidentRouter = require('./routers/previousAccidentsRouter');
+app.use('/previousAccidents', previousAccidentRouter);
+
+
+const messagesBetweemOrgRouter = require('./routers/messagesBetweemOrgRouter');
+app.use('/messagesBetweemOrg', messagesBetweemOrgRouter);
+
 server.listen(port, () => {
     console.log(`Listening on port ${port} 🔥`)
 })
