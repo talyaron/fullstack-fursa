@@ -25,7 +25,7 @@ const initialState: appointmentArr = {
 export function getAppointments(): Promise<any> {
   return new Promise((resolve, reject) => {
     try {
-      axios.get("/get-appointments")
+      axios.get("/appointments/get-appointments")
         .then((res) => {
           console.log(res);
           const data = res.data;
@@ -71,7 +71,7 @@ export const appointmentsSlice = createSlice({
         //console.log(appointment.id)
         if (!appointment) throw new Error("No appointment in payload");
         axios
-          .post("/add-appointment", { appointment })
+          .post("/appointments/add-appointment", { appointment })
           .then((res) => console.log(res))
           .catch((err) => console.error(err));
       } catch (error) {
