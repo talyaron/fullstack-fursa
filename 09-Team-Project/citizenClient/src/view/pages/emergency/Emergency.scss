@@ -1,0 +1,28 @@
+.emergency{
+
+    &_header{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      
+    }
+    &_body{
+        form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+       Button{
+           margin: 5px;
+           width: 50%;
+       }
+       input{
+           margin: 5px;
+           width:50%;
+       }
+      
+       
+    }
+            }
+}

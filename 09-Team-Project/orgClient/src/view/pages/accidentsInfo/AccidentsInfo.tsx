@@ -46,9 +46,9 @@ function AccidentsInfo() {
         {/* <Link to={}> */}
         <button>Chat</button>
         {/* </Link> */}
-        {/* <Link to={}> */}
+        <Link to="/messagesBetweenOrg">
         <button>Send to other user</button>
-        {/* </Link> */}
+        </Link>
       </div>
       <PhoneIcon sx={{ paddingLeft: '40px', fontSize: 35 }} />
     </div>

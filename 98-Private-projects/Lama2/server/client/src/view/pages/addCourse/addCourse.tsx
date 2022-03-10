@@ -12,8 +12,8 @@ function AddCourse(){
 
   useEffect(()=>{
 
-    //fetch kittens
-    fetch('/get-all-courses')
+    //fetch courses
+  fetch('/get-all-courses')
     .then(res=>res.json())
     .then(data=>{
       console.log(data);
