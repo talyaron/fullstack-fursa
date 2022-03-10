@@ -60,7 +60,6 @@
         &__header {
             display: flex;
             flex-direction: row;
-            flex-wrap: wrap;
             justify-content: space-between;
 
             &__left {
@@ -144,8 +143,28 @@
                 &__sub {
                     display: flex;
                     justify-content: flex-start;
+                    flex-wrap: wrap;
                     margin-top: 2rem;
                 }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 800px) {
+
+    .rest__main {
+        &__header {
+            flex-direction: column;
+
+            &__right {
+                margin-top: 3rem;
+            }
+        }
+
+        &__body {
+            &__description {
+                width: 100%;
             }
         }
     }

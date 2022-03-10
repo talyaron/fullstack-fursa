@@ -140,7 +140,7 @@ function Restaurant() {
                                     latitude: 37.8,
                                     zoom: 1
                                 }}
-                                    style={{ width: 600, height: 400 }}
+                                    style={{ width: "50vw", height: 400, minWidth: "22rem" }}
                                     mapStyle="https://demotiles.maplibre.org/style.json"
                                 />
                             </div>
