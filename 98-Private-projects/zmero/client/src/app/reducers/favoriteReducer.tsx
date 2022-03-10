@@ -19,9 +19,9 @@ const initialState: Favorites = {
 
 export const fetchUserFavorite = createAsyncThunk(
     'favorite/fetchUserFavorite',
-    async (userId: string, thunkAPI) => {
+    async (_, thunkAPI) => {
         try {
-            const response = await axios.get('/favorites/get-user-favorite', { params: { "userId": userId } })
+            const response = await axios.get('/favorites/get-user-favorite')
             const data: any = response.data
             return data
         } catch (e) {
@@ -35,7 +35,7 @@ export const addFavorite = createAsyncThunk(
     'favorite/addFavorite',
     async (obj: any | undefined, thunkAPI) => {
         try {
-            const response = await axios.post('/favorites/add-user-favorite', { "userId": obj.userId, 'restId': obj.restId })
+            const response = await axios.post('/favorites/add-user-favorite', { 'restId': obj.restId })
             const data: any = response.data
             return data
         } catch (e) {
@@ -49,9 +49,9 @@ export const deleteFavorite = createAsyncThunk(
     'favorite/deleteFavorite',
     async (obj: any | undefined, thunkAPI) => {
         try {
-            const { userId, restId } = obj
-            if (!userId || !restId) throw console.error("invalid fields");
-            const response = await axios.delete(`/favorites/delete-user-favorite`, { data: { "userId": userId, "restId": restId } })
+            const { restId } = obj
+            if (!restId) throw console.error("invalid fields");
+            const response = await axios.delete(`/favorites/delete-user-favorite`, { data: { "restId": restId } })
             const data: any = response.data
             return data
         } catch (e) {

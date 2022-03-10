@@ -8,13 +8,11 @@ import { useAppSelector, useAppDispatch } from '../../../app/hooks';
 import { fetchUserReservations, getUserReservations } from '../../../app/reducers/reservationsReducer'
 import { fetchAllRestaurants } from '../../../app/reducers/resterauntsReducer'
 import Grid from '@mui/material/Grid';
-import { selectUserId } from '../../../app/reducers/userReducer';
 
 function Reservations() {
     const dispatch = useAppDispatch()
-    const userId = useAppSelector(selectUserId)
     useEffect(() => {
-        dispatch(fetchUserReservations(userId))
+        dispatch(fetchUserReservations())
         dispatch(fetchAllRestaurants())
     }, []);
     const reservations = useAppSelector(getUserReservations)

@@ -4,7 +4,6 @@ import axios from 'axios'
 
 interface userProb {
     userinfo: {
-        _id: string;
         fName: string;
         lName: string;
         email: string;
@@ -16,7 +15,6 @@ interface userProb {
 
 const initialState: userProb = {
     userinfo: {
-        _id: "-1",
         fName: " ",
         lName: " ",
         email: "",
@@ -40,6 +38,20 @@ export const getUserInfoAsync = createAsyncThunk(
     }
 );
 
+export const getAuthentication = createAsyncThunk(
+    'user/GetAuth',
+    async (_, thunkAPI) => {
+        try {
+            console.log("ok")
+            const response = await axios.get('/users/get-authentication')
+            const data: any = response.data
+            return data
+        } catch (e) {
+            thunkAPI.rejectWithValue(e)
+        }
+
+    }
+);
 export const signUpUser = createAsyncThunk(
     'user/signUpUser',
     async (user: any, thunkAPI) => {
@@ -102,14 +114,23 @@ export const userReducer = createSlice({
             })
             .addCase(signUpRestaurateur.fulfilled, (state, action) => {
                 state.status = 'idle';
-            });
+            })
+            .addCase(getAuthentication.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(getAuthentication.fulfilled, (state, action) => {
+                state.status = 'idle';
+                if (action.payload.log == true) {
+                    state.userinfo = action.payload.user;
+                    state.userIsLogIn = true;
+                }
+            })
     },
 })
 
 
 export const { updateLogIn } = userReducer.actions
 export const selectUser = (state: RootState) => state.user
-export const selectUserId = (state: RootState) => state.user.userinfo._id
 export const selecUserName = (state: RootState) => state.user.userinfo.fName + " " + state.user.userinfo.lName
 export const checkUser = (state: RootState) => state.user.userIsLogIn
 export const checkType = (state: RootState) => state.user.userinfo.type

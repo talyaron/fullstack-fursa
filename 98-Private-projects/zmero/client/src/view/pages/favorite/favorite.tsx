@@ -7,14 +7,12 @@ import { getFavorites, fetchUserFavorite } from '../../../app/reducers/favoriteR
 import { fetchAllRestaurants } from '../../../app/reducers/resterauntsReducer'
 import Grid from '@mui/material/Grid';
 import FavoriteCard from '../../components/favoriteCard/favoriteCard'
-import { selectUserId } from '../../../app/reducers/userReducer';
 
 function Favorite() {
     const dispatch = useAppDispatch()
-    const userId = useAppSelector(selectUserId)
     useEffect(() => {
         dispatch(fetchAllRestaurants())
-        dispatch(fetchUserFavorite(userId))
+        dispatch(fetchUserFavorite())
     }, []);
     const favorites = useAppSelector(getFavorites)
     return (

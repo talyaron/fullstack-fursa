@@ -2,18 +2,18 @@ const express = require('express');
 const router = express.Router();
 import Reservations from '../model/schema/reservationsmModel';
 import Users from '../model/schema/userModel'
+import { isUser } from '../controller/userController'
 
-router.get('/get-user-reservations', async (req, res) => {
+router.get('/get-user-reservations', isUser, async (req, res) => {
     try {
-        const { MyId } = req.cookies;
-        const { userId } = MyId
+        const userId = req.userId;
         if (!userId) throw "invalid fields"
         const result = await Users.find({ "_id": userId });
         if (result.length > 0) {
             const reservation = await Reservations.find({ "userId": userId });
             res.send({ "log": true, "reservations": reservation })
         }
-        else res.sendStatus(403)
+        else res.status(401).send({ error: "Not authorized" });
     } catch (error) {
         res.send({ error });
     }
@@ -21,10 +21,10 @@ router.get('/get-user-reservations', async (req, res) => {
 })
 
 
-router.post('/add-user-reservation', async (req, res) => {
+router.post('/add-user-reservation', isUser, async (req, res) => {
     try {
-
-        const { userId, restId, hour, year, min, day, month } = req.body
+        const userId = req.userId;
+        const { restId, hour, year, min, day, month } = req.body
         if (!userId || !restId || !hour || !year || !min || !day || !month) throw "invalid fields"
         const result = await Users.find({ "_id": userId });
         if (result.length > 0) {
@@ -45,10 +45,10 @@ router.post('/add-user-reservation', async (req, res) => {
 
 })
 
-router.delete('/delete-user-reservation', async (req, res) => {
+router.delete('/delete-user-reservation', isUser, async (req, res) => {
     try {
-
-        const { userId, restId, id } = req.body
+        const userId = req.userId;
+        const { restId, id } = req.body
         if (!userId || !restId || !id) throw "invalid fields"
         const result = await Users.find({ "_id": userId });
         if (result.length > 0) {

@@ -24,16 +24,14 @@ import Map from 'react-map-gl';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import ScrollIntoView from "../../components/ScrollIntoView/ScrollIntoView";
-import { selectUserId } from '../../../app/reducers/userReducer';
 
 
 
 function Restaurant() {
     const dispatch = useAppDispatch()
-    const userId = useAppSelector(selectUserId)
     useEffect(() => {
         dispatch(fetchAllRestaurants())
-        dispatch(fetchUserFavorite(userId))
+        dispatch(fetchUserFavorite())
     }, []);
     const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
     const theme = useTheme();
@@ -74,10 +72,10 @@ function Restaurant() {
     };
     function isFavorite(e: any) {
         if (e.target.checked) {
-            dispatch(addFavorite({ "userId": userId, 'restId': RestaurantId }))
+            dispatch(addFavorite({ 'restId': RestaurantId }))
         }
         else {
-            dispatch(deleteFavorite({ "restId": RestaurantId, "userId": userId }))
+            dispatch(deleteFavorite({ "restId": RestaurantId }))
             setChecked(false)
         }
 
@@ -201,8 +199,8 @@ function Restaurant() {
                                     {theme.direction === 'rtl' ? (
                                         <KeyboardArrowLeft />
                                     ) : (
-                                            <KeyboardArrowRight />
-                                        )}
+                                        <KeyboardArrowRight />
+                                    )}
                                 </Button>
                             }
                             backButton={
@@ -210,10 +208,10 @@ function Restaurant() {
                                     {theme.direction === 'rtl' ? (
                                         <KeyboardArrowRight />
                                     ) : (
-                                            <KeyboardArrowLeft />
-                                        )}
-                                Back
-                            </Button>
+                                        <KeyboardArrowLeft />
+                                    )}
+                                    Back
+                                </Button>
                             }
                         />
                     </Box>
