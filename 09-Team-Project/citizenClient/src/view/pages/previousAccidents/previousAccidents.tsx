@@ -12,13 +12,15 @@ import {getAccident} from '../../../app/reducer/accidentReducer';
 function PreviousAccident() {
     const [accidents, setAccident] = useState([]);
     const dispatch = useAppDispatch()
-    useEffect(() => {
-      dispatch(fetchPreviousAccident({"userEmail":email}));
-   }, []);
     const user = useAppSelector(userInfo)
     const preAccidents=useAppSelector(getAccident)
     const status=useAppSelector(getStatus)
     const email=user.email;
+    
+    useEffect(() => {
+      dispatch(fetchPreviousAccident({"userEmail":email}));
+   }, []);
+
    
     async function handleGetAccident(e:any)
     {
