@@ -1,15 +1,17 @@
+import { loginStatus } from './controlers/login';
 import Cats from './model/schema/cats'
 import Owners from './model/schema/ownerModel';
-
+const cookieParser = require('cookie-parser'); 
 const express = require("express");
 const app = express();
-const port = 4000;
+const port = 4001;
 require("dotenv").config();
 
 //routes for data
 
 //static files
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.static("client/build"));
 
 //data
@@ -43,19 +45,6 @@ db.once("open", () => {
 });
 
 
-
-
-const mitzy = new Cats({
-  name: "Mitzy4",
-  address: {
-    city: "Um al fahm",
-    street: "Jaberin",
-  },
-  lifes: 9,
-});
-console.log(mitzy.name);
-
-// mitzy.save().then(res=>{console.log(res)}).catch(err=>console.log(err));
 
 async function getKitens(): Promise<any> {
   try {
@@ -128,6 +117,9 @@ app.post("/delete-cat", async (req, res) => {
 
 const ownerRoute = require('./routes/ownersRoute')
 app.use('/owenrs', ownerRoute);
+
+const usersRoute = require('./routes/usersRoute');
+app.use('/users',usersRoute)
 
 //query
 

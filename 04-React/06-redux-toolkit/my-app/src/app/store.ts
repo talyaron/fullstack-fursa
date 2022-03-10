@@ -1,5 +1,6 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import counterReducer from '../features/counter/counterSlice';
+import textReducer from '../features/text/textSlice';
 import itemReducer from '../features/item/ItemSlice';
 import productSlice from '../features/posts/productSlice';
 

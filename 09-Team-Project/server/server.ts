@@ -15,6 +15,8 @@ app.use(express.json());
 app.use(cors())
 require('dotenv').config();
 
+
+
 mongoose.connect(`mongodb+srv://${process.env.ATLAS_NAME}:${process.env.CLUSTER_PASS}@cluster0.qqi5o.mongodb.net/test`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -25,7 +27,6 @@ db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
     console.log("connected to DB!");
 });
-
 
 const io = require('socket.io')(http)
 
@@ -43,6 +44,19 @@ io.of('/api/socket').on('connection', socket => {
 app.get('/', (req, res) => {
     res.send('Hello World!');
 })
+
+const accidentRouter = require('./routers/accidentRouter');
+app.use('/accidents', accidentRouter);
+
+const userRouter = require('./routers/userRouter');
+app.use('/users', userRouter);
+
+const previousAccidentRouter = require('./routers/previousAccidentsRouter');
+app.use('/previousAccidents', previousAccidentRouter);
+
+
+const messagesBetweemOrgRouter = require('./routers/messagesBetweemOrgRouter');
+app.use('/messagesBetweemOrg', messagesBetweemOrgRouter);
 
 server.listen(port, () => {
     console.log(`Listening on port ${port} 🔥`)
