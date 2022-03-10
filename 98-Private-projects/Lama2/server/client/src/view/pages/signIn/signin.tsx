@@ -13,6 +13,10 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+
+
 //import Admin from '../admin/admin';
 
 const clientId = "Your-Client-Id";
@@ -20,12 +24,32 @@ const clientId = "Your-Client-Id";
 function SignIn() {
   const [showloginButton, setShowloginButton] = useState(true);
   const [showlogoutButton, setShowlogoutButton] = useState(false);
+  const navigate=useNavigate();
+
+
+  async function handleSignIn(ev:any){
+    ev.preventDefault();
+    const form = ev.target;
+    console.log({form})
+  await axios.post('/user/login', {email: form[0].value,password: form[2].value})
+      .then(data => {
+        console.log("faaaaat")
+        console.log(data);
+        navigate('/homepage');
+      }).catch(err => {
+        console.error(err);
+      })
+
+  }
+
 
   const onLoginSuccess = (res:any) => {
     console.log('Login Success:', res.profileObj);
     setShowloginButton(false);
     setShowlogoutButton(true);
 };
+
+
 
 const onLoginFailure = (res:any) => {
     console.log('Login Failed:', res);
@@ -48,6 +72,7 @@ const responseGoogle = (response:any
       {/* <Typography component="h5" variant="h5">
         Sign in
       </Typography> */}
+      <form onSubmit={handleSignIn}>
         <TextField
           className="textfield"
           autoComplete="given-name"
@@ -68,6 +93,7 @@ const responseGoogle = (response:any
           label="Password"
           autoFocus
         />
+     
       <br /><br />
       <Button className='btn' size="small" variant="outlined" startIcon={<GoogleIcon />}> Google</Button>
       <br></br>
@@ -77,30 +103,14 @@ const responseGoogle = (response:any
         <Button className='btn' size="small" variant="outlined" startIcon={<LoginIcon />}> admin </Button>
       </Link>
       <br></br><br></br>
-      <Link to={`/`}>
-        <Button className='btn' size="small" variant="outlined" startIcon={<LoginIcon />}> login </Button>
-      </Link>
+      {/* <Link to={`/`}> */}
+        <Button  type='submit' className='btn' size="small" variant="outlined" startIcon={<LoginIcon />}> login </Button>
+      {/* </Link> */}
       <br></br>
+      </form>
 
 
-      {/* { showloginButton ?
-                <GoogleLogin
-                    clientId={clientId}
-                    buttonText="Sign In"
-                    onSuccess={onLoginSuccess}
-                    onFailure={onLoginFailure}
-                    cookiePolicy={'single_host_origin'}
-                    isSignedIn={true}
-                /> : null}
-
-            { showlogoutButton ?
-                <GoogleLogout
-                    clientId={clientId}
-                    buttonText="Sign Out"
-                    onLogoutSuccess={onSignoutSuccess}
-                >
-                </GoogleLogout> : null
-            } */}
+   {/* //   onClick={handleSignIn} */}
 
 
     </div>

@@ -13,7 +13,7 @@ function AddCourse(){
   useEffect(()=>{
 
     //fetch courses
-  fetch('/get-all-courses')
+  fetch('/courses/get-all-courses')
     .then(res=>res.json())
     .then(data=>{
       console.log(data);
@@ -26,7 +26,7 @@ function AddCourse(){
   function addCourse(ev: any) {
     ev.preventDefault();
     const form = ev.target;
-    const obj: any = { name: form[0].value, cost: form[1].value, participants: form[2].value,lessons:form[3].value,hours:form[4].value }
+   console.log({form})
     axios.post('/courses/add-new-course', { name: form[0].value, cost: form[1].value, participants: form[2].value,lessons:form[3].value,hours:form[4].value})
       .then(data => {
         console.log(data);
@@ -41,14 +41,14 @@ function AddCourse(){
       console.dir(ev.target);
       const form=ev.target
       console.log(form[0]);
-        axios.post('http://localhost:3004/courses',{'name':form[0].value, 'participants':form[2].value,'lessons':form[3].value,'cost':form[1].value}).
+        axios.post('http://localhost:3004/courses',{'name':form[0].value, 'participants':form[2].value,'lessons':form[6].value,'cost':form[2].value}).
         then(({data})=>console.log(data));
 alert("course added successfully");
     }
 
     return(
         <div className="addCourse">
-            <form onSubmit={handleAdd} className="formAddCourse" >
+            {/* <form onSubmit={handleAdd} className="formAddCourse" >
             <TextField
             className="txtfield1"
                   autoComplete="given-name"
@@ -59,7 +59,7 @@ alert("course added successfully");
                   label="course type"
                   autoFocus
                 />
-                      <TextField
+                      <TextField  
             className="txtfield1"
                   autoComplete="given-name"
                   name="Cost"
@@ -91,8 +91,8 @@ alert("course added successfully");
                  {/* <Link to={`/addCourse`}>    */}
                   <Button className='addbtn'  type="submit">Add</Button>
                   {/* </Link> */}
-
-            </form>
+{/* 
+            </form> */} 
 
 
             <form onSubmit={addCourse}>

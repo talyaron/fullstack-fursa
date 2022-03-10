@@ -34,7 +34,7 @@ function AdminCourses() {
 useEffect(()=>{
 
   //fetch courses using mongo
-fetch('/get-all-courses')
+fetch('/courses/get-all-courses')
   .then(res=>res.json())
   .then(data=>{
     console.log(data);

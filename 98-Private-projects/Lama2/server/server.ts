@@ -1,3 +1,4 @@
+import { loginStatus } from './controllers/signInController';
 import Courses from './model/schema/coursesModel';
 import User from './model/schema/userModel';
 require('dotenv').config();
@@ -67,6 +68,8 @@ app.use('/courses/', courseRoute);
 
 const userRoute = require('./routes/userRoute')
 app.use('/user', userRoute);
+
+app.use(loginStatus)
 // const routes = require('./routes/routes.js')(app, fs);
 // app.use('/courses', routes);
 

@@ -19,10 +19,11 @@ import axios from 'axios';
 function SignUp() {
 
   function handleSignUp(ev:any){
+  
   ev.preventDefault();
   const form = ev.target;
-  const obj: any = { firstName: form[0].value,lastName:form[1] ,email: form[2].value, password: form[3].value,phoneNumber:form[4].value }
-  axios.post('/user/add-new-user', {firstName: form[0].value,lastName:form[1] ,email: form[2].value, password: form[3].value,phoneNumber:form[4].value})
+  console.log({form})
+  axios.post('/user/add-new-user', {firstName: form[0].value,lastName: form[2].value ,email: form[4].value, password: form[6].value,phoneNumber: form[8].value})
     .then(data => {
       console.log(data);
     }).catch(err => {
@@ -39,8 +40,8 @@ function SignUp() {
       <Typography component="h3" variant="h5" className="typ">
         Sign up
       </Typography>
-
-      <form className="signupform" onSubmit={handleSignUp}>
+      {/* className="signupform" */}
+      <form  onSubmit={handleSignUp}>
 
         <TextField
           className="textfield"
@@ -97,9 +98,9 @@ function SignUp() {
         {/* </Grid> */}
         <br />
         <br />
-        <Link to={`/signIn`}>
+        {/* <Link to={`/signIn`}> */}
           <button className='subbtn' type='submit'>submit</button>
-        </Link>
+        {/* </Link> */}
       </form>
     </div>
 

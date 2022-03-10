@@ -12,6 +12,7 @@ import {useState, useEffect} from 'react';
 import { selectrainers } from '../../../features/trainersReducer/trainer';
 import { selectOffers} from '../../../features/offersReducer/offers'
  import { getOfferAsync } from '../../../features/offersReducer/offers';
+import Header from '../../components/header/header';
 
 interface horse {
   name: string;
@@ -40,16 +41,8 @@ function Homepage() {
     // })
 
     //fetch kittens
-    fetch('/get-all-kitens')
-    .then(res=>res.json())
-    .then(data=>{
-      console.log(data);
-      setKittens(data);
-    }).catch(err=>{
-      console.error(err);
-    })
 
-    fetch('/get-all-courses')
+    fetch('/courses/get-all-courses')
     .then(res=>res.json())
     .then(data=>{
       console.log(data);
@@ -78,6 +71,7 @@ function Homepage() {
 
   return (
     <div className='maindiv'>
+      <Header></Header>
       <h3 className="h">Welcome to our farm</h3>
       {/* <p className="firstP">Our course duration is 10 weeks, one lesson a week .</p> */}
       {/* <div><button onClick={handleGetProducts}>get products</button></div> */}

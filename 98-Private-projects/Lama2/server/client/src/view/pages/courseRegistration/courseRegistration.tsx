@@ -85,7 +85,7 @@ function CourseRegistration() {
   return (
     <div className='mydiv'>
 
-      <Link to={`/`}>
+      <Link to={`/homepage`}>
         < button className='backbtn'>
           back </button>
       </Link>

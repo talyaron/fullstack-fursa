@@ -12,6 +12,8 @@ import { useAppSelector, useAppDispatch } from '../src/app/hooks';
 import { selectProducts } from './features/productsReducer/products';
  import { selectrainers } from './features/trainersReducer/trainer';
  import { selectOffers} from './features/offersReducer/offers'
+import SignUp from './view/pages/signUp/signup';
+import SignIn from './view/pages/signIn/signin';
 
 // const students:Array<Place> = [{name:'Saleem', place:'Mashad'},{name:'Mona',place:"Nazereth"}];
 // interface Place{
@@ -31,12 +33,12 @@ function App() {
         {/* <Card />
         <Card />
         <Card /> */}
-
-        <Header />
-
+   <SignIn></SignIn>
+        {/* <Header /> */}
+     
         {/* <SignUp /> */}
 
-        <Homepage />
+        {/* <Homepage /> */}
         <div>
           {products.status !== 'loading' ? products.arrProducts.map((product, index) => {
             return (<p key={index}>{product.title}</p>
