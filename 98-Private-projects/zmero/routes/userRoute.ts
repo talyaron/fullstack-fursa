@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 import Users from '../model/schema/userModel'
 import jwt from "jwt-simple";
-import { isAdmin } from '../controller/userController'
+import { isAdmin, isUser } from '../controller/userController'
 
 router.get('/get-user', async (req, res) => {
     try {
@@ -84,5 +84,9 @@ router.get('/get-authentication', async (req, res) => {
         res.send({ error });
     }
 })
-
+router.get('/log-out', isUser, async (req, res) => {
+    res.clearCookie("user")
+        .status(200)
+        .send({ "log": false })
+})
 module.exports = router;

@@ -13,10 +13,11 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import Divider from '@mui/material/Divider';
-import { selecUserName, checkType } from '../../../app/reducers/userReducer'
-import { useAppSelector } from '../../../app/hooks';
+import { selecUserName, checkType, logOutUser } from '../../../app/reducers/userReducer'
+import { useAppSelector, useAppDispatch } from '../../../app/hooks';
 
 function User() {
+    const dispatch = useAppDispatch()
     const [anchorEl, setAnchorEl] = React.useState(null);
     const userName = useAppSelector(selecUserName)
     const open = Boolean(anchorEl);
@@ -27,6 +28,9 @@ function User() {
     const handleClose = () => {
         setAnchorEl(null);
     };
+    const handleLogOut = () => {
+        dispatch(logOutUser())
+    }
     function stringToColor(string: string) {
         let hash = 0;
         let i;
@@ -147,7 +151,7 @@ function User() {
                     </ListItemIcon>
                     Settings
                 </MenuItem>
-                <MenuItem>
+                <MenuItem onClick={handleLogOut}>
                     <ListItemIcon>
                         <Logout fontSize="small" />
                     </ListItemIcon>

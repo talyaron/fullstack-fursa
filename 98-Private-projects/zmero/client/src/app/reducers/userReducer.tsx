@@ -42,7 +42,6 @@ export const getAuthentication = createAsyncThunk(
     'user/GetAuth',
     async (_, thunkAPI) => {
         try {
-            console.log("ok")
             const response = await axios.get('/users/get-authentication')
             const data: any = response.data
             return data
@@ -71,6 +70,20 @@ export const signUpRestaurateur = createAsyncThunk(
     async (user: any, thunkAPI) => {
         try {
             const response = await axios.post('/users/add-restaurateur', user)
+            const data: any = response.data
+            return data
+        } catch (e) {
+            thunkAPI.rejectWithValue(e)
+        }
+
+    }
+);
+
+export const logOutUser = createAsyncThunk(
+    'user/logOutUser',
+    async (_, thunkAPI) => {
+        try {
+            const response = await axios.get('/users/log-out')
             const data: any = response.data
             return data
         } catch (e) {
@@ -123,6 +136,19 @@ export const userReducer = createSlice({
                 if (action.payload.log == true) {
                     state.userinfo = action.payload.user;
                     state.userIsLogIn = true;
+                }
+            })
+            .addCase(logOutUser.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(logOutUser.fulfilled, (state, action) => {
+                state.status = 'idle';
+                if (action.payload.log == false) {
+                    state.userinfo.email = " ";
+                    state.userinfo.fName = " ";
+                    state.userinfo.lName = " ";
+                    state.userinfo.type = " ";
+                    state.userIsLogIn = false;
                 }
             })
     },
