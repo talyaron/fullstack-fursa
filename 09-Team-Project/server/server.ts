@@ -52,7 +52,7 @@ server.listen(port, () => {
 
 
 
-// saleem pa
+// saleem part
 const io = require('socket.io')(server, {
     cors: {
       origin: '*',
@@ -74,7 +74,7 @@ io.on("connection", (socket) => {
   socket.on('message', (value) => handleMessage(value));
   socket.on("setUserData", userData => {
     //When user creation on server is complete, retrieve and save data to local storage
-          console.log("user id is "+ userData)
+          console.log("user id is "+ JSON.stringify( userData))
           userId = userData;
  });
  socket.on("setOrgData", userData => {

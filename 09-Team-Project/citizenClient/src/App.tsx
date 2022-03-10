@@ -5,6 +5,7 @@ import Profile from './view/pages/profile/profile'
 import PreviousAccident from "./view/pages/previousAccidents/previousAccidents"
 import "./App.css";
 import { Emergency } from "./view/pages/emergency/Emergency";
+import Chat from "./view/pages/chat/Chat";
 
 function App() {
   return (
