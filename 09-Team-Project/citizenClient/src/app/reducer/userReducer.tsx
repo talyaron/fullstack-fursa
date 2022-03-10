@@ -72,4 +72,5 @@ export const getID = (state: RootState) => state.user.userInfo._id;
 
 export const userInfo = (state: RootState) => state.user.userInfo;
 
+export const getUserEmail = (state: RootState) => state.user.userInfo.email;
 export default userReducer.reducer;

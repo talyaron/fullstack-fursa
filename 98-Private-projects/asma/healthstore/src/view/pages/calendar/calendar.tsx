@@ -35,40 +35,8 @@ import { addAppointment, getAppointmentsAsyn, selectAppointment } from '../../..
 import { appointment } from '../../../features/appointment/appointmentsSlice';
 import axios from 'axios';
 
-// const locales = {
-//     "en-US": require("date-fns/locale/en-US"),
-// };
-// const localizer = dateFnsLocalizer({
-//     format,
-//     parse,
-//     startOfWeek,
-//     getDay,
-//     locales,
-// });
+
 const localizer = momentLocalizer(moment);
-
-
-
-// interface eventInt{
-//     title: string;
-//     start: Date;
-//     end: Date;
-//     name: string;
-//     phone: string;
-// }
-
-// const events:Array<eventInt> = [
-//     {
-//         title: "Cupping  Therapy",
-//         start: new Date('2022-03-07T04:30:00.000Z'),
-//         end: new Date('2022-03-07T05:30:00.000Z'),
-//         name: "Asma",
-//         phone:"123" ,            
-//     }
-// ];
-
-
-
 
 
 function CalendarFun() {
@@ -76,8 +44,6 @@ function CalendarFun() {
     const [newEvent, setNewEvent] = useState({ title: "", start: new Date(), end: new Date(), name: "", phone: "" });
     let appointments = useAppSelector(selectAppointment);
     const dispatch = useAppDispatch();
-
-    // const [arr, setArr] = useState([]);
 
     useEffect(() => {
 
@@ -93,11 +59,6 @@ function CalendarFun() {
         // }).catch(err => {
         //     console.error(err);
         // })
-
-        // console.log("events");
-        // console.log(events);
-        // console.log(arr);
-
 
 
         dispatch(getAppointmentsAsyn());
@@ -139,7 +100,7 @@ function CalendarFun() {
             alert("An Appointment Found!!");
             console.log('deleted')
             //console.log(newEvent.start)
-            const {data} = await axios.post('/delete-appointment',{ title: newEvent.title, start: newEvent.start, end: newEvent.end, name: newEvent.name, phone: newEvent.phone });
+            const {data} = await axios.post('/appointments/delete-appointment',{ title: newEvent.title, start: newEvent.start, end: newEvent.end, name: newEvent.name, phone: newEvent.phone });
             console.log(data);
             dispatch(getAppointmentsAsyn());
         }
