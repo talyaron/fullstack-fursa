@@ -59,26 +59,27 @@ exports.addNewAccident = async (req, res) => {
     */
     try {
         const _acc = await new accident({
-            type: "a",
-            emergency: true,
-            date: new Date(),
-            address: "123",
-            media: {
-                src: "String",
-                type: "String"
-            },
-            call: "123",
-            description: "123",
-            user: {
-                userID: 23132132,
-                name: "String",
-                email: "String",
-                password: "String",
-                phone: "String",
-                location: "String",
-                gender: "String",
-            },
-            org: {}
+            // type: "a",
+            // emergency: true,
+            // date: new Date(),
+            // address: "123",
+            // media: {
+            //     src: "String",
+            //     type: "String"
+            // },
+            // call: "123",
+            // description: "123",
+            // user: {
+            //     userID: 23132132,
+            //     name: "String",
+            //     email: "String",
+            //     password: "String",
+            //     phone: "String",
+            //     location: "String",
+            //     gender: "String",
+            // },
+            // org: {}
+            type:type,emergency:emergency,date:date,address:address,description:description,user:user,org:org
         });
         _acc.save().then("accident saved!");
         // const _acc = await accident.findOne({ });

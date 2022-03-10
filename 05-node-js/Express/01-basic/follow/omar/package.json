@@ -15,6 +15,7 @@
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.0",
     "express": "^4.17.2",
+    "jwt-simple": "^0.5.6",
     "mongoose": "^6.2.4"
   },
 >>>>>>> sp2-dev2:06-mongoose/Example/server/package.json

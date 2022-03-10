@@ -1,13 +1,28 @@
 const express = require("express");
 const router = express.Router();
-import Owners from "../model/schema/ownerModel";
+import jwt from "jwt-simple";
 
+//controlers
+import { isAdmin, loginStatus } from "../controlers/login";
 router
-  .post("/register", async (req, res) => {
+  .post("/login", async (req, res) => {
+    //LOGIN
     try {
       const { password, name } = req.body;
+      //check if user exist in DB
+      //check if password equal to that in the database
+      //if yes, send cookie with jwt
 
-      res.cookie("mySecretPassword", { id: name });
+      const JWT_SECRET = process.env.JWT_SECRET;
+      const encodedJWT = jwt.encode(
+        { userId: name, role: "public" },
+        JWT_SECRET
+      );
+
+      res.cookie("userInfo", encodedJWT, {
+        httpOnly: true,
+        maxAge: 60 * 60 * 1000,
+      });
       res.send({ password, name });
     } catch (error) {
       console.log(req.body);
@@ -15,14 +30,8 @@ router
       res.send({ error: error.message });
     }
   })
-  .get("/privateInfo", (req, res) => {
-    //get cookie
-    const { mySecretPassword } = req.cookies;
-    const { id } = mySecretPassword;
-    //get user from database
-    // if exists, responce with user's data
-
-    res.send({ ok: true });
+  .get("/privateInfo", isAdmin, (req, res) => {
+    res.send({ ok: true, info: "my secrets" });
   });
 
 router.get("/get-users", async (req, res) => {});
