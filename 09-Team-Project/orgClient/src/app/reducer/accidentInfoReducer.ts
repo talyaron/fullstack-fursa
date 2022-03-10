@@ -29,7 +29,7 @@ interface accidentInfo {
     value: {
         type: String;
         emergency: Boolean;
-        date: Date;
+        date: String;
         address: String;
         call: Object;
         description: String;
@@ -43,7 +43,7 @@ const initialState: accidentInfo = {
     value: {
         type: '',
         emergency: false,
-        date: new Date(),
+        date: '',
         address: '',
         call: {},
         description: '',

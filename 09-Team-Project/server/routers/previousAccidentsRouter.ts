@@ -5,7 +5,7 @@ const previousAccidentController = require('../controllers/previousAccidentContr
 
 
     router.
-    route('/get-previous-accidents').
+    route('/getPreviousAccidents').
     post(previousAccidentController.getPreviousAccidents);
 
 

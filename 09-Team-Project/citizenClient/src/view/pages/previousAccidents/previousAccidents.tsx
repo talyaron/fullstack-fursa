@@ -6,20 +6,23 @@ import axios from "axios";
 import Navbar from '../../components/navbar/navbar'
 import { fetchUser, getName, userInfo } from '../../../app/reducer/userReducer';
 import AccidentComp from '../../components/previousAccidents/previousAccidentComponent';
-import fetchAccident, { fetchPreviousAccident } from '../../../app/reducer/accidentReducer';
+import fetchAccident, { fetchPreviousAccident, getStatus } from '../../../app/reducer/accidentReducer';
 import {getAccident} from '../../../app/reducer/accidentReducer';
 
 function PreviousAccident() {
     const [accidents, setAccident] = useState([]);
     const dispatch = useAppDispatch()
+    useEffect(() => {
+      dispatch(fetchPreviousAccident({"userEmail":email}));
+   }, []);
     const user = useAppSelector(userInfo)
     const preAccidents=useAppSelector(getAccident)
+    const status=useAppSelector(getStatus)
     const email=user.email;
-
+   
     async function handleGetAccident(e:any)
     {
-    
-      dispatch(fetchPreviousAccident({"userEmail":email}));
+     
       // const response= await  axios.get("/previousAccidents/get-previous-accidents").then(({ data }) => {
       //   console.log(data);
       //   setAccident(data);
@@ -32,16 +35,15 @@ function PreviousAccident() {
     //       setAccident(data);
     //     });
     //   }, []);
-
     return (
         <div className='AccidentContainer'>
              <Navbar />
   
         <button onClick={handleGetAccident}> get previous accidents </button>
         <div className="accidentsContent">
-          {preAccidents.map((accident:any, index:any) => {
+          {status==='loading'?<div>Loading...</div>:preAccidents.map((accident:any, index:any) => {
             return (
-              <AccidentComp key={index} connect={"connect"} details={accident.details} notifications={accident.notifications} />
+              <AccidentComp key={index} type={accident.type} date={accident.date} address={accident.address} />
             );
           })}
         </div>

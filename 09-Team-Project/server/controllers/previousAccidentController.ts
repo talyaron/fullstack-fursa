@@ -5,11 +5,11 @@ import Users from '../model/userModel';
 exports.getPreviousAccidents = async (req, res) => {
     console.log('get-previous-accidents');
     try {
-        const  id = req.body;
+        const {email} = req.body;
         // const userid=Users.userID;
         const userEmail="m.zmiro@hotmail.com";
-        const filter ={id:id}
-        const _acc = await accidents.findOne({user:{email: userEmail}});
+        const filter ={user:{email:email}}
+        const _acc = await accidents.find({filter});
      //   await accident.find({_id:id});
      console.log(_acc);
         res.send({ok :true, accident: _acc });

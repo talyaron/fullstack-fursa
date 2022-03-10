@@ -6,6 +6,7 @@ interface Media{
     type:string
 }
 interface Accident{
+    
     _id:string,
     type: string,
     emergency: boolean,
@@ -13,11 +14,12 @@ interface Accident{
     address: string,
     media:[Media],
     call: object,
-    description: string,
+    description: string
 }
 export interface Accidents{
     accidentArr:Array<Accident>;
     accidentId:string,
+
     status: 'idle' | 'loading' | 'failed';
 
 }
@@ -46,7 +48,7 @@ export const fetchPreviousAccident=createAsyncThunk(
     'previousAccidents/fetchAccidentByUserId',
     async(userEmail:any)=>{
         try{
-            const response=await axios.post('/previousAccidents/getPreviousAccidents',{userEmail})
+            const response=await axios.post('http://localhost:3001/previousAccidents/getPreviousAccidents',{userEmail})
             console.log(response);
              return response.data;
         }
@@ -72,8 +74,7 @@ export const accidentReducer = createSlice({
             .addCase(fetchPreviousAccident.fulfilled, (state, action) => {
                 state.status = 'idle';
                 console.log(action);
-                state.accidentArr= action.payload.accident;
-                console.log(action.payload)
+                state.accidentArr=action.payload.accident;
             })
 
             .addCase(addAccident.pending, (state) => {
@@ -88,6 +89,8 @@ export const accidentReducer = createSlice({
 });
 export const getAccidentID = (state: RootState) => state.accident.accidentId;
 export const getAccident = (state: RootState) => state.accident.accidentArr;
+export const getStatus = (state: RootState) => state.accident.status;
+
 
 
 export default accidentReducer.reducer;
