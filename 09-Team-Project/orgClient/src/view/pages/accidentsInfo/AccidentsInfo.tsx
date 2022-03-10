@@ -5,24 +5,25 @@ import PhoneIcon from '@mui/icons-material/Phone';
 import './AccidentsInfo.scss';
 import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { accident, findAccidentAsync } from '../../../app/reducer/accidentInfoReducer';
+import { accident, findAccidentAsync, removeSelected } from '../../../app/reducer/accidentInfoReducer';
 import { Link } from 'react-router-dom';
 
 function AccidentsInfo() {
-  //const accidentId = useParams();
-  //const dispatch = useAppDispatch();
-  //const accident_ = useAppSelector(accident);
-  const accident_ = { type: 'homeviolence', emergency: false, date: new Date(), address: 'Nazareth', call: {}, description: "", userInfo: { name: 'xxxxxx' }, org: {} }
+  const accidentId = useParams();
+  const dispatch = useAppDispatch();
+  const accident_ = useAppSelector(state => state.accident);
+  // const accident_ = { type: 'homeviolence', emergency: false, date: new Date(), address: 'Nazareth', call: {}, description: "", userInfo: { name: 'xxxxxx' }, org: {} }
 
-  let day = accident_.date.getDate();
-  let month = accident_.date.getMonth() + 1;
-  let year = accident_.date.getFullYear();
 
-  let fullDate = `${day}/${month}/${year}`;
+  // let day = accident_.value.date.getDate();
+  // let month = accident_.value.date.getMonth() + 1;
+  // let year = accident_.value.date.getFullYear();
+
+  // let fullDate = `${day}/${month}/${year}`;
 
   useEffect(() => {
     console.log('accidentInfo')
-    //dispatch(findAccidentAsync(accidentId))
+    dispatch(findAccidentAsync(accidentId))
   }, []);
 
 
@@ -34,10 +35,10 @@ function AccidentsInfo() {
       </div>
       <div className="content">
         <div className="accidentInfo">
-          <p>{accident_.type}</p>
-          <p>{fullDate}</p>
-          <p>{accident_.userInfo.name}</p>
-          <p>{accident_.description}</p>
+          <p>{accident_.value.type}</p>
+          {/* <p>{fullDate}</p> */}
+          <p>{accident_.value.user.name}</p>
+          <p>{accident_.value.description}</p>
         </div>
         {/* <Link to={}> */}
         <button>Profile Info</button>
@@ -45,9 +46,9 @@ function AccidentsInfo() {
         {/* <Link to={}> */}
         <button>Chat</button>
         {/* </Link> */}
-        {/* <Link to={}> */}
+        <Link to="/messagesBetweenOrg">
         <button>Send to other user</button>
-        {/* </Link> */}
+        </Link>
       </div>
       <PhoneIcon sx={{ paddingLeft: '40px', fontSize: 35 }} />
     </div>

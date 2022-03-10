@@ -58,9 +58,6 @@ function Homepage() {
         React.createElement("h3", { className: "h" }, "Welcome to our farm"),
         React.createElement("div", null,
             React.createElement("button", { onClick: handleGetOffers }, "get offers")),
-        kitttens.map(function (kity) {
-            return React.createElement("p", { key: kity._id }, kity.name);
-        }),
         React.createElement("div", { className: "offersDiv" }, offers.status !== 'loading' ? offers.arrOffers.map(function (offer, index) {
             // return (<p key={index}>{offer.name}</p> )
             return React.createElement(offers_1["default"], { key: index, name: offer.name, description: offer.description, cost: offer.cost });
