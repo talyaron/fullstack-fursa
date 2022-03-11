@@ -1,3 +1,5 @@
+import { checkStatus } from "../Controller/userController";
+
 export { };
 const express = require("express");
 const router = express.Router();
@@ -13,11 +15,11 @@ router
 
 router
     .route("/getAllUsers")
-    .get(userController.getAllUsers);
+    .get(checkStatus, userController.getAllUsers);
 
 router
     .route("/sendInvitation")
-    .post(userController.sendInvitation);
+    .post(checkStatus, userController.sendInvitation);
 
 
 module.exports = router;

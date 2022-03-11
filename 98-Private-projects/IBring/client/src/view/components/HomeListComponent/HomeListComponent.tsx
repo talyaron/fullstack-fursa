@@ -12,6 +12,8 @@ function HomeListComponent(props: any) {
     const { name, date, time, place, bringList } = props.info;
     const { id, upcoming, findList } = props;
 
+    console.log(findList)
+
     function handleClick(ev: any) {
         ev.preventDefault();
         if (findList) {
@@ -23,7 +25,9 @@ function HomeListComponent(props: any) {
         <div className="contentList" onClick={handleClick}>
             <div className="listInformation">
                 <div className="listImage">
-                    <img className='listImage_img' src={calendar} alt="" />
+                    {findList.meetingDetails.imgURL !== "" ?
+                        <img className='listImage_img' src={findList.meetingDetails.imgURL} alt="" /> :
+                        <img className='listImage_img' src={calendar} alt="" />}
                 </div>
                 <div className="listInformation_info">
                     <div className="headerInfo">

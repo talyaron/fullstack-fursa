@@ -1,3 +1,5 @@
+import { checkStatus } from "./Controller/userController";
+
 const express = require("express");
 const app = express();
 const mongoose = require('mongoose');
@@ -9,6 +11,7 @@ const listRouter = require("./Routes/listRoutes");
 app.use(express.static("client/build"));
 app.use(express.json());
 app.use(cookieParser());
+// app.use(checkStatus);
 
 require('dotenv').config();
 

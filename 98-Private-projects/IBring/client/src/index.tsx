@@ -41,7 +41,7 @@ ReactDOM.render(
           <Route path="/ListForm" element={<ListForm />} />
           <Route path="/greetings" element={<Greetings />} />
 
-          <Route path="/" element={<App />} />
+          <Route path="/" element={<Login />} />
         </Routes>
       </BrowserRouter>
     </Provider>

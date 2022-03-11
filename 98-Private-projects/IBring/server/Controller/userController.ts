@@ -2,8 +2,23 @@ export { }
 const user = require("../Schema/user");
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
+const jwt = require('jwt-simple');
 
 require('dotenv').config();
+
+export function checkStatus(req, res, next) {
+    try {
+        const { userInfo } = req.cookies;
+        const decoded = jwt.decode(userInfo, process.env.JWT_SECRET);
+        if (decoded.value) {
+            req.userID = decoded.value.id;
+            req.userEmail = decoded.value.email;
+        }
+        next();
+    } catch (error) {
+        res.send({ error: error.message });
+    }
+}
 
 exports.Login = async (req, res) => {
     console.log("login!");
@@ -17,7 +32,12 @@ exports.Login = async (req, res) => {
             const hashPassword = crypto.createHash('sha256').update(pass).digest('base64');
             if (hashPassword === _user.password) {
                 const curretUser = { email: _user.email };
-                res.cookie('userInfo', { value: { email: email, id: _user._id }, status: "logged" });
+                const payload = { value: { email: email, id: _user._id }, status: "logged" };
+                const secret = process.env.JWT_SECRET;
+
+                const token = jwt.encode(payload, secret);
+
+                res.cookie('userInfo', token);
                 res.send({ ok: true, user: curretUser, message: "login successfully!" });
             }
             else {
@@ -44,7 +64,13 @@ exports.SignUp = async (req, res) => {
             userToAdd.save().then(() => {
                 console.log("user saved");
             });
-            res.cookie('userInfo', { value: { email: userToAdd.email, id: userToAdd._id }, status: "logged" });
+
+            const payload = { value: { email: email, id: _user._id }, status: "logged" };
+            const secret = process.env.JWT_SECRET;
+
+            const token = jwt.encode(payload, secret);
+
+            res.cookie('userInfo', token);
             res.send({ ok: true, message: "signUp successfully!" });
         } else {
             res.send({ ok: false, message: "signUp failed user already exists!" });

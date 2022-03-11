@@ -22,6 +22,7 @@ function ListForm() {
     const nav = useNavigate();
 
     async function handleMeetForm(ev: any) {
+        console.log("handleMeetForm");
         ev.preventDefault();
         const form = ev.target;
         const obj: any = {};
@@ -30,22 +31,18 @@ function ListForm() {
                 obj[form[i].name] = form[i].value;
             }
         }
-        if (file !== null && !progressShow) {
-            await handleUpload();
-            if(!url){
-                obj["imgURL"] = url;
-                console.log(obj)
-            }
-        }
-        else{
-            console.log("file not founded!");
-        }
+        console.log(file)
+        obj["imgURL"] = JSON.stringify(file);
+        obj["imgURL"] = url;
+        console.log(obj)
+
         dispatch(addMeetingDetails(obj));
-        // nav('/typeList');
+        nav('/typeList');
     }
 
 
     function handleUpload() {
+        console.log("handleUpload");
         setProgressShow(true);
         const fileName = new Date().getTime() + file.name;
         const storageRef = ref(
@@ -64,10 +61,9 @@ function ListForm() {
                 console.log(error);
             },
             async () => {
-                  getDownloadURL(uploadTask.snapshot.ref).then(async (url: any) => {
+                getDownloadURL(uploadTask.snapshot.ref).then(async (url: any) => {
                     setFile(null);
-                    await setURL(url);
-                    console.log(url)
+                    setURL(url);
                 })
             }
         )
@@ -88,14 +84,6 @@ function ListForm() {
     function handleChange(e: any) {
         setFile(e.target.files[0]);
     }
-
-    // function onSelectFile(e: any) {
-    //     if (!e.target.files || e.target.files.length === 0) {
-    //         setSelectedFile(undefined)
-    //         return
-    //     }
-    //     setSelectedFile(e.target.files[0])
-    // }
 
     return (
         <div className="mainTemplate">
@@ -121,9 +109,11 @@ function ListForm() {
                     <input className='templateInput' name='place' placeholder="Place" type="text" required />
                     <input className='templateInput fewWords' name='fewWords' placeholder="A few free words" type="text" required />
 
-                    <input className='templateButton' type="submit" value="Next" />
+                    {url ? <input className='templateButton' type="submit" value="Next" /> :
+                        null}
                 </form>
-
+                {url !== undefined ? <button onClick={handleUpload} className='templateButton'>upload</button> :
+                    null}
             </div>
 
         </div>

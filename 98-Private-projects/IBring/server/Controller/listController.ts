@@ -2,6 +2,7 @@ export { }
 const user = require("../Schema/user");
 const list = require("../Schema/list");
 const crypto = require('crypto');
+const jwt = require('jwt-simple');
 
 exports.addNewMeeting = async (req, res) => {
     console.log("addNewMeeting!");
@@ -9,7 +10,8 @@ exports.addNewMeeting = async (req, res) => {
 
     try {
         const { userInfo } = req.cookies;
-        const _user = await user.findOne({ _id: userInfo.value.id });
+        const decoded = jwt.decode(userInfo, process.env.JWT_SECRET);
+        const _user = await user.findOne({ _id: decoded.value.id });
         if (!_user) {
             res.send({ ok: false, message: "user doesn't exists!" });
         } else {
@@ -34,8 +36,9 @@ exports.getListByUser = async (req, res) => {
     const { email } = req.body;
 
     try {
-        const { userInfo } = req.cookies;
-        const _user = await user.findOne({ _id: userInfo.value.id });
+        // const { userInfo } = req.cookies;
+        // const decoded = jwt.decode(userInfo, process.env.JWT_SECRET);
+        const _user = await user.findOne({ _id: req.userID });
         if (!_user) {
             res.send({ ok: false, message: "user doesn't exists!" });
         } else {
@@ -57,8 +60,9 @@ exports.getListByID = async (req, res) => {
     const { id } = req.body;
 
     try {
-        const { userInfo } = req.cookies;
-        const _user = await user.findOne({ _id: userInfo.value.id });
+        // const { userInfo } = req.cookies;
+        // const decoded = jwt.decode(userInfo, process.env.JWT_SECRET);
+        const _user = await user.findOne({ _id: req.userID });
         if (!_user) {
             res.send({ ok: false, message: "user doesn't exists!" });
         } else {

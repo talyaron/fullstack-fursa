@@ -95,7 +95,8 @@ function List() {
                             <Sidebar />
                         </div>
                     </div>
-                    <img className='registerLogo listLogo' alt="" src={sentImage} />
+                    {curList.list.meetingDetails?.imgURL !== ""? <img className='registerLogo listLogo' alt="" src={curList.list.meetingDetails?.imgURL} /> : <img className='registerLogo listLogo' alt="" src={sentImage} />}
+                    
                 </div>
                 <div className="mainContent">
                     {curList.list !== undefined ?

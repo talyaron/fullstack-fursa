@@ -1,3 +1,5 @@
+import { checkStatus } from "../Controller/userController";
+
 export { };
 const express = require("express");
 const router = express.Router();
@@ -5,23 +7,23 @@ const listController = require("../Controller/listController");
 
 router
     .route("/addNewMeeting")
-    .post(listController.addNewMeeting);
+    .post(checkStatus, listController.addNewMeeting);
 
 router
     .route("/getListByUser")
-    .post(listController.getListByUser);
+    .post(checkStatus, listController.getListByUser);
 
 router
     .route("/getListByID")
-    .post(listController.getListByID);
+    .post(checkStatus, listController.getListByID);
 
 router
     .route("/updateListByID")
-    .patch(listController.updateListByID);
+    .patch(checkStatus, listController.updateListByID);
 
 router
     .route("/updateFrindList")
-    .patch(listController.updateFrindList);
+    .patch(checkStatus, listController.updateFrindList);
 
 router
     .route("/testImageInsert")

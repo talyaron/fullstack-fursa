@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import './App.scss';
 import Sidebar from './view/components/Sidebar/Sidebar';
-import env from "react-dotenv";
 import storage from './FireBase';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 
