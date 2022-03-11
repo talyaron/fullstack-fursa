@@ -34,7 +34,7 @@ exports.Login = async (req, res) => {
     const { email, pass } = req.body;
 
     try {
-        const _user = await user.findOne({ email: email });
+        const _user = await user.findOne({ email: email.toLowerCase() });
         if (!_user) {
             res.send({ ok: false, message: "login failed doesn't exists!" });
         } else {

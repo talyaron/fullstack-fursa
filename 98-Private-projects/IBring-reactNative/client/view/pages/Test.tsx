@@ -1,12 +1,16 @@
 import React from 'react'
 import { StyleSheet, Text, View, Button, TouchableOpacity } from "react-native";
 import { useNavigate } from 'react-router-native';
+import { useAppDispatch } from '../../app/hooks';
+import { logout } from '../../features/userLogin/userLoginReducer';
 
 function Test() {
     const nav = useNavigate();
+    const dispatch = useAppDispatch();
 
     function onPressLearnMore() {
         console.log("Test")
+        dispatch(logout());
         nav('/login');
     }
 

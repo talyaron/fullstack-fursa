@@ -39,7 +39,7 @@ export const logintAsync = createAsyncThunk(
     'login/fetchUser',
     async (user: userIF, thunkAPI) => {
         try {
-            const response = await axios.post('/user/login', {
+            const response = await axios.post('http://localhost:3001/user/login', {
                 email: user.email?.toLowerCase(), pass: user.pass
             })
             const data = await response.data;
