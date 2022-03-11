@@ -1,24 +1,37 @@
-const express = require('express');
+import { checkStatus } from "./Controller/userController";
+
+const express = require("express");
 const app = express();
-const port = 3001;
+const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
 
-app.use(express.json())
+const userRouter = require("./Routes/userRoutes");
+const listRouter = require("./Routes/listRoutes");
 
-app.post('/login', (req, res) => {
-    console.log('/login');
-    const { email, password } = req.body;
-    try {
-        console.log(email, password);
-        res.send({ ok: true });
-    } catch (error) {
-        res.send({ ok: false });
-    }
-})
+app.use(express.static("../client/build"));
+app.use(express.json());
+app.use(cookieParser());
+// app.use(checkStatus);
 
-app.get('/', (req, res) => {
-    res.send("Hello World!");
-})
+require('dotenv').config();
 
-app.listen(port, () => {
-    console.log(`app listening on port ${port}`);
-})
+mongoose.connect(`mongodb+srv://${process.env.MONGODB_EMAIL}:${process.env.MONGODB_PASS}@cluster0.sqzq0.mongodb.net/test`, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+const db = mongoose.connection;
+
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", () => {
+  console.log("connected to DB!");
+});
+
+app.use("/user", userRouter);
+app.use("/meeting", listRouter);
+
+app.get("/", (req, res) => {
+  res.send("hello world!");
+});
+
+const port = process.env.PORT || 3001;
+app.listen(port, () => console.log(`Server running on port ${port} 🔥`));

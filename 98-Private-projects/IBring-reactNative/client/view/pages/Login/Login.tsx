@@ -8,7 +8,7 @@ const Login = () => {
 
     async function handleLogin() {
         console.log(email, password);
-        const response = await axios.post('http://localhost:3001/login', { email: email, password: password });
+        const response = await axios.post('http://localhost:3001/user/login', { email: email, password: password });
         console.log(response.data);
     }
 
