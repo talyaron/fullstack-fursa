@@ -16,7 +16,6 @@ export default function Recipes() {
     const myRecipe = useAppSelector(state => state.myRecipes);
 
     useEffect(() => {
-        console.log(myRecipes)
         if(myRecipe.status === 'failed')
             navigate('/');
          
@@ -46,7 +45,7 @@ export default function Recipes() {
         // dispatch(updateFrom('myRecipe'));
         // dispatch(updateNew(true));
     }
-
+    console.log(myRecipe.myRecipes)
     return (
         <div className="recipes">
             <h2 className='title1'>Recipes</h2>
@@ -59,7 +58,8 @@ export default function Recipes() {
             </div>
 
             {myRecipe.myRecipes.map((recipe:any, index:number) => {
-                return(<div key={index} className="item">
+                return(
+                    <div key={index} className="item">
                         <Link to='/RecipeInfo'>
                             <div className='itemImg' onClick={() => imageClick(recipe)}><img src={recipe.image} alt=""/></div>
                         </Link>

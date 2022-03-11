@@ -19,11 +19,11 @@ export const getMyRecipesAsync = createAsyncThunk(
         try {
             const response = await axios.get('/userRecipes/get-user-recipes');
             const data = response.data;
-            console.log(data)
             if(data.ok)
                 return data.recipes;
             else return thunkAPI.rejectWithValue("failed")
         } catch (error:any) {
+            console.log(error)
             thunkAPI.rejectWithValue(error.response.data);
         }
     }
@@ -48,6 +48,7 @@ export const myRecipesReducer = createSlice({
     extraReducers: (builder) => {
         builder
         .addCase(getMyRecipesAsync.pending, (state, action) => {
+            console.log(action.payload, 'loading')
             state.status = 'loading';
         })
         .addCase(getMyRecipesAsync.fulfilled, (state, action) => {
@@ -55,6 +56,7 @@ export const myRecipesReducer = createSlice({
             state.status = 'idle';
         })
         .addCase(getMyRecipesAsync.rejected, (state, action) => {
+            console.log(action.payload, 'failed')
             state.status = 'failed';
         })
     }
