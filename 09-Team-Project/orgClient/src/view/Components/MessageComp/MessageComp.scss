@@ -1,0 +1,28 @@
+.MessageCompContainer {
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px;
+    padding: 15px;
+    width: 90%;
+    background-color: #d1ffec ;
+
+    .messageFrom{
+        font-weight: 700;
+        .messageheader{
+            font-weight: 200;
+
+        }
+    }
+
+    .numOfUnread{
+
+        border: 1px solid black;
+        background-color: #b4ff71 ;
+        font-weight: 600;
+        border-radius: 50px;
+    }
+
+    
+}
