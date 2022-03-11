@@ -50,8 +50,12 @@ app.use('/recentRecipes', recentRoute);
 
 //user recipes
 
+const userRecipesRoute = require('./routes/userRecipesRoute');
+app.use('/userRecipes', userRecipesRoute);
+
 const userRoute = require('./routes/userRoute');
-app.use('/userRecipes', userRoute);
+app.use('/user', userRoute);
+
 
 app.listen(port, () => {
   return console.log(`Express is listening at http://localhost:${port}`);

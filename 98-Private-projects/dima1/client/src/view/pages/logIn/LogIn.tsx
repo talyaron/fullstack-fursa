@@ -6,22 +6,32 @@ import background from '../../images/background.jpg';
 import logo from '../../images/logo.jpg';
 import { useState } from 'react';
 import axios from 'axios';
+import { useAppDispatch } from '../../../app/hooks';
+import { updateUser } from '../../../app/reducers/userReducer';
 
 function LogIn() {
     let navigate = useNavigate();
+    const dispatch = useAppDispatch();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     async function handleLogIn(ev:any){
         ev.preventDefault();
-        const result = await axios.post('/userRecipes/LogIn', {email: email, password: password})
-        console.log(result);
+        const result = await axios.post('/user/LogIn', {email: email, password: password});
         const data = result.data;
         if(data.ok){
-            navigate('MainScreen');
+            dispatch(updateUser(data.user))
+            navigate(`/${data.user.name}/MainScreen`);
         }
         else{
             alert('wrong email or password')
+        }
+    }
+
+    function handleValidateEmail(ev:any){
+        const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{3})+$/;
+        if(!ev.target.value.match(mailformat)){
+            alert("You have entered an invalid email address!");
         }
     }
 
@@ -37,7 +47,8 @@ function LogIn() {
                         required
                         id="custom-css-outlined-input"
                         defaultValue=""
-                        size="small" onChange={(e) => setEmail(e.target.value)}/>
+                        size="small" onChange={(e) => setEmail(e.target.value)}
+                        onBlur={handleValidateEmail}/>
                     <br />
                     <br />
                     <CssTextField label="Password" focused

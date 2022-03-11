@@ -5,9 +5,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { selectedRecipe, updateFrom, updateRecipe, updateNew, updateSelectAsync } from '../../features/item/itemSlice';
-import { getMyRecipesAsync, myRecipes } from '../../features/myRecipes/MyRecipes';
-import { updateName } from '../../features/pgaeName/NamePage';
+import { selectedRecipe, updateFrom, updateRecipe, updateNew, updateSelectAsync } from '../../../app/reducers/itemSlice';
+import { getMyRecipesAsync, myRecipes } from '../../../app/reducers/MyRecipesSlice';
+import { updateName } from '../../../app/reducers/NamePageSlice';
 
 export default function Recipes() {
     //Redux

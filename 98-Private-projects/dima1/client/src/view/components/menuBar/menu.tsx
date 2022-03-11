@@ -10,8 +10,9 @@ import logo from '../../images/logo.jpg';
 import SideBar from '../sidebar/SideBar';
 import './menu.scss';
 
-function Bagemenu() {
+function Bagemenu(props:any) {
 
+    const { userName } = props;
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
 
@@ -34,7 +35,7 @@ function Bagemenu() {
                 </div>
                 
                 <div className='logo'>
-                    <Link to='/MainScreen'>
+                    <Link to={`/${userName}/MainScreen`}>
                         <img src={logo} alt="" />
                     </Link>
                 </div>
@@ -63,7 +64,7 @@ function Bagemenu() {
                     }}
                 >
                     <MenuItem onClick={handleClose1}>
-                        <Link to="/User"> Profile</Link>
+                        <Link to={`/${userName}`}> Profile</Link>
                     </MenuItem>
                     <MenuItem>
                         <Link to="/"> Logout</Link>

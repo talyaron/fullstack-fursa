@@ -21,9 +21,13 @@
     color: rgb(181, 115, 157);
     font-style: italic;
     width: 30%;
-    height: 90%;
+    height: fit-content;
     a{
         color: rgb(181, 115, 157);;
+    }
+
+    p{
+        font-size: 0.7em;
     }
 
     .content{

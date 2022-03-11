@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
-import { RootState } from "../../../app/store";
-import {recipeInfo} from '../../../App';
+import { RootState } from "../store";
+import {recipeInfo} from '../../App';
 
 interface recipesState{
     recentRecipes:Array<recipeInfo>;

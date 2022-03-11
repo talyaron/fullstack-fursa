@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
-import { RootState } from "../../../app/store";
-import {recipeInfo} from '../../../App';
+import { RootState } from "../store";
+import {recipeInfo} from '../../App';
 
 interface recipesState{
     myRecipes:Array<recipeInfo>;
@@ -48,7 +48,6 @@ export const myRecipesReducer = createSlice({
     extraReducers: (builder) => {
         builder
         .addCase(getMyRecipesAsync.pending, (state, action) => {
-            console.log(action.payload, 'loading')
             state.status = 'loading';
         })
         .addCase(getMyRecipesAsync.fulfilled, (state, action) => {
@@ -56,7 +55,6 @@ export const myRecipesReducer = createSlice({
             state.status = 'idle';
         })
         .addCase(getMyRecipesAsync.rejected, (state, action) => {
-            console.log(action.payload, 'failed')
             state.status = 'failed';
         })
     }
@@ -64,6 +62,6 @@ export const myRecipesReducer = createSlice({
 
 export const { addToMyRecipe, updateMyRecipe } = myRecipesReducer.actions;
 
-export const myRecipes = (state:RootState) => state.myRecipes.myRecipes;
+export const myRecipes = (state:RootState) => state.myRecipes;
 
 export default myRecipesReducer.reducer

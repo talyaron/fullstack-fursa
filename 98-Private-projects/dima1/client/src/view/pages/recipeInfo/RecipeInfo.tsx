@@ -14,8 +14,8 @@ import Tooltip from '@mui/material/Tooltip';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { getSelectAsync, selectedFrom, selectedIsNew, selectedRecipe } from '../../features/item/itemSlice';
-import { selectPage, updateName } from '../../features/pgaeName/NamePage';
+import { getSelectAsync, selectedFrom, selectedIsNew, selectedRecipe } from '../../../app/reducers/itemSlice';
+import { selectPage, updateName } from '../../../app/reducers/NamePageSlice';
 import { Text, StyleSheet } from 'react-native';
 
 const CssTextField = styled(TextField)({
@@ -42,22 +42,15 @@ const styles = StyleSheet.create({
 })
 
 export default function RecipeInfo() {
-    console.log("Hiiiii")
     const [like, setLike] = useState(0);
-    const { recipeId } = useParams();
+    const { userName ,recipeId} = useParams();
+
     //Redux toolkit
     const dispatch = useAppDispatch();
     const recipe_ = useAppSelector(selectedRecipe);
     const from_ = useAppSelector(selectedFrom);
     const isNew = useAppSelector(selectedIsNew);
     const pageName = useAppSelector(selectPage);
-
-    if(recipe_._id === recipeId){
-        console.log("True");
-    }
-    else{
-        console.log("False")
-    }
 
     useEffect(() => {
         dispatch(getSelectAsync());
@@ -68,31 +61,13 @@ export default function RecipeInfo() {
     }
 
     function handleTo(){
-        dispatch(updateName('/RecipeInfo'));
-    }
-
-    //json db
-    // useEffect(() => {
-    //     axios.get('http://localhost:3004/selected/1').then(res => {
-    //         //console.log(res.data);
-    //         const data = res.data.recipe;
-    //         const f = res.data.from;
-    //         setRecipe(data);
-    //         setFrom(f);
-    //     });
-
-    //     axios.delete('http://localhost:3004/selected/1');
-    // }, []);
-
-    // const editClick = (recipe:any) => {
-    //     console.log(isNew);
-    //     axios.post('http://localhost:3004/edit', {recipe: recipe, new: false, from: from_});
-    // } 
+        dispatch(updateName(`/${userName}/RecipeInfo`));
+    } 
 
     return (
         <div className='info'>
             <div className='menu'>
-                <Bagemenu />
+                <Bagemenu userName={userName}/>
             </div>
             <div className="content">
                 <img className='image' src={background} />
@@ -103,10 +78,9 @@ export default function RecipeInfo() {
                     <div className='box'>
                         <div className="edit">
                             <Tooltip title='edit recipe'>
-                                <Link to='/NewRecipe'>
+                                <Link to={`/${userName}/NewRecipe`}>
                                     <AutoAwesomeIcon sx={{
-                                        color: '#b5739d', fontSize: 35}} 
-                                        /*onClick={() => editRecipe(recipe_)*/ />
+                                        color: '#b5739d', fontSize: 35}} />
                                 </Link>
                             </Tooltip>
                         </div>
@@ -153,28 +127,6 @@ export default function RecipeInfo() {
                                 {recipe_.method}
                             </Text>
                         </div>
-                        {/* <div className='info2'>
-                            <CssTextField className='ingredients'
-                                focused
-                                id="custom-css-outlined-input"
-                                label="Recipe's ingredients"
-                                placeholder="Write your recipe ingredients here"
-                                multiline
-                                rows={10}
-                                value={recipe_.ingredients}
-                            //maxRows={50}
-                            />
-                            <CssTextField className='steps'
-                                focused
-                                id="custom-css-outlined-input"
-                                label="The Method"
-                                placeholder="Write here the steps for preparing the recipe"
-                                multiline
-                                rows={10}
-                                value={recipe_.method}
-                            //maxRows={50}
-                            />
-                        </div> */}
                     </div>
                 </div>
             </div>
