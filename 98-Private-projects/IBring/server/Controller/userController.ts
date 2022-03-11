@@ -20,6 +20,15 @@ export function checkStatus(req, res, next) {
     }
 }
 
+exports.LogOut = async (req, res) => {
+    try {
+        res.clearCookie("userInfo");
+        res.send({ ok: true, message: "logout succesfully!" });
+    } catch (error) {
+        res.send({ ok: false, message: "logout failed!" });
+    }
+}
+
 exports.Login = async (req, res) => {
     console.log("login!");
     const { email, pass } = req.body;

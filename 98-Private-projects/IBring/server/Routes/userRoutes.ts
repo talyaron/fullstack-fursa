@@ -21,5 +21,8 @@ router
     .route("/sendInvitation")
     .post(checkStatus, userController.sendInvitation);
 
+router
+    .route("/logout")
+    .get(checkStatus, userController.LogOut);
 
 module.exports = router;

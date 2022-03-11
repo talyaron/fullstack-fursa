@@ -76,6 +76,7 @@ export const loginReducer = createSlice({
             state.value = {
                 email: ""
             };
+            axios.get('/user/logout');
         },
     },
     extraReducers: (builder) => {
@@ -94,7 +95,7 @@ export const loginReducer = createSlice({
 });
 
 
-export const {logout} = loginReducer.actions;
+export const { logout } = loginReducer.actions;
 
 export const userInfo = (state: RootState) => state.logged;
 
