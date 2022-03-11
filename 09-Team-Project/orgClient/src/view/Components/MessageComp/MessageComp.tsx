@@ -2,8 +2,15 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import './MessageComp.scss'
 
-const MessageComp = (props: any) => {
-    const { accident } = props;
+interface Mssage {
+    sender: string;
+    lastMessage: string;
+    unreadnumber: number;
+
+}
+
+const MessageComp = (props: Mssage) => {
+    const { sender,lastMessage ,unreadnumber} = props;
 
     const nav = useNavigate();
 
@@ -14,10 +21,10 @@ const MessageComp = (props: any) => {
 
 
         <div className='MessageCompContainer' onClick={handleComp}>
-            <div className="messageFrom">Message From:
-                <div className="messageheader">header</div>
+            <div className="messageFrom">{sender}
+                <div className="messageheader">{lastMessage}</div>
             </div>
-            <div className="numOfUnread">9</div>
+            <div className="numOfUnread">{unreadnumber}</div>
 
 
         </div>
