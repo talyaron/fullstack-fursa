@@ -26,6 +26,7 @@ function Register() {
             await axios.post('/user/signUp', {
                 email: email.toLowerCase(), pass: pass
             }).then(data => {
+                console.log(data.data)
                 if (data.data.ok) {
                     resolve(true);
                 } else {

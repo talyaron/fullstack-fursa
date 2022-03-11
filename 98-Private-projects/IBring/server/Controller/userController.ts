@@ -65,7 +65,7 @@ exports.SignUp = async (req, res) => {
                 console.log("user saved");
             });
 
-            const payload = { value: { email: email, id: _user._id }, status: "logged" };
+            const payload = { value: { email: email, id: userToAdd._id }, status: "logged" };
             const secret = process.env.JWT_SECRET;
 
             const token = jwt.encode(payload, secret);
