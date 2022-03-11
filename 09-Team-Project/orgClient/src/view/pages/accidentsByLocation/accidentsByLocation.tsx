@@ -40,15 +40,6 @@ function AccidenstByLocation() {
 
      </div>
 
-        {/* {accidents.map((acc, index) => {
-         
-            <div key={index}>
-            <div>{acc.type}</div>
-            <div>{acc.emergency}</div>
-            <div>{acc.date}</div>
-            <div>{acc.description}</div>
-            </div>
-        })} */}
    </div>
 
   );
