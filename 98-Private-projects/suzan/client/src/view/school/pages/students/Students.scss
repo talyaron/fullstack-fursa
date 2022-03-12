@@ -1,43 +1,48 @@
-.container {
+.studentsPageContent {
+    display: flex;
+    flex-direction: column;
+    // align-items: baseline;
 
-    .subContainer {
-        .newstudentBtn {
-            position: absolute;
-            right: 60px;
-            // margin-top: 30px;
-        }
+    .newstudentBtn {
+        position: absolute;
+        right: 60px;
+        margin-top: 6vh;
+        // margin-top: 30px;
+        // border: 1px blue solid;
 
-        .search {
-            margin: 60px;
-            margin-left: 80px;
-            // margin-top: 20vh;
-        }
-
-        .students {
-            display: flex;
-            justify-content: space-between;
-            width: 90%;
-            // border: 1px black solid;
-            margin: auto;
-            margin-top: -30px;
-
-            &__list {
-                width: 30%;
-                margin-left: 30px;
-                // border: 1px blue solid;
-            }
-
-            &__info {
-                // border: 1px red solid;
-                // margin-right: 50px;
-                // transform: scale(1.1);
-                width: 70%;
-                display: flex;
-                justify-content: center;
-
-
-            }
-        }
     }
 
+    .search {
+        margin: 60px;
+        margin-left: 80px;
+        // margin-top: 20vh;
+        // border: 1px red solid;
+    }
+
+    .students {
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        // border: 1px black solid;
+        margin: auto;
+        margin-top: -30px;
+        margin-bottom: 50px;
+
+        &__list {
+            width: 30%;
+            margin-left: 30px;
+            // border: 1px blue solid;
+        }
+
+        &__info {
+            // border: 1px red solid;
+            // margin-right: 50px;
+            // transform: scale(1.1);
+            width: 70%;
+            display: flex;
+            justify-content: center;
+
+
+        }
+    }
 }

@@ -52,12 +52,12 @@ export default function SchoolStudents() {
     const students = useAppSelector(schoolStudents);
 
     return (
-        <div className='container'>
+        <div>
             <div className='bar'>
                 <   SchoolResponsiveAppBar></SchoolResponsiveAppBar>
             </div>
 
-            <div className="subContainer">
+            <div className="studentsPageContent">
                 <Link to='/newStudent'>
                     <Button className='newstudentBtn' variant="contained" size='small' startIcon={<EditIcon />}>New Student</Button>
                 </Link>

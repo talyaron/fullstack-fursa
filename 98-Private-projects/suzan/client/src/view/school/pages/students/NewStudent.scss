@@ -1,37 +1,37 @@
-.container {
+.newStudentPageContent {
+    // border: 1px red solid;
+    margin: auto;
+    margin-top: 40px;
+    width: 50%;
 
-    .body {
-        // border: 1px red solid;
+    .instructions {
+        margin-bottom: 20px;
+    }
+
+    .newStudentCard {
+        width: 90%;
         margin: auto;
-        margin-top: 40px;
-        width: 50%;
+        margin-bottom: 5vh;
+        // margin-bottom: 70px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
 
-        .instructions{
-            margin-bottom: 20px;
+        &__content {
+            display: flex;
+            align-content: center;
+
         }
 
-        .card{
-            width: 90%;
-            margin: auto;
-            margin-bottom: 70px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-
-            &__content{
-                display: flex;
-                align-content: center;
-
-            }
-
-            .actions{
-                margin-top: 0px;
-                margin-bottom: 20px;
-                padding: 0px;
-                // border: 1px blue solid;
-            }
+        .submitBtn {
+            // margin-top: 1vh;
+            margin-bottom: 1vh;
+            padding: 0px;
+            // justify-self: center;
+            // border: 1px blue solid;
         }
     }
 
-
+    
 }

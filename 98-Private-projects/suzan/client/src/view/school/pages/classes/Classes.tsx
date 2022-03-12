@@ -36,11 +36,11 @@ export default function SchoolClasses() {
     return (
 
 
-        <div className='container'>
+        <div>
             <div className='bar'>
                 <   SchoolResponsiveAppBar></SchoolResponsiveAppBar>
             </div>
-            <div className="subContainer">
+            <div className="classesPageContent">
                 <div className="newclassBtn">
                     <Link to='/newClass'>
                         <Button variant="contained" size='small' startIcon={<EditIcon />}>

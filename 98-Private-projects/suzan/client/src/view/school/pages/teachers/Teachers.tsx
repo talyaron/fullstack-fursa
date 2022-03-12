@@ -49,12 +49,12 @@ export default function SchoolTeachers() {
     const teachers = useAppSelector(schoolTeachers);
 
     return (
-        <div className='container'>
+        <div>
             <div className='bar'>
                 <   SchoolResponsiveAppBar></SchoolResponsiveAppBar>
             </div>
 
-            <div className="subContainer">
+            <div className="teachersPageContent">
                 <Link to='/newTeacher'>
                     <Button className='newteacherBtn' variant="contained" size='small' startIcon={<EditIcon />}>New Teacher</Button>
                 </Link>

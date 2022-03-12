@@ -69,18 +69,19 @@ export default function NewStudent() {
     }
 
     return (
-        <div className="container">
+        <div>
             <div className='bar'>
                 <SchoolResponsiveAppBar></SchoolResponsiveAppBar>
             </div>
 
-            <div className="body">
+            <div className="newStudentPageContent">
                 <Typography sx={{ fontSize: 18 }} color="text.primary" gutterBottom className='instructions'>
                     Fill the student info to add him/her to the system
                 </Typography>
-                <Card sx={{ minWidth: 275 }} className='card'>
-                    <CardContent className='card__content'>
-                        <CardContent className='card__content__column'>
+
+                <Card sx={{ minWidth: 275 }} className='newStudentCard'>
+                    <CardContent className='newStudentCard__content'>
+                        <CardContent className='newStudentCard__content__column'>
                             <CardContent>
                                 <Typography sx={{ fontSize: 18 }} color="text.secondary" gutterBottom>
                                     first name:
@@ -144,7 +145,7 @@ export default function NewStudent() {
                             </CardContent>
 
                         </CardContent>
-                        <CardContent className='card__content__column'>
+                        <CardContent className='newStudentCard__content__column'>
                             <CardContent>
                                 <Typography sx={{ fontSize: 18 }} color="text.secondary" gutterBottom>
                                     last name:
@@ -197,13 +198,16 @@ export default function NewStudent() {
                     </CardContent>
 
                     {/* <CardActions className='actions'> */}
+                    <div className="submitBtn">
                         <Link to='../students'>
                             <Button variant="contained" size="large" onClick={handleSubmit}>Submit</Button>
                         </Link>
-
+                    </div>
                     {/* </CardActions> */}
 
                 </Card>
+
+
             </div>
 
 

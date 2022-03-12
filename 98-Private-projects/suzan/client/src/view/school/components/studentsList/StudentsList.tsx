@@ -16,6 +16,7 @@ interface studentsArray {
 
 export default function StudentsList(studentsArray: studentsArray) {
     const { students } = studentsArray;
+    console.log(students);
     return (
         <div>
             <List className='studentsList' dense={true}>
@@ -23,23 +24,25 @@ export default function StudentsList(studentsArray: studentsArray) {
                     students.map((student, i) => {
                         const { studentId } = student.info;
                         return (
-                            <Link to={`/students/${studentId}`}>
-                                <ListItem className='studentsList__listItem'>
-                                    <ListItemText
-                                        className='studentsList__listItem__text'
-                                        primary={student.info.firstName.concat(' ', student.info.lastName)}
-                                        secondary={
-                                            <div className='secondary'>
-                                                <div>{'id: '.concat(student.info.studentId)}</div>
-                                                <div>{'phone: '.concat(student.info.phone)}</div>
-                                            </div>
-                                        }
-                                    />
-                                    <ListItemIcon className='studentsList__listItem__icon'>
-                                        <ArrowCircleRightOutlinedIcon fontSize='large' sx={{ color: 'black' }} />
-                                    </ListItemIcon>
-                                </ListItem>
-                            </Link>
+                            <div key={i}>
+                                <Link to={`/students/${studentId}`}>
+                                    <ListItem className='studentsList__listItem'>
+                                        <ListItemText
+                                            className='studentsList__listItem__text'
+                                            primary={student.info.firstName.concat(' ', student.info.lastName)}
+                                            secondary={
+                                                <div className='secondary'>
+                                                    <div>{'id: '.concat(student.info.studentId)}</div>
+                                                    <div>{'phone: '.concat(student.info.phone)}</div>
+                                                </div>
+                                            }
+                                        />
+                                        <ListItemIcon className='studentsList__listItem__icon'>
+                                            <ArrowCircleRightOutlinedIcon fontSize='large' sx={{ color: 'black' }} />
+                                        </ListItemIcon>
+                                    </ListItem>
+                                </Link>
+                            </div>
 
                         );
                     })

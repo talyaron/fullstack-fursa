@@ -1,26 +1,24 @@
-.container {
-    .subContainer {
-        // margin-top: 100px;
-        // border: 0.5px black solid;
-        display: flex;
-        flex-direction: column;
+.classesPageContent {
+    // margin-top: 100px;
+    // border: 0.5px black solid;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
 
-        .newclassBtn {
-            position: fixed;
-            right: 60px;
-            margin-top: 30px;
-            // margin-bottom: 10px;
-        }
-
-        .classesContainer {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            width: 80%;
-            margin: auto;
-            margin-top: 10vh;
-            // bor  der: 1px red solid;
-        }
+    .newclassBtn {
+        position: absolute;
+        right: 8vw;
+        // border: 1px red solid;
+        margin-top: 6vh;
     }
 
+    .classesContainer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 80%;
+        margin: auto;
+        margin-top: 15vh;
+        // bor  der: 1px red solid;
+    }
 }

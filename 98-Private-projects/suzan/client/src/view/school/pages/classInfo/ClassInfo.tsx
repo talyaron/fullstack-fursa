@@ -19,7 +19,7 @@ export default function ClassInfo() {
     }
 
     return (
-        <div className="container">
+        <div>
 
             <div className="bar">
                 <SchoolResponsiveAppBar></SchoolResponsiveAppBar>

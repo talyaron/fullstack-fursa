@@ -49,18 +49,18 @@ export default function NewTeacher() {
     }
 
     return (
-        <div className="container">
+        <div>
             <div className='bar'>
                 <SchoolResponsiveAppBar></SchoolResponsiveAppBar>
             </div>
 
-            <div className="body">
+            <div className="newTeacherPageContent">
                 <Typography sx={{ fontSize: 18 }} color="text.primary" gutterBottom className='instructions'>
                     Fill the teacher info to add him/her to the system
                 </Typography>
-                <Card sx={{ minWidth: 275 }} className='card'>
-                    <CardContent className='card__content'>
-                        <CardContent className='card__content__column'>
+                <Card sx={{ minWidth: 275 }} className='newTeacherCard'>
+                    <CardContent className='newTeacherCard__content'>
+                        <CardContent className='newTeacherCard__content__column'>
                             <CardContent>
                                 <Typography sx={{ fontSize: 18 }} color="text.secondary" gutterBottom>
                                     first name:
@@ -100,7 +100,7 @@ export default function NewTeacher() {
                             </CardContent>
 
                         </CardContent>
-                        <CardContent className='card__content__column'>
+                        <CardContent className='newTeacherCard__content__column'>
                             <CardContent>
                                 <Typography sx={{ fontSize: 18 }} color="text.secondary" gutterBottom>
                                     last name:
@@ -129,9 +129,12 @@ export default function NewTeacher() {
                     </CardContent>
 
                     {/* <CardActions className='actions'> */}
-                    <Link to='../teachers'>
-                        <Button variant="contained" size="large" onClick={handleSubmit}>Submit</Button>
-                    </Link>
+                    <div className="submitBtn">
+                        <Link to='../teachers'>
+                            <Button variant="contained" size="large" onClick={handleSubmit}>Submit</Button>
+                        </Link>
+                    </div>
+
 
                     {/* </CardActions> */}
 

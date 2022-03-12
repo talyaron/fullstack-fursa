@@ -1,27 +1,35 @@
-.container{
-    .subContainer{
-        .createClassBtn{
+.newClassPageContent {
+    display: flex;
+    flex-direction: column;
+
+    .createClassBtn {
         position: absolute;
         right: 60px;
         margin-top: 30px;
+        // border: 1px red solid;
     }
 
-    .newClass{
-        margin: 60px;
+    .newClass {
+        // margin: 60px;
+        width: 80%;
+        margin: auto;
+        margin-top: 10vh;
         // border: 1px black solid;
 
-        &__section{
+        &__instruction {
+            margin-left: 10vw;
+            margin-bottom: 3vw;
+        }
+
+        &__section {
             display: flex;
             align-content: center;
             align-items: center;
             margin-top: 20px;
 
-            .inputField{
+            .inputField {
                 margin-left: 70px;
             }
         }
     }
-    }
-
-    
 }

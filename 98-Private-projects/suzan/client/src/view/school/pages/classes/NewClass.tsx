@@ -68,13 +68,13 @@ export default function NewClass() {
     }
 
     return (
-        <div className='container'>
+        <div>
 
             <div className="bar">
                 <SchoolResponsiveAppBar></SchoolResponsiveAppBar>
             </div>
 
-            <div className="subContainer">
+            <div className="newClassPageContent">
                 <Link to='../classes'>
                     <Button className='createClassBtn' variant="contained" size='small' onClick={addNewClass}>
                         Submit
@@ -83,6 +83,11 @@ export default function NewClass() {
 
 
                 <div className="newClass">
+                    <div className='newClass__instruction'>
+                        <Typography sx={{ fontSize: 20 }} color="text.primary" gutterBottom>
+                            Fill in the new class info to add it to your system...
+                        </Typography>
+                    </div>
                     <div className="newClass__section">
                         <Typography sx={{ fontSize: 18 }} color="text.primary" gutterBottom>
                             Class name:

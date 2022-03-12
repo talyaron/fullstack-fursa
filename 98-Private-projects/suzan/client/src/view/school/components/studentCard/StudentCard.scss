@@ -2,12 +2,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transform: scale(1.3);
+    width: 65%;
+    height: fit-content;
+    // margin: auto;
 
     // border: 1px blue solid;
 
     .content{
-        font-size: small;
+        font-size: medium;
         display: flex;
         justify-content: center;
         flex-direction: column;
