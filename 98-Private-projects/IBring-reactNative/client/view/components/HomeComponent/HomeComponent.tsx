@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { useNavigate } from 'react-router-native';
 
@@ -16,7 +16,7 @@ const HomeComponent = (props: any) => {
     }
 
     return (
-        <View style={styles.listContainer} onTouchEnd={handleClick}>
+        <TouchableOpacity style={styles.listContainer} onPress={handleClick}>
             <Image source={{
                 uri: `${findList.meetingDetails.imgURL}`,
             }} style={{ width: 50, height: 50 }} />
@@ -25,7 +25,7 @@ const HomeComponent = (props: any) => {
             <Text>{date}</Text>
             <Text>{place}</Text>
             <Text>{time}</Text>
-        </View>
+        </TouchableOpacity>
     )
 }
 
@@ -41,5 +41,7 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         gap: 5,
         borderColor: "grey",
+        minWidth: "80%",
+        maxWidth: 500,
     }
 })

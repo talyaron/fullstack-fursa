@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { curListAsync } from '../../../features/curListSelector/curListReducer';
@@ -99,6 +99,7 @@ const List = () => {
                     </View>
 
 
+
                     {curList.list.bringItems?.map((elem: any, index: number) => {
                         return (
                             <View key={index}>
@@ -118,6 +119,10 @@ const List = () => {
                     })}
                 </View> :
                 null}
+
+            <TouchableOpacity onPress={() => nav('/home')}>
+                <Text style={{ color: "red" }}>go to home page</Text>
+            </TouchableOpacity>
         </View>
     )
 }

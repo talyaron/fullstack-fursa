@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Button, SafeAreaView, SafeAreaViewBase, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 // import homeLogo from '../../logoAndPhotos/homeLogo.jpg';
 // import settings from '../../logoAndPhotos/settings.jpg';
@@ -36,23 +36,47 @@ const Home = () => {
 
 
     return (
-        <View>
-            <Text>Home</Text>
+        <View style={styles.homeContainer}>
             <View>
-                {allLists.status === 'loading' ? <Text>Loading</Text> :
+                <Text>Home</Text>
+                <SafeAreaView>
+                    <ScrollView>
+                        {allLists.status === 'loading' ? <Text>Loading</Text> :
 
-                    allLists.lists.map((elem: any, index) => {
-                        return (
-                            <HomeComponent key={index} id={elem._id} findList={elem} upcoming info={
-                                { name: elem.meetingDetails.groupName, date: elem.meetingDetails.date, time: elem.meetingDetails.time, place: elem.meetingDetails.place, bringList: elem.bringItems }} />
-                        );
-                    })
-                }
+                            allLists.lists.map((elem: any, index) => {
+                                return (
+                                    <HomeComponent key={index} id={elem._id} findList={elem} upcoming info={
+                                        { name: elem.meetingDetails.groupName, date: elem.meetingDetails.date, time: elem.meetingDetails.time, place: elem.meetingDetails.place, bringList: elem.bringItems }} />
+                                );
+                            })
+                        }
+                    </ScrollView>
+                </SafeAreaView>
             </View>
+            <TouchableOpacity style={styles.newList} onPress={() => { console.log("clicked!") }}>
+                <Text style={{ color: "white" }}>new list</Text>
+            </TouchableOpacity>
         </View>
     )
 }
 
 export default Home
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    newList: {
+        // display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#7065F2",
+        width: 100,
+        height: 100,
+        borderRadius: 50,
+        position: 'absolute',
+        bottom: 40,
+    },
+    homeContainer: {
+        display: "flex",
+        height: "100%",
+        alignItems: "center",
+    }
+})
