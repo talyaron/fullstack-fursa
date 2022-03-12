@@ -12,6 +12,7 @@ require("dotenv").config();
 
 //static files
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.static("client/build"));
 
 //data

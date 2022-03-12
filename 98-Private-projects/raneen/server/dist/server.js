@@ -17,6 +17,7 @@ require("dotenv").config();
 //routes for data
 //static files
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.static("client/build"));
 //data
 app.get("/get-all-users", (req, res) => {
