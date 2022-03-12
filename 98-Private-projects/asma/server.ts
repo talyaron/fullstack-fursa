@@ -60,6 +60,9 @@ app.use('/appointments', appointmentsRoutes);
 const treatmentsRoutes = require('./routes/treatmentsRoutes')
 app.use('/treatments', treatmentsRoutes);
 
+const productsRoutes = require('./routes/productsRoutes')
+app.use('/products', productsRoutes);
+
 
 app.listen(port, () => {
   return console.log(`Express is listening at http://localhost:${port}`);
