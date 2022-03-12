@@ -13,13 +13,13 @@ const courses = [
 
 export default function Courses() {
     return (
-        <div className="container">
+        <div>
 
             <div className="bar">
                 <TeacherResponsiveAppBar />
             </div>
 
-            <div className="coursesContainer">
+            <div className="teacherCoursesPageContent">
                 <Divider className='divider'>
                     <Typography variant='h5' align='center'>MY COURSES</Typography>
                 </Divider>

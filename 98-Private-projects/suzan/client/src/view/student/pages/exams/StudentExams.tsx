@@ -51,53 +51,49 @@ export default function StudentExams() {
                 <StudentResponsiveAppBar></StudentResponsiveAppBar>
             </div>
 
-            <div className="subContainer">
+            <div className="studentExamsPageContent">
+                <div className="calendar">
+                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                        <DesktopDatePicker
+                            inputFormat="MM/dd/yyyy"
+                            value={selectedDate}
+                            onChange={handleChange}
+                            renderInput={(params) => <TextField {...params} />}
+                        />
+                    </LocalizationProvider>
+                </div>
 
+                <div className="examsTable">
+                    <TableContainer component={Paper}>
+                        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell align="center">Course</TableCell>
+                                    <TableCell align="center">description</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {
+                                    exams.map((exam, i) => {
+                                        const { course, examMaterial } = exam;
+                                        return (
+                                            <TableRow
+                                                key={i}
+                                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                            >
+                                                <TableCell align="center">{course}</TableCell>
+                                                <TableCell align="center">{examMaterial}</TableCell>
+                                            </TableRow>
+                                        );
+                                    })
 
-
-                <div className="calendarAndExams">
-                    <div className="calendar">
-                        <LocalizationProvider dateAdapter={AdapterDateFns}>
-                            <DesktopDatePicker
-                                inputFormat="MM/dd/yyyy"
-                                value={selectedDate}
-                                onChange={handleChange}
-                                renderInput={(params) => <TextField {...params} />}
-                            />
-                        </LocalizationProvider>
-                    </div>
-
-                    <div className="examsTable">
-                        <TableContainer component={Paper}>
-                            <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell align="center">Course</TableCell>
-                                        <TableCell align="center">description</TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {
-                                        exams.map((exam, i) => {
-                                            const {course, examMaterial} = exam;
-                                            return (
-                                                <TableRow
-                                                    key={i}
-                                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                                >
-                                                    <TableCell align="center">{course}</TableCell>
-                                                    <TableCell align="center">{examMaterial}</TableCell>
-                                                </TableRow>
-                                            );
-                                        })
-
-                                    }
-                                </TableBody>
-                            </Table>
-                        </TableContainer>
-                    </div>
+                                }
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
                 </div>
             </div>
+
 
         </div>
     );

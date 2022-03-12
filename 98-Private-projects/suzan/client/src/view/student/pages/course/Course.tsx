@@ -42,7 +42,7 @@ export default function StudentCourse() {
                 <StudentResponsiveAppBar></StudentResponsiveAppBar>
             </div>
 
-            <div className="subContainer">
+            <div className="studentCoursePageContent">
 
 
 

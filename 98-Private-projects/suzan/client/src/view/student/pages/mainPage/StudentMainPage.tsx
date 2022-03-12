@@ -39,7 +39,7 @@ export default function StudentMainPage() {
                 <StudentResponsiveAppBar />
             </div>
 
-            <div className="subContainer">
+            <div className="studentClassPageContent">
                 <div className="title">
                     <Typography variant='h3' align='center'>{class_name}</Typography>
                 </div>

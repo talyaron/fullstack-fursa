@@ -35,7 +35,7 @@ export default function StudentHomeworks() {
                 <StudentResponsiveAppBar></StudentResponsiveAppBar>
             </div>
 
-            <div className="subContainer">
+            <div className="studentHomeworksPageContent">
 
 
                 <div className="homeworksTable">

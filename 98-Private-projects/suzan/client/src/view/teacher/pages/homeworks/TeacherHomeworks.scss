@@ -1,9 +1,13 @@
-.homeworksTable{
-    width: 80%;
-    margin: auto;
-    margin-top: 20vh;
+.teacherHomeworksPageContent {
+    margin-top: 5vh;
 
-    .divider{
-        margin-bottom: 10px;
+    .homeworksTable {
+        width: 80%;
+        margin: auto;
+        margin-top: 10vh;
+
+        .divider {
+            margin-bottom: 10px;
+        }
     }
 }

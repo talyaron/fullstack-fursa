@@ -62,7 +62,7 @@ export default function Course() {
                 <CourseResponsiveAppBar></CourseResponsiveAppBar>
             </div>
 
-            <div className="subContainer">
+            <div className="teacherCoursePageContent">
 
                 <div className="title">
                     <Typography variant='h3' align='center'>{courseName}</Typography>

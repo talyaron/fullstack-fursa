@@ -43,7 +43,7 @@ export default function TeacherExams() {
                 <CourseResponsiveAppBar></CourseResponsiveAppBar>
             </div>
 
-            <div className="calendarAndExams">
+            <div className="teacherExamsPageContent">
                 <div className="calendar">
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DesktopDatePicker
