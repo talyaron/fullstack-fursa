@@ -17,11 +17,14 @@ import Checkbox from '@mui/material/Checkbox';
 import Select from '@mui/material/Select';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
+import MenuIcon from '@mui/icons-material/Menu';
+import MenuNav from '@mui/material/Menu';
 import User from '../user/user'
 import Alert from '@mui/material/Alert'
 import Snackbar from '@mui/material/Snackbar'
 import { useAppSelector, useAppDispatch } from '../../../app/hooks';
 import { checkUser, getUserInfoAsync, signUpUser, checkType } from '../../../app/reducers/userReducer'
+import IconButton from '@mui/material/IconButton'
 
 
 
@@ -32,6 +35,7 @@ function Menu() {
     const [modalSignInsOpen, setSignINModal] = useState(false);
     const [modalSignUpModal, setSignUpModal] = useState(false);
     const [navbarindex, setNavbarindex] = useState(1);
+    const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [loginState, setLoginState] = useState({})
     const [sigupState, setSigupnState] = useState({})
     const [openAlert, setOpenAlert] = React.useState(false);
@@ -62,6 +66,12 @@ function Menu() {
         })
 
     }
+    const handleOpenNavMenu = (event: any) => {
+        setAnchorElNav(event.currentTarget);
+    };
+    const handleCloseNavMenu = () => {
+        setAnchorElNav(null);
+    };
 
     function handleLogin(e: any) {
         e.preventDefault();
@@ -98,7 +108,56 @@ function Menu() {
             <div className="navbar__box">
                 <div className="navbar__left">
                     <div className="navbar__bar">
-                        <FontAwesomeIcon icon={faBars} />
+                        <IconButton
+                            size="large"
+                            aria-label="account of current user"
+                            aria-controls="menu-appbar"
+                            aria-haspopup="true"
+                            onClick={handleOpenNavMenu}
+                            color="inherit"
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                        <MenuNav
+                            id="menu-appbar"
+                            disableScrollLock={true}
+                            anchorEl={anchorElNav}
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'left',
+                            }}
+                            keepMounted
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'left',
+                            }}
+                            open={Boolean(anchorElNav)}
+                            onClose={handleCloseNavMenu}
+                            sx={{
+                                display: { xs: 'block', md: 'none' },
+                            }}
+                        >
+                            < Link to="/"><MenuItem>
+                                Explore
+                            </MenuItem></Link>
+                            {isLoggedIn ?
+                                <>
+                                    < Link to="/Reservations"><MenuItem>
+                                        Reservations
+                                    </MenuItem></Link>
+                                    < Link to="/Favorite"><MenuItem>
+                                        Favorite
+                                    </MenuItem></Link>
+                                    < Link to="/Maps"><MenuItem>
+                                        Maps
+                                    </MenuItem></Link> </> : <><MenuItem onClick={() => { openSignUpModal(true); setAnchorElNav(null) }}>
+                                        SignUp
+                                    </MenuItem>
+                                    <MenuItem onClick={() => { openSignInModal(true); setAnchorElNav(null) }}>
+                                        LogIn
+                                    </MenuItem>
+                                </>}
+                        </MenuNav>
                     </div>
                     <div className="navbar__left__logo">
                         <img src={logo} alt="Logo" />
