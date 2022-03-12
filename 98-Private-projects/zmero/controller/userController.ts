@@ -9,7 +9,6 @@ export function isAdmin(req, res, next) {
             const JWT_SECRET = process.env.JWT_SECRET;
             const decodedJWT = jwt.decode(user, JWT_SECRET);
             const { role, userId } = decodedJWT;
-            console.log(role)
             if (role === "admin") {
                 req.userId = userId;
                 req.role = role;

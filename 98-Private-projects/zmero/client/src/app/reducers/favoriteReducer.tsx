@@ -5,7 +5,7 @@ import axios from 'axios'
 
 interface Favorite {
     restId: string;
-    userId: string;
+    _id: string;
 }
 interface Favorites {
     arrOfFavorite: Array<Favorite>;
@@ -35,7 +35,9 @@ export const addFavorite = createAsyncThunk(
     'favorite/addFavorite',
     async (obj: any | undefined, thunkAPI) => {
         try {
-            const response = await axios.post('/favorites/add-user-favorite', { 'restId': obj.restId })
+            const { restId } = obj;
+            if (!restId) throw "invalid field"
+            const response = await axios.post('/favorites/add-user-favorite', { 'restId': restId })
             const data: any = response.data
             return data
         } catch (e) {

@@ -8,6 +8,7 @@ interface userProb {
         lName: string;
         email: string;
         type: string;
+        region: string;
     };
     userIsLogIn: boolean;
     status: 'idle' | 'loading' | 'failed';
@@ -19,6 +20,7 @@ const initialState: userProb = {
         lName: " ",
         email: "",
         type: "",
+        region: "Israel",
     },
     userIsLogIn: false,
     status: 'idle',
@@ -28,7 +30,9 @@ export const getUserInfoAsync = createAsyncThunk(
     'user/GetUserInfo',
     async (user: any, thunkAPI) => {
         try {
-            const response = await axios.get('/users/get-user', { params: user })
+            const { email, password } = user
+            if (!email || !password) throw 'invalid fields'
+            const response = await axios.get('/users/get-user', { params: { "email": email, "password": password } })
             const data: any = response.data
             return data
         } catch (e) {
@@ -55,6 +59,8 @@ export const signUpUser = createAsyncThunk(
     'user/signUpUser',
     async (user: any, thunkAPI) => {
         try {
+            const { fName, lName, email, phone, region, password } = user
+            if (!fName || !lName || !email || !phone || !region || !password) throw "invalid fields"
             const response = await axios.post('/users/sign-up', user)
             const data: any = response.data
             return data
@@ -69,6 +75,8 @@ export const signUpRestaurateur = createAsyncThunk(
     'user/signUpRestaurateur',
     async (user: any, thunkAPI) => {
         try {
+            const { fName, lName, email, password, phone } = user;
+            if (!fName || !lName || !email || !password || !phone) throw 'invalid fields'
             const response = await axios.post('/users/add-restaurateur', user)
             const data: any = response.data
             return data

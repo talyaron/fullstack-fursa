@@ -14,6 +14,7 @@ interface cardProp {
     month: number;
     day: number;
     restId: string;
+    people: number;
 }
 
 function ReservationCard(props: cardProp) {
@@ -25,7 +26,6 @@ function ReservationCard(props: cardProp) {
     })
     function CancelReserve(e: any) {
         e.preventDefault();
-        console.log("ok")
         dispatch(cancelReservations({ "id": props.id, "restId": props.restId }))
     }
     let img = "";

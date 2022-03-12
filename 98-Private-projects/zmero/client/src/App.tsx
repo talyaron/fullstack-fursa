@@ -14,14 +14,16 @@ import Admin from './view/pages/admin/admin'
 import Restaurateur from './view/pages/restaurateur/restaurateur'
 import AddRestaurant from './view/pages/addRestaurant/addRestaurant'
 import AddRestaurateur from './view/pages/addRestaurateur/addRestaurateur'
-import axios from 'axios';
 import { useAppDispatch } from './app/hooks'
 import { getAuthentication } from './app/reducers/userReducer'
 
 function App() {
   const dispatch = useAppDispatch()
   useEffect(() => {
-    dispatch(getAuthentication())
+    async function fetchMyAuth() {
+      await dispatch(getAuthentication())
+    }
+    fetchMyAuth()
   }, [])
   return (
     <BrowserRouter>

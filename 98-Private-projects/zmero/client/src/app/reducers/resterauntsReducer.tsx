@@ -54,7 +54,8 @@ export const fetchFamousRestaurants = createAsyncThunk(
     'fetchFamousRestaurants',
     async (region: string) => {
         try {
-            const response = await axios.get('/restaurants/get-all-restaurants')
+            if (!region) throw "invalid field"
+            const response = await axios.post('/restaurants/get-famous-restaurants', { "region": region })
             const data: any = response.data
             const { resteraunt } = data;
             return resteraunt.filter((rest: Restaurant) => {

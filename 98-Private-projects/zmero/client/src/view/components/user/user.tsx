@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './user.scss'
 import Menu from '@mui/material/Menu';
 import Avatar from '@mui/material/Avatar';
@@ -18,6 +18,7 @@ import { useAppSelector, useAppDispatch } from '../../../app/hooks';
 
 function User() {
     const dispatch = useAppDispatch()
+    const navigate = useNavigate()
     const [anchorEl, setAnchorEl] = React.useState(null);
     const userName = useAppSelector(selecUserName)
     const open = Boolean(anchorEl);
@@ -28,8 +29,9 @@ function User() {
     const handleClose = () => {
         setAnchorEl(null);
     };
-    const handleLogOut = () => {
-        dispatch(logOutUser())
+    const handleLogOut = async () => {
+        await dispatch(logOutUser())
+        navigate("/");
     }
     function stringToColor(string: string) {
         let hash = 0;

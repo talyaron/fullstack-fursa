@@ -17,16 +17,13 @@ function FavoriteCard(props: cardProp) {
         if (rest.id == props.restId)
             return rest
     })
-    let img = "";
+    let img = ""
     let title = ""
     let city = ""
     if (restaurant.length != 0) {
         img = restaurant[0].image;
         title = restaurant[0].name;
         city = restaurant[0].city;
-    }
-    function openReserve() {
-
     }
     return (
         <Link to={`/${props.restId}`}>
@@ -40,7 +37,7 @@ function FavoriteCard(props: cardProp) {
                         <span>{city}</span>
                     </div>
                     <div className="restaurantCard__reserve">
-                        <Button style={{ backgroundColor: '#2a945b', width: '60%', padding: '0.1rem 0.1rem', whiteSpace: "nowrap" }} variant="contained" onClick={openReserve}>Reserve Now</Button>
+                        <Button style={{ backgroundColor: '#2a945b', width: '60%', padding: '0.1rem 0.1rem', whiteSpace: "nowrap" }} variant="contained" >Reserve Now</Button>
                     </div>
                 </div>
                 <ReserveModal restaurantID={props.restId} openModal={openModal} setOpenModal={setOpenModal} />

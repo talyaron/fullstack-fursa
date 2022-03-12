@@ -1,6 +1,7 @@
 import { RootState, AppThunk } from '../store';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios'
+import { faPeopleCarry } from '@fortawesome/free-solid-svg-icons';
 
 interface Reservation {
     _id: string;
@@ -11,6 +12,7 @@ interface Reservation {
     day: number;
     restId: string;
     userId: string;
+    people: number;
 }
 
 
@@ -35,7 +37,6 @@ export const fetchUserReservations = createAsyncThunk(
         } catch (e) {
             thunkAPI.rejectWithValue(e)
         }
-
     }
 );
 
@@ -59,7 +60,9 @@ export const AddReservation = createAsyncThunk(
     'reservation/AddReservation',
     async (Reserve: any, thunkAPI) => {
         try {
-            const response = await axios.post(`/reservations/add-user-reservation`, Reserve)
+            const { restId, hour, year, min, day, month, people } = Reserve
+            if (!restId || !hour || !year || !min || !day || !month || !people) throw "invalid fields"
+            const response = await axios.post(`/reservations/add-user-reservation`, { "restId": restId, "hour": hour, "year": year, "min": min, "day": day, "month": month, "people": people })
             const data: any = response.data
             return data
         } catch (e) {

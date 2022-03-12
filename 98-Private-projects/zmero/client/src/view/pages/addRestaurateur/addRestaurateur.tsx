@@ -5,16 +5,25 @@ import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import Select from '@mui/material/Select'
 import TextField from '@mui/material/TextField'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Menu from '../../components/menu/menu'
 import { faAddressBook } from "@fortawesome/free-regular-svg-icons"
 import { signUpRestaurateur } from '../../../app/reducers/userReducer'
 import './addRestaurateur.scss'
-import { useAppDispatch } from '../../../app/hooks'
+import { useAppDispatch, useAppSelector } from '../../../app/hooks'
+import { checkUser } from '../../../app/reducers/userReducer'
+import { useNavigate } from 'react-router-dom'
+
 
 function AddRestaurateur() {
     const [sigupState, setSigupnState] = useState({})
+    const ifUserLogIn = useAppSelector(checkUser)
+    const navigate = useNavigate()
     const dispatch = useAppDispatch()
+    useEffect(() => {
+        if (ifUserLogIn == false)
+            navigate('/')
+    }, []);
     function onChangeSignup(e: any) {
         setSigupnState({
             ...sigupState,
