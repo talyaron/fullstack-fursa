@@ -32,9 +32,10 @@ const initialState: User = {
   }
 
   export const fetchUser = createAsyncThunk(
-    'user/fetshUsers',
+    'user/fetchUsers',
     async (obj:any ) => {
       const {email,password}=obj;
+      console.log(obj  )
       try {
         const response = await axios.post('/user/get-user',{email:email,password:password})
         const data = response.data
@@ -62,6 +63,7 @@ const initialState: User = {
         .addCase(fetchUser.fulfilled, (state, action) => {
           state.status = 'idle';
           state.userInfo = action.payload;
+         
         })
         
     }

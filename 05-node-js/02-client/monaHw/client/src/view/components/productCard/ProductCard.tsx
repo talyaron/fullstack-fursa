@@ -4,7 +4,6 @@ import{Link} from 'react-router-dom'
 export interface ProductCardProp {
    
     product:{
-        id:number,
         name: string,
         imgurl:string,
        
@@ -13,7 +12,7 @@ export interface ProductCardProp {
   }
 function ProductCard(props:ProductCardProp)
 { 
-    const {name,imgurl,id}=props.product;
+    const {name,imgurl}=props.product;
    
     return(
         <div className="proCard">

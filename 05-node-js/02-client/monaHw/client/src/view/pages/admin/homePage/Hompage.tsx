@@ -35,7 +35,14 @@ import { getRawAsync } from '../../../../features/raw/Raw';
     {
         ev.preventDefault();
         const form = ev.target;
-      axios.post('http://localhost:3004/products',{"name":form[0].value, "imgurl":form[1].value}).then(({data})=>console.log(data));
+      // axios.post('http://localhost:3004/products',{"name":form[0].value, "imgurl":form[1].value}).then(({data})=>console.log(data));
+        axios.post('/product/add-product',{name:form[0].value, imgurl:form[1].value})
+        .then(data => {
+          // dispatch(getRawAsync())
+            console.log(data);
+          }).catch(err => {
+            console.error(err);
+          })
     }
     function handleDelivery(){
 

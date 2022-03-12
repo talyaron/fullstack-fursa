@@ -5,13 +5,20 @@ import { useEffect, useState } from 'react';
 import axios from 'axios'
 import './WoodProduct.scss'
 import ProductCard,{ProductCardProp} from '../../components/productCard/ProductCard';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { getProduct, getProductAsync } from '../../../features/product/productReducer';
+import { CircularProgress } from '@mui/material';
 
 function WoodProduct(){
+  const dispatch=useAppDispatch();
     const [products,setProduct]=useState([]);
     useEffect(()=>{
-      axios.get('http://localhost:3004/products').then(({data})=> setProduct(data));
+      // axios.get('http://localhost:3004/products').then(({data})=> setProduct(data));
+      dispatch(getProductAsync())
 
     },[]);
+    const productsArr=useAppSelector(getProduct)
+
     return(
         <div className="WoodUse">
           <header className="WoodUse_header">
@@ -25,11 +32,12 @@ function WoodProduct(){
             </div>
           </header>
            <div className="WoodUse_body">
-           {products.map((product, index)=>{
-          const{name,imgurl,id}=product;
-          return <ProductCard key={index} product={{name,imgurl,id}}/>
+           {productsArr.status!=='loading'?productsArr.productArr.map((product, index)=>{
+          const{name,imgurl}=product;
+          return <ProductCard key={index} product={{name,imgurl}}/>
           
-        })}        <Outlet />
+        }):<div><CircularProgress color="secondary" />
+        </div>}        <Outlet />
 
 
            </div>    

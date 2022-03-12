@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 import { appendFile } from "fs";
 import User from "../model/schema/userSchema";
+import jwt from "jwt-simple";
+import { isAdmin } from "./login";
 
 router.post('/register',async (req,res)=>{
     const {name,email,phone,password}=req.body;
@@ -18,7 +20,7 @@ router.post('/register',async (req,res)=>{
       }
 
 })
-router.post('/login', async (req,res)=>{
+router.post('/login' ,async (req,res)=>{
   try{
     const {name,email,password}=req.body;
     if(!name||!email||!password) throw 'ivalid field values'
@@ -26,7 +28,12 @@ router.post('/login', async (req,res)=>{
     const user=await User.findOne({email:email,password:password})
       if(user){
         console.log('found')
-        res.cookie("login",{id:user._id})
+        const JWT_SECRET = process.env.JWT_SECRET;
+        const encodedJWT = jwt.encode( { userId: name, role: "public" },JWT_SECRET);
+        res.cookie("login",encodedJWT,{
+          httpOnly: true,
+          maxAge: 60 * 60 * 1000,
+        })
         res.status(200).send({ok:true})
       }
       else{
@@ -42,10 +49,12 @@ router.post('/login', async (req,res)=>{
 
 router.post('/get-user',async (req,res)=>{
     try{
+      
     const{email,password}=req.body;
+
     const filter={email:email,password:password};
     const user=await User.find({filter})
-    // console.log(Raws)
+    
     res.status(200).send(user)
   }
   catch (error) {

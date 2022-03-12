@@ -1,8 +1,12 @@
 const express = require('express');
 const router = express.Router();
+import { appendFile } from 'fs';
  import Raw from '../model/schema/rawSchema'
-router.post('/add-Raw-Material',async (req,res)=>{
+import { isAdmin, loginStatus } from './login';
+router.use(loginStatus)
+router.post('/add-Raw-Material',isAdmin,async (req,res)=>{
     try{
+      console.log(req.body)
       const raw=req.body;
       console.log(raw)
       const newRaw=new Raw(raw);

@@ -3,63 +3,65 @@ require('dotenv').config();
 
 import axios from 'axios';
 import Order from './model/schema/orderSchema';
+import product from './model/schema/productSchema';
 import Raw from './model/schema/rawSchema';
+import { loginStatus } from './routes/login';
 const express = require('express');
 const cookieParser=require('cookie-parser')
 const app = express();
-const port = 4000;
+const port = 4001;
 
 
 
 
-app.get('/get-wood-type', (req, res) => {
-  const woods = [{type:'pine wood', height:70,width:70,thick:70}, {type:'insulation', height:70,width:70,thick:70},{type:'multyLayer', height:70,width:70,thick:70}];
+// app.get('/get-wood-type', (req, res) => {
+//   const woods = [{type:'pine wood', height:70,width:70,thick:70}, {type:'insulation', height:70,width:70,thick:70},{type:'multyLayer', height:70,width:70,thick:70}];
 
-  res.send(woods)
-})
-app.use(express.static('client/build'));
-app.use(cookieParser())
-app.use(express.json());
+//   res.send(woods)
+// })
+// app.use(express.static('client/build'));
+// app.use(cookieParser())
+// app.use(express.json());
+// app.use(loginStatus)
 
+// app.get('/get-orders',async (req,res)=>{
+//   try {
+//    const response= await axios.get('http://localhost:3004/userOrder') 
+//    const {data}=response;
+//   //  console.log(data)
+//     res.status(200).send(data)
+//   } catch (error) {
+//     console.info(error);
+//     res.send({ error });
+//   }
+// })
+// app.get('/get-raws',async (req,res)=>{
+//   try {
+//    const response= await axios.get('http://localhost:3004/woods') 
+//    const {data}=response;
+//   //  console.log(data)
+//     res.status(200).send(data)
+//   } catch (error) {
+//     console.info(error);
+//     res.send({ error });
+//   }
+// })
+// app.post('/add-orders',(req,res)=>{
+//   try{
+//     const {orderObj}=req.body;
+//     console.log(orderObj)
+//     if(!orderObj) throw new Error("no order")
+//     axios.post('http://localhost:3004/userOrder',orderObj)
 
-app.get('/get-orders',async (req,res)=>{
-  try {
-   const response= await axios.get('http://localhost:3004/userOrder') 
-   const {data}=response;
-  //  console.log(data)
-    res.status(200).send(data)
-  } catch (error) {
-    console.info(error);
-    res.send({ error });
-  }
-})
-app.get('/get-raws',async (req,res)=>{
-  try {
-   const response= await axios.get('http://localhost:3004/woods') 
-   const {data}=response;
-  //  console.log(data)
-    res.status(200).send(data)
-  } catch (error) {
-    console.info(error);
-    res.send({ error });
-  }
-})
-app.post('/add-orders',(req,res)=>{
-  try{
-    const {orderObj}=req.body;
-    console.log(orderObj)
-    if(!orderObj) throw new Error("no order")
-    axios.post('http://localhost:3004/userOrder',orderObj)
+//     res.send({ ok: true });
 
-    res.send({ ok: true });
+//   }
+//   catch(error){
+//     res.send({ error: error.message });
 
-  }
-  catch(error){
-    res.send({ error: error.message });
+//   }
 
-  }
-
-})
+// })
 
 // app.delete('/delete-order',(req,res)=>{
 //   try{
@@ -194,6 +196,8 @@ const rawRoute=require('./routes/rawRoute')
 app.use('/raw',rawRoute)
 const userRoute=require('./routes/userRoute')
 app.use('/user',userRoute)
+const productRoute=require('./routes/productRoute')
+app.use('/product',productRoute) 
 // app.post('/add-order',async (req,res)=>{
 //   try{
 //     const order=req.body;

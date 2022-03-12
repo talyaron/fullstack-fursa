@@ -4,14 +4,21 @@ import Navbar from '../../components/navbar/Navbar';
 import './Door.scss'
 import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
-import { useState} from 'react';
+import { useEffect, useState} from 'react';
 import axios from 'axios'
 import Box from '@mui/material/Box';
 import { display } from '@mui/system';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { fetchUser, getUser } from '../../../features/user/userReducer';
 
 function Door()
 {
-    
+  const dispatch=useAppDispatch();
+  useEffect(() => {
+    dispatch(fetchUser({ email: "mona_arabiya@hotmail.com", password: "123" }))
+  }, []);   
+  const user=useAppSelector(getUser)
+  
     const [show,setShow]=useState('none')
 
     const {woodproname}=useParams();
@@ -33,7 +40,7 @@ function Door()
         // copy.push(obj);
         // setProduct(copy);
         // axios.post('http://localhost:3004/userOrder',{"woodName":woodproname,"woodlength":form[0].value, "width":form[1].value, "thick":form[2].value, "color":form[3].value,"amount":form[4].value}).then(({data})=>console.log(data));
-        axios.post('/order/add-order',{woodName:woodproname,woodlength:form[0].value,width:form[1].value,"thick":form[2].value, "color":form[3].value,amount:form[4].value})
+        axios.post('/order/add-order',{woodName:woodproname,woodlength:form[0].value,width:form[1].value,thick:form[2].value, color:form[3].value,amount:form[4].value,user:user})
         .then((res) => console.log(res))
         .catch((err) => console.error(err));
         setShow('block')
@@ -58,9 +65,9 @@ function Door()
         <div className="door_body">
         <div className="order_body_inputs">
             <form onSubmit={handleSubmit}>
-                <input type="text" name="woodlength"  required placeholder="Length" />
-                <input type="text" name="width" required placeholder="Width" />
-                <input type="text" name="thick" required placeholder="Thickness" />
+                <input type="number" name="woodlength"  required placeholder="Length" />
+                <input type="number" name="width" required placeholder="Width" />
+                <input type="number" name="thick" required placeholder="Thickness" />
                 <input type="text" name="color" required placeholder="Color" />
                 <input type="number" name="amount" required placeholder="Quantity" />
                 <Button type="submit" variant="contained" style={{backgroundColor: 'rgb(47, 143, 90)'}}size="medium">
