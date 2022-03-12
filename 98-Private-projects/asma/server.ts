@@ -2,11 +2,13 @@ import express from 'express';
 //import axios from 'axios';
 //import Appointment from './model/schema/appointmentsModel';
 
+const cookieParser = require('cookie-parser');
 const app = express();
 const port = 4000;
 require('dotenv').config();
 
 app.use(express.static('healthstore/build'));
+app.use(cookieParser());
 app.use(express.json());
 
 const mongoose = require('mongoose');
@@ -62,6 +64,9 @@ app.use('/treatments', treatmentsRoutes);
 
 const productsRoutes = require('./routes/productsRoutes')
 app.use('/products', productsRoutes);
+
+const usersRoutes = require('./routes/usersRoutes')
+app.use('/users', usersRoutes);
 
 
 app.listen(port, () => {

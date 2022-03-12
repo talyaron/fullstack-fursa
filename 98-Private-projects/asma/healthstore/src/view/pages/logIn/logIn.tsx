@@ -1,20 +1,30 @@
 import { Button, TextField } from '@material-ui/core';
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 import './style.scss'
 
 function LogIn() {
 
     const navigate = useNavigate();
-    const info = { name: "asma", password: "123" }
+    //const info = { name: "asma", password: "123" }
     const [user, setUser] = useState({ name: "", password: "" });
 
     function handleClick() {
-        console.log(user)
-        if(user.name===info.name && user.password===info.password){
-            navigate('/addProducts');
+        //console.log(user)
+        if(user.name && user.password){
+            axios.post('/users/logIn', { user })
+                .then(({ data }) => {
+                    console.log(data)
+                    if(data.login)
+                        navigate('/addProducts');
+                    else{alert("Wrong Username or Password");}    
+                })
+                .catch(err => {
+                    console.error(err)
+                })
         }
-        else {alert("wrong username or password");}
+        else {alert("Missing Info");}
     }
 
     return (
