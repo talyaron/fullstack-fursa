@@ -34,7 +34,9 @@ export const fetchMssagesAsync = createAsyncThunk(
     'Mssagess/fetchMssages',
     async (_, thunkAPI) => {
         try {
-            const response = await axios.get('/accidents/getAllAccidents');
+
+            const response = await axios.post('http://localhost:3001/messages/getMessagesByUserName',{userName:'user1'});
+            //const response = await axios.get('/accidents/getAllAccidents');
             return response.data;
         } catch (error: any) {
             thunkAPI.rejectWithValue(error.response.message)
@@ -53,7 +55,8 @@ export const MssageReducer = createSlice({
             })
             .addCase(fetchMssagesAsync.fulfilled, (state, action) => {
                 state.status = 'idle';
-                state.value.MessagesChats= action.payload.MessagesChats;
+                state.value.MessagesChats= action.payload.Messages;
+                //console.log(action.payload.Messages);
             })
             .addCase(fetchMssagesAsync.rejected, (state) => {
                 state.status = 'failed';

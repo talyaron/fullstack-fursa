@@ -4,6 +4,7 @@ import counterReducer from '../features/counter/counterSlice';
 import sharingReducer from './reducer/sharingReducer';
 import accidentInfoReducer from './reducer/accidentInfoReducer';
 import orgUserReducer from '../features/orgUser/orgUserReducer';
+import MssageReducer from './reducer/MssageReducer';
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     sharing: sharingReducer,
     accident: accidentInfoReducer,
     orgUser: orgUserReducer,
+    Messages:MssageReducer,
   },
 });
 

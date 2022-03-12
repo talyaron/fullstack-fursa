@@ -16,7 +16,7 @@ router.
     route('/getAccidenstByUserName').
     post(accidentController.getAccidenstByUserName);
 
-    router.
+router.
     route('/addNewAccident').
     post(accidentController.addNewAccident);
 

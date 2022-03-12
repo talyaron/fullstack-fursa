@@ -58,6 +58,9 @@ app.use('/previousAccidents', previousAccidentRouter);
 const messagesBetweemOrgRouter = require('./routers/messagesBetweemOrgRouter');
 app.use('/messagesBetweemOrg', messagesBetweemOrgRouter);
 
+ const messagesRouter = require('./routers/messagesRouter');
+ app.use('/messages', messagesRouter);
+
 server.listen(port, () => {
     console.log(`Listening on port ${port} 🔥`)
 })

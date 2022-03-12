@@ -1,48 +1,85 @@
+import axios from 'axios';
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { fetchMssagesAsync } from '../../../app/reducer/MssageReducer';
 import MessageComp from '../../Components/MessageComp/MessageComp';
+import './MessageSubMenu.scss'
 
 interface Mssage {
-    sender: string;
-    lastMessage: string;
+    from: String;
+    lastMessage: String;
     unreadnumber: number;
 
 }
 
 
 const MessageSubMenu = () => {
-    const accidentsReducer = useAppSelector(state => state.accidents);
+    const MessagesReducer = useAppSelector(state => state.Messages);
+    // console.log(MessagesReducer.value.MessagesChats);
+    const messages: Array<String> = [];
+    const messagelist: Array<Mssage> = [];
 
-    const messages: Array<Mssage> = [{ sender: 'mecha', lastMessage: 'how are you', unreadnumber: 2 }, { sender: 'Elias', lastMessage: 'where are you', unreadnumber: 1 }, { sender: 'soso', lastMessage: 'nice to meet you', unreadnumber: 3 }]
+
+    for (const variable in MessagesReducer.value.MessagesChats) {
+
+        if (!messages.includes(MessagesReducer.value.MessagesChats[variable].from)) {
+            messagelist.push({
+                from: MessagesReducer.value.MessagesChats[variable].from,
+                lastMessage: MessagesReducer.value.MessagesChats[variable].message,
+                unreadnumber: 0
+            })
+            messages.push(MessagesReducer.value.MessagesChats[variable].from);
+
+        }
+        else{
+            for (const obj of messagelist) {
+                if (obj.from==MessagesReducer.value.MessagesChats[variable].from) {
+                    obj.lastMessage=MessagesReducer.value.MessagesChats[variable].message
+                    obj.unreadnumber=obj.unreadnumber+1;
+                  break;
+                }
+              }
+            
+        }
+       
+
+    }
+    console.log(messagelist);
+
     const dispatch = useAppDispatch();
     const nav = useNavigate();
 
+
+    async function handelNewMessage() {
+        try {
+            const response = await axios.post('http://localhost:3001/messages/addNewMessages');
+            return response.data;
+        } catch (error: any) {
+            console.error(error);
+        }
+
+    }
+
     useEffect(() => {
-        //dispatch(fetchAccidentsAsync())
+        dispatch(fetchMssagesAsync())
     }, [])
 
-    {/* {accidentsReducer.status === 'loading' ? <div>Loading...</div> :
-      accidentsReducer.value.accidents.map((accident, index) => {
-        return (
-          // <AccidentComp key={index} connect={"connect"} emergency={accident.emergency} details={accident.description} notifications={accident.address} />
-          <MessageComp key={index} accident={accident} />
-
-        );
-      })
-    } */}
 
     return (
         <div className='wrrap'>
             <div className="accidentsContent">
 
-                {messages.map((elemnt, index) => {
+                {messagelist.map((elemnt, index) => {
                     return (
-                        <MessageComp key={index} sender={elemnt.sender} lastMessage={elemnt.lastMessage}  unreadnumber={elemnt.unreadnumber} />
+                        <MessageComp key={index} from={elemnt.from} lastMessage={elemnt.lastMessage} unreadnumber={elemnt.unreadnumber} />
                     );
                 })}
 
-            </div></div>
+            </div>
+            {/* <div className="newMssage" onClick={()=>{nav('/messagesBetweenOrg')}}></div> */}
+            <div className="newMssage" onClick={handelNewMessage}></div>
+        </div>
     )
 }
 

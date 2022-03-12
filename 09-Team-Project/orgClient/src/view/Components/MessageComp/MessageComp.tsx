@@ -3,14 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import './MessageComp.scss'
 
 interface Mssage {
-    sender: string;
-    lastMessage: string;
+    from: String;
+    lastMessage: String;
     unreadnumber: number;
 
 }
 
 const MessageComp = (props: Mssage) => {
-    const { sender,lastMessage ,unreadnumber} = props;
+    const { from, lastMessage, unreadnumber } = props;
 
     const nav = useNavigate();
 
@@ -21,10 +21,12 @@ const MessageComp = (props: Mssage) => {
 
 
         <div className='MessageCompContainer' onClick={handleComp}>
-            <div className="messageFrom">{sender}
+            <div className="messageFrom">{from}
                 <div className="messageheader">{lastMessage}</div>
             </div>
-            <div className="numOfUnread">{unreadnumber}</div>
+
+            {unreadnumber == 0 ? null :
+                <div className="numOfUnread">{unreadnumber}</div>}
 
 
         </div>

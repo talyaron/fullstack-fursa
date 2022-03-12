@@ -1,0 +1,20 @@
+.wrrap{
+    .newMssage{
+        z-index: 10;
+        background-image: url('../../photos/newMessage.png');
+        background-size: 40px;
+        background-repeat: no-repeat;
+        background-position:center;
+        background-color: lightgreen;
+        width: 50px;
+        height: 50px;
+        border: 1px black solid;
+        border-radius: 50px;
+        position: fixed;
+        right: 5%;
+        bottom: 5%;
+        &:hover{
+            background-color: green;
+        }
+    }
+}
