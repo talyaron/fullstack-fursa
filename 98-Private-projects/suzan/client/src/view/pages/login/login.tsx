@@ -3,25 +3,29 @@ import axios from "axios";
 function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [type, setType] = useState("");
 
   async function hadleSubmit(e: any) {
     e.preventDefault();
     const response = await axios.post("/user/login", {
       email: email,
       password: password,
+      type: type
     });
+
     const data = response.data;
-    console.log(data)
     if (data.ok) {
+      console.log('logged in successfully')
       alert("login succsess");
     } else {
+      console.log('log in failed')
       alert("login failed");
     }
   }
 
   async function handleGetPrivateInfo(){
-      const info = await axios.get('/get-private-info');
-      console.log(info);
+      const info = await axios.get('/user/get-private-info');
+      console.log(info.data.info);
   }
 
   return (
@@ -47,6 +51,15 @@ function LogIn() {
           onChange={(e) => setPassword(e.target.value)}
           type="text"
           placeholder="Password"
+          className="input"
+          required
+        />
+        <br></br>
+        <input
+          value={type}
+          onChange={(e) => setType(e.target.value)}
+          type="text"
+          placeholder="user type"
           className="input"
           required
         />
