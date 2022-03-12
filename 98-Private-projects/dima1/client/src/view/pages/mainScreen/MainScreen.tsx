@@ -15,7 +15,7 @@ import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper";
 import { Link, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { updateRecipe, updateFrom, updateSelectAsync } from '../../../app/reducers/itemSlice';
+import { getSelectAsync } from '../../../app/reducers/itemSlice';
 import { getTopRecipesAsync, topRecipes } from '../../../app/reducers/TopRecipesSlice';
 import { getRecentRecipesAsync, recentRecipes } from '../../../app/reducers/RecentRecipesSlice';
 import { updateName } from '../../../app/reducers/NamePageSlice';
@@ -44,8 +44,7 @@ export default function MainScreen() {
             from = 'top10'
         else from = 'recent'
         try {
-            console.log(recipe)
-            dispatch(updateSelectAsync({info:recipe, from:from, isNew:isNew_}))
+            dispatch(getSelectAsync({name : recipe.name}))
         } catch (error) {
             console.error();
         }

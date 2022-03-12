@@ -34,7 +34,7 @@ export const getUserAsync = createAsyncThunk(
             const data = response.data;
             if(data.ok)
                 return data.user;
-            else return thunkAPI.rejectWithValue("failed")
+            else return thunkAPI.rejectWithValue("failed");
         } catch (error: any) {
             thunkAPI.rejectWithValue(error.response.data);
         }

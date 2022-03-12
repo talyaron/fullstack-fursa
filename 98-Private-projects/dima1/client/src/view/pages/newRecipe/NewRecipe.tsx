@@ -16,7 +16,7 @@ import { useNavigate, useParams } from "react-router";
 import Tooltip from '@mui/material/Tooltip';
 import axios from 'axios';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { selectedRecipe, selectedFrom, selectedIsNew, updateRecipe, getSelectAsync, updateSelectAsync } from '../../../app/reducers/itemSlice';
+import { selectedRecipe, getSelectAsync, updateRecipe } from '../../../app/reducers/itemSlice';
 import { addToMyRecipe } from '../../../app/reducers/MyRecipesSlice';
 import { selectPage, updateName } from '../../../app/reducers/NamePageSlice';
 import { updateTopRecipes } from '../../../app/reducers/TopRecipesSlice';
@@ -80,8 +80,8 @@ export default function NewRecipe() {
     
     const { userName } = useParams();
     const recipe_ = useAppSelector(selectedRecipe);
-    const from = useAppSelector(selectedFrom);
-    const isNew = useAppSelector(selectedIsNew);
+    //const from = useAppSelector(selectedFrom);
+    //const isNew = useAppSelector(selectedIsNew);
     const pageName = useAppSelector(selectPage)
 
     const [recipe, setRecipe] = useState<recipeInfo>(recipe_);
@@ -89,12 +89,12 @@ export default function NewRecipe() {
     let to = '';
 
     useEffect(() => {
-        dispatch(getSelectAsync())
+        dispatch(getSelectAsync(userName))
     }, [])
 
-    if (from === 'userRecipes' && isNew)
-        to = '/User';
-    else to = '/RecipeInfo';
+    // if (from === 'userRecipes' && isNew)
+    //     to = '/User';
+    // else to = '/RecipeInfo';
 
     function handleChange(ev: any) {
         switch (ev.target.name) {
@@ -129,17 +129,10 @@ export default function NewRecipe() {
         }
         else {
             //add a action to udpate a recipe in the array
-            console.log(recipe_)
-            //axios.put('http://localhost:3004/' + `${from}` + '/' + `${recipe_.id}`, recipe);
-            axios.patch('/selectRecipe/edit-select-recipe', recipe_);
-            axios.put(`/edit-${from}`, recipe_)
-            dispatch(updateSelectAsync({info:recipe_, from:from, isNew:isNew}))
-            //dispatch(updateRecipe(recipe))
-            // if (from === 'top10')
-            //     dispatch(updateTopRecipes([recipe, recipe.id]))
-            // else if (from === 'recent')
-            //     dispatch(updateRecent([recipe, recipe.id]))
-            // else dispatch(updateMyRecipe([recipe, recipe.id]))
+            // console.log(recipe_)
+            // axios.patch('/selectRecipe/edit-select-recipe', recipe_);
+            // axios.put(`/edit-${from}`, recipe_)
+            // dispatch(updateSelectAsync({info:recipe_, from:from, isNew:isNew});
         }
         navigate(to);
     }

@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { selectedRecipe, updateFrom, updateRecipe, updateNew, updateSelectAsync } from '../../../app/reducers/itemSlice';
+import { getSelectAsync } from '../../../app/reducers/itemSlice';
 import { getMyRecipesAsync, myRecipes } from '../../../app/reducers/MyRecipesSlice';
 import { updateName } from '../../../app/reducers/NamePageSlice';
 
@@ -28,7 +28,7 @@ export default function Recipes() {
         
         dispatch(updateName('/User'))
         try {
-            dispatch(updateSelectAsync({info:recipe, from:'userRecipes', isNew:false}))
+            dispatch(getSelectAsync({name : recipe.name}))
         } catch (error) {
             console.error();
         }
@@ -36,7 +36,7 @@ export default function Recipes() {
 
     function addClick(){
         try {
-            dispatch(updateSelectAsync({info:{}, from:'userRecipes', isNew:true}))
+            //dispatch(updateSelectAsync({info:{}, from:'userRecipes', isNew:true}))
         } catch (error) {
             console.error();
         }

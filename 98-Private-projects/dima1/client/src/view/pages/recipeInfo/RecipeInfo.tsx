@@ -14,7 +14,7 @@ import Tooltip from '@mui/material/Tooltip';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { getSelectAsync, selectedFrom, selectedIsNew, selectedRecipe } from '../../../app/reducers/itemSlice';
+import { selectedRecipe, selectRecipeAsync } from '../../../app/reducers/itemSlice';
 import { selectPage, updateName } from '../../../app/reducers/NamePageSlice';
 import { Text, StyleSheet } from 'react-native';
 
@@ -48,12 +48,12 @@ export default function RecipeInfo() {
     //Redux toolkit
     const dispatch = useAppDispatch();
     const recipe_ = useAppSelector(selectedRecipe);
-    const from_ = useAppSelector(selectedFrom);
-    const isNew = useAppSelector(selectedIsNew);
+    // const from_ = useAppSelector(selectedFrom);
+    // const isNew = useAppSelector(selectedIsNew);
     const pageName = useAppSelector(selectPage);
 
     useEffect(() => {
-        dispatch(getSelectAsync());
+        dispatch(selectRecipeAsync(recipeId));
     }, [])
 
     function handleLike() {
@@ -91,7 +91,7 @@ export default function RecipeInfo() {
                             <div className='insertPhotos'>
                                 <img src={recipe_.image} alt="" />
                             </div>
-                            <h2 className='by'>By : Dima Abbas</h2>
+                            <h2 className='by'>By : {recipe_.userName}</h2>
                             <div className='item'>
                                 <FavoriteBorderIcon onClick={handleLike} sx={{ fontSize: 40, color: '#b5739d', paddingTop: '15px' }} />
                                 <p>{like}</p>
