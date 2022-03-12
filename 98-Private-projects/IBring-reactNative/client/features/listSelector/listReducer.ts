@@ -10,7 +10,7 @@ export const listAsync = createAsyncThunk(
     'list/fetchList',
     async (email: string, thunkAPI) => {
         try {
-            const response = await axios.post('/meeting/getListByUser', { email: email });
+            const response = await axios.post('http://localhost:3001/meeting/getListByUser', { email: email });
             const data = await response.data;
             console.log(data);
             if (data.ok) {

@@ -6,27 +6,59 @@ import { Link, useNavigate } from 'react-router-native';
 import { logintAsync } from '../../../features/userLogin/userLoginReducer';
 
 
-const Login = () => {
-    const [email, setEmail] = React.useState("");
-    const [password, setPassword] = React.useState("");
+const Register = () => {
     const userLogin = useAppSelector(state => state.logged);
     const dispatch = useAppDispatch();
     const nav = useNavigate();
 
-    async function handleLogin() {
-        console.log(email, password);
-        dispatch(logintAsync({ email: email, pass: password }))
+    React.useEffect(() => {
+        console.log(userLogin);
+        if (userLogin.status === 'logged') {
+            // nav('/greetings');
+            console.log("logged");
+        }
+    }, [userLogin]);
+
+    function signUp() {
+        return new Promise(async (resolve, reject) => {
+            await axios.post('http://localhost:3001/user/signUp', {
+                email: email.toLowerCase(), pass: password
+            }).then(data => {
+                console.log(data.data)
+                if (data.data.ok) {
+                    resolve(true);
+                } else {
+                    resolve(false);
+                }
+            })
+                .catch(err => reject(err))
+        })
     }
 
-    React.useEffect(() => {
-        if(userLogin.status === 'logged'){
-            nav('/home');
-        }
-    })
 
-    React.useEffect(() => {
-        console.log({ userLogin: userLogin });
-    }, [userLogin])
+
+    const [email, setEmail] = React.useState("");
+    const [password, setPassword] = React.useState("");
+
+    function handleEmailPassSignUp(e: any) {
+        e.preventDefault();
+        console.log({ email })
+        console.log({ password })
+
+        signUp()
+            .then((json) => {
+                console.log("isUer:", json);
+                if (json) {
+                    dispatch(logintAsync({ email: email, pass: password }));
+                    // nav('/greetings');
+                } else {
+                    console.log("user doesn't exists!");
+                }
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    }
 
     return (
         <SafeAreaView>
@@ -37,7 +69,7 @@ const Login = () => {
                 </View>
                 <View style={styles.mainContent}>
                     <View>
-                        <Text style={styles.headerTitle}>let's sign in</Text>
+                        <Text style={styles.headerTitle}>let's sign up</Text>
                     </View>
                     <View style={styles.mainContent_field}>
                         <TextInput
@@ -52,11 +84,11 @@ const Login = () => {
                             secureTextEntry={true}
                         />
                         <View style={styles.haveNoAccount}>
-                            <Text>Have no account! <Link to="/register"><Text>Sign up here</Text></Link></Text>
+                            <Text>Already have an Account? <Link to="/login"><Text>Sign in here</Text></Link></Text>
                         </View>
                         <TouchableOpacity style={styles.button}
-                            onPress={handleLogin}>
-                            <Text style={styles.whiteTextColor}>Login</Text>
+                            onPress={handleEmailPassSignUp}>
+                            <Text style={styles.whiteTextColor}>sign up</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -136,4 +168,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default Login
+export default Register

@@ -28,7 +28,7 @@ export const curListAsync = createAsyncThunk(
     'curList/fetchList',
     async (id: any, thunkAPI) => {
         try {
-            const response = await axios.post('/meeting/getListByID', { id: id });
+            const response = await axios.post('http://localhost:3001/meeting/getListByID', { id: id });
             const data = await response.data;
             if (data.ok) {
                 // localStorage.setItem('curList', JSON.stringify(data.list));

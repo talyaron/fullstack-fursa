@@ -8,7 +8,7 @@ interface userIF {
 export function fetchUser(user: userIF) {
     return new Promise<{ data: any }>(async (resolve, rejected) => {
         try {
-            const response = await axios.post('/user/login', {
+            const response = await axios.post('http://localhost:3001/user/login', {
                 body: JSON.stringify({ email: user.email?.toLowerCase(), pass: user.pass })
             })
             const data = await response.data;

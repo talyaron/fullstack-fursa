@@ -3,18 +3,20 @@ import { Provider } from 'react-redux';
 import { store } from './app/store';
 import { StyleSheet, Text, View, AppRegistry } from "react-native";
 import { NativeRouter, Routes, Route } from "react-router-native";
-import Test from './view/pages/Test';
-import SecondTest from './view/pages/SecondTest';
 import Login from './view/pages/Login/Login';
+import Register from './view/pages/Register/Register';
+import Home from './view/pages/Home/Home';
+import List from './view/pages/List/List';
 
 const App = () => (
   <Provider store={store}>
     <NativeRouter>
       <View style={styles.container}>
         <Routes>
+          <Route path="/list/:listId" element={<List />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/test" element={<Test />} />
-          <Route path="/secondtest" element={<SecondTest />} />
           <Route path="/" element={<Login />} />
         </Routes>
       </View>
