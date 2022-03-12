@@ -3,9 +3,7 @@ const router = express.Router();
 import userRecipes from '../schemas/userRecipeModel';
 import User from '../schemas/userModel';
 import jwt from "jwt-simple";
-import { isAdmin, loginStatus } from '../controllers/login';
-
-router.use(loginStatus);
+import { isUser } from '../controllers/userController';
 
 router.get('/get-user-recipes', async (req, res) => {
     try {
@@ -15,8 +13,8 @@ router.get('/get-user-recipes', async (req, res) => {
         const { role, userId } = decodedJWT;
         const user = await User.findOne({ _id: userId })
         if (user) {
-            const recipes = await userRecipes.find({});
-            if(role === 'admin')
+            const recipes = await userRecipes.find({userName: user.name});
+            if(role === 'user')
                 res.send({ ok: true, recipes: recipes });
             else res.send({ ok: true, recipes: [] });
         }

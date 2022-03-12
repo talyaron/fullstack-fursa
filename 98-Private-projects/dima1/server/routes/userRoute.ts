@@ -2,17 +2,12 @@ const express = require('express');
 const router = express.Router();
 import User from '../schemas/userModel';
 import jwt from "jwt-simple";
-import { isAdmin, loginStatus } from '../controllers/login';
-
-router.use(loginStatus);
 
 router.post('/register', async (req, res) => {
     try {
         const { name, email, password, phone } = req.body;
         const userByEmail = await User.findOne({ email: email });
         const userByName = await User.findOne({ name : name });
-        console.log(userByEmail, 'byEmail')
-        console.log(userByName, 'byName')
         if (!userByEmail && !userByName) {
             const newUser = await new User({ name : name, email: email, password: password, phone : phone, description: '' });
             newUser.save();
@@ -35,7 +30,6 @@ router.post('/register', async (req, res) => {
 router.post('/LogIn', async (req, res) => {
     try {
         const { email, password } = req.body;
-        console.log(password)
         const user_ = await User.findOne({ email: email });
 
         if (!user_) {
@@ -44,10 +38,9 @@ router.post('/LogIn', async (req, res) => {
         }
         else {
             if (user_.password === password) {
-                console.log('////')
                 const JWT_SECRET = process.env.JWT_SECRET;
                 const encodedJWT = jwt.encode(
-                    { userId: user_._id, role: "admin" },
+                    { userId: user_._id, role: "user" },
                     JWT_SECRET
                 );
                 console.log("found")
@@ -70,10 +63,8 @@ router.post('/LogIn', async (req, res) => {
 
 router.post('/get-user', async (req, res) => {
     try {
-        console.log(req.body)
         const { name } = req.body;
         const user_ = await User.findOne({ name : name });
-        console.log(user_)
         if(user_){
             res.status(200).send({ok : true, user : user_})
         }else {

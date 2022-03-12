@@ -1,11 +1,13 @@
 const express = require('express');
 const router = express.Router();
 import top10 from '../schemas/topModel';
+import { isUser } from '../controllers/userController';
 
-router.get('/get-top10', async (req, res) => {
+
+router.get('/get-top10', isUser, async (req, res) => {
     try {
         const topRecipes = await top10.find({});
-        res.status(200).send(topRecipes);
+        res.status(200).send({ok:true, recipes:topRecipes});
     } catch (error: any) {
         res.status(400).send({ error: error.message });
     }

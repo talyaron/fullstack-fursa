@@ -7,7 +7,8 @@ const recentInfo = new mongoose.Schema({
     people: String,
     calories: String,
     ingredients: String,
-    method: String
+    method: String,
+    userName: String
 })
 
 const recent = mongoose.model('Recent Recipes', recentInfo);

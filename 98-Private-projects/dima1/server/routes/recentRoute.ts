@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
 import recent from '../schemas/recentModel';
+import { isUser } from '../controllers/userController';
 
-router.get('/get-recent', async (req, res) => {
+router.get('/get-recent', isUser, async (req, res) => {
     try {
         const recentRecipes = await recent.find({});
-        res.status(200).send(recentRecipes);
+        res.status(200).send({ok:true, recipes:recentRecipes});
     } catch (error: any) {
         res.status(400).send({ error: error.message });
     }

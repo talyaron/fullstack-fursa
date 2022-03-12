@@ -7,10 +7,11 @@ const userRecipe = new mongoose.Schema({
     people: String,
     calories: String,
     ingredients: String,
-    method: String
+    method: String,
+    userName: String
 })
 
-const userRecipes = mongoose.model('My Recipes', userRecipe);
+const userRecipes = mongoose.model('recipes', userRecipe);
 
 export default userRecipes;
 

@@ -16,8 +16,9 @@ export const getRecentRecipesAsync = createAsyncThunk(
     async (_, thunkAPI) => {
         try {
             const response = await axios.get('/recentRecipes/get-recent');
-            const data = response.data;
-            return data;
+            if(!response.data.ok)
+                return [];
+            else return response.data.recipes;
         } catch (error:any) {
             thunkAPI.rejectWithValue(error.response.data);
         }

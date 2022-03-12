@@ -16,7 +16,9 @@ export const getTopRecipesAsync = createAsyncThunk(
     async (_, thunkAPI) => {
         try {
             const response = await axios.get('/topRecipes/get-top10');
-            return response.data;
+            if(!response.data.ok)
+                return [];
+            else return response.data.recipes;
         } catch (error:any) {
             thunkAPI.rejectWithValue(error.response.data);
         }
@@ -33,7 +35,7 @@ export const topRecipesReducer = createSlice({
         updateTopRecipes : (state, action:PayloadAction<Array<any>>) => {
             const index = action.payload[1];
             {state.topRecipes.filter((recipe:recipeInfo)=>{
-                if(recipe.id != index){
+                if(recipe.id !== index){
                     return recipe
                 }   
                 else{
