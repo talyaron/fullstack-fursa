@@ -8,7 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { Button } from '@material-ui/core';
 import { useAppSelector, useAppDispatch } from '../../../app/hooks';
 import { addNewSharingAsync, setSharing } from '../../../app/reducer/sharingReducer';
-import './style.scss'
+import './style.scss';
 import axios from 'axios';
 
 
