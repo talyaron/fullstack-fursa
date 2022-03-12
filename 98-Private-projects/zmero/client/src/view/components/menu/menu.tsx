@@ -141,7 +141,7 @@ function Menu() {
                                 Explore
                             </MenuItem></Link>
                             {isLoggedIn ?
-                                <>
+                                <div>
                                     < Link to="/Reservations"><MenuItem>
                                         Reservations
                                     </MenuItem></Link>
@@ -150,13 +150,13 @@ function Menu() {
                                     </MenuItem></Link>
                                     < Link to="/Maps"><MenuItem>
                                         Maps
-                                    </MenuItem></Link> </> : <><MenuItem onClick={() => { openSignUpModal(true); setAnchorElNav(null) }}>
+                                    </MenuItem></Link> </div> : <div><MenuItem onClick={() => { openSignUpModal(true); setAnchorElNav(null) }}>
                                         SignUp
                                     </MenuItem>
                                     <MenuItem onClick={() => { openSignInModal(true); setAnchorElNav(null) }}>
                                         LogIn
                                     </MenuItem>
-                                </>}
+                                </div>}
                         </MenuNav>
                     </div>
                     <div className="navbar__left__logo">
