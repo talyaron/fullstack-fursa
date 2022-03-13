@@ -13,8 +13,9 @@ import MessagesBetweenOrg from './view/pages/messagesBetweenOrg/MessagesBetweenO
 import AccidentsInfo from './view/pages/accidentsInfo/AccidentsInfo';
 import Login from './view/pages/logIn/LogIn';
 
+
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
@@ -23,11 +24,11 @@ ReactDOM.render(
           <Route path="/" element={<App />} />
           <Route path="profileInfo" element={<ProfileInfo />} />
           <Route path="/:accidentId" element={<AccidentsInfo />} />
-          <Route path="messagesBetweenOrg" element={<MessagesBetweenOrg />} />
+          <Route path="/messagesBetweenOrg" element={<MessagesBetweenOrg />} />
         </Routes>
       </BrowserRouter>
-    </Provider>
-  </React.StrictMode>,
+    </Provider>,
+  // </React.StrictMode>,
   document.getElementById('root')
 );
 
