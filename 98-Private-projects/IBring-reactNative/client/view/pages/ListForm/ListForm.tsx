@@ -6,7 +6,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { useNavigate } from 'react-router-native';
 import storage from '../../../FireBase';
 
-import DatePicker from 'react-native-datepicker';
+// import DatePicker from 'react-native-datepicker';
 import SelectDropdown from 'react-native-select-dropdown'
 
 const options = ["test"]
@@ -93,7 +93,7 @@ const ListForm = () => {
                 placeholder="Meet type"
             />
             {/* <DatePicker date={date}  /> */}
-            <DatePicker
+            {/* <DatePicker
                 style={styles.datePickerStyle}
                 date={date}
                 mode="date"
@@ -142,7 +142,7 @@ const ListForm = () => {
                 onDateChange={(date) => {
                     setTime(date);
                 }}
-            />
+            /> */}
 
             <SelectDropdown
                 data={options}
