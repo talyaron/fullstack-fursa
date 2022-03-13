@@ -8,7 +8,7 @@ const cookieParser = require('cookie-parser');
 const userRouter = require("./Routes/userRoutes");
 const listRouter = require("./Routes/listRoutes");
 
-app.use(express.static("../client/build"));
+// app.use(express.static("../client/build"));
 app.use(express.json());
 app.use(cookieParser());
 // app.use(checkStatus);

@@ -7,12 +7,22 @@ import Login from './view/pages/Login/Login';
 import Register from './view/pages/Register/Register';
 import Home from './view/pages/Home/Home';
 import List from './view/pages/List/List';
+import Greetings from './view/pages/Greetings/Greetings';
+import ListForm from './view/pages/ListForm/ListForm';
+import TypeList from './view/pages/TypeList/TypeList';
+import ChooseFriends from './view/pages/choosefriends/ChooseFriends';
+import Contact from './view/pages/choosefriends/Contact/Contact';
 
 const App = () => (
   <Provider store={store}>
     <NativeRouter>
       <View style={styles.container}>
         <Routes>
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/choosefriends" element={<ChooseFriends />} />
+          <Route path="/typeList" element={<TypeList />} />
+          <Route path="/ListForm" element={<ListForm />} />
+          <Route path="/greetings" element={<Greetings />} />
           <Route path="/list/:listId" element={<List />} />
           <Route path="/home" element={<Home />} />
           <Route path="/register" element={<Register />} />

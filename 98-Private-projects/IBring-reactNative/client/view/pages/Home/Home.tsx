@@ -53,7 +53,7 @@ const Home = () => {
                     </ScrollView>
                 </SafeAreaView>
             </View>
-            <TouchableOpacity style={styles.newList} onPress={() => { console.log("clicked!") }}>
+            <TouchableOpacity style={styles.newList} onPress={() => { nav('/listForm') }}>
                 <Text style={{ color: "white" }}>new list</Text>
             </TouchableOpacity>
         </View>
