@@ -1,15 +1,17 @@
 .AccidentCompContainer {
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, 0.315);
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-radius: 20px;
     padding: 15px;
     width: 90%;
+    min-height: 100px;
+    max-height: 100px;
+    background-color: #C4C4C4;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.315);
 
-    .firstConnect {
-
-    }
+    .firstConnect {}
 
     .accidentDetails {
         display: flex;
@@ -30,6 +32,11 @@
     }
 
     .notifications {
-
+        padding: 15px;
+        background-color: grey;
+        color: white;
+        font-size: larger;
+        font-weight: bolder;
+        border-radius: 8px;
     }
 }
