@@ -13,7 +13,7 @@ app.use(cookieParser());
 app.use(express.static("client/build"));
 
 //data
-const con = mysql.createConnection({
+export const con = mysql.createConnection({
   host: "localhost",
   port: "3306",
   user: "root",
@@ -34,8 +34,8 @@ con.connect( (err)=> {
 });
 
 //routes
-
-
+import uesrRouter from './routes/userRoute';
+app.use('/users',uesrRouter)
 
 
 app.listen(port, () => {
