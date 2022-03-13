@@ -8,7 +8,6 @@ import './style.scss'
 function AddProducts() {
 
     const navigate = useNavigate();
-
     // const info = { name: "asma", text: "123", img: "image" }
     const [product, setProduct] = useState({ name: "", text: "", img: "image" });
     const [products, setProducts] = useState([]);

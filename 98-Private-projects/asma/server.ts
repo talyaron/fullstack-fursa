@@ -1,6 +1,4 @@
 import express from 'express';
-//import axios from 'axios';
-//import Appointment from './model/schema/appointmentsModel';
 
 const cookieParser = require('cookie-parser');
 const app = express();

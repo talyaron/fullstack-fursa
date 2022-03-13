@@ -3,8 +3,6 @@ import React,{ useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { Button } from '@material-ui/core';
 import EventNoteTwoToneIcon from '@material-ui/icons/EventNoteTwoTone';
-import { useAppDispatch } from '../../../app/hooks';
-import {update} from '../../../features/treatment/treatmentSlice';
 import { Link } from "react-router-dom";
 
 // export interface TreatmentInt{
@@ -17,7 +15,7 @@ import { Link } from "react-router-dom";
 
 function Treatment(props:any){
     //const {name,img,text}=props;
-    const [treatment, setTreatment] = useState({ title: "" ,img:"",text:""});
+    const [treatment, setTreatment] = useState({ name: "" ,img:"",text:""});
     const {title} =props;
     useEffect(() => {
 
@@ -34,7 +32,7 @@ function Treatment(props:any){
     return(
         <div>
             <div className="treatment">
-                <h1>{treatment.title}</h1>
+                <h1>{treatment.name}</h1>
                 <img src={treatment.img}></img>
                 <p>{treatment.text}</p>
                 <Link to="/calendar"><Button className="button"  variant="contained" startIcon={<EventNoteTwoToneIcon />} >Book Appointment</Button> </Link>

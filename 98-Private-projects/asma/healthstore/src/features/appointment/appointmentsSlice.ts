@@ -27,7 +27,6 @@ export function getAppointments(): Promise<any> {
     try {
       axios.get("/appointments/get-appointments")
         .then((res) => {
-          console.log(res);
           const data = res.data;
           console.log(data);
           if (data) {
@@ -45,7 +44,7 @@ export function getAppointments(): Promise<any> {
 
 
 export const getAppointmentsAsyn = createAsyncThunk(
-  'appointments/fetch',
+  'getAppointments/fetch',
   async (_, thunkAPI) => {
     try {
       const appointmentDB = await getAppointments();
@@ -59,41 +58,41 @@ export const getAppointmentsAsyn = createAsyncThunk(
   }
 );
 
+export const addAppointmentAsyn = createAsyncThunk(
+  'addAppointment/fetch',
+  async (appointment:any, thunkAPI) => {
+    try {
+        const response = await axios.post("/appointments/add-appointment", { appointment })
+        return response.data;
+    } catch (error: any) {
+        thunkAPI.rejectWithValue(error.response.message)
+    }
+}
+);
+
 
 export const appointmentsSlice = createSlice({
   name: 'selectedAppointmen',
   initialState,
-  reducers: {
-    addAppointment: (state, action) => {
-      state.appointments = [...state.appointments, action.payload];
-      try {
-        const appointment = action.payload;
-        //console.log(appointment.id)
-        if (!appointment) throw new Error("No appointment in payload");
-        axios
-          .post("/appointments/add-appointment", { appointment })
-          .then((res) => console.log(res))
-          .catch((err) => console.error(err));
-      } catch (error) {
-        console.error(error);
-      }
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(getAppointmentsAsyn.fulfilled, (state, action) => {
         if (Array.isArray(action.payload)) {
+          //console.log(action.payload);
           state.appointments = action.payload;
-        } else {
-          //console.log("action");
-          console.error("payload is not an array");
           console.log(action.payload);
+        } else {
+          console.error(state.appointments,"state");
         }
+      })
+      .addCase(addAppointmentAsyn.fulfilled, (state, action) => {
+        console.log(action.payload.appointment);
+        state.appointments = [...state.appointments, action.payload.appointment];
       })
   }
 });
 
 
 export default appointmentsSlice.reducer;
-export const { addAppointment } = appointmentsSlice.actions;
 export const selectAppointment = (state: RootState) => state.appointments.appointments;

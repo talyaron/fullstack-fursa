@@ -1,15 +1,17 @@
-td,th {
+td,
+th {
 	border: 1px solid #ddd;
 	padding: 8px;
 	width: 30%;
-	text-align:center;
+	text-align: center;
 	//flex-wrap: wrap;
 	//   align-items: center;
 	//   justify-content:center;
 
 }
 
-button {
+
+.btn {
 	//position: absolute;
 	margin-left: 0.5rem;
 	width: 5rem;

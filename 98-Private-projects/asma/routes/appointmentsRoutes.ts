@@ -12,7 +12,7 @@ async function getAppointments(): Promise<any> {
     console.error(err)
     return false;
   }
-}
+}     
 
 router.get('/get-appointments', async (req, res) => {
   const appointments = await getAppointments();
@@ -22,12 +22,12 @@ router.get('/get-appointments', async (req, res) => {
 
 router.post('/add-appointment', (req, res) => {
   try {
-    const appointment = req.body.appointment;
-    console.log(req.body);
+    const {appointment} = req.body;
+    //console.log(req.body);
     if (!appointment) throw new Error("No appointment in request");
     const event = new Appointment({ title: appointment.title, start: appointment.start, end: appointment.end, name: appointment.name, phone: appointment.phone });
     event.save();
-    res.send({ message: 'Done' });
+    res.send({ message: 'Done',appointment:appointment });
   } catch (error) {
     res.send({ error });
   }
@@ -38,10 +38,9 @@ router.post('/delete-appointment', async (req, res) => {
     const appointment = req.body;
     if (!appointment) throw new Error("No appointment in request");
     const filter = { title: appointment.title, start: appointment.start, end: appointment.end, name: appointment.name, phone: appointment.phone };
-    console.log(filter);
+    //console.log(filter);
     let doc = await Appointment.deleteOne(filter);
-    console.log('Deleted!!');
-    res.send({ message: 'Deleted' });
+    res.send({ message: 'Deleted' ,filter:filter});
   } catch (error) {
     res.send({ error });
   }

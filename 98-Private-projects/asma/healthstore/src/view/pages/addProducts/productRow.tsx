@@ -46,8 +46,8 @@ function ProductRow(props: any) {
                             <td>{product.name}</td>
                             <td>{product.text}</td>
                             <td>{product.img}</td>
-                            <td><button onClick={handleEdit}>Edit</button></td>
-                            <td><button onClick={(e) => handleDelete(e,product._id)}>Delete</button></td>
+                            <td><button className="btn" onClick={handleEdit}>Edit</button></td>
+                            <td><button className="btn" onClick={(e) => handleDelete(e,product._id)}>Delete</button></td>
                         </tr>
                     </tbody>
                 </table>

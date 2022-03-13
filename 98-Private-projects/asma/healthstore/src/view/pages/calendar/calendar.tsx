@@ -1,11 +1,4 @@
 import './calendar.scss';
-/*
-import ReactDOM from 'react-dom';
-import { Button } from '@material-ui/core';
-import EventNoteTwoToneIcon from '@material-ui/icons/EventNoteTwoTone';
-//import {DatePicker} from '@material-ui/lab' ;
-//import "react-datepicker/dist/react-datepicker.css";
-//import DatePicker from "react-datepicker";*/
 import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl'
@@ -15,10 +8,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { Button } from '@material-ui/core';
 import EventNoteTwoToneIcon from '@material-ui/icons/EventNoteTwoTone';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
-// import format from "date-fns/format";
-// import getDay from "date-fns/getDay";
-// import parse from "date-fns/parse";
-// import startOfWeek from "date-fns/startOfWeek";
 import React, { useState, useEffect } from "react";
 import { Calendar, momentLocalizer, dateFnsLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
@@ -31,13 +20,12 @@ import "react-datepicker/dist/react-datepicker.css";
 import 'react-time-picker/dist/TimePicker.css';
 import { useAppSelector, useAppDispatch } from '../../../app/hooks';
 //import { selectTreatment } from '../../../features/treatment/treatmentSlice';
-import { addAppointment, getAppointmentsAsyn, selectAppointment } from '../../../features/appointment/appointmentsSlice';
+import { addAppointmentAsyn , getAppointmentsAsyn, selectAppointment } from '../../../features/appointment/appointmentsSlice';
 import { appointment } from '../../../features/appointment/appointmentsSlice';
 import axios from 'axios';
 
 
 const localizer = momentLocalizer(moment);
-
 
 function CalendarFun() {
 
@@ -47,34 +35,8 @@ function CalendarFun() {
 
     useEffect(() => {
 
-        // fetch('/get-appointments')
-        // .then(res => res.json())
-        // .then(data => {
-        //     console.log("app");
-        //     console.log(data.data);
-        //     let {title,start,end,name,phone}=data.data[0];
-        //     events.push({title:title,start:new Date(start),end:new Date(end),name,phone});
-        //     //console.log(title,new Date(start),end);
-        //     //setArr(data.data);
-        // }).catch(err => {
-        //     console.error(err);
-        // })
-
-
         dispatch(getAppointmentsAsyn());
-
         //axios.get('http://localhost:3004/AppointmentData').then(({data})=>console.log(data));
-        // //fetch kittens
-        // fetch('/get-all-kitens')
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log("data");
-        //         console.log(data);
-        //         //setKittens(data);
-        //     }).catch(err => {
-        //         console.error(err);
-        //     })
-
 
     }, []);
 
@@ -99,7 +61,6 @@ function CalendarFun() {
         else {
             alert("An Appointment Found!!");
             console.log('deleted')
-            //console.log(newEvent.start)
             const {data} = await axios.post('/appointments/delete-appointment',{ title: newEvent.title, start: newEvent.start, end: newEvent.end, name: newEvent.name, phone: newEvent.phone });
             console.log(data);
             dispatch(getAppointmentsAsyn());
@@ -118,7 +79,7 @@ function CalendarFun() {
             (newEvent.start.getFullYear() === cuurentDay.getFullYear() && newEvent.start.getMonth() === cuurentDay.getMonth() && newEvent.start.getDate() <= cuurentDay.getDate())) { alert("Date Is Not Available!!"); return; }
 
         //Out of Openning Hours    
-        if (newEvent.start.getHours() < 8 || newEvent.start.getHours() > 16 || newEvent.start.getDay() === 5 || newEvent.start.getDay() === 6) { alert("Out of Openning Hours!!\nSun-Thu 08:00-18:00"); return; }
+        if (newEvent.start.getHours() < 8 || newEvent.start.getHours() > 17 || newEvent.start.getDay() === 5 || newEvent.start.getDay() === 6) { alert("Out of Openning Hours!!\nSun-Thu 08:00-18:00"); return; }
 
         //dates collision
         const result: appointment | undefined = appointments.find((appoint: appointment) =>
@@ -133,12 +94,10 @@ function CalendarFun() {
             alert("Date Is Not Available!!");
 
         else {
-            dispatch(addAppointment({ title: newEvent.title, start: newEvent.start.toJSON(), end: newEvent.end.toJSON(), name: newEvent.name, phone: newEvent.phone }));
+            dispatch(addAppointmentAsyn ({ title: newEvent.title, start: newEvent.start.toJSON(), end: newEvent.end.toJSON(), name: newEvent.name, phone: newEvent.phone }));
             // let data= { id:appointments.length+1 ,title:newEvent.title, start: newEvent.start.toJSON(),end:newEvent.end.toJSON(), name: newEvent.name, phone:newEvent.phone};
             // axios.post('http://localhost:3004/AppointmentData',data);
         }
-
-
     }
 
     return (
@@ -151,7 +110,7 @@ function CalendarFun() {
                         <TextField required className="inputs" type="number" id="standard-basic" label="Add Phone Number" variant="standard" value={newEvent.phone} onChange={(e) => setNewEvent({ ...newEvent, phone: e.target.value })} />
                         <Box className="box" sx={{ minWidth: 170 }}>
                             <FormControl fullWidth>
-                                <InputLabel id="demo-simple-select-label">Pick Appointment</InputLabel>
+                                <InputLabel id="demo-simple-select-label">Pick Treatment</InputLabel>
                                 <Select
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
