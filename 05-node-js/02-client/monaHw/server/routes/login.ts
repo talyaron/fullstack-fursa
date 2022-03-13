@@ -3,7 +3,7 @@ import jwt from "jwt-simple";
 export function loginStatus(req, res, next): void {
   try {
     const { login } = req.cookies;
-    console.log(login)
+    // console.log(login)
     if (login) {
       const JWT_SECRET = process.env.JWT_SECRET;
       const decodedJWT = jwt.decode(login, JWT_SECRET);

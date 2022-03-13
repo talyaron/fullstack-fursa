@@ -29,9 +29,9 @@ function BedFrame()
     const [show,setShow]=useState('none');
     const dispatch=useAppDispatch();
     const [type, setType] = useState('no back')
-    useEffect(() => {
-      dispatch(fetchUser({ email:'mona_arabiya@hotmail.com', password:'123' }))
-    }, []);   
+    // useEffect(() => {
+    //   dispatch(fetchUser({ email:'mona_arabiya@hotmail.com', password:'123' }))
+    // }, []);   
     const user=useAppSelector(getUser)
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setType(event.target.value);
@@ -46,7 +46,7 @@ function BedFrame()
         
         // <Alert severity="success">item added successfully — check it out!</Alert>
         // axios.post('http://localhost:3004/userOrder',{"woodName":woodproname,"woodlength":form[0].value, "width":form[1].value, "thick":form[2].value,"color":form[3].value,"amount":form[4].value,"doorType":form[5].value}).then(({data})=>dispatch(getCartAsync()));
-        axios.post('/order/add-order',{woodName:woodproname,woodlength:form[0].value,width:form[1].value,thick:form[2].value, color:form[3].value,amount:form[4].value,doorType:form[5].value})
+        axios.post('/order/add-order',{woodName:woodproname,woodlength:form[0].value,width:form[1].value,thick:form[2].value, color:form[3].value,amount:form[4].value,doorType:form[5].value,user:user})
         .then((res) => console.log(res))
         .catch((err) => console.error(err));
         setShow('block')

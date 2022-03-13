@@ -35,9 +35,9 @@ function Closet() {
   const [type, setType] = useState('standard doors')
   const { woodproname } = useParams();
   const dispatch=useDispatch();
-  useEffect(() => {
-    dispatch(fetchUser({ email:'mona_arabiya@hotmail.com', password:'123' }))
-  }, []);   
+  // useEffect(() => {
+  //   dispatch(fetchUser({ email:'mona_arabiya@hotmail.com', password:'123' }))
+  // }, []);   
   const user=useAppSelector(getUser)
   
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

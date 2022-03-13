@@ -9,6 +9,10 @@ export const userOrderSchema=new mongoose.Schema({
     order:[Order],
     user:UserSchema,
     date:Date,
+    cash:Boolean,
+    creditCard:Boolean,
+    delivery:Boolean,
+    pickUp:Boolean
 
   });
   

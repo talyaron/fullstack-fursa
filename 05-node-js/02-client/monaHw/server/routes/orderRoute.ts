@@ -2,11 +2,12 @@ const express = require('express');
 const router = express.Router();
 import Order from "../model/schema/orderSchema";
 import { isAdmin } from "./login";
+import jwt from "jwt-simple";
 
 router.post('/add-order',async(req,res)=>{
     try{
       const {woodName,woodlength,amount,price,user,thick,width}=req.body;
-      if(!woodName||!woodlength||!amount||!user ||!thick ||!width||!price) throw 'invalid fields'
+      if(!woodName||!woodlength||!amount||!user ||!price) throw 'invalid fields'
         
       const newOrder=new Order({
         woodName,woodlength,width,thick,amount,user,price
@@ -33,6 +34,22 @@ router.post('/add-order',async(req,res)=>{
     res.send({ error });
   }
   
+  })
+  router.get('/get-user-order',async(req,res)=>{
+    try{
+      const { login } = req.cookies;
+        const JWT_SECRET = process.env.JWT_SECRET;
+        const decodedJWT = jwt.decode(login, JWT_SECRET);
+        const { userId } = decodedJWT;
+        console.log({user:{_id:userId}})
+        const filter={user:{_id:userId}};
+        const userOrders=await Order.find({filter})
+        res.status(200).send(userOrders)
+
+    }catch (error) {
+      console.info(error);
+      res.send({ error });
+    }
   })
   router.patch('/update-order',async(req,res)=>{
     try{

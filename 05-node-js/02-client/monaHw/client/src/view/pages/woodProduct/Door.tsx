@@ -14,9 +14,9 @@ import { fetchUser, getUser } from '../../../features/user/userReducer';
 function Door()
 {
   const dispatch=useAppDispatch();
-  useEffect(() => {
-    dispatch(fetchUser({ email:'mona_arabiya@hotmail.com', password:'123' }))
-  }, []);   
+  // useEffect(() => {
+  //   dispatch(fetchUser({ email:'mona_arabiya@hotmail.com', password:'123' }))
+  // }, []);   
   const user=useAppSelector(getUser)
   
     const [show,setShow]=useState('none')
