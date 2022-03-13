@@ -12,6 +12,6 @@ export const userOrderSchema=new mongoose.Schema({
 
   });
   
-  const userOrder=mongoose.model('Order',userOrderSchema);
+  const userOrder=mongoose.model('userOrder',userOrderSchema);
   
   export default userOrder;
