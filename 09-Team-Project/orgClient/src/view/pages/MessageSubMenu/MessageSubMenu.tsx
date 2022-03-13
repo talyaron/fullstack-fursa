@@ -32,17 +32,17 @@ const MessageSubMenu = () => {
             messages.push(MessagesReducer.value.MessagesChats[variable].from);
 
         }
-        else{
+        else {
             for (const obj of messagelist) {
-                if (obj.from==MessagesReducer.value.MessagesChats[variable].from) {
-                    obj.lastMessage=MessagesReducer.value.MessagesChats[variable].message
-                    obj.unreadnumber=obj.unreadnumber+1;
-                  break;
+                if (obj.from == MessagesReducer.value.MessagesChats[variable].from) {
+                    obj.lastMessage = MessagesReducer.value.MessagesChats[variable].message
+                    obj.unreadnumber = obj.unreadnumber + 1;
+                    break;
                 }
-              }
-            
+            }
+
         }
-       
+
 
     }
     console.log(messagelist);
@@ -53,7 +53,7 @@ const MessageSubMenu = () => {
 
     async function handelNewMessage() {
         try {
-            const response = await axios.post('http://localhost:3001/messages/addNewMessages');
+            const response = await axios.post('./messages/addNewMessages');
             return response.data;
         } catch (error: any) {
             console.error(error);
