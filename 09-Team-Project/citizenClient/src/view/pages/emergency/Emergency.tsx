@@ -77,11 +77,11 @@ export function Emergency() {
         setUpload(true)
     }
     return (
-        <div className="emergency">
-            <div className="emergency_header">
+        <div className="accident">
+            <div className="accident_header">
                 <h1 >Accident</h1>
             </div>
-            <div className="emergency_body">
+            <div className="accident_body">
                 <form onSubmit={newAccidentHandler}>
                     <TextField
                         style={{ width: '50%', borderColor: "eb655", color: "#eb655b" }}
