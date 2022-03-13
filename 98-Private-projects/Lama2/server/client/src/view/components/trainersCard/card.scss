@@ -1,7 +1,8 @@
-.Card {
+.MainCard {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
     background-color: #41403f7c;
     border: .0625rem solid #4164b1;
     border-radius: 30px;
@@ -9,23 +10,24 @@
     margin: 5px;
     height: 30vh;
     width: 10vw;
+ 
 
     &:hover {
         transform: translateY(-1rem)
     }
 
-    img {
+    .imgMainCard {
+        position: absolute;
         box-sizing: border-box;
         width: 100%;
         height: 20vh;
         border-radius: 30px;
-         position: absolute;
          top: 0px;
 
 
         }
 
-        .txt{
+        .imgMaintxt{
             position: absolute;
             top: 65%;
             left: 25%;

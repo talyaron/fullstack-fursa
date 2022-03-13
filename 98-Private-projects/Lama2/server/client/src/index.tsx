@@ -25,6 +25,7 @@ import AdminPage from "./view/pages/AdminPage/adminpage";
 import AddCourse from "./view/pages/addCourse/addCourse";
 import TableDatePicker from "./view/pages/TableDatePicker/TableDatePicker"
 import CalendarFun from "./view/pages/courseRegistration/courseregistration2";
+import AddOffer from './view/pages/addOffer/addOffer';
 
 
 ReactDOM.render(
@@ -47,6 +48,7 @@ ReactDOM.render(
       <Route path="data" element={<Data />} /> 
       <Route path="adminpage" element={<AdminPage />} /> 
       <Route path="addCourse" element={<AddCourse />} /> 
+      <Route path="addOffer" element={<AddOffer />} /> 
       <Route path="TableDatePicker" element={<TableDatePicker />} /> 
       <Route path="admincourses" element={<AdminCourses />} /> 
       <Route path="courseRegistration" element={<CourseRegistration />} />

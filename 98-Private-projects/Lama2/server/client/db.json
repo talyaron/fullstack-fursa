@@ -91,7 +91,7 @@
     {"id":1,
       "name":"Horse day care",
       "description":"taking care of your horse for a day ! includes feeding,cleaning,etc..",
-      "cost":400
+      "cost":300
     },  
     {"id":2,
       "name":"Horse Hotel",

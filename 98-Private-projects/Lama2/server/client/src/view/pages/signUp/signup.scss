@@ -1,14 +1,15 @@
 
 .signup{
-    background-image: url(https://i.pinimg.com/736x/09/12/1a/09121ad06a3f102099ce22f36c463313.jpg);
+    background-image: url(https://i.pinimg.com/736x/6b/52/7c/6b527c4762f95b65fff4e6e42cd06b44.jpg);
     background-repeat: no-repeat;
+    background-size: cover;
     font-size: small;
     margin-top: 20px;
     justify-content: center;
     border-style: double;
     border-width: 10px;
     width: 30vw;
-    height: 90vh;
+    height: 80vh;
     border-color: black;
     position: relative;
     left: 500px;
@@ -23,7 +24,7 @@
     }
     .typ{
         position: absolute;
-        top: 10%;
+        top: 2%;
         left: 40%;
     }
     
@@ -32,9 +33,14 @@
     top: 60px;
     .textfield{
         width:20vw;
-        height:10vh;
+        height:8vh;
         position: relative;
         text-align: center;
+    }
+    .subbtn{
+        position: relative;
+        // bottom: -240px;
+        // width: 20vw;
     }
 
 }

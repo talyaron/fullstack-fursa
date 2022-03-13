@@ -35,7 +35,7 @@ function Header() {
             {/* <div className="mainheader__box"> */}
             <div className="mainheader__left">
 
-                <Link to="/">
+                <Link to="/homepage">
                     HomePage
                 </Link>
                 <Link to="/horses">
@@ -50,6 +50,9 @@ function Header() {
                 <Link to="/TableDatePicker">
                     Register2
                 </Link>
+                {/* <Link to="/TableDatePicker">
+                    offers
+                </Link> */}
             
                 {/* <Link to="/courseregistration2">
                     Register3

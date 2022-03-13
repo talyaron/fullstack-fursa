@@ -8,6 +8,9 @@
     margin: 5px;
     height: 30vh;
     width: 10vw;
+    position: relative;
+   top: 400px; 
+     left: 600px;
 
     &:hover {
         transform: translateY(-1rem)
@@ -21,6 +24,9 @@
         // }
 
 
+}
+p{
+    font-weight: 500;
 }
 
 a,

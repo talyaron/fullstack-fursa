@@ -100,7 +100,7 @@ alert("course added successfully");
           <input type="number" name="cost" placeholder='insert course"s cost' />
           <input type="number" name="participants" placeholder='insert participants number' />
           <input type="number" name="lessons" placeholder=' how many lessons' />
-          <input type="number" name="hours" placeholder='how much hours' />
+          <input type="double" name="hours" placeholder='how much hours' />
           <button type='submit'>Add</button>
         </form>
         <h1>courses</h1>

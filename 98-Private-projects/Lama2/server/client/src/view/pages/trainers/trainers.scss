@@ -1,5 +1,5 @@
 
-    .maindiv_card2 {
+    .maindiv2_card2 {
         max-width: 90vw;
         display: grid;
         grid-template-rows:  auto auto ;
@@ -9,10 +9,14 @@
         margin: auto;
         text-align: center;
         justify-content: center;
-        .img{
-            box-sizing: border-box;
-        }
+        // .img{
+        //     box-sizing: border-box;
+        // }
        
+    }
+
+    h3{
+        text-align: center;
     }
     
 

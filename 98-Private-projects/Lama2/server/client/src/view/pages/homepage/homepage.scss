@@ -8,7 +8,7 @@
 // }
 
 
-div{
+.maindiv{
   // margin-right: 50px;
   position: relative;
   justify-content: center;
@@ -19,9 +19,34 @@ div{
   margin-left: 100px;
   width: 60vw;
   }
+
+  .animation{
+    position: relative;
+    left: 25%;
+    width: 50vw;
+    top: 10px;
+    height: 50vh;
+    // justify-content: center;
+    background-image: url(https://i.pinimg.com/736x/7b/f8/04/7bf804b8d3e725b72778b6f7bcf74ed6.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation-name: move;
+    animation-duration:10s;
+    // animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    // animation-direction: alternate;
+    // animation-timing-function: ease-in-out;
+  }
+
+  .offerBtn{
+    position: relative;
+    top: 180px;
+  }
  
 
   .offersDiv{
+    position: absolute;
+    bottom: 0%;
     display: grid;
     grid-template-rows:  auto ;
     grid-template-columns: repeat(2,auto);
@@ -33,36 +58,9 @@ div{
       margin: 50px;
        text-align: left;
     }
-  .ani{
-    width: 40vw;
-    height: 20vh;
-    position: relative;
-    top: 200px;
-    // bottom: 50px;
+ 
 
-    left: 37%;
-  .animation{
 
-    justify-content: center;
-    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIxcYVFc1xSuH9jgYeJgDXsVw0P7KdnX53UA&usqp=CAU);
-    width: 40vw;
-    height: 40vh;
-    background-size: 400px;
-    position: absolute;
-    // top: 500px;
-    // left: 60%;
-    // border-radius: 50px;
-    background-repeat: no-repeat;
-
-    animation-name: move;
-    animation-duration:5s;
-
-    // animation-fill-mode: forwards;
-    animation-iteration-count: infinite;
-    // animation-direction: alternate;
-    // animation-timing-function: ease-in-out;
-  }
-}
 
   button{
     width: 20vw;
@@ -72,9 +70,17 @@ div{
 }
 
 @keyframes move {
-  // from{    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIxcYVFc1xSuH9jgYeJgDXsVw0P7KdnX53UA&usqp=CAU);}
-  // to{      background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRnVjp6dcfqRT0CGg5Q89VXbV0RsfJ-Y9png&usqp=CAU);}
-
+  25% {
+    // width: 50vw;
+    // height: 300px;
+      // top: 30vh;
+      // left: 0vw;
+      // border-radius: 50px;
+      // transform: rotate(720deg);
+      background-image: url(https://i.pinimg.com/736x/5b/7c/aa/5b7caae3f0bf6bcbae6707d22e59c012.jpg);
+      background-size: 100%;
+      background-repeat: no-repeat;
+  }
   50% {
     // width: 50vw;
     // height: 300px;
@@ -82,7 +88,22 @@ div{
       // left: 0vw;
       // border-radius: 50px;
       // transform: rotate(720deg);
-      background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRnVjp6dcfqRT0CGg5Q89VXbV0RsfJ-Y9png&usqp=CAU);
+
+      background-image: url(https://i.pinimg.com/736x/f7/0b/72/f70b72ef10e6d3b83e4fdfece986e4d2.jpg);
+      background-size: 100%;
+      // background-size: 100px;
+      background-repeat: no-repeat;
+  }
+  75% {
+    // width: 50vw;
+    // height: 300px;
+      // top: 30vh;
+      // left: 0vw;
+      // border-radius: 50px;
+      // transform: rotate(720deg);
+   
+      background-image: url(https://i.pinimg.com/736x/0e/9d/18/0e9d185a644b1cf9b2cde76253de3a12.jpg);
+      background-size: 100%;
       // background-size: 100px;
       background-repeat: no-repeat;
   }

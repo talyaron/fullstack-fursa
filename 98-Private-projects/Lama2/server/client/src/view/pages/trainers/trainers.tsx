@@ -34,7 +34,7 @@ function Trainers() {
             <Header />
             <h3>Our trainers</h3>
 
-            <div className="maindiv_card2">
+            <div className="maindiv2_card2">
                 {trainers.map((trainer, index) => {
                     return <Card key={index} name={trainer.name} image={trainer.image} desc={trainer.desc}></Card>
                 })}

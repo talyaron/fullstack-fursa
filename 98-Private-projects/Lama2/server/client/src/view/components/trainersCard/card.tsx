@@ -11,9 +11,9 @@ interface cardProp {
 
 function Card(prop: cardProp) {
     return (
-        <div className="Card">
-            <img src={prop.image}></img>
-            <p className='txt'>
+        <div className="MainCard">
+            <img className='imgMainCard' src={prop.image}></img>
+            <p className='imgMaintxt'>
                 {prop.name}
                 <br />
                 {prop.desc}

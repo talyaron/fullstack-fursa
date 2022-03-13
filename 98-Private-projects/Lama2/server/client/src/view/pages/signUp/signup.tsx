@@ -14,9 +14,12 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 
 function SignUp() {
+  const navigate=useNavigate();
+
 
   function handleSignUp(ev:any){
   
@@ -26,6 +29,8 @@ function SignUp() {
   axios.post('/user/add-new-user', {firstName: form[0].value,lastName: form[2].value ,email: form[4].value, password: form[6].value,phoneNumber: form[8].value})
     .then(data => {
       console.log(data);
+      navigate('/signIn');
+      
     }).catch(err => {
       console.error(err);
     })
@@ -34,14 +39,12 @@ function SignUp() {
   return (
     <div className="signup">
 
-      <Avatar className='avatar'>
-        <LockOutlinedIcon />
-      </Avatar>
+  
       <Typography component="h3" variant="h5" className="typ">
         Sign up
       </Typography>
       {/* className="signupform" */}
-      <form  onSubmit={handleSignUp}>
+      <form  onSubmit={handleSignUp} className="signupform">
 
         <TextField
           className="textfield"
@@ -82,6 +85,7 @@ function SignUp() {
           id="passowrd"
           label="Password"
           autoFocus
+         
         />
    
                <TextField

@@ -32,12 +32,12 @@ function Horses() {
 
     return (
 
-        <div className="maindiv">
+        <div className="maindivhorses">
             <Header />
      
             <h3>Our horses</h3>
        
-        <div className="maindiv_card">
+        <div className="maindivhorses_card">
             {trainers.map((trainer, index) => {
                 return <Card key={index}  name={trainer.name} image={trainer.image} desc={trainer.desc}></Card>
             })}

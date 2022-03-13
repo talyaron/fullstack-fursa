@@ -8,7 +8,9 @@ import GoogleIcon from '@mui/icons-material/Google';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import { Link } from "react-router-dom";
 import React, { useState } from 'react';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import './signin.scss';
+import Avatar from '@mui/material/Avatar';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
@@ -30,12 +32,18 @@ function SignIn() {
   async function handleSignIn(ev:any){
     ev.preventDefault();
     const form = ev.target;
-    console.log({form})
+    // console.log({form})
+    const email2=form[0].value;
   await axios.post('/user/login', {email: form[0].value,password: form[2].value})
       .then(data => {
-        console.log("faaaaat")
+        console.log({email2})
         console.log(data);
-        navigate('/homepage');
+        if(email2==="Admin@gmail.com"){
+          console.log("fat 3l if")
+          navigate('/admincourses');
+        }
+        else{
+        navigate('/homepage');}
       }).catch(err => {
         console.error(err);
       })
@@ -68,10 +76,13 @@ const responseGoogle = (response:any
 
   return (
     <div className='signin'>
-      <img className="icon" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkwQXPGGUkeJfNF9_zBIWGlYeatiFav_Cemw&usqp=CAU" alt="" />
+      {/* <img className="icon" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkwQXPGGUkeJfNF9_zBIWGlYeatiFav_Cemw&usqp=CAU" alt="" /> */}
       {/* <Typography component="h5" variant="h5">
         Sign in
       </Typography> */}
+       <Avatar className='avatar'>
+        <LockOutlinedIcon />
+      </Avatar>
       <form onSubmit={handleSignIn}>
         <TextField
           className="textfield"
@@ -92,16 +103,12 @@ const responseGoogle = (response:any
           id="passowrd"
           label="Password"
           autoFocus
+          type="password"
         />
      
       <br /><br />
       <Button className='btn' size="small" variant="outlined" startIcon={<GoogleIcon />}> Google</Button>
-      <br></br>
-      <br></br>
 
-      <Link to={`/admincourses`}>
-        <Button className='btn' size="small" variant="outlined" startIcon={<LoginIcon />}> admin </Button>
-      </Link>
       <br></br><br></br>
       {/* <Link to={`/`}> */}
         <Button  type='submit' className='btn' size="small" variant="outlined" startIcon={<LoginIcon />}> login </Button>

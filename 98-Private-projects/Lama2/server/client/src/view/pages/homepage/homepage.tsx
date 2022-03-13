@@ -8,10 +8,10 @@ import Courses from "../courses/courses";
 import OffersCard from "../../components/offersCard/offers"
 import { getProductAsync } from '../../../features/productsReducer/products';
 import { useAppSelector, useAppDispatch } from '../../../app/hooks';
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import { selectrainers } from '../../../features/trainersReducer/trainer';
-import { selectOffers} from '../../../features/offersReducer/offers'
- import { getOfferAsync } from '../../../features/offersReducer/offers';
+import { selectOffers } from '../../../features/offersReducer/offers'
+import { getOfferAsync } from '../../../features/offersReducer/offers';
 import Header from '../../components/header/header';
 
 interface horse {
@@ -29,28 +29,28 @@ function Homepage() {
   const [kitttens, setKittens] = useState([]);
   const [courses, setCourses] = useState([]);
   const offers = useAppSelector(selectOffers)
-   const trainers=useAppSelector(selectrainers)
-   const dispatch = useAppDispatch();
+  const trainers = useAppSelector(selectrainers)
+  const dispatch = useAppDispatch();
 
-  useEffect(()=>{
+  useEffect(() => {
     // fetch('/get-all-users').then(res=>res.json()).then(data=>{
-      
+
     //   console.log(data)
     //   setPpls(data);
-      
+
     // })
 
     //fetch kittens
 
     fetch('/courses/get-all-courses')
-    .then(res=>res.json())
-    .then(data=>{
-      console.log(data);
-      setCourses(data);
-    }).catch(err=>{
-      console.error(err);
-    })
-  },[])
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        setCourses(data);
+      }).catch(err => {
+        console.error(err);
+      })
+  }, [])
 
   function changename(e: any) {
     e.preventDefault();
@@ -64,7 +64,7 @@ function Homepage() {
 
   // }
 
-  function handleGetOffers(){
+  function handleGetOffers() {
     dispatch(getOfferAsync());
 
   }
@@ -72,36 +72,23 @@ function Homepage() {
   return (
     <div className='maindiv'>
       <Header></Header>
-      <h3 className="h">Welcome to our farm</h3>
+
+      <div className='animation'>
+
+      </div>
+      {/* <h3 className="h">Welcome to our farm</h3> */}
       {/* <p className="firstP">Our course duration is 10 weeks, one lesson a week .</p> */}
       {/* <div><button onClick={handleGetProducts}>get products</button></div> */}
-      <div><button onClick={handleGetOffers}>get offers</button></div>
-  
-      {/* <button onClick={changename} className='btn' type="submit">click to see all the horses names</button> */}
-      {/* </div> */}
-
-
-      {/* <h1>Kittens</h1> */}
-    {/* {kitttens.map((kity:any)=>{
-      return<p key={kity._id}>{kity.name}</p>
-    })} */}
-
-
-<div className="offersDiv">
-          {offers.status !== 'loading' ? offers.arrOffers.map((offer, index) => {
-            // return (<p key={index}>{offer.name}</p> )
-            return <OffersCard key={index} name={offer.name} description={offer.description} cost={offer.cost}></OffersCard>
-          }) : <div>loading</div>}
-    
-          </div>
-
-    
       <Courses />
-      <div className="ani">
-        <div className='animation'>
+      <div><button className='offerBtn' onClick={handleGetOffers}>get offers</button></div>
 
-        </div></div>
+      <div className="offersDiv">
+        {offers.status !== 'loading' ? offers.arrOffers.map((offer, index) => {
+          // return (<p key={index}>{offer.name}</p> )
+          return <OffersCard key={index} name={offer.name} description={offer.description} cost={offer.cost}></OffersCard>
+        }) : <div>loading</div>}
 
+      </div>
     </div>
 
 

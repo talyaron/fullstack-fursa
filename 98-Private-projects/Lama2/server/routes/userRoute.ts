@@ -39,7 +39,7 @@ router.get('/get-user',async (req:any, res:any)=>{
         const user = await User.findOne({email:email,password:password});
         console.log({user})
         if(user){
-            console.log("faaaat")
+            // console.log("faaaat")
             res.cookie("userInfo", encodedJWT, {
                 httpOnly: true,
                 maxAge: 60 * 60 * 1000,
