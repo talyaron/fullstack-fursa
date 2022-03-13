@@ -1,10 +1,18 @@
 import './homePage.scss';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 
 
-const homePage = () =>{
+const HomePage = () =>{
+    // useEffect(()=>{
+    //     axios.get("/Cookie")
+    //     .then(({data})=>{
+    //       console.log(data);
+    //     })
+    //   },[]);
+    
     return(
         <div className='warpper'>
             <div>
@@ -20,4 +28,4 @@ const homePage = () =>{
 }
 
 
-export default homePage;
+export default HomePage;

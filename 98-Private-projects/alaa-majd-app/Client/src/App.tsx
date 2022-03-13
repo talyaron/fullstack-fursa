@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import './App.css';
+import axios from 'axios';
 
 function App() {
+
+  // useEffect(()=>{
+  //   axios.get("Cookie")
+  //   .then(({data})=>{
+  //     console.log(data);
+  //   })
+  // },[])
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+
+
         <Counter />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
