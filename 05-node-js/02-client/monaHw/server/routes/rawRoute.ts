@@ -32,7 +32,7 @@ router.post('/add-Raw-Material',isAdmin,async (req,res)=>{
   
   })
 
-  router.patch('/update-raw',async(req,res)=>{
+  router.patch('/update-raw',isAdmin,async(req,res)=>{
     try{
       console.log(req.body)
       const{name,pricePerMeter,id}=req.body;
@@ -47,7 +47,7 @@ router.post('/add-Raw-Material',isAdmin,async (req,res)=>{
     }
   })
 
-  router.post('/delete-raw',async (req,res)=>{
+  router.post('/delete-raw',isAdmin,async (req,res)=>{
     try{
       const {id}=req.body;
       const filter={_id:id};

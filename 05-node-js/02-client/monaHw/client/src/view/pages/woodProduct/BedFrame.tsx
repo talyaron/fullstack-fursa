@@ -3,11 +3,13 @@ import Navbar from '../../components/navbar/Navbar';
 import {Link} from 'react-router-dom'
 import './BedFrame.scss'
 import { Alert, Button, MenuItem, TextField } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from 'axios'
 import { Box } from "@mui/system";
 import { getCartAsync } from "../../../features/cart/cartSlice";
 import { useDispatch } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import { fetchUser, getUser } from "../../../features/user/userReducer";
 const backType = [
     {
       value: 'with back',
@@ -25,8 +27,12 @@ function BedFrame()
 {
     const {woodproname}=useParams();
     const [show,setShow]=useState('none');
-    const dispatch=useDispatch();
+    const dispatch=useAppDispatch();
     const [type, setType] = useState('no back')
+    useEffect(() => {
+      dispatch(fetchUser({ email:'mona_arabiya@hotmail.com', password:'123' }))
+    }, []);   
+    const user=useAppSelector(getUser)
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setType(event.target.value);
       };
@@ -40,7 +46,7 @@ function BedFrame()
         
         // <Alert severity="success">item added successfully — check it out!</Alert>
         // axios.post('http://localhost:3004/userOrder',{"woodName":woodproname,"woodlength":form[0].value, "width":form[1].value, "thick":form[2].value,"color":form[3].value,"amount":form[4].value,"doorType":form[5].value}).then(({data})=>dispatch(getCartAsync()));
-        axios.post('/order/add-order',{woodName:woodproname,woodlength:form[0].value,width:form[1].value,"thick":form[2].value, "color":form[3].value,amount:form[4].value,doorType:form[5].value})
+        axios.post('/order/add-order',{woodName:woodproname,woodlength:form[0].value,width:form[1].value,thick:form[2].value, color:form[3].value,amount:form[4].value,doorType:form[5].value})
         .then((res) => console.log(res))
         .catch((err) => console.error(err));
         setShow('block')

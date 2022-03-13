@@ -44,10 +44,9 @@ import { fetchUser, getUser } from '../../../features/user/userReducer';
 function Order() {
   const dispatch=useAppDispatch();
 useEffect(() => {
-  dispatch(fetchUser({ "email": "mona_arabiya@hotmail.com", "password": "123" }))
+  dispatch(fetchUser({ email: "mona_arabiya@hotmail.com", password: "123" }))
 }, [])
 const user=useAppSelector(getUser)
-
     // const { product, setProduct } = props;
     const [currency, setCurrency] = React.useState('cm');
    useEffect(()=>{

@@ -7,7 +7,7 @@ export function loginStatus(req, res, next): void {
     if (login) {
       const JWT_SECRET = process.env.JWT_SECRET;
       const decodedJWT = jwt.decode(login, JWT_SECRET);
-      console.log(decodedJWT);
+      // console.log(decodedJWT);
       const { role, userId } = decodedJWT;
       if (role) {
         req.role = role;

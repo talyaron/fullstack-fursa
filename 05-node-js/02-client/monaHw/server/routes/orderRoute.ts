@@ -1,16 +1,17 @@
 const express = require('express');
 const router = express.Router();
 import Order from "../model/schema/orderSchema";
+import { isAdmin } from "./login";
 
 router.post('/add-order',async(req,res)=>{
     try{
-      const {woodName,woodlength,amount,user,thick,width}=req.body;
-
-      if(!woodName||!woodlength||!amount||!user ||!thick ||!width) throw 'invalid fields'
-    
+      const {woodName,woodlength,amount,price,user,thick,width}=req.body;
+      if(!woodName||!woodlength||!amount||!user ||!thick ||!width||!price) throw 'invalid fields'
+        
       const newOrder=new Order({
-        woodName,woodlength,width,thick,amount,user
+        woodName,woodlength,width,thick,amount,user,price
       });
+      
       
       await newOrder.save().then((res)=>{
         console.log(res);

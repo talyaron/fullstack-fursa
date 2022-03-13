@@ -1,6 +1,6 @@
 {
   "name": "example",
-  "proxy": "http://localhost:4001",
+  "proxy": "http://localhost:4003",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

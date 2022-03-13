@@ -74,7 +74,7 @@ function Cart(){
                 </div>
                 
                 <div className="cart_body_done">
-                    <Outlet />
+                    {/* <Outlet /> */}
                 </div>
              
                 {orders.status!=='loading' ?
@@ -90,9 +90,11 @@ function Cart(){
                 <Backdrop
         sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}
-        onClick={handleClose}
+        // onClick={handleClose}
       >
         {/* <CircularProgress color="inherit" /> */}
+        <button onClick={handleClose}>close</button>
+
         <ChekOutOrder></ChekOutOrder>
       </Backdrop>
 

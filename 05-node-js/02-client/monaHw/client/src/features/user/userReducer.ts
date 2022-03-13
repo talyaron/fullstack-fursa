@@ -35,9 +35,8 @@ const initialState: User = {
     'user/fetchUsers',
     async (obj:any ) => {
       const {email,password}=obj;
-      console.log(obj  )
       try {
-        const response = await axios.post('/user/get-user',{email:email,password:password})
+        const response = await axios.post('/user/get-user',{"email":email,"password":password})
         const data = response.data
         return data
   
@@ -63,6 +62,7 @@ const initialState: User = {
         .addCase(fetchUser.fulfilled, (state, action) => {
           state.status = 'idle';
           state.userInfo = action.payload;
+
          
         })
         

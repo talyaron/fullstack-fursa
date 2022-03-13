@@ -6,11 +6,12 @@ import jwt from "jwt-simple";
 import { isAdmin } from "./login";
 
 router.post('/register',async (req,res)=>{
+  try{
     const {name,email,phone,password}=req.body;
     if(!name||!email||!password) throw 'ivalid field values'
-    try{
+    
     const user=new User({name:name,email:email,phone:phone,password:password})
-    user.save().then((res)=>{
+    await user.save().then((res)=>{
         console.log(res);
       });
       res.send({val:"OK"})
@@ -53,9 +54,14 @@ router.post('/get-user',async (req,res)=>{
     const{email,password}=req.body;
 
     const filter={email:email,password:password};
-    const user=await User.find({filter})
-    
-    res.status(200).send(user)
+    const user=await User.findOne({email:email})
+    if(user)
+    {
+      if(user.password===password)
+      res.status(200).send(user)
+
+    }
+    else console.log('wrong email or password')
   }
   catch (error) {
     console.info(error);
@@ -63,4 +69,4 @@ router.post('/get-user',async (req,res)=>{
   }
 
 })
-module.exports=router;;
+module.exports=router;

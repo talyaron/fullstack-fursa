@@ -4,13 +4,15 @@ import "./Closet.scss"
 import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
 import { Link, useParams } from 'react-router-dom';
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { MenuItem } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import axios from 'axios'
 import { useDispatch } from 'react-redux';
 import { getCartAsync } from '../../../features/cart/cartSlice';
 import Box from '@mui/material/Box';
+import { fetchUser, getUser } from '../../../features/user/userReducer';
+import { useAppSelector } from '../../../app/hooks';
 
 const doorType = [
   {
@@ -33,6 +35,11 @@ function Closet() {
   const [type, setType] = useState('standard doors')
   const { woodproname } = useParams();
   const dispatch=useDispatch();
+  useEffect(() => {
+    dispatch(fetchUser({ email:'mona_arabiya@hotmail.com', password:'123' }))
+  }, []);   
+  const user=useAppSelector(getUser)
+  
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setType(event.target.value);
   };
@@ -45,7 +52,7 @@ function Closet() {
     
     // <Alert severity="success">item added successfully — check it out!</Alert>
     // axios.post('http://localhost:3004/userOrder',{"woodName":woodproname,"woodlength":form[0].value, "width":form[1].value, "thick":form[2].value,"color":form[3].value,"amount":form[4].value,"doorType":form[5].value}).then(({data})=>dispatch(getCartAsync()));
-    axios.post('/order/add-order',{woodName:woodproname,woodlength:form[0].value,width:form[1].value,"thick":form[2].value, "color":form[3].value,amount:form[4].value,doorType:form[5].value})
+    axios.post('/order/add-order',{woodName:woodproname,woodlength:form[0].value,width:form[1].value,"thick":form[2].value, "color":form[3].value,amount:form[4].value,doorType:form[5].value,user:user})
     .then((res) => console.log(res))
     .catch((err) => console.error(err));
     setShow('block')

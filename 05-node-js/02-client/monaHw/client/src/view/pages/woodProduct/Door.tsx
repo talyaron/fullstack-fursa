@@ -15,7 +15,7 @@ function Door()
 {
   const dispatch=useAppDispatch();
   useEffect(() => {
-    dispatch(fetchUser({ email: "mona_arabiya@hotmail.com", password: "123" }))
+    dispatch(fetchUser({ email:'mona_arabiya@hotmail.com', password:'123' }))
   }, []);   
   const user=useAppSelector(getUser)
   

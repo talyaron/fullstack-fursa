@@ -1,7 +1,7 @@
 const mongoose=require('mongoose')
 
 export const UserSchema=new mongoose.Schema({
-    id:String,
+  
     name:String,
     phone:String,
     email:String,

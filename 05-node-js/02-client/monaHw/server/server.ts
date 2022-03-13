@@ -9,7 +9,7 @@ import { loginStatus } from './routes/login';
 const express = require('express');
 const cookieParser=require('cookie-parser')
 const app = express();
-const port = 4001;
+const port = 4003;
 
 
 
@@ -19,10 +19,10 @@ const port = 4001;
 
 //   res.send(woods)
 // })
-// app.use(express.static('client/build'));
-// app.use(cookieParser())
-// app.use(express.json());
-// app.use(loginStatus)
+app.use(express.static('client/build'));
+app.use(cookieParser())
+app.use(express.json());
+app.use(loginStatus)
 
 // app.get('/get-orders',async (req,res)=>{
 //   try {
@@ -85,7 +85,7 @@ const db = mongoose.connection;
 
 async function main() {
   const password=process.env.MONGODB_PASSWORD;
-  console.log(password)
+  // console.log(password)
   await mongoose.connect(`mongodb+srv://Mona1:${password}@cluster0.qlk4d.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`);
 }
 
@@ -94,12 +94,12 @@ db.once("open", () => {
   console.log("connected to DB!");
 });
 
-const kittySchema = new mongoose.Schema({
-  name: String,
-  address:{
-    city:String
-  }
-});
+// const kittySchema = new mongoose.Schema({
+//   name: String,
+//   address:{
+//     city:String
+//   }
+// });
 
 // const RawSchema=new mongoose.Schema({
 // name:String,
@@ -120,22 +120,22 @@ const kittySchema = new mongoose.Schema({
 // });
 
 //the collection
-const Kitten = mongoose.model('Kitten', kittySchema);
-// const Raw=mongoose.model('Raw',RawSchema)
-// const Order=mongoose.model('Order',OrderSchema)
+// const Kitten = mongoose.model('Kitten', kittySchema);
+// // const Raw=mongoose.model('Raw',RawSchema)
+// // const Order=mongoose.model('Order',OrderSchema)
 
-const mitzy = new Kitten({ name: 'Mitzy' ,address:{city:"Nazareth"}});
-// console.log(mitzy.name);
-// mitzy.save()
-async function getKittens(){
-const kitten=await Kitten.find({address:{city:"Nazareth"}})
-console.log(kitten)
-}
+// const mitzy = new Kitten({ name: 'Mitzy' ,address:{city:"Nazareth"}});
+// // console.log(mitzy.name);
+// // mitzy.save()
+// async function getKittens(){
+// const kitten=await Kitten.find({address:{city:"Nazareth"}})
+// console.log(kitten)
+// }
 
-app.get('/get-all-kittens',async (req,res)=>{
-  const kittens=await getKittens();
-  res.send(kittens);
-})
+// app.get('/get-all-kittens',async (req,res)=>{
+//   const kittens=await getKittens();
+//   res.send(kittens);
+// })
 
 // app.post('/add-Raw-Material',async (req,res)=>{
 //   try{
@@ -194,10 +194,13 @@ app.use('/order',orderRoute)
 
 const rawRoute=require('./routes/rawRoute')
 app.use('/raw',rawRoute)
+
 const userRoute=require('./routes/userRoute')
 app.use('/user',userRoute)
+
 const productRoute=require('./routes/productRoute')
 app.use('/product',productRoute) 
+
 // app.post('/add-order',async (req,res)=>{
 //   try{
 //     const order=req.body;

@@ -9,6 +9,7 @@ export const OrderSchema=new mongoose.Schema({
     woodlength: Number,
     amount: Number,
     color:String,
+    price:Number,
     width:Number,
     thick:Number,
     doorType:String,
