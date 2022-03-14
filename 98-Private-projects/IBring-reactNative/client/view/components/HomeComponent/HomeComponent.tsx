@@ -17,14 +17,32 @@ const HomeComponent = (props: any) => {
 
     return (
         <TouchableOpacity style={styles.listContainer} onPress={handleClick}>
-            <Image source={{
-                uri: `${findList.meetingDetails.imgURL}`,
-            }} style={{ width: 50, height: 50 }} />
-            <Text>{name}</Text>
-            <Text>{date}</Text>
-            <Text>{date}</Text>
-            <Text>{place}</Text>
-            <Text>{time}</Text>
+            <View style={styles.listImage}>
+                {findList.meetingDetails.imgURL !== "" ?
+                    <Image source={{
+                        uri: `${findList.meetingDetails.imgURL}`,
+                    }} style={{ width: 60, height: 60, borderRadius: 50 }} /> :
+                    <Image source={require('../../logoAndPhotos/calendar.jpg')} style={{ width: 60, height: 60, borderRadius: 50 }} />}
+            </View>
+            <View style={styles.listInfo}>
+                <View>
+                    <Text style={{ fontSize: 15, fontWeight: "bold", color: "#7065F2" }}>{name}</Text>
+                </View>
+                <View style={styles.listInformation_info_list}>
+                    <View style={styles.info}>
+                        <Image source={require('../../logoAndPhotos/calendar.jpg')} style={{ width: 20, height: 20 }} />
+                        <Text style={{ marginLeft: 5 }}>{date.toString().split("T")[0]}</Text>
+                    </View>
+                    <View style={styles.info}>
+                        <Image source={require('../../logoAndPhotos/clock.jpg')} style={{ width: 20, height: 20 }} />
+                        <Text style={{ marginLeft: 5 }}>{time}</Text>
+                    </View>
+                    <View style={styles.info}>
+                        <Image source={require('../../logoAndPhotos/location.png')} style={{ width: 20, height: 20 }} />
+                        <Text style={{ marginLeft: 5 }}>{place}</Text>
+                    </View>
+                </View>
+            </View>
         </TouchableOpacity>
     )
 }
@@ -32,16 +50,45 @@ const HomeComponent = (props: any) => {
 export default HomeComponent
 
 const styles = StyleSheet.create({
+    listInformation_info_list: {
+        display: "flex",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        width: "70%",
+        marginTop: 5,
+    },
+    info: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-around",
+        alignItems: "center",
+        gap: 10,
+        marginLeft: 3,
+        marginTop: 5,
+    },
+    listImage: {
+        height: "100%",
+        marginTop: 15,
+    },
+    listInfo: {
+        display: "flex",
+        flexWrap: "wrap",
+        flexDirection: "column",
+        gap: 20,
+        height: "100%",
+        marginTop: 15,
+        marginLeft: 20,
+    },
     listContainer: {
         display: "flex",
-        justifyContent: "center",
+        justifyContent: "space-around",
         alignItems: "center",
-        borderWidth: 2,
         padding: 10,
         borderRadius: 8,
-        gap: 5,
-        borderColor: "grey",
-        minWidth: "80%",
-        maxWidth: 500,
+        width: "100%",
+        height: 150,
+        marginTop: 10,
+        backgroundColor: "#F0F0FF",
+        flexWrap: "wrap",
     }
 })
