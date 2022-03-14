@@ -14,40 +14,28 @@ function AccidentsInfo() {
   const dispatch = useAppDispatch();
   const accident_ = useAppSelector(state => state.accident);
   const nav = useNavigate();
-  // const accident_ = { type: 'homeviolence', emergency: false, date: new Date(), address: 'Nazareth', call: {}, description: "", userInfo: { name: 'xxxxxx' }, org: {} }
-
-
-  // let day = accident_.value.date.getDate();
-  // let month = accident_.value.date.getMonth() + 1;
-  // let year = accident_.value.date.getFullYear();
-
-  // let fullDate = `${day}/${month}/${year}`;
 
   useEffect(() => {
     console.log('accidentInfo')
     dispatch(findAccidentAsync(accidentId))
   }, []);
 
-
   return (
     <div className='wrapper'>
-      {/* <div className='menu'>
-        <HomeIcon sx={{ paddingLeft: '20px', fontSize: 35, paddingTop: '10px' }} onClick={()=> nav('/accidents')}/>
-        <SettingsIcon sx={{ float: 'right', fontSize: 35, paddingRight: '20px', paddingTop: '10px' }} />
-      </div> */}
       <MenuAppBar />
       <div className="content">
         <div className="accidentInfo">
-          <p>{accident_.value.type}</p>
-          {/* <p>{fullDate}</p> */}
-          <p>{accident_.value.user.name}</p>
-          <p>{accident_.value.description}</p>
+          <h3>Accident Info</h3>
+          <p>Accident Type : {accident_.value.type}</p>
+          <p>Date : {accident_.value.date}</p>
+          <p>Address : {accident_.value.address}</p>
+          <p>Description: {accident_.value.description}</p>
         </div>
-        {/* <Link to={}> */}
+        <Link to={'/profileInfo'}>
         <button>Profile Info</button>
-        {/* </Link> */}
+        </Link>
         {/* <Link to={}> */}
-        <button>Chat</button>
+        <button>Go To Chat</button>
         {/* </Link> */}
         <Link to="/messagesBetweenOrg">
           <button>Send to other user</button>
