@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Paper, Avatar, Typography, TextField, Button } from '@material-ui/core'
+import { Grid, Paper, Avatar, TextField } from '@material-ui/core'
 import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -8,19 +8,58 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import { Link } from 'react-router-dom';
 import ProminentAppBar from '../../Components/outsideHeader/header';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import './signUp.scss';
 
 const signUp = () => {
     const paperStyle = { padding: '30px 20px', width: 300, margin: "20px auto" }
     const headerStyle = { margin: 0 }
     const avatarStyle = { backgroundColor: '#1bbd7e' }
     const marginTop = { marginTop: 5 }
-    function handelLink(){
+    function handleClick() {
 
     }
     return (
         <Grid>
             <ProminentAppBar />
-            <Paper elevation={20} style={paperStyle}>
+
+            <div className="signupPageContent">
+                <div className="title">
+                    <Typography
+                        variant="h3"
+                        component="div"
+                    >
+                        SignUp
+                    </Typography>
+                </div>
+
+                <div className="form">
+                    <TextField fullWidth label='full name' required placeholder="Enter your full name" />
+                    <TextField fullWidth label='Email' required placeholder="Enter your email" />
+                    <TextField fullWidth label='password' required placeholder="Enter your password" />
+                    <TextField fullWidth label='confirm password' required placeholder="re-enter your password" />
+                    <TextField fullWidth label='Phone Number' required placeholder="Enter your phone number" />
+
+                    <Button className="signupBtn" variant="contained" onClick={handleClick}>Sign up</Button>
+                </div>
+
+                <div className="loginLink">
+                    <Typography
+                        fontSize='12'
+                        // variant="h7"
+                        component="div"
+                        align='center'
+                    >
+                        already have a account? login here
+                    </Typography>
+                </div>
+
+
+            </div>
+
+
+            {/* <Paper elevation={20} style={paperStyle}>
                 <Grid  >
                     <Avatar style={avatarStyle}>
                         <AddCircleOutlineOutlinedIcon  />
@@ -43,9 +82,9 @@ const signUp = () => {
                     <Button type='submit' onClick={handelLink}  variant='contained' color='primary'> Sign up</Button>
                    
                     </form>
-            </Paper>
+            </Paper> */}
         </Grid>
-    ) 
+    )
 }
 
 export default signUp;
