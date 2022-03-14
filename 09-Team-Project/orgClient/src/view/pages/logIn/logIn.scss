@@ -1,61 +1,96 @@
-.warpper {
+.signupPageContent{
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  margin-top: 15px;
+  justify-content: center;
+  align-content: center;
+  width: 80%;
+  margin: auto;
 
-  .warrper_header{
-    font-size: larger;
-    font-weight: bolder;
-  }
-
-  .email {
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    height: fit-content;
-    padding: 15px;
-
-    input {
-      height: 50px;
-    }
-  }
-
-  .password {
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    height: fit-content;
-    padding: 15px;
-
-    input {
-      height: 50px;
-    }
-  }
-
-  .submit{
-    width: 300px;
-  }
-}
-
-.warpper {
-  .submit {
+  .title{
     display: flex;
     justify-content: center;
-    float: center;
-    color: rgb(255, 255, 255);
-    background-color: #16567A;
-    // min-width: 250px;
-    min-height: none;
-    text-align: center;
-    padding: 12px;
-    text-decoration: none;
-    font-size: 18px;
-    line-height: 25px;
-    border-radius: 4px;
+    margin-top: 5vh;
+  }
+  
+  .form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+
+    .loginBtn{
+      margin-top: 5vh;
+    }
+
+  }
+
+  .loginLink{
+    margin-top: 6vh;
+    display: flex;
+    justify-content: center;
   }
 }
+  
+
+
+// .warpper {
+//   display: flex;
+//   justify-content: center;
+//   flex-direction: column;
+//   align-items: center;
+//   gap: 5px;
+//   margin-top: 15px;
+
+//   .warrper_header{
+//     font-size: larger;
+//     font-weight: bolder;
+//   }
+
+//   .email {
+//     width: 300px;
+//     display: flex;
+//     flex-direction: column;
+//     gap: 5px;
+//     height: fit-content;
+//     padding: 15px;
+
+//     input {
+//       height: 50px;
+//     }
+//   }
+
+//   .password {
+//     width: 300px;
+//     display: flex;
+//     flex-direction: column;
+//     gap: 5px;
+//     height: fit-content;
+//     padding: 15px;
+
+//     input {
+//       height: 50px;
+//     }
+//   }
+
+//   .submit{
+//     width: 300px;
+//   }
+// }
+
+// .warpper {
+//   .submit {
+//     display: flex;
+//     justify-content: center;
+//     float: center;
+//     color: rgb(255, 255, 255);
+//     background-color: #16567A;
+//     // min-width: 250px;
+//     min-height: none;
+//     text-align: center;
+//     padding: 12px;
+//     text-decoration: none;
+//     font-size: 18px;
+//     line-height: 25px;
+//     border-radius: 4px;
+//   }
+// }

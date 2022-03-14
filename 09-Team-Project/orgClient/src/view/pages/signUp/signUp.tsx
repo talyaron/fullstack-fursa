@@ -35,12 +35,14 @@ const signUp = () => {
                 </div>
 
                 <div className="form">
-                    <TextField fullWidth label='full name' required placeholder="Enter your full name" />
+                    <TextField fullWidth label='Full Name' required placeholder="Enter your full name" />
                     <TextField fullWidth label='Email' required placeholder="Enter your email" />
-                    <TextField fullWidth label='password' required placeholder="Enter your password" />
-                    <TextField fullWidth label='confirm password' required placeholder="re-enter your password" />
+                    <TextField fullWidth type="password" label='Password' required placeholder="Enter your password" />
+                    <TextField fullWidth type="password" label='Confirm Password' required placeholder="re-enter your password" />
                     <TextField fullWidth label='Phone Number' required placeholder="Enter your phone number" />
-
+                    <TextField fullWidth label='City' required placeholder="Enter your Address" />
+                    <TextField fullWidth label='Description' required placeholder="Enter a Description" />
+                    <TextField fullWidth label='Web Url' placeholder="Enter your URL" />
                     <Button className="signupBtn" variant="contained" onClick={handleClick}>Sign up</Button>
                 </div>
 
@@ -51,7 +53,7 @@ const signUp = () => {
                         component="div"
                         align='center'
                     >
-                        already have a account? login here
+                        <Link to='/login'>already have a account? login here</Link>
                     </Typography>
                 </div>
 
