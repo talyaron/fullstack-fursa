@@ -9,7 +9,6 @@ import MaleIcon from '@mui/icons-material/Male';
 import FemaleIcon from '@mui/icons-material/Female';
 
 function Profile() {
-    const dispatch = useAppDispatch()
     const userName = useAppSelector(getName)
     const userGender = useAppSelector(getGender)
     let gender = <MaleIcon style={{ color: "#3f51b5" }}></MaleIcon>

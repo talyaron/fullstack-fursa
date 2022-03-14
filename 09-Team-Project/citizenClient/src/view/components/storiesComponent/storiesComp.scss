@@ -2,29 +2,24 @@
     border: 1px solid black;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-content: center;
-    // align-items: center;
-    border-radius: 0px;
-    align-content: center;
+    border-radius: 8px;
+    margin-bottom: 1rem;
     width: 80%;
-    padding: 20px;
-    margin: 20px;
+    padding: 1rem;
     background-color: rgba(113, 168, 184, 0.301);
 
-
-    .vicDesc {
-        align-items: flex-start;
-     
-        height: 100%;
-        padding: 5px;
-
+    .vicName {
+        font-weight: 700;
+        font-size: 1.5rem;
     }
 
-    .theVicImg {
-        height: 10vh;
-         width: 5vw;
-         border-radius: 40px;
+    .vicDesc {
+        max-width: 95%;
+    }
 
+
+    .read-or-hide {
+        color: rgb(70, 70, 172);
+        cursor: pointer;
     }
 }
