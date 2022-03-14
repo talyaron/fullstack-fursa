@@ -12,7 +12,7 @@ router.post("/get-user", async (req, res) => {
             if (_user.password === password) {
                 res.send({ ok: true, user: _user })
             }
-            else{
+            else {
                 res.send({ ok: false, message: "wrong email or password!" });
             }
         }

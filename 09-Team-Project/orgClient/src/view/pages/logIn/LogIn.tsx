@@ -15,7 +15,7 @@ import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { fetchOrgUserAsync } from '../../../features/orgUser/orgUserReducer';
 
 const Login = () => {
-    const [ID, setID] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const nav = useNavigate();
     const orgUser = useAppSelector(state => state.orgUser);
@@ -23,7 +23,7 @@ const Login = () => {
 
     function hadleSubmit(e: any) {
         e.preventDefault();
-        dispatch(fetchOrgUserAsync({ email: ID, password: password }));
+        dispatch(fetchOrgUserAsync({ email: email, password: password }));
     }
 
 
@@ -49,8 +49,8 @@ const Login = () => {
                 </div>
 
                 <div className="form">
-                    <TextField fullWidth label='Email' required placeholder="Enter your email" />
-                    <TextField fullWidth type="password" label='Password' required placeholder="Enter your password" />
+                    <TextField fullWidth label='Email' required placeholder="Enter your email" onKeyUp={(e:any) => setEmail(e.target.value)} />
+                    <TextField fullWidth type="password" label='Password' required placeholder="Enter your password" onKeyUp={(e:any) => setPassword(e.target.value)} />
                     <Button className="loginBtn" variant="contained" onClick={hadleSubmit}>Sign in</Button>
                 </div>
 

@@ -52,6 +52,9 @@ app.use('/accidents', accidentRouter);
 const userRouter = require('./routers/userRouter');
 app.use('/users', userRouter);
 
+const orgRouter = require('./routers/orgRouter');
+app.use('/org', orgRouter);
+
 const previousAccidentRouter = require('./routers/previousAccidentsRouter');
 app.use('/previousAccidents', previousAccidentRouter);
 
