@@ -1,20 +1,25 @@
 import jwt from "jwt-simple";
+import Users from "../model/schema/userModel";
 
 
 
-export function isAdmin(req, res, next) {
+export async function isAdmin(req, res, next) {
     try {
         const { user } = req.cookies;
         if (user) {
             const JWT_SECRET = process.env.JWT_SECRET;
             const decodedJWT = jwt.decode(user, JWT_SECRET);
             const { role, userId } = decodedJWT;
-            if (role === "admin") {
-                req.userId = userId;
-                req.role = role;
-                next();
-            } else {
-                res.status(401).send({ error: "Not authorized" });
+            if (!userId) throw "invalid fields"
+            const result = await Users.find({ "_id": userId });
+            if (result.length > 0) {
+                if (role === "admin") {
+                    req.userId = userId;
+                    req.role = role;
+                    next();
+                } else {
+                    res.status(401).send({ error: "Not authorized" });
+                }
             }
         }
         else res.status(401).send({ error: "Not authorized" });
