@@ -9,8 +9,8 @@ export default function MenuAppBar() {
   const nav = useNavigate();
 
   return (
-    <AppBar position="static">
-      <Toolbar>
+    <AppBar position="static" style={{ backgroundColor: "#889FEF" }}>
+      <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
         <IconButton
           size="large"
           edge="start"
@@ -18,7 +18,7 @@ export default function MenuAppBar() {
           aria-label="menu"
           sx={{ mr: 2 }}
         >
-          <HomeIcon onClick={() => nav('/accidents')} />
+          <HomeIcon onClick={() => nav('/accidents')} style={{ fontSize: "40px" }}  />
         </IconButton>
 
         <IconButton
@@ -28,7 +28,7 @@ export default function MenuAppBar() {
           aria-label="menu"
           sx={{ mr: 2 }}
         >
-          <SettingsIcon />
+          <SettingsIcon style={{ fontSize: "40px" }} />
         </IconButton>
       </Toolbar>
     </AppBar>
