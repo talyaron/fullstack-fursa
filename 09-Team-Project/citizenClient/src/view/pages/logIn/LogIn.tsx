@@ -1,22 +1,21 @@
 import React, { useState } from "react";
 import "./logIn.scss";
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { fetchUser, getName, getGender } from '../../../app/reducer/userReducer';
 import axios from "axios";
 function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const dispatch = useAppDispatch()
+  const userName = useAppSelector(getName)
+  
   async function hadleSubmit(e: any) {
     e.preventDefault();
-    const response = await axios.post("/user/login", {
-      email: email,
-      password: password,
-    });
-    const data = response.data;
-    if (data.ok) {
-      alert("login succsess");
-    } else {
-      alert("login failed");
-    }
+
+    dispatch(fetchUser({ "email": email, "password": password }));
+
+    isLoged = useAppSelector(getName);
+    
   }
 
   return (
