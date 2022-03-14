@@ -1,19 +1,24 @@
 import './signup.scss'
 import NavBar from '../../components/navbar/navbar'
 import React, { useState } from 'react'
+import { navigate }
 import TextField from '@mui/material/TextField'
 import FormControl from '@mui/material/FormControl'
 import InputLabel from '@mui/material/InputLabel'
 import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import Button from '@mui/material/Button'
+import { useAppDispatch, useAppSelector } from '../../../app/hooks'
+import { signUpUser, getloginState } from '../../../app/reducer/userReducer'
 
 function SignUp() {
     const [sigupState, setSigupnState] = useState({})
-    function handleSignup(e: any) {
+    const islog = useAppSelector(getloginState)
+    const dispatch = useAppDispatch();
+    async function handleSignup(e: any) {
         e.preventDefault();
-        console.log(sigupState)
-        //dispatch(signUpUser(sigupState));
+        await dispatch(signUpUser(sigupState));
+
     }
     function onChangeSignup(e: any) {
         setSigupnState({
