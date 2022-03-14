@@ -1,10 +1,9 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import "./logIn.scss";
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { fetchUser, getloginState } from '../../../app/reducer/userReducer';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { ConstructionOutlined } from "@mui/icons-material";
 function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,15 +14,12 @@ function LogIn() {
   async function hadleSubmit(e: any) {
     e.preventDefault();
 
-    const loadProducts = useCallback(() => {
-      dispatch(fetchUser({ "email": email, "password": password }));
-    }, [dispatch]);
-    console.log(loadProducts);
-    
+      
+    await dispatch(fetchUser({ "email": email, "password": password }));
     if(isLoged)
     {
-      console.log(isLoged)
-      //navigate("/profile")
+      console.log(isLoged);
+      navigate("/profile");
     }
     
     
