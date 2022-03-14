@@ -1,31 +1,25 @@
-.AccidentContainer{
+.AccidentContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
-    .accidentHeader{
+
+    .accidentHeader {
         display: flex;
         justify-content: space-around;
         align-items: center;
         padding: 15px;
-        background-color: rgb(108, 145, 175);
+        background-color: #889FEF;
         height: 15vh;
         width: 100%;
 
-        .accidentHeader_home{
+        .accidentHeader_home {}
 
-        }
+        .accidentHeader_search {}
 
-        .accidentHeader_search{
-            
-        }
-
-        .accidentHeader_settings{
-            
-        }
+        .accidentHeader_settings {}
     }
 
-    .accidentsContent{
+    .accidentsContent {
         display: flex;
         flex-direction: column;
         align-items: center;
