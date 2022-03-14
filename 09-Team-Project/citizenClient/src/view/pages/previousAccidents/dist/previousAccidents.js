@@ -68,7 +68,7 @@ function PreviousAccident() {
         react_1["default"].createElement(navbar_1["default"], null),
         react_1["default"].createElement("button", { onClick: handleGetAccident }, " get previous accidents "),
         react_1["default"].createElement("div", { className: "accidentsContent" }, preAccidents.map(function (accident, index) {
-            return (react_1["default"].createElement(previousAccidentComponent_1["default"], { key: index, connect: "connect", details: accident.details, notifications: accident.notifications }));
+            return (react_1["default"].createElement(previousAccidentComponent_1["default"], { key: index, type: accident.type, date: accident.date, address: accident.address }));
         }))));
 }
 exports["default"] = PreviousAccident;
