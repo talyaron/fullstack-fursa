@@ -28,7 +28,6 @@ function LogIn() {
   return (
     <div className="login">
       <h1> login </h1>
-      <span className="material-icons">lock</span>
       <form onSubmit={hadleSubmit}>
         <input
           value={email}
