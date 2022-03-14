@@ -3,13 +3,12 @@ import { RootState, AppThunk } from '../../app/store';
 import axios from 'axios'
 export interface User {
     userInfo: {
-        _id:string,
+        _id: string,
         name: string;
         email: string;
         phone: string;
         location: string;
         gender: string;
-        password: string;
     }
     isLogIn: boolean;
     status: 'idle' | 'loading' | 'failed';
@@ -17,13 +16,12 @@ export interface User {
 
 const initialState: User = {
     userInfo: {
-        _id:"",
+        _id: "",
         name: "",
         email: "",
         phone: "",
         location: "",
         gender: "",
-        password: "",
     },
     isLogIn: false,
     status: 'idle',
@@ -35,12 +33,27 @@ export const fetchUser = createAsyncThunk(
     async (obj: any) => {
         const { email, password } = obj
         try {
-            const response = await axios.post('http://localhost:3001/users/get-user', { "email": email, "password": password })
+            const response = await axios.post('/users/get-user', { "email": email, "password": password })
             return response.data;
         }
         catch (err: any) {
             console.log(err.message)
         }
+    }
+);
+export const signUpUser = createAsyncThunk(
+    'user/signUpUser',
+    async (user: any, thunkAPI) => {
+        try {
+            const { name, email, phone, location, password, gender } = user
+            if (!name || !gender || !email || !phone || !location || !password) throw "invalid fields"
+            const response = await axios.post('/users/sign-up', user)
+            const data: any = response.data
+            return data
+        } catch (e) {
+            thunkAPI.rejectWithValue(e)
+        }
+
     }
 );
 
@@ -57,10 +70,21 @@ export const userReducer = createSlice({
                 state.status = 'loading';
             })
             .addCase(fetchUser.fulfilled, (state, action) => {
-                state.status = 'idle';
-                console.log(action)
-                state.userInfo = action.payload.user;
-                console.log(action.payload)
+                if (action.payload.log == true) {
+                    state.status = 'idle';
+                    state.userInfo = action.payload.user;
+                    state.isLogIn = true;
+                }
+            })
+            .addCase(signUpUser.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(signUpUser.fulfilled, (state, action) => {
+                if (action.payload.log == true) {
+                    state.status = 'idle';
+                    state.userInfo = action.payload.user;
+                    state.isLogIn = true;
+                }
             });
     },
 });
@@ -69,8 +93,7 @@ export const userReducer = createSlice({
 export const getName = (state: RootState) => state.user.userInfo.name;
 export const getGender = (state: RootState) => state.user.userInfo.gender;
 export const getID = (state: RootState) => state.user.userInfo._id;
-
 export const userInfo = (state: RootState) => state.user.userInfo;
-
+export const getloginState = (state: RootState) => state.user.isLogIn;
 export const getUserEmail = (state: RootState) => state.user.userInfo.email;
 export default userReducer.reducer;
