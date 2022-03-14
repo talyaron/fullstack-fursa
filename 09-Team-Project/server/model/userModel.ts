@@ -3,7 +3,6 @@ import { OrgSchema } from "./orgModel";
 const mongoose = require("mongoose");
 
 export const UserSchema = new mongoose.Schema({
-    userID: Number,
     name: String,
     email: String,
     password: String,
@@ -15,6 +14,6 @@ export const UserSchema = new mongoose.Schema({
 
 })
 
-const Users = mongoose.model("Users", UserSchema);
+const Users = mongoose.model("users", UserSchema);
 
 export default Users
