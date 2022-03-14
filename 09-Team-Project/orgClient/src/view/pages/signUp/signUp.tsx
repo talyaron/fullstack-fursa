@@ -7,6 +7,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import { Link } from 'react-router-dom';
+import ProminentAppBar from '../../Components/outsideHeader/header';
 
 const signUp = () => {
     const paperStyle = { padding: '30px 20px', width: 300, margin: "20px auto" }
@@ -18,6 +19,7 @@ const signUp = () => {
     }
     return (
         <Grid>
+            <ProminentAppBar />
             <Paper elevation={20} style={paperStyle}>
                 <Grid  >
                     <Avatar style={avatarStyle}>
