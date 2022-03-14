@@ -30,34 +30,27 @@ function Login() {
     })
 
     return (
-        <div className='warpper'>
-            <div>
+        <div>
             <ProminentAppBar />
-                <form onSubmit={hadleSubmit}>
-                   <div style={{ backgroundColor: "#889FEF" , display:"flex" , justifyContent:"center" , alignItems:"center" , color:"white", fontSize:"18px"}}
-> Login</div> <br /><br />
-                    <br /><br />
-                    E-mail <br />
-                    <input type="email" placeholder='email' onKeyUp={(e: any) => { setID(e.target.value) }} />
-                    <br /><br />
-                    Password <br />
-                    <input type="password" placeholder='password' onKeyUp={(e: any) => { setPassword(e.target.value) }} />
-                    <br /><br />
-                    <input type='submit' className='submit' value="Login" />
-                    <br />
-                </form>
+            <form className='warpper' onSubmit={hadleSubmit}>
+                <div className="warrper_header">
+                    Login
+                </div>
+                <div className="email">
+                    <label>Email</label>
+                    <input type="email" name="email" placeholder='Email' onKeyUp={(e: any) => { setID(e.target.value) }} />
+                </div>
+                <div className="password">
+                    <label>Password</label>
+                    <input type="password" name="password" placeholder='Password' onKeyUp={(e: any) => { setPassword(e.target.value) }} />
+                </div>
+                <input type='submit' className='submit' value="Login" />
                 {orgUser.status === 'loading' ?
                     <div>Loading...</div> :
                     null
                 }
-                <Link to="/HomePage">cancel</Link>
-
-
-            </div>
-
+            </form>
         </div>
-
-
     )
 }
 

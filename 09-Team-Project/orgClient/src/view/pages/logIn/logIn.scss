@@ -1,39 +1,61 @@
-.warpper{
+.warpper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  margin-top: 15px;
+
+  .warrper_header{
+    font-size: larger;
+    font-weight: bolder;
+  }
+
+  .email {
+    width: 300px;
     display: flex;
-    justify-content: center;
-  
+    flex-direction: column;
+    gap: 5px;
+    height: fit-content;
+    padding: 15px;
+
+    input {
+      height: 50px;
+    }
   }
-  .warpper logIn{
-    background-color: "#889FEF";
+
+  .password {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: fit-content;
+    padding: 15px;
+
+    input {
+      height: 50px;
+    }
   }
-  .warpper a {
+
+  .submit{
+    width: 300px;
+  }
+}
+
+.warpper {
+  .submit {
     display: flex;
     justify-content: center;
     float: center;
     color: rgb(255, 255, 255);
-    background-color: black;
-  
+    background-color: #16567A;
+    // min-width: 250px;
+    min-height: none;
     text-align: center;
     padding: 12px;
     text-decoration: none;
-    font-size: 18px; 
+    font-size: 18px;
     line-height: 25px;
     border-radius: 4px;
   }
-  .warpper {
-    .submit {
-      display: flex;
-      justify-content: center;
-      float: center;
-      color: rgb(255, 255, 255);
-      background-color: black;
-      min-width: 250px;
-      min-height: none;
-      text-align: center;
-      padding: 12px;
-      text-decoration: none;
-      font-size: 18px; 
-      line-height: 25px;
-      border-radius: 4px;
-    }
-  }
+}
