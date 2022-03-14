@@ -44,14 +44,14 @@ function Navbar() {
         <AppBar position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    {/* <Typography
+                    <Typography
                         variant="h6"
                         noWrap
                         component="div"
                         sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
                     >
                         LOGO
-                    </Typography> */}
+                    </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
@@ -82,11 +82,26 @@ function Navbar() {
                                 display: { xs: 'block', md: 'none' },
                             }}
                         >
-                            {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page}</Typography>
+                            <Link to="/">
+                                <MenuItem key={"Home"} onClick={handleCloseNavMenu}>
+                                    <Typography textAlign="center">Home</Typography>
                                 </MenuItem>
-                            ))}
+                            </Link>
+                            <Link to="/info">
+                                <MenuItem key={"Info"} onClick={handleCloseNavMenu}>
+                                    <Typography textAlign="center">Info</Typography>
+                                </MenuItem>
+                            </Link>
+                            <Link to="/stories">
+                                <MenuItem key={"Stories"} onClick={handleCloseNavMenu}>
+                                    <Typography textAlign="center">Stories</Typography>
+                                </MenuItem>
+                            </Link>
+                            <Link to="/chat">
+                                <MenuItem key={"Chat"} onClick={handleCloseNavMenu}>
+                                    <Typography textAlign="center">Chat</Typography>
+                                </MenuItem>
+                            </Link>
                         </Menu>
                     </Box>
                     <Typography
@@ -101,7 +116,7 @@ function Navbar() {
                         {pages.map((page) => (
                             <Button
                                 key={page}
-                                onClick={handleCloseNavMenu}
+                                onClick={() => { handleCloseNavMenu(); if (page == "Home") navigate(`/`); else navigate(`/${page}`) }}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                             >
                                 {page}

@@ -34,6 +34,7 @@ export const fetchUser = createAsyncThunk(
         const { email, password } = obj
         try {
             const response = await axios.post('/users/get-user', { "email": email, "password": password })
+            console.log(response.data)
             return response.data;
         }
         catch (err: any) {
@@ -70,7 +71,7 @@ export const userReducer = createSlice({
                 state.status = 'loading';
             })
             .addCase(fetchUser.fulfilled, (state, action) => {
-                if (action.payload.log == true) {
+                if (action.payload.ok == true) {
                     state.status = 'idle';
                     state.userInfo = action.payload.user;
                     state.isLogIn = true;
