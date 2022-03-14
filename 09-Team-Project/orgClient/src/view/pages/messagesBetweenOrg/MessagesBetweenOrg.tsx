@@ -12,6 +12,7 @@ import './style.scss';
 import axios from 'axios';
 import MenuAppBar from '../../Components/header/appBar';
 import Typography from '@mui/material/Typography';
+import { useNavigate } from 'react-router-dom';
 
 
 function MessagesBetweenOrg() {
@@ -20,6 +21,7 @@ function MessagesBetweenOrg() {
     const [description, setDescription] = useState("");
     const [orgs, setOrgs] = useState([]);
     const [users, setUsers] = useState([]);
+    const nav = useNavigate();
 
 
     const orgArr = ['org1', 'org2', 'org35'];

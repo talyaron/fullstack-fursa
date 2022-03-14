@@ -1,4 +1,5 @@
 import React from 'react';
+import MenuAppBar from '../../Components/header/appBar';
 import './style.scss'
 
 function ProfileInfo() {
@@ -7,6 +8,7 @@ function ProfileInfo() {
 
     return (
         <div>
+            <MenuAppBar/>
             <div className="profileInfo">
                 <h1>{info.name}</h1>
                 <div><p>City: {info.city}</p></div>
