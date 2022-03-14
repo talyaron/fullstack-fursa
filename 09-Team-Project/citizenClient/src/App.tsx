@@ -6,6 +6,7 @@ import PreviousAccident from "./view/pages/previousAccidents/previousAccidents"
 import "./App.css";
 import LogIn from './view/pages/logIn/LogIn';
 import { Emergency } from "./view/pages/emergency/Emergency";
+import SignUp from './view/pages/signUp/signup'
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LogIn />} />
+        <Route path="/SignUp" element={<SignUp />}></Route>
         <Route path="/profile" element={<Profile />} />
         <Route path="emergency" element={<Emergency />}></Route>
         <Route path="/previousAccidents" element={<PreviousAccident />} />
