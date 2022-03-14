@@ -13,16 +13,17 @@ function AccidentComp(props: any) {
     }
 
     return (
-        <div className='AccidentCompContainer' onClick={handleComp}>
-            <div className="firstConnect">
+        <div className='AccidentCompContainer'>
+            <div className="firstConnect" onClick={() => nav('/messagesBetweenOrg')} >
                 <img style={{ width: "40px", height: "40px" }} src={shareIcon} />
             </div>
-            <div className="accidentDetails">
+            <div className="accidentDetails" onClick={handleComp}>
                 <div className="targetName">{accident.user.name}</div>
                 <div className="accidentDetails_details">{accident.description}</div>
             </div>
-            <div className="notifications">6</div>
-            {accident.emergency ? <img style={{ width: "40px", height: "40px" }} src={emergencyIcon} /> : null}
+            <div className="notifications" onClick={() => nav('/messagesBetweenOrg')}>6</div>
+            {accident.emergency ? <img style={{ width: "40px", height: "40px" }} src={emergencyIcon} /> :
+                null}
         </div>
     )
 }
