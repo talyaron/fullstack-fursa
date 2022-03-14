@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
 
 const accidentRouter = require('./routers/accidentRouter');
 app.use('/accidents', accidentRouter);
-
+const userRouter = require('./routers/userRouter');
 app.use('/users', userRouter);
 
 const previousAccidentRouter = require('./routers/previousAccidentsRouter');
