@@ -26,13 +26,9 @@ function LogIn() {
   }
 
   return (
-    <div className="Center">
+    <div className="login">
       <h1> login </h1>
-      <img
-        src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-        alt="profile-img"
-        className="profile-img-card"
-      />
+      <span className="material-icons">lock</span>
       <form onSubmit={hadleSubmit}>
         <input
           value={email}
