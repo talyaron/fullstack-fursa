@@ -1,3 +1,4 @@
+import { loginStatus } from './controlers/login';
 import Cats from './model/schema/cats'
 import Owners from './model/schema/ownerModel';
 const cookieParser = require('cookie-parser'); 
@@ -44,19 +45,6 @@ db.once("open", () => {
 });
 
 
-
-
-const mitzy = new Cats({
-  name: "Mitzy4",
-  address: {
-    city: "Um al fahm",
-    street: "Jaberin",
-  },
-  lifes: 9,
-});
-console.log(mitzy.name);
-
-// mitzy.save().then(res=>{console.log(res)}).catch(err=>console.log(err));
 
 async function getKitens(): Promise<any> {
   try {
