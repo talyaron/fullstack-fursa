@@ -5,6 +5,8 @@ import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { AnyArray } from 'immer/dist/internal';
 import { useNavigate } from 'react-router-dom'
 import { fetchOrgUserAsync } from '../../../features/orgUser/orgUserReducer';
+import ProminentAppBar from '../../Components/outsideHeader/header';
+import { fontSize } from '@mui/system';
 
 
 
@@ -30,11 +32,13 @@ function Login() {
     return (
         <div className='warpper'>
             <div>
+            <ProminentAppBar />
                 <form onSubmit={hadleSubmit}>
-                    Login <br /><br />
+                   <div style={{ backgroundColor: "#889FEF" , display:"flex" , justifyContent:"center" , alignItems:"center" , color:"white", fontSize:"18px"}}
+> Login</div> <br /><br />
                     <br /><br />
-                    ID <br />
-                    <input type="text" placeholder='email' onKeyUp={(e: any) => { setID(e.target.value) }} />
+                    E-mail <br />
+                    <input type="email" placeholder='email' onKeyUp={(e: any) => { setID(e.target.value) }} />
                     <br /><br />
                     Password <br />
                     <input type="password" placeholder='password' onKeyUp={(e: any) => { setPassword(e.target.value) }} />
