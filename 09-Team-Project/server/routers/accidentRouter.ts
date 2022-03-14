@@ -16,6 +16,10 @@ router.
     route('/getAccidenstByUserName').
     post(accidentController.getAccidenstByUserName);
 
+router.
+    route('/getAccidenstByLocation').
+    post(accidentController.getAccidenstByLocation);
+
     router.
     route('/addNewAccident').
     post(accidentController.addNewAccident);
