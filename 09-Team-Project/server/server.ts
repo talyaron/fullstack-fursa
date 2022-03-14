@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 })
 
-const userRouter = require('./routers/userRouter');
+
 const accidentRouter = require('./routers/accidentRouter');
 const userRouter = require('./routers/userRouter');
 app.use('/accidents', accidentRouter);
