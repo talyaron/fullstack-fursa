@@ -5,11 +5,11 @@ import Profile from './view/pages/profile/profile'
 import PreviousAccident from "./view/pages/previousAccidents/previousAccidents"
 import "./App.css";
 import { Emergency } from "./view/pages/emergency/Emergency";
-import Chat from "./view/pages/chat/Chat";
+
 
 function App() {
   return (
-   /* <Router>
+    <Router>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
@@ -17,8 +17,7 @@ function App() {
         <Route path="/previousAccidents" element={<PreviousAccident />} />
 
       </Routes>
-    </Router>*/
-    <Chat></Chat>
+    </Router>
   );
 }
 

@@ -1,4 +1,4 @@
-import express from "express"
+import express from 'express';
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const app = express();
@@ -8,7 +8,7 @@ const mongoose = require("mongoose");
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+import jwt from "jwt-simple";
 import USERS from './schemes/users'
 
 
@@ -39,3 +39,5 @@ const routes = require('./routes/routes.js')(app, fs);
 const server = app.listen(3001, () => {
     console.log('listening on port %s...', server.address().port);
 });
+const userRoute = require('./routes/userManage')
+app.use('/users', userRoute);

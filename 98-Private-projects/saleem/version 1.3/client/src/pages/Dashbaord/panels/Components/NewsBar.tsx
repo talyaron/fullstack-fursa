@@ -26,14 +26,14 @@ export function NewsBar(){
     {postsData.map(function(item, i){
   console.log('test');
   return (
-    <article className="card shadow">
+    <article key = {i} className="card shadow">
     <div>
-      <img src={item.src} alt="image"/>
+      <img  src={item.src} alt="image"/>
     </div>
 
     <div>
       <p><strong>{item.post}</strong></p>
-      <span>
+      <span >
         <i className="fab fa-instagram"></i>
          {item.person} -<time>{item.time}</time>
        </span>

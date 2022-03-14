@@ -21,9 +21,9 @@ const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar,handleColla
    handleImageChange }) => {
   const intl = useIntl();
   const navigate = useNavigate();
-  function navigateToTasks()
+  function routeNavigate(name)
   {
-    console.log("SS")
+    navigate(name)
   }
   return (
     
@@ -53,13 +53,13 @@ const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar,handleColla
         </SidebarHeader>
         <SidebarContent>
           <Menu iconShape="circle">
-          <MenuItem  onclick={navigateToTasks}
+          <MenuItem  onClick={() => routeNavigate('/dashboard')}
               icon={<FaTachometerAlt />}
             >
               {intl.formatMessage({ id: 'dashboard' })}
             </MenuItem>
            
-            <MenuItem onclick={navigate("/dashboard/tasks")} icon={<FaGem />}> {intl.formatMessage({ id: 'tasks' })}</MenuItem>
+            <MenuItem onClick={() => routeNavigate('/dashboard/tasks')} icon={<FaGem />}> {intl.formatMessage({ id: 'tasks' })}</MenuItem>
           </Menu>
           <Menu iconShape="circle">
             <SubMenu

@@ -28,7 +28,7 @@ export function Projectspresent(){
           
                   {
                    projects.map((proj:any, index:number) => (
-                    <div className="card" style={{backgroundColor: getRandomColor()}}>
+                    <div key={index} className="card" style={{backgroundColor: getRandomColor()}}>
                       <div className="card-body">
                       
                       <div className="days-left">{intl.formatMessage({ id: 'DaysLeft' })}: {proj.daysleft}</div>
@@ -39,7 +39,7 @@ export function Projectspresent(){
                                 <div className="profile-images">
                                     {
                                     proj.participant.map((image:any, imageNum:number)=> (
-                                    <img className="profile-image" src={image.img} alt={image.name}/>
+                                    <img className="profile-image" key={imageNum} src={image.img} alt={image.name}/>
                                     ))
                                     }
                                 

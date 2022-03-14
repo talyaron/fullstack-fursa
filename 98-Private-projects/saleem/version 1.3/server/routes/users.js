@@ -33,20 +33,10 @@ const userRoutes = (app, fs) => {
             if (typeof(userId["email"]) === 'undefined' && typeof(userId["passsword"]) === 'undefined' )
             {
             res.status(200).send('missing params');
-            //res.send(JSON.parse(data));
             }
             else
             {
-             /*    const query = { id: id },
-      
-                options = { upsert: true, new: true, setDefaultsOnInsert: true };
-            
-              const oldItem = await USERS.find(query,db);
-              console.log(oldItem);
-              res.send(oldItem);
-            } 
-*/
-
+ 
                
             if(JSON.parse(data)[userId["email"]] == '' || JSON.parse(data)[userId["email"]].password !== userId["password"])
             res.status(401).send('wrong credentials');
