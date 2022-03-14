@@ -1,20 +1,26 @@
 import React, { useState } from "react";
 import "./logIn.scss";
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { fetchUser, getName, getGender } from '../../../app/reducer/userReducer';
+import { fetchUser, getloginState } from '../../../app/reducer/userReducer';
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useAppDispatch()
-  const userName = useAppSelector(getName)
-  
+  let isLoged = useAppSelector(getloginState)
+  const navigate = useNavigate();
+ 
   async function hadleSubmit(e: any) {
     e.preventDefault();
 
-    dispatch(fetchUser({ "email": email, "password": password }));
-
-    isLoged = useAppSelector(getName);
+    await dispatch(fetchUser({ "email": email, "password": password }));
+    if(isLoged)
+    {
+      console.log(isLoged)
+      navigate("/profile")
+    }
+    
     
   }
 
@@ -49,6 +55,7 @@ function LogIn() {
         <span>Remember me </span>
         <br></br>
         <input type="submit" className="submit" value="Login" />
+        {}
       </form>
     </div>
   );
