@@ -1,7 +1,7 @@
 import './signup.scss'
 import NavBar from '../../components/navbar/navbar'
 import React, { useState } from 'react'
-import { navigate }
+import { useNavigate } from "react-router-dom"
 import TextField from '@mui/material/TextField'
 import FormControl from '@mui/material/FormControl'
 import InputLabel from '@mui/material/InputLabel'
@@ -15,10 +15,13 @@ function SignUp() {
     const [sigupState, setSigupnState] = useState({})
     const islog = useAppSelector(getloginState)
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
     async function handleSignup(e: any) {
         e.preventDefault();
         await dispatch(signUpUser(sigupState));
-
+        if (islog == true) {
+            navigate('/');
+        }
     }
     function onChangeSignup(e: any) {
         setSigupnState({
