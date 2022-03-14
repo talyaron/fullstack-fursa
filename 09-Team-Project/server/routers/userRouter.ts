@@ -24,4 +24,8 @@ router.post("/get-user", async (req, res) => {
     }
 })
 
+const userController = require('../controllers/userController');
+router.
+    route('/Login').
+    post(userController.Login);
 module.exports = router;
