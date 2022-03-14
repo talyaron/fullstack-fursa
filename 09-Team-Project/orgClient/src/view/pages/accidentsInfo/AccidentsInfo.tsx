@@ -7,6 +7,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { accident, findAccidentAsync, removeSelected } from '../../../app/reducer/accidentInfoReducer';
 import { Link } from 'react-router-dom';
+import MenuAppBar from '../../Components/header/appBar';
 
 function AccidentsInfo() {
   const accidentId = useParams();
@@ -30,10 +31,11 @@ function AccidentsInfo() {
 
   return (
     <div className='wrapper'>
-      <div className='menu'>
+      {/* <div className='menu'>
         <HomeIcon sx={{ paddingLeft: '20px', fontSize: 35, paddingTop: '10px' }} onClick={()=> nav('/accidents')}/>
         <SettingsIcon sx={{ float: 'right', fontSize: 35, paddingRight: '20px', paddingTop: '10px' }} />
-      </div>
+      </div> */}
+      <MenuAppBar />
       <div className="content">
         <div className="accidentInfo">
           <p>{accident_.value.type}</p>
