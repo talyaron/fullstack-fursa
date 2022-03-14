@@ -13,8 +13,10 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import NotificationImportantIcon from '@mui/icons-material/NotificationImportant';
 import '../accidentsInfo/AccidentsInfo.scss';
 import './accidentsByLocation.scss';
+
 
 
 
@@ -75,10 +77,12 @@ function AccidenstByLocation() {
     <button className='searchBtn' onClick={handleSearchByLocation}> Go </button>
     
     </div>
+    
     <TableContainer className="table" component={Paper}>
       <Table sx={{ minWidth: 300 }} aria-label="customized table">
         <TableHead>
           <TableRow>
+          <StyledTableCell align="center"> </StyledTableCell>
             <StyledTableCell align="center">ACCIDENT ID </StyledTableCell>
             <StyledTableCell align="center"> ACCIDENT type</StyledTableCell>
             <StyledTableCell align="center"> ACCIDENT DATE </StyledTableCell>
@@ -89,14 +93,21 @@ function AccidenstByLocation() {
         <TableBody>
         {accidents.map((row) => (
             <StyledTableRow key={row._id}>
+              
+              <StyledTableCell align="center"> 
+              <NotificationImportantIcon></NotificationImportantIcon>
+              </StyledTableCell>
+
               <StyledTableCell align="center" component="th" scope="row">
                 {row._id}
               </StyledTableCell>
+              
               <StyledTableCell align="center">{row.type}</StyledTableCell>
               <StyledTableCell align="center">{row.date}</StyledTableCell>
               <StyledTableCell align="center"> 
               {row.description}
               </StyledTableCell>
+              
             </StyledTableRow>
           ))}
         </TableBody>
