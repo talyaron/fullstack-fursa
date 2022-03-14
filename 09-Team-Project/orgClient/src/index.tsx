@@ -18,6 +18,7 @@ import SignUp from './view/pages/signUp/signUp';
 
 ReactDOM.render(
   // <React.StrictMode>
+  
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
