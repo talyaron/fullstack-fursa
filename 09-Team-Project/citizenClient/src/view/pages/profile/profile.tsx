@@ -12,9 +12,6 @@ function Profile() {
     const dispatch = useAppDispatch()
     const userName = useAppSelector(getName)
     const userGender = useAppSelector(getGender)
-    useEffect(() => {
-        dispatch(fetchUser({ "email": "m.zmiro@hotmail.com", "password": "123" }))
-    }, [])
     let gender = <MaleIcon style={{ color: "#3f51b5" }}></MaleIcon>
     if (userGender == "female")
         gender = <FemaleIcon style={{ color: "#FF69B4" }}></FemaleIcon>
