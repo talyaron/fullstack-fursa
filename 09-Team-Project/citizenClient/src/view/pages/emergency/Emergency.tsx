@@ -54,9 +54,11 @@ export function Emergency() {
 
         }
     };
+    //axios post media
     function selectfileHandler(ev: any) {
         let copy=Object.assign([],image);
-        copy.push(ev.target.files[0].name);
+        copy.push(ev.target.files[0]);
+        console.log(ev.target.files)
         setImage(copy); 
     }
 
@@ -67,10 +69,10 @@ export function Emergency() {
         console.log(ev.target.elements.description.value)
         console.log(isAmergency)
         console.log(image)
-        
-          const acc=axios.post('http://localhost:3001/accidents/addNewAccident',{type:ev.target.elements.type.value,emergency:isAmergency,date:new Date(),address:ev.target.elements.location.value,description:ev.target.elements.description.value,user:user,org:{}})
-          .then((res) => console.log(res))
-          .catch((err) => console.error(err));
+        //fetch media
+        //   const acc=axios.post('http://localhost:3001/accidents/addNewAccident',{type:ev.target.elements.type.value,emergency:isAmergency,date:new Date(),address:ev.target.elements.location.value,description:ev.target.elements.description.value,media:image,user:user,org:{}})
+        //   .then((res) => console.log(res))
+        //   .catch((err) => console.error(err));
 
     }
     function handleUpload() {

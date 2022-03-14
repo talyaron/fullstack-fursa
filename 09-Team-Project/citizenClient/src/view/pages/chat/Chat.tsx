@@ -6,7 +6,7 @@ import './Chat.scss'
 const ENDPOINT = "http://localhost:3001/";  
   let socket: Socket<DefaultEventsMap, DefaultEventsMap>; 
 
-function Chat() {  
+function Chat() {
 
   /* previose page should pass
   accedent id,orgid

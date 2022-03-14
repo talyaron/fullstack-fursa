@@ -79,7 +79,7 @@ exports.addNewAccident = async (req, res) => {
             //     gender: "String",
             // },
             // org: {}
-            type:type,emergency:emergency,date:date,address:address,description:description,user:user,org:org
+            type:type,emergency:emergency,date:date,address:address,description:description,media:media,user:user,org:org
         });
         _acc.save().then("accident saved!");
         // const _acc = await accident.findOne({ });
