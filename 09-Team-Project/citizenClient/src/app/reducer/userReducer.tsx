@@ -33,12 +33,27 @@ export const fetchUser = createAsyncThunk(
     async (obj: any) => {
         const { email, password } = obj
         try {
-            const response = await axios.post('http://localhost:3001/users/get-user', { "email": email, "password": password })
+            const response = await axios.post('/users/get-user', { "email": email, "password": password })
             return response.data;
         }
         catch (err: any) {
             console.log(err.message)
         }
+    }
+);
+export const signUpUser = createAsyncThunk(
+    'user/signUpUser',
+    async (user: any, thunkAPI) => {
+        try {
+            const { name, email, phone, location, password, gender } = user
+            if (!name || !gender || !email || !phone || !location || !password) throw "invalid fields"
+            const response = await axios.post('/users/sign-up', user)
+            const data: any = response.data
+            return data
+        } catch (e) {
+            thunkAPI.rejectWithValue(e)
+        }
+
     }
 );
 
@@ -55,9 +70,21 @@ export const userReducer = createSlice({
                 state.status = 'loading';
             })
             .addCase(fetchUser.fulfilled, (state, action) => {
-                state.status = 'idle';
-                state.userInfo = action.payload.user;
-                state.isLogIn = true;
+                if (action.payload.log == true) {
+                    state.status = 'idle';
+                    state.userInfo = action.payload.user;
+                    state.isLogIn = true;
+                }
+            })
+            .addCase(signUpUser.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(signUpUser.fulfilled, (state, action) => {
+                if (action.payload.log == true) {
+                    state.status = 'idle';
+                    state.userInfo = action.payload.user;
+                    state.isLogIn = true;
+                }
             });
     },
 });

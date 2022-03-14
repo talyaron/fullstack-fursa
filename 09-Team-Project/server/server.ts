@@ -34,6 +34,7 @@ app.get('/', (req, res) => {
 
 const userRouter = require('./routers/userRouter');
 const accidentRouter = require('./routers/accidentRouter');
+const userRouter = require('./routers/userRouter');
 app.use('/accidents', accidentRouter);
 
 app.use('/users', userRouter);
