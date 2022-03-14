@@ -5,6 +5,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import SearchIcon from '@mui/icons-material/Search';
 import '../accidentsInfo/AccidentsInfo.scss';
 import './accidentsByLocation.scss';
+import MenuAppBar from '../../Components/header/appBar';
 
 function AccidenstByLocation() {
   
@@ -28,10 +29,11 @@ function AccidenstByLocation() {
   }
   return (
    <div>
-      <div className='menu'>
+      {/* <div className='menu'>
         <HomeIcon sx={{ paddingLeft: '20px', fontSize: 35, paddingTop: '10px' }} />
         <SettingsIcon sx={{ float: 'right', fontSize: 35, paddingRight: '20px', paddingTop: '10px' }} />
-      </div>
+      </div> */}
+      <MenuAppBar />
     <div className='SearchBar'>
 
     <SearchIcon/>
