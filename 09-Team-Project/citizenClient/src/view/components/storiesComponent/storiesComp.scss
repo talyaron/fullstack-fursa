@@ -1,0 +1,30 @@
+.storiesCompContainer {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+    // align-items: center;
+    border-radius: 0px;
+    align-content: center;
+    width: 80%;
+    padding: 20px;
+    margin: 20px;
+    background-color: rgba(113, 168, 184, 0.301);
+
+
+    .vicDesc {
+        align-items: flex-start;
+     
+        height: 100%;
+        padding: 5px;
+
+    }
+
+    .theVicImg {
+        height: 10vh;
+         width: 5vw;
+         border-radius: 40px;
+
+    }
+}
