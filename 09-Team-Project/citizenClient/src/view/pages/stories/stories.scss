@@ -1,0 +1,43 @@
+
+    .StoriesDiv{
+        max-width: 90vw;
+        display: grid;
+        grid-template-rows:  auto auto ;
+        grid-template-columns: repeat(3,auto);
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        // padding: 50px;
+        margin: auto;
+        text-align: center;
+        position: relative;
+        justify-content: center;
+
+    
+        .img{
+            box-sizing: border-box;
+        }
+
+  
+       
+    }
+
+    .storiesTitle2{
+        margin: auto;
+         position: relative;
+         left: 45%;
+         padding: 20px;
+       
+     }
+    
+    
+
+// }
+
+@media only screen and (max-width: 800px) {
+    .exploremain__popular__grid {
+        grid-template-columns: repeat(1, 16rem);
+        grid-template-rows: repeat(5, 1fr);
+        display: flex;
+        flex-direction: column;
+
+    }
+}

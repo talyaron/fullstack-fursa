@@ -3,13 +3,12 @@ import { RootState, AppThunk } from '../../app/store';
 import axios from 'axios'
 export interface User {
     userInfo: {
-        _id:string,
+        _id: string,
         name: string;
         email: string;
         phone: string;
         location: string;
         gender: string;
-        password: string;
     }
     isLogIn: boolean;
     status: 'idle' | 'loading' | 'failed';
@@ -17,13 +16,12 @@ export interface User {
 
 const initialState: User = {
     userInfo: {
-        _id:"",
+        _id: "",
         name: "",
         email: "",
         phone: "",
         location: "",
         gender: "",
-        password: "",
     },
     isLogIn: false,
     status: 'idle',
@@ -58,9 +56,8 @@ export const userReducer = createSlice({
             })
             .addCase(fetchUser.fulfilled, (state, action) => {
                 state.status = 'idle';
-                console.log(action)
                 state.userInfo = action.payload.user;
-                console.log(action.payload)
+                state.isLogIn = true;
             });
     },
 });
@@ -69,8 +66,7 @@ export const userReducer = createSlice({
 export const getName = (state: RootState) => state.user.userInfo.name;
 export const getGender = (state: RootState) => state.user.userInfo.gender;
 export const getID = (state: RootState) => state.user.userInfo._id;
-
 export const userInfo = (state: RootState) => state.user.userInfo;
-
+export const getloginState = (state: RootState) => state.user.isLogIn;
 export const getUserEmail = (state: RootState) => state.user.userInfo.email;
 export default userReducer.reducer;
