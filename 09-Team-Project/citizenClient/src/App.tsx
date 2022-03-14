@@ -6,6 +6,7 @@ import PreviousAccident from "./view/pages/previousAccidents/previousAccidents"
 import "./App.css";
 import { Emergency } from "./view/pages/emergency/Emergency";
 
+
 function App() {
   return (
     <Router>
