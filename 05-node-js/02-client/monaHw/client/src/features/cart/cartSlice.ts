@@ -2,13 +2,11 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState, AppThunk } from '../../app/store';
 import axios from 'axios'
 export interface order {
+  _id:string;
   woodName: string;
   woodlength: number;
-  // width: number;
-  // thick: number;
   amount: number;
   price:number;
-  // id: number;
   color?:string;
   width?:number;
   thick?:number;
@@ -32,7 +30,7 @@ export const getCartAsync = createAsyncThunk(
   'order/fetshOrders',
   async (_, thunkApi) => {
     try {
-      const response = await axios.get('/order/get-order')
+      const response = await axios.get('/order/get-user-order')
       const data = response.data
       return data
 
