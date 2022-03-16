@@ -36,7 +36,7 @@ export const addFavorite = createAsyncThunk(
     async (obj: any | undefined, thunkAPI) => {
         try {
             const { restId } = obj;
-            if (!restId) throw "invalid field"
+            if (!restId) throw new Error('invalid fields')
             const response = await axios.post('/favorites/add-user-favorite', { 'restId': restId })
             const data: any = response.data
             return data
@@ -52,7 +52,7 @@ export const deleteFavorite = createAsyncThunk(
     async (obj: any | undefined, thunkAPI) => {
         try {
             const { restId } = obj
-            if (!restId) throw console.error("invalid fields");
+            if (!restId) throw new Error('invalid fields')
             const response = await axios.delete(`/favorites/delete-user-favorite`, { data: { "restId": restId } })
             const data: any = response.data
             return data
@@ -77,27 +77,45 @@ export const favoriteReducer = createSlice({
                 state.status = 'loading';
             })
             .addCase(fetchUserFavorite.fulfilled, (state, action) => {
-                if (action.payload.log === true) {
-                    state.status = 'idle';
-                    state.arrOfFavorite = action.payload.favorite;
+                state.status = 'idle';
+                try {
+                    const { favorite } = action.payload
+                    if (!favorite) throw new Error('invalid fields')
+                    state.arrOfFavorite = favorite;
+                } catch (error) {
+                    console.log(error)
                 }
             })
             .addCase(addFavorite.pending, (state) => {
                 state.status = 'loading';
             })
             .addCase(addFavorite.fulfilled, (state, action) => {
-                if (action.payload.log == true) {
-                    state.status = 'idle';
-                    state.arrOfFavorite = action.payload.favorite
+                state.status = 'idle';
+                try {
+                    const { add, favorite } = action.payload
+                    if (add == null) throw new Error('invalid fields')
+                    if (add === true) {
+                        if (!favorite) throw new Error('invalid fields')
+                        state.arrOfFavorite = favorite;
+                    }
+                } catch (error) {
+                    console.log(error)
                 }
             })
             .addCase(deleteFavorite.pending, (state) => {
                 state.status = 'loading';
             })
             .addCase(deleteFavorite.fulfilled, (state, action) => {
-                if (action.payload.log == true) {
-                    state.status = 'idle';
-                    state.arrOfFavorite = action.payload.favorite
+                state.status = 'idle';
+                try {
+                    const { del, favorite } = action.payload
+                    if (del == null) throw new Error('invalid fields')
+                    if (del === true) {
+                        if (!favorite) throw new Error('invalid fields')
+                        state.arrOfFavorite = favorite;
+                    }
+                } catch (error) {
+                    console.log(error)
                 }
             });
     },

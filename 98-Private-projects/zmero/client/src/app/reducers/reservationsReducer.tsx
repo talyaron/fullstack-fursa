@@ -1,7 +1,6 @@
 import { RootState, AppThunk } from '../store';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import axios from 'axios'
-import { faPeopleCarry } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
 
 interface Reservation {
     _id: string;
@@ -45,7 +44,7 @@ export const cancelReservations = createAsyncThunk(
     async (obj: any, thunkAPI) => {
         try {
             const { id, restId } = obj
-            if (!id || !restId) throw 'invalid fields'
+            if (!id || !restId) new Error('invalid fields')
             const response = await axios.delete(`/reservations/delete-user-reservation`, { data: { "id": id, "restId": restId } })
             const data: any = response.data
             return data
@@ -61,7 +60,7 @@ export const AddReservation = createAsyncThunk(
     async (Reserve: any, thunkAPI) => {
         try {
             const { restId, hour, year, min, day, month, people } = Reserve
-            if (!restId || !hour || !year || !min || !day || !month || !people) throw "invalid fields"
+            if (!restId || !hour || !year || !min || !day || !month || !people) throw new Error('invalid fields')
             const response = await axios.post(`/reservations/add-user-reservation`, { "restId": restId, "hour": hour, "year": year, "min": min, "day": day, "month": month, "people": people })
             const data: any = response.data
             return data
@@ -84,27 +83,46 @@ export const reservationReducer = createSlice({
                 state.status = 'loading';
             })
             .addCase(fetchUserReservations.fulfilled, (state, action) => {
-                if (action.payload.log === true) {
-                    state.status = 'idle';
-                    state.reservations = action.payload.reservations;
+                state.status = 'idle';
+                try {
+                    const { reservations } = action.payload;
+                    if (reservations == null) throw new Error('invalid fields')
+                    state.reservations = reservations;
+                } catch (error) {
+                    console.log(error)
                 }
             })
             .addCase(AddReservation.pending, (state) => {
                 state.status = 'loading';
             })
             .addCase(AddReservation.fulfilled, (state, action) => {
-                if (action.payload.log === true) {
-                    state.status = 'idle';
-                    state.reservations = action.payload.reservations;
+                state.status = 'idle';
+                try {
+                    const { add, reservations } = action.payload;
+                    if (add == null) throw new Error('invalid fields')
+                    if (add === true) {
+                        if (!reservations) throw new Error('invalid fields')
+                        state.reservations = reservations;
+                    }
+                } catch (error) {
+                    console.log(error)
                 }
             })
             .addCase(cancelReservations.pending, (state) => {
                 state.status = 'loading';
             })
             .addCase(cancelReservations.fulfilled, (state, action) => {
-                if (action.payload.log === true) {
-                    state.status = 'idle';
-                    state.reservations = action.payload.reservations;
+                state.status = 'idle';
+                try {
+                    const { del, reservations } = action.payload;
+                    if (del == null) throw new Error('invalid fields')
+                    if (del === true) {
+                        if (!reservations) throw new Error('invalid fields')
+                        state.reservations = reservations;
+                    }
+
+                } catch (error) {
+
                 }
             });
     },

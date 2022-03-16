@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 import Users from '../model/schema/userModel'
 import jwt from "jwt-simple";
-import { isAdmin, isUser } from '../controller/userController'
+import { isUser } from '../controller/userController'
 
-router.get('/get-user', async (req, res) => {
+router.get('/log-in', async (req, res) => {
     try {
         const { email, password } = req.query
         if (!email || !password) throw "invalid fields"
@@ -46,18 +46,22 @@ router.post('/sign-up', async (req, res) => {
 
 })
 
-router.post('/add-restaurateur', isAdmin, async (req, res) => {
+router.post('/add-restaurateur', isUser, async (req, res) => {
     try {
-        const { fName, lName, email, phone, region, password } = req.body
-        if (!fName || !lName || !email || !phone || !region || !password) throw "invalid fields"
-        const result = await Users.find({ email: email });
-        if (result.length > 0)
-            res.send({ "log": false })
-        else {
-            const user = new Users({ "fName": fName, "lName": lName, "email": email, "phone": phone, "region": region, "password": password, "type": "restaurateur" })
-            user.save()
-            res.send({ "log": true, "user": user })
-        }
+        const { role } = req
+        if (!role) throw "invalid fields"
+        if (role === "admin") {
+            const { fName, lName, email, phone, region, password } = req.body
+            if (!fName || !lName || !email || !phone || !region || !password) throw "invalid fields"
+            const result = await Users.find({ email: email });
+            if (result.length > 0)
+                res.send({ "add": false })
+            else {
+                const user = new Users({ "fName": fName, "lName": lName, "email": email, "phone": phone, "region": region, "password": password, "type": "restaurateur" })
+                user.save()
+                res.send({ "add": true })
+            }
+        } else res.status(401).send({ error: "Not authorized" });
     } catch (error) {
         res.send({ error });
     }
