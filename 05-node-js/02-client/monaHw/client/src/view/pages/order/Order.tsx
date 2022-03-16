@@ -49,9 +49,9 @@ function Order() {
 const user=useAppSelector(getUser)
     // const { product, setProduct } = props;
     const [currency, setCurrency] = React.useState('cm');
-   useEffect(()=>{
-    dispatch(getCartAsync());
-  },[])
+  //  useEffect(()=>{
+  //   dispatch(getCartAsync());
+  // },[])
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCurrency(event.target.value);
   };
@@ -75,7 +75,7 @@ const user=useAppSelector(getUser)
         // copy.push(obj);
         // setProduct(copy);
         // const orderObj={"woodName":name,"woodlength":form[0].value,"amount":form[1].value,"price":pricePerMeter};
-        axios.post('/order/add-order',{woodName:name,woodlength:form[0].value,amount:form[1].value,price:pricePerMeter,user:user})
+        axios.post('/order/add-order',{woodName:name,woodlength:form[0].value,amount:form[1].value,price:pricePerMeter,userId:user._id})
         .then((res) => console.log(res))
         .catch((err) => console.error(err));
         // axios.post('http://localhost:3004/userOrder',{"woodName":name,"woodlength":form[0].value,"amount":form[1].value,"price":pricePerMeter}).then(({data})=>dispatch(getCartAsync()));

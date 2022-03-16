@@ -16,6 +16,7 @@ import { set } from 'immer/dist/internal';
 import { display } from '@mui/system';
 import { Backdrop } from '@mui/material';
 import ChekOutOrder from '../checkOutOrder/CheckOutOrder';
+import { getUser } from '../../../features/user/userReducer';
 
 // interface cartProps {
 //     product: any;
@@ -30,6 +31,8 @@ function Cart(){
     // useEffect(()  => {
     // axios.get('http://localhost:3004/userOrder').then(({data})=> setOrder(data));
     // }, []);
+    const user=useAppSelector(getUser)
+
     const [open, setOpen] = useState(false);
     const handleClose = () => {
       setOpen(false);

@@ -4,13 +4,13 @@ function Navbar() {
   return (
     <nav>
       <div className="dropdown">
-      <Link className="toStore" to="/store">home
+      <Link className="toStore" to="/store">home </Link>
       <div className="dropdown-content">
     <Link to="/rawmaterial">Raw Material</Link>
     <Link to="/woodproduct">Wood Products</Link>
-    <Link to="/rawmaterial">Delivery</Link>
+    <Link to="/userorders">Delivery</Link>
   </div>
-      </Link>
+     
       </div>
       {/* <Link to="/login">Login</Link> */}
     </nav>

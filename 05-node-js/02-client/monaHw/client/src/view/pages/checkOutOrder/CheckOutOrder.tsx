@@ -1,29 +1,50 @@
 import "./CheckOutOrder.scss"
 import Button from '@mui/material/Button';
 import {Link} from 'react-router-dom';
-import { useState } from "react";
-
+import { useState,useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import { getCartAsync, selectorders } from "../../../features/cart/cartSlice";
+import { getUser } from "../../../features/user/userReducer";
+import axios from 'axios'
 export default function ChekOutOrder()
 {
+  const[creditCard,setCridCard]=useState(false);
+  const[cash,setCash]=useState(false);
+  const[pickUp,setPickUp]=useState(false);
+  const[delivery,setdelivery]=useState(false);
+  const dispatch = useAppDispatch();
+    useEffect(()=>{
+        dispatch(getCartAsync())
+
+    },[])
+    const orders = useAppSelector(selectorders);
+    const user=useAppSelector(getUser)
+
+
   function handlevisa()
 {
- console.log('visa')
+  if(creditCard)
+    {setCridCard(true)}
+
 }
 function handlecash()
 {
- console.log('cash')
+  setCash(true)
 }
 function handledel()
 {
- console.log('delivery')
+  setdelivery(true)
 }
 function handlepick()
 {
- console.log('pick up')
+ setPickUp(true)
 }
-  function handler(){
-    window.open("/cart", "_self");
-    window.close();}
+ function handleChekOut()
+ {
+  axios.post('/order/checkOut',{order:orders.orders,userId:user._id,date:new Date(),cash:cash,creditCard:creditCard,pickUp:pickUp,delivery:delivery})
+  .then((res) => console.log(res))
+  .catch((err) => console.error(err));
+ }
     return(
         <div className="checkOut">
          
@@ -48,8 +69,8 @@ function handlepick()
           
           </div>
           {/* <input placeholder="toatal price"></input> */}
-            <Button variant="contained" style={{backgroundColor: 'rgb(47, 143, 90)'}} size="medium">
-       <Link to="/cart/checkOutOrder"> checkout  </Link>  
+            <Button variant="contained" style={{backgroundColor: 'rgb(47, 143, 90)'}} size="medium" onClick={handleChekOut}>
+       checkout  
        
        </Button> 
       

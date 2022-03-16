@@ -1,6 +1,7 @@
 import React from 'react'
 import {useParams} from 'react-router-dom';
 import Rawmaterial from '../rawmaterial/Rawmaterial';
+import { UserOrders } from '../userOrders/UserOrders';
 import WoodProduct from '../woodProduct/WoodProduct';
 
 
@@ -29,7 +30,7 @@ const Product = () => {
         
       </div>
   )}
-  else{
+  else if(productId=='2'){
     return (
       
         <div className='products'>
@@ -39,6 +40,16 @@ const Product = () => {
             
           </div>
       )
+  }
+  else{
+    return(
+    <div className='delivery'>
+           
+            
+              <UserOrders></UserOrders>
+            
+          </div>
+    )
   }
 }
 

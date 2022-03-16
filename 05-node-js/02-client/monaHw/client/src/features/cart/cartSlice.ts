@@ -29,6 +29,7 @@ const initialState: CartState = {
 export const getCartAsync = createAsyncThunk(
   'order/fetshOrders',
   async (_, thunkApi) => {
+    
     try {
       const response = await axios.get('/order/get-user-order')
       const data = response.data

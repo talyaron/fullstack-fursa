@@ -23,6 +23,7 @@ import WoodProduct from "./view/pages/woodProduct/WoodProduct";
 import NavProduct from "./view/pages/product/NavProduct";
 import ChekOutOrder from './view/pages/checkOutOrder/CheckOutOrder';
 import { Register } from './view/pages/register/Register';
+import { UserOrders } from './view/pages/userOrders/UserOrders';
 
 function App() {
   const [product, setProduct] = useState([])
@@ -35,6 +36,7 @@ function App() {
         <Route path="homepage" element={<HomePage />} />
         <Route path="rawmaterial" element={<Rawmaterial />} />
         <Route path="woodproduct" element={<WoodProduct />} />
+        <Route path="userorders" element={<UserOrders />} />
 
         {/* <Route path="woodproduct" element={<WoodProduct />} >
          <Route path=":woodproId" element={<NavProduct />} />

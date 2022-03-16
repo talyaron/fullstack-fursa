@@ -13,7 +13,7 @@ import { fetchUser, getUser } from '../../../features/user/userReducer';
 
 function Door()
 {
-  const dispatch=useAppDispatch();
+  // const dispatchs=ueAppDispatch();
   // useEffect(() => {
   //   dispatch(fetchUser({ email:'mona_arabiya@hotmail.com', password:'123' }))
   // }, []);   
@@ -40,7 +40,8 @@ function Door()
         // copy.push(obj);
         // setProduct(copy);
         // axios.post('http://localhost:3004/userOrder',{"woodName":woodproname,"woodlength":form[0].value, "width":form[1].value, "thick":form[2].value, "color":form[3].value,"amount":form[4].value}).then(({data})=>console.log(data));
-        axios.post('/order/add-order',{woodName:woodproname,woodlength:form[0].value,width:form[1].value,thick:form[2].value, color:form[3].value,amount:form[4].value,user:user})
+        console.log(user._id)
+        axios.post('/order/add-order',{woodName:woodproname,woodlength:form[0].value,width:form[1].value,thick:form[2].value, color:form[3].value,amount:form[4].value,userId:user._id})
         .then((res) => console.log(res))
         .catch((err) => console.error(err));
         setShow('block')

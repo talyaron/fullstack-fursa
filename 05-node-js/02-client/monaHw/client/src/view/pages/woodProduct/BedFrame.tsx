@@ -46,7 +46,7 @@ function BedFrame()
         
         // <Alert severity="success">item added successfully — check it out!</Alert>
         // axios.post('http://localhost:3004/userOrder',{"woodName":woodproname,"woodlength":form[0].value, "width":form[1].value, "thick":form[2].value,"color":form[3].value,"amount":form[4].value,"doorType":form[5].value}).then(({data})=>dispatch(getCartAsync()));
-        axios.post('/order/add-order',{woodName:woodproname,woodlength:form[0].value,width:form[1].value,thick:form[2].value, color:form[3].value,amount:form[4].value,doorType:form[5].value,user:user})
+        axios.post('/order/add-order',{woodName:woodproname,woodlength:form[0].value,width:form[1].value,thick:form[2].value, color:form[3].value,amount:form[4].value,doorType:form[5].value,userId:user._id})
         .then((res) => console.log(res))
         .catch((err) => console.error(err));
         setShow('block')

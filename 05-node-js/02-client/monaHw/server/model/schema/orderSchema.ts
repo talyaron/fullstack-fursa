@@ -13,7 +13,7 @@ export const OrderSchema=new mongoose.Schema({
     width:Number,
     thick:Number,
     doorType:String,
-    user:UserSchema
+    userId:String
   });
   
   const Order=mongoose.model('Order',OrderSchema);

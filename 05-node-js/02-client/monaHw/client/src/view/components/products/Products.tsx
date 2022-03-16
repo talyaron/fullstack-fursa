@@ -38,8 +38,8 @@ function Product(prop: productProp) {
         //  const obj={"productId":id}
         const { data } = await axios.post('/order/delete-order', { id: id })
         dispatch(getCartAsync())
-        // .then((res) => console.log(res))
-        // .catch((err) => console.error(err));
+        .then((res) => console.log(res))
+        .catch((err) => console.error(err));
         // axios.delete(`http://localhost:3004/userOrder/${id}`).then(({data})=>dispatch(getCartAsync()));
     }
     
