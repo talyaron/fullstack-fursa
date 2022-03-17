@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [type, setType] = useState("");
+
+  useEffect ( () => {
+    const response = axios.get('/testSQL').then(({data})=> {
+      console.log(data);
+    });
+    console.log(response);
+  }, [])
 
   async function hadleSubmit(e: any) {
     e.preventDefault();

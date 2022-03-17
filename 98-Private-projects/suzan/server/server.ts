@@ -1,7 +1,8 @@
 import express from 'express';
 const app = express();
 const port = 4000;
-import SchoolClass from './model/schema/school/SchoolClass';
+const mysql = require('mysql');
+// import SchoolClass from './model/schema/school/SchoolClass';
 require('dotenv').config();
 
 const cookieParser = require('cookie-parser')
@@ -9,11 +10,44 @@ app.use(express.static('../client/build'));
 app.use(express.json());
 app.use(cookieParser())
 
+//data
+export const connection = mysql.createConnection({
+  host: "localhost",
+  port: "3306",
+  user: "root",
+  password: "123456789"
+});
+
+connection.connect((err) => {
+  console.log("in the connection method!!!!!!")
+  if (err) throw err;
+  console.log("Connected to SQL");
+  // connection.query("use test", (err, result, fields) => {
+  //   if(err) throw err;
+  //   console.log('Using test')
+  // });
+});
+
+app.get('/testSQL', (req, res) => {
+  const sql = `SELECT * FROM test_schema.new_table`;
+  connection.query(sql, (err, result) => {
+    try {
+      if (err) throw err;
+
+      res.send(result)
+    } catch (error) {
+      console.log(`In testSQL error: ${error.message}`);
+      res.status(500).send({ error: error.message });
+    }
+
+  })
+})
 
 
-app.get('/get-user' , (req, res) => {
+
+app.get('/get-user', (req, res) => {
   console.log('user-request')
-  res.status(202).send({name:'suzan', id:12345})
+  res.status(202).send({ name: 'suzan', id: 12345 })
 })
 
 
