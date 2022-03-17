@@ -12,7 +12,7 @@ const products= [{id:1,name:'raw material',image:'https://5.imimg.com/data5/SU/Q
 const Store = () => {
   return <div className="store">
 
-     { <header className='store_header'>
+      <header className='store_header'>
      <img className="store_header_logo" src="https://scontent.fhfa2-2.fna.fbcdn.net/v/t1.6435-9/191373428_5543723205668752_6758159996168278797_n.png?_nc_cat=100&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=vD2Ck1UqS_MAX-yTblw&_nc_ht=scontent.fhfa2-2.fna&oh=00_AT-kafBKJB3bLHogSgPEVUQQtAHgClIHTT0FGy07h8nZTA&oe=622CF120" alt="" />
     <Navbar></Navbar>
      <h1 >Store</h1>
@@ -28,17 +28,21 @@ const Store = () => {
           <Link to='/cart'>
           <img src="https://cdn4.iconfinder.com/data/icons/shopping-21/64/shopping-06-512.png" alt="" />
         </Link> */}
-        </header> }
+        </header> 
 
-      <div> 
-        <img className='main' src="https://energyeducation.ca/wiki/images/5/52/WOOD_.jpg" alt="" />
+      <div className='store_main'> 
+        {/* <img  src="https://energyeducation.ca/wiki/images/5/52/WOOD_.jpg" alt="" /> */}
     
-      <div className='comp'>
+      <div className='store_main_comp'>
       {products.map((product:ProductProps, i)=>{
           return <Products key={i} id={product.id} name={product.name} image={product.image}  />
       })}
       <Outlet />
       </div>
+      </div>
+
+      <div className="store_footer">
+        aaaa
       </div>
 
   </div>

@@ -52,41 +52,35 @@
 
     }
   }
-&_footer{
-  background-color: rgba(0, 0, 255, 0.295);
-  height: 50vh;
-}
-.main
+
+&_main
 {
   box-shadow: 2px 2px rgb(143, 141, 141);
   width: 100%;
-  position: relative;
+  background-image:url("https://energyeducation.ca/wiki/images/5/52/WOOD_.jpg");
  
-  
-  
-  img{
-    max-width: 100%;
-    height: auto;
-    vertical-align: middle;
+  // img{
+  //   max-width: 100%;
+  //   vertical-align: middle;
     
-  }
+  // }
  
    
-
-  }
-
-    .comp{
+    &_comp{
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: center;
       margin: 10px;
-      position: absolute;
       background-color: rgba(194, 191, 186, 0.829);
       bottom: 20px;
       border:solid;
    
-    
+    }
 
+}
+&_footer{
+  background-color: rgba(238, 181, 95, 0.295);
+  height: 50vh;
 }
 }
