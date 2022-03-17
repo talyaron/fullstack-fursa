@@ -14,6 +14,7 @@ import Admin from './view/pages/admin/admin'
 import Restaurateur from './view/pages/restaurateur/restaurateur'
 import AddRestaurant from './view/pages/addRestaurant/addRestaurant'
 import AddRestaurateur from './view/pages/addRestaurateur/addRestaurateur'
+import Profile from './view/pages/profile/profile'
 import { useAppDispatch } from './app/hooks'
 import { getAuthentication } from './app/reducers/userReducer'
 
@@ -36,6 +37,7 @@ function App() {
         <Route path="Restaurateur" element={<Restaurateur />} />
         <Route path="AddRestaurant" element={<AddRestaurant />} />
         <Route path="AddRestaurateur" element={<AddRestaurateur />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/:RestaurantId" element={<Restaurant />} />
       </Routes>
     </BrowserRouter >

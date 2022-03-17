@@ -8,10 +8,12 @@ interface userProb {
         lName: string;
         email: string;
         type: string;
+        phone: string;
         region: string;
     };
     userIsLogIn: boolean;
     status: 'idle' | 'loading' | 'failed';
+    signUpStatus: 'idle' | 'loading' | 'failed';
 }
 
 const initialState: userProb = {
@@ -20,10 +22,12 @@ const initialState: userProb = {
         lName: " ",
         email: "",
         type: "",
+        phone: "",
         region: "Israel",
     },
     userIsLogIn: false,
     status: 'idle',
+    signUpStatus: 'idle',
 };
 
 export const getUserInfoAsync = createAsyncThunk(
@@ -110,6 +114,9 @@ export const userReducer = createSlice({
         updateLogIn: (state, action) => {
             state.userIsLogIn = action.payload
         },
+        updateSignUpState: (state, action) => {
+            state.signUpStatus = action.payload
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -134,15 +141,12 @@ export const userReducer = createSlice({
                 state.status = 'loading';
             })
             .addCase(signUpUser.fulfilled, (state, action) => {
-                state.status = 'idle';
                 try {
-                    const { log, user } = action.payload
+                    const { log } = action.payload
                     if (log == null) throw new Error('invalid fields')
                     if (log === true) {
-                        if (!user) throw new Error('invalid fields')
-                        state.userinfo = user;
-                        state.userIsLogIn = true;
-                    }
+                        state.signUpStatus = 'idle';
+                    } else state.signUpStatus = 'failed';
                 }
                 catch (error) {
                     console.log(error)
@@ -210,9 +214,10 @@ export const userReducer = createSlice({
 })
 
 
-export const { updateLogIn } = userReducer.actions
-export const selectUser = (state: RootState) => state.user
+export const { updateLogIn, updateSignUpState } = userReducer.actions
+export const selectUser = (state: RootState) => state.user.userinfo
 export const selecUserName = (state: RootState) => state.user.userinfo.fName + " " + state.user.userinfo.lName
 export const checkUser = (state: RootState) => state.user.userIsLogIn
 export const checkType = (state: RootState) => state.user.userinfo.type
+export const signUpState = (state: RootState) => state.user.signUpStatus
 export default userReducer.reducer;

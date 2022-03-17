@@ -139,9 +139,9 @@ function User() {
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
-                <MenuItem>
+                < Link to="/profile"><MenuItem>
                     <Avatar /> Profile
-                </MenuItem>
+                </MenuItem></Link>
                 {adminPage}
                 <Divider />
                 {addRestaurant}
@@ -160,7 +160,7 @@ function User() {
                     Logout
                 </MenuItem>
             </Menu>
-        </div>
+        </div >
 
     )
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import logo from './logo.svg'
 import Lock from './lock.svg'
 import Modal from 'react-modal'
@@ -15,17 +15,14 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Select from '@mui/material/Select';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
 import MenuIcon from '@mui/icons-material/Menu';
 import MenuNav from '@mui/material/Menu';
 import User from '../user/user'
-import Alert from '@mui/material/Alert'
-import Snackbar from '@mui/material/Snackbar'
 import { useAppSelector, useAppDispatch } from '../../../app/hooks';
-import { checkUser, getUserInfoAsync, signUpUser, checkType } from '../../../app/reducers/userReducer'
+import { checkUser, getUserInfoAsync, signUpUser, signUpState, updateSignUpState } from '../../../app/reducers/userReducer'
 import IconButton from '@mui/material/IconButton'
-
+import Snackbar from '@mui/material/Snackbar'
+import Alert from '@mui/material/Alert'
 
 
 
@@ -35,12 +32,32 @@ function Menu() {
     const [modalSignInsOpen, setSignINModal] = useState(false);
     const [modalSignUpModal, setSignUpModal] = useState(false);
     const [navbarindex, setNavbarindex] = useState(1);
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
+    const [anchorElNav, setAnchorElNav] = useState(null);
     const [loginState, setLoginState] = useState({})
     const [sigupState, setSigupnState] = useState({})
-    const [openAlert, setOpenAlert] = React.useState(false);
+    const [openAlert, setOpenAlert] = useState(false);
+    const [textAlert, setTextAlert] = useState('');
+    const [emailErrorSignUp, setEmailErrorSignUp] = useState(false);
     const dispatch = useAppDispatch();
     const isLoggedIn = useAppSelector(checkUser)
+    const isSignedup = useAppSelector(signUpState)
+    useEffect(() => {
+        if (isLoggedIn && modalSignInsOpen) {
+            setTextAlert('You have logged in successfully!!')
+            setOpenAlert(true)
+            openSignInModal(false);
+        }
+    }, [isLoggedIn])
+    useEffect(() => {
+        if (isSignedup === "failed" && modalSignUpModal) {
+            setEmailErrorSignUp(true)
+        }
+        else if (isSignedup === "idle" && modalSignUpModal) {
+            setTextAlert('You have Registered successfully!!')
+            setOpenAlert(true)
+            openSignUpModal(false);
+        }
+    }, [isSignedup])
     function openSearchModal(bool: boolean) {
         if (bool === false)
             setNavbarindex(1)
@@ -54,10 +71,16 @@ function Menu() {
         setSignINModal(bool);
     }
     function openSignUpModal(bool: boolean) {
-        if (bool === false)
+        if (bool === false) {
             setNavbarindex(1)
+            if (emailErrorSignUp)
+                setEmailErrorSignUp(false)
+            if (isSignedup === 'failed')
+                dispatch(updateSignUpState('idle'))
+        }
         else setNavbarindex(0)
         setSignUpModal(bool);
+
     }
     function onChangeLogIn(e: any) {
         setLoginState({
@@ -75,11 +98,7 @@ function Menu() {
 
     function handleLogin(e: any) {
         e.preventDefault();
-        openSignInModal(false);
         dispatch(getUserInfoAsync(loginState))
-        if (isLoggedIn) {
-            setOpenAlert(true)
-        }
     }
     function onChangeSignup(e: any) {
         setSigupnState({
@@ -90,10 +109,6 @@ function Menu() {
     function handleSignup(e: any) {
         e.preventDefault();
         dispatch(signUpUser(sigupState))
-        if (isLoggedIn) {
-            setOpenAlert(true)
-            openSignUpModal(false)
-        }
     }
     let comp;
     if (isLoggedIn) {
@@ -226,9 +241,9 @@ function Menu() {
                         </div>
                         <div className="signModal__content__right__middle">
                             <form onSubmit={handleSignup}>
+                                <TextField error={emailErrorSignUp} helperText={emailErrorSignUp == true ? 'Email does exist' : ''} required name="email" label="Email" variant="standard" onChange={onChangeSignup} />
                                 <TextField required name="fName" label="First Name" variant="standard" onChange={onChangeSignup} />
                                 <TextField required name="lName" label="Last Name" variant="standard" onChange={onChangeSignup} />
-                                <TextField required name="email" label="Email" variant="standard" onChange={onChangeSignup} />
                                 <TextField required name="password" label="Password" type="password" variant="standard" onChange={onChangeSignup} />
                                 <TextField required name="phone" label="Phone" variant="standard" onChange={onChangeSignup} />
                                 <FormControl style={{ marginTop: '1rem' }} size="small" >
@@ -254,15 +269,14 @@ function Menu() {
                         </div>
                     </div>
                 </div>
-
             </Modal>
             <Snackbar sx={{ height: "100%" }}
                 anchorOrigin={{
                     vertical: "top",
                     horizontal: "center"
-                }} open={openAlert} autoHideDuration={6000} onClose={() => setOpenAlert(false)}>
+                }} open={openAlert} autoHideDuration={3000} onClose={() => setOpenAlert(false)}>
                 <Alert onClose={() => setOpenAlert(false)} severity="success" sx={{ width: '100%' }}>
-                    You have logged in Successfully!
+                    {textAlert}
                 </Alert>
             </Snackbar>
         </div >

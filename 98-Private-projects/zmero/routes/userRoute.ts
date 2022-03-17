@@ -38,7 +38,7 @@ router.post('/sign-up', async (req, res) => {
         else {
             const user = new Users({ "fName": fName, "lName": lName, "email": email, "phone": phone, "region": region, "password": password, "type": "regular" })
             user.save()
-            res.send({ "log": true, "user": user })
+            res.send({ "log": true })
         }
     } catch (error) {
         res.send({ error });
@@ -49,6 +49,7 @@ router.post('/sign-up', async (req, res) => {
 router.post('/add-restaurateur', isUser, async (req, res) => {
     try {
         const { role } = req
+
         if (!role) throw "invalid fields"
         if (role === "admin") {
             const { fName, lName, email, phone, region, password } = req.body
