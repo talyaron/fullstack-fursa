@@ -6,13 +6,15 @@ import './CourseCard.scss';
 interface CourseCardProps {
     info: {
         name: string
-        teacher: string
+        firstName: string
+        lastName: string
     }
 
 }
 
 export default function CourseCard(props: CourseCardProps) {
-    const { name, teacher } = props.info;
+    const { name, firstName, lastName } = props.info;
+    const teacher = firstName.concat(' ', lastName);
     return (
         <Card className='card' style={{ display: 'inline-block' }}>
             <CardContent className='content'>

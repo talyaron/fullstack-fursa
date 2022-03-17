@@ -5,7 +5,8 @@ import axios from 'axios';
 interface Course {
     id:number,
     name:string,
-    teacher:string
+    firstName:string,
+    lastName:string
 }
 
 interface Student {
@@ -37,9 +38,9 @@ const initialState: ClassDetails = {
 
 export const getCoursesAsync = createAsyncThunk (
     'classDetails/fetchCourses',
-    async(_, thunkAPI) => {
+    async(id:any, thunkAPI) => {
         try{
-            const response = await axios.get('http://localhost:3004/studentCourses');
+            const response = await axios.post('/school/get-courses-by-class-id', {id:id});
             const data = response.data;
             return data;
         } catch (error:any) {

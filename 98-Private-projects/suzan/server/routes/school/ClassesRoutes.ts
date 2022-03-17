@@ -4,21 +4,7 @@ import { connection } from "../../server";
 const express = require('express');
 const router = express.Router();
 
-// async function getSchoolClasses(): Promise<any> {
-//     try {
-//         const schoolClasses = await SchoolClass.find({});
-//         // console.log("in getSchoolClasses")
-//         // console.log(schoolClasses);
-//         return schoolClasses;
-//     } catch (err: any) {
-//         console.error(err);
-//         return false;
-//     }
-// }
-
 router.get('/get-all-classes', async (req, res) => {
-    // const classes = await getSchoolClasses();
-    // res.send(classes);
     const query = `SELECT * FROM test_schema.classes_table`;
     connection.query(query, (err, result) => {
         try {
@@ -32,9 +18,7 @@ router.get('/get-all-classes', async (req, res) => {
 })
 
 router.get('/get-classes-cards', async (req, res) => {
-    // const classes = await getSchoolClasses();
-    // res.send(classes);
-    const query = `SELECT test_schema.classes_table.name, test_schema.teachers_table.firstName, test_schema.teachers_table.lastName
+    const query = `SELECT test_schema.classes_table.id, test_schema.classes_table.name, test_schema.teachers_table.firstName, test_schema.teachers_table.lastName
     FROM test_schema.classes_table INNER JOIN test_schema.teachers_table 
     ON test_schema.classes_table.teacherID = test_schema.teachers_table.id`;
     connection.query(query, (err, result) => {
@@ -48,9 +32,13 @@ router.get('/get-classes-cards', async (req, res) => {
     })
 })
 
-router.get('/get-class-by-id', async(req, res) => {
-    const id = 3;
-    const query = `SELECT * FROM test_schema.classes_table WHERE id=${id}`;
+router.post('/get-class-by-id', async(req, res) => {
+    const {id} = req.body;
+    const query = `SELECT test_schema.classes_table.id, test_schema.classes_table.name, test_schema.teachers_table.firstName, test_schema.teachers_table.lastName
+    FROM test_schema.classes_table INNER JOIN test_schema.teachers_table 
+    ON test_schema.classes_table.teacherID = test_schema.teachers_table.id
+    WHERE test_schema.classes_table.id=${id}`;
+    
     connection.query(query, (err, result) => {
         try {
             if(err) throw err;
@@ -78,22 +66,21 @@ router.post('/add-new-class', async (req, res) => {
             res.status(500).send({error:error.message});
         }
     })
-    // try {
-    //     const { name, teacher } = req.body;
-    //     console.log(name)
-    //     console.log(teacher)
-    //     if (!name || !teacher) throw new Error("No data!");
-    //     const newClass = new SchoolClass({
-    //         name: name,
-    //         teacher: teacher,
-    //     });
-    //     await newClass.save().then((res) => {
-    //         console.log(res);
-    //     });
-    //     res.send({ val: "OK" });
-    // } catch (err) {
-    //     res.send({ error: err.message });
-    // }
+})
+
+router.patch('/edit-class-teacher', async (req, res) => {
+    const {classId, teacherId} = req.body;
+
+    const query = `UPDATE test_schema.classes_table SET teacherID = ${teacherId} WHERE id = ${classId}`;
+    connection.query(query, (err, result) => {
+        try {
+            if (err) throw err;
+            res.send(result);
+        } catch (error) {
+            console.log(`In edit-class-teacher error: ${error.message}`);
+            res.status(500).send({error:error.message});
+        }
+    })
 })
 
 module.exports = router;

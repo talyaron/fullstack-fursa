@@ -11,10 +11,10 @@ import { getSchoolTeachersAsync, schoolTeachers } from '../../../../app/reducers
 export default function TeacherCard() {
     const { teacherId } = useParams();
 
-    // const dispatch = useAppDispatch();
-    // useEffect(() => {
-    //     dispatch(getSchoolTeachersAsync());
-    // }, []);
+    const dispatch = useAppDispatch();
+    useEffect(() => {
+        dispatch(getSchoolTeachersAsync());
+    }, []);
     const teachers = useAppSelector(schoolTeachers);
 
     function getTeacherInfo(id: string | undefined, teachers: Array<teacherInfo>) {

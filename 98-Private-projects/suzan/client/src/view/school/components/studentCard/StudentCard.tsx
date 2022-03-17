@@ -16,10 +16,10 @@ import { getSchoolStudentsAsync, schoolStudents } from '../../../../app/reducers
 
 export default function StudentCard() {
     const { studentId } = useParams();
-    // const dispatch = useAppDispatch();
-    // useEffect(() => {
-    //     dispatch(getSchoolStudentsAsync());
-    // }, []);
+    const dispatch = useAppDispatch();
+    useEffect(() => {
+        dispatch(getSchoolStudentsAsync());
+    }, []);
     const students = useAppSelector(schoolStudents);
 
     function getStudentInfo(id: string | undefined, students: Array<studentInfo>) {

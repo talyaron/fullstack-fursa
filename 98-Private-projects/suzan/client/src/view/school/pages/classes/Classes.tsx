@@ -11,19 +11,6 @@ import { getSchoolClassesAsync, getSchoolStudentsAsync, getSchoolTeachersAsync, 
 
 export default function SchoolClasses() {
 
-    // const classes = [{ name: 'class 1A', teacher: 'Suzan Kassabry' }, { name: 'class 1B', teacher: 'Suzan Kassabry' },
-    // { name: 'class 2A', teacher: 'Suzan Kassabry' }, { name: 'class 2B', teacher: 'Suzan Kassabry' },
-    // { name: 'class 3A', teacher: 'Suzan Kassabry' }, { name: 'class 3B', teacher: 'Suzan Kassabry' },
-    // { name: 'class 4A', teacher: 'Suzan Kassabry' }, { name: 'class 4B', teacher: 'Suzan Kassabry' }];
-    
-    // const [classes, setClasses] = useState([]);
-    // useEffect(() => {
-    //     axios.get('http://localhost:3004/schoolClasses').then(({ data }) => {
-    //         console.log(data);
-    //         setClasses(data);
-    //     })
-    // }, []);
-
     const dispatch = useAppDispatch();
     useEffect(() => {
         dispatch(getSchoolClassesAsync());

@@ -16,47 +16,9 @@ import NewCourseDialog from '../newCourseDialog/NewCourseDialog';
 import EditStudentsDialog from '../editStudentsDialog/EditStudentsDialog';
 import { useAppSelector, useAppDispatch } from '../../../../app/hooks';
 import { classCourses, classStudents, classTeachers, getCoursesAsync, getStudentsAsync, getTeachersAsync } from '../../../../app/reducers/school/ClassDetailsSlice';
-import { selectedClassName, selectedTeacherName } from '../../../../app/reducers/school/ClassCardSlice';
+import { selectedClassName, selectedTeacherName, selectedClassId } from '../../../../app/reducers/school/ClassCardSlice';
 import { schoolTeachers } from '../../../../app/reducers/school/SchoolSlice';
 import axios from 'axios';
-
-// const courses = [
-//     { name: "Arabic", teacher: "Manal Misherky" }, { name: "Mathmatics", teacher: "Manal Bisharat" },
-//     { name: "English", teacher: "Rania Ateek" }, { name: "Hebrew", teacher: "Areen Awwad" },
-//     { name: "Science", teacher: "Zahera Bisharat" }, { name: "Caution on the streets", teacher: "Doaa margieh" }
-// ]
-
-// const students = [
-//     { first: "Suzan", last: "Kassabry 1", id: "123456789", phone: "0537756044" },
-//     { first: "Suzan", last: "Kassabry 2", id: "123456789", phone: "0537756044" },
-//     { first: "Suzan", last: "Kassabry 3", id: "123456789", phone: "0537756044" },
-//     { first: "Suzan", last: "Kassabry 4", id: "123456789", phone: "0537756044" },
-//     { first: "Suzan", last: "Kassabry 5", id: "123456789", phone: "0537756044" },
-//     { first: "Suzan", last: "Kassabry 6", id: "123456789", phone: "0537756044" },
-//     { first: "Suzan", last: "Kassabry 7", id: "123456789", phone: "0537756044" },
-//     { first: "Suzan", last: "Kassabry 8", id: "123456789", phone: "0537756044" },
-//     { first: "Suzan", last: "Kassabry 9", id: "123456789", phone: "0537756044" },
-//     { first: "Suzan", last: "Kassabry 10", id: "123456789", phone: "0537756044" }
-// ]
-
-interface teacherObj {
-    id: 1,
-    info: {
-        firstName: string,
-        lastName: string,
-        teacherId: string,
-        phone: string,
-        email: string
-    }
-}
-
-const teachers = [
-    { label: 'Suzan Kassabry' },
-    { label: 'Lama Bisharat' },
-    { label: 'Rania Ateek' }
-]
-
-// const teacherName = { label: 'Lama Bisharat' };
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -100,9 +62,12 @@ export default function ClassTabsBar() {
     const [openCourseDialog, setOpenCourseDialog] = useState(false); //opening and closing new course dialog
     const [openStudentsDialog, setOpenStudentsDialog] = useState(false); //opening and closing editting students dialog
     const [newTeacherName, setNewTeacherName] = useState({}); //the new selected teacher :obj
+    const [newTeacherId, setNewTeacherId] = useState(0);
+
+    const classId = useAppSelector(selectedClassId)
     const dispatch = useAppDispatch();
     useEffect(() => {
-        dispatch(getCoursesAsync());
+        dispatch(getCoursesAsync(classId));
         dispatch(getStudentsAsync());
         dispatch(getTeachersAsync());
     }, [])
@@ -111,27 +76,21 @@ export default function ClassTabsBar() {
     const teachers = useAppSelector(schoolTeachers); //the school teachers
     const teacherName = useAppSelector(selectedTeacherName); //the class teacher name : string
     const className = useAppSelector(selectedClassName); //the class name :string
-    const [classId, setClassId] = useState(null);
+    
     const [newTeacher, setNewTeacher] = useState('');
     const defaultTeacher = findDefaultTeacherObj(); //the class teacher : obj
-
-    useEffect(() => {
-        axios.get(`http://localhost:3004/schoolClasses?name=${className}`)
-            .then(({ data }) => {
-                setClassId(data[0].id)
-            });
-    }, [])
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);
     };
 
     function handleTeacherChange(ev: any, value: any) {
-        // console.log('selected teacher');
-        // console.log(value);
+        console.log('selected teacher');
+        console.log(value);
         setNewTeacherName(value);
         if (value !== null) {
-            setNewTeacher(value.info.firstName.concat(' ', value.info.lastName));
+            setNewTeacher(value.firstName.concat(' ', value.lastName));
+            setNewTeacherId(value.id);
         }
         
     }
@@ -147,9 +106,9 @@ export default function ClassTabsBar() {
                 console.log('not selected')
             } else { //new teacher was selected
                 console.log('selected');
-                console.log(newTeacherName)
-                axios.patch(`http://localhost:3004/schoolClasses/${classId}`,
-                    { teacher: `${newTeacher}` })
+                // console.log(newTeacherName)
+                axios.patch('/school/edit-class-teacher', {classId:classId, teacherId:newTeacherId});
+                
             }
         }
     }
@@ -196,7 +155,7 @@ export default function ClassTabsBar() {
                     <div className="coursesWrapper">
                         {   
                             courses.map((course, i) => {
-                                const { name, teacher } = course;
+                                const { name, firstName, lastName } = course;
                                 return (
                                     <CourseCard key={i} info={course} />
                                 );

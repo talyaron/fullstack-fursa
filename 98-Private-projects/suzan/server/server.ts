@@ -66,9 +66,11 @@ db.once("open", () => {
 const classesRoute = require('./routes/school/ClassesRoutes')
 const teachersRoute = require('./routes/school/TeachersRoutes')
 const studentsRoute = require('./routes/school/StudentsRoutes')
+const coursesRoute = require('./routes/school/CoursesRoutes')
 app.use('/school', classesRoute);
 app.use('/school', teachersRoute);
 app.use('/school', studentsRoute);
+app.use('/school', coursesRoute);
 
 
 //the collection
