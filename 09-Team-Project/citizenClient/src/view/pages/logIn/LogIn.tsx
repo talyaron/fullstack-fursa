@@ -14,20 +14,24 @@ function LogIn() {
   async function hadleSubmit(e: any) {
     e.preventDefault();
 
-      
     await dispatch(fetchUser({ "email": email, "password": password }));
     if(isLoged)
     {
-      console.log(isLoged);
-      navigate("/profile");
+      console.log(isLoged)
+      navigate("/profile")
     }
     
     
   }
 
   return (
-    <div className="login">
+    <div className="Center">
       <h1> login </h1>
+      <img
+        src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+        alt="profile-img"
+        className="profile-img-card"
+      />
       <form onSubmit={hadleSubmit}>
         <input
           value={email}
