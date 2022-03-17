@@ -5,27 +5,22 @@ import { teacherInfo } from '../../pages/teachers/Teachers';
 import {useState, useEffect } from 'react';
 import axios from 'axios';
 import './TeacherCard.scss';
-
-// const teachers: Array<teacherInfo> = [
-//     { info: { firstName: 'Suzan', lastName: 'Kassabry', teacherId: '207745638', phone: '0537756048', email: 'suzankassabry97@gmail.com' } },
-//     { info: { firstName: 'Lama', lastName: 'Kassabry', teacherId: '218439247', phone: '0537756048', email: 'suzankassabry97@gmail.com' } },
-//     { info: { firstName: 'Rania', lastName: 'Kassabry', teacherId: '634892469', phone: '0537756048', email: 'suzankassabry97@gmail.com' } }
-// ]
+import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
+import { getSchoolTeachersAsync, schoolTeachers } from '../../../../app/reducers/school/SchoolSlice';
 
 export default function TeacherCard() {
     const { teacherId } = useParams();
-    const [teachers, setTeachers] = useState([]);
-    useEffect(() => {
-        axios.get('http://localhost:3004/schoolTeachers').then(({data})=>{
-            console.log(data);
-            setTeachers(data);
-    })
-    }, []);
+
+    // const dispatch = useAppDispatch();
+    // useEffect(() => {
+    //     dispatch(getSchoolTeachersAsync());
+    // }, []);
+    const teachers = useAppSelector(schoolTeachers);
 
     function getTeacherInfo(id: string | undefined, teachers: Array<teacherInfo>) {
-        const teacher = teachers.find(student => student.info.teacherId === id)
+        const teacher = teachers.find(student => student.teacherID === id)
         if (teacher) {
-            return [teacher.info.firstName, teacher.info.lastName, teacher.info.phone, teacher.info.email];
+            return [teacher.firstName, teacher.lastName, teacher.phone, teacher.email];
         } else {
             return ''
         }

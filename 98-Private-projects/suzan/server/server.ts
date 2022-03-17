@@ -1,8 +1,9 @@
 import express from 'express';
+import { connect } from 'http2';
 const app = express();
 const port = 4000;
-import axios from 'axios';
-import SchoolClass from './model/schema/school/SchoolClass';
+const mysql = require('mysql');
+
 require('dotenv').config();
 
 app.use(express.static('../client/build'));
@@ -12,6 +13,22 @@ app.get('/get-user' , (req, res) => {
   console.log('user-request')
   res.status(202).send({name:'suzan', id:12345})
 })
+
+//MYSQL
+
+export const connection = mysql.createConnection({
+  host: "localhost",
+  port: "3306",
+  user: "root",
+  password: "123456789"
+});
+
+connection.connect( (err) => {
+  if (err) throw err;
+  console.log("connected to SQL");
+})
+
+
 
 // app.get('/get-classes', async (req, res) => {
 //   console.log('get classes - server');
@@ -47,7 +64,12 @@ db.once("open", () => {
 });
 
 const classesRoute = require('./routes/school/ClassesRoutes')
+const teachersRoute = require('./routes/school/TeachersRoutes')
+const studentsRoute = require('./routes/school/StudentsRoutes')
 app.use('/school', classesRoute);
+app.use('/school', teachersRoute);
+app.use('/school', studentsRoute);
+
 
 //the collection
 // const SchoolClassSchema = new mongoose.Schema({

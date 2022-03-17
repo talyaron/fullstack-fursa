@@ -6,29 +6,40 @@ import ListItemText from '@mui/material/ListItemText';
 import ArrowCircleRightOutlinedIcon from '@mui/icons-material/ArrowCircleRightOutlined';
 import { Link } from 'react-router-dom';
 import './TeachersList.scss';
+import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
+import { getSchoolTeachersAsync, schoolTeachers } from '../../../../app/reducers/school/SchoolSlice';
+import { useEffect } from 'react';
 
 interface teachersArray {
     teachers: Array<teacherInfo>
 }
 
-export default function TeachersList(studentsArray: teachersArray) {
-    const { teachers } = studentsArray;
+export default function TeachersList() {
+
+    const dispatch = useAppDispatch();
+    useEffect(() => {
+        dispatch(getSchoolTeachersAsync());
+    }, []);
+    const teachers = useAppSelector(schoolTeachers);
+    console.log(teachers)
+
+    // const { teachers } = studentsArray;
     return (
         <div>
             <List className='teachersList' dense={true}>
                 {
                     teachers.map((teacher, i) => {
-                        const { teacherId } = teacher.info;
+                        const { teacherID } = teacher;
                         return (
-                            <Link to={`/teachers/${teacherId}`}>
+                            <Link to={`/teachers/${teacherID}`}>
                                 <ListItem className='teachersList__listItem'>
                                     <ListItemText
                                         className='teachersList__listItem__text'
-                                        primary={teacher.info.firstName.concat(' ', teacher.info.lastName)}
+                                        primary={teacher.firstName.concat(' ', teacher.lastName)}
                                         secondary={
                                             <div className='secondary'>
-                                                <div>{'id: '.concat(teacher.info.teacherId)}</div>
-                                                <div>{'phone: '.concat(teacher.info.phone)}</div>
+                                                <div>{'id: '.concat(teacher.teacherID)}</div>
+                                                <div>{'phone: '.concat(teacher.phone)}</div>
                                             </div>
                                         }
                                     />

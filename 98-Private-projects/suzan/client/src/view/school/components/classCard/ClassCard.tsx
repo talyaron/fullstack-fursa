@@ -13,13 +13,15 @@ import { getCoursesAsync, getStudentsAsync, getTeachersAsync } from '../../../..
 interface ClassCardProps {
     info: {
         name: string
-        teacher: string
+        firstName: string
+        lastName: string
     }
 
 }
 
 export default function ClassCard(props: ClassCardProps) {
-    const { name, teacher } = props.info;
+    const { name, firstName, lastName } = props.info;
+    const teacher = firstName.concat(' ', lastName);
     const dispatch = useAppDispatch();
 
     function handleClick() {

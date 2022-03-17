@@ -16,35 +16,25 @@ import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
 
 
 export interface studentInfo {
-    info: {
-        firstName: string;
-        lastName: string;
-        father: string;
-        mother: string;
-        studentId: string;
-        phone: string;
-        fphone: string;
-        mphone: string;
-        email: string;
-    }
+    id:number;
+    username:string;
+    password:string;
+    firstName: string;
+    lastName: string;
+    fatherName: string;
+    motherName: string;
+    studentID: string;
+    phone: string;
+    fatherPhone: string;
+    motherPhone: string;
+    email: string;
+    status:string;
+    schoolID: number;
+    classID: number;
+
 }
 
 export default function SchoolStudents() {
-
-    // const students: Array<studentInfo> = [
-    //     { info: { firstName: 'Suzan', lastName: 'Kassabry', father: 'Emad', mother: 'Linda', id: '207745638', phone: '0537756048', fphone: '0537756048', mphone: '0537756048', email: 'suzankassabry97@gmail.com' } },
-    //     { info: { firstName: 'Maria', lastName: 'Kassabry', father: 'Emad', mother: 'Linda', id: '218439247', phone: '0537756048', fphone: '0537756048', mphone: '0537756048', email: 'suzankassabry97@gmail.com' } },
-    //     { info: { firstName: 'Nora', lastName: 'Kassabry', father: 'Emad', mother: 'Linda', id: '634892469', phone: '0537756048', fphone: '0537756048', mphone: '0537756048', email: 'suzankassabry97@gmail.com' } }
-    // ]
-
-    // const [students, setStudents] = useState([]);
-    // useEffect(() => {
-    //     axios.get('http://localhost:3004/schoolStudents').then(({ data }) => {
-    //         console.log(data);
-    //         setStudents(data);
-    //     })
-    // }, []);
-
     const dispatch = useAppDispatch();
     useEffect(() => {
         dispatch(getSchoolStudentsAsync());

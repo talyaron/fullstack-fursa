@@ -5,6 +5,8 @@ import { studentInfo } from '../../pages/students/Students';
 import {useState, useEffect } from 'react';
 import axios from 'axios';
 import './StudentCard.scss';
+import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
+import { getSchoolStudentsAsync, schoolStudents } from '../../../../app/reducers/school/SchoolSlice';
 
 // const students: Array<studentInfo> = [
 //     { info: { firstName: 'Suzan', lastName: 'Kassabry', father: 'Emad', mother: 'Linda', studentId: '207745638', phone: '0537756048', fphone: '0537756048', mphone: '0537756048', email: 'suzankassabry97@gmail.com' } },
@@ -14,18 +16,17 @@ import './StudentCard.scss';
 
 export default function StudentCard() {
     const { studentId } = useParams();
-    const [students, setStudents] = useState([]);
-    useEffect(() => {
-        axios.get('http://localhost:3004/schoolStudents').then(({data})=>{
-            console.log(data);
-            setStudents(data);
-    })
-    }, []);
+    // const dispatch = useAppDispatch();
+    // useEffect(() => {
+    //     dispatch(getSchoolStudentsAsync());
+    // }, []);
+    const students = useAppSelector(schoolStudents);
 
     function getStudentInfo(id: string | undefined, students: Array<studentInfo>) {
-        const student = students.find(student => student.info.studentId === id)
+        const student = students.find(student => student.studentID === id)
+        console.log(students)
         if (student) {
-            return [student.info.firstName, student.info.lastName, student.info.father, student.info.mother, student.info.phone, student.info.fphone, student.info.mphone, student.info.email];
+            return [student.firstName, student.lastName, student.fatherName, student.motherName, student.phone, student.fatherPhone, student.motherPhone, student.email];
         } else {
             return ''
         }

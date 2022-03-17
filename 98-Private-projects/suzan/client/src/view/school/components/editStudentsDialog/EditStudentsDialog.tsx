@@ -73,7 +73,7 @@ export default function NewCourseDialog(props: dialogProps) {
                         id="checkboxes-tags-demo"
                         options={students}
                         disableCloseOnSelect
-                        getOptionLabel={(option) => option.info.firstName.concat('', option.info.lastName)}
+                        getOptionLabel={(option) => option.firstName.concat('', option.lastName)}
                         renderOption={(props, option, { selected }) => (
                             <li {...props}>
                                 <Checkbox
@@ -82,7 +82,7 @@ export default function NewCourseDialog(props: dialogProps) {
                                     style={{ marginRight: 8 }}
                                     checked={checkStudent(option)}
                                 />
-                                {option.info.firstName.concat('', option.info.lastName)}
+                                {option.firstName.concat('', option.lastName)}
                             </li>
                         )}
                         style={{ width: 500 }}

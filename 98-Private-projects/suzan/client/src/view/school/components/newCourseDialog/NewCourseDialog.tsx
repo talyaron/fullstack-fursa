@@ -89,12 +89,12 @@ export default function NewCourseDialog(props: dialogProps) {
                         disablePortal
                         id="combo-box-demo"
                         options={teachers}
-                        getOptionLabel={(option) => option.info.firstName.concat(' ', option.info.lastName)}
+                        getOptionLabel={(option) => option.firstName.concat(' ', option.lastName)}
                         sx={{ width: 300 }}
                         renderInput={(params) => <TextField {...params} label="search or select teacher" />}
                         size="small"
                         className='inputField'
-                        isOptionEqualToValue={(option, value) => option.info.teacherId === value.info.teacherId}
+                        isOptionEqualToValue={(option, value) => option.teacherID === value.teacherID}
                         onChange={handleChange}
                     />
                 </DialogContent>

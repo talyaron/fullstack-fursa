@@ -164,7 +164,7 @@ export default function ClassTabsBar() {
 
     function findDefaultTeacherObj() {
         for (let i = 0; i < teachers.length; i++) {
-            if (teachers[i].info.firstName.concat(' ', teachers[i].info.lastName) === teacherName) {
+            if (teachers[i].firstName.concat(' ', teachers[i].lastName) === teacherName) {
                 return teachers[i];
             }
         }
@@ -260,13 +260,13 @@ export default function ClassTabsBar() {
                             id="combo-box-demo"
                             disabled={disableEditTeacher}
                             options={teachers}
-                            getOptionLabel={(option) => option.info.firstName.concat(' ', option.info.lastName)}
+                            getOptionLabel={(option) => option.firstName.concat(' ', option.lastName)}
                             defaultValue={defaultTeacher}
                             sx={{ width: 300 }}
                             renderInput={(params) => <TextField {...params} />}
                             size="small"
                             className='inputField'
-                            isOptionEqualToValue={(option, value) => option.info.teacherId === value.info.teacherId}
+                            isOptionEqualToValue={(option, value) => option.teacherID === value.teacherID}
                             onChange={handleTeacherChange}
                         />
                     </div>

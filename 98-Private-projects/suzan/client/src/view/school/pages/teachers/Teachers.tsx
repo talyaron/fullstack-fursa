@@ -17,13 +17,15 @@ import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
 
 
 export interface teacherInfo {
-    info: {
-        firstName: string;
-        lastName: string;
-        teacherId: string;
-        phone: string;
-        email: string;
-    }
+    id: number,
+    firstName: string,
+    lastName: string,
+    teacherID: string,
+    phone: string,
+    email: string,
+    username: string,
+    password: string,
+    schoolID: number
 }
 
 export default function SchoolTeachers() {
@@ -79,7 +81,7 @@ export default function SchoolTeachers() {
 
                 <div className="teachers">
                     <div className="teachers__list">
-                        <TeachersList teachers={teachers} />
+                        <TeachersList />
                     </div>
                     <div className="teachers__info">
                         <Outlet />

@@ -55,7 +55,7 @@ export default function SchoolClasses() {
                     {
                         
                         classes.map((classroom, index) => {
-                            const { name, teacher } = classroom;
+                            const { name, firstName, lastName } = classroom;
                             return (
                                 <Link to='/class' key={index}>
                                     <ClassCard key={index} info={classroom} />

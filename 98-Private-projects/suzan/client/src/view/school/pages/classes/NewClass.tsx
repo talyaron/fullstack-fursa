@@ -59,7 +59,7 @@ export default function NewClass() {
         // axios.post('http://localhost:3004/schoolClasses', { 'name': className, 'teacher': teacherName })
         //     .then(({ data }) => console.log(data));
 
-        axios.post('school/add-class', { name: className, teacher: teacherName })
+        axios.post('school/add-new-class', { name: className, teacher: teacherName })
             .then(data => {
                 console.log(data);
             }).catch(err => {
@@ -110,12 +110,12 @@ export default function NewClass() {
                             disablePortal
                             id="combo-box-demo"
                             options={teachers}
-                            getOptionLabel={(option) => option.info.firstName.concat(' ', option.info.lastName)}
+                            getOptionLabel={(option) => option.firstName.concat(' ', option.lastName)}
                             sx={{ width: 300 }}
                             renderInput={(params) => <TextField {...params} label="select or serch for teacher" />}
                             size="small"
                             className='inputField'
-                            isOptionEqualToValue={(option, value) => option.info.teacherId === value.info.teacherId}
+                            isOptionEqualToValue={(option, value) => option.teacherID === value.teacherID}
                             onChange={handleTeacherName}
                         />
                     </div>
@@ -129,7 +129,7 @@ export default function NewClass() {
                             id="checkboxes-tags-demo"
                             options={students}
                             disableCloseOnSelect
-                            getOptionLabel={(option) => option.info.firstName.concat(' ', option.info.lastName)}
+                            getOptionLabel={(option) => option.firstName.concat(' ', option.lastName)}
                             renderOption={(props, option, { selected }) => (
                                 <li {...props}>
                                     <Checkbox
@@ -138,7 +138,7 @@ export default function NewClass() {
                                         style={{ marginRight: 8 }}
                                         checked={selected}
                                     />
-                                    {option.info.firstName.concat(' ', option.info.lastName)}
+                                    {option.firstName.concat(' ', option.lastName)}
                                 </li>
                             )}
                             style={{ width: 500 }}
@@ -147,7 +147,7 @@ export default function NewClass() {
                             )}
                             size="small"
                             className='inputField'
-                            isOptionEqualToValue={(option, value) => option.info.studentId === value.info.studentId}
+                            isOptionEqualToValue={(option, value) => option.studentID === value.studentID}
                             onChange={handleStudent}
                         />
                     </div>
