@@ -35,8 +35,8 @@ function Login() {
         const password=form[2].value;
         const {data}=await axios.post('/user/login',{name:name,email:email,password:password})
         if(data.ok){
-        dispatch(fetchUser({ email: email, password: password }))
-        navigate("/store")
+          dispatch(fetchUser({ email: email, password: password }))
+          navigate("/store")
         }
         else{
             alert('user not found')

@@ -25,10 +25,11 @@ import { getRawAsync } from '../../../../features/raw/Raw';
     .then(data => {
       dispatch(getRawAsync())
         console.log(data);
+        setShow('block')
       }).catch(err => {
         console.error(err);
       })
-      setShow('block')
+      // setShow('block')
 
 }
     function handleProductSubmit(ev:any)
@@ -69,6 +70,7 @@ import { getRawAsync } from '../../../../features/raw/Raw';
                 </div>
                 <Backdrop
         sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        
         open={open}
         // onClick={handleClose}
       >
@@ -86,7 +88,7 @@ import { getRawAsync } from '../../../../features/raw/Raw';
                         </form>
                 </div>
                 <div className="homepage_body_delivery">
-                    <h1>Manage Delivery</h1>
+                    <h1>Manage Orders</h1>
                 <form onSubmit={handleDelivery}>
                       
                         </form>

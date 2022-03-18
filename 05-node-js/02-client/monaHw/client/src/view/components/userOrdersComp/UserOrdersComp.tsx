@@ -11,8 +11,7 @@ export interface ordersProp{
 export function UserOrdersComp(props:ordersProp)
 {
     const {_id,date,cash,creditCard,delivery,pickUp}=props
-  return(
-    
-      <div>{_id} {date} //// {cash}/// {creditCard}/// {delivery} {pickUp}</div>
+  return( 
+      <div>{_id}    {date}  {cash} {creditCard} {delivery} {pickUp}</div>
   )
 }

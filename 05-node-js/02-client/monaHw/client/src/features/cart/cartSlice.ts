@@ -11,6 +11,7 @@ export interface order {
   width?:number;
   thick?:number;
   doorType?:string;
+  details?:string
 
 }
 export interface CartState {

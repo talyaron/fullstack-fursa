@@ -8,11 +8,12 @@ import userOrder from "../model/schema/userOrderSchema";
 
 router.post('/add-order',async(req,res)=>{
     try{
-      const {woodName,woodlength,amount,userId,thick,width}=req.body;
+      const {woodName,woodlength,amount,userId,price}=req.body;
       // console.log(woodName,woodlength,amount,userId,thick,width)
-      if(!woodName||!woodlength||!amount||!userId ) throw 'invalid fields'
+      console.log(woodName,woodlength,amount,userId,price)
+      if(!woodName||!woodlength||!amount||!userId||!price ) throw 'invalid fields'
       const newOrder=new Order({
-        woodName,woodlength,width,thick,amount,userId
+        woodName,woodlength,amount,userId,price
       });
       
       
@@ -24,6 +25,44 @@ router.post('/add-order',async(req,res)=>{
       res.status(400).send({error:error.message})
     }
   })
+//add-door-order
+router.post('/add-door-order',async(req,res)=>{
+  try{
+    const {woodName,woodlength,amount,userId,thick,width,details}=req.body;
+    // console.log(woodName,woodlength,amount,userId,thick,width)
+    if(!woodName||!woodlength||!amount||!thick||!width||!userId||!details) throw 'invalid fields'
+    const newOrder=new Order({
+      woodName,woodlength,width,thick,amount,userId,details
+    });
+    
+    await newOrder.save().then((res)=>{
+      console.log(res);
+    });
+    res.send({val:"OK"})
+  }catch(error:any){
+    res.status(400).send({error:error.message})
+  }
+})
+//add-closet-order
+router.post('/add-product-order',async(req,res)=>{
+  try{
+    const {woodName,woodlength,amount,userId,thick,width,doorType,details}=req.body;
+    // console.log(woodName,woodlength,amount,userId,thick,width)
+    if(!woodName||!woodlength||!amount||!thick||!width||!userId||!doorType||!details ) throw 'invalid fields'
+    const newOrder=new Order({
+      woodName,woodlength,width,thick,amount,userId,details
+    });
+    
+    
+    await newOrder.save().then((res)=>{
+      console.log(res);
+    });
+    res.send({val:"OK"})
+  }catch(error:any){
+    res.status(400).send({error:error.message})
+  }
+})
+//add-frame-order
 
   router.get('/get-order',async (req,res)=>{
     try{
@@ -108,13 +147,17 @@ router.post('/checkOut',async(req,res)=>{
     }
   })
 
-  router.post('/get-checkout-orders',async(req,res)=>{
+  router.get('/get-checkout-orders',async(req,res)=>{
     try{
-    const {userId}=req.body
-    console.log(userId,'//////')
+      const { login } = req.cookies;
+        const JWT_SECRET = process.env.JWT_SECRET;
+        const decodedJWT = jwt.decode(login, JWT_SECRET);
+        const { userId } = decodedJWT;
+        const user=await User.findOne({_id:userId})
+        if(user){
     const userCheckOutOrders=await userOrder.find({userId:userId})
     res.status(200).send(userCheckOutOrders)
-
+        }
     }catch(error:any){
       res.status(400).send({error:error.message})
     }

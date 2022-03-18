@@ -23,10 +23,10 @@ const initialState:UserOrdersStae={
 
 export const fetchUserOrders = createAsyncThunk(
     'orders/fetchuserorders',
-    async (obj:any, thunkApi) => {
+    async (_, thunkApi) => {
       try {
-          const {userId}=obj
-        const response = await axios.post('/order/get-checkout-orders',{userId:userId})
+          
+        const response = await axios.get('/order/get-checkout-orders')
         const data = response.data
         return data
   

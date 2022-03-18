@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './Card.scss'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import BasicRating from '../rating/Rating';
 import * as React from 'react';
 import Box from '@mui/material/Box';
@@ -22,7 +22,7 @@ function Card(prop: CardProp) {
   const [isLiked, setlike] = useState('like')
   const [color, setcolor] = useState('')
   const [image, setImg] = useState('https://cdn2.iconfinder.com/data/icons/unigrid-human-vol-2/57/011_yes_like_agree_vote_thumbs-up_thumbs-512.png')
-
+ const navigate=useNavigate()
 
 
   // function handler(eve:any){
@@ -55,20 +55,22 @@ function Card(prop: CardProp) {
   function handlerMouseOut() {
     setcolor('rgba(73, 48, 24, 1)')
   }
-
+   function orderHandler(){
+      navigate(`/order/${name}/${pricePerMeter}`)
+   }
   return (
     <div id='card' className="card" onMouseOver={handlerMouseOver} onMouseOut={handlerMouseOut} style={{ backgroundColor: color }}
     >
       <div><img src={imageUrl} alt="" /></div>
-      <div><h3>{name}</h3></div>
-      <h4>{pricePerMeter}₪ (per meter) </h4>
+      <div><h3>{name}</h3>
+      <h4>{pricePerMeter}₪ (per meter) </h4></div>
       {/* <h3>{price} shekels</h3> */}
-      <BasicRating></BasicRating>
+      {/* <BasicRating></BasicRating> */}
       <Box sx={{ '& button': { m: 1 } }}>
         <div>
-          <Button variant="contained" style={{ backgroundColor: 'rgb(47, 143, 90)' }} size="medium"><Link to={`/order/${name}/${pricePerMeter}`} style={{ color: 'white' }}>
+          <Button variant="contained" style={{ backgroundColor: 'rgb(47, 143, 90)' }} size="medium" onClick={orderHandler}>
             order
-          </Link>
+          
           </Button>
 
         </div>

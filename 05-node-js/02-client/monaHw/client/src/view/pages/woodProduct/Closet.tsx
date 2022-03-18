@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
 import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react'
-import { MenuItem } from '@mui/material';
+import { MenuItem, TextareaAutosize } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import axios from 'axios'
 import { useDispatch } from 'react-redux';
@@ -52,10 +52,10 @@ function Closet() {
     
     // <Alert severity="success">item added successfully — check it out!</Alert>
     // axios.post('http://localhost:3004/userOrder',{"woodName":woodproname,"woodlength":form[0].value, "width":form[1].value, "thick":form[2].value,"color":form[3].value,"amount":form[4].value,"doorType":form[5].value}).then(({data})=>dispatch(getCartAsync()));
-    axios.post('/order/add-order',{woodName:woodproname,woodlength:form[0].value,width:form[1].value,"thick":form[2].value, "color":form[3].value,amount:form[4].value,doorType:form[5].value,userId:user._id})
-    .then((res) => console.log(res))
+    axios.post('/order/add-product-order',{woodName:woodproname,woodlength:form[0].value,width:form[1].value,"thick":form[2].value, "color":form[3].value,amount:form[4].value,doorType:form[5].value,details:form[7].value,userId:user._id})
+    .then((res) =>    setShow('block'))
     .catch((err) => console.error(err));
-    setShow('block')
+    // setShow('block')
 
   }
   return (
@@ -87,6 +87,12 @@ function Closet() {
               </MenuItem>
             ))}</TextField>
             {/* <input type="number" name="doorNum" required placeholder="number of doors" /> */}
+            <TextareaAutosize
+              aria-label="minimum height"
+              minRows={3}
+              placeholder="עוד פרטים על ההזמנה"
+              style={{ width: 200 }}
+            />
             <Button type="submit" variant="contained" style={{ backgroundColor: 'rgb(47, 143, 90)' }} size="medium">
               add to cart
 

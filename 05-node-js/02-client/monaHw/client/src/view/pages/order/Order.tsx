@@ -76,11 +76,11 @@ const user=useAppSelector(getUser)
         // setProduct(copy);
         // const orderObj={"woodName":name,"woodlength":form[0].value,"amount":form[1].value,"price":pricePerMeter};
         axios.post('/order/add-order',{woodName:name,woodlength:form[0].value,amount:form[1].value,price:pricePerMeter,userId:user._id})
-        .then((res) => console.log(res))
+        .then((res) => setShow('block'))
         .catch((err) => console.error(err));
         // axios.post('http://localhost:3004/userOrder',{"woodName":name,"woodlength":form[0].value,"amount":form[1].value,"price":pricePerMeter}).then(({data})=>dispatch(getCartAsync()));
 
-        setShow('block')
+        // setShow('block')
         // console.log(copy)
         // console.log(product)
       

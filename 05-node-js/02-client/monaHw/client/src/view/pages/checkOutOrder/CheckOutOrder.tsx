@@ -12,13 +12,14 @@ export default function ChekOutOrder()
   const[cash,setCash]=useState(false);
   const[pickUp,setPickUp]=useState(false);
   const[delivery,setdelivery]=useState(false);
+  const user=useAppSelector(getUser)
+
   const dispatch = useAppDispatch();
     useEffect(()=>{
         dispatch(getCartAsync())
 
     },[])
     const orders = useAppSelector(selectorders);
-    const user=useAppSelector(getUser)
 
 
   function handlevisa()

@@ -9,7 +9,7 @@ export function UserOrders(){
     const user=useAppSelector(getUser)
     const dispatch=useAppDispatch();
     useEffect(()=>{
-        dispatch(fetchUserOrders({userId:user._id}))
+        dispatch(fetchUserOrders())
 
     },[])    
     const orders=useAppSelector(userOrders)
