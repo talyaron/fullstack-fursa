@@ -7,23 +7,31 @@ import './style.scss'
 
 function AddProducts() {
 
-    const navigate = useNavigate();
-    // const info = { name: "asma", text: "123", img: "image" }
-    const [product, setProduct] = useState({ name: "", text: "", img: "image" });
+    const [product, setProduct] = useState({ name: "", text: "",category:"" ,img: "" });
     const [products, setProducts] = useState([]);
-    const [treatment, setTreatment] = useState({ name: "", text: "", img: "image" });
+    const [treatment, setTreatment] = useState({ name: "", text: "", img: "" });
     const [treatments, setTreatments] = useState([]);
 
+    const [selectedImage, setImage] = useState('');
+    function handleAddImg(e:any) {
+        setProduct({...product, img:e.target.files[0].name})
+        setImage(e.target.files[0])
+    }
+
     function handleAddProduct() {
-        // ev.preventDefault();
         console.log(product)
         if (!product.name || !product.text || !product.img) {
             alert("missing info");
         }
         else {
-            axios.post('/products/add-product', { product })
+            const formData =new FormData();
+            formData.append('image', selectedImage );
+            formData.append('name', product.name );
+            formData.append('text', product.text );
+            formData.append('category', product.category );
+            const config = { headers: { 'content-type': 'multipart/form-data' } }
+            axios.post('/upload',formData,config)
                 .then(({ data }) => {
-
                     console.log(data)
                 })
                 .catch(err => {
@@ -32,7 +40,6 @@ function AddProducts() {
         }
     }
     function handleAddTreatment() {
-        // ev.preventDefault();
         console.log(treatment)
         if (!treatment.name || !treatment.text || !treatment.img) {
             alert("missing info");
@@ -52,8 +59,6 @@ function AddProducts() {
     useEffect(() => {
         axios.get("/products/get-products").then(({ data }) => {
             console.log(data);
-            // if(!data.ok)
-            //     navigate('/');
             setProducts(data.products);
         });
         // axios.get("/treatments/get-treatments").then(({ data }) => {
@@ -76,10 +81,23 @@ function AddProducts() {
                 <div className="addProduct" >
                     <TextField required className="inputs" id="standard-basic" label="Add Name" variant="standard" value={product.name} onChange={(e) => setProduct({ ...product, name: e.target.value })} />
                     <TextField required className="inputs" id="standard-basic" label="Add Text" variant="standard" value={product.text} onChange={(e) => setProduct({ ...product, text: e.target.value })} />
+                    <TextField required className="inputs" id="standard-basic" label="Add Category" variant="standard" value={product.category} onChange={(e) => setProduct({ ...product, category: e.target.value })} />
+
+                    <label htmlFor="upload-photo">
+                        <input
+                            style={{ display: 'none' }}
+                            id="upload-photo"
+                            name="upload-photo"
+                            type="file"
+                            onChange={(e) => handleAddImg(e) }
+                        />
+                        <Button color="secondary" variant="contained" component="span">Upload Image</Button>
+                    </label>
                     <Button className="button" onClick={handleAddProduct} variant="contained" >Add Product</Button>
+
                 </div>
 
-{/* 
+                {/* 
                 <h2>Treatments</h2>
                 <div >
                     {treatments.map((treatment: any, i) => {

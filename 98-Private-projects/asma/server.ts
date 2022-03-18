@@ -1,4 +1,7 @@
 import express from 'express';
+import Product from './model/schema/productsModel';
+const multer = require('multer');
+//const path = require('path');
 
 const cookieParser = require('cookie-parser');
 const app = express();
@@ -8,6 +11,53 @@ require('dotenv').config();
 app.use(express.static('healthstore/build'));
 app.use(cookieParser());
 app.use(express.json());
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './images')
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now()+file.originalname );
+  }
+})
+var upload = multer({ storage: storage })
+
+app.post('/upload', upload.single('image'), (req:any, res) => {
+  try {
+    const {name,text,category} = req.body;
+    //console.log(req.file)
+    const path = req.file.filename;
+    const event = new Product({ name: name, text: text,category:category ,img: path });
+    event.save();    
+    res.send({message: req.body,ok:"upload"});
+  } catch (error) {
+    res.send({ error });
+  }
+})
+
+
+app.patch("/update-product",  upload.single('image'),async (req:any, res) => {
+  try {
+    const { name, text, category, id,selectedImage } = req.body;
+    let update={};
+    if (selectedImage){
+       const path = req.file.filename;
+       update = { name: name, text: text, category:category, img: path };
+    }
+    else{ update = { name: name, text: text, category:category };}
+    const filter = { _id: id };
+    //update the DB
+    let doc = await Product.findOneAndUpdate(filter, update);
+    res.send({ ok: true, doc });
+  } catch (err) {
+    console.error(err);
+    res.status(400).send({ error: err.message });
+  }
+});
+
+
+
+
 
 const mongoose = require('mongoose');
 

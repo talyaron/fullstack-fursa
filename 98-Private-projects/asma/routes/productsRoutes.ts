@@ -3,6 +3,7 @@ import User from "../model/schema/usersModel";
 import jwt from "jwt-simple";
 const express = require('express');
 const router = express.Router();
+const multer = require('multer');
 
 
 
@@ -11,10 +12,10 @@ export function isAdmin(req, res, next) {
     const { userLogIn } = req.cookies;
     const JWT_SECRET = process.env.JWT_SECRET;
     const decodedJWT = jwt.decode(userLogIn, JWT_SECRET);
-    console.log(decodedJWT);
+    //console.log(decodedJWT);
     const { role, userId } = decodedJWT;
-    console.log(role,userId,"////////////////////////////////////");
-    if (role === "admin") {   
+    //console.log(role,userId);
+    if (role === "admin") {
       next();
     } else {
       res.status(401).send({ error: "Not authorized" });
@@ -25,13 +26,13 @@ export function isAdmin(req, res, next) {
 }
 
 
-
-router.post('/add-product',isAdmin, (req, res) => {
+router.post('/add-product', isAdmin, (req, res) => {
   try {
     const product = req.body.product;
     console.log(req.body, 'in server');
     if (!product) throw new Error("No product in request");
-    const event = new Product({ name: product.name, text: product.text, img: product.img });
+    const event = new Product({ name: product.name, text: product.text, category: product.category, img: product.img });
+    //console.log(product.img.name,'******************************************************');
     event.save();
     res.send({ message: 'Done' });
   } catch (error) {
@@ -50,17 +51,13 @@ async function getProducts(): Promise<any> {
 }
 
 
-router.get('/get-products',isAdmin, async (req, res) => {
-  // const { userLogIn } = req.cookies;
-  // const JWT_SECRET = process.env.JWT_SECRET;
-  // const decodedJWT = jwt.decode(userLogIn, JWT_SECRET);
-  // const { role, userId } = decodedJWT;
- // const user = await User.findOne({ _id: userId })
-  //if (user && role === 'admin') {
+router.get('/get-products', isAdmin, async (req, res) => {
+  try {
     const products = await getProducts();
-    res.send({ ok: true ,products:products});
-  //}
- // res.send({ ok: false ,products:[]});
+    res.send({ ok: true, products: products });
+  } catch (error) {
+    res.send({ ok: false, products: [] });
+  }
 })
 
 
@@ -72,7 +69,7 @@ router.post('/delete-product', async (req, res) => {
     const filter = productId
     console.log(filter);
     let doc = await Product.deleteOne(filter);
-    console.log('Deleted!!');
+    //console.log('Deleted!!');
     res.send({ message: 'Deleted' });
   } catch (error) {
     res.send({ error });
@@ -83,13 +80,11 @@ router.post('/delete-product', async (req, res) => {
 
 router.patch("/update-product", async (req, res) => {
   try {
-    const { name, text, img, id } = req.body;
-
+    const { name, text, category, img, id } = req.body;
     const filter = { _id: id };
-    const update = { name: name, text: text, img: img };
+    const update = { name: name, text: text, category: category, img: img };
     //update the DB
     let doc = await Product.findOneAndUpdate(filter, update);
-
     res.send({ ok: true, doc });
   } catch (err) {
     console.error(err);
