@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import {useAppDispatch, useAppSelector} from '../../../../app/hooks';
 import { getSchoolTeachersAsync, schoolTeachers } from '../../../../app/reducers/school/SchoolSlice';
+import { selectedClassId } from '../../../../app/reducers/school/ClassCardSlice';
 
 interface dialogProps {
     open: any;
@@ -29,11 +30,12 @@ interface dialogProps {
 export default function NewCourseDialog(props: dialogProps) {
     const { open, setOpen } = props
     const [courseName, setCourseName] = useState("");
-    const [teacherName, setTeacherName] = useState("");
+    const [teacherId, setTeacherId] = useState(-1);
     const dispatch = useAppDispatch();
     useEffect(() => {
         dispatch(getSchoolTeachersAsync);
     },[])
+    const classId = useAppSelector(selectedClassId)
     const teachers = useAppSelector(schoolTeachers);
 
     const handleClickOpen = () => {
@@ -45,7 +47,7 @@ export default function NewCourseDialog(props: dialogProps) {
     };
 
     const handleCreate = () => {
-        axios.post('http://localhost:3004/studentCourses', { 'name': courseName, 'teacher': teacherName })
+        axios.post('/school/add-new-course', {classId:classId, courseName:courseName, teacherId:teacherId})
             .then(({ data }) => console.log(data));
         // dispatch(getSchoolTeachersAsync);
         handleClose();
@@ -57,8 +59,9 @@ export default function NewCourseDialog(props: dialogProps) {
     };
 
     function handleChange(ev:any, value:any) {
-        // console.log(value.info.firstName.concat(' ', value.info.lastName));
-        setTeacherName(value.info.firstName.concat(' ', value.info.lastName));
+        // console.log(value);
+        setTeacherId(value.id);
+
     }
 
     return (

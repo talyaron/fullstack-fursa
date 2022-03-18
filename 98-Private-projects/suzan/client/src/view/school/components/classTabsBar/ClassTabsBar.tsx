@@ -68,7 +68,7 @@ export default function ClassTabsBar() {
     const dispatch = useAppDispatch();
     useEffect(() => {
         dispatch(getCoursesAsync(classId));
-        dispatch(getStudentsAsync());
+        dispatch(getStudentsAsync(classId));
         dispatch(getTeachersAsync());
     }, [])
     const courses = useAppSelector(classCourses); //the class courses
@@ -85,8 +85,8 @@ export default function ClassTabsBar() {
     };
 
     function handleTeacherChange(ev: any, value: any) {
-        console.log('selected teacher');
-        console.log(value);
+        // console.log('selected teacher');
+        // console.log(value);
         setNewTeacherName(value);
         if (value !== null) {
             setNewTeacher(value.firstName.concat(' ', value.lastName));
@@ -108,7 +108,7 @@ export default function ClassTabsBar() {
                 console.log('selected');
                 // console.log(newTeacherName)
                 axios.patch('/school/edit-class-teacher', {classId:classId, teacherId:newTeacherId});
-                
+
             }
         }
     }
@@ -178,15 +178,15 @@ export default function ClassTabsBar() {
                     <List className='list' dense={true}>
                         {
                             students.map((student, i) => {
-                                const { first, last, studentId, phone } = student;
+                                const { firstName, lastName, studentID, phone } = student;
                                 return (
                                     <ListItem key={i} className='studentsList__listItem' divider={true}>
                                         <ListItemText
                                             className='studentsList__listItem__text'
-                                            primary={first.concat(' ', last)}
+                                            primary={firstName.concat(' ', lastName)}
                                             secondary={
                                                 <div className='secondary'>
-                                                    <div>{'id: '.concat(studentId)}</div>
+                                                    <div>{'id: '.concat(studentID)}</div>
                                                     <div>{'phone: '.concat(phone)}</div>
                                                 </div>
                                             }
