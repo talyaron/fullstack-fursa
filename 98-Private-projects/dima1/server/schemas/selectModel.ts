@@ -10,6 +10,7 @@ const selectRecipe = new mongoose.Schema({
     calories: String,
     ingredients: String,
     method: String,
+    notes: String,
     userName: String
 })
 

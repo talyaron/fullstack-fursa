@@ -11,7 +11,7 @@ const userRecipe = new mongoose.Schema({
     userName: String
 })
 
-const userRecipes = mongoose.model('recipes', userRecipe);
+const userRecipes = mongoose.model('Recipes', userRecipe);
 
 export default userRecipes;
 

@@ -16,7 +16,7 @@ import { useNavigate, useParams } from "react-router";
 import Tooltip from '@mui/material/Tooltip';
 import axios from 'axios';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { selectedRecipe, getSelectAsync, updateRecipe } from '../../../app/reducers/itemSlice';
+import { selectedRecipe, getSelectAsync, updateRecipe, selectRecipeAsync } from '../../../app/reducers/itemSlice';
 import { addToMyRecipe } from '../../../app/reducers/MyRecipesSlice';
 import { selectPage, updateName } from '../../../app/reducers/NamePageSlice';
 import { updateTopRecipes } from '../../../app/reducers/TopRecipesSlice';
@@ -55,11 +55,9 @@ const CssTextField = styled(TextField)({
         '&.Mui-focused fieldset': {
             borderColor: '#b5739d',
         },
-    },
-    input: {
-        color: "gray",
-        fontSize: 15,
-    },
+        color: 'gray',
+        fontSize: 17,
+    }
 });
 
 interface recipeInfo {
@@ -71,25 +69,30 @@ interface recipeInfo {
     calories: string;
     ingredients: string;
     method: string;
+    notes: string,
+    userName: String;
 }
 
 export default function NewRecipe() {
     //Redux
     const dispatch = useAppDispatch();
     let navigate = useNavigate();
-    
-    const { userName } = useParams();
+
     const recipe_ = useAppSelector(selectedRecipe);
+    console.log(recipe_)
     //const from = useAppSelector(selectedFrom);
     //const isNew = useAppSelector(selectedIsNew);
     const pageName = useAppSelector(selectPage)
 
-    const [recipe, setRecipe] = useState<recipeInfo>(recipe_);
-
     let to = '';
 
+    const [recipe, setRecipe] = useState<recipeInfo>(recipe_);
+
+    const { userName, recipeId } = useParams();
+
     useEffect(() => {
-        dispatch(getSelectAsync(userName))
+        dispatch(selectRecipeAsync(recipeId));
+        setRecipe(recipe_)
     }, [])
 
     // if (from === 'userRecipes' && isNew)
@@ -116,25 +119,25 @@ export default function NewRecipe() {
             case 'method':
                 setRecipe({ ...recipe, method: ev.target.value });
                 break;
+            case 'notes':
+                setRecipe({ ...recipe, notes: ev.target.value });
+                break;
             case 'image':
                 setRecipe({ ...recipe, image: ev.target.value });
         }
         dispatch(updateRecipe(recipe))
     }
 
-    function handleSave(ev:any) {
+    function handleSave(ev: any) {
         ev.preventDefault();
         if (to === '/User') {
             axios.post('/userRecipes/add-new-userRecipe', recipe_);
         }
         else {
-            //add a action to udpate a recipe in the array
-            // console.log(recipe_)
-            // axios.patch('/selectRecipe/edit-select-recipe', recipe_);
-            // axios.put(`/edit-${from}`, recipe_)
-            // dispatch(updateSelectAsync({info:recipe_, from:from, isNew:isNew});
+            console.log(recipe)
+            axios.patch('/selectRecipe/edit-select-recipe', recipe);
+            navigate(`/${userName}/${recipeId}`)
         }
-        navigate(to);
     }
 
     function handleTo() {
@@ -144,7 +147,7 @@ export default function NewRecipe() {
     return (
         <div className='new'>
             <div className='menu'>
-                <Bagemenu userName={userName}/>
+                <Bagemenu userName={userName} />
             </div>
             <div className="content">
                 <img className='image' src={background} />
@@ -170,15 +173,19 @@ export default function NewRecipe() {
                             size="small" sx={{ width: '30ch' }}
                             name='recipeName'
                             value={recipe.name}
-                            onChange={handleChange} />
+                            onChange={handleChange}
+                        />
                         <br />
                         <br />
                         <div className='info1'>
                             <div className='insertPhotos'>
                                 <input type="text" placeholder='Upload Image by URL' name='image'
-                                    value={undefined} required onChange={handleChange} />
+                                    value={recipe.image}
+                                    required
+                                    onChange={handleChange}
+                                />
                             </div>
-                            <h2 className='by'>By : Dima Abbas</h2>
+                            <h2 className='by'>By : {userName}</h2>
                             <div className='item'>
                                 <FavoriteBorderIcon sx={{ fontSize: 40, color: '#b5739d', paddingTop: '10px' }} />
                                 <p>0</p>
@@ -190,7 +197,7 @@ export default function NewRecipe() {
                                     required
                                     placeholder=""
                                     size="small" sx={{ width: '20ch' }}
-                                    name='time' 
+                                    name='time'
                                     value={recipe.time}
                                     onChange={handleChange}
                                 />
@@ -216,36 +223,62 @@ export default function NewRecipe() {
                                     size="small" sx={{ width: '20ch' }}
                                     name='cal'
                                     value={recipe.calories}
-                                    onChange={handleChange} />
+                                    onChange={handleChange}
+                                />
                             </div>
                         </div>
                         <br />
                         <br />
                         <div className='info2'>
+                            <h1>Ingredients</h1>
                             <CssTextField className='ingredients'
                                 focused
                                 required
                                 id="custom-css-outlined-input"
-                                label="Recipe's ingredients"
+                                //label="Recipe's ingredients"
                                 placeholder="Write your recipe ingredients here"
                                 multiline
-                                rows={10}
                                 name='ingredients'
                                 value={recipe.ingredients}
                                 onChange={handleChange}
+                                sx={{ width: '60vw', fontStyle: 'italic', fontSize: 20 }}
                             />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <h1>The Method</h1>
                             <CssTextField className='steps'
                                 focused
                                 required
                                 id="custom-css-outlined-input"
-                                label="The Method"
+                                //label="The Method"
                                 placeholder="Write here the steps for preparing the recipe"
                                 multiline
-                                rows={10}
                                 name='method'
                                 value={recipe.method}
                                 onChange={handleChange}
+                                sx={{ width: '60vw', fontStyle: 'italic', fontSize: 20 }}
                             />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <h1>Notes</h1>
+                            <CssTextField className='notes'
+                                focused
+                                //required
+                                id="custom-css-outlined-input"
+                                //label="The Method"
+                                placeholder="Write notes to the other users"
+                                multiline
+                                name='notes'
+                                value={recipe.notes}
+                                onChange={handleChange}
+                                sx={{ width: '60vw', fontStyle: 'italic', fontSize: 20 }}
+                            />
+                            <br />
+                            <br />
                         </div>
                     </form>
                 </div>

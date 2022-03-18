@@ -36,14 +36,15 @@ const CssTextField = styled(TextField)({
 
 const styles = StyleSheet.create({
     //bold: {fontWeight: 'bold'},
-    italic: {fontStyle: 'italic'},
-    underline: {textDecorationLine: 'underline'},
-    color : {color: 'grey'}
+    italic: { fontStyle: 'italic' },
+    underline: { textDecorationLine: 'underline' },
+    color: { color: 'grey' }
 })
 
 export default function RecipeInfo() {
     const [like, setLike] = useState(0);
-    const { userName ,recipeId} = useParams();
+    const { userName, recipeId } = useParams();
+    const [isTrue, setIsTrue] = useState(false);
 
     //Redux toolkit
     const dispatch = useAppDispatch();
@@ -54,33 +55,34 @@ export default function RecipeInfo() {
 
     useEffect(() => {
         dispatch(selectRecipeAsync(recipeId));
+        if(recipe_.notes) setIsTrue(true)
+        else setIsTrue(false)
     }, [])
 
     function handleLike() {
         setLike(like + 1);
     }
 
-    function handleTo(){
+    function handleTo() {
         dispatch(updateName(`/${userName}/RecipeInfo`));
-    } 
+    }
 
     return (
         <div className='info'>
-            <div className='menu'>
-                <Bagemenu userName={userName}/>
-            </div>
+            <Bagemenu userName={userName} />
             <div className="content">
                 <img className='image' src={background} />
                 <div className='boxInfo'>
                     <Link className='backTo' to={pageName}>
-                        <ArrowBackSharpIcon sx={{color: '#b5739d', fontSize: 30}} onClick={handleTo}/>
+                        <ArrowBackSharpIcon sx={{ color: '#b5739d', fontSize: 30 }} onClick={handleTo} />
                     </Link>
                     <div className='box'>
                         <div className="edit">
                             <Tooltip title='edit recipe'>
-                                <Link to={`/${userName}/NewRecipe`}>
+                                <Link to={`/${userName}/${recipeId}/EditRecipe`}>
                                     <AutoAwesomeIcon sx={{
-                                        color: '#b5739d', fontSize: 35}} />
+                                        color: '#b5739d', fontSize: 35
+                                    }} />
                                 </Link>
                             </Tooltip>
                         </div>
@@ -113,8 +115,10 @@ export default function RecipeInfo() {
                         <br />
                         <div className='info3'>
                             <h1>Ingredients</h1>
-                            <Text style={{fontStyle: 'italic', color: 'gray',
-                                paddingLeft: '20px', fontSize: 20,lineHeight: 40}}>
+                            <Text style={{
+                                fontStyle: 'italic', color: 'gray',
+                                paddingLeft: '20px', fontSize: 20, lineHeight: 40
+                            }}>
                                 {recipe_.ingredients}
                             </Text>
                             <br />
@@ -122,10 +126,25 @@ export default function RecipeInfo() {
                             <br />
                             <br />
                             <h1>The Method</h1>
-                            <Text style={{fontStyle: 'italic', color: 'gray',
-                                paddingLeft: '20px', fontSize: 20,lineHeight: 40}}>
+                            <Text style={{
+                                fontStyle: 'italic', color: 'gray',
+                                paddingLeft: '20px', fontSize: 20, lineHeight: 40
+                            }}>
                                 {recipe_.method}
                             </Text>
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <div hidden={!isTrue}>
+                                <h1>Notes</h1>
+                                <Text style={{
+                                    fontStyle: 'italic', color: 'gray',
+                                    paddingLeft: '20px', fontSize: 20, lineHeight: 40
+                                }}>
+                                    {recipe_.notes}
+                                </Text>
+                            </div>
                         </div>
                     </div>
                 </div>

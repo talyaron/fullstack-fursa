@@ -29,7 +29,7 @@ function Bagemenu(props:any) {
 
     return (
         <div className="menu" id="outer-container">
-            <div className="menu__left">
+            <div className="left">
                 <div className='sideBar'>
                     <SideBar />
                 </div>
@@ -44,7 +44,7 @@ function Bagemenu(props:any) {
                     <SearchIcon sx={{ fontSize: 30, color: '#b5739d' }} />
                 </div>
             </div>
-            <div className="menu__right">
+            <div className="right">
                 <Button
                     id="basic-button"
                     aria-controls={open ? 'basic-menu' : undefined}

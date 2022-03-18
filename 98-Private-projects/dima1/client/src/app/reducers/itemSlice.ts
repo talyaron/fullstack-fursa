@@ -13,6 +13,7 @@ export interface RecipeState {
     calories: string;
     ingredients: string;
     method: string;
+    notes: string,
     userName: String;
   };
   status: 'idle' | 'loading' | 'failed'
@@ -28,6 +29,7 @@ const initialState: RecipeState = {
     calories: '',
     ingredients: '',
     method: '',
+    notes: '',
     userName: '',
   },
   status: 'idle'
@@ -52,10 +54,10 @@ export const getSelectAsync = createAsyncThunk(
   'getByName/fetchGetByName',
   async (name: any, thunkAPI) => {
     try {
-      console.log(name)
+      //console.log(name)
       const response = await axios.post('/selectRecipe/get-recipe-byName', { name_: name });
       const data = response.data;
-      console.log(data)
+      //console.log(data)
       if (data.ok)
         return data.recipe;
       else return thunkAPI.rejectWithValue("failed");
@@ -92,6 +94,7 @@ export const itemReducer = createSlice({
           calories: '',
           ingredients: '',
           method: '',
+          notes:'',
           userName: '',
         };
         state.status = 'loading';
@@ -110,6 +113,7 @@ export const itemReducer = createSlice({
           calories: '',
           ingredients: '',
           method: '',
+          notes:'',
           userName: '',
         };
         state.status = 'failed'
@@ -118,7 +122,7 @@ export const itemReducer = createSlice({
         state.status = 'loading';
       })
       .addCase(getSelectAsync.fulfilled, (state, action) => {
-        console.log(action.payload)
+        //console.log(action.payload)
         state.info = action.payload;
         state.status = 'idle';
       })

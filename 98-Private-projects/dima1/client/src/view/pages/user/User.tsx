@@ -19,11 +19,9 @@ interface info {
 export default function User() {
 
   const { userName } = useParams();
-  console.log(userName)
 
   const dispatch = useAppDispatch();
   const user_ = useAppSelector(user);
-  console.log(user_)
 
   useEffect (() => {
     dispatch(getUserAsync(userName))
@@ -41,7 +39,7 @@ export default function User() {
             <Profile userInfo={user_} />
           </div>
           <div className="recipes">
-            <Recipes />
+            <Recipes userName={userName}/>
           </div>
         </div>
         <br />

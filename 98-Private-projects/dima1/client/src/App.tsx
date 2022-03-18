@@ -48,9 +48,10 @@ function App(){
       <Routes>
         <Route path="/" element={<LogIn />} />
         <Route path="/:userName" element={<User />} />
-        <Route path="SignUp" element={<SignUp />} />
-        <Route path="ResetPassword" element={<ResetPassword />} />
+        <Route path="/SignUp" element={<SignUp />} />
+        <Route path="/ResetPassword" element={<ResetPassword />} />
         <Route path="/:userName/MainScreen" element={<MainScreen />} />
+        <Route path="/:userName/:recipeId/EditRecipe" element={<NewRecipe />} />
         <Route path="/:userName/NewRecipe" element={<NewRecipe />} />
         {/* <Route path="RecipeInfo" element={<RecipeInfo />} /> */}
         <Route path="/:userName/:recipeId" element={<RecipeInfo />} />

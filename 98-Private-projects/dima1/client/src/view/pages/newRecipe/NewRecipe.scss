@@ -6,6 +6,7 @@
         position: relative;
         overflow: hidden;
         margin: auto;
+        width: 100vw;
 
         .image {
             opacity: 40%;
@@ -40,8 +41,8 @@
                 padding-top: 40px;
                 color: #b5739d;
 
-                .save{
-                    button{
+                .save {
+                    button {
                         background: none;
                         border: none;
                     }
@@ -101,18 +102,21 @@
                 }
 
                 .info2 {
-                    width: 90%;
-                    display: grid;
-                    column-gap: 20px;
-                    margin: auto;
-                    grid-template-columns: repeat(5, 1fr);
+                    float: left;
+                    padding-left: 15%;
+                    text-align: left;
+                    color: #b5739d;
+                    width: 90vw;
 
-                    .ingredients {
-                        grid-column: 1 / 3;
-                    }
-
-                    .steps {
-                        grid-column: 3 / 6;
+                    h1 {
+                        max-width: 100%;
+                        line-height: 1.07;
+                        font-size: 2em;
+                        color: #b5739d;
+                        font-style: italic;
+                        font-weight: 500;
+                        border-bottom: 2px solid #b5739d;
+                        padding-bottom: 1rem;
                     }
                 }
             }
