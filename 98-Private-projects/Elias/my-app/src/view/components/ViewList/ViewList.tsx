@@ -41,7 +41,7 @@ function ViewList() {
                 incatList: [{ name: "Shoes", quantity: 1 }, { name: "Phone charger", quantity: 1 }, { name: "Earphones", quantity: 1 }, { name: "Cat cage", quantity: 1 }]
             }
         ];
-    const [showResults, setShowResults] = useState(false);
+    const [showResults, setShowResults] = useState(true);
 
     const [isExpanded, setExpanded] = useState(true);
     const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded });

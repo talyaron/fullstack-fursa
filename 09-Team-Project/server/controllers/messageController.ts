@@ -19,14 +19,16 @@ exports.getMessagesByUserName = async (req, res) => {
     try {
         //     const _msg = await Messages.find({ "user.name": userName });
 
-        const _msg = await Messages.find(
+        const _msg = await Messages.find(   ///find msges from or to userName
 
-            {$or: [{
-                from: userName
-            },
             {
-                To: userName
-            }]}
+                $or: [{
+                    from: userName
+                },
+                {
+                    To: userName
+                }]
+            }
 
         );
 
