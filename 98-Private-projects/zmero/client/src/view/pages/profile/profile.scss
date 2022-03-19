@@ -23,6 +23,55 @@
             margin-top: 4rem;
             width: 90%;
             max-width: 40rem;
+
+            &__personal {
+                display: flex;
+                flex-direction: column;
+
+                &__1 {
+                    display: flex;
+                    justify-content: space-between;
+
+                    &__fname {
+                        width: 45%;
+                    }
+
+                    &__lname {
+                        width: 45%;
+                    }
+                }
+
+                &__2 {
+                    display: flex;
+                    justify-content: space-between;
+
+                    &__region {
+                        width: 45%;
+                        display: flex;
+                        align-items: flex-end;
+
+                    }
+
+                    &__phone {
+                        width: 45%;
+                    }
+                }
+            }
+
+            &__password {
+                &__1 {
+                    display: flex;
+                    justify-content: space-between;
+
+                    &__current {
+                        width: 45%;
+                    }
+
+                    &__new {
+                        width: 45%;
+                    }
+                }
+            }
         }
     }
 }
@@ -33,7 +82,57 @@
             font-size: 16px;
 
             &__title {
-                font-size: 1.5rem;
+                h6 {
+                    font-size: 1.5rem;
+                }
+            }
+
+            &__tabs {
+                margin-top: 2rem;
+
+                &__personal {
+                    &__1 {
+                        display: flex;
+                        flex-direction: column;
+
+                        &__fname {
+                            width: 100%;
+                        }
+
+                        &__lname {
+                            width: 100%;
+                        }
+                    }
+
+                    &__2 {
+                        display: flex;
+                        flex-direction: column;
+
+                        &__region {
+                            width: 100%;
+                            margin-top: 1rem;
+                        }
+
+                        &__phone {
+                            width: 100%;
+                        }
+                    }
+                }
+
+                &__password {
+                    &__1 {
+                        display: flex;
+                        flex-direction: column;
+
+                        &__current {
+                            width: 100%;
+                        }
+
+                        &__new {
+                            width: 100%;
+                        }
+                    }
+                }
             }
         }
     }

@@ -12,8 +12,10 @@ interface userProb {
         region: string;
     };
     userIsLogIn: boolean;
-    status: 'idle' | 'loading' | 'failed';
+    status: 'idle' | 'loading' | 'complete' | 'failed';
     signUpStatus: 'idle' | 'loading' | 'failed';
+    updateStatus: 'idle' | 'loading' | 'failed';
+    updatePasswordStatus: 'idle' | 'loading' | 'failed' | 'completed';
 }
 
 const initialState: userProb = {
@@ -28,6 +30,8 @@ const initialState: userProb = {
     userIsLogIn: false,
     status: 'idle',
     signUpStatus: 'idle',
+    updateStatus: 'idle',
+    updatePasswordStatus: 'idle',
 };
 
 export const getUserInfoAsync = createAsyncThunk(
@@ -75,6 +79,37 @@ export const signUpUser = createAsyncThunk(
     }
 );
 
+export const updateUserInfo = createAsyncThunk(
+    'user/updateUserInfo',
+    async (user: any, thunkAPI) => {
+        try {
+            const { fName, lName, phone, region } = user
+            if (!fName || !lName || !phone || !region) throw new Error('invalid fields')
+            const response = await axios.post('/users/update-info', { "fName": fName, "lName": lName, "phone": phone, "region": region })
+            const data: any = response.data
+            return data
+        } catch (e) {
+            thunkAPI.rejectWithValue(e)
+        }
+
+    }
+);
+
+export const updatePassword = createAsyncThunk(
+    'user/updatePassword',
+    async (user: any, thunkAPI) => {
+        try {
+            const { currentPass, newPass } = user
+            if (!currentPass || !newPass) throw new Error('invalid fields')
+            const response = await axios.post('/users/update-password', { "currentPass": currentPass, "newPass": newPass })
+            const data: any = response.data
+            return data
+        } catch (e) {
+            thunkAPI.rejectWithValue(e)
+        }
+
+    }
+);
 export const signUpRestaurateur = createAsyncThunk(
     'user/signUpRestaurateur',
     async (user: any, thunkAPI) => {
@@ -170,7 +205,6 @@ export const userReducer = createSlice({
                 state.status = 'loading';
             })
             .addCase(getAuthentication.fulfilled, (state, action) => {
-                state.status = 'idle';
                 try {
                     const { log, user } = action.payload
                     if (log == null) throw new Error('invalid fields')
@@ -178,6 +212,7 @@ export const userReducer = createSlice({
                         if (!user) throw new Error('invalid fields')
                         state.userinfo = user;
                         state.userIsLogIn = true;
+                        state.status = 'complete';
                     } else {
                         state.userinfo.email = " ";
                         state.userinfo.fName = " ";
@@ -185,9 +220,11 @@ export const userReducer = createSlice({
                         state.userinfo.type = " ";
                         state.userinfo.region = "Israel"
                         state.userIsLogIn = false;
+                        state.status = 'idle';
                     }
                 } catch (error) {
                     console.log(error)
+                    state.status = 'failed';
                 }
             })
             .addCase(logOutUser.pending, (state) => {
@@ -210,14 +247,49 @@ export const userReducer = createSlice({
                     console.log(error)
                 }
             })
+            .addCase(updateUserInfo.pending, (state) => {
+                state.updateStatus = 'loading';
+            })
+            .addCase(updateUserInfo.fulfilled, (state, action) => {
+                try {
+                    const { update, user } = action.payload
+                    if (update == null) throw new Error('invalid fields')
+                    if (update === true) {
+                        if (user == null) throw new Error('invalid fields')
+                        state.userinfo.fName = user.fName;
+                        state.userinfo.lName = user.lName;
+                        state.userinfo.phone = user.phone
+                        state.userinfo.region = user.region
+                        state.updateStatus = 'idle'
+                    }
+                } catch (error) {
+                    console.log(error)
+                }
+            })
+            .addCase(updatePassword.pending, (state) => {
+                state.updatePasswordStatus = 'loading';
+            })
+            .addCase(updatePassword.fulfilled, (state, action) => {
+                try {
+                    const { update } = action.payload
+                    if (update == null) throw new Error('invalid fields')
+                    if (update === true) {
+                        state.updatePasswordStatus = 'completed'
+                    } else state.updatePasswordStatus = 'failed'
+                } catch (error) {
+                    console.log(error)
+                }
+            })
     },
 })
 
 
 export const { updateLogIn, updateSignUpState } = userReducer.actions
 export const selectUser = (state: RootState) => state.user.userinfo
+export const selectUserState = (state: RootState) => state.user.status
 export const selecUserName = (state: RootState) => state.user.userinfo.fName + " " + state.user.userinfo.lName
 export const checkUser = (state: RootState) => state.user.userIsLogIn
 export const checkType = (state: RootState) => state.user.userinfo.type
 export const signUpState = (state: RootState) => state.user.signUpStatus
+export const updatePasswordState = (state: RootState) => state.user.updatePasswordStatus
 export default userReducer.reducer;

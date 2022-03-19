@@ -19,7 +19,7 @@ router.get('/log-in', async (req, res) => {
                 httpOnly: true,
                 maxAge: 60 * 60 * 1000,
             })
-            res.send({ "log": true, "user": result[0] })
+            res.send({ "log": true, "user": { "fName": result[0].fName, "lName": result[0].lName, "email": result[0].email, "phone": result[0].phone, "region": result[0].region, "type": result[0].type } })
         }
         else res.send({ "log": false })
     } catch (error) {
@@ -39,6 +39,46 @@ router.post('/sign-up', async (req, res) => {
             const user = new Users({ "fName": fName, "lName": lName, "email": email, "phone": phone, "region": region, "password": password, "type": "regular" })
             user.save()
             res.send({ "log": true })
+        }
+    } catch (error) {
+        res.send({ error });
+    }
+
+})
+
+router.post('/update-info', isUser, async (req, res) => {
+    try {
+        const userId = req.userId
+        const { fName, lName, phone, region } = req.body
+        if (!fName || !lName || !phone || !region) throw "invalid fields"
+        const update = { "fName": fName, "lName": lName, "phone": phone, "region": region }
+        const check = await Users.findOneAndUpdate({ "_id": userId }, update, {
+            new: true
+        });
+        if (check) {
+            res.send({ "update": true, user: update })
+        } else {
+            res.send({ "update": false, })
+        }
+    } catch (error) {
+        res.send({ error });
+    }
+
+})
+
+router.post('/update-password', isUser, async (req, res) => {
+    try {
+        const userId = req.userId
+        const { currentPass, newPass } = req.body
+        if (!currentPass || !newPass) throw "invalid fields"
+        const update = { "password": newPass }
+        const check = await Users.findOneAndUpdate({ "_id": userId, "password": currentPass }, update, {
+            new: true
+        });
+        if (check) {
+            res.send({ "update": true })
+        } else {
+            res.send({ "update": false })
         }
     } catch (error) {
         res.send({ error });
@@ -77,7 +117,7 @@ router.get('/get-authentication', async (req, res) => {
             const decodedJWT = jwt.decode(user, JWT_SECRET);
             const { userId } = decodedJWT;
             if (userId) {
-                const result = await Users.find({ "_id": userId });
+                const result = await Users.find({ "_id": userId }, '-_id fName lName email phone region type');
                 if (result.length > 0) {
                     res.send({ "log": true, "user": result[0] })
                 } else res.send({ "log": false })
