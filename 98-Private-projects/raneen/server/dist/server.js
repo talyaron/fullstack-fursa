@@ -105,36 +105,33 @@ const kittySchema = new mongoose.Schema({
 //   .catch((err) => console.log(err));
 //the collection
 const Kitten = mongoose.model("Kitten", kittySchema);
-const mitzy = new Kitten({
-    name: "Mitzy3",
-    address: {
-        city: "Um al fahm",
-        street: "Jaberin",
-    },
-});
-console.log(mitzy.name);
-mitzy
-    .save()
-    .then((res) => {
-    console.log(res);
-})
-    .catch((err) => console.log(err));
-function getKitens() {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            const kittens = yield Kitten.find({});
-            return kittens;
-        }
-        catch (err) {
-            console.error(err);
-            return false;
-        }
-    });
-}
-app.get("/get-all-kitens", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const kittens = yield getKitens();
-    res.send(kittens);
-}));
+// const mitzy = new Kitten({
+//   name: "Mitzy3",
+//   address: {
+//     city: "Um al fahm",
+//     street: "Jaberin",
+//   },
+// });
+// console.log(mitzy.name);
+// mitzy
+//   .save()
+//   .then((res) => {
+//     console.log(res);
+//   })
+//   .catch((err) => console.log(err));
+// async function getKitens(): Promise<any> {
+//   try {
+//     const kittens = await Kitten.find({});
+//     return kittens;
+//   } catch (err: any) {
+//     console.error(err);
+//     return false;
+//   }
+// }
+// app.get("/get-all-kitens", async (req, res) => {
+//   const kittens = await getKitens();
+//   res.send(kittens);
+// });
 // app.get("/privateInfo",async (req, res) => {
 //     //get cookie
 //     const { mySecretPassword } = req.cookies;

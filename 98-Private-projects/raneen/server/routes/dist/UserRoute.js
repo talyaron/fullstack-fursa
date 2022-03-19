@@ -52,7 +52,8 @@ router.post("/add-user", function (req, res) { return __awaiter(void 0, void 0, 
                     throw new Error("No password in body");
                 if (!city)
                     throw new Error("No city in body");
-                res.cookie("mySecretPassword", { id: name });
+                res.cookie('mySecretPassword', { id: name });
+                res.send(name);
                 ownerDB = new UserSchema_1["default"]({
                     name: name,
                     password: password,

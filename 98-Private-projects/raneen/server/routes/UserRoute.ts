@@ -10,8 +10,8 @@ router.post("/add-user", async (req, res)=>{
         if (!name) throw new Error("No name in body");
         if (!password) throw new Error("No password in body");
         if (!city) throw new Error("No city in body");
-        res.cookie("mySecretPassword", {id:name});
-        
+        res.cookie('mySecretPassword', {id:name});
+        res.send(name);        
 
     
         const ownerDB = new Users({
