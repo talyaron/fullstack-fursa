@@ -8,12 +8,9 @@ import { getUser } from "../../../features/user/userReducer";
 import axios from 'axios'
 export default function ChekOutOrder()
 {
-  const[creditCard,setCridCard]=useState(false);
-  const[cash,setCash]=useState(false);
-  const[pickUp,setPickUp]=useState(false);
-  const[delivery,setdelivery]=useState(false);
+  const[orderCollection,setOrderCollection]=useState('');
+  const[paymentMethod,setPaymentMethod]=useState('');
   const user=useAppSelector(getUser)
-
   const dispatch = useAppDispatch();
     useEffect(()=>{
         dispatch(getCartAsync())
@@ -24,26 +21,25 @@ export default function ChekOutOrder()
 
   function handlevisa()
 {
-  if(creditCard)
-    {setCridCard(true)}
+    {setPaymentMethod('Credit Card')}
 
 }
 function handlecash()
-{
-  setCash(true)
-}
+{setPaymentMethod('Cash')}
+
 function handledel()
 {
-  setdelivery(true)
+  setOrderCollection('Delivery')
 }
 function handlepick()
 {
- setPickUp(true)
+ setOrderCollection('PickUp')
 }
  function handleChekOut()
  {
-  axios.post('/order/checkOut',{order:orders.orders,userId:user._id,date:new Date(),cash:cash,creditCard:creditCard,pickUp:pickUp,delivery:delivery})
-  .then((res) => console.log(res))
+  axios.post('/order/checkOut',{order:orders.orders,userId:user._id,date:new Date(),paymentMethod:paymentMethod,orderCollection:orderCollection})
+  .then((res) => console.log(res) 
+  )
   .catch((err) => console.error(err));
  }
     return(

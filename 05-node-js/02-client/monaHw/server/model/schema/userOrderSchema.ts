@@ -8,10 +8,8 @@ const mongoose = require("mongoose");
 export const userOrderSchema=new mongoose.Schema({
     userId:String,
     date:Date,
-    cash:Boolean,
-    creditCard:Boolean,
-    delivery:Boolean,
-    pickUp:Boolean,
+    paymentMethod:String,
+    orderCollection:String,
     order:[OrderSchema]
 
 

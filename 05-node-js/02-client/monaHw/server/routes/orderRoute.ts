@@ -96,6 +96,26 @@ router.post('/add-product-order',async(req,res)=>{
       res.send({ error });
     }
   })
+  router.post('/delete-all-user-order',async(req,res)=>{
+    try{
+      const { login } = req.cookies;
+        const JWT_SECRET = process.env.JWT_SECRET;
+        const decodedJWT = jwt.decode(login, JWT_SECRET);
+        const { userId } = decodedJWT;
+        const user=await User.findOne({_id:userId})
+        if(user){
+        // console.log({user:{_id:userId}})
+        // const filter={user:{_id:userId}};
+        const userOrders=await Order.delete({userId:user._id})
+        res.status(200).send(userOrders)
+        }
+          
+
+    }catch (error) {
+      console.info(error);  
+      res.send({ error });
+    }
+  })
   router.patch('/update-order',async(req,res)=>{
     try{
     const {_id,temp}=req.body;
@@ -128,13 +148,13 @@ router.post('/add-product-order',async(req,res)=>{
 
 router.post('/checkOut',async(req,res)=>{
     try{
-      const {order,date,userId,cash,creditCard,pickUp,delivery}=req.body;
-     
+      const {order,date,userId,paymentMethod,orderCollection}=req.body;
 
-      if(!order||!date||!userId) throw 'invalid fields'
+      if(!order||!date||!userId||!paymentMethod||!orderCollection) throw 'invalid fields'
+      
 
       const newOrder=new userOrder({
-        order,date,userId,cash,creditCard,pickUp,delivery
+        order,date,userId,paymentMethod,orderCollection
       });
       
       

@@ -7,6 +7,7 @@ import { update } from '../../../features/cart/cartSlice';
 import { useAppDispatch } from '../../../app/hooks';
 import Cart from '../../pages/cart/Cart'
 import { margin } from '@mui/system';
+import DeleteIcon from '@mui/icons-material/Delete';
 export interface productProp {
     woodName: string;
     woodlength: number;
@@ -62,8 +63,8 @@ function Product(prop: productProp) {
             <div className="item">{price}₪</div>
             <div className="item"  >{editPrice}₪</div>
 
-            <Button onClick={() => RemoveHandler(_id)} type="submit" variant="contained" style={{ backgroundColor: 'rgb(248, 140, 38) ' }} size="small">
-                remove
+            <Button startIcon={<DeleteIcon></DeleteIcon>} onClick={() => RemoveHandler(_id)} type="submit" variant="contained" style={{ backgroundColor: 'rgb(248, 140, 38) ' }} size="small">
+                delete
             </Button>
 
 

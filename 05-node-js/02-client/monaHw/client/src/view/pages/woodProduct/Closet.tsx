@@ -13,6 +13,7 @@ import { getCartAsync } from '../../../features/cart/cartSlice';
 import Box from '@mui/material/Box';
 import { fetchUser, getUser } from '../../../features/user/userReducer';
 import { useAppSelector } from '../../../app/hooks';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 const doorType = [
   {
@@ -93,7 +94,7 @@ function Closet() {
               placeholder="עוד פרטים על ההזמנה"
               style={{ width: 200 }}
             />
-            <Button type="submit" variant="contained" style={{ backgroundColor: 'rgb(47, 143, 90)' }} size="medium">
+            <Button startIcon={<AddShoppingCartIcon></AddShoppingCartIcon>} type="submit" variant="contained" style={{ backgroundColor: 'rgb(47, 143, 90)' }} size="medium">
               add to cart
 
             </Button>

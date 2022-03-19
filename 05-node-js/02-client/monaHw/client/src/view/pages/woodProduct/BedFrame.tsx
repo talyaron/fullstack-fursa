@@ -10,6 +10,8 @@ import { getCartAsync } from "../../../features/cart/cartSlice";
 import { useDispatch } from "react-redux";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { fetchUser, getUser } from "../../../features/user/userReducer";
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+
 const backType = [
     {
       value: 'with back',
@@ -79,7 +81,7 @@ function BedFrame()
                 {option.label}
               </MenuItem>
             ))}</TextField>
-            <Button type="submit" variant="contained" style={{ backgroundColor: 'rgb(47, 143, 90)' }} size="medium">
+            <Button startIcon={<AddShoppingCartIcon></AddShoppingCartIcon>} type="submit" variant="contained" style={{ backgroundColor: 'rgb(47, 143, 90)' }} size="medium">
               add to cart
 
             </Button>

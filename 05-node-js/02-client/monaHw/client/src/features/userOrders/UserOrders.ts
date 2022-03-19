@@ -5,10 +5,10 @@ import axios from 'axios'
 interface UserOrders{
     _id:string
     date:Date,
-    cash:boolean,
-    creditCard:boolean,
-    delivery:boolean,
-    pickUp:boolean,
+    paymentMethod:string,
+    orderCollection:string
+    order:Array<any>
+   
 }
 
 export interface UserOrdersStae{

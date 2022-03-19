@@ -11,6 +11,7 @@ import { display } from '@mui/system';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { fetchUser, getUser } from '../../../features/user/userReducer';
 import { TextareaAutosize } from '@mui/material';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 function Door() {
   // const dispatchs=ueAppDispatch();
@@ -76,7 +77,7 @@ function Door() {
               placeholder="עוד פרטים על ההזמנה"
               style={{ width: 200 }}
             />
-            <Button type="submit" variant="contained" style={{ backgroundColor: 'rgb(47, 143, 90)' }} size="medium">
+            <Button startIcon={<AddShoppingCartIcon></AddShoppingCartIcon>} type="submit" variant="contained" style={{ backgroundColor: 'rgb(47, 143, 90)' }} size="medium">
               add to cart
 
             </Button>

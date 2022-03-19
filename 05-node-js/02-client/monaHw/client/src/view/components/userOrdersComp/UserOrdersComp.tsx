@@ -1,17 +1,18 @@
 export interface ordersProp{
         _id:string
         date:Date,
-        cash:boolean,
-        creditCard:boolean,
-        delivery:boolean,
-        pickUp:boolean,
+        paymentMethod:string,
+        orderCollection:string
     
 }
 
 export function UserOrdersComp(props:ordersProp)
 {
-    const {_id,date,cash,creditCard,delivery,pickUp}=props
+    const {_id,date,paymentMethod,orderCollection}=props
   return( 
-      <div>{_id}    {date}  {cash} {creditCard} {delivery} {pickUp}</div>
+  
+      <div>{_id}   {date}   {paymentMethod} {orderCollection}
+      
+      </div>
   )
 }
