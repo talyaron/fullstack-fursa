@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './BottomNav.css'
 import { styled } from '@mui/material/styles';
+import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
@@ -33,7 +34,7 @@ export default function LabelBottomNavigation() {
           "&  .Mui-selected ,.Mui-selected > svg ": {
             backgroundColor: "#78909c",
             color: "#f5f5f5",
-            fontSize:22,
+            fontSize:28,
             borderRadius: "0.3rem",
             display: "flex",
             flexDirection: "row",
@@ -68,6 +69,14 @@ export default function LabelBottomNavigation() {
             Navigate("/Profile");
           }}
           icon={<AccountCircleIcon style={{ fontSize: 50 }} />}
+        />
+        <BtmNav
+          label="Market"
+          value="Market"
+          onClick={() => {
+            Navigate("/store");
+          }}
+          icon={<LocalGroceryStoreIcon style={{ fontSize: 50 }} />}
         />
       </BottomNavigation>
     </div>

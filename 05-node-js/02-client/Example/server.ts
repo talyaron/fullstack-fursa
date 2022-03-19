@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+declare function require(name:string);
+require('dotenv').config();
+=======
+>>>>>>> dev
+>>>>>>> AlaaTemp
 
 import assert from 'assert';
 const express = require("express");
@@ -27,6 +35,10 @@ app.get("/", (req, res) => {
   res.send("Hello World! all");
 });
 
+<<<<<<< HEAD
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+=======
 //mongoose
 const mongoose = require("mongoose");
 
@@ -104,6 +116,7 @@ aggragateKittensLives()
 app.get('/get-all-kitens',async (req, res)=>{
     const kittens = await getKitens();
     res.send(kittens);
+>>>>>>> dev
 })
 
 app.listen(port, () => {

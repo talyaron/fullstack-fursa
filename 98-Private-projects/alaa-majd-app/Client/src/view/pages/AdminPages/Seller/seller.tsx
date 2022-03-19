@@ -40,6 +40,10 @@ const Seller = () => {
     const [products, setProducts] = useState([])
     const [productByCatagory, setProductByCatagory] = useState(products)
 
+
+    function handleClickFunc(){
+        axios.post("/product/addProduct",{id:123,name:"apple",price:100,quantity:10,description:"sssss",Url:"1111111"});
+    }
     useEffect(() => {
 
         function handleClick() {
@@ -92,6 +96,7 @@ const Seller = () => {
 
                 <div className="search_product">
                     <Link to="/AddProduct">Add Product</Link>
+                    <button onClick={handleClickFunc} >add Product From mongo</button>
                     <input className="searchDiv__bar__content__a__input" type="text" placeholder=" Search a product" name="search" />
                 </div>
             </div>

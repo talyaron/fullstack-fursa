@@ -5,6 +5,7 @@ import { useAppDispatch } from '../../../app/hooks';
 import { login } from "../../../features/user/userReducer";
 import { AnyArray } from 'immer/dist/internal';
 import {useNavigate } from 'react-router-dom'
+import axios from 'axios';
 
 
 
@@ -14,17 +15,21 @@ function Login() {
     const nav=useNavigate();
     const dispatch = useAppDispatch();
 
-    function hadleSubmit(e: any) {
+    async function hadleSubmit(e: any) {
         e.preventDefault();
 
+        const response=await axios.post("/users/login",{ID,password});
+        console.log(response);
+        
         // dispatch(login([ID, password, true]));
-            if(ID === "314763467" && password==="123456")
-            {  nav("/Seller");}
-             else if(ID !== "" && password!=="")
-              {
-                nav("/Group");} 
-             }
 
+            // if(ID === "314763467" && password==="123456")
+            // {  nav("/Seller");}
+            //  else if(ID !== "" && password!=="")
+            //   {
+            //     nav("/Group");} 
+            //  }
+    }
 
     return (
         <div className='warpper'>

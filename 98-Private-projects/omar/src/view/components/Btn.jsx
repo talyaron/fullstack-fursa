@@ -28,7 +28,7 @@ export default function CustomizedButtons({title,style}) {
   return (
     <ColorButton
     sx={{
-      width: 150,
+      maxwidth: 350,
       fontSize: 20,
     }}
       variant="contained"
