@@ -23,7 +23,7 @@ function LogIn() {
   function hadleSubmit(e: any) {
     e.preventDefault();
 
-    await dispatch(fetchUser({ "email": email, "password": password }));
+    dispatch(fetchUser({ "email": email, "password": password }));
     if(isLoged)
     {
       console.log(isLoged)
