@@ -21,8 +21,8 @@ import User from '../user/user'
 import Alert from '@mui/material/Alert'
 import Snackbar from '@mui/material/Snackbar'
 import { useAppSelector, useAppDispatch } from '../../../app/hooks';
-import { checkUser, updateLogIn, updateUserInfo, selectUser } from '../../../app/reducers/userReducer'
-import axios from 'axios';
+import { checkUser, getUserInfoAsync, signUpUser, selectUser } from '../../../app/reducers/userReducer'
+
 
 
 
@@ -32,7 +32,7 @@ function Menu() {
     const [modalSignInsOpen, setSignINModal] = useState(false);
     const [modalSignUpModal, setSignUpModal] = useState(false);
     const [navbarindex, setNavbarindex] = useState(1);
-    const [loginState, setLoginState] = useState({ user: "" })
+    const [loginState, setLoginState] = useState({})
     const [sigupState, setSigupnState] = useState({})
     const [openAlert, setOpenAlert] = React.useState(false);
     const dispatch = useAppDispatch();
@@ -63,16 +63,14 @@ function Menu() {
         })
 
     }
+
     function handleLogin(e: any) {
         e.preventDefault();
-        dispatch(updateLogIn(true));
         openSignInModal(false);
-        axios.get('http://localhost:3004/Users/1').then(
-            ({ data }) => {
-                dispatch(updateUserInfo(data))
-            });
-
-        setOpenAlert(true)
+        dispatch(getUserInfoAsync(loginState))
+        if (isLoggedIn) {
+            setOpenAlert(true)
+        }
     }
     function onChangeSignup(e: any) {
         setSigupnState({
@@ -82,8 +80,11 @@ function Menu() {
     }
     function handleSignup(e: any) {
         e.preventDefault();
-        openSignUpModal(false)
-
+        dispatch(signUpUser(sigupState))
+        if (isLoggedIn) {
+            setOpenAlert(true)
+            openSignUpModal(false)
+        }
     }
     let comp;
     if (isLoggedIn) {
@@ -107,7 +108,7 @@ function Menu() {
                         Explore
                     </Link>
                     {isLoggedIn ?
-                        <div className="navbar__left">
+                        <div className="navbar__left__links">
                             <Link to="/Reservations">
                                 Reservation
                     </Link>
@@ -144,7 +145,7 @@ function Menu() {
                         </div>
                         <div className="signModal__content__right__middle">
                             <form onSubmit={handleLogin}>
-                                <TextField required id="login__account" label="Account" name="user" variant="standard" onChange={onChangeLogIn} />
+                                <TextField required id="login__account" label="Account" name="email" variant="standard" onChange={onChangeLogIn} />
                                 <TextField required id="login__password" label="Password" name="password" type="password" variant="standard" onChange={onChangeLogIn} />
                                 <FormGroup>
                                     <FormControlLabel control={<Checkbox defaultChecked />} label="Remember me" />

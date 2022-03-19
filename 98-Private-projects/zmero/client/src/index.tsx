@@ -23,7 +23,7 @@ render(
         <Route path="Reservations" element={<Reservation />} />
         <Route path="Favorite" element={<Favorite />} />
         <Route path="Maps" element={<Maps />} />
-        <Route path="Restaurant/:RestaurantId" element={<Restaurant />} />
+        <Route path="/:RestaurantId" element={<Restaurant />} />
       </Routes>
     </BrowserRouter ></Provider>,
   rootElement

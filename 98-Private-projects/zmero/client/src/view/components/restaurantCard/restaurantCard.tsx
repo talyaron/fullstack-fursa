@@ -4,20 +4,20 @@ import './restaurantCard.scss'
 import { Link } from 'react-router-dom';
 import Rating from '@mui/material/Rating'
 import ReserveModal from '../../components/reserveModal/reserveModal'
+import Button from '@mui/material/Button';
 interface cardProp {
-    id: number;
+    id: string;
     name: string;
     image: string;
     booking: number;
     region: string;
     stars: number;
+    city: string;
 }
 
 
 function RestaurantCard(props: cardProp) {
     const [openModal, setOpenModal] = useState(false);
-    const [reserveDate, setReserveDate] = React.useState<Date | null>(new Date());
-    const [reserveTime, setReserveTime] = useState<number | null>(0)
     const style = {
         position: 'absolute',
         top: '50%',
@@ -34,23 +34,28 @@ function RestaurantCard(props: cardProp) {
         setOpenModal(true);
     }
     return (
-        <Link to={`/Restaurant/${props.id}`}>
+        <Link to={`${props.id}`}>
             <div className="restaurantCard">
-                <img src={props.image}></img>
-                <div className="restaurantCard__title">
-                    <h3>{props.name}</h3>
-                </div>
-                <div>
-                    <Rating style={{ color: '#931b23' }} name="read-only" value={props.stars} readOnly />
-                </div>
-                <div className="restaurantCard__booking">
-                    <img src={Logo} ></img>
-                    <div className="restaurantCard__booking__title">
-                        Booked {props.booking} times today!
-                </div>
-                </div>
-                <div className="restaurantCard__reserve">
-                    <button className="restaurantCard__reserve__btn" onClick={openReserve}>Find next availabe</button>
+                <div className="reservationcard__image" style={{ backgroundImage: `url(${props.image})` }}></div>
+                <div className="reservationcard__main">
+                    <div className="restaurantCard__title">
+                        <h3>{props.name}</h3>
+                    </div>
+                    <div className="restaurantCard__city">
+                        <span>{props.city}</span>
+                    </div>
+                    <div>
+                        <Rating style={{ color: '#FFDF32' }} name="read-only" value={props.stars} readOnly />
+                    </div>
+                    <div className="restaurantCard__booking">
+                        <img src={Logo} ></img>
+                        <div className="restaurantCard__booking__title">
+                            Booked {props.booking} times today!
+                        </div>
+                    </div>
+                    <div className="restaurantCard__reserve">
+                        <Button style={{ backgroundColor: '#2a945b', width: '60%', padding: '0.1rem 0.1rem', whiteSpace: "nowrap" }} variant="contained" onClick={openReserve}>Reserve Now</Button>
+                    </div>
                 </div>
                 <ReserveModal restaurantID={props.id} openModal={openModal} setOpenModal={setOpenModal} />
             </div>

@@ -1,8 +1,11 @@
 .restaurantCard {
     border: .0625rem solid #d8d9db;
-    max-width: 13rem;
+    max-width: 19.25rem;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
-    border-radius: 4px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     &:hover {
         transform: translateY(-0.4rem);
@@ -10,19 +13,39 @@
         box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
     }
 
-    img {
-        max-width: 13rem;
+    &__main {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        align-items: flex-start;
+    }
 
+    &__image {
+        background-position: 50%;
+        background-size: cover;
+        min-height: 12.3rem;
+        width: 100%;
+        border-top-right-radius: 8px;
+        border-top-left-radius: 8px;
     }
 
     &__title {
+        text-align: left;
+
         h3 {
             display: inline-block;
             text-overflow: ellipsis;
             overflow: hidden !important;
             white-space: nowrap;
-            width: 13rem;
-            opacity: 0.9;
+            width: 12rem;
+            margin-bottom: 0.2rem;
+
+        }
+    }
+
+    &__city {
+        span {
+            font-weight: 500;
         }
     }
 
@@ -30,8 +53,8 @@
     &__booking {
         display: flex;
         align-items: center;
-        justify-content: center;
-        margin: auto;
+        justify-content: flex-start;
+        width: 100%;
 
 
 
@@ -50,6 +73,8 @@
         width: 100%;
         margin-top: 1rem;
         margin-bottom: 1rem;
+        display: flex;
+
 
         &__btn {
             background-color: white;

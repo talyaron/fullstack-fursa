@@ -57,6 +57,10 @@
             }
         }
 
+        &__links {
+            display: flex;
+        }
+
         a {
             color: black;
             text-align: center;
@@ -295,10 +299,12 @@
 
             a {
                 display: none;
+                width: 0;
             }
 
             span {
                 display: none;
+                width: 0;
             }
 
             &__logo {

@@ -1,9 +1,11 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import itemReducer from '../view/features/item/itemSlice';
-import myRecipesReducer from '../view/features/myRecipes/MyRecipes';
-import pageReducer from '../view/features/pgaeName/NamePage';
-import recentRecipesReducer from '../view/features/recentRecipes/RecentRecipes';
-import topRecipesReducer from '../view/features/topRecipes/TopRecipes';
+import itemReducer from './reducers/itemSlice';
+import myRecipesReducer from './reducers/MyRecipesSlice';
+import pageReducer from './reducers/NamePageSlice';
+import recentRecipesReducer from './reducers/RecentRecipesSlice';
+import recipesReducer from './reducers/recipesReducer';
+import topRecipesReducer from './reducers/TopRecipesSlice';
+import userReducer from './reducers/userReducer';
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +14,8 @@ export const store = configureStore({
     topRecipes : topRecipesReducer,
     recentRecipes : recentRecipesReducer,
     pageName : pageReducer,
+    user : userReducer,
+    recipes : recipesReducer
   },
 });
 

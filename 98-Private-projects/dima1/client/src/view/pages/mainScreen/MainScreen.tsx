@@ -13,24 +13,28 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Pagination, Navigation } from "swiper";
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { updateRecipe, updateFrom, updateSelectAsync } from '../../features/item/itemSlice';
-import { getTopRecipesAsync, topRecipes } from '../../features/topRecipes/TopRecipes';
-import { getRecentRecipesAsync, recentRecipes } from '../../features/recentRecipes/RecentRecipes';
-import { updateName } from '../../features/pgaeName/NamePage';
+import { getSelectAsync } from '../../../app/reducers/itemSlice';
+import { getTopRecipesAsync, topRecipes } from '../../../app/reducers/TopRecipesSlice';
+import { getRecentRecipesAsync, recentRecipes } from '../../../app/reducers/RecentRecipesSlice';
+import { updateName } from '../../../app/reducers/NamePageSlice';
+import { getUserAsync, user } from '../../../app/reducers/userReducer';
 
 
 export default function MainScreen() {
     //Redux
+    const { userName } = useParams();
     const dispatch = useAppDispatch();
     const top10 = useAppSelector(topRecipes);
     const recent = useAppSelector(recentRecipes);
+    const user_ = useAppSelector(user);
 
     useEffect(() => {
+        dispatch(getUserAsync(userName))
         dispatch(getTopRecipesAsync());
         dispatch(getRecentRecipesAsync());
-        dispatch(updateName('/MainScreen'));
+        dispatch(updateName(`/${user_.name}/MainScreen`));
     }, []);
 
     function imageClick(recipe:any, row:number){
@@ -40,8 +44,8 @@ export default function MainScreen() {
             from = 'top10'
         else from = 'recent'
         try {
-            console.log(recipe)
-            dispatch(updateSelectAsync({info:recipe, from:from, isNew:isNew_}))
+            console.log(recipe._id)
+            dispatch(getSelectAsync({name : recipe.name}))
         } catch (error) {
             console.error();
         }
@@ -50,7 +54,7 @@ export default function MainScreen() {
     return (
         <div className="wrapper">
             <div className='menuBar' id="outer-container">
-                <Bagemenu />
+                <Bagemenu userName={userName}/>
             </div>
             <div className='contentBox' id="page-wrap">
                 <img className='image' src={background} alt="" />
@@ -71,8 +75,8 @@ export default function MainScreen() {
                             className="mySwiper"
                         >
                             {top10.map((recipe:any, index:number) => {
-                                return(<SwiperSlide key={index} onClick={(ev:any) => imageClick(recipe, 1)}>
-                                    <Link to='/RecipeInfo'>
+                                return(<SwiperSlide key={index} onClick={() => imageClick(recipe, 1)}>
+                                    <Link to={`/${user_.name}/${recipe._id}`}>
                                         <img src={recipe.image} alt=''/>
                                     </Link>
                                     <p>{recipe.name}</p>
@@ -96,12 +100,14 @@ export default function MainScreen() {
                             className="mySwiper"
                         >
                             {recent.map((recipe:any, index:number) => {
-                                return(<SwiperSlide key={index}  onClick={(ev:any) => imageClick(recipe, 2)}>
-                                    <Link to='/RecipeInfo'>
-                                        <img src={recipe.image} alt=''/>
-                                    </Link>
-                                    <p>{recipe.name}</p>
-                                </SwiperSlide>);
+                                return(
+                                    <SwiperSlide key={index}  onClick={(ev:any) => imageClick(recipe, 2)}>
+                                        <Link to={`/${user_.name}/${recipe._id}`}>
+                                            <img src={recipe.image} alt=''/>
+                                        </Link>
+                                        <p>{recipe.name}</p>
+                                    </SwiperSlide>
+                                );
                             })}
                         </Swiper>
                     </div>

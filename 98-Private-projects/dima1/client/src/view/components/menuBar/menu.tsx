@@ -10,8 +10,9 @@ import logo from '../../images/logo.jpg';
 import SideBar from '../sidebar/SideBar';
 import './menu.scss';
 
-function Bagemenu() {
+function Bagemenu(props:any) {
 
+    const { userName } = props;
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
 
@@ -28,13 +29,13 @@ function Bagemenu() {
 
     return (
         <div className="menu" id="outer-container">
-            <div className="menu__left">
+            <div className="left">
                 <div className='sideBar'>
                     <SideBar />
                 </div>
                 
                 <div className='logo'>
-                    <Link to='/MainScreen'>
+                    <Link to={`/${userName}/MainScreen`}>
                         <img src={logo} alt="" />
                     </Link>
                 </div>
@@ -43,7 +44,7 @@ function Bagemenu() {
                     <SearchIcon sx={{ fontSize: 30, color: '#b5739d' }} />
                 </div>
             </div>
-            <div className="menu__right">
+            <div className="right">
                 <Button
                     id="basic-button"
                     aria-controls={open ? 'basic-menu' : undefined}
@@ -63,7 +64,7 @@ function Bagemenu() {
                     }}
                 >
                     <MenuItem onClick={handleClose1}>
-                        <Link to="/User"> Profile</Link>
+                        <Link to={`/${userName}`}> Profile</Link>
                     </MenuItem>
                     <MenuItem>
                         <Link to="/"> Logout</Link>

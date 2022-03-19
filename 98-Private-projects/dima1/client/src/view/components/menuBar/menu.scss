@@ -1,5 +1,5 @@
 .menu {
-    padding: 0 0 0;
+    //padding: 0 0 0;
     background-color: #e6d0de;
     display: flex;
     flex-direction: column;
@@ -10,17 +10,12 @@
     align-items: center;
     gap: 160px;
 
-    &__left {
+    .left {
         display: flex;
         gap: 60px;
         width: 80%;
         height: 100%;
         margin-left: 7px;
-
-        // .sideBar{
-        //     padding-left: -7px;
-        //     padding-top: 7px;
-        // }
 
         .searchbox {
             display: flex;
@@ -51,7 +46,7 @@
 
     }
 
-    &__right {
+    .right {
         img {
             width: 30px;
             height: 30px;
