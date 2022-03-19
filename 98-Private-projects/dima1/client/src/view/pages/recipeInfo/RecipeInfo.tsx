@@ -18,29 +18,6 @@ import { selectedRecipe, selectRecipeAsync } from '../../../app/reducers/itemSli
 import { selectPage, updateName } from '../../../app/reducers/NamePageSlice';
 import { Text, StyleSheet } from 'react-native';
 
-const CssTextField = styled(TextField)({
-    '& label.Mui-focused': {
-        color: '#b5739d',
-    },
-    '& .MuiOutlinedInput-root': {
-        '&.Mui-focused fieldset': {
-            borderColor: '#b5739d',
-        },
-    },
-    input: {
-        color: "gray",
-        fontSize: 15,
-        readOnly: true,
-    },
-});
-
-const styles = StyleSheet.create({
-    //bold: {fontWeight: 'bold'},
-    italic: { fontStyle: 'italic' },
-    underline: { textDecorationLine: 'underline' },
-    color: { color: 'grey' }
-})
-
 export default function RecipeInfo() {
     const [like, setLike] = useState(0);
     const { userName, recipeId } = useParams();
@@ -49,13 +26,12 @@ export default function RecipeInfo() {
     //Redux toolkit
     const dispatch = useAppDispatch();
     const recipe_ = useAppSelector(selectedRecipe);
-    // const from_ = useAppSelector(selectedFrom);
-    // const isNew = useAppSelector(selectedIsNew);
     const pageName = useAppSelector(selectPage);
 
     useEffect(() => {
         dispatch(selectRecipeAsync(recipeId));
-        if(recipe_.notes) setIsTrue(true)
+        console.log(recipe_.types);
+        if (recipe_.notes) setIsTrue(true)
         else setIsTrue(false)
     }, [])
 
@@ -86,6 +62,17 @@ export default function RecipeInfo() {
                                 </Link>
                             </Tooltip>
                         </div>
+                        <div className='types'>
+                            <h3>Filed under : </h3>
+                            {recipe_.types.map((type, index) => {
+                                if(type.isTrue)
+                                    return (
+                                        <div className='type' key={index} >{type.name}</div>
+                                    )
+                            })}
+                        </div>
+                        <br />
+                        <br />
                         <h1>{recipe_.name}</h1>
                         <br />
                         <br />

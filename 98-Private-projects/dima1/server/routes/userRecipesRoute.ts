@@ -13,8 +13,8 @@ router.get('/get-user-recipes', async (req, res) => {
         const { role, userId } = decodedJWT;
         const user = await User.findOne({ _id: userId })
         if (user) {
-            const recipes = await userRecipes.find({userName: user.name});
-            if(role === 'user')
+            const recipes = await userRecipes.find({ userName: user.name });
+            if (role === 'user')
                 res.send({ ok: true, recipes: recipes });
             else res.send({ ok: true, recipes: [] });
         }
@@ -48,6 +48,23 @@ router.put('/edit-userRecipes', async (req, res) => {
         res.status(200).send(doc);
     } catch (error) {
 
+    }
+})
+
+router.post('/get-recipes-ByType', async (req, res) => {
+    try {
+        console.log("yes")
+        const { type } = req.body;
+        console.log(type)
+        const recipes = await userRecipes.find({ types: { name: type, isTrue: true } })
+        if (recipes) {
+            res.send({ ok: true, recipes: recipes });
+        }
+        else {
+            res.send({ ok: false });
+        }
+    } catch (error: any) {
+        res.send({ ok: false, error: error.message });
     }
 })
 

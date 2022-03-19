@@ -2,7 +2,6 @@ import './NewRecipe.scss';
 import Bagemenu from "../../components/menuBar/menu";
 import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
 import background from '../../images/background.jpg';
-import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import PeopleIcon from '@mui/icons-material/People';
@@ -17,11 +16,10 @@ import Tooltip from '@mui/material/Tooltip';
 import axios from 'axios';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { selectedRecipe, getSelectAsync, updateRecipe, selectRecipeAsync } from '../../../app/reducers/itemSlice';
-import { addToMyRecipe } from '../../../app/reducers/MyRecipesSlice';
 import { selectPage, updateName } from '../../../app/reducers/NamePageSlice';
-import { updateTopRecipes } from '../../../app/reducers/TopRecipesSlice';
-import { updateRecent } from '../../../app/reducers/RecentRecipesSlice';
-import { updateMyRecipe } from '../../../app/reducers/MyRecipesSlice';
+import Checkbox from '@mui/material/Checkbox';
+
+const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 const Standard = styled(TextField)({
     '& label.Mui-focused': {
@@ -60,6 +58,11 @@ const CssTextField = styled(TextField)({
     }
 });
 
+interface type {
+    name: String;
+    isTrue: boolean;
+}
+
 interface recipeInfo {
     _id: String;
     name: string;
@@ -71,6 +74,7 @@ interface recipeInfo {
     method: string;
     notes: string,
     userName: String;
+    types: Array<type>;
 }
 
 export default function NewRecipe() {
@@ -79,25 +83,18 @@ export default function NewRecipe() {
     let navigate = useNavigate();
 
     const recipe_ = useAppSelector(selectedRecipe);
-    console.log(recipe_)
-    //const from = useAppSelector(selectedFrom);
-    //const isNew = useAppSelector(selectedIsNew);
     const pageName = useAppSelector(selectPage)
 
-    let to = '';
-
     const [recipe, setRecipe] = useState<recipeInfo>(recipe_);
+    const [types_, setTypes] = useState<Array<type>>(recipe_.types);
 
     const { userName, recipeId } = useParams();
 
     useEffect(() => {
         dispatch(selectRecipeAsync(recipeId));
-        setRecipe(recipe_)
+        setTypes(recipe_.types);
+        setRecipe(recipe_);
     }, [])
-
-    // if (from === 'userRecipes' && isNew)
-    //     to = '/User';
-    // else to = '/RecipeInfo';
 
     function handleChange(ev: any) {
         switch (ev.target.name) {
@@ -130,7 +127,7 @@ export default function NewRecipe() {
 
     function handleSave(ev: any) {
         ev.preventDefault();
-        if (to === '/User') {
+        if (!recipeId) {
             axios.post('/userRecipes/add-new-userRecipe', recipe_);
         }
         else {
@@ -138,6 +135,20 @@ export default function NewRecipe() {
             axios.patch('/selectRecipe/edit-select-recipe', recipe);
             navigate(`/${userName}/${recipeId}`)
         }
+    }
+
+    function handleSelectType(name: any) {
+        let newTypes:Array<type> = Object.assign([], types_);
+        newTypes = types_.map((type_:type) => {
+            if(type_.name === name){
+                const newType = Object.assign({}, type_);
+                newType.isTrue = !newType.isTrue;
+                return newType;
+            }
+            else return type_;
+        })
+        setTypes(newTypes)
+        setRecipe({...recipe, types: newTypes});
     }
 
     function handleTo() {
@@ -229,6 +240,29 @@ export default function NewRecipe() {
                         </div>
                         <br />
                         <br />
+                        <div className='types'>
+                            {types_.map((type, index) => {
+                                return (
+                                    <div className='type' key={index}>
+                                        <Checkbox
+                                            {...label}
+                                            checked={type.isTrue}
+                                            sx={{
+                                                color: '#b5739d',
+                                                '&.Mui-checked': {
+                                                    color: '#b5739d',
+                                                },
+                                                '& .MuiSvgIcon-root': {
+                                                    fontSize: 30
+                                                }
+                                            }}
+                                            onChange={() => handleSelectType(type.name)}
+                                        />
+                                        <p>{type.name}</p>
+                                    </div>
+                                )
+                            })}
+                        </div>
                         <div className='info2'>
                             <h1>Ingredients</h1>
                             <CssTextField className='ingredients'

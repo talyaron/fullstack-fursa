@@ -2,6 +2,14 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "axios";
 import { RootState } from "../store";
 
+interface type {
+  name: String;
+  isTrue: boolean;
+}
+
+const types_: Array<type> = [{ name: 'Food', isTrue: false }, { name: 'Drinks', isTrue: false }, { name: 'Desserts', isTrue: false },
+                              { name: 'Healthy', isTrue: false }, {name:'Salads', isTrue: false}, {name:'Soups', isTrue: false},
+                              {name:'Pastries', isTrue: false}]
 
 export interface RecipeState {
   info: {
@@ -13,8 +21,9 @@ export interface RecipeState {
     calories: string;
     ingredients: string;
     method: string;
-    notes: string,
+    notes: string;
     userName: String;
+    types: Array<type>;
   };
   status: 'idle' | 'loading' | 'failed'
 }
@@ -31,6 +40,7 @@ const initialState: RecipeState = {
     method: '',
     notes: '',
     userName: '',
+    types: types_
   },
   status: 'idle'
 }
@@ -94,8 +104,9 @@ export const itemReducer = createSlice({
           calories: '',
           ingredients: '',
           method: '',
-          notes:'',
+          notes: '',
           userName: '',
+          types: types_
         };
         state.status = 'loading';
       })
@@ -113,8 +124,9 @@ export const itemReducer = createSlice({
           calories: '',
           ingredients: '',
           method: '',
-          notes:'',
+          notes: '',
           userName: '',
+          types: types_
         };
         state.status = 'failed'
       })
@@ -133,8 +145,7 @@ export const itemReducer = createSlice({
 });
 
 export const { updateRecipe } = itemReducer.actions;
+
 export const selectedRecipe = (state: RootState) => state.item.info;
-// export const selectedIsNew = (state: RootState) => state.item.isNew;
-// export const selectedFrom = (state: RootState) => state.item.from;
 
 export default itemReducer.reducer;

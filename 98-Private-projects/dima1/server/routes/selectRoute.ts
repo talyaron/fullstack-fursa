@@ -8,9 +8,7 @@ import userRecipes from '../schemas/userRecipeModel';
 router.post('/get-select-recipe', async (req, res) => {
   try {
     const { id } = req.body;
-    //console.log(id);
     const select = await userRecipes.findOne({ _id: id });
-    //console.log(select);
     if (select) {
       res.status(200).send({ ok: true, recipe: select });
     } else {
@@ -24,7 +22,6 @@ router.post('/get-select-recipe', async (req, res) => {
 router.post('/get-recipe-byName', async (req, res) => {
   try {
     const { name_ } = req.body;
-    console.log(name_.name)
     const select = await userRecipes.findOne({ name : name_.name});
     if (select) {
       res.status(200).send({ ok: true, recipe: select });

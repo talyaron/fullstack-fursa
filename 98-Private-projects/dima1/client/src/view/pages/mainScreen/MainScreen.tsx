@@ -44,6 +44,7 @@ export default function MainScreen() {
             from = 'top10'
         else from = 'recent'
         try {
+            console.log(recipe._id)
             dispatch(getSelectAsync({name : recipe.name}))
         } catch (error) {
             console.error();

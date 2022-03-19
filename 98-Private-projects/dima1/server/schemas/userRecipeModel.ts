@@ -8,7 +8,9 @@ const userRecipe = new mongoose.Schema({
     calories: String,
     ingredients: String,
     method: String,
-    userName: String
+    notes: String,
+    userName: String,
+    types: Array
 })
 
 const userRecipes = mongoose.model('Recipes', userRecipe);

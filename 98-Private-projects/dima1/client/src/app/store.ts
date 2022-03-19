@@ -3,6 +3,7 @@ import itemReducer from './reducers/itemSlice';
 import myRecipesReducer from './reducers/MyRecipesSlice';
 import pageReducer from './reducers/NamePageSlice';
 import recentRecipesReducer from './reducers/RecentRecipesSlice';
+import recipesReducer from './reducers/recipesReducer';
 import topRecipesReducer from './reducers/TopRecipesSlice';
 import userReducer from './reducers/userReducer';
 
@@ -13,7 +14,8 @@ export const store = configureStore({
     topRecipes : topRecipesReducer,
     recentRecipes : recentRecipesReducer,
     pageName : pageReducer,
-    user : userReducer
+    user : userReducer,
+    recipes : recipesReducer
   },
 });
 
