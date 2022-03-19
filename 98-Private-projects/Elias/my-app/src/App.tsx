@@ -16,6 +16,8 @@ import TravelInfo1 from './view/Pages/TravelInfo1/TravelInfo1';
 import TravelInfo2 from './view/Pages/TravelInfo2/TravelInfo2';
 import Test from './view/Pages/TravelInfo1/Test';
 import Preparing from './view/components/Preparing/Preparing';
+import SummeryPage from './view/Pages/SummeryPage/SummeryPage';
+import SummeryComp from './view/components/SummeryComp/SummeryComp';
 
 
 
@@ -34,6 +36,9 @@ function App() {
         <Route path="/ViewList" element={<ViewList />} />
         <Route path="/Preparing" element={<Preparing />} />
         <Route path="/Test" element={<Test />} />
+        <Route path="/SummeryPage" element={<SummeryPage />} />
+        <Route path="/SummeryComp" element={<SummeryComp />} />
+        
 
       </Routes>
       <Bottom_Nav />

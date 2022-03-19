@@ -1,12 +1,13 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import { UserSlice } from './reducer/dist/UserReducer';
 import NavtextSlice  from './reducer/NavTextReducer';
 import UserReducer from './reducer/UserReducer';
+import WeatherReducer from './reducer/WeatherReducer';
 
 export const store = configureStore({
   reducer: {
     User :UserReducer,
     NavText:NavtextSlice,
+    Weather:WeatherReducer,
   },
 });
 
