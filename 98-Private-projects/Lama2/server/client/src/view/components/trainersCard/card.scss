@@ -3,13 +3,13 @@
     flex-direction: column;
     justify-content: center;
     position: relative;
-    background-color: #41403f7c;
+    background-color: #53483e7c;
     border: .0625rem solid #4164b1;
     border-radius: 30px;
     border-style: double;
     margin: 5px;
-    height: 30vh;
-    width: 10vw;
+    height: 35vh;
+    width: 15vw;
  
 
     &:hover {
@@ -29,8 +29,8 @@
 
         .imgMaintxt{
             position: absolute;
-            top: 65%;
-            left: 25%;
+            top: 50%;
+            left: 35%;
         }
 
 

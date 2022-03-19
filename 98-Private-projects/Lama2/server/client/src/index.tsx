@@ -26,6 +26,10 @@ import AddCourse from "./view/pages/addCourse/addCourse";
 import TableDatePicker from "./view/pages/TableDatePicker/TableDatePicker"
 import CalendarFun from "./view/pages/courseRegistration/courseregistration2";
 import AddOffer from './view/pages/addOffer/addOffer';
+import UserLevel from './view/pages/courseRegistration/userLevel';
+import AddHorse from './view/pages/addHorse/addHorse';
+import AddTrainer from './view/pages/addTrainer/addTrainer';
+import UsercourseType from './view/components/courseSelection/courseSelection';
 
 
 ReactDOM.render(
@@ -51,6 +55,11 @@ ReactDOM.render(
       <Route path="addOffer" element={<AddOffer />} /> 
       <Route path="TableDatePicker" element={<TableDatePicker />} /> 
       <Route path="admincourses" element={<AdminCourses />} /> 
+      <Route path="addHorse" element={<AddHorse />} /> 
+      <Route path="addTrainer" element={<AddTrainer />} /> 
+      <Route path="courseSelection" element={<UsercourseType />} /> 
+      
+      <Route path="userLevel" element={<UserLevel />} /> 
       <Route path="courseRegistration" element={<CourseRegistration />} />
       <Route path="courseregistration2" element={<CalendarFun />} />
       <Route path="course/:courseId" element={<Course />} />

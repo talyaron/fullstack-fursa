@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 interface cardProp {
     name: string;
     image: string;
+    age:number;
+    level:number;
     desc: string;
 }
 
@@ -14,8 +16,12 @@ function Card(prop: cardProp) {
         <div className="MainCard">
             <img className='imgMainCard' src={prop.image}></img>
             <p className='imgMaintxt'>
-                {prop.name}
+              name:  {prop.name}
                 <br />
+               age: {prop.age}
+                <br></br>
+               level: {prop.level}
+                <br></br>
                 {prop.desc}
             </p>
         </div>

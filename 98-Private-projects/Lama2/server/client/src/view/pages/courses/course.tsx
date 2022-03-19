@@ -3,14 +3,13 @@ import "./course.scss";
 
 export interface coursesProps {
   name: string;
-  id: number;
   hours:number;
   lessons:number;
-  participants:number;
+  participants:string;
   cost:number;
 }
 const Course = (props: coursesProps) => {
-  const { name, id ,hours,lessons,participants,cost} = props;
+  const {name,hours,lessons,participants,cost} = props;
 
   return (
       <div className="course">
@@ -22,7 +21,7 @@ const Course = (props: coursesProps) => {
       <br></br>
    {participants} participants
    <br></br>
-        cost :{cost}
+        cost per participant :{cost}
         </div>
   );
 };

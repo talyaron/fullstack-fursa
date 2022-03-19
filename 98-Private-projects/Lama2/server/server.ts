@@ -69,6 +69,9 @@ app.use('/courses/', courseRoute);
 const userRoute = require('./routes/userRoute')
 app.use('/user', userRoute);
 
+const registartionRoute = require('./routes/registrationRoute')
+app.use('/registrations', registartionRoute);
+
 app.use(loginStatus)
 // const routes = require('./routes/routes.js')(app, fs);
 // app.use('/courses', routes);

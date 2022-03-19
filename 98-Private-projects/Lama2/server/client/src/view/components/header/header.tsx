@@ -44,12 +44,14 @@ function Header() {
                 <Link to="/trainers">
                     Our trainers
                 </Link>
-                <Link to="/courseregistration">
+                
+                {/* userLevel */}
+                <Link to="/courseRegistration">
                     Register
                 </Link>
-                <Link to="/TableDatePicker">
+                {/* <Link to="/TableDatePicker">
                     Register2
-                </Link>
+                </Link> */}
                 {/* <Link to="/TableDatePicker">
                     offers
                 </Link> */}

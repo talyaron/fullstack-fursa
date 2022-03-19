@@ -1,8 +1,9 @@
 .mydiv {
     background-image: url(https://i.pinimg.com/736x/0d/e5/09/0de5098fa5b9ba72a8b0b4c5e31b801f.jpg);
     background-repeat: no-repeat;
-   
-    width: 80%;
+    align-content: center;
+    justify-content: center;
+    width: 100vw;
     .backbtn {
         position: absolute;
         top: 0%;
@@ -11,6 +12,7 @@
 
     }
     .inputDiv{
+ flex: auto;
         // background-color: rgba(65, 61, 56, 0.26);
         background-image: url(https://i.pinimg.com/736x/0d/94/af/0d94af013ad5ea0311d40b78e76ce0e2.jpg);
         background-repeat: no-repeat;
@@ -18,10 +20,10 @@
         margin: auto;
         padding: 10px;
         position: absolute;
-        top: 100px;
-        left: 40%;
+        top: 70px;
+        left: 35%;
         width: 30vw;
-        height: 70vh;
+        height: 80vh;
         // border-style: double;
         justify-content: center;
        
@@ -30,6 +32,13 @@
             position: absolute;
             // top: 150px;
             // left: 25%;
+            width: 50%;
+          }
+
+          .mybox1 {
+            position: absolute;
+            top: 220px;
+       
             width: 50%;
           }
     
@@ -42,17 +51,26 @@
     
     
         }
+        .agefield {
+            position: absolute;
+          left: 10px;
+            top: 150px;
+            width: 50%;
+            height: 7vh;
+    
+    
+        }
         .DateTimePicker{
             position: absolute;
             left: 25%;
-            top: 300px;
+            top: 400px;
             width: 10vw;
 
         }
         #meeting-time{
             position: absolute;
             left: 10px;
-            top: 150px;
+            top: 290px;
             width: 50%;
 
         }

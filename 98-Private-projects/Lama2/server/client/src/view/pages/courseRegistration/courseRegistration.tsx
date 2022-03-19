@@ -6,8 +6,6 @@ import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
 import moment from 'moment'
 import { Link } from 'react-router-dom';
-import Register from '../register/register'
-import DateTimePicker from 'react-datetime-picker';
 import Box from '@mui/material/Box';
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import DatePicker from "react-datepicker";
@@ -50,6 +48,9 @@ const coursesRegis: Array<TimeManagement> = [
 
 
 function CourseRegistration() {
+  const [courseType, setcourseType] = React.useState('');
+  const [level, setLevel] = React.useState('');
+  const [alertt, setAlert] = useState(false);
   const [course, setCourse] = React.useState('');
   const [dateState, setDateState] = useState(new Date())
   const [startDate, setStateDate] = useState(new Date())
@@ -75,13 +76,38 @@ function CourseRegistration() {
 
   }
 
-  function handleRegister(){
-    alert("you seccessfully registered!");
+  function handleRegister(ev:any){
+    ev.preventDefault();
+    const form = ev.target;
+   console.log({form})
+    axios.post('/registrations/add-new-registration', { course: form[0].value, level: form[2].value, name: form[4].value,age:form[6].value,date:form[8].value})
+      .then(data => {
+        console.log(data);
+        alert("you have successfully registered")
+      }).catch(err => {
+        console.error(err);
+      })
   }
 
-  const handleChange = (event: any) => {
+ 
+
+  const handleChoseCourse = (event: any) => {
     setCourse(event.target.value);
   };
+
+  const handleChoseLevel = (event: any) => {
+    setLevel(event.target.value);
+  };
+
+
+  const validate =  (event: any) => {
+
+      event.preventDefault();
+      setAlert(true);
+      return;
+    
+      // setAlert(false);
+ };
   return (
     <div className='mydiv'>
 
@@ -101,11 +127,29 @@ function CourseRegistration() {
               id="demo-simple-select"
               value={course}
               label="Course"
-              onChange={handleChange}
+              onChange={handleChoseCourse}
             >
               <MenuItem value={10}>Group lessons</MenuItem>
               <MenuItem value={20}>Private lessons</MenuItem>
               <MenuItem value={30}>single lesson</MenuItem>
+            </Select>
+          </FormControl>
+        </Box>
+
+        <Box className='mybox1' sx={{ minWidth: 120 }}>
+          <FormControl required fullWidth>
+ 
+            <InputLabel id="demo-simple-select-label">Level</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select1"
+              value={level}
+              label="Level"
+              onChange={handleChoseLevel}
+            >
+              <MenuItem value={1}>Beginner</MenuItem>
+              <MenuItem value={2}>Intermediate</MenuItem>
+              <MenuItem value={3}>Advanced</MenuItem>
             </Select>
           </FormControl>
         </Box>
@@ -119,15 +163,37 @@ function CourseRegistration() {
           label="Name"
           autoFocus
         />
+           <TextField
+          className="agefield"
+          autoComplete="given-age"
+          name="Age"
+          required
+          id="Age"
+          label="Age"
+          autoFocus
+        />
           {/* <DateTimePicker className='DateTimePicker' onChange={onChange} value={value}
       //  includeDates={includeDatesArray} 
       /> */}
            <input type="datetime-local" id="meeting-time"
-        name="meeting-time"></input>
+        name="meeting-time">
+        {/* // min="2022-06-07T00:00" max="2022-06-14T00:00"> */}
+        </input> 
+   
 
            {/* <Register /> */}
-           <Button variant="contained" type="submit" className="regBtn" onClick={handleRegister}>register</Button>
+           <Button variant="contained" type="submit" className="regBtn">register</Button>
       </form>
+
+       {/* <button onClick={validate}>Save</button> */}
+
+      {alertt &&
+           <div className="popup">
+             <span role="img" aria-label="allowed">✅</span> Alphanumeric Characters
+             <br />
+             <span role="img" aria-label="not allowed">⛔️</span> *
+           </div>
+         }
    
 
 

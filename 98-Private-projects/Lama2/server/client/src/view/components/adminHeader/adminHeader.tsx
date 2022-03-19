@@ -44,6 +44,12 @@ function AdminHeader() {
                 <Link to="/addOffer">
                     offers
                 </Link>
+                <Link to="/addTrainer">
+                    trainers
+                </Link>
+                <Link to="/addHorse">
+                    horses
+                </Link>
             </div>
             <div className="mainheader__right">
                 <Button

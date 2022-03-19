@@ -1,4 +1,11 @@
 .admCouDiv{
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    h4{
+        position: absolute;
+        left: 47%;
+    }
     .backbtn{
         position: absolute;
         left: 0%;
@@ -8,22 +15,22 @@
     justify-content: center;
     position: relative;
     left: 35%;
+    top: 100px;
     width: 30vw;
     border-style: double;
     .table{
         width: 30vw;
     }
-
-    .grpbtn{
-        width: 10vw;
-
-        .addbtn{
-            width:3vw;
-        }
-    }
-
-   
+  
+ 
 
   
+}
+.addbtn{
+    width:10vw;
+    position: relative;
+    top:100px;
+
+     left: 45%;
 }
 }
