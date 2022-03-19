@@ -16,6 +16,7 @@ interface Restaurant {
     close: string;
     description: string;
     subCategory: Array<string>;
+    ownerId: string;
 }
 interface Region {
     region: string;
@@ -23,6 +24,7 @@ interface Region {
 }
 interface Restaurants {
     arrOfResteruants: Array<Restaurant>;
+    ownerArrOfResteruants: Array<Restaurant>;
     arrOfFamousResteruants: Array<Restaurant>;
     arrOfRegions: Array<Region>
     status: 'idle' | 'loading' | 'failed';
@@ -30,16 +32,32 @@ interface Restaurants {
 
 const initialState: Restaurants = {
     arrOfResteruants: [],
+    ownerArrOfResteruants: [],
     arrOfFamousResteruants: [],
     arrOfRegions: [],
     status: 'idle',
 }
 
 export const fetchAllRestaurants = createAsyncThunk(
-    'fetchRestaurants',
+    'fetchAllRestaurants',
     async (_, thunkAPI) => {
         try {
             const response = await axios.get('/restaurants/get-all-restaurants')
+            const data: any = response.data
+            const { resteraunt } = data;
+            return resteraunt
+        } catch (err) {
+            thunkAPI.rejectWithValue(err)
+        }
+
+    }
+);
+
+export const fetchAllOwnerRestaurants = createAsyncThunk(
+    'fetchAllOwnerRestaurants',
+    async (_, thunkAPI) => {
+        try {
+            const response = await axios.get('/restaurants/get-all-owner-restaurants')
             const data: any = response.data
             const { resteraunt } = data;
             return resteraunt
@@ -111,6 +129,13 @@ export const restaurantReducer = createSlice({
                 state.status = 'idle';
                 state.arrOfRegions = action.payload;
             })
+            .addCase(fetchAllOwnerRestaurants.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(fetchAllOwnerRestaurants.fulfilled, (state, action) => {
+                state.status = 'idle';
+                state.ownerArrOfResteruants = action.payload;
+            })
 
     },
 })
@@ -120,5 +145,6 @@ export const restaurantReducer = createSlice({
 
 export const getAllRestaurants = (state: RootState) => state.restaurant.arrOfResteruants
 export const getFamousRestaurants = (state: RootState) => state.restaurant.arrOfFamousResteruants
+export const getOwnerRestaurants = (state: RootState) => state.restaurant.ownerArrOfResteruants
 export const getRegions = (state: RootState) => state.restaurant.arrOfRegions
 export default restaurantReducer.reducer;

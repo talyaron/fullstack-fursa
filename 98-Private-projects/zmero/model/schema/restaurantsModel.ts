@@ -19,6 +19,7 @@ const RestaurantsSchema = new mongoose.Schema({
     subCategory: [{
         type: String
     }],
+    ownerId: String,
 });
 
 const Resteraunts = mongoose.model('restaurants', RestaurantsSchema);
