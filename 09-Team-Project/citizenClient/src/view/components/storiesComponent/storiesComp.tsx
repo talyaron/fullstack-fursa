@@ -1,24 +1,27 @@
 
-import React from 'react'
+import { PinDropSharp } from '@mui/icons-material';
+import React, { useState } from 'react'
 import './storiesComp.scss';
 
-interface Prop {
+interface Props {
     name: string;
     description: string;
-    image: string;
 }
 
-function StoriesComp(prop: Prop) {
-
-
+function StoriesComp(props: Props) {
+    const [isReadMore, setIsReadMore] = useState(true);
+    function toggleReadMore() {
+        setIsReadMore(!isReadMore)
+    }
     return (
         <div className='storiesCompContainer' >
-              
-            <div className="vicName"> {prop.name}</div>
-            <div className="vicDesc"> {prop.description}</div> 
-       <div className="vicImg"> 
-          <img className='theVicImg' src={prop.image}></img>
-        </div>
+            <div className="vicName"> {props.name}</div>
+            <div className="vicDesc">
+                {isReadMore ? props.description.slice(0, 150) : props.description}
+                <span onClick={toggleReadMore} className="read-or-hide">
+                    {isReadMore ? "...read more" : " show less"}
+                </span>
+            </div>
         </div>
     )
 }

@@ -8,8 +8,8 @@ import LogIn from './view/pages/logIn/LogIn';
 import { Emergency } from "./view/pages/emergency/Emergency";
 import SignUp from './view/pages/signUp/signup'
 import Stories from "./view/pages/stories/stories";
-
-
+import About from "./view/pages/about/about"
+import Chat from "./view/pages/chat/Chat"
 
 function App() {
   return (
@@ -20,7 +20,9 @@ function App() {
         <Route path="/SignUp" element={<SignUp />}></Route>
         <Route path="/profile" element={<Profile />} />
         <Route path="/stories" element={<Stories />} />
-        <Route path="emergency" element={<Emergency />}></Route>
+        <Route path="/info" element={<About />} />
+        <Route path="/chat" element={<Chat />} />
+        <Route path="/emergency" element={<Emergency />}></Route>
         <Route path="/previousAccidents" element={<PreviousAccident />} />
 
       </Routes>

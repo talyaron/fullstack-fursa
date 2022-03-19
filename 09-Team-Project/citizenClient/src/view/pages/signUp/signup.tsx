@@ -1,6 +1,6 @@
 import './signup.scss'
 import NavBar from '../../components/navbar/navbar'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom"
 import TextField from '@mui/material/TextField'
 import FormControl from '@mui/material/FormControl'
@@ -16,13 +16,17 @@ function SignUp() {
     const islog = useAppSelector(getloginState)
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
-    async function handleSignup(e: any) {
-        e.preventDefault();
-        await dispatch(signUpUser(sigupState));
-        if (islog == true) {
-            navigate('/');
+    useEffect(() => {
+        if (islog) {
+            console.log(islog);
+            navigate("/");
         }
+    }, [islog])
+    function handleSignup(e: any) {
+        e.preventDefault();
+        dispatch(signUpUser(sigupState));
     }
+
     function onChangeSignup(e: any) {
         setSigupnState({
             ...sigupState,
