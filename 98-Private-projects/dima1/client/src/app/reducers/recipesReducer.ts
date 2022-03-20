@@ -42,11 +42,10 @@ export const recipesByTypeAsync = createAsyncThunk(
     'recipesByType/fetchByType',
     async (type: any, thunkAPI) => {
         try {
-            console.log(type)
             const response = await axios.post('/userRecipes/get-recipes-ByType', { type: type });
             const data = response.data;
             if (data.ok)
-                return data.recipe;
+                return data.recipes;
             else return thunkAPI.rejectWithValue("failed");
         } catch (error: any) {
             thunkAPI.rejectWithValue(error.response.data);

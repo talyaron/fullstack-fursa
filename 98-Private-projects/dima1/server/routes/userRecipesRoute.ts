@@ -53,9 +53,7 @@ router.put('/edit-userRecipes', async (req, res) => {
 
 router.post('/get-recipes-ByType', async (req, res) => {
     try {
-        console.log("yes")
         const { type } = req.body;
-        console.log(type)
         const recipes = await userRecipes.find({ types: { name: type, isTrue: true } })
         if (recipes) {
             res.send({ ok: true, recipes: recipes });

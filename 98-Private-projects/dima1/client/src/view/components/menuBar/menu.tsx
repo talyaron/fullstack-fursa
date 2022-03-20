@@ -13,6 +13,7 @@ import './menu.scss';
 function Bagemenu(props:any) {
 
     const { userName } = props;
+    console.log(userName)
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
 
@@ -31,7 +32,7 @@ function Bagemenu(props:any) {
         <div className="menu" id="outer-container">
             <div className="left">
                 <div className='sideBar'>
-                    <SideBar />
+                    <SideBar userName = {userName}/>
                 </div>
                 
                 <div className='logo'>

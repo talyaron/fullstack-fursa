@@ -10,13 +10,18 @@ import soup from '../../images/soup.png';
 import pastry from '../../images/pastry.jpg';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { recipesByType, recipesByTypeAsync } from '../../../app/reducers/recipesReducer';
+import { useNavigate } from 'react-router-dom';
 
-export default function SideBar() {
+export default function SideBar(props:any) {
 
+  const { userName } = props;
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
 
   function handleSelectType(type:string){
     dispatch(recipesByTypeAsync(type));
+    navigate(`/${userName}/${type}`)
   }
 
   return (

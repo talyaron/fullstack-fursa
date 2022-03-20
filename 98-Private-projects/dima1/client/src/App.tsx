@@ -9,6 +9,7 @@ import RecipeInfo from "./view/pages/recipeInfo/RecipeInfo";
 import { styled } from '@mui/material/styles';
 import { TextField } from "@mui/material";
 import { useState } from 'react';
+import RecipeTypes from "./view/pages/recipeTypes/RecipeTypes";
 
 export const CssTextField = styled(TextField)({
   '& label.Mui-focused': {
@@ -47,6 +48,7 @@ function App(){
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LogIn />} />
+        <Route path="/:userName/:type" element={<RecipeTypes />} />
         <Route path="/:userName" element={<User />} />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/ResetPassword" element={<ResetPassword />} />
