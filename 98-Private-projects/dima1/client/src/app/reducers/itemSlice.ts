@@ -8,8 +8,22 @@ interface type {
 }
 
 const types_: Array<type> = [{ name: 'Food', isTrue: false }, { name: 'Drinks', isTrue: false }, { name: 'Desserts', isTrue: false },
-                              { name: 'Healthy', isTrue: false }, {name:'Salads', isTrue: false}, {name:'Soups', isTrue: false},
-                              {name:'Pastries', isTrue: false}]
+{ name: 'Healthy', isTrue: false }, { name: 'Salads', isTrue: false }, { name: 'Soups', isTrue: false },
+{ name: 'Pastries', isTrue: false }]
+
+const empty = {
+  _id: '',
+  image: '',
+  name: '',
+  time: '',
+  people: '',
+  calories: '',
+  ingredients: '',
+  method: '',
+  notes: '',
+  userName: '',
+  types: types_
+};
 
 export interface RecipeState {
   info: {
@@ -64,10 +78,8 @@ export const getSelectAsync = createAsyncThunk(
   'getByName/fetchGetByName',
   async (name: any, thunkAPI) => {
     try {
-      //console.log(name)
       const response = await axios.post('/selectRecipe/get-recipe-byName', { name_: name });
       const data = response.data;
-      //console.log(data)
       if (data.ok)
         return data.recipe;
       else return thunkAPI.rejectWithValue("failed");
@@ -84,57 +96,30 @@ export const itemReducer = createSlice({
   reducers: {
     updateRecipe: (state, action) => {
       state.info = action.payload;
+    },
+    newRecipe: (state) => {
+      console.log("yes")
+      state.info = empty;
     }
-    //   updateFrom: (state, action) => {
-    //     state.from = action.payload;
-    //   },
-    //   updateNew: (state, action) => {
-    //     state.isNew = action.payload;
-    //   }
   },
   extraReducers: (builder) => {
     builder
-      .addCase(selectRecipeAsync.pending, (state, action) => {
-        state.info = {
-          _id: '',
-          image: '',
-          name: '',
-          time: '',
-          people: '',
-          calories: '',
-          ingredients: '',
-          method: '',
-          notes: '',
-          userName: '',
-          types: types_
-        };
+      .addCase(selectRecipeAsync.pending, (state) => {
+        state.info = empty;
         state.status = 'loading';
       })
       .addCase(selectRecipeAsync.fulfilled, (state, action) => {
         state.info = action.payload;
         state.status = 'idle';
       })
-      .addCase(selectRecipeAsync.rejected, (state, action) => {
-        state.info = {
-          _id: '',
-          image: '',
-          name: '',
-          time: '',
-          people: '',
-          calories: '',
-          ingredients: '',
-          method: '',
-          notes: '',
-          userName: '',
-          types: types_
-        };
+      .addCase(selectRecipeAsync.rejected, (state) => {
+        state.info = empty;
         state.status = 'failed'
       })
       .addCase(getSelectAsync.pending, (state, action) => {
         state.status = 'loading';
       })
       .addCase(getSelectAsync.fulfilled, (state, action) => {
-        //console.log(action.payload)
         state.info = action.payload;
         state.status = 'idle';
       })
@@ -144,7 +129,7 @@ export const itemReducer = createSlice({
   }
 });
 
-export const { updateRecipe } = itemReducer.actions;
+export const { updateRecipe, newRecipe } = itemReducer.actions;
 
 export const selectedRecipe = (state: RootState) => state.item.info;
 

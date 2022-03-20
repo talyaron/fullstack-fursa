@@ -19,7 +19,6 @@ import { selectPage, updateName } from '../../../app/reducers/NamePageSlice';
 import { Text, StyleSheet } from 'react-native';
 
 export default function RecipeInfo() {
-    console.log('Hiii')
     const [like, setLike] = useState(0);
     const { userName, recipeId } = useParams();
     const [isTrue, setIsTrue] = useState(false);
@@ -31,7 +30,6 @@ export default function RecipeInfo() {
 
     useEffect(() => {
         dispatch(selectRecipeAsync(recipeId));
-        console.log(recipe_.types);
         if (recipe_.notes) setIsTrue(true)
         else setIsTrue(false)
     }, [])

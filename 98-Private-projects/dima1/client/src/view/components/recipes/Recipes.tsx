@@ -5,9 +5,9 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { getSelectAsync, selectRecipeAsync } from '../../../app/reducers/itemSlice';
+import { getSelectAsync, newRecipe, selectRecipeAsync } from '../../../app/reducers/itemSlice';
 import { getMyRecipesAsync, myRecipes } from '../../../app/reducers/MyRecipesSlice';
-import { updateName } from '../../../app/reducers/NamePageSlice';
+import { updateName } from '../../../app/reducers/NamePageSlice'
 
 export default function Recipes(props:any) {
     //Redux
@@ -37,14 +37,11 @@ export default function Recipes(props:any) {
 
     function addClick(){
         try {
+            dispatch(newRecipe());
             navigate(`/${userName}/NewRecipe`)
         } catch (error) {
             console.error();
         }
-        //axios.patch('http://localhost:3004/select/1', {recipe:{}, from: 'myRecipe', isNew: true});
-        // dispatch(updateRecipe({}));
-        // dispatch(updateFrom('myRecipe'));
-        // dispatch(updateNew(true));
     }
     
     return (
@@ -52,9 +49,7 @@ export default function Recipes(props:any) {
             <h2 className='title1'>Recipes</h2>
             <div className='add'>
                 <Tooltip title='add new recipe'>
-                    {/* <Link to='/NewRecipe'> */}
                     <AddCircleOutlineIcon sx={{ fontSize: 40, color: '#b5739d'}} onClick={() => addClick()}/>
-                    {/* </Link> */}
                 </Tooltip>
             </div>
 
