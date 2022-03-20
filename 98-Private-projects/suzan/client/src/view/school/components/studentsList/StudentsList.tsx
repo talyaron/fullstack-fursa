@@ -16,7 +16,7 @@ interface studentsArray {
 
 export default function StudentsList(studentsArray: studentsArray) {
     const { students } = studentsArray;
-    console.log(students);
+    
     return (
         <div>
             <List className='studentsList' dense={true}>

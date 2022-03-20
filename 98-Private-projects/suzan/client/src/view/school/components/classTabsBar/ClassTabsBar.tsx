@@ -71,6 +71,10 @@ export default function ClassTabsBar() {
         dispatch(getStudentsAsync(classId));
         dispatch(getTeachersAsync());
     }, [])
+    useEffect(() => {
+        dispatch(getCoursesAsync(classId));
+    }, [openCourseDialog])
+
     const courses = useAppSelector(classCourses); //the class courses
     const students = useAppSelector(classStudents); //the class students
     const teachers = useAppSelector(schoolTeachers); //the school teachers
@@ -213,7 +217,7 @@ export default function ClassTabsBar() {
                     </Button>
 
                     <div className="teacher__info">
-                        <Typography sx={{ fontSize: 18 }} color="text.primary"  >{"Class's teacher: "}</Typography>
+                        <Typography component={'span'} sx={{ fontSize: 18 }} color="text.primary"  >{"Class's teacher: "}</Typography>
                         <Autocomplete
                             disablePortal
                             id="combo-box-demo"

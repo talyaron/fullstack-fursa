@@ -21,7 +21,7 @@ export default function TeachersList() {
         dispatch(getSchoolTeachersAsync());
     }, []);
     const teachers = useAppSelector(schoolTeachers);
-    console.log(teachers)
+    // console.log(teachers)
 
     // const { teachers } = studentsArray;
     return (
@@ -31,7 +31,7 @@ export default function TeachersList() {
                     teachers.map((teacher, i) => {
                         const { teacherID } = teacher;
                         return (
-                            <Link to={`/teachers/${teacherID}`}>
+                            <Link to={`/teachers/${teacherID}`} key={i}>
                                 <ListItem className='teachersList__listItem'>
                                     <ListItemText
                                         className='teachersList__listItem__text'

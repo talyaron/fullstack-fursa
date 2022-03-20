@@ -15,19 +15,18 @@ export default function NewStudent() {
     const defaultValues = {
         firstName: "",
         lastName: "",
-        father: "",
-        mother: "",
-        studentId: "",
+        fatherName: "",
+        motherName: "",
+        studentID: "",
         phone: "",
-        fphone: "",
-        mphone: "",
+        fatherPhone: "",
+        motherPhone: "",
         email: ""
 
     }
     const [formValues, setFormValues] = useState(defaultValues);
 
     function handleFirstName(ev: any) {
-        console.log(ev.target.value);
         setFormValues({ ...formValues, firstName: ev.target.value });
     }
 
@@ -36,15 +35,15 @@ export default function NewStudent() {
     }
 
     function handleStudentId(ev: any) {
-        setFormValues({ ...formValues, studentId: ev.target.value });
+        setFormValues({ ...formValues, studentID: ev.target.value });
     }
 
     function handleFatherName(ev: any) {
-        setFormValues({ ...formValues, father: ev.target.value });
+        setFormValues({ ...formValues, fatherName: ev.target.value });
     }
 
     function handleMotherName(ev: any) {
-        setFormValues({ ...formValues, mother: ev.target.value });
+        setFormValues({ ...formValues, motherName: ev.target.value });
     }
 
     function handleEmail(ev: any) {
@@ -56,16 +55,19 @@ export default function NewStudent() {
     }
 
     function handleFPhone(ev: any) {
-        setFormValues({ ...formValues, fphone: ev.target.value });
+        setFormValues({ ...formValues, fatherPhone: ev.target.value });
     }
 
     function handleMPhone(ev: any) {
-        setFormValues({ ...formValues, mphone: ev.target.value });
+        setFormValues({ ...formValues, motherPhone: ev.target.value });
     }
 
     function handleSubmit() {
-        axios.post('http://localhost:3004/schoolStudents', { 'info': formValues })
-            .then(({ data }) => console.log(data));
+        console.log(formValues);
+        axios.post('/school/add-new-student', { info: formValues })
+            // .then(({ data }) => console.log(data));
+        // axios.post('http://localhost:3004/schoolStudents', { 'info': formValues })
+        //     .then(({ data }) => console.log(data));
     }
 
     return (

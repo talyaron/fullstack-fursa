@@ -24,7 +24,7 @@ export default function StudentCard() {
 
     function getStudentInfo(id: string | undefined, students: Array<studentInfo>) {
         const student = students.find(student => student.studentID === id)
-        console.log(students)
+        
         if (student) {
             return [student.firstName, student.lastName, student.fatherName, student.motherName, student.phone, student.fatherPhone, student.motherPhone, student.email];
         } else {

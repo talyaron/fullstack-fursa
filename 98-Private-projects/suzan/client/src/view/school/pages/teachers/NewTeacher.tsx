@@ -16,14 +16,13 @@ export default function NewTeacher() {
     const defaultValues = {
         firstName: "",
         lastName: "",
-        teacherId: "",
+        teacherID: "",
         phone: "",
         email: ""
     }
     const [formValues, setFormValues] = useState(defaultValues);
 
     function handleFirstName(ev: any) {
-        console.log(ev.target.value);
         setFormValues({ ...formValues, firstName: ev.target.value });
     }
 
@@ -32,7 +31,7 @@ export default function NewTeacher() {
     }
 
     function handleTeacherId(ev: any) {
-        setFormValues({ ...formValues, teacherId: ev.target.value });
+        setFormValues({ ...formValues, teacherID: ev.target.value });
     }
 
     function handleEmail(ev: any) {
@@ -44,8 +43,7 @@ export default function NewTeacher() {
     }
 
     function handleSubmit() {
-        axios.post('http://localhost:3004/schoolTeachers', { 'info': formValues })
-            .then(({ data }) => console.log(data));
+        axios.post('/school/add-new-teacher', {info:formValues});
     }
 
     return (

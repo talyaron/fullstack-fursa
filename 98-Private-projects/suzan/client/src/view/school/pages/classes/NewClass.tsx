@@ -40,6 +40,7 @@ export default function NewClass() {
 
     const [className, setClassName] = useState('');
     const [teacherName, setTeacherName] = useState('');
+    const [teacherId, setTeacherId] = useState(-1);
 
     function handleClassName(ev: any) {
         // console.log(ev.target.value);
@@ -48,7 +49,9 @@ export default function NewClass() {
 
     function handleTeacherName(ev: any, value: any) {
         // console.log(value.info.firstName.concat(' ', value.info.lastName));
-        setTeacherName(value.info.firstName.concat(' ', value.info.lastName))
+        setTeacherName(value.firstName.concat(' ', value.lastName))
+        setTeacherId(value.id);
+        console.log('teacher id:', value.id);
     }
 
     function handleStudent(ev: any, value: any) {
@@ -59,7 +62,7 @@ export default function NewClass() {
         // axios.post('http://localhost:3004/schoolClasses', { 'name': className, 'teacher': teacherName })
         //     .then(({ data }) => console.log(data));
 
-        axios.post('school/add-new-class', { name: className, teacher: teacherName })
+        axios.post('school/add-new-class', { className: className, teacherId: teacherId })
             .then(data => {
                 console.log(data);
             }).catch(err => {

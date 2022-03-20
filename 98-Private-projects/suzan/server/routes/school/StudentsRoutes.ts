@@ -1,3 +1,4 @@
+import { Password } from "@mui/icons-material";
 import { connection } from "../../server";
 
 const express = require('express');
@@ -27,6 +28,31 @@ router.post('/get-students-by-class-id', async (req, res) => {
             res.send(result);
         } catch (error) {
             console.log(`In get-students-by-class-id error: ${error}`);
+            res.status(500).send({error: error.message});
+        }
+    })
+})
+
+router.post('/add-new-student', async (req, res) => {
+    const {info} = req.body;
+    const username = 'username';
+    const password = 'password';
+    const status = 'student';
+    const schoolId = 1;
+
+    const query = `INSERT INTO test_schema.students_table 
+    (username, password, firstName, lastName, studentID, phone, email, fatherName, motherName, fatherPhone, motherPhone, status, schoolID)
+    VALUES 
+    ('${username}', '${password}', '${info.firstName}', '${info.lastName}', '${info.studentID}', 
+    '${info.phone}','${info.email}', '${info.fatherName}', '${info.motherName}', '${info.fatherPhone}', 
+    '${info.motherPhone}', '${status}', '${schoolId}')`;
+    
+    connection.query(query, (err, result) => {
+        try {
+            if (err) throw err;
+            res.send(result);
+        } catch (error) {
+            console.log(`In add-new-student error: ${error}`);
             res.status(500).send({error: error.message});
         }
     })

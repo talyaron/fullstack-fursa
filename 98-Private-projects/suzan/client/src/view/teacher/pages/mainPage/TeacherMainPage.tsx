@@ -41,7 +41,7 @@ export default function TeacherMainPage() {
                         classes.map((myClass, i) => {
                             const { class_name } = myClass
                             return (
-                                <ClassCard class_name={class_name} />
+                                <ClassCard class_name={class_name} key={i}/>
                             );
                         })
                     }
@@ -56,7 +56,7 @@ export default function TeacherMainPage() {
                         courses.map((course, i) => {
                             const { name, class_name } = course;
                             return (
-                                <Link to="../teacherUser/coursePage">
+                                <Link to="../teacherUser/coursePage" key={i}>
                                     <CourseCard info={course} />
                                 </Link>
                                 

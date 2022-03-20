@@ -51,12 +51,14 @@ router.post('/get-class-by-id', async(req, res) => {
 })
 
 router.post('/add-new-class', async (req, res) => {
-    const name = 'class 5B';
-    const teacher = 2;
-    const school = 1;
+    // const name = 'class 5B';
+    // const teacher = 2;
+    const schoolId = 1;
     console.log('add class test')
+    const {className, teacherId} = req.body;
 
-    const query = `INSERT INTO test_schema.classes_table (name, teacherID, schoolID) VALUES ('test', 2, 1)`;
+    const query = `INSERT INTO test_schema.classes_table (name, teacherID, schoolID) 
+    VALUES ('${className}', '${teacherId}', '${schoolId}')`;
     connection.query(query, (err, result) => {
         try{
             if(err) throw err;
