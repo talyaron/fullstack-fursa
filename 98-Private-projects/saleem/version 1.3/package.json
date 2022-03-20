@@ -1,0 +1,12 @@
+{
+  "name": "api-server-starter",
+  "version": "1.0.0",
+  "description": "A lightweight starter kit for building a Node-based API server",
+  "main": "server.ts",
+  "scripts": {
+    "start": "nodemon server.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
+
+  
