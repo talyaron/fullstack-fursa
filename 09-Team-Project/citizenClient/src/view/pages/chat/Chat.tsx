@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";  
 import socketIOClient, { Socket } from "socket.io-client";  
 import { DefaultEventsMap } from "socket.io/dist/typed-events";
@@ -12,24 +11,28 @@ function Chat() {
   accedent id,orgid
 
    i should get user id throw redux*/
-  let userId = "1";  
-  let orgId = "1";  
+  let userId = "3";  
+  let orgId = "2";  
 
 
 
-  const [response, setResponse] = useState("");  
+  const [messages, setMessages] = useState("");  
   
   useEffect(() => {  
     socket = socketIOClient(ENDPOINT);  
   
     /* will be replace with chat box*/  
     socket.on("FromAPI", (data: React.SetStateAction<string>) => {  
-      setResponse(data);  
+      //setResponse(data);  
+      setMessages(data)
+      console.log(typeof data)
+      console.log(data)
+
     });  
     /* set user id */  
     socket.emit("setUserData",userId)  
     /* set user id */  
-    socket.emit("setOrgData",userId)  
+    socket.emit("setOrgData",orgId)  
   }, []);  
   const [value, setValue] = useState('');  
   const submitForm = (e:any) => {  
@@ -42,14 +45,14 @@ function Chat() {
       picture: "",
       message:value,
       location:{lat:"",lng:""},
-      communicationType:{},
+      communicationType:"user",
       orgId:orgId});  
     setValue('');  
   }  
   return (  
       
-      <div className="container">
-        <time dateTime={response}>{response}</time>
+      <div className="chatContainer">
+       
         <form onSubmit={submitForm}>  
       <input  
         autoFocus  
@@ -59,6 +62,7 @@ function Chat() {
           setValue(e.currentTarget.value);  
         } } />  
     </form> 
+    
     </div>
       
       
