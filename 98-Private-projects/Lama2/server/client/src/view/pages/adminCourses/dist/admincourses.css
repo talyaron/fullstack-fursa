@@ -1,0 +1,20 @@
+.admCouDiv .backbtn {
+  position: absolute;
+  left: 0%;
+}
+.admCouDiv .tablediv {
+  justify-content: center;
+  position: relative;
+  left: 35%;
+  width: 30vw;
+  border-style: double;
+}
+.admCouDiv .tablediv .table {
+  width: 30vw;
+}
+.admCouDiv .tablediv .grpbtn {
+  width: 10vw;
+}
+.admCouDiv .tablediv .grpbtn .addbtn {
+  width: 3vw;
+}

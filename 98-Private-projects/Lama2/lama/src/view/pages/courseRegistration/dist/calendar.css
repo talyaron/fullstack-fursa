@@ -1,0 +1,30 @@
+.calendar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.calendar .info {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+}
+.calendar .button {
+  margin-left: 30px;
+  font-weight: bold;
+}
+.calendar button:hover {
+  background-color: rgba(156, 156, 158, 0.377);
+}
+.calendar .table {
+  height: 600px;
+  width: 70%;
+  margin: 45px;
+}
+.calendar .inputs {
+  margin-right: 1rem;
+}
+.calendar .date {
+  margin-top: 4px;
+  height: 37px;
+}
