@@ -12,17 +12,22 @@ import ProfileInfo from "./view/pages/profileInfo/ProfileInfo";
 import MessagesBetweenOrg from './view/pages/messagesBetweenOrg/MessagesBetweenOrg';
 import AccidentsInfo from './view/pages/accidentsInfo/AccidentsInfo';
 import Login from './view/pages/logIn/LogIn';
+import AccidenstByLocation from './view/pages/accidentsByLocation/accidentsByLocation';
+import SignUp from './view/pages/signUp/signUp';
 
 
 ReactDOM.render(
   // <React.StrictMode>
+  
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
           <Route path='/login' element={<Login />} />
+          <Route path='/signup' element={<SignUp />} />
           <Route path='/accidents' element={<Accident />} />
           <Route path="/" element={<App />} />
-          <Route path="profileInfo" element={<ProfileInfo />} />
+          <Route path="/accidentsByLocation" element={<AccidenstByLocation />} />
+          <Route path="/profileInfo" element={<ProfileInfo />} />
           <Route path="/:accidentId" element={<AccidentsInfo />} />
           <Route path="/messagesBetweenOrg" element={<MessagesBetweenOrg />} />
         </Routes>

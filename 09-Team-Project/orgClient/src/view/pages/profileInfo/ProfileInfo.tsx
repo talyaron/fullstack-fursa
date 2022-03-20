@@ -1,17 +1,36 @@
 import React from 'react';
-import './style.scss'
+import MenuAppBar from '../../Components/header/appBar';
+import './profileInfo.scss';
+import PhoneIcon from '@mui/icons-material/Phone';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { Link } from 'react-router-dom';
 
 function ProfileInfo() {
 
-    const info ={name:"Name",city:"some city",phone:" 0527-***-***"}
+    const info = { name: "Name", city: "some city", phone: " 0527-***-***" }
+    const dispatch = useAppDispatch();
+    const accident_ = useAppSelector(state => state.accident);
+
+    console.log(accident_)
 
     return (
-        <div>
-            <div className="profileInfo">
-                <h1>{info.name}</h1>
-                <div><p>City: {info.city}</p></div>
-                <div><p>Phone Number: {info.phone}</p></div>
-            </div >
+        <div className='profileInfo'>
+            <MenuAppBar />
+            <div className='userInfo'>
+                <div className="content">
+                    <h3>Profile Info</h3>
+                    <p>Name : {accident_.value.user.name}</p>
+                    <p>Gender: {accident_.value.user.gender}</p>
+                    <p>Location: {accident_.value.user.location}</p>
+                    <p>Phone Number: {accident_.value.user.phone}</p>
+                </div >
+                <br />
+                <button>Go To Chat</button>
+                {/* <Link to={`/${accident_.value._id}`}> */}
+                <button>Accident Info</button>
+                {/* </Link> */}
+            </div>
+            <PhoneIcon sx={{ paddingLeft: '40px', fontSize: 35 }} />
         </div>
     )
 }

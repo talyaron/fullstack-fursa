@@ -48,7 +48,6 @@ function Login() {
                 </form>
                 <Link to="/HomePage">cancel</Link>
 
-
             </div>
 
         </div>
