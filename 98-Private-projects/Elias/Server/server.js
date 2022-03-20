@@ -32,6 +32,20 @@ db.once("open", () => {
     console.log("connected to DB!");
 });
 
+const mysql = require('mysql');
+
+const con_mysql = mysql.createConnection({
+  user:"root",
+  host: "localhost",
+  password: "123456"
+});
+
+con_mysql.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected to MySQL DataBase");
+});
+//module.exports=con_mysql;
+
 
 // const kittySchema = new mongoose.Schema({
 //     name: String,
