@@ -1,3 +1,4 @@
+const mysql = require('mysql');
 import express from 'express';
 import Product from './model/schema/productsModel';
 const multer = require('multer');
@@ -11,6 +12,30 @@ require('dotenv').config();
 app.use(express.static('healthstore/build'));
 app.use(cookieParser());
 app.use(express.json());
+
+
+//data
+const con = mysql.createConnection({
+  host: "localhost",
+  port: "3306",
+  user: "root",
+  password: "123456"
+
+
+  // ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '123456'
+});
+
+con.connect( (err)=> {
+  if (err) throw err;
+  console.log("Connected!");
+  // con.query("use test", (err, result, fields) => {
+  //     if (err) throw err;
+  //     console.log('Using test');
+
+ // });
+});
+
+
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
