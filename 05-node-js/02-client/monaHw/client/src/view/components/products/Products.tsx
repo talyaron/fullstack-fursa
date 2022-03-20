@@ -56,7 +56,7 @@ function Product(prop: productProp) {
         <div className="cartProducts">
             <div className="item details">
                 <p>{woodName}</p>
-                <p> <span>product Name: </span>{woodName} ,<span>Length: </span>{woodlength},{width},{thick},{doorType} ,{color}</p> </div>
+                <p> <span>product Name: </span>{woodName} ,<span>Length: </span>{woodlength} {width} {thick} {doorType} {color}</p> </div>
             <input style={{height:'30%',width:'20%' ,margin:'auto'}}  type="number" name="amount" required value={editAmount} onChange={handleChange} />
            
             {/* <div className="item">{amount} </div> */}

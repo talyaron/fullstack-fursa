@@ -10,6 +10,7 @@ export const userOrderSchema=new mongoose.Schema({
     date:Date,
     paymentMethod:String,
     orderCollection:String,
+    orderStatus:String,
     order:[OrderSchema]
 
 

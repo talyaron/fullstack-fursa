@@ -6,17 +6,18 @@ interface UserOrders{
     _id:string
     date:Date,
     paymentMethod:string,
-    orderCollection:string
+    orderCollection:string,
+    orderStatus:string,
     order:Array<any>
    
 }
 
-export interface UserOrdersStae{
+export interface UserOrdersState{
     orders:Array<UserOrders>;
     status: 'idle' | 'loading' | 'failed';
 }
 
-const initialState:UserOrdersStae={
+const initialState:UserOrdersState={
     orders:[],
     status:'idle'
 }
@@ -27,6 +28,22 @@ export const fetchUserOrders = createAsyncThunk(
       try {
           
         const response = await axios.get('/order/get-checkout-orders')
+        const data = response.data
+        return data
+  
+      }
+      catch (err: any) {
+        thunkApi.rejectWithValue(err.response.data)
+      }
+  
+    }
+  );
+  export const getAllCheckOutOrders = createAsyncThunk(
+    'checkoutorders/fetchcheckoutorders',
+    async (_, thunkApi) => {
+      try {
+          
+        const response = await axios.get('/order/get-all-checkout-orders')
         const data = response.data
         return data
   
@@ -50,6 +67,13 @@ export const fetchUserOrders = createAsyncThunk(
           state.status = 'loading'
         })
         .addCase(fetchUserOrders.fulfilled, (state, action) => {
+          state.status = 'idle';
+          state.orders = action.payload;
+        })
+        .addCase(getAllCheckOutOrders.pending, (state) => {
+          state.status = 'loading'
+        })
+        .addCase(getAllCheckOutOrders.fulfilled, (state, action) => {
           state.status = 'idle';
           state.orders = action.payload;
         })

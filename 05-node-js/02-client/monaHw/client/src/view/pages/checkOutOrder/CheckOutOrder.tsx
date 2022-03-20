@@ -37,7 +37,7 @@ function handlepick()
 }
  function handleChekOut()
  {
-  axios.post('/order/checkOut',{order:orders.orders,userId:user._id,date:new Date(),paymentMethod:paymentMethod,orderCollection:orderCollection})
+  axios.post('/order/checkOut',{order:orders.orders,userId:user._id,date:new Date(),paymentMethod:paymentMethod,orderCollection:orderCollection,orderStatus:'pending'})
   .then((res) => console.log(res) 
   )
   .catch((err) => console.error(err));

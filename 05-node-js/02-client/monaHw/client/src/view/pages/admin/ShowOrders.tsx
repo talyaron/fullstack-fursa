@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { CircularProgress } from "@mui/material";
+import { CircularProgress, MenuItem, TextField } from "@mui/material";
 import { useEffect ,useState} from "react";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks"
 import { getUser } from "../../../features/user/userReducer"
-import { fetchUserOrders, userOrders } from "../../../features/userOrders/UserOrders"
+import { fetchUserOrders, getAllCheckOutOrders, userOrders } from "../../../features/userOrders/UserOrders"
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -20,8 +20,23 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Navbar from '../../components/navbar/Navbar';
 import {Link} from 'react-router-dom'
-import './UserOrders.scss'
-
+import axios from 'axios'
+const orderStatus = [
+    {
+      value: 'pending',
+      label: 'pending',
+    },
+  
+    {
+      value: 'ready',
+      label: 'ready',
+    },
+    {
+        value: 'order on the way',
+        label: 'order on the way',
+      }
+  
+  ];
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: theme.palette.common.black,
@@ -42,11 +57,10 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     },
   }));
   
-export function UserOrders(){
-    const user=useAppSelector(getUser)
+export function ShowOrders(){
     const dispatch=useAppDispatch();
     useEffect(()=>{
-        dispatch(fetchUserOrders())
+        dispatch(getAllCheckOutOrders())
 
     },[])    
     const orders=useAppSelector(userOrders)
@@ -54,7 +68,14 @@ export function UserOrders(){
     function Order(props: { order:any}) {
         const { order } = props;
         const [open, setOpen] = useState(false);
-      
+        const [editStatus,setStatus]=useState(order.orderStatus)
+
+        async function handleChange (event: React.ChangeEvent<HTMLInputElement>){
+            const temp=event.target.value;
+             setStatus(event.target.value);
+            const {data} = await axios.patch('/order/update-checkout-order',{order,temp});
+            console.log(data)
+          };
         return (
           <React.Fragment>
             <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
@@ -73,7 +94,12 @@ export function UserOrders(){
               <TableCell align="center">{order.date}</TableCell>
               <TableCell align="center">{order.paymentMethod}</TableCell>
               <TableCell align="center">{order.orderCollection}</TableCell>
-              <TableCell align="center">{order.orderStatus}</TableCell>
+              
+              <TextField select name="order status" required placeholder="order status" style={{ backgroundColor: 'white', margin: '5px', borderRadius: '8px', width: '90%' }} value={editStatus} onChange={handleChange}> {orderStatus.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}</TextField>
 
             </TableRow>
             <TableRow>
@@ -124,16 +150,7 @@ export function UserOrders(){
 
 
         <div className='orderHistory'>
-             <header className='orderHistory_header'>
-     <img className="orderHistory_header_logo" src="https://scontent.fhfa2-2.fna.fbcdn.net/v/t1.6435-9/191373428_5543723205668752_6758159996168278797_n.png?_nc_cat=100&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=vD2Ck1UqS_MAX-yTblw&_nc_ht=scontent.fhfa2-2.fna&oh=00_AT-kafBKJB3bLHogSgPEVUQQtAHgClIHTT0FGy07h8nZTA&oe=622CF120" alt="" />
-    <Navbar></Navbar>
-     <h1 >Store</h1>
-     <div className="orderHistory_header_cart">
-       <Link to='/cart'>
-     <img src="https://cdn4.iconfinder.com/data/icons/shopping-21/64/shopping-06-512.png" alt="" />
-       </Link>
-        </div>
-        </header> 
+             
         <div className="orderHistory_body">
  {orders.status!=='loading' ?
              

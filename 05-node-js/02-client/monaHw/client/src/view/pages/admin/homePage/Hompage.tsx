@@ -4,46 +4,44 @@ import Button from '@mui/material/Button';
 import { Alert,Backdrop,Box, CircularProgress } from '@mui/material';
 import { useState } from 'react';
 import { ShowRaw } from '../ShowRaw';
-import { useAppDispatch } from '../../../../app/hooks';
-import { getRawAsync } from '../../../../features/raw/Raw';
+import { ShowOrders } from '../ShowOrders';
   function HomePage()
-{   const dispatch=useAppDispatch();
+{
     const [show,setShow]=useState('none')
     const [open, setOpen] = useState(false);
+    const [orderOpen, setOrderOpen] = useState(false);
+    
     const handleClose = () => {
       setOpen(false);
     };
     const handleToggle = () => {
       setOpen(!open);
     };
+    const handleOrderClose = () => {
+      setOrderOpen(false);
+    };
+    const handleOrderToggle = () => {
+      setOrderOpen(!orderOpen);
+    };
     function handleSubmit(ev:any)
     {
         ev.preventDefault();
         const form = ev.target;
     // axios.post('http://localhost:3004/woods',{"name":form[0].value, "imgurl":form[1].value,"pricePerMeter":form[2].value}).then(({data})=>console.log(data));
-    axios.post('/raw/add-Raw-Material',{name:form[0].value,imageUrl:form[1].value,pricePerMeter:form[2].value})
+    axios.post('/add-Raw-Material',{name:form[0].value,imageUrl:form[1].value,pricePerMeter:form[2].value})
     .then(data => {
-      dispatch(getRawAsync())
         console.log(data);
-        setShow('block')
       }).catch(err => {
         console.error(err);
       })
-      // setShow('block')
+      setShow('block')
 
 }
     function handleProductSubmit(ev:any)
     {
         ev.preventDefault();
         const form = ev.target;
-      // axios.post('http://localhost:3004/products',{"name":form[0].value, "imgurl":form[1].value}).then(({data})=>console.log(data));
-        axios.post('/product/add-product',{name:form[0].value, imgurl:form[1].value})
-        .then(data => {
-          // dispatch(getRawAsync())
-            console.log(data);
-          }).catch(err => {
-            console.error(err);
-          })
+      axios.post('http://localhost:3004/products',{"name":form[0].value, "imgurl":form[1].value}).then(({data})=>console.log(data));
     }
     function handleDelivery(){
 
@@ -70,7 +68,6 @@ import { getRawAsync } from '../../../../features/raw/Raw';
                 </div>
                 <Backdrop
         sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-        
         open={open}
         // onClick={handleClose}
       >
@@ -89,9 +86,18 @@ import { getRawAsync } from '../../../../features/raw/Raw';
                 </div>
                 <div className="homepage_body_delivery">
                     <h1>Manage Orders</h1>
-                <form onSubmit={handleDelivery}>
-                      
-                        </form>
+                    
+                    <Button variant="contained" style={{backgroundColor: 'rgb(47, 143, 90)'}}size="medium" onClick={handleToggle}>show orders</Button>
+                <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+       open={open}
+       
+        // onClick={handleClose}
+      >
+        {/* <CircularProgress color="inherit" /> */}
+        <button onClick={handleClose}>close</button>
+        <ShowOrders></ShowOrders>
+      </Backdrop>
                 </div>
               
             </div>

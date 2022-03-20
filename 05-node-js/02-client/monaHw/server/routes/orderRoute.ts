@@ -28,11 +28,11 @@ router.post('/add-order',async(req,res)=>{
 //add-door-order
 router.post('/add-door-order',async(req,res)=>{
   try{
-    const {woodName,woodlength,amount,userId,thick,width,details}=req.body;
+    const {woodName,woodlength,amount,userId,thick,width,details,color}=req.body;
     // console.log(woodName,woodlength,amount,userId,thick,width)
-    if(!woodName||!woodlength||!amount||!thick||!width||!userId||!details) throw 'invalid fields'
+    if(!woodName||!woodlength||!amount||!thick||!width||!userId||!details||!color) throw 'invalid fields'
     const newOrder=new Order({
-      woodName,woodlength,width,thick,amount,userId,details
+      woodName,woodlength,width,thick,color,amount,userId,details
     });
     
     await newOrder.save().then((res)=>{
@@ -46,11 +46,11 @@ router.post('/add-door-order',async(req,res)=>{
 //add-closet-order
 router.post('/add-product-order',async(req,res)=>{
   try{
-    const {woodName,woodlength,amount,userId,thick,width,doorType,details}=req.body;
+    const {woodName,woodlength,amount,userId,thick,width,doorType,details,color}=req.body;
     // console.log(woodName,woodlength,amount,userId,thick,width)
-    if(!woodName||!woodlength||!amount||!thick||!width||!userId||!doorType||!details ) throw 'invalid fields'
+    if(!woodName||!woodlength||!amount||!thick||!width||!userId||!doorType||!details||!color ) throw 'invalid fields'
     const newOrder=new Order({
-      woodName,woodlength,width,thick,amount,userId,details
+      woodName,woodlength,width,thick,color,amount,userId,details
     });
     
     
@@ -148,13 +148,12 @@ router.post('/add-product-order',async(req,res)=>{
 
 router.post('/checkOut',async(req,res)=>{
     try{
-      const {order,date,userId,paymentMethod,orderCollection}=req.body;
-
-      if(!order||!date||!userId||!paymentMethod||!orderCollection) throw 'invalid fields'
+      const {order,date,userId,paymentMethod,orderCollection,orderStatus}=req.body;
+      if(!order||!date||!userId||!paymentMethod||!orderCollection||!orderStatus) throw 'invalid fields'
       
 
       const newOrder=new userOrder({
-        order,date,userId,paymentMethod,orderCollection
+        order,date,userId,paymentMethod,orderCollection,orderStatus
       });
       
       
@@ -181,5 +180,32 @@ router.post('/checkOut',async(req,res)=>{
     }catch(error:any){
       res.status(400).send({error:error.message})
     }
+  })
+
+  router.get('/get-all-checkout-orders',async(req,res)=>{
+    try{
+      
+    const userCheckOutOrders=await userOrder.find({})
+    res.status(200).send(userCheckOutOrders)
+        
+    }catch(error:any){
+      res.status(400).send({error:error.message})
+    }
+  })
+  router.patch('/update-checkout-order',async(req,res)=>{
+    try{
+    const {order,temp}=req.body;
+    console.log(req.body)
+    const filter={_id:order._id};
+    const update={orderStatus:temp};
+    console.log(update)
+    console.log(filter)
+    let doc = await userOrder.findOneAndUpdate(filter, update);
+    res.send({ ok: true, doc });
+    }catch(error){
+      console.info(error);
+      res.send({error});
+    }
+  
   })
   module.exports=router;
