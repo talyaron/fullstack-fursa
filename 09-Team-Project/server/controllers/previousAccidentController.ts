@@ -7,7 +7,7 @@ exports.getPreviousAccidents = async (req, res) => {
     try {
         const {email} = req.body;
         // const userid=Users.userID;
-        const userEmail="m.zmiro@hotmail.com";
+        // const userEmail="m.zmiro@hotmail.com";
         const filter ={user:{email:email}}
         const _acc = await accidents.find({filter});
      //   await accident.find({_id:id});

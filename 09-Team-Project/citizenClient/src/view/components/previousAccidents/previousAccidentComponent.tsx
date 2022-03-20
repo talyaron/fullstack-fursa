@@ -15,13 +15,13 @@ function preAccidentComp(props: any) {
     return (
         <div className='AccidentCompContainer' onClick={handleComp}>
               
-            <div className="type">{type}</div>
+            <div className="type">type : {type}</div>
             {/* <div className="accidentDetails"> */}
                 {/* <div className="targetName">{details.name}</div>
                 <div className="accidentDetails_details">{details.content}</div> */}
-                 <div className="date">{date}</div> 
+                 <div className="date">date : {date}</div> 
             {/* </div> */}
-            <div className="address">{address}</div>
+            <div className="address">address: {address}</div>
         </div>
     )
 }
