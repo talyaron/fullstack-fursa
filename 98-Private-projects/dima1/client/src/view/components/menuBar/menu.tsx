@@ -13,7 +13,6 @@ import './menu.scss';
 function Bagemenu(props:any) {
 
     const { userName } = props;
-    console.log(userName)
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
 

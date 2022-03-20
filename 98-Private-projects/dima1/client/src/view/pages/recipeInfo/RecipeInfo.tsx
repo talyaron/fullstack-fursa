@@ -19,6 +19,7 @@ import { selectPage, updateName } from '../../../app/reducers/NamePageSlice';
 import { Text, StyleSheet } from 'react-native';
 
 export default function RecipeInfo() {
+    console.log('Hiii')
     const [like, setLike] = useState(0);
     const { userName, recipeId } = useParams();
     const [isTrue, setIsTrue] = useState(false);
@@ -54,7 +55,7 @@ export default function RecipeInfo() {
                     </Link>
                     <div className='box'>
                         <div className="edit">
-                            <Tooltip title='edit recipe'>
+                            <Tooltip title='edit recipe' hidden={!(userName === recipe_.userName)}>
                                 <Link to={`/${userName}/${recipeId}/EditRecipe`}>
                                     <AutoAwesomeIcon sx={{
                                         color: '#b5739d', fontSize: 35

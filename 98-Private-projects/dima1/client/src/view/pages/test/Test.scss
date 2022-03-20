@@ -1,0 +1,32 @@
+.wrapper {
+    .content {
+        position: relative;
+        overflow: hidden;
+        margin: auto;
+        width: 100vw;
+
+        .image {
+            opacity: 40%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .content1 {
+            position: relative;
+
+            button{
+                background-color: aqua;
+            }
+        }
+
+
+    }
+
+    .slider{
+        width: 20px;
+        height:20px;
+    }
+}

@@ -21,7 +21,7 @@ export default function SideBar(props:any) {
 
   function handleSelectType(type:string){
     dispatch(recipesByTypeAsync(type));
-    navigate(`/${userName}/${type}`)
+    navigate(`/${userName}/${type}/RecipeTypes`)
   }
 
   return (

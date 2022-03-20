@@ -88,7 +88,7 @@ export default function MainScreen() {
                     <div className='content1'>
                         <Swiper
                             slidesPerView={3}
-                            spaceBetween={30}
+                            spaceBetween={20}
                             slidesPerGroup={1}
                             loop={true}
                             loopFillGroupWithBlank={true}

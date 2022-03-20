@@ -4,8 +4,8 @@ import Bagemenu from '../../components/menuBar/menu';
 import background from '../../images/background.jpg';
 import tools from '../../images/tools.jpg';
 import './RecipeTypes.scss';
-import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 export default function RecipeTypes() {
 
@@ -34,40 +34,30 @@ export default function RecipeTypes() {
                     <br />
                     <br />
                     <div className='recipes'>
-                        {recipesByType_.map((recipe: any, index) => {
-                            if (index === 0) {
+                        <div className='grid1'>
+                            {recipesByType_.slice(0, 3).map((recipe: any, index) => {
                                 return (
-                                    <div key={index} className='item1'>
-                                        <img src={recipe.image} alt="" />
+                                    <div key={index} className={`item${index}`}>
+                                        <Link to={`/${userName}/${recipe._id}`}>
+                                            <img src={recipe.image} alt="" />
+                                        </Link>
                                         <p>{recipe.name}</p>
                                     </div>
                                 )
-                            } 
-                            else if (index === 1) {
+                            })}
+                        </div>
+                        <div className='grid2'>
+                            {recipesByType_.slice(4).map((recipe: any, index) => {
                                 return (
-                                    <div key={index} className='item2'>
-                                        <img src={recipe.image} alt="" />
+                                    <div key={index} className='item'>
+                                        <Link to={`/${userName}/${recipe._id}`}>
+                                            <img src={recipe.image} alt="" />
+                                        </Link>
                                         <p>{recipe.name}</p>
                                     </div>
                                 )
-                            }
-                            // else if (index === 2) {
-                            //     return (
-                            //         <div key={index} className='item3'>
-                            //             <img src={recipe.image} alt="" />
-                            //             <p>{recipe.name}</p>
-                            //         </div>
-                            //     )
-                            // }
-                            // else {
-                            //     return (
-                            //         <div key={index} className='item4'>
-                            //             <img src={recipe.image} alt="" />
-                            //             <p>{recipe.name}</p>
-                            //         </div>
-                            //     )
-                            // }
-                        })}
+                            })}
+                        </div>
                     </div>
                 </div>
             </div>
