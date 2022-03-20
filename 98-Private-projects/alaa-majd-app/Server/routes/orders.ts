@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const Product = require('../Model/products');
+const Order = require('../Model/orders');
 
 
-//GET ALL PRODUCTS
+//GET ALL Orders
 router.get('/', async(req,res)=>{
-    console.log('getAllProducts');
+    console.log('getAllOrders');
     try {
-        const _products = await Product.find({});
-        res.send({ ok: true, products: _products });
+        const _orders = await Order.find({});
+        res.send({ ok: true, orders: _orders });
     } catch (error: any) {
         res.send({ ok: false, error: error.message });
     }
@@ -27,11 +27,11 @@ router.post('/',(req,res)=>{
 
     try{
     
-        const product = new Product({
+        const order = new Order({
             id:id,name:name,price:price,catagory:catagory,quantity:quantity,amount:amount,description:description,Url:Url
         });
-        product.save()
-        res.send(product);
+        order.save()
+        res.send(order);
         } catch(error){
          res.send({ error });
         }
@@ -39,14 +39,14 @@ router.post('/',(req,res)=>{
       });
 
 
-      //DELETE PRODUCT BY ID
-      router.delete('/:productId', async(req,res)=>{
-        try {
-            const removedProduct= await Product.remove({_id: req.params.productId});
-            res.json(removedProduct);
+    //   //DELETE PRODUCT BY ID
+    //   router.delete('/:productId', async(req,res)=>{
+    //     try {
+    //         const removedProduct= await Product.remove({_id: req.params.productId});
+    //         res.json(removedProduct);
            
-        } catch (error: any) {
-            res.send({ ok: false, error: error.message });
-        }
-    });
+    //     } catch (error: any) {
+    //         res.send({ ok: false, error: error.message });
+    //     }
+    // });
 module.exports = router;
