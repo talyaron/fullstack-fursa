@@ -93,7 +93,7 @@ function App() {
         <input type="text" name="name" placeholder="user name" />
 
         <input type="password" name="password" placeholder="password" />
-        <button type="submit">Login</button>
+        <button type="submit">Login2</button>
       </form>
       <button onClick={handleGetPrivateInfo}>GET INFO</button>
       {kitties.map((cat: any, i) => {

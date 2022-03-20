@@ -50,11 +50,8 @@ function Login() {
 
 
             </div>
-
         </div>
-
-
-    )
+    );
 }
 
 
