@@ -48,7 +48,7 @@ function App(){
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LogIn />} />
-        <Route path="/:userName/:type" element={<RecipeTypes />} />
+        <Route path="/:userName/:type/RecipeTypes" element={<RecipeTypes />} />
         <Route path="/:userName" element={<User />} />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/ResetPassword" element={<ResetPassword />} />
