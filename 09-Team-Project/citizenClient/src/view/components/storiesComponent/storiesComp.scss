@@ -1,0 +1,25 @@
+.storiesCompContainer {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    width: 80%;
+    padding: 1rem;
+    background-color: rgba(113, 168, 184, 0.301);
+
+    .vicName {
+        font-weight: 700;
+        font-size: 1.5rem;
+    }
+
+    .vicDesc {
+        max-width: 95%;
+    }
+
+
+    .read-or-hide {
+        color: rgb(70, 70, 172);
+        cursor: pointer;
+    }
+}

@@ -1,7 +1,10 @@
 {
   "dependencies": {
+    "axios": "^0.26.0",
+    "cloudinary": "^1.28.1",
+    "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.1",
-    "sass": "^1.49.7"
+    "sass": "^1.49.9"
   },
   "devDependencies": {
     "@types/react": "^17.0.39"

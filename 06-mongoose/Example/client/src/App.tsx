@@ -71,6 +71,23 @@ function App() {
     setOwnerCity("");
   };
 
+  const handleRegister = async (ev:any)=>{
+    ev.preventDefault();
+
+
+    const name = ev.target.elements.name.value;
+    const password = ev.target.elements.password.value;
+
+    const results = await axios.post('/users/register',{name, password})
+    console.log(results.data)
+  }
+
+  const handleGetPrivateInfo = async()=>{
+    const {data} = await axios.get('/users/privateInfo');
+
+    console.log(data)
+  }
+
   return (
     <div className="App">
       {ownerId.length === 0 ? (
@@ -91,6 +108,13 @@ function App() {
         <input type="text" name="city" placeholder="city" />
         <button type="submit">ADD</button>
       </form>
+      <hr />
+      <form onSubmit={handleRegister}>
+        <input type="text" name="name" placeholder="user name" />
+        <input type="text" name="password" placeholder="password" />
+        <button type="submit">Register</button>
+      </form>
+      <button onClick={handleGetPrivateInfo}>GET INFO</button>
       {kitties.map((cat: any, i) => {
         return <CatRow key={cat._id} cat={cat} />;
       })}

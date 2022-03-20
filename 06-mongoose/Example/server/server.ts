@@ -1,17 +1,31 @@
-import Cats from './model/schema/catsModel'
+import { loginStatus } from './controlers/login';
+import Cats from './model/schema/cats'
 import Owners from './model/schema/ownerModel';
-
+const cookieParser = require('cookie-parser'); 
 const express = require("express");
 const app = express();
-const port = 4000;
+const port = 4001;
 require("dotenv").config();
+
+//routes for data
 
 //static files
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.static("client/build"));
 
+//data
 
-//mongoose -- DB
+app.get("/get-all-users", (req, res) => {
+  const users = [
+    { id: 1, name: "John" },
+    { id: 2, name: "Mary" },
+  ];
+
+  res.send(users);
+});
+
+//mongoose
 const mongoose = require("mongoose");
 
 main().catch((err) => console.log(err));
@@ -30,13 +44,82 @@ db.once("open", () => {
   console.log("connected to DB!");
 });
 
-//--routes
 
-import catsRoutes from './routes/catsRoutes';
-app.use('/cats', catsRoutes);
+
+async function getKitens(): Promise<any> {
+  try {
+    const nameRegEx = new RegExp("hu", "i");
+    const kittens = await Cats.find({});
+    console.log(kittens);
+    return kittens;
+  } catch (err: any) {
+    console.error(err);
+    return false;
+  }
+}
+
+async function aggragateCatsLives() {
+  const filter = { extraLife: true };
+  let docs = await Cats.aggregate([
+    { $match: filter },
+    {
+      $group: {
+        _id: "$extraLife",
+        numberOfCats: { $sum: 1 },
+        count: { $sum: "$lifes" },
+        avg: { $avg: "$lifes" },
+      },
+    },
+  ]);
+  console.log("----");
+  console.log(docs);
+}
+
+aggragateCatsLives();
+
+app.get("/get-all-kitens", async (req, res) => {
+  const kittens = await getKitens();
+  res.send(kittens);
+});
+
+//update (PATCH)
+app.patch("/update-cat", async (req, res) => {
+  try {
+    const { name, city, id } = req.body;
+
+    const filter = { _id: id };
+    const update = { name: name, address: { city: city } };
+    //update the DB
+    let doc = await Cats.findOneAndUpdate(filter, update);
+
+    res.send({ ok: true, doc });
+  } catch (err) {
+    console.error(err);
+    res.status(400).send({ error: err.message });
+  }
+});
+
+app.post("/delete-cat", async (req, res) => {
+  try {
+    const { id } = req.body;
+
+    const filter = { _id: id };
+
+    //delet on  DB
+    let doc = await Cats.deleteOne(filter);
+
+    res.send({ ok: true, doc });
+  } catch (err) {
+    console.error(err);
+    res.status(400).send({ error: err.message });
+  }
+});
 
 const ownerRoute = require('./routes/ownersRoute')
 app.use('/owenrs', ownerRoute);
+
+const usersRoute = require('./routes/usersRoute');
+app.use('/users',usersRoute)
 
 //query
 

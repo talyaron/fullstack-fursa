@@ -1,0 +1,9 @@
+.maindiv {
+  border: 20px;
+  background-color: beige;
+  border-radius: 10px;
+  margin: auto;
+  padding: 10px;
+  width: 30vw;
+  height: 20vh;
+}
