@@ -195,11 +195,9 @@ router.post('/checkOut',async(req,res)=>{
   router.patch('/update-checkout-order',async(req,res)=>{
     try{
     const {order,temp}=req.body;
-    console.log(req.body)
     const filter={_id:order._id};
     const update={orderStatus:temp};
-    console.log(update)
-    console.log(filter)
+   
     let doc = await userOrder.findOneAndUpdate(filter, update);
     res.send({ ok: true, doc });
     }catch(error){
