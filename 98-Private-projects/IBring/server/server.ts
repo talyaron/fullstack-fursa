@@ -47,6 +47,20 @@ app.post('/sqlTest', async (req, res) => {
   }
 })
 
+app.post('/sqlTest_LessThan', async (req, res) => {
+  const { age } = req.body;
+  console.log("sqlTest_LessThan");
+  try {
+    var sql = `SELECT * FROM fishes.fish WHERE fish_age < ${age}`;
+    con.query(sql, function (err, result) {
+      if (err) throw err;
+      res.send({ ok: true, results: result });
+    });
+  } catch (error) {
+    res.send({ ok: false });
+  }
+})
+
 mongoose.connect(`mongodb+srv://${process.env.MONGODB_EMAIL}:${process.env.MONGODB_PASS}@cluster0.sqzq0.mongodb.net/test`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
