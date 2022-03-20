@@ -1,23 +1,49 @@
-declare function require(name: string);
+import Resteraunts from './model/schema/restaurantsModel'
+import Users from "./model/schema/userModel";
+import Favorites from './model/schema/favoritesModel'
+import Reservations from './model/schema/reservationsmModel';
 
 const express = require('express');
+const cookieParser = require('cookie-parser')
 const app = express();
-const port = 4000;
+require('dotenv').config()
+const port = 4001;
 
 app.use(express.static('client/build'));
+app.use(cookieParser())
+app.use(express.json());
 
-//gets
+// mongodb
+const mongoose = require('mongoose');
 
-app.get('/get-famous-restaurants', (req, res) => {
-    const Data = [{ id: 1, name: 'shila-sharon cohen Kitchen & bar', image: 'https://media-cdn.tripadvisor.com/media/photo-s/03/7a/47/6d/shila.jpg', booking: 27 },
-    { id: 2, name: 'Cafe Popular', image: 'https://cdn.archilovers.com/projects/c_383_f83bb625-ff28-414b-a700-8e4bebde941b.jpg', booking: 22 },
-    { id: 3, name: 'Taizu', image: 'https://bestrest.rest/wp-content/uploads/2019/05/TAIZU_017.jpg', booking: 20 },
-    { id: 5, name: 'Hakosem', image: 'https://cdn.istores.co.il/image/upload/if_ar_gt_2:1/c_fill,h_662,w_555/c_fill,h_662,w_555/if_else/c_fill,q_100,w_555/if_end/dpr_2/v1614106887/clients/109701/5e9b9717137eea988b88592d0861cc3a64d59fcd.jpg', booking: 15 }, { id: 4, name: 'La Regence', image: 'https://images.jpost.com/image/upload/f_auto,fl_lossy/t_JM_ArticleMainImageFaceDetect/399693', booking: 5 }]
-    console.log(Data)
+main().catch(err => console.log(err));
+const db = mongoose.connection;
 
-    res.send(Data)
-})
+async function main() {
+    const password = process.env.MONGODB_PASSWORD
+    await mongoose.connect(`mongodb+srv://zmero123:${password}@cluster0.b4hx9.mongodb.net/fursaProject`)
+}
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", () => {
+    console.log("connected to DB!");
+});
 
+//routes
+
+const restaurantsRoute = require('./routes/restaurantRoute')
+app.use('/restaurants', restaurantsRoute);
+
+const userRoute = require('./routes/userRoute')
+app.use('/users', userRoute);
+
+const favoriteRoute = require('./routes/favoriteRoute')
+app.use('/favorites', favoriteRoute);
+
+const reservationRoute = require('./routes/reservationsRoute')
+app.use('/reservations', reservationRoute);
+
+
+//listen
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
