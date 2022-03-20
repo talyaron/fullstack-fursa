@@ -4,8 +4,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 50vh;
+    width: 50vw;
+    margin: 3rem;
     img {
-       // position: relative;
+        position: relative;
         width:40vh;
         height:60vh;
         border-radius: 1rem;
@@ -15,5 +18,15 @@
         bottom: 0;
         color: white;
         text-align: center;
+    }
+
+    input{
+        position: absolute;
+        bottom: 0;
+    }
+    h1 {
+        position:absolute;
+        top: 0;
+        color: black;
     }
 }

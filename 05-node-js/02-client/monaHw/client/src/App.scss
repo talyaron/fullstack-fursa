@@ -1,0 +1,87 @@
+$mainColor:rgb(185, 109, 9);
+$borderRadius:10px;
+$cardwidth:20vw;
+$cardlength:20%;
+
+
+
+@import 'view/components/card/Card.scss';
+@import 'view/components/wood/Wood.scss';
+@import 'view/components/products/Products.scss';
+
+.App {
+  text-align: center;
+  background-color: rgba(73, 48, 24, 1);
+  width: 100%;
+
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+  
+background: url(woodlogo.png);
+
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+    
+  }
+}
+.App-header
+{  
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  height: 20%;
+  background-image: url(wood-bg.jpg);
+  
+  img{
+    height:10%;
+    width: 10%;
+  }
+  .logo{
+    width: 10%;
+  }
+}
+.App-body {
+ 
+ 
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: rgb(209, 189, 9);
+  img{
+    width: 50%;
+  }
+}
+.searching{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.App-link {
+  color: #61dafb;
+}
+.button{
+  width: 100%;
+  
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
