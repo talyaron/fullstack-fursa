@@ -95,7 +95,7 @@ function FriendsInGroup() {
                                 <div key={index} className="contact">
                                     <div className="img_name">
                                         <img src={contactIcon} alt="" />
-                                        <label>{friend.email}</label>
+                                        <label className='responsiveText'>{friend.email}</label>
                                     </div>
                                 </div>
                             );

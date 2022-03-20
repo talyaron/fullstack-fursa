@@ -5,7 +5,7 @@ import settings from '../../logoAndPhotos/settings.jpg';
 import { useNavigate } from 'react-router-dom';
 import HomeListComponent from '../../components/HomeListComponent/HomeListComponent';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { listAsync } from '../../../features/listSelector/listReducer';
+import { listPreviousAsync, listUpComingAsync } from '../../../features/listSelector/listReducer';
 import Sidebar from '../../components/Sidebar/Sidebar';
 
 function Home() {
@@ -16,7 +16,8 @@ function Home() {
 
     useEffect(() => {
         if (userLogin.status === "logged") {
-            dispatch(listAsync(userLogin.value.email));
+            dispatch(listUpComingAsync(userLogin.value.email));
+            dispatch(listPreviousAsync(userLogin.value.email));
         }
         else {
             nav('/login')
@@ -36,7 +37,7 @@ function Home() {
     return (
         <>
             <div className="addListButton">
-                <button onClick={()=> {nav('/ListForm')}}>+</button>
+                <button onClick={() => { nav('/ListForm') }}>+</button>
             </div>
             <div className="mainTemplate">
                 <div className="mainHeader withHome HomePage">
@@ -58,34 +59,23 @@ function Home() {
                             <label id='header'>Your upcoming gathering</label>
                             {allLists.status === 'loading' ? <>Loading</> :
 
-                                allLists.lists.map((elem: any, index) => {
+                                allLists.lists.upComing.map((elem: any, index) => {
                                     return (
                                         <HomeListComponent key={index} id={elem._id} findList={elem} upcoming info={
                                             { name: elem.meetingDetails.groupName, date: elem.meetingDetails.date, time: elem.meetingDetails.time, place: elem.meetingDetails.place, bringList: elem.bringItems }} />
                                     );
                                 })
                             }
-                            {/* 
-                        {upcomingList.map((elem, index) => {
-                            const findList = allListFromDB.find(dbList => {
-                                if (elem.id == dbList._id) {
-                                    return dbList;
-                                }
-                            })
-                            return (
-                                <HomeListComponent key={index} id={elem.id} findList={findList} upcoming info={
-                                    { name: elem.name, date: elem.date, time: elem.time, place: elem.place, bringList: elem.bringList }} />
-                            );
-                        })} */}
+
 
                         </div>
 
-                        {/*<div className="previous">
+                        <div className="previous">
                             <label id='header'>Your previous gathering</label>
                             {allLists.status === 'loading' ? <>Loading</> :
 
 
-                                allLists.lists.map((elem: any, index) => {
+                                allLists.lists.previous.map((elem: any, index) => {
                                     return (
                                         <HomeListComponent key={index} id={elem._id} findList={elem} info={
                                             { name: elem.meetingDetails.groupName, date: elem.meetingDetails.date, time: elem.meetingDetails.time, place: elem.meetingDetails.place, bringList: elem.bringItems }} />
@@ -93,7 +83,7 @@ function Home() {
                                 })
 
                             }
-                             {previousList.map((elem, index) => {
+                            {/* {previousList.map((elem, index) => {
                             const findList = allListFromDB.find(dbList => {
                                 if (elem.id == dbList._id) {
                                     return dbList;
@@ -103,9 +93,9 @@ function Home() {
                                 <HomeListComponent key={index} id={elem.id} findList={findList} info={
                                     { name: elem.name, date: elem.date, time: elem.time, place: elem.place, bringList: elem.bringList }} />
                             );
-                        })} 
+                        })}  */}
 
-                        </div>*/}
+                        </div>
                     </div>
                 </div>
             </div>

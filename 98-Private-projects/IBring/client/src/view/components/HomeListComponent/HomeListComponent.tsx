@@ -12,8 +12,6 @@ function HomeListComponent(props: any) {
     const { name, date, time, place, bringList } = props.info;
     const { id, upcoming, findList } = props;
 
-    console.log(findList)
-
     function handleClick(ev: any) {
         ev.preventDefault();
         if (findList) {

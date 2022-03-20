@@ -75,7 +75,10 @@ function Contact() {
         ev.preventDefault();
         console.log("inside form!");
         const found = selectedFriends.find(friend => {
-            if (Object.is(friend, elem)) {
+            //TODO
+            //Object.is is not gthe answer
+            // if (Object.is(friend, elem)) {
+            if (JSON.stringify(friend) === JSON.stringify(elem)) {
                 return friend;
             }
         })

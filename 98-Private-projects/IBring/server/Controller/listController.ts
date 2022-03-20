@@ -9,9 +9,10 @@ exports.addNewMeeting = async (req, res) => {
     const { email, allUsers, bringItems, details } = req.body;
 
     try {
-        const { userInfo } = req.cookies;
-        const decoded = jwt.decode(userInfo, process.env.JWT_SECRET);
-        const _user = await user.findOne({ _id: decoded.value.id });
+        // const { userInfo } = req.cookies;
+        // const decoded = jwt.decode(userInfo, process.env.JWT_SECRET);
+        // const _user = await user.findOne({ _id: decoded.value.id });
+        const _user = await user.findOne({ _id: req.userID });
         if (!_user) {
             res.send({ ok: false, message: "user doesn't exists!" });
         } else {
@@ -164,5 +165,67 @@ exports.testImageInsert = async (req, res) => {
         res.status(200).send(newListUpdate);
     } catch (error) {
         res.status(404).send({ message: error.message });
+    }
+}
+
+
+exports.getListByUserUpComing = async (req, res) => {
+    console.log("getListByUserUpComing!");
+    const { email } = req.body;
+
+    try {
+        // const { userInfo } = req.cookies;
+        // const decoded = jwt.decode(userInfo, process.env.JWT_SECRET);
+        // const _user = await user.findOne({ _id: req.userID });
+        const _user = await user.findOne({ email: email });
+        if (!_user) {
+            res.send({ ok: false, message: "user doesn't exists!" });
+        } else {
+            const newDate = new Date();
+            const foundLists = await list.find({
+                $and: [{
+                    $or: [
+                        { "meetingAdmin.email": email },
+                        { whoIsThere: { $elemMatch: { email: email } } }
+                    ], "meetingDetails.date": {
+                        $gte: newDate
+                    }
+                }]
+            })
+            res.send({ ok: true, lists: foundLists });
+        }
+    } catch (err) {
+        res.send({ ok: false, message: "Error!" });
+    }
+}
+
+
+exports.getListByUserPrevious = async (req, res) => {
+    console.log("getListByUserUpComing!");
+    const { email } = req.body;
+
+    try {
+        // const { userInfo } = req.cookies;
+        // const decoded = jwt.decode(userInfo, process.env.JWT_SECRET);
+        // const _user = await user.findOne({ _id: req.userID });
+        const _user = await user.findOne({ email: email });
+        if (!_user) {
+            res.send({ ok: false, message: "user doesn't exists!" });
+        } else {
+            const newDate = new Date();
+            const foundLists = await list.find({
+                $and: [{
+                    $or: [
+                        { "meetingAdmin.email": email },
+                        { whoIsThere: { $elemMatch: { email: email } } }
+                    ], "meetingDetails.date": {
+                        $lt: newDate
+                    }
+                }]
+            })
+            res.send({ ok: true, lists: foundLists });
+        }
+    } catch (err) {
+        res.send({ ok: false, message: "Error!" });
     }
 }

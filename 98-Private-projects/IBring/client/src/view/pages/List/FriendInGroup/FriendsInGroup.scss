@@ -1,55 +1,56 @@
-.mainTemplate{
+.mainTemplate {
 
-    .mainHeader{
-        .groupImage{
+    .mainHeader {
+        .groupImage {
             border-radius: 20px;
             margin-top: 30px;
             width: 100%;
             height: 100%;
         }
     }
-    
-    .mainContent{
-        
 
-        .whoIsThere{
+    .mainContent {
+
+
+        .whoIsThere {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             width: 85%;
 
-            h3{
+            h3 {
                 width: 100%;
                 text-align: left;
                 color: black;
             }
         }
-       
+
     }
 }
-@media only screen and (max-width: 700px){
-    .mainTemplate{
-        .withHome{
-           
-            .homeDiv{
-               
-            }
-            .listLogo{
-                
-            }
+
+@media only screen and (max-width: 700px) {
+
+    .mainTemplate {
+        .withHome {
+
+            .homeDiv {}
+
+            .listLogo {}
         }
-        .mainContent{
-            
-           .listHeader{
-               width: 85vw;
-               .marginTitleNormal{
-                  
-               }
-                .listInformation{
-                   
-                }
-           }
+
+        .mainContent {
+            .responsiveText {
+                font-size: 1.2rem;
+            }
+
+            ≈ .listHeader {
+                width: 85vw;
+
+                .marginTitleNormal {}
+
+                .listInformation {}
+            }
         }
     }
 }

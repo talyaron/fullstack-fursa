@@ -29,4 +29,11 @@ router
     .route("/testImageInsert")
     .post(listController.testImageInsert);
 
+router
+    .route("/getListByUserUpComing")
+    .post(listController.getListByUserUpComing);
+
+router
+    .route("/getListByUserPrevious")
+    .post(listController.getListByUserPrevious); 
 module.exports = router;
