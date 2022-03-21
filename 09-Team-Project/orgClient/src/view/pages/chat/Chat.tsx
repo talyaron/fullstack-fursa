@@ -63,7 +63,6 @@ function Chat() {
   return (  
       
       <div className="chatContainer">
-          <div className="messagefrom"> message from :Saleem</div>
        {
          Object.entries(messages).map(function(val:any, index){
           const new_message:messageFormat = val['1']
