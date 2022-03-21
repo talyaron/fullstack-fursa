@@ -26,8 +26,8 @@ function Chat() {
     accidentId: String;
     orgId: String;
   }
-  let userId = "3";
-  let orgId = "2";
+  let userId = "2";  
+  let orgId = "3";  
 
   const [messages, setMessages] = useState({});
 
@@ -69,10 +69,12 @@ function Chat() {
         {Object.entries(messages).map(function (val: any, index) {
           const new_message: messageFormat = val["1"];
           {
-            if (new_message.from == userId)
-              return <div className="you message">{new_message.message}</div>;
-            else
-              return <div className="them message">{new_message.message}</div>;
+            
+            if(new_message.from == userId)
+              return <div className="you message">{new_message.message}</div>
+              else
+              return  <div className="them message">{new_message.message}</div>
+
           }
         })}
          </div>
