@@ -1,3 +1,5 @@
+import Messages from "./model/messageModel";
+
 const express = require('express');
 const app = express();
 const port = 3001;
@@ -69,7 +71,7 @@ io.on("connection", (socket) => {
   if (interval) {
     clearInterval(interval);
   }
-  interval = setInterval(() => getApiAndEmit(socket), 1000);
+  interval = setInterval(() => getApiAndEmit(socket), 10000);
   socket.on("disconnect", () => {
     console.log("Client disconnected");
     clearInterval(interval);
@@ -77,24 +79,34 @@ io.on("connection", (socket) => {
   socket.on('message', (value) => handleMessage(value));
   socket.on("setUserData", userData => {
     //When user creation on server is complete, retrieve and save data to local storage
-    console.log("user id is " + JSON.stringify(userData))
+    console.log("user id is " + userData)
     userId = userData;
   });
   socket.on("setOrgData", userData => {
     //When user creation on server is complete, retrieve and save data to local storage
     console.log("org id is " + userData)
-    orgId = orgId
+    orgId = userData
   });
 });
 
-const getApiAndEmit = socket => {
+const getApiAndEmit = async socket => {
+  const messagesPreview = await Messages.find({from:userId,to:orgId}).sort({date:1})
+  console.log("check",userId,orgId,messagesPreview)
   const response = new Date();
   // Emitting a new message. Will be consumed by the client
-  socket.emit("FromAPI", response);
+  socket.emit("FromAPI", messagesPreview);
 };
 
 
 function handleMessage(value: any) {
+  console.log(value.from)
+
+  const message = new Messages(value)
+  message.save(function (err, Messages) {
+    if (err) return console.error(err);
+    console.log("message saved to users collection.");
+  });
   console.log(value);
+ 
 }
 /* end of saleem */

@@ -9,7 +9,8 @@ import { Emergency } from "./view/pages/emergency/Emergency";
 import SignUp from './view/pages/signUp/signup'
 import Stories from "./view/pages/stories/stories";
 import About from "./view/pages/about/about"
-import Chat from "./view/pages/chat/Chat"
+import ChatPage from "./view/pages/chat/Chat"
+
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/stories" element={<Stories />} />
         <Route path="/info" element={<About />} />
-        <Route path="/chat" element={<Chat />} />
+        <Route path="/chat" element={<ChatPage />} />
         <Route path="/emergency" element={<Emergency />}></Route>
         <Route path="/previousAccidents" element={<PreviousAccident />} />
 
