@@ -5,11 +5,7 @@ import './Chat.scss'
 const ENDPOINT = "http://localhost:3001/";  
   let socket: Socket<DefaultEventsMap, DefaultEventsMap>; 
 
-  interface chatProps{
-    userId:number,
-    orgId:number
-  }
-function Chat(props:chatProps) {
+function Chat() {
 
   /* previose page should pass
   accedent id,orgid
@@ -29,9 +25,8 @@ function Chat(props:chatProps) {
    accidentId:String,
    orgId:String
   }
-
-  let {userId,orgId} = props;  
-
+  let userId = "3";  
+  let orgId = "2";  
 
 
 
@@ -73,7 +68,7 @@ function Chat(props:chatProps) {
           const new_message:messageFormat = val['1']
           {
             
-            if(Number(new_message.from) == userId)
+            if(new_message.from == userId)
               return <div className="you message">{new_message.message}</div>
               else
               return  <div className="them message">{new_message.message}</div>

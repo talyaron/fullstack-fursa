@@ -68,7 +68,7 @@ io.on("connection", (socket) => {
   if (interval) {
     clearInterval(interval);
   }
-  interval = setInterval(() => getApiAndEmit(socket), 10000);
+  interval = setInterval(() => getApiAndEmit(socket), 1000);
   socket.on("disconnect", () => {
     console.log("Client disconnected");
     clearInterval(interval);
@@ -87,7 +87,7 @@ io.on("connection", (socket) => {
 });
 
 const getApiAndEmit = async socket => {
-  const messagesPreview = await Messages.find({from:userId,to:orgId}).sort({date:1})
+  const messagesPreview = await Messages.find( { $or: [{from:userId,to:orgId},{to:userId,from:orgId}]}).sort({date:1})
   console.log("check",userId,orgId,messagesPreview)
   const response = new Date();
   // Emitting a new message. Will be consumed by the client

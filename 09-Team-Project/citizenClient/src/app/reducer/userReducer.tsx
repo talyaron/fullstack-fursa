@@ -97,4 +97,5 @@ export const getID = (state: RootState) => state.user.userInfo._id;
 export const userInfo = (state: RootState) => state.user.userInfo;
 export const getloginState = (state: RootState) => state.user.isLogIn;
 export const getUserEmail = (state: RootState) => state.user.userInfo.email;
+export const getLocation = (state: RootState) => state.user.userInfo.location;
 export default userReducer.reducer;
