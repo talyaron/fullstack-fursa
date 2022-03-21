@@ -13,10 +13,23 @@ export interface User {
     isLogIn: boolean;
     status: 'idle' | 'loading' | 'failed';
 }
+function getId() {
+    const id = localStorage.getItem('anonymousId');
+    if (id) {
+        return id;
+    } else {
+        const uniqueId = Date.now().toString()
+        localStorage.setItem('anonymousId', uniqueId);
+        //console.log(Date.now().toString())
+        return uniqueId
+    }
+
+}
+const cat = localStorage.getItem('myCat');
 
 const initialState: User = {
     userInfo: {
-        _id: "",
+        _id: getId(),
         name: "",
         email: "",
         phone: "",
