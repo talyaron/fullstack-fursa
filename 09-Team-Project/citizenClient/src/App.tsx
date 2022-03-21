@@ -22,7 +22,7 @@ function App() {
         <Route path="/stories" element={<Stories />} />
         <Route path="/info" element={<About />} />
         <Route path="/chat" element={<Chat />} />
-        <Route path="/emergency" element={<Emergency />}></Route>
+        <Route path="/emergency/:accidentName" element={<Emergency />}></Route>
         <Route path="/previousAccidents" element={<PreviousAccident />} />
 
       </Routes>

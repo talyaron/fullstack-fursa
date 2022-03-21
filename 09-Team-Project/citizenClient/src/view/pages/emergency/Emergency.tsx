@@ -14,13 +14,14 @@ export function Emergency() {
   const [images, setImage] = useState<Array<any>>([]);
   const [isAmergency, setIsAmergency] = useState(false);
   const [upload, setUpload] = useState(false);
-  const [imageUrl,setImageUrl]=useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const dispatch = useAppDispatch();
   const user = useAppSelector(userInfo);
   const org = {};
-
+  const { accidentName } = useParams();
+  console.log(accidentName)
   useEffect(() => {
-    dispatch(fetchUser({ email: "m.zmiro@hotmail.com", password: "123" }));
+    //dispatch(fetchUser({ email: "m.zmiro@hotmail.com", password: "123" }));
   }, []);
 
   const accidentType = [
@@ -71,10 +72,10 @@ export function Emergency() {
     formData.append("public_id", "sample_image2");
     formData.append("timestamp", `${new Date().getTime()}`);
 
-    const {data}=await axios.post('https://api.cloudinary.com/v1_1/dqzgolqdg/image/upload',formData);
-        setImageUrl(data.secure_url)
-    
-    
+    const { data } = await axios.post('https://api.cloudinary.com/v1_1/dqzgolqdg/image/upload', formData);
+    setImageUrl(data.secure_url)
+
+
     //fetch media
     axios
       .post("http://localhost:3001/accidents/addNewAccident", {
