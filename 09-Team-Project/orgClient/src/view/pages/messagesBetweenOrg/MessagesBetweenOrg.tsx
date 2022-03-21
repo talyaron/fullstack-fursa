@@ -8,8 +8,11 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { Button } from '@material-ui/core';
 import { useAppSelector, useAppDispatch } from '../../../app/hooks';
 import { addNewSharingAsync, setSharing } from '../../../app/reducer/sharingReducer';
-import './style.scss'
+import './style.scss';
 import axios from 'axios';
+import MenuAppBar from '../../Components/header/appBar';
+import Typography from '@mui/material/Typography';
+import { useNavigate } from 'react-router-dom';
 
 
 function MessagesBetweenOrg() {
@@ -18,12 +21,14 @@ function MessagesBetweenOrg() {
     const [description, setDescription] = useState("");
     const [orgs, setOrgs] = useState([]);
     const [users, setUsers] = useState([]);
+    const nav = useNavigate();
 
 
     const orgArr = ['org1', 'org2', 'org35'];
     const userArr = ['user1', 'user2', 'user3'];
 
     const selectedAccident = useAppSelector(state => state.accident)
+    
     const currentUser = useAppSelector(state => state.orgUser)
 
     //---------------//
@@ -47,7 +52,7 @@ function MessagesBetweenOrg() {
         ev.preventDefault();
         setOrg(ev.target.value);
         axios
-            .post('/messagesBetweemOrg/get-Users-byOrgName',  { orgName:ev.target.value.orgName })
+            .post('/messagesBetweemOrg/get-Users-byOrgName', { orgName: ev.target.value.orgName })
             .then((res) => {
                 const data = res.data;
                 console.log(data);
@@ -73,8 +78,12 @@ function MessagesBetweenOrg() {
     }
 
     return (
-        <div className='container' >
+        <div className='messagesBetweenOrgPageContent' >
+            <MenuAppBar />
             <div className="info">
+                <Typography className="text" variant="h6" align="center">
+                    select organization and user to send them an accident
+                </Typography>
                 <Box className="box" sx={{ width: 200 }}>
                     <FormControl fullWidth>
                         <InputLabel id="demo-simple-select-label">Pick Organization</InputLabel>
@@ -84,7 +93,7 @@ function MessagesBetweenOrg() {
                             value={org}
                             onChange={handleOrgChange}
                         >
-                            {orgs.map((item:any, index) => {
+                            {orgs.map((item: any, index) => {
                                 return (
                                     <MenuItem key={index} value={item}>{item.orgName}</MenuItem>);
                             })}
@@ -101,7 +110,7 @@ function MessagesBetweenOrg() {
                             value={user}
                             onChange={(e) => setUser(e.target.value as string)}
                         >
-                            {users.map((item:any, index) => {
+                            {users.map((item: any, index) => {
                                 return (
                                     <MenuItem key={index} value={item}>{item.name}</MenuItem>);
                             })}

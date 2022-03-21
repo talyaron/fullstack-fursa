@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 
 
 export const AccidentSchema = new mongoose.Schema({
-
+    
     type: String,
     emergency: Boolean || null,
     date: String,

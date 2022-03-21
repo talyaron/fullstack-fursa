@@ -1,11 +1,33 @@
-.info {
-	top: 30%;
-	left: 50%;
-	display:flex;
-	position: absolute;
-	transform: translate(-50%, -50%);
-	justify-content: space-evenly;
-	// border: 1px red solid;
-	width: 90%;
-	align-items: center;
+.messagesBetweenOrgPageContent {
+
+	.info {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-content: center;
+		align-items: center;
+
+		.text{
+			margin-top: 8vh;
+		}
+
+		.box{
+			margin-top: 5vh;
+		}
+
+		.button{
+			margin-top: 10vh;
+		}
+		
+
+		// top: 30%;
+		// left: 50%;
+		// display: flex;
+		// position: absolute;
+		// transform: translate(-50%, -50%);
+		// justify-content: space-evenly;
+		// // border: 1px red solid;
+		// width: 90%;
+		// align-items: center;
+	}
 }
