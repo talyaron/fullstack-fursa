@@ -31,8 +31,8 @@ export const fetchOrgUserAsync = createAsyncThunk(
     'orgUser/fetchOrgUser',
     async (sentEmailAndPassword: any, thunkAPI) => {
         try {
-            //TODO
-            const response = await axios.post('/users/get-user', { email: sentEmailAndPassword.email, password: sentEmailAndPassword.password });
+            console.log(sentEmailAndPassword);
+            const response = await axios.post('/org/login', { email: sentEmailAndPassword.email, password: sentEmailAndPassword.password });
             const data = await response.data;
             if (data.ok) {
                 return response.data;

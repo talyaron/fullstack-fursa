@@ -3,10 +3,11 @@ import MenuAppBar from '../../Components/header/appBar';
 import './profileInfo.scss';
 import PhoneIcon from '@mui/icons-material/Phone';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 function ProfileInfo() {
 
+    const {accidentId} = useParams();
     const info = { name: "Name", city: "some city", phone: " 0527-***-***" }
     const dispatch = useAppDispatch();
     const accident_ = useAppSelector(state => state.accident);
@@ -26,9 +27,9 @@ function ProfileInfo() {
                 </div >
                 <br />
                 <button>Go To Chat</button>
-                {/* <Link to={`/${accident_.value._id}`}> */}
-                <button>Accident Info</button>
-                {/* </Link> */}
+                <Link to={`/${accidentId}`}>
+                    <button>Accident Info</button>
+                </Link>
             </div>
             <PhoneIcon sx={{ paddingLeft: '40px', fontSize: 35 }} />
         </div>

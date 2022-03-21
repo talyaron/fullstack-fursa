@@ -13,6 +13,7 @@ function AccidentsInfo() {
   const accidentId = useParams();
   const dispatch = useAppDispatch();
   const accident_ = useAppSelector(state => state.accident);
+  console.log(accident_)
   const nav = useNavigate();
 
   useEffect(() => {
@@ -31,8 +32,8 @@ function AccidentsInfo() {
           <p>Address : {accident_.value.address}</p>
           <p>Description: {accident_.value.description}</p>
         </div>
-        <Link to={'/profileInfo'}>
-        <button>Profile Info</button>
+        <Link to={`/${accidentId.accidentId}/profileInfo`}>
+          <button>Profile Info</button>
         </Link>
         {/* <Link to={}> */}
         <button>Go To Chat</button>

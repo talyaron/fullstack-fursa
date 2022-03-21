@@ -26,7 +26,7 @@ function Accident() {
         <div className="accidentHeader_search"><img onClick={() => nav('/accidents')} style={{ width: 50 }} src={search} alt="" /></div>
         <div className="accidentHeader_settings"><img onClick={() => nav('/accidents')} style={{ width: 50 }} src={settings} alt="" /></div>
       </div> */}
-      <MenuAppBar />
+      <MenuAppBar type="home" />
       <div className="accidentsContent">
         {accidentsReducer.status === 'loading' ? <div>Loading...</div> :
           accidentsReducer.value.accidents.map((accident, index) => {

@@ -22,19 +22,19 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 export default function ProminentAppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" style={{ backgroundColor: "#889FEF", width: "100%" }}>
         <StyledToolbar>
-          
+
           <Typography
             variant="h5"
             noWrap
             component="div"
             sx={{ flexGrow: 1, alignSelf: 'flex-end' }}
           >
-            PROJECT NAME
+            ORGANIZATION LOG IN
           </Typography>
-          
-          
+
+
         </StyledToolbar>
       </AppBar>
     </Box>
