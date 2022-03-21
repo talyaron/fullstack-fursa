@@ -84,6 +84,7 @@ export const accidentReducer = createSlice({
             .addCase(addAccident.fulfilled, (state, action) => {
                 state.status = 'idle';
                 state.accidentId = action.payload._id;
+                state.accidentArr.push(action.payload.accident);
 
             });
     },

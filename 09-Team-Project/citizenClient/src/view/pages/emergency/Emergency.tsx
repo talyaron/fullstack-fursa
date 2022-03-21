@@ -14,7 +14,7 @@ export function Emergency() {
   const [images, setImage] = useState<Array<any>>([]);
   const [isAmergency, setIsAmergency] = useState(false);
   const [upload, setUpload] = useState(false);
-  const [imageUrl, setImageUrl] = useState("");
+  const [{imageUrl,imagetype}, setImageUrl] = useState({imageUrl:'',imagetype:''});
   const dispatch = useAppDispatch();
   const user = useAppSelector(userInfo);
   const org = {};

@@ -96,6 +96,8 @@ exports.addNewAccident = async (req, res) => {
       org: org,
     });
     _acc.save().then("accident saved!");
+    res.send({accident:_acc})
+
     // const _acc = await Accident.findOne({ });
   } catch (error: any) {
     console.log("error 2");
