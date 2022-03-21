@@ -16,6 +16,34 @@ app.use(cookieParser());
 app.use(express.static("client/build"));
 
 //data
+// app.post('/sqlTest', async (req, res) => {
+//     const { name, age } = req.body;
+//     console.log("sqlTest");
+//     try {
+//         var sql = `INSERT INTO fishes.fish (fishID, fish_name, fish_age) VALUES (${uid()}, '${name}', ${age})`;
+//         con.query(sql, function (err, result) {
+//             if (err) throw err;
+//             console.log("1 record inserted");
+//             res.send({ ok: true, results: result });
+//         });
+//     } catch (error) {
+//         res.send({ ok: false });
+//     }
+// })
+
+app.post('/users_LessThan', async (req, res) => {
+    const { age } = req.body;
+    console.log("users_LessThan");
+    try {
+        var sql = `SELECT * FROM user.products WHERE product-price < ${age}`;
+        con.query(sql, function (err, result) {
+            if (err) throw err;
+            res.send({ ok: true, results: result });
+        });
+    } catch (error) {
+        res.send({ ok: false });
+    }
+})
 
 app.get("/get-all-users", (req, res) => {
   const users = [
