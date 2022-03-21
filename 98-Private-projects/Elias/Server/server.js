@@ -22,29 +22,49 @@ const db = mongoose.connection;
 main().catch(err => console.log(err));
 
 async function main() {
-    const password = process.env.MONGODB_PASSWORD;
-    await mongoose.connect(`mongodb+srv://eliasrenawi:${password}@cluster0.yp2sn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`);
+  const password = process.env.MONGODB_PASSWORD;
+  await mongoose.connect(`mongodb+srv://eliasrenawi:${password}@cluster0.yp2sn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`);
 }
 
 
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
-    console.log("connected to DB!");
+  console.log("connected to DB!");
 });
 
-const mysql = require('mysql');
+// const mysql = require('mysql');
 
-const con_mysql = mysql.createConnection({
-  user:"root",
-  host: "localhost",
-  password: "123456"
-});
+// const con_mysql = mysql.createConnection({
+//   host: "localhost",
+//   port: "3306",
+//   user: "root",
+//   password: "123456"
 
-con_mysql.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected to MySQL DataBase");
-});
-//module.exports=con_mysql;
+
+//   // ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '12345678'
+// });
+
+// con_mysql.connect(function (err) {
+//   if (err) throw err;
+//   console.log("Connected to MySQL DataBase");
+// });
+// //module.exports=con_mysql;
+
+
+// app.get('./get-cats', function (req, res) {
+
+//   try {
+//     con_mysql.query("SELECT * FROM cat_s.cats where age<5;", function (err, result, fields) {
+//       if (err) throw err;
+//       res.send(result);
+//     });
+//   } catch (err) {
+//     console.error(err)
+
+//   }
+
+// });
+
 
 
 // const kittySchema = new mongoose.Schema({
@@ -74,10 +94,10 @@ con_mysql.connect(function(err) {
 //     const kittens = await Kitten.find({address:{city:'Um al fahm'} });
 //     console.log(kittens);
 //   }
-  
+
 //   getKitens();
 
 
 const server = app.listen(3001, () => {
-    console.log('listening on port %s...', server.address().port);
+  console.log('listening on port %s...', server.address().port);
 });
