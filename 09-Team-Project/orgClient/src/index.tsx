@@ -13,6 +13,7 @@ import MessagesBetweenOrg from './view/pages/messagesBetweenOrg/MessagesBetweenO
 import AccidentsInfo from './view/pages/accidentsInfo/AccidentsInfo';
 import Login from './view/pages/logIn/LogIn';
 import MessageSubMenu from './view/pages/MessageSubMenu/MessageSubMenu';
+import Chat from './view/pages/chat/Chat';
 
 
 ReactDOM.render(
@@ -27,6 +28,8 @@ ReactDOM.render(
           <Route path="/:accidentId" element={<AccidentsInfo />} />
           <Route path="/messagesBetweenOrg" element={<MessagesBetweenOrg />} />
           <Route path="/MessageSubMenu" element={<MessageSubMenu />} />
+          <Route path="/Chat" element={<Chat />} />
+
         </Routes>
       </BrowserRouter>
     </Provider>,

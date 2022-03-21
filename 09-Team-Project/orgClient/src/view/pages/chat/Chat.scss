@@ -1,0 +1,19 @@
+.chatContainer {
+    padding-left: 50%;
+    position: absolute;
+    bottom: 0;
+}
+.them {
+    align-self: flex-start;
+    background-color: #34495e;
+    padding-left: 20px;
+    -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 10px 100%, 10px 15px);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 10px 100%, 10px 15px);
+  }
+  .you {
+    align-self: flex-end;
+    background-color: #27ae60;
+    -webkit-clip-path: polygon(0 0, 0 100%, 85% 100%, 85% 30%, 100% 0);
+    clip-path: polygon(0 0, 100% 0%, calc(100% - 10px) 15px, calc(100% - 10px) 100%, 0% 100%);
+    padding-right: 20px;
+  }
