@@ -5,7 +5,11 @@ import './Chat.scss'
 const ENDPOINT = "http://localhost:3001/";  
   let socket: Socket<DefaultEventsMap, DefaultEventsMap>; 
 
-function Chat() {
+  interface chatProps{
+    userId:number,
+    orgId:number
+  }
+function Chat(props:chatProps) {
 
   /* previose page should pass
   accedent id,orgid
@@ -25,8 +29,9 @@ function Chat() {
    accidentId:String,
    orgId:String
   }
-  let userId = "3";  
-  let orgId = "2";  
+
+  let {userId,orgId} = props;  
+
 
 
 
@@ -39,9 +44,6 @@ function Chat() {
     socket.on("FromAPI", (data: React.SetStateAction<string>) => {  
       //setResponse(data);  
       setMessages(data)
-      
-      
-
     });  
     /* set user id */  
     socket.emit("setUserData",userId)  
@@ -69,7 +71,15 @@ function Chat() {
        {
          Object.entries(messages).map(function(val:any, index){
           const new_message:messageFormat = val['1']
-          return <h1>{new_message.message}</h1>
+          {
+            
+            if(Number(new_message.from) == userId)
+              return <div className="you message">{new_message.message}</div>
+              else
+              return  <div className="them message">{new_message.message}</div>
+
+          }
+          
 
         })
         
