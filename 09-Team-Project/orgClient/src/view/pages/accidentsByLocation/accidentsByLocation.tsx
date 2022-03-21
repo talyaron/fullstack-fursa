@@ -17,6 +17,7 @@ import NotificationImportantIcon from '@mui/icons-material/NotificationImportant
 import '../accidentsInfo/AccidentsInfo.scss';
 import './accidentsByLocation.scss';
 import MenuAppBar from '../../Components/header/appBar';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
@@ -45,80 +46,77 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 function AccidenstByLocation() {
 
-  
-  interface Accident{
-  _id:string,
-  type: string,
-  emergency : boolean,
-  date: string,
-  description: string,
-}
-  const [location,setLocation] = useState("");
-  const [accidents,setAccidents]=useState<Array<Accident>>([]);
 
-  async function handleSearchByLocation(e:any){
+  interface Accident {
+    _id: string,
+    type: string,
+    emergency: boolean,
+    date: string,
+    description: string,
+  }
+  const [location, setLocation] = useState("");
+  const [accidents, setAccidents] = useState<Array<Accident>>([]);
+  const nav = useNavigate();
+
+  async function handleSearchByLocation(e: any) {
     e.preventDefault();
-    let a:any=await axios.post("/accidents/getAccidenstByLocation", {location:location});
-    const v:any= await axios.get("/accidents/getAllAccidents");
+    let a: any = await axios.post("/accidents/getAccidenstByLocation", { location: location });
+    const v: any = await axios.get("/accidents/getAllAccidents");
     console.log(a);
     console.log(a.data.accidents);
     setAccidents(a.data.accidents);
   }
   return (
-   <div>
+    <div>
       {/* <div className='menu'>
         <HomeIcon sx={{ paddingLeft: '20px', fontSize: 35, paddingTop: '10px' }} />
         <SettingsIcon sx={{ float: 'right', fontSize: 35, paddingRight: '20px', paddingTop: '10px' }} />
       </div> */}
       <MenuAppBar />
-    <div className='SearchBar'>
+      <div className='SearchBar'>
 
-    <SearchIcon/>
-    <input type="text" placeholder='search by location' onKeyUp={(e:any)=>{setLocation(e.target.value)}} />
+        <SearchIcon />
+        <input type="text" placeholder='search by location' onKeyUp={(e: any) => { setLocation(e.target.value) }} />
 
-    <button className='searchBtn' onClick={handleSearchByLocation}> Go </button>
-    
-    </div>
-    
-    <TableContainer className="table" component={Paper}>
-      <Table sx={{ minWidth: 300 }} aria-label="customized table">
-        <TableHead>
-          <TableRow>
-          <StyledTableCell align="center"> </StyledTableCell>
-            <StyledTableCell align="center">ACCIDENT ID </StyledTableCell>
-            <StyledTableCell align="center"> ACCIDENT type</StyledTableCell>
-            <StyledTableCell align="center"> ACCIDENT DATE </StyledTableCell>
-            <StyledTableCell align="center"> ACCIDENT ESCRIPTION </StyledTableCell>
-      
-          </TableRow>
-        </TableHead>
-        <TableBody>
-        {accidents.map((row) => (
-            <StyledTableRow key={row._id}>
-              
-              <StyledTableCell align="center"> 
-              <NotificationImportantIcon></NotificationImportantIcon>
-              </StyledTableCell>
+        <button className='searchBtn' onClick={handleSearchByLocation}> Go </button>
 
-              <StyledTableCell align="center" component="th" scope="row">
-                {row._id}
-              </StyledTableCell>
-              
-              <StyledTableCell align="center">{row.type}</StyledTableCell>
-              <StyledTableCell align="center">{row.date}</StyledTableCell>
-              <StyledTableCell align="center"> 
-              {row.description}
-              </StyledTableCell>
-              
-            </StyledTableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+      </div>
 
-    
-   
-    {/* {accidents.map((accident, index) => {
+      <TableContainer className="table" component={Paper}>
+        <Table sx={{ minWidth: 300 }} aria-label="customized table">
+          <TableHead>
+            <TableRow>
+              <StyledTableCell align="center"> </StyledTableCell>
+              {/* <StyledTableCell align="center">ACCIDENT ID </StyledTableCell> */}
+              <StyledTableCell align="center"> ACCIDENT type</StyledTableCell>
+              <StyledTableCell align="center"> ACCIDENT DATE </StyledTableCell>
+              <StyledTableCell align="center"> ACCIDENT DESCRIPTION </StyledTableCell>
+
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {accidents.map((row) => (
+              <StyledTableRow key={row._id} onClick={() => nav(`/${row._id}`)}>
+                <StyledTableCell align="center">
+                  <NotificationImportantIcon></NotificationImportantIcon>
+                </StyledTableCell>
+                <StyledTableCell align="center">{row.type}</StyledTableCell>
+                <StyledTableCell align="center">{row.date}</StyledTableCell>
+                <StyledTableCell align="center">
+                  {row.description}
+                </StyledTableCell>
+
+              </StyledTableRow>
+
+
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+
+
+
+      {/* {accidents.map((accident, index) => {
           return (
             <div key={index}>
             <p >id: {accident._id} type:{accident.type} date:{accident.date} description:{accident.description}  </p> 
@@ -126,9 +124,9 @@ function AccidenstByLocation() {
           );
         })} */}
 
-   
 
-   </div>
+
+    </div>
 
   );
 

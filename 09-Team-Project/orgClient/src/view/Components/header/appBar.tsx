@@ -41,7 +41,7 @@ export default function MenuAppBar(props: any) {
               aria-label="menu"
               sx={{ mr: 2 }}
             >
-              <SearchIcon onClick={() => nav('/accidents')} style={{ fontSize: "40px" }} />
+              <SearchIcon onClick={() => nav('/accidentsByLocation')} style={{ fontSize: "40px" }} />
             </IconButton>
           </>
         }

@@ -42,9 +42,9 @@ async function getOrganizations(): Promise<any> {
 
   router.post('/add-sharing', (req, res) => {
     try {
-      console.log("server")
+      //console.log("server")
       const {newSharing} = req.body;
-      console.log(newSharing);
+      //console.log(newSharing);
       if (!newSharing) throw new Error("No sharing in request");
       const event  = new Sharing({
         from: newSharing.from,

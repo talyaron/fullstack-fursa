@@ -31,7 +31,7 @@ export default function ProminentAppBar() {
             component="div"
             sx={{ flexGrow: 1, alignSelf: 'flex-end' }}
           >
-            PROJECT NAME
+            ORGANIZATION LOG IN
           </Typography>
 
 
