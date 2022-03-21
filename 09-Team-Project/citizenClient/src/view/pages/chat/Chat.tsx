@@ -11,12 +11,26 @@ function Chat() {
   accedent id,orgid
 
    i should get user id throw redux*/
+
+   interface messageFormat{
+   chatId: String,
+   from: String,
+   date: Date,
+   type: { type: String, enum: ['video', 'picture', 'message', 'location'] },
+   video: String,
+   picture: String,
+   message: String,
+   location: { lat: String, lng: String },
+   communicationType:{ type: String, enum: ['org', 'user'] }, //user = communication between org-user; org = comm.between org-org
+   accidentId:String,
+   orgId:String
+  }
   let userId = "3";  
   let orgId = "2";  
 
 
 
-  const [messages, setMessages] = useState("");  
+  const [messages, setMessages] = useState({});  
   
   useEffect(() => {  
     socket = socketIOClient(ENDPOINT);  
@@ -25,8 +39,8 @@ function Chat() {
     socket.on("FromAPI", (data: React.SetStateAction<string>) => {  
       //setResponse(data);  
       setMessages(data)
-      console.log(typeof data)
-      console.log(data)
+      
+      
 
     });  
     /* set user id */  
@@ -52,7 +66,14 @@ function Chat() {
   return (  
       
       <div className="chatContainer">
-       
+       {
+         Object.entries(messages).map(function(val:any, index){
+          const new_message:messageFormat = val['1']
+          return <h1>{new_message.message}</h1>
+
+        })
+        
+      }
         <form onSubmit={submitForm}>  
       <input  
         autoFocus  
