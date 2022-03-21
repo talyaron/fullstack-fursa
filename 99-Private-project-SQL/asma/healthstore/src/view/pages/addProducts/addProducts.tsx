@@ -9,16 +9,12 @@ function AddProducts() {
 
     const [product, setProduct] = useState({ name: "", text: "",category:"" ,img: "" });
     const [products, setProducts] = useState([]);
-    const [treatment, setTreatment] = useState({ name: "", text: "", img: "" });
-    const [treatments, setTreatments] = useState([]);
     const [selectedImage, setImage] = useState('');
     
     function handleAddImg(e:any) {
         setProduct({...product, img:e.target.files[0].name})
         setImage(e.target.files[0])
     }
-
-
 
     function getProducts() {
         return new Promise((resolve, reject) => {
@@ -54,26 +50,11 @@ function AddProducts() {
             const config = { headers: { 'content-type': 'multipart/form-data' } }
             axios.post('/add-new-product',formData,config)
                 .then(({ data }) => {
-                    console.log("added",data)
+                    console.log("add",data)
                     getProducts().then((data:any)=>{
                         console.log("get",data)
                         setProducts(data)
                       })
-                })
-                .catch(err => {
-                    console.error(err)
-                })
-        }
-    }
-    function handleAddTreatment() {
-        console.log(treatment)
-        if (!treatment.name || !treatment.text || !treatment.img) {
-            alert("missing info");
-        }
-        else {
-            axios.post('/treatments/add-treatment', { treatment })
-                .then(({ data }) => {
-                    console.log(data)
                 })
                 .catch(err => {
                     console.error(err)

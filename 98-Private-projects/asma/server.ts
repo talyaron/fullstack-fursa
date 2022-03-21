@@ -6,7 +6,7 @@ const multer = require('multer');
 
 const cookieParser = require('cookie-parser');
 const app = express();
-const port = 4000;
+const port = 4001;
 require('dotenv').config();
 
 app.use(express.static('healthstore/build'));
@@ -25,15 +25,15 @@ const con = mysql.createConnection({
   // ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '123456'
 });
 
-con.connect( (err)=> {
-  if (err) throw err;
-  console.log("Connected!");
-  // con.query("use test", (err, result, fields) => {
-  //     if (err) throw err;
-  //     console.log('Using test');
+// con.connect( (err)=> {
+//   if (err) throw err;
+//   console.log("Connected!");
+//   // con.query("use test", (err, result, fields) => {
+//   //     if (err) throw err;
+//   //     console.log('Using test');
 
- // });
-});
+//  // });
+// });
 
 
 
@@ -50,7 +50,7 @@ var upload = multer({ storage: storage })
 app.post('/upload', upload.single('image'), (req:any, res) => {
   try {
     const {name,text,category} = req.body;
-    //console.log(req.file)
+    console.log(req.file)
     const path = req.file.filename;
     const event = new Product({ name: name, text: text,category:category ,img: path });
     event.save();    
@@ -67,6 +67,7 @@ app.patch("/update-product",  upload.single('image'),async (req:any, res) => {
     let update={};
     if (selectedImage){
        const path = req.file.filename;
+      //  console.log(req.file)
        update = { name: name, text: text, category:category, img: path };
     }
     else{ update = { name: name, text: text, category:category };}

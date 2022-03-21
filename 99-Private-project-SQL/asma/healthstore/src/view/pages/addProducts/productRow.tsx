@@ -29,7 +29,7 @@ function ProductRow(props: any) {
 
         const formData =new FormData();
         //if(selectedImage)
-        formData.append('image', selectedImage );
+        formData.append('img', selectedImage );
         formData.append('id', id );
         formData.append('name', name );
         formData.append('text', text );

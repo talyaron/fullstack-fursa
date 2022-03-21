@@ -29,7 +29,11 @@ con.connect((err) => {
   if (err) throw err;
   console.log("Connected!");
 });
-
+// con.query('SELECT * from products.products', function(err, rows, fields) {
+//   if(err) console.log(err);
+//   console.log('The solution is: ', rows);
+//   con.end();
+// }); 
 
 
 app.get('/get-products', async (req, res) => {
@@ -47,7 +51,6 @@ app.get('/get-products', async (req, res) => {
 })
 
 
-
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, './images')
@@ -57,7 +60,6 @@ var storage = multer.diskStorage({
   }
 })
 var upload = multer({ storage: storage })
-
 
 
 app.post("/add-new-product", upload.single('image'), async (req: any, res) => {
@@ -108,15 +110,14 @@ app.post('/delete-product', async (req, res) => {
 });
 
 
-
-app.patch("/update-product", upload.single('image'), async(req: any, res) => { 
+app.patch("/update-product", upload.single('img'), async(req: any, res) => { 
   try {
     const { name, text, category, id, selectedImage } = req.body;
     let sql = '';
-    console.log( name, text, category, id, selectedImage,"***********************************************");
+    console.log( name, text, category, id, selectedImage,"*********************************************");
     if (selectedImage) {
       const path = req.file.filename;
-      console.log(path,"*********************************************** selected image");
+      console.log(path," ******************************************* selected image");
       sql = `UPDATE products.products SET name='${name}', text='${text}',category='${category}',img='${path}' WHERE (id = '${id}');`;
     }
     else { sql = `UPDATE products.products SET name='${name}', text='${text}',category='${category}'WHERE (id = '${id}');`; }
