@@ -82,7 +82,7 @@ function Navbar() {
                                 display: { xs: 'block', md: 'none' },
                             }}
                         >
-                            <Link to="/">
+                            <Link to="/home">
                                 <MenuItem key={"Home"} onClick={handleCloseNavMenu}>
                                     <Typography textAlign="center">Home</Typography>
                                 </MenuItem>
@@ -116,7 +116,7 @@ function Navbar() {
                         {pages.map((page) => (
                             <Button
                                 key={page}
-                                onClick={() => { handleCloseNavMenu(); if (page == "Home") navigate(`/`); else navigate(`/${page}`) }}
+                                onClick={() => { handleCloseNavMenu(); navigate(`/${page}`) }}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                             >
                                 {page}
@@ -124,7 +124,7 @@ function Navbar() {
                         ))}
                     </Box>
                     {!isLoggedIn ? (<div><Button variant="contained" style={{ marginRight: "1rem", backgroundColor: "#35b0d2" }} type="submit" onClick={() => { navigate('/signup') }}>Register</Button>
-                        <Button variant="contained" style={{ backgroundColor: "#35b0d2" }} type="submit" onClick={() => { navigate('/login') }}>Log in</Button></div>) : (
+                        <Button variant="contained" style={{ backgroundColor: "#35b0d2" }} type="submit" onClick={() => { navigate('/') }}>Log in</Button></div>) : (
                         <Box sx={{ flexGrow: 0 }}>
                             <Tooltip title="Open settings">
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

@@ -5,12 +5,19 @@ import CampaignIcon from '@mui/icons-material/Campaign';
 
 import './home.scss'
 import { useNavigate } from 'react-router-dom';
+import { getloginState } from '../../../app/reducer/userReducer';
+import { useAppSelector } from '../../../app/hooks';
 
 function Home() {
     const navigate = useNavigate();
+    let isLogged = useAppSelector(getloginState)
     function handleBtn(ev: any) {
-        const type = ev.currentTarget.value;
-        navigate(`/emergency/${type}`);
+        if (!isLogged) {
+            navigate("/");
+        } else {
+            const type = ev.currentTarget.value;
+            navigate(`/emergency/${type}`);
+        }
     }
     return (
         <div className="home">
