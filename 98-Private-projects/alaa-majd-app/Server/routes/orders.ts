@@ -14,21 +14,17 @@ router.get('/', async(req,res)=>{
     }
 });
 
+
 router.post('/',(req,res)=>{
     const { id,
-        name,
-        price,
-        catagory,
-        quantity,
-        amount,
-        description,
-        Url
+        OwnerId,
+        groupId,
+        cartProducts,
     } = req.body;
 
     try{
-    
         const order = new Order({
-            id:id,name:name,price:price,catagory:catagory,quantity:quantity,amount:amount,description:description,Url:Url
+            id:id,OwnerId:OwnerId,groupId:groupId,cartProducts:cartProducts
         });
         order.save()
         res.send(order);

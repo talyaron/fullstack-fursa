@@ -13,13 +13,12 @@ app.use(cookieParser());
 app.use(express.static("client/build"));
 
 //data
-const con = mysql.createConnection({
-  host: "localhost",
+export const con = mysql.createConnection({
+  host: "127.0.0.1",
   port: "3306",
   user: "root",
-  password: "12345678"
-
-
+  password: "12345678",
+  database: 'test'
   // ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '12345678'
 });
 
@@ -33,9 +32,10 @@ con.connect( (err)=> {
   });
 });
 
+
 //routes
-
-
+import uesrRouter from './routes/userRoute';
+app.use('/users',uesrRouter)
 
 
 app.listen(port, () => {

@@ -15,7 +15,7 @@ app.use('/products',productsRoute);
 app.use(express.static('../Client/build'));
 app.use(express.json());
 
-app.get("/", (req,res)=>{
+app.get("/", (req,res)=>{ 
      res.send("hello")
  })
 
