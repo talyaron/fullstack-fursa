@@ -149,12 +149,12 @@ function Navbar() {
                             >
                                 <Link to="/profile">
                                     <MenuItem key="profile" onClick={handleCloseUserMenu}>
-                                        <Typography textAlign="center">profile</Typography>
+                                        <Typography textAlign="center">Profile</Typography>
                                     </MenuItem>
                                 </Link>
                                 <Link to="/previousAccidents">
                                     <MenuItem key="previousAccidents" onClick={handleCloseUserMenu}>
-                                        <Typography textAlign="center">previousAccidents</Typography>
+                                        <Typography textAlign="center">Previous Accidents</Typography>
                                     </MenuItem>
                                 </Link>
                                 <Link to="/">
