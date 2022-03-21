@@ -28,6 +28,20 @@ db.once("open", () => {
   console.log("connected to DB!");
 });
 
+const io = require('socket.io')(http)
+
+io.of('/api/socket').on('connection', socket => {
+    console.log('A user is connected');
+    socket.on('message', ({ name, message }) => {
+        io.emit('message', { name, message })
+    })
+
+    socket.on('disconnect', () => {
+        console.log(`socket ${socket.id} disconnected`);
+    })
+})
+
+
 app.get('/', (req, res) => {
   res.send('Hello World!');
 })
@@ -37,6 +51,9 @@ const accidentRouter = require('./routers/accidentRouter');
 app.use('/accidents', accidentRouter);
 const userRouter = require('./routers/userRouter');
 app.use('/users', userRouter);
+
+const orgRouter = require('./routers/orgRouter');
+app.use('/org', orgRouter);
 
 const previousAccidentRouter = require('./routers/previousAccidentsRouter');
 app.use('/previousAccidents', previousAccidentRouter);

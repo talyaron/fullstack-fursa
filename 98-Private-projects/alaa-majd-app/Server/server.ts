@@ -1,4 +1,5 @@
 import express from 'express';
+const cookieParser = require('cookie-parser')
 const mongoose = require("mongoose");
 // const products = require('./Routers/ProductRouter')
 const app = express();
@@ -6,10 +7,11 @@ const port = 4001;
 const jwt = require('jwt-simple');
 require('dotenv').config ();
 
-
+app.use(cookieParser());
 app.use(express.static('../Client/build'));
 app.use(express.json());
 app.get("/", (req,res)=>{
+    res.cookie("cookies",{name:'alaa'})
     res.send("hello")
 })
 
