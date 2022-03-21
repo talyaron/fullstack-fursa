@@ -1,0 +1,14 @@
+.card {
+    // border: 2px black solid;
+    margin: 15px;
+    width: 200px;
+    min-height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        transform: scale(1.1);
+        background-color: rgba(0, 0, 0, 0.021);
+    }
+}

@@ -1,0 +1,171 @@
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    height: 4rem;
+    //border-style: solid;
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
+    z-index: 0;
+
+    &__box {
+        display: flex;
+        max-width: 90%;
+        height: 100%;
+    }
+
+    &__left {
+        display: flex;
+        //height: 100%;
+        width: 70%;
+
+        img {
+            height: auto;
+            width: auto;
+            max-height: 100%;
+            max-width: 100%;
+            align-items: flex-start;
+            overflow: hidden;
+            transform: scale(2.0);
+            margin-right: 3vw;
+            animation: fadeIn 1s infinite alternate;
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    animation: spin;
+                }
+            }
+
+            @keyframes spin {
+                from {
+                    transform: rotate(0deg);
+                }
+
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+        }
+
+        a {
+            color: black;
+            text-align: center;
+            padding: 20px 24px;
+            text-decoration: none;
+            font-size: 15px;
+            font-family: Inter;
+
+            &:hover {
+                //background-color: #2a945b;
+                font-size: 20px;
+                color: #2a945b;
+            }
+        }
+    }
+
+    &__right {
+        display: flex;
+        //height: 100%;
+        width: 30%;
+
+        &__signin {
+            background-color: #2a945b;
+            border: none;
+            border-radius: 12px;
+            margin-top: 1.5vh;
+            margin-bottom: 1.5vh;
+            padding: 12px 24px;
+            text-align: center;
+            color: white;
+            font-size: 14px;
+            white-space: nowrap;
+            font-weight: bold;
+        }
+
+        &__signup {
+            background-color: #dff2e4;
+            border: none;
+            border-radius: 12px;
+            margin-right: 2vw;
+            margin-top: 1.5vh;
+            margin-bottom: 1.5vh;
+            text-align: center;
+            color: black;
+            font-size: 14px;
+            padding: 12px 24px;
+            white-space: nowrap;
+            //font-family: Inter, Tajawal, sans-serif;
+            font-weight: bold;
+        }
+
+        &__search {
+            transform: scale(0.5);
+        }
+
+    }
+
+
+}
+
+.Modal {
+    position: absolute;
+    background: white;
+    top: 5rem;
+    left: 0rem;
+    right: 0rem;
+
+    &__header {
+
+        &__closebtn {
+            float: right;
+            overflow: hidden;
+            position: relative;
+            border: none;
+            padding: 0;
+            width: 2em;
+            height: 2em;
+            border-radius: 50%;
+            background: transparent;
+            color: #1da1f2;
+            font: inherit;
+            text-indent: 100%;
+            cursor: pointer;
+
+            &:focus {
+                outline: solid 0 transparent;
+                box-shadow: 0 0 0 2px #8ed0f9
+            }
+
+            &:hover {
+                background: rgba(29, 161, 142, .1)
+            }
+
+            &:before,
+            &:after {
+                position: absolute;
+                top: 0%;
+                left: calc(50% - .0625em);
+                width: .125em;
+                height: 70%;
+                border-radius: .125em;
+                transform: rotate(45deg);
+                background: currentcolor;
+                content: ''
+            }
+
+            &:after {
+                transform: rotate(-45deg);
+            }
+        }
+    }
+
+    .searchDiv {
+        background-image: none;
+
+        &__title {
+            color: black;
+        }
+    }
+
+}

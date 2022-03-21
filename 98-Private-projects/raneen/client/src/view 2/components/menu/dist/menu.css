@@ -1,0 +1,136 @@
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  height: 8.6vh;
+  border-style: solid;
+  z-index: 0;
+  /*
+  * Made by Erik Terwan
+  * 24th of November 2015
+  * MIT License
+  *
+  *
+  * If you are thinking of using this in
+  * production code, beware of the browser
+  * prefixes.
+  */
+}
+.navbar__box {
+  display: flex;
+  width: 90%;
+  height: 100%;
+}
+.navbar__left {
+  display: flex;
+  width: 70%;
+}
+.navbar__left .categories {
+  display: flex;
+  border: none;
+  margin-top: 1.5vh;
+  margin-bottom: 1.5vh;
+  text-align: center;
+  justify-content: center;
+  color: #faf0f0;
+  font-size: 14px;
+  padding: 12px 24px;
+  white-space: nowrap;
+  font-weight: bold;
+}
+.navbar__left .categories img {
+  display: flex;
+  width: 20px;
+  align-content: center;
+  justify-content: center;
+  border-radius: 12px;
+  margin-right: 2vw;
+  margin-top: 1.5vh;
+  margin-bottom: 1.5vh;
+}
+.navbar__left img {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  border-radius: 12px;
+  margin-right: 2vw;
+  margin-top: 1.5vh;
+  margin-bottom: 1.5vh;
+  text-align: center;
+}
+.navbar img {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  border-radius: 12px;
+  margin-right: 2vw;
+  margin-top: 1.5vh;
+  margin-bottom: 1.5vh;
+  text-align: center;
+  width: auto;
+  max-height: 70%;
+  max-width: 100%;
+  align-items: flex-start;
+  align-items: center;
+  overflow: hidden;
+  transform: scale(2);
+  margin-right: 3vw;
+  border-radius: 12px;
+}
+.navbar a {
+  color: black;
+  text-align: center;
+  padding: 20px 24px;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: Inter;
+}
+.navbar a:hover {
+  font-size: 20px;
+  color: #2a945b;
+}
+.navbar__right {
+  display: flex;
+  width: 30%;
+}
+.navbar__right__signin {
+  background-color: #000804;
+  border: none;
+  border-radius: 12px;
+  margin-top: 1.5vh;
+  margin-bottom: 1.5vh;
+  padding: 12px 24px;
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  white-space: nowrap;
+  font-weight: bold;
+}
+.navbar__right__signup {
+  background-color: #141414;
+  border: none;
+  border-radius: 12px;
+  margin-right: 2vw;
+  margin-top: 1.5vh;
+  margin-bottom: 1.5vh;
+  text-align: center;
+  color: #fffbfb;
+  font-size: 14px;
+  padding: 12px 24px;
+  white-space: nowrap;
+  font-weight: bold;
+}
+.navbar__right a {
+  color: black;
+  text-align: center;
+  padding: 20px 24px;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: Inter;
+  margin: auto;
+}
+.navbar__right a:hover {
+  font-size: 20px;
+  color: #2a945b;
+}

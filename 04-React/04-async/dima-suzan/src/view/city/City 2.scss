@@ -1,0 +1,25 @@
+.city{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    border: 0.5px black solid;
+    border-radius: 3px;
+    width: 400px;
+    background-color: rgba(4, 0, 255, 0.411);
+
+    &__weather{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h1{
+        text-decoration: underline;
+    }
+
+    span{
+        font-weight: bold;
+    }
+}
