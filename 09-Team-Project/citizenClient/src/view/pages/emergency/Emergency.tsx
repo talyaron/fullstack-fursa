@@ -1,9 +1,9 @@
 import { Button, MenuItem, TextField } from "@mui/material";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import { fetchUser, getName, userInfo } from "../../../app/reducer/userReducer";
+import { fetchUser, getloginState, getName, userInfo } from "../../../app/reducer/userReducer";
 import CampaignIcon from "@mui/icons-material/Campaign";
 import ChatIcon from "@mui/icons-material/Chat";
 import UploadIcon from "@mui/icons-material/Upload";
@@ -14,12 +14,18 @@ export function Emergency() {
   const [images, setImage] = useState<Array<any>>([]);
   const [isAmergency, setIsAmergency] = useState(false);
   const [upload, setUpload] = useState(false);
+  const [{imageUrl,imagetype}, setImageUrl] = useState({imageUrl:'',imagetype:''});
   const dispatch = useAppDispatch();
   const user = useAppSelector(userInfo);
   const org = {};
+  const { accidentName } = useParams();
+  let isLogged = useAppSelector(getloginState)
+  const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(fetchUser({ email: "m.zmiro@hotmail.com", password: "123" }));
+    if (!isLogged) {
+      navigate("/");
+    }
   }, []);
 
   const accidentType = [
@@ -55,7 +61,7 @@ export function Emergency() {
     setImage([...images, ev.target.files[0]]);
   }
 
-  function newAccidentHandler(ev: any) {
+  async function newAccidentHandler(ev: any) {
     ev.preventDefault();
     console.log(ev.target.elements.type.value);
     console.log(ev.target.elements.location.value);
@@ -65,28 +71,29 @@ export function Emergency() {
 
     const formData = new FormData();
     formData.append("file", images[0]);
-    formData.append("api_key", "444");
-    formData.append('upload_preset', 'ddbgxxbf');
-    formData.append("public_id", "sample_image");
+    formData.append("api_key", "327772261325556");
+    formData.append('upload_preset', 'tfv02nzm');
+    formData.append("public_id", "sample_image2");
     formData.append("timestamp", `${new Date().getTime()}`);
 
-    axios.post('https://api.cloudinary.com/v1_1/god-delib/image/upload',formData).then(res=>{
-        console.log(res)
-    })
+    const { data } = await axios.post('https://api.cloudinary.com/v1_1/dqzgolqdg/image/upload', formData);
+    setImageUrl(data.secure_url)
+
+
     //fetch media
-    // axios
-    //   .post("http://localhost:3001/accidents/addNewAccident", {
-    //     type: ev.target.elements.type.value,
-    //     emergency: isAmergency,
-    //     date: new Date(),
-    //     address: ev.target.elements.location.value,
-    //     description: ev.target.elements.description.value,
-    //     media: images,
-    //     user: user,
-    //     org: {},
-    //   })
-    //   .then((res) => console.log(res))
-    //   .catch((err) => console.error(err));
+    axios
+      .post("http://localhost:3001/accidents/addNewAccident", {
+        type: ev.target.elements.type.value,
+        emergency: isAmergency,
+        date: new Date(),
+        address: ev.target.elements.location.value,
+        description: ev.target.elements.description.value,
+        media: imageUrl,
+        user: user,
+        org: {},
+      })
+      .then((res) => console.log(res))
+      .catch((err) => console.error(err));
   }
   function handleUpload() {
     setUpload(true);
