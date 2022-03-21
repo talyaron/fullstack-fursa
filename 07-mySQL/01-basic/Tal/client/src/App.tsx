@@ -7,6 +7,7 @@ import CatRow from "./CatRow";
 
 function App() {
   const [kitties, setKitties] = useState([]);
+  const [fishes, setFishes] = useState([]);
   const [ownerName, setOwnerName] = useState("");
   const [ownerId, setOwnerId] = useState("");
 
@@ -15,6 +16,9 @@ function App() {
     //   console.log(data);
     //   setKitties(data);
     // });
+    getFishes().then((data: any) => {
+      setFishes(data);
+    });
   }, []);
 
   const handleRegister = async (ev: any) => {
@@ -61,6 +65,36 @@ function App() {
     console.log(data);
   };
 
+  const handleAddFish = async (ev: any) => {
+    ev.preventDefault();
+    const fishName = ev.target.elements.name.value;
+    if (fishName) {
+      const { data } = await axios.post("/add-new-fish", { name: fishName });
+      console.log(data);
+      getFishes().then((data:any)=>{
+        setFishes(data)
+      })
+    }
+  };
+
+  function getFishes() {
+    return new Promise((resolve, reject) => {
+      axios
+        .get("/get-all-fishes")
+        .then(({ data }) => {
+          if (data) {
+            console.log(data);
+
+            resolve(data.fishes);
+          } else {
+            reject("no data");
+          }
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
   return (
     <div className="App">
       {ownerId.length === 0 ? (
@@ -98,6 +132,15 @@ function App() {
       <button onClick={handleGetPrivateInfo}>GET INFO</button>
       {kitties.map((cat: any, i) => {
         return <CatRow key={cat._id} cat={cat} />;
+      })}
+      <hr />
+      <h2>Fishes</h2>
+      <form onSubmit={handleAddFish}>
+        <input type="text" name="name" placeholder="Fish name" />
+        <input type="submit" value="ADD Fishes" />
+      </form>
+      {fishes.map((fish: any) => {
+        return <p key={fish.fish_id}>{fish.fish_name}</p>;
       })}
     </div>
   );
