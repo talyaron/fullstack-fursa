@@ -99,6 +99,7 @@ const getApiAndEmit = async socket => {
 
 
 function handleMessage(value: any) {
+  
   console.log(value.from)
 
   const message = new Messages(value)

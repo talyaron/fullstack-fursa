@@ -1,19 +1,55 @@
-.chatContainer {
-    padding-left: 50%;
-    position: absolute;
-    bottom: 0;
+.chatPage {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow-y: hidden;
+
+  .chatContainer {
+    flex: auto;
+    form {
+      margin: auto;
+      width: 30vw;
+      .input {
+        width: 30vw;
+      }
+    }
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      margin: auto;
+      overflow-y: auto;
+      height: 73%;
+      max-width: 600px;
+      .them {
+        right: 5%;
+        width: fit-content;
+        align-self: flex-start;
+        background-color: #34495e;
+        padding-left: 20px;
+        -webkit-clip-path: polygon(
+          0% 0%,
+          100% 0%,
+          100% 100%,
+          10px 100%,
+          10px 15px
+        );
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 10px 100%, 10px 15px);
+      }
+      .you {
+        left: 5%;
+        width: fit-content;
+        align-self: flex-end;
+        background-color: #27ae60;
+        -webkit-clip-path: polygon(0 0, 0 100%, 85% 100%, 85% 30%, 100% 0);
+        clip-path: polygon(
+          0 0,
+          100% 0%,
+          calc(100% - 10px) 15px,
+          calc(100% - 10px) 100%,
+          0% 100%
+        );
+        padding-right: 20px;
+      }
+    }
+  }
 }
-.them {
-    align-self: flex-start;
-    background-color: #34495e;
-    padding-left: 20px;
-    -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 10px 100%, 10px 15px);
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 10px 100%, 10px 15px);
-  }
-  .you {
-    align-self: flex-end;
-    background-color: #27ae60;
-    -webkit-clip-path: polygon(0 0, 0 100%, 85% 100%, 85% 30%, 100% 0);
-    clip-path: polygon(0 0, 100% 0%, calc(100% - 10px) 15px, calc(100% - 10px) 100%, 0% 100%);
-    padding-right: 20px;
-  }
