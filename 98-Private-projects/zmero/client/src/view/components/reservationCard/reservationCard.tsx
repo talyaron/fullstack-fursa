@@ -33,7 +33,7 @@ function ReservationCard(props: cardProp) {
     const date = new Date(props.date);
     let strDate = 'y/m/d h:t'
         .replace('y', "" + date.getFullYear())
-        .replace('m', "" + date.getMonth())
+        .replace('m', "" + (date.getMonth() + 1))
         .replace('d', "" + date.getDate())
         .replace('h', "" + date.getHours())
         .replace('t', "" + date.getMinutes())

@@ -22,18 +22,24 @@ interface Region {
     region: string;
     url: string;
 }
+interface dateObjP {
+    date: string;
+    restId: string;
+}
 interface Restaurants {
-    arrOfResteruants: Array<Restaurant>;
-    ownerArrOfResteruants: Array<Restaurant>;
-    arrOfFamousResteruants: Array<Restaurant>;
+    arrOfRestaurants: Array<Restaurant>;
+    ownerArrOfRestaurants: Array<Restaurant>;
+    arrOfFamousRestaurants: Array<Restaurant>;
+    arrOfOwnerReservations: Array<dateObjP>;
     arrOfRegions: Array<Region>
     status: 'idle' | 'loading' | 'failed';
 }
 
 const initialState: Restaurants = {
-    arrOfResteruants: [],
-    ownerArrOfResteruants: [],
-    arrOfFamousResteruants: [],
+    arrOfRestaurants: [],
+    ownerArrOfRestaurants: [],
+    arrOfFamousRestaurants: [],
+    arrOfOwnerReservations: [],
     arrOfRegions: [],
     status: 'idle',
 }
@@ -44,8 +50,8 @@ export const fetchAllRestaurants = createAsyncThunk(
         try {
             const response = await axios.get('/restaurants/get-all-restaurants')
             const data: any = response.data
-            const { resteraunt } = data;
-            return resteraunt
+            const { restaurant } = data;
+            return restaurant
         } catch (err) {
             thunkAPI.rejectWithValue(err)
         }
@@ -59,8 +65,7 @@ export const fetchAllOwnerRestaurants = createAsyncThunk(
         try {
             const response = await axios.get('/restaurants/get-all-owner-restaurants')
             const data: any = response.data
-            const { resteraunt } = data;
-            return resteraunt
+            return data
         } catch (err) {
             thunkAPI.rejectWithValue(err)
         }
@@ -75,8 +80,8 @@ export const fetchFamousRestaurants = createAsyncThunk(
             if (!region) throw "invalid field"
             const response = await axios.post('/restaurants/get-famous-restaurants', { "region": region })
             const data: any = response.data
-            const { resteraunt } = data;
-            return resteraunt.filter((rest: Restaurant) => {
+            const { restaurant } = data;
+            return restaurant.filter((rest: Restaurant) => {
                 if (rest.region === region)
                     return rest;
             });
@@ -113,14 +118,14 @@ export const restaurantReducer = createSlice({
             })
             .addCase(fetchAllRestaurants.fulfilled, (state, action) => {
                 state.status = 'idle';
-                state.arrOfResteruants = action.payload;
+                state.arrOfRestaurants = action.payload;
             })
             .addCase(fetchFamousRestaurants.pending, (state) => {
                 state.status = 'loading';
             })
             .addCase(fetchFamousRestaurants.fulfilled, (state, action) => {
                 state.status = 'idle';
-                state.arrOfFamousResteruants = action.payload;
+                state.arrOfFamousRestaurants = action.payload;
             })
             .addCase(fetchRegion.pending, (state) => {
                 state.status = 'loading';
@@ -133,8 +138,15 @@ export const restaurantReducer = createSlice({
                 state.status = 'loading';
             })
             .addCase(fetchAllOwnerRestaurants.fulfilled, (state, action) => {
-                state.status = 'idle';
-                state.ownerArrOfResteruants = action.payload;
+                const { restaurant, reserves } = action.payload
+                try {
+                    if (!restaurant || !reserves) throw new Error('invalid data')
+                    state.ownerArrOfRestaurants = restaurant;
+                    state.arrOfOwnerReservations = reserves;
+                    state.status = 'idle';
+                } catch (error: any) {
+                    console.log(error.message)
+                }
             })
 
     },
@@ -143,8 +155,9 @@ export const restaurantReducer = createSlice({
 
 
 
-export const getAllRestaurants = (state: RootState) => state.restaurant.arrOfResteruants
-export const getFamousRestaurants = (state: RootState) => state.restaurant.arrOfFamousResteruants
-export const getOwnerRestaurants = (state: RootState) => state.restaurant.ownerArrOfResteruants
+export const getAllRestaurants = (state: RootState) => state.restaurant.arrOfRestaurants
+export const getFamousRestaurants = (state: RootState) => state.restaurant.arrOfFamousRestaurants
+export const getOwnerRestaurants = (state: RootState) => state.restaurant.ownerArrOfRestaurants
+export const getOwnerReserveData = (state: RootState) => state.restaurant.arrOfOwnerReservations
 export const getRegions = (state: RootState) => state.restaurant.arrOfRegions
 export default restaurantReducer.reducer;
