@@ -3,14 +3,11 @@ import { RootState, AppThunk } from '../store';
 import axios from 'axios';
 import { NULL } from 'sass';
 
-
-
 export interface WeatherInfo {
     WeatherInfo: {
-    CityNAme: string;
-    WeatherDescriptionn: string;
-    Temperature: number
-    Weather_icons :string;
+    current: { temperature: number; weather_descriptions: string; wind_speed:number; feelslike:number; weather_icons:string;};
+    location: { name: string };
+    
   }
   status: 'idle' | 'loading' | 'failed';
 
@@ -19,10 +16,8 @@ export interface WeatherInfo {
 const initialState: WeatherInfo = {
 
     WeatherInfo: {
-        CityNAme: "",
-        WeatherDescriptionn: "",
-        Temperature:0,
-        Weather_icons :""
+        current: {temperature:0,weather_descriptions:"",wind_speed:0,feelslike:0,weather_icons:""},
+        location: { name:"" }
       },
   status: 'idle'
 };
@@ -30,9 +25,10 @@ const initialState: WeatherInfo = {
 export const getWeatherInfoAsync = createAsyncThunk(
   'Wather/GetWatherInfo',
   async (CiteName :string, thunkAPI) => {
-
-    try {
-      const response = await axios.get(`http://api.weatherstack.com/current?access_key=d0cb4fc5cea71f7a7b2bf595fe729ca1&query=${CiteName}`)
+     var apiReq=`http://api.weatherstack.com/current?access_key=e87cfaf9fe794ed54f7cbdc5d96a4817&query=${CiteName}`;
+  //  console.log(apiReq)
+     try {
+      const response = await axios.get(apiReq)
       const data: any = response.data
       console.log("Weather data");
       console.log(data);

@@ -1,5 +1,6 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import NavtextSlice  from './reducer/NavTextReducer';
+import TravelAds from './reducer/TravelAds';
 import UserReducer from './reducer/UserReducer';
 import WeatherReducer from './reducer/WeatherReducer';
 
@@ -8,6 +9,7 @@ export const store = configureStore({
     User :UserReducer,
     NavText:NavtextSlice,
     Weather:WeatherReducer,
+    Ads:TravelAds,
   },
 });
 

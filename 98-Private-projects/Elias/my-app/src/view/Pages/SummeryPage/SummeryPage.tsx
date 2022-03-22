@@ -1,25 +1,30 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { getAds, getTravelAdsInfoAsync } from '../../../app/reducer/TravelAds';
 import WeatherReducer, { getWeather, getWeatherInfoAsync } from '../../../app/reducer/WeatherReducer';
+import SummeryComp from '../../components/SummeryComp/SummeryComp';
 import './SummeryPage.scss';
 
 
 const SummeryPage = () => {
     const Weather = useAppSelector(getWeather);
+    const ads=useAppSelector(getAds);
     const dispatch = useAppDispatch();
 
 
 
 useEffect(() => {
-    dispatch(getWeatherInfoAsync("newyork"));
+   // dispatch(getWeatherInfoAsync("New York"));
+    dispatch(getTravelAdsInfoAsync());
     console.log(Weather);
-  }, [dispatch]);
+    console.log(ads);
+  }, []);
 
 
 
     //const [PlaceOfTrip, setPlaceOfTrip] = useState("Weather")
-    const [PlaceOfTrip, setPlaceOfTrip] = useState(Weather.WeatherInfo.CityNAme);
+    const [PlaceOfTrip, setPlaceOfTrip] = useState(Weather.WeatherInfo.location.name);
     return (
         <div className='wrapper'>
             <div className="travelheader">
@@ -33,6 +38,11 @@ useEffect(() => {
                 <h3 className="funthings" >Fun things th know about {PlaceOfTrip}</h3>
 
 
+                {ads.TravelAdsInfo.articles.map((element, index) => {
+                    return (
+                        <SummeryComp key={index}  element={element} />
+                    );
+                })}
         </div>
     )
 }
