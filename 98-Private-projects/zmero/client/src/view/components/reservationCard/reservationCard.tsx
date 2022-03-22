@@ -8,11 +8,7 @@ import { faCalendarDays } from '@fortawesome/free-solid-svg-icons'
 import Button from '@mui/material/Button';
 interface cardProp {
     id: string;
-    hour: number;
-    min: number;
-    year: number;
-    month: number;
-    day: number;
+    date: Date;
     restId: string;
     people: number;
 }
@@ -34,12 +30,13 @@ function ReservationCard(props: cardProp) {
         img = restaurant[0].image;
         title = restaurant[0].name;
     }
+    const date = new Date(props.date);
     let strDate = 'y/m/d h:t'
-        .replace('y', "" + props.year)
-        .replace('m', "" + props.month)
-        .replace('d', "" + props.day)
-        .replace('h', "" + props.hour)
-        .replace('t', "" + props.min)
+        .replace('y', "" + date.getFullYear())
+        .replace('m', "" + date.getMonth())
+        .replace('d', "" + date.getDate())
+        .replace('h', "" + date.getHours())
+        .replace('t', "" + date.getMinutes())
     return (
         <div className="reservationcard">
             <div className="reservationcard__image" style={{ backgroundImage: `url(${img})` }}></div>

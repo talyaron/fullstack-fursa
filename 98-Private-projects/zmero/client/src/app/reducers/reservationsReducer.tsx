@@ -4,11 +4,7 @@ import axios from 'axios';
 
 interface Reservation {
     _id: string;
-    hour: number;
-    min: number;
-    year: number;
-    month: number;
-    day: number;
+    date: Date;
     restId: string;
     userId: string;
     people: number;
@@ -33,23 +29,23 @@ export const fetchUserReservations = createAsyncThunk(
             const response = await axios.get('/reservations/get-user-reservations')
             const data: any = response.data
             return data
-        } catch (e) {
-            thunkAPI.rejectWithValue(e)
+        } catch (e: any) {
+            console.log(e.message)
         }
     }
 );
 
 export const cancelReservations = createAsyncThunk(
     'reservation/cancelReservations',
-    async (obj: any, thunkAPI) => {
+    async (obj: any) => {
         try {
             const { id, restId } = obj
             if (!id || !restId) new Error('invalid fields')
             const response = await axios.delete(`/reservations/delete-user-reservation`, { data: { "id": id, "restId": restId } })
             const data: any = response.data
             return data
-        } catch (e) {
-            thunkAPI.rejectWithValue(e)
+        } catch (e: any) {
+            console.log(e.message)
         }
 
     }
@@ -59,13 +55,13 @@ export const AddReservation = createAsyncThunk(
     'reservation/AddReservation',
     async (Reserve: any, thunkAPI) => {
         try {
-            const { restId, hour, year, min, day, month, people } = Reserve
-            if (!restId || !hour || !year || !min || !day || !month || !people) throw new Error('invalid fields')
-            const response = await axios.post(`/reservations/add-user-reservation`, { "restId": restId, "hour": hour, "year": year, "min": min, "day": day, "month": month, "people": people })
+            const { restId, date, people } = Reserve
+            if (!restId || !date || !people) throw new Error('invalid fields')
+            const response = await axios.post('/reservations/add-user-reservation', { "restId": restId, "date": date, "people": people })
             const data: any = response.data
             return data
-        } catch (e) {
-            thunkAPI.rejectWithValue(e)
+        } catch (e: any) {
+            console.log(e.message)
         }
 
     }

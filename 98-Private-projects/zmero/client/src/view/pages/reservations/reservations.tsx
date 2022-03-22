@@ -33,7 +33,7 @@ function Reservations() {
                     <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                         {reservations.map((r, index) => {
                             return (<Grid item xs={12} sm={4} md={3} key={index}>
-                                <ReservationCard key={r._id} restId={r.restId} id={r._id} hour={r.hour} min={r.min} year={r.year} month={r.month} day={r.day} people={r.people}></ReservationCard>
+                                <ReservationCard key={r._id} restId={r.restId} id={r._id} date={r.date} people={r.people}></ReservationCard>
                             </Grid>)
                         })}
                     </Grid>

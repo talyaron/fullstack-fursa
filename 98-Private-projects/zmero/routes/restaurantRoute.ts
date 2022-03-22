@@ -19,6 +19,9 @@ router.get('/get-all-owner-restaurants', isUser, async (req, res) => {
         const role = req.role
         if (role === "restaurateur") {
             const resteraunt = await Resteraunts.find({ "ownerId": ownerId });
+            const date = new Date();
+            date.setDate(date.getDate() - 7)
+            console.log(date)
             res.send({ resteraunt })
         } else res.status(401).send({ error: "Not authorized" });
     } catch (error) {

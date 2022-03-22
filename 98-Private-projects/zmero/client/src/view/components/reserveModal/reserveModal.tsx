@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import Modal from '@mui/material/Modal';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import TimePicker from '@mui/lab/TimePicker';
 import DatePicker from '@mui/lab/DatePicker';
-import Button from '@mui/material/Button';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import TextField from '@mui/material/TextField/TextField';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import DateFnsUtils from '@date-io/date-fns'
 import Stack from '@mui/material/Stack';
 import { AddReservation } from '../../../app/reducers/reservationsReducer';
 import { useAppDispatch } from '../../../app/hooks';
@@ -15,6 +15,7 @@ import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
+import { TextField } from '@mui/material';
 
 interface details {
     restaurantID: string | undefined;
@@ -24,9 +25,8 @@ interface details {
 
 function ReserveModal(props: details) {
     const dispatch = useAppDispatch()
+    const [selectedDate, handleDateChange] = useState<Date | null>(new Date());
     const [people, SetPeople] = useState(1)
-    const [reserveDate, setReserveDate] = useState<Date | null>(new Date());
-    const [reserveTime, setReserveTime] = useState<Date | null>(new Date())
     const style = {
         position: 'fixed',
         top: '50%',
@@ -40,9 +40,9 @@ function ReserveModal(props: details) {
     };
     function handleReserve() {
         dispatch(AddReservation({
-            restId: props.restaurantID, hour: reserveTime?.getHours(), year: reserveDate?.getFullYear(),
-            min: reserveTime?.getMinutes(), day: reserveDate?.getDate(), month: reserveDate?.getMonth(),
-            people: people
+            restId: props.restaurantID,
+            people: people,
+            date: selectedDate,
         }))
         props.setOpenModal(false)
     }
@@ -66,20 +66,20 @@ function ReserveModal(props: details) {
                         </Typography>
                         <LocalizationProvider dateAdapter={AdapterDateFns}>
                             <DatePicker
-                                label="Date"
-                                value={reserveDate}
+                                label="Basic example"
+                                value={selectedDate}
                                 onChange={(newValue) => {
-                                    setReserveDate(newValue);
+                                    handleDateChange(newValue);
                                 }}
                                 renderInput={(params) => <TextField {...params} />}
                             />
                         </LocalizationProvider>
                         <LocalizationProvider dateAdapter={AdapterDateFns}>
                             <TimePicker
-                                label="Time"
-                                value={reserveTime}
+                                label="Basic example"
+                                value={selectedDate}
                                 onChange={(newValue) => {
-                                    setReserveTime(newValue);
+                                    handleDateChange(newValue);
                                 }}
                                 renderInput={(params) => <TextField {...params} />}
                             />

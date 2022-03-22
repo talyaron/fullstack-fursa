@@ -1,10 +1,6 @@
 const mongoose = require("mongoose");
 const ReservationsSchema = mongoose.Schema({
-    hour: Number,
-    min: Number,
-    year: Number,
-    month: Number,
-    day: Number,
+    date: Date,
     restId: String,
     userId: String,
     people: Number,

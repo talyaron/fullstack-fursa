@@ -17,6 +17,11 @@ ChartJS.register(
     Tooltip,
     Legend
 );
+interface BarProps {
+    labels: Array<string>;
+    data: Array<number>;
+    title: string;
+}
 function BarChart() {
     const state = {
         labels: ['January', 'February', 'March',
