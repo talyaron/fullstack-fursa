@@ -8,12 +8,12 @@ import {Link} from 'react-router-dom'
 import Navbar from '../../components/navbar/Navbar';
 
 const products= [{id:1,name:'raw material',image:'https://5.imimg.com/data5/SU/QO/FB/SELLER-80679574/junglee-wood-raw-material-500x500.jpg'
-},{id:2,name:'wood products',image:'http://photos1.blogger.com/blogger/4326/1393/1600/Palo-36.jpg'},{id:3,name:'delivery',image:'https://scontent.fhfa2-2.fna.fbcdn.net/v/t1.6435-9/104619048_3962639370443818_6284339140651318701_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=YxuC4gNeITEAX8bLL-r&_nc_ht=scontent.fhfa2-2.fna&oh=00_AT9CAmM513xABG8RLrFyd4Vg2687seTwehtJRX96HcU85A&oe=622D9899'}]
+},{id:2,name:'wood products',image:'http://photos1.blogger.com/blogger/4326/1393/1600/Palo-36.jpg'},{id:3,name:'delivery',image:'https://scontent.fhfa2-2.fna.fbcdn.net/v/t1.6435-9/104619048_3962639370443818_6284339140651318701_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=R1UOjJrv5ewAX8v5EJk&_nc_ht=scontent.fhfa2-2.fna&oh=00_AT_tHO8sRMbPGh3TI0RtvtRxQX18uvFUxLRs7M_3nrFS9w&oe=62610319'}]
 const Store = () => {
   return <div className="store">
 
       <header className='store_header'>
-     <img className="store_header_logo" src="https://scontent.fhfa2-2.fna.fbcdn.net/v/t1.6435-9/191373428_5543723205668752_6758159996168278797_n.png?_nc_cat=100&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=vD2Ck1UqS_MAX-yTblw&_nc_ht=scontent.fhfa2-2.fna&oh=00_AT-kafBKJB3bLHogSgPEVUQQtAHgClIHTT0FGy07h8nZTA&oe=622CF120" alt="" />
+     <img className="store_header_logo" src="https://scontent.fhfa2-2.fna.fbcdn.net/v/t1.6435-9/191373428_5543723205668752_6758159996168278797_n.png?_nc_cat=100&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=Ye9yqhumfloAX9j7uvt&_nc_ht=scontent.fhfa2-2.fna&oh=00_AT-zBFq4ugSSvtQCdFkGcWIcgyV86E_gH8OVLGhZzFZLFQ&oe=625C6720" alt="" />
     <Navbar></Navbar>
      <h1 >Store</h1>
      <div className="store_header_cart">
