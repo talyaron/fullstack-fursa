@@ -4,10 +4,6 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import Classes from './view/pages/classes/classes';
-import Students from './view/pages/students/Students';
-import StudentInfo from './view/pages/students/StudentInfo';
-import Teachers from './view/pages/teachers/Teachers';
 import SchoolsEvents from './view/pages/schoolsEvents/SchoolsEvents';
 import SchoolClasses from './view/school/pages/classes/Classes';
 import SchoolStudents from './view/school/pages/students/Students';
@@ -27,6 +23,8 @@ import StudentHomeworks from './view/student/pages/homeworks/Homworks';
 import StudentExams from './view/student/pages/exams/StudentExams';
 import TeacherHomeworks from './view/teacher/pages/homeworks/TeacherHomeworks';
 import TeacherExams from './view/teacher/pages/exams/TeacherExams';
+import WebsiteMainPape from './view/pages/mainPage/MainPage';
+import Login from './view/pages/login/Login';
 
 function App() {
   return (
@@ -41,7 +39,8 @@ function App() {
         {/* <Route path="teachers" element={<Teachers />} />
         <Route path="schoolsEvents" element={<SchoolsEvents />} /> */}
 
-        <Route path="/" element={<SchoolClasses />} />
+        <Route path="/" element={<WebsiteMainPape />} />
+        <Route path="login" element={<Login />} />
 
         <Route path="classes" element={<SchoolClasses />} />
         <Route path="students" element={<SchoolStudents />} >

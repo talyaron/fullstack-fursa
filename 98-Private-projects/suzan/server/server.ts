@@ -9,10 +9,10 @@ require('dotenv').config();
 app.use(express.static('../client/build'));
 app.use(express.json());
 
-app.get('/get-user' , (req, res) => {
-  console.log('user-request')
-  res.status(202).send({name:'suzan', id:12345})
-})
+// app.get('/get-user' , (req, res) => {
+//   console.log('user-request')
+//   res.status(202).send({name:'suzan', id:12345})
+// })
 
 //MYSQL
 
@@ -27,23 +27,6 @@ connection.connect( (err) => {
   if (err) throw err;
   console.log("connected to SQL");
 })
-
-
-
-// app.get('/get-classes', async (req, res) => {
-//   console.log('get classes - server');
-//   try{
-//     const response = await axios.get('http://localhost:3004/schoolClasses');
-//     const data = response.data;
-//     console.log(data);
-//     res.status(200).send(data);
-//   }
-//   catch (error) {
-//     console.info(error)
-//     res.send({error})
-//   }
-
-// })
 
 //mongoose
 const mongoose = require("mongoose");
@@ -63,71 +46,24 @@ db.once("open", () => {
   console.log("connected to DB!");
 });
 
+//Routes
 const classesRoute = require('./routes/school/ClassesRoutes')
-const teachersRoute = require('./routes/school/TeachersRoutes')
-const studentsRoute = require('./routes/school/StudentsRoutes')
-const coursesRoute = require('./routes/school/CoursesRoutes')
 app.use('/school', classesRoute);
+
+const teachersRoute = require('./routes/school/TeachersRoutes')
 app.use('/school', teachersRoute);
+
+const studentsRoute = require('./routes/school/StudentsRoutes')
 app.use('/school', studentsRoute);
+
+const coursesRoute = require('./routes/school/CoursesRoutes')
 app.use('/school', coursesRoute);
 
+const userRoute = require('./routes/user/UserRoutes')
+app.use('/user', userRoute);
 
-//the collection
-// const SchoolClassSchema = new mongoose.Schema({
-//   name:String,
-//   teacher: String,
-// });
 
-// const SchoolClass = mongoose.model("schoolClasses", SchoolClassSchema);
-
-// const schoolClass = new SchoolClass({
-//   className: "class 4B",
-//   teacherName: "Suzan Kassabry",
-// });
-
-// console.log(schoolClass.className)
-
-// schoolClass.save().then(res => {console.log(res)}).catch(err=>console.log(err));
-
-// async function getSchoolClasses(): Promise<any> {
-//   try {
-//     const schoolClasses = await SchoolClass.find({});
-//     // console.log("in getSchoolClasses")
-//     // console.log(schoolClasses);
-//     return schoolClasses;
-//   } catch (err: any) {
-//     console.error(err);
-//     return false;
-//   }
-// }
-
-// // getSchoolClasses();
-
-// app.get('/get-classes', async(req, res) => {
-//   const classes = await getSchoolClasses();
-//   res.send(classes);
-// })
-
-// app.post('/add-class',async (req, res) => {
-//   try{
-//     const {name, teacher} = req.body;
-//     console.log(name)
-//     console.log(teacher)
-//     if (!name || !teacher) throw new Error("No data!");
-//     const newClass = new SchoolClass({
-//       name: name,
-//       teacher: teacher,
-//     });
-//     await newClass.save().then((res) => {
-//       console.log(res);
-//     });
-//     res.send({val: "OK"});
-//   } catch (err) {
-//     res.send({error: err.message});
-//   }
-// })
-
+//server listening
 app.listen(port, () => {
   return console.log(`Express is listening at http://localhost:${port}`);
 });

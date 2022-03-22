@@ -1,14 +1,19 @@
 $mainColor:rgb(21, 87, 109);
 $borderRadius:10px;
 
-@import 'view/components/card/Card.scss';
-@import 'view/components/main\ header/MainHeader.scss';
-@import 'view/components/classBox/ClassBox.scss';
-@import 'view/components/classContainer/ClassContainer.scss';
-@import 'view/components/searchBar/SearchBar.scss';
-@import 'view/pages/students/Student.scss';
-@import 'view/pages/students/Students.scss';
-@import 'view/pages/students/StudentInfo.scss';
+// @import 'view/components/card/Card.scss';
+// @import 'view/components/main\ header/MainHeader.scss';
+// @import 'view/components/classBox/ClassBox.scss';
+// @import 'view/components/classContainer/ClassContainer.scss';
+// @import 'view/components/searchBar/SearchBar.scss';
+// @import 'view/pages/students/Student.scss';
+// @import 'view/pages/students/Students.scss';
+// @import 'view/pages/students/StudentInfo.scss';
+
+a{
+  text-decoration: none;
+  color: black;
+}
 
 .App {
   text-align: center;
