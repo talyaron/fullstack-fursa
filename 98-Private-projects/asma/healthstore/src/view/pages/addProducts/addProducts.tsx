@@ -13,6 +13,7 @@ function AddProducts() {
     const [treatments, setTreatments] = useState([]);
 
     const [selectedImage, setImage] = useState('');
+    
     function handleAddImg(e:any) {
         setProduct({...product, img:e.target.files[0].name})
         setImage(e.target.files[0])
@@ -20,7 +21,7 @@ function AddProducts() {
 
     function handleAddProduct() {
         console.log(product)
-        if (!product.name || !product.text || !product.img) {
+        if (!product.name || !product.text || !product.img || !product.category) {
             alert("missing info");
         }
         else {

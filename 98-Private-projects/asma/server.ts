@@ -1,4 +1,3 @@
-const mysql = require('mysql');
 import express from 'express';
 import Product from './model/schema/productsModel';
 const multer = require('multer');
@@ -14,38 +13,15 @@ app.use(cookieParser());
 app.use(express.json());
 
 
-//data
-const con = mysql.createConnection({
-  host: "localhost",
-  port: "3306",
-  user: "root",
-  password: "123456"
-
-
-  // ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '123456'
-});
-
-// con.connect( (err)=> {
-//   if (err) throw err;
-//   console.log("Connected!");
-//   // con.query("use test", (err, result, fields) => {
-//   //     if (err) throw err;
-//   //     console.log('Using test');
-
-//  // });
-// });
-
-
-
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, './images')
+    cb(null, './healthstore/public/images')
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now()+file.originalname );
+    cb(null, '../images/'+Date.now()+file.originalname );
   }
 })
-var upload = multer({ storage: storage })
+var upload = multer({ storage: storage });
 
 app.post('/upload', upload.single('image'), (req:any, res) => {
   try {
@@ -60,14 +36,13 @@ app.post('/upload', upload.single('image'), (req:any, res) => {
   }
 })
 
-
-app.patch("/update-product",  upload.single('image'),async (req:any, res) => {
+app.patch('/update-product',  upload.single('image'),async (req:any, res) => {
   try {
-    const { name, text, category, id,selectedImage } = req.body;
+    const {id,name,text,category} = req.body;
     let update={};
-    if (selectedImage){
+    if (req.file){
        const path = req.file.filename;
-      //  console.log(req.file)
+      // console.log(req.file)
        update = { name: name, text: text, category:category, img: path };
     }
     else{ update = { name: name, text: text, category:category };}
@@ -80,9 +55,6 @@ app.patch("/update-product",  upload.single('image'),async (req:any, res) => {
     res.status(400).send({ error: err.message });
   }
 });
-
-
-
 
 
 const mongoose = require('mongoose');

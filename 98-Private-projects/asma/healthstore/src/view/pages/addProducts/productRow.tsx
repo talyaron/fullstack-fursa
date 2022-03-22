@@ -3,13 +3,14 @@ import axios from 'axios';
 import './productRow.scss'
 import Button from "@material-ui/core/Button";
 
+
 function ProductRow(props: any) {
     const product = props.product;
     const type = props.type;
     const [edit, setEdit] = useState(false);
     const [newProduct, setProduct] = useState({ name: product.name, text: product.text, img: product.img, category: product.category });
 
-    const [selectedImage, setImage] = useState('');
+    const [selected, setImage] = useState('');
 
     function handleAddImg(e: any) {
         setProduct({ ...newProduct, img: e.target.files[0].name })
@@ -23,24 +24,30 @@ function ProductRow(props: any) {
     async function handleUpdate(ev: any) {
         ev.preventDefault();
         const id = ev.target.id
-        const name = ev.target.elements.name.value;
-        const text = ev.target.elements.text.value;
-        const category = ev.target.elements.category.value;
-
+        // const name = ev.target.elements.name.value;
+        // const text = ev.target.elements.text.value;
+        // const category = ev.target.elements.category.value;
+        console.log('selected',selected);
+        console.log('product',newProduct);
+       
         const formData =new FormData();
-        //if(selectedImage)
-        formData.append('image', selectedImage );
+        formData.append('image', selected );
         formData.append('id', id );
-        formData.append('name', name );
-        formData.append('text', text );
-        formData.append('category', category );
-        formData.append('selectedImage', selectedImage );
+        formData.append('name', newProduct.name );
+        formData.append('text', newProduct.text );
+        formData.append('category', newProduct.category );
         const config = { headers: { 'content-type': 'multipart/form-data' } }
 
         //const { data } = await axios.patch(`/${type}s/update-${type}`, formData,config);
-        const { data } = await axios.patch(`/update-product`, formData,config);
+       // const { data } = await axios.patch('/update-product', formData,config);
 
-        console.log(data)
+        axios.patch('/update-product',formData,config)
+        .then(({ data }) => {
+            console.log(data)
+        })
+        .catch(err => {
+            console.error(err)
+        })
         setEdit(!edit);
     }
 
@@ -70,6 +77,7 @@ function ProductRow(props: any) {
                             <td>{product.text}</td>
                             <td>{product.category}</td>
                             <td>{product.img}</td>
+                            <td><img src={product.img}></img></td>
                             <td><button className="btn" onClick={handleEdit}>Edit</button></td>
                             <td><button className="btn" onClick={(e) => handleDelete(e, product._id)}>Delete</button></td>
                         </tr>
