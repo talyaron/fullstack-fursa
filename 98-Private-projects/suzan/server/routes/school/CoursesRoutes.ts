@@ -24,7 +24,8 @@ router.post('/get-courses-by-class-id', async (req, res) => {
 
 router.post('/add-new-course', async (req, res) => {
     const { classId, courseName, teacherId } = req.body;
-    const schoolId = 1;
+    const schoolId = req.userId;
+    // const schoolId = 1;
     const query = `INSERT INTO test_schema.courses_table (name, classID, teacherID, schoolID) 
     VALUES ('${courseName}', ${classId}, ${teacherId}, ${schoolId})`
 

@@ -10,6 +10,7 @@ import { useAppSelector, useAppDispatch } from '../../../../app/hooks';
 import { getSchoolClassesAsync, getSchoolStudentsAsync, getSchoolTeachersAsync, schoolClasses } from '../../../../app/reducers/school/SchoolSlice';
 
 export default function SchoolClasses() {
+    
 
     const dispatch = useAppDispatch();
     useEffect(() => {

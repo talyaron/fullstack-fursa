@@ -7,7 +7,8 @@ const router = express.Router();
 router.get('/get-all-students', async (req, res) => {
     // const classes = await getSchoolClasses();
     // res.send(classes);
-    const query = `SELECT * FROM test_schema.students_table`;
+    const schoolId = req.userId;
+    const query = `SELECT * FROM test_schema.students_table WHERE schoolID = ${schoolId}`;
     connection.query(query, (err, result) => {
         try {
             if(err) throw err;
@@ -35,10 +36,11 @@ router.post('/get-students-by-class-id', async (req, res) => {
 
 router.post('/add-new-student', async (req, res) => {
     const {info} = req.body;
+    const schoolId = req.userId;
     const username = 'username';
     const password = 'password';
     const status = 'student';
-    const schoolId = 1;
+    // const schoolId = 1;
 
     const query = `INSERT INTO test_schema.students_table 
     (username, password, firstName, lastName, studentID, phone, email, fatherName, motherName, fatherPhone, motherPhone, status, schoolID)
