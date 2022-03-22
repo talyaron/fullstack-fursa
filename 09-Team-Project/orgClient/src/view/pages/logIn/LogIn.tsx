@@ -44,7 +44,7 @@ const Login = () => {
                         variant="h3"
                         component="div"
                     >
-                        Login
+                        تسجيل الدخول
                     </Typography>
                 </div>
 
