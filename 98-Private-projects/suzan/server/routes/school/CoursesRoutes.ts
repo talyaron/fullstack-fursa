@@ -1,7 +1,10 @@
+import loginStatus from "../../controllers/login";
 import { connection } from "../../server";
 
 const express = require('express');
 const router = express.Router();
+
+router.use(loginStatus);
 
 router.post('/get-courses-by-class-id', async (req, res) => {
     const { id } = req.body;

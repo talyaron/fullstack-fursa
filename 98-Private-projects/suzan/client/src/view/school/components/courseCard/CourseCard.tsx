@@ -18,8 +18,8 @@ export default function CourseCard(props: CourseCardProps) {
     return (
         <Card className='card' style={{ display: 'inline-block' }}>
             <CardContent className='content'>
-                <Typography variant='h6' align='center'>{name}</Typography>
-                <Typography sx={{ fontSize: 14 }} color="text.secondary" align='center'>{teacher}</Typography>
+                <Typography component={'span'} variant='h6' align='center'>{name}</Typography>
+                <Typography component={'span'} sx={{ fontSize: 14 }} color="text.secondary" align='center'>{teacher}</Typography>
             </CardContent>
         </Card>
     );

@@ -49,12 +49,17 @@ export default function Login() {
             if (response.data.loginStatus) {
                 console.log('logged in successfully')
                 // alert("login succsess");
-                nav('/classes');
-                // switch (type) {
-                //     case 'school':{
-                //         nav('/classes');
-                //     }
-                // }
+                // nav('/classes');
+                switch (type) {
+                    case 'school':{
+                        nav('/classes');
+                        break;
+                    }
+                    case 'student':{
+                        nav('/studentUser/myclass')
+                        break;
+                    }
+                }
             } else {
                 console.log('log in failed')
                 alert("one or more of the data you insert is wrong, check it");

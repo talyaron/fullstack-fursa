@@ -1,8 +1,11 @@
 import { Password } from "@mui/icons-material";
+import loginStatus from "../../controllers/login";
 import { connection } from "../../server";
 
 const express = require('express');
 const router = express.Router();
+
+router.use(loginStatus);
 
 router.get('/get-all-students', async (req, res) => {
     // const classes = await getSchoolClasses();

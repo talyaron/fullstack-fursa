@@ -6,7 +6,9 @@ import UpdatesList from "../../components/updatesList/UpdatesList";
 import { Link } from 'react-router-dom';
 import './StudentMainPage.scss';
 import axios from 'axios';
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
+import { useAppSelector, useAppDispatch } from '../../../../app/hooks';
+import { classCourses, getCoursesAsync } from "../../../../app/reducers/student/ClassDataSlice";
 
 const class_name = 'Class 1A';
 
@@ -25,14 +27,17 @@ const updates = [
 ]
 
 export default function StudentMainPage() {
-    const [courses, setCourses] = useState([]);
+    // const [courses, setCourses] = useState([]);
+    const dispatch = useAppDispatch();
     useEffect(() => {
-        axios.get('http://localhost:3004/studentCourses').then(({data})=>{
-            console.log(data);
-            setCourses(data);
-    })
+        dispatch(getCoursesAsync());
+        //     axios.get('http://localhost:3004/studentCourses').then(({data})=>{
+        //         console.log(data);
+        //         setCourses(data);
+        // })
     }, []);
-    
+    const courses = useAppSelector(classCourses);
+
     return (
         <div>
             <div className="bar">
@@ -54,9 +59,9 @@ export default function StudentMainPage() {
                         <div className="courses">
                             {
                                 courses.map((course, i) => {
-                                    const { name, teacher } = course;
+                                    const { name, firstName, lastName } = course;
                                     return (
-                                        <Link to="../studentUser/coursePage">
+                                        <Link to="../studentUser/coursePage" key={i}>
                                             <CourseCard key={i} info={course} />
                                         </Link>
 

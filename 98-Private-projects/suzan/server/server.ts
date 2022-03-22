@@ -49,20 +49,23 @@ db.once("open", () => {
 });
 
 //Routes
-const classesRoute = require('./routes/school/ClassesRoutes')
-app.use('/school', classesRoute);
-
-const teachersRoute = require('./routes/school/TeachersRoutes')
-app.use('/school', teachersRoute);
-
-const studentsRoute = require('./routes/school/StudentsRoutes')
-app.use('/school', studentsRoute);
-
-const coursesRoute = require('./routes/school/CoursesRoutes')
-app.use('/school', coursesRoute);
-
 const userRoute = require('./routes/user/UserRoutes')
 app.use('/user', userRoute);
+
+const classesRoute_school = require('./routes/school/ClassesRoutes')
+app.use('/school', classesRoute_school);
+
+const teachersRoute_school = require('./routes/school/TeachersRoutes')
+app.use('/school', teachersRoute_school);
+
+const studentsRoute_school = require('./routes/school/StudentsRoutes')
+app.use('/school', studentsRoute_school);
+
+const coursesRoute_school = require('./routes/school/CoursesRoutes')
+app.use('/school', coursesRoute_school);
+
+const coursesRoute_student = require('./routes/student/CoursesRoutes')
+app.use('/student', coursesRoute_student);
 
 
 //server listening

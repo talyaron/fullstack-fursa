@@ -13,11 +13,11 @@ router.post('/login', async (req, res) => {
                 break;
             }
             case 'teacher': {
-                table = 'teacherusers';
+                table = 'teachers_table';
                 break;
             }
             case 'student': {
-                table = 'studentusers';
+                table = 'students_table';
                 break;
             }
         }

@@ -1,13 +1,16 @@
+import loginStatus from "../../controllers/login";
 import { connection } from "../../server";
 
 const express = require('express');
 const router = express.Router();
 
+router.use(loginStatus);
+
 router.get('/get-all-teachers', async (req, res) => {
     // const classes = await getSchoolClasses();
     // res.send(classes);
     const schoolId = req.userId;
-    const query = `SELECT * FROM test_schema.teachers_table WHERE schoolID = ${schoolId}`;
+    const query = `SELECT * FROM test_schema.teachers_table WHERE schoolID = ${schoolId}`;   
     connection.query(query, (err, result) => {
         try {
             if(err) throw err;
