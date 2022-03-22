@@ -76,11 +76,18 @@
 @media only screen and (max-width: 800px) {
     .searchDiv__bar__content {
         flex-direction: column;
+        width: 80%;
 
         &__a {
             width: 100%;
         }
 
         &__b {}
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .searchDiv__bar__content {
+        width: 90%;
     }
 }

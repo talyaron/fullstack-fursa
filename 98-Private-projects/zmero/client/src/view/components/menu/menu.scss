@@ -150,11 +150,13 @@
 }
 
 .Modal {
-    position: absolute;
+    display: flex;
+    flex-direction: column;
     background: white;
-    top: 5rem;
-    left: 0rem;
-    right: 0rem;
+    width: 80%;
+    margin: auto;
+    margin-top: 10%;
+
 
     &__header {
 
@@ -202,10 +204,10 @@
     }
 
     .searchDiv {
-        background-image: none;
+        //background-image: none;
 
         &__title {
-            color: black;
+            color: white;
         }
     }
 
@@ -325,6 +327,11 @@
                 display: none;
             }
         }
+    }
+
+    .Modal {
+        width: 100%;
+        margin-top: 20%;
     }
 
     .signModal {

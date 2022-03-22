@@ -199,9 +199,9 @@ function Menu() {
                 </div>
             </div>
             <Modal className="Modal" isOpen={modalSearchIsOpen} onRequestClose={() => openSearchModal(false)}>
-                <div className="Modal__header">
+                {/* <div className="Modal__header">
                     <button className="Modal__header__closebtn" onClick={() => openSearchModal(false)}></button>
-                </div>
+                </div> */}
                 <div className="Modal__content">
                     <Search />
                 </div>

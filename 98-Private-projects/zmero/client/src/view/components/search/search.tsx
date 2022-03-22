@@ -21,11 +21,12 @@ function Search() {
                         <input className="searchDiv__bar__content__a__input" type="text" placeholder=" Search For Food or Restaurant" name="search" />
                         <FormControl variant="filled" sx={{ backgroundColor: "white", minWidth: 120, maxHeight: '2.5rem', zIndex: 0 }}>
                             <InputLabel style={{ fontSize: '0.7rem' }} id="demo-simple-select-filled-label">Category</InputLabel>
-                            <Select sx={{ height: "2.5rem", backgroundColor: "white" }}
+                            <Select MenuProps={{ disableScrollLock: true }} sx={{ height: "2.5rem", backgroundColor: "white" }}
                                 labelId="demo-simple-select-filled-label"
                                 id="demo-simple-select-filled"
                                 value={searchProp}
                                 onChange={handleSearchProp}
+
                             >
                                 <MenuItem value={'Restaurant'}>Restaurant</MenuItem>
                                 <MenuItem value={'Food'}>Food</MenuItem>
