@@ -31,6 +31,21 @@ const initialState: rawState = {
   
     }
   );
+  export const getRawByName= createAsyncThunk(
+    'rawbyname/fetshRawsByName',
+    async (name:string) => {
+      try {
+        const response = await axios.post('/raw/get-Raw-Material-ByName',{name:name})
+        const data = response.data
+        return data
+  
+      }
+      catch (err: any) {
+        console.log(err.message)
+         }
+  
+    }
+  );
   export const rawSlice = createSlice({
     name: 'raw',
     initialState,
@@ -44,6 +59,13 @@ const initialState: rawState = {
           state.status = 'loading'
         })
         .addCase(getRawAsync.fulfilled, (state, action) => {
+          state.status = 'idle';
+          state.raws = action.payload;
+        })
+        .addCase(getRawByName.pending, (state) => {
+          state.status = 'loading'
+        })
+        .addCase(getRawByName.fulfilled, (state, action) => {
           state.status = 'idle';
           state.raws = action.payload;
         })

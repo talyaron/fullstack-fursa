@@ -59,9 +59,9 @@ function Login() {
             <form onSubmit={userLoginHandler}>
                 <Box sx={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'column', alignitems: 'center', width: '30%', margin: 'auto', border: 'solid', backgroundColor: 'white', borderRadius: '10px', padding: '20px', boxShadow: '2px 2px 10px rgb(245, 202, 9)' }}
                 >
-                    <TextField id="outlined-basic" label="Name" required variant="standard" color="warning"  sx={{ margin: '5px' }} />
-                    <TextField id="outlined-basic" label="Email" required variant="standard" color="warning" sx={{ margin: '5px' }} />
-                    <TextField id="outlined-basic" label="Password" required variant="standard" color="warning" sx={{ margin: '5px' }} />
+                    <TextField id="outlined-basic1" label="Name" required variant="standard" color="warning"  sx={{ margin: '5px' }} />
+                    <TextField type='email' id="outlined-basic2" label="Email" required variant="standard" color="warning" sx={{ margin: '5px' }} />
+                    <TextField  type='password' id="outlined-basic3" label="Password" required variant="standard" color="warning" sx={{ margin: '5px' }} />
                     
                     <Button variant="contained" type='submit' size='medium' style={{ backgroundColor: 'rgb(245, 202, 9)' }} sx={{ m: 1, width: '20%', marginLeft: '40%' }}>
                         login

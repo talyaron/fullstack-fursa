@@ -3,12 +3,11 @@ import Card ,{CardProp}from '../../components/card/Card';
 import "./Rawmaterial.scss";
 import {Link} from 'react-router-dom'
 import Navbar from '../../components/navbar/Navbar';
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getRawAsync, selectRow } from '../../../features/raw/Raw';
+import { getRawAsync, getRawByName, selectRow } from '../../../features/raw/Raw';
 import { useAppSelector } from '../../../app/hooks';
-import { CircularProgress } from '@mui/material';
+import { CircularProgress, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, TextField } from '@mui/material';
 
 
 const woods = [{name:'pine wood',cardImg:'https://d2kxk2c617i0nn.cloudfront.net/image_resize/crop/mw1500/mh750/products/23_001--yellow_pine_softwood-s.jpg'},
@@ -19,17 +18,34 @@ const woodLogo:string="https://cdn2.iconfinder.com/data/icons/lightly-icons/30/s
 function Rawmaterial(){
   const [wood,setWood]=useState([]);
   const dispatch=useDispatch()
-  useEffect(()=>{
-    dispatch(getRawAsync())
+//   useEffect(()=>{
+//     dispatch(getRawAsync())
 
-},[])
-const raws=useAppSelector(selectRow);
+// },[])
+// const raws=useAppSelector(selectRow);
+const [type, setType] = useState('All');
+useEffect(()=>{
+      dispatch(getRawAsync())
+  
+  },[])
 // useEffect(()  => {
 // // axios.get('http://localhost:3004/RawMaterial').then(({data})=> setWood(data));
 // axios.get('http://localhost:3004/woods').then(({data})=> setWood(data));
 
 // }, []);
+ function handleChange(ev:any ) {
+  setType(ev.target.value);
+    if(ev.target.value==="All")
+       {dispatch(getRawAsync())}
+      else{
+        dispatch(getRawByName(ev.target.value))
+      }
 
+
+
+
+};
+const raws=useAppSelector(selectRow);
     return(
         <div className="RawMaterial">
       <header className='RawMaterial_header'>
@@ -44,7 +60,26 @@ const raws=useAppSelector(selectRow);
         
         </header> 
         <div className='searching'>
-        <Wood title={woodLogo} ></Wood>
+        {/* <Wood title={woodLogo} ></Wood> */}
+        <FormControl sx={{ m: 1, minWidth: 200 }}>
+        <InputLabel id="demo-simple-select-autowidth-label" style={{color:'wheat'}}>search types</InputLabel>
+        <Select
+          labelId="demo-simple-select-autowidth-label"
+          id="demo-simple-select-autowidth"
+          value={type}
+          onChange={handleChange}
+          autoWidth
+          label="WoodType"
+        >
+           <MenuItem value="All">
+            <em>All</em>
+          </MenuItem>
+          {raws.raws.map((option:any,index) => (
+              <MenuItem key={index} value={option.name}>
+                {option.name}
+              </MenuItem>))}
+        </Select>
+      </FormControl>
         </div>
         <div className="RawMaterial_body">
        {raws.status!=='loading'?

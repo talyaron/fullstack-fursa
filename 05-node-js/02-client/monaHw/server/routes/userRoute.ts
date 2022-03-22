@@ -9,13 +9,17 @@ router.post('/register',async (req,res)=>{
   try{
     const {name,email,phone,password}=req.body;
     if(!name||!email||!password) throw 'ivalid field values'
-    
+    const userEmailExist=await User.findOne({email:email})
+    if(!userEmailExist){
     const user=new User({name:name,email:email,phone:phone,password:password})
     await user.save().then((res)=>{
         console.log(res);
       });
-      res.send({val:"OK"})
+      res.send({ok:true})
     }
+    else res.send({ok:false,val:'email is already used'})
+    }
+  
     catch(error:any){
         res.status(400).send({error:error.message})
       }
@@ -30,7 +34,7 @@ router.post('/login' ,async (req,res)=>{
       if(user){
         console.log('found')
         const JWT_SECRET = process.env.JWT_SECRET;
-        const encodedJWT = jwt.encode( { userId: user._id, role: "public" },JWT_SECRET);
+        const encodedJWT = jwt.encode( { userId: user._id, role: "admin" },JWT_SECRET);
         res.cookie("login",encodedJWT,{
           httpOnly: true,
           maxAge: 60 * 60 * 1000,

@@ -8,10 +8,15 @@ import userOrder from "../model/schema/userOrderSchema";
 
 router.post('/add-order',async(req,res)=>{
     try{
-      const {woodName,woodlength,amount,userId,price}=req.body;
+      const {woodName,woodlength,amount,price}=req.body;
       // console.log(woodName,woodlength,amount,userId,thick,width)
-      console.log(woodName,woodlength,amount,userId,price)
-      if(!woodName||!woodlength||!amount||!userId||!price ) throw 'invalid fields'
+      if(!woodName||!woodlength||!amount||!price ) throw 'invalid fields'
+      const { login } = req.cookies;
+      const JWT_SECRET = process.env.JWT_SECRET;
+      const decodedJWT = jwt.decode(login, JWT_SECRET);
+      const { userId } = decodedJWT;
+      const user=await User.findOne({_id:userId})
+      if(user){
       const newOrder=new Order({
         woodName,woodlength,amount,userId,price
       });
@@ -20,7 +25,7 @@ router.post('/add-order',async(req,res)=>{
       await newOrder.save().then((res)=>{
         console.log(res);
       });
-      res.send({val:"OK"})
+      res.send({val:"OK"})}
     }catch(error:any){
       res.status(400).send({error:error.message})
     }
@@ -182,7 +187,7 @@ router.post('/checkOut',async(req,res)=>{
     }
   })
 
-  router.get('/get-all-checkout-orders',async(req,res)=>{
+  router.get('/get-all-checkout-orders',isAdmin,async(req,res)=>{
     try{
       
     const userCheckOutOrders=await userOrder.find({})

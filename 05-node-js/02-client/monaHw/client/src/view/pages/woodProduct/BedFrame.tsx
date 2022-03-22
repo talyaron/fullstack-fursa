@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom"
 import Navbar from '../../components/navbar/Navbar';
 import {Link} from 'react-router-dom'
 import './BedFrame.scss'
-import { Alert, Button, MenuItem, TextField } from "@mui/material";
+import { Alert, Button, MenuItem, TextareaAutosize, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
 import axios from 'axios'
 import { Box } from "@mui/system";
@@ -48,7 +48,7 @@ function BedFrame()
         
         // <Alert severity="success">item added successfully — check it out!</Alert>
         // axios.post('http://localhost:3004/userOrder',{"woodName":woodproname,"woodlength":form[0].value, "width":form[1].value, "thick":form[2].value,"color":form[3].value,"amount":form[4].value,"doorType":form[5].value}).then(({data})=>dispatch(getCartAsync()));
-        axios.post('/order/add-product-order',{woodName:woodproname,woodlength:form[0].value,width:form[1].value,thick:form[2].value, color:form[3].value,amount:form[4].value,doorType:form[5].value,userId:user._id})
+        axios.post('/order/add-product-order',{woodName:woodproname,woodlength:form[0].value,width:form[1].value,thick:form[2].value, color:form[3].value,amount:form[4].value,doorType:form[5].value,details:form[7].value,userId:user._id})
         .then((res) => setShow('block'))
         .catch((err) => console.error(err));
         // setShow('block')
@@ -81,6 +81,12 @@ function BedFrame()
                 {option.label}
               </MenuItem>
             ))}</TextField>
+             <TextareaAutosize
+              aria-label="minimum height"
+              minRows={3}
+              placeholder="עוד פרטים על ההזמנה"
+              style={{ width: 200 }}
+            />
             <Button startIcon={<AddShoppingCartIcon></AddShoppingCartIcon>} type="submit" variant="contained" style={{ backgroundColor: 'rgb(47, 143, 90)' }} size="medium">
               add to cart
 
