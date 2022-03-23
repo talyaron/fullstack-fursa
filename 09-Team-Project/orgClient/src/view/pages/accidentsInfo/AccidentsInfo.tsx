@@ -41,13 +41,13 @@ function AccidentsInfo() {
           <p>{accident_.value.description}</p>
         </div>
         {/* <Link to={}> */}
-        <button>Profile Info</button>
+        <button>معلومات الصفحه الشخصيه</button>
         {/* </Link> */}
         {/* <Link to={}> */}
-        <button>Chat</button>
+        <button>الدردشه</button>
         {/* </Link> */}
         <Link to="/messagesBetweenOrg">
-        <button>Send to other user</button>
+        <button>ارسال الى مستخدم اخر</button>
         </Link>
       </div>
       <PhoneIcon sx={{ paddingLeft: '40px', fontSize: 35 }} />
