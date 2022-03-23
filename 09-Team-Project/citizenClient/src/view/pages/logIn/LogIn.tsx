@@ -37,15 +37,15 @@ function LogIn() {
     <div className="login">
       <Navbar></Navbar>
       <div className="login__main">
-        <h1> login </h1>
+        <h1> تسجيل الدخول </h1>
         <form onSubmit={hadleSubmit}>
           <TextField required name="email" label="Email" variant="standard" onChange={(e: any) => setEmail(e.target.value)} />
           <TextField required name="password" label="Password" variant="standard" type="password" onChange={(e: any) => setPassword(e.target.value)} />
           <div className="login__main__remember">
             <input type="checkbox" id="remember" value="remember" />
-            <span>Remember me </span>
+            <span>تذكرني  </span>
           </div>
-          <Button variant="contained" style={{ marginTop: '1rem' }} type="submit">Log In</Button>
+          <Button variant="contained" style={{ marginTop: '1rem' }} type="submit">تسجيل الدخول</Button>
           { }
         </form>
       </div>

@@ -66,7 +66,7 @@ function Chat() {
         <input
           autoFocus
           value={value}
-          placeholder="Type your message"
+          placeholder="اكتب رسالتك"
           onChange={(e) => {
             setValue(e.currentTarget.value);
           }} />
