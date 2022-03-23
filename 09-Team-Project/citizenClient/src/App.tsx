@@ -10,8 +10,15 @@ import SignUp from './view/pages/signUp/signup'
 import Stories from "./view/pages/stories/stories";
 import About from "./view/pages/about/about"
 import Chat from "./view/pages/chat/Chat"
+import { useEffect } from "react";
+import { useAppDispatch } from "./app/hooks";
+import { authenticate } from "./app/reducer/userReducer";
 
 function App() {
+  const dispatch = useAppDispatch()
+  useEffect(() => {
+    dispatch(authenticate())
+  }, [])
   return (
     <Router>
       <Routes>
