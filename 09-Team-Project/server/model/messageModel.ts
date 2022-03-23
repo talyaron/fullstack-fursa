@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 
 export const MessageSchema = new mongoose.Schema({
     chatId: String,
+    chatRoomId: String,
     from: String,
     To:String,
     date: Date,
