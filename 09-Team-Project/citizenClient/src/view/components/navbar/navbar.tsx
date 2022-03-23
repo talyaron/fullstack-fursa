@@ -21,7 +21,7 @@ function Navbar() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
     const isLoggedIn = useAppSelector(getloginState)
-    const pages = ['Home', 'Info', 'Stories', 'Chat'];
+    const pages = ['الصفحة الرئيسية', 'المعلومات', 'القصص', 'محادثة'];
     const navigate = useNavigate();
 
 
@@ -50,7 +50,7 @@ function Navbar() {
                         component="div"
                         sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
                     >
-                        LOGO
+                        لوجو
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -84,22 +84,22 @@ function Navbar() {
                         >
                             <Link to="/home">
                                 <MenuItem key={"Home"} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">Home</Typography>
+                                    <Typography textAlign="center">الصفحة الرئيسية</Typography>
                                 </MenuItem>
                             </Link>
                             <Link to="/info">
                                 <MenuItem key={"Info"} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">Info</Typography>
+                                    <Typography textAlign="center">معلومات</Typography>
                                 </MenuItem>
                             </Link>
                             <Link to="/stories">
                                 <MenuItem key={"Stories"} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">Stories</Typography>
+                                    <Typography textAlign="center">القصص</Typography>
                                 </MenuItem>
                             </Link>
                             <Link to="/chat">
                                 <MenuItem key={"Chat"} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">Chat</Typography>
+                                    <Typography textAlign="center">محادثة</Typography>
                                 </MenuItem>
                             </Link>
                         </Menu>
@@ -123,8 +123,8 @@ function Navbar() {
                             </Button>
                         ))}
                     </Box>
-                    {!isLoggedIn ? (<div><Button variant="contained" style={{ marginRight: "1rem", backgroundColor: "#35b0d2" }} type="submit" onClick={() => { navigate('/signup') }}>Register</Button>
-                        <Button variant="contained" style={{ backgroundColor: "#35b0d2" }} type="submit" onClick={() => { navigate('/') }}>Log in</Button></div>) : (
+                    {!isLoggedIn ? (<div><Button variant="contained" style={{ marginRight: "1rem", backgroundColor: "#35b0d2" }} type="submit" onClick={() => { navigate('/signup') }}>التسجيل </Button>
+                        <Button variant="contained" style={{ backgroundColor: "#35b0d2" }} type="submit" onClick={() => { navigate('/') }}>تسجيل الدخول</Button></div>) : (
                         <Box sx={{ flexGrow: 0 }}>
                             <Tooltip title="Open settings">
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -149,17 +149,17 @@ function Navbar() {
                             >
                                 <Link to="/profile">
                                     <MenuItem key="profile" onClick={handleCloseUserMenu}>
-                                        <Typography textAlign="center">Profile</Typography>
+                                        <Typography textAlign="center">الملف الشخصي</Typography>
                                     </MenuItem>
                                 </Link>
                                 <Link to="/previousAccidents">
                                     <MenuItem key="previousAccidents" onClick={handleCloseUserMenu}>
-                                        <Typography textAlign="center">Previous Accidents</Typography>
+                                        <Typography textAlign="center">الحوادث السابقة</Typography>
                                     </MenuItem>
                                 </Link>
                                 <Link to="/">
                                     <MenuItem key="profile" onClick={handleCloseUserMenu}>
-                                        <Typography textAlign="center">Log out</Typography>
+                                        <Typography textAlign="center">تسجيل خروج </Typography>
                                     </MenuItem>
                                 </Link>
                             </Menu>

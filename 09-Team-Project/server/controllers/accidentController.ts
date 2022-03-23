@@ -44,7 +44,7 @@ exports.getAccidenstByLocation = async (req, res) => {
     if (!location) throw new Error("No location in body");
     console.log(location)
     try {
-        const _acc = await accident.find({ "accident.address": location });
+        const _acc = await Accident.find({ "accident.address": location });
         res.send({ ok: true, accidents: _acc });
     } catch (error: any) {
         res.send({ ok: false, error: error.message });
