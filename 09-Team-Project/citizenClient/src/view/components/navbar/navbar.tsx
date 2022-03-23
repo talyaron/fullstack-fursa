@@ -13,7 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { Link, useNavigate } from 'react-router-dom'
 import { useAppSelector } from '../../../app/hooks';
-import { getloginState } from '../../../app/reducer/userReducer';
+import { getloginState, getRole } from '../../../app/reducer/userReducer';
 import './navbar.scss'
 
 
@@ -21,6 +21,7 @@ function Navbar() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
     const isLoggedIn = useAppSelector(getloginState)
+    const userRole = useAppSelector(getRole)
     const pages = ['Home', 'Info', 'Stories', 'Chat'];
     const navigate = useNavigate();
 
@@ -104,14 +105,6 @@ function Navbar() {
                             </Link>
                         </Menu>
                     </Box>
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="div"
-                        sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
-                    >
-                        LOGO
-                    </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
                             <Button

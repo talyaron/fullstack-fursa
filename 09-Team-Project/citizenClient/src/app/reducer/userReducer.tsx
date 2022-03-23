@@ -9,6 +9,7 @@ export interface User {
         phone: string;
         location: string;
         gender: string;
+        type: string;
     }
     isLogIn: boolean;
     status: 'idle' | 'loading' | 'failed';
@@ -22,7 +23,7 @@ const initialState: User = {
         phone: "",
         location: "",
         gender: "",
-        //role
+        type: "",
     },
     isLogIn: false,
     status: 'idle',
@@ -120,4 +121,5 @@ export const getID = (state: RootState) => state.user.userInfo._id;
 export const userInfo = (state: RootState) => state.user.userInfo;
 export const getloginState = (state: RootState) => state.user.isLogIn;
 export const getUserEmail = (state: RootState) => state.user.userInfo.email;
+export const getRole = (state: RootState) => state.user.userInfo.type;
 export default userReducer.reducer;
