@@ -81,7 +81,8 @@ function AccidenstByLocation() {
             <TableRow>
               <StyledTableCell align="center"> </StyledTableCell>
               <StyledTableCell align="center">صنف الحدث</StyledTableCell>
-              <StyledTableCell align="center"> توقيت الحدث(ساعه + تاريخ) </StyledTableCell>
+              <StyledTableCell align="center"> التاريخ</StyledTableCell>
+              <StyledTableCell align="center"> التوقيت </StyledTableCell>
               <StyledTableCell align="center">وصف الحدث </StyledTableCell>
 
             </TableRow>
@@ -93,7 +94,8 @@ function AccidenstByLocation() {
                   <NotificationImportantIcon></NotificationImportantIcon>
                 </StyledTableCell>
                 <StyledTableCell align="center">{row.type}</StyledTableCell>
-                <StyledTableCell align="center">{row.date}</StyledTableCell>
+                <StyledTableCell align="center">{row.date.substring(0, 10)}</StyledTableCell>
+                <StyledTableCell align="center">{row.date.substring(11, 19)}</StyledTableCell>
                 <StyledTableCell align="center">
                   {row.description}
                 </StyledTableCell>
