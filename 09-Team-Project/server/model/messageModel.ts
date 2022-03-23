@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 
 export const MessageSchema = new mongoose.Schema({
     chatId: String,
-    roomId: String,
+    chatRoomId: String,
     from: String,
     date: Date,
     type: { type: String, enum: ['video', 'picture', 'message', 'location'] },
