@@ -10,7 +10,7 @@ import SignUp from './view/pages/signUp/signup'
 import Stories from "./view/pages/stories/stories";
 import About from "./view/pages/about/about"
 import Chat from "./view/pages/chat/Chat"
-
+import ChatRooms from './view/pages/chatRoams/chatRooms'
 
 function App() {
   return (
@@ -25,6 +25,7 @@ function App() {
         <Route path="/chat" element={<Chat />} />
         <Route path="/emergency/:accidentName" element={<Emergency />}></Route>
         <Route path="/previousAccidents" element={<PreviousAccident />} />
+        <Route path="/chatRoams" element={<ChatRooms/>} />
 
       </Routes>
     </Router>
