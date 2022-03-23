@@ -63,21 +63,6 @@ function Chat() {
   return (
     <div className="chatPage">
       <Navbar />
-
-    <div className="container">
-      <time dateTime={response}>{response}</time>
-      <form onSubmit={submitForm}>
-        <input
-          autoFocus
-          value={value}
-          placeholder="اكتب رسالتك"
-          onChange={(e) => {
-            setValue(e.currentTarget.value);
-          }} />
-      </form>
-    </div>
-
-
       <div className="chatContainer">
         <div className="wrapper">
         {Object.entries(messages).map(function (val: any, index) {
@@ -96,7 +81,7 @@ function Chat() {
           <input
             autoFocus
             value={value}
-            placeholder="Type your message"
+            placeholder="اكتب رسالتك"
             onChange={(e) => {
               setValue(e.currentTarget.value);
             }}

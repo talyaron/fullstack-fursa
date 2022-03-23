@@ -13,7 +13,8 @@ import Chat from "./view/pages/chat/Chat"
 import { useEffect } from "react";
 import { useAppDispatch } from "./app/hooks";
 import { authenticate } from "./app/reducer/userReducer";
-import ChatRooms from './view/pages/chatRoams/chatRooms'
+import ChatRooms from "./view/pages/ChatRooms/chatRooms";
+
 
 
 function App() {
