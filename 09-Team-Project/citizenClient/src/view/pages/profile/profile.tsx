@@ -51,7 +51,7 @@ function Profile() {
                         id="panel2bh-header"
                     >
                         <Typography sx={{ width: '70%', flexShrink: 0 }}>
-                            Change Password
+                            تغيير كلمة المرور
                         </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
@@ -59,13 +59,13 @@ function Profile() {
                             <div className="profile__main__links__password">
                                 <div className="profile__main__links__password__1">
                                     <div className="profile__main__links__password__1__current">
-                                        <TextField required fullWidth name="currentPass" label="Current Password" variant="standard" type="password" onChange={onChangeUpdatePass} />
+                                        <TextField required fullWidth name="currentPass" label="كلمة المرور الحالية" variant="standard" type="password" onChange={onChangeUpdatePass} />
                                     </div>
                                     <div className="profile__main__links__password__1__new">
-                                        <TextField required fullWidth name="newPass" label="New Password" variant="standard" type="password" onChange={onChangeUpdatePass} />
+                                        <TextField required fullWidth name="newPass" label="كلمة المرور الجديدة" variant="standard" type="password" onChange={onChangeUpdatePass} />
                                     </div>
                                 </div>
-                                <Button variant="contained" fullWidth style={{ marginTop: '1rem' }} type="submit">Change</Button>
+                                <Button variant="contained" fullWidth style={{ marginTop: '1rem' }} type="submit"> :تغيير كلمة المرور</Button>
                             </div>
                         </form>
                     </AccordionDetails>
