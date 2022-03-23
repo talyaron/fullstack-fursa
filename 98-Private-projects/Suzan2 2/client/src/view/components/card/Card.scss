@@ -1,0 +1,22 @@
+.card{
+    background-color: $mainColor;
+    border-radius: $borderRadius;
+    margin: 5px;
+}
+
+.myCard{
+    background-color: antiquewhite;
+    border-radius: 5px;
+    box-shadow: 2px 2px 6px black;
+    margin: 5px;
+    color: black;
+
+    img{
+        height: 200px;
+        width: 200px;
+    }
+
+    .input{
+        font-size: medium;
+    }
+}
