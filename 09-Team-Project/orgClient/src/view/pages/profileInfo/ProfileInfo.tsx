@@ -19,16 +19,16 @@ function ProfileInfo() {
             <MenuAppBar />
             <div className='userInfo'>
                 <div className="content">
-                    <h3>Profile Info</h3>
-                    <p>Name : {accident_.value.user.name}</p>
-                    <p>Gender: {accident_.value.user.gender}</p>
-                    <p>Location: {accident_.value.user.location}</p>
-                    <p>Phone Number: {accident_.value.user.phone}</p>
+                    <h3> :المعلومات الشخصية</h3>
+                    <p> :الاسم{accident_.value.user.name}</p>
+                    <p> :الهوية الجنسية{accident_.value.user.gender}</p>
+                    <p> :موقع الحادث{accident_.value.user.location}</p>
+                    <p> :رقم الهاتف{accident_.value.user.phone}</p>
                 </div >
                 <br />
-                <button>Go To Chat</button>
+                <button>اذهب الی الدردشة/button>
                 <Link to={`/${accidentId}`}>
-                    <button>Accident Info</button>
+                    <button>معلومات عن الحادث</button>
                 </Link>
             </div>
             <PhoneIcon sx={{ paddingLeft: '40px', fontSize: 35 }} />

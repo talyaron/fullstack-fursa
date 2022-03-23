@@ -82,11 +82,11 @@ function MessagesBetweenOrg() {
             <MenuAppBar />
             <div className="info">
                 <Typography className="text" variant="h6" align="center">
-                    select organization and user to send them an accident
+                    اختر جمعية ومستخدم ليتم ارسال الحادث لهم
                 </Typography>
                 <Box className="box" sx={{ width: 200 }}>
                     <FormControl fullWidth>
-                        <InputLabel id="demo-simple-select-label">Pick Organization</InputLabel>
+                        <InputLabel id="demo-simple-select-label">اختر جمعية</InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
@@ -103,7 +103,7 @@ function MessagesBetweenOrg() {
                 </Box>
                 <Box className="box" sx={{ width: 200 }}>
                     <FormControl fullWidth>
-                        <InputLabel id="demo-simple-select-label">Pick User</InputLabel>
+                        <InputLabel id="demo-simple-select-label"></InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
@@ -122,13 +122,13 @@ function MessagesBetweenOrg() {
                         <TextField
                             id="outlined-multiline-static"
                             multiline
-                            label="add description"
+                            label="اضف وصف"
                             // rows={4}
                             onKeyUp={handleDescription}
                         />
                     </FormControl>
                 </Box>
-                <Button className="button" onClick={handleClick} variant="contained" >Send Meassage</Button>
+                <Button className="button" onClick={handleClick} variant="contained" >رسال</Button>
             </div>
         </div>
     )
