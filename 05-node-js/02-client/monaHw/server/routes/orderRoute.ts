@@ -33,9 +33,15 @@ router.post('/add-order',async(req,res)=>{
 //add-door-order
 router.post('/add-door-order',async(req,res)=>{
   try{
-    const {woodName,woodlength,amount,userId,thick,width,details,color}=req.body;
+    const {woodName,woodlength,amount,thick,width,details,color}=req.body;
     // console.log(woodName,woodlength,amount,userId,thick,width)
-    if(!woodName||!woodlength||!amount||!thick||!width||!userId||!details||!color) throw 'invalid fields'
+    if(!woodName||!woodlength||!amount||!thick||!width||!details||!color) throw 'invalid fields'
+    const { login } = req.cookies;
+    const JWT_SECRET = process.env.JWT_SECRET;
+    const decodedJWT = jwt.decode(login, JWT_SECRET);
+    const { userId } = decodedJWT;
+    const user=await User.findOne({_id:userId})
+      if(user){
     const newOrder=new Order({
       woodName,woodlength,width,thick,color,amount,userId,details
     });
@@ -44,16 +50,22 @@ router.post('/add-door-order',async(req,res)=>{
       console.log(res);
     });
     res.send({val:"OK"})
-  }catch(error:any){
+  }}catch(error:any){
     res.status(400).send({error:error.message})
   }
 })
 //add-closet-order
 router.post('/add-product-order',async(req,res)=>{
   try{
-    const {woodName,woodlength,amount,userId,thick,width,doorType,details,color}=req.body;
+    const {woodName,woodlength,amount,thick,width,doorType,details,color}=req.body;
     // console.log(woodName,woodlength,amount,userId,thick,width)
-    if(!woodName||!woodlength||!amount||!thick||!width||!userId||!doorType||!details||!color ) throw 'invalid fields'
+    if(!woodName||!woodlength||!amount||!thick||!width||!doorType||!details||!color ) throw 'invalid fields'
+    const { login } = req.cookies;
+    const JWT_SECRET = process.env.JWT_SECRET;
+    const decodedJWT = jwt.decode(login, JWT_SECRET);
+    const { userId } = decodedJWT;
+    const user=await User.findOne({_id:userId})
+      if(user){
     const newOrder=new Order({
       woodName,woodlength,width,thick,color,amount,userId,details
     });
@@ -63,7 +75,7 @@ router.post('/add-product-order',async(req,res)=>{
       console.log(res);
     });
     res.send({val:"OK"})
-  }catch(error:any){
+  }}catch(error:any){
     res.status(400).send({error:error.message})
   }
 })

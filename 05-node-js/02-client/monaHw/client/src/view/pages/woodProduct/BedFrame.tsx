@@ -84,7 +84,7 @@ function BedFrame()
              <TextareaAutosize
               aria-label="minimum height"
               minRows={3}
-              placeholder="עוד פרטים על ההזמנה"
+              placeholder=" more details.. "
               style={{ width: 200 }}
             />
             <Button startIcon={<AddShoppingCartIcon></AddShoppingCartIcon>} type="submit" variant="contained" style={{ backgroundColor: 'rgb(47, 143, 90)' }} size="medium">
