@@ -74,7 +74,7 @@ function AccidenstByLocation() {
         <SearchIcon />
         <input type="text" placeholder='search by location' onKeyUp={(e: any) => { setLocation(e.target.value) }} />
 
-        <button className='searchBtn' onClick={handleSearchByLocation}> Go </button>
+        <button className='searchBtn' onClick={handleSearchByLocation}> اذهب </button>
 
       </div>
 
