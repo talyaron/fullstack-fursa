@@ -2,10 +2,8 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3001",
+  "proxy": "http://localhost:4000",
   "dependencies": {
-    "@chatscope/chat-ui-kit-react": "^1.8.3",
-    "@chatscope/chat-ui-kit-styles": "^1.2.3",
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",
     "@mui/icons-material": "^5.4.4",
@@ -21,7 +19,6 @@
     "@types/react-redux": "^7.1.23",
     "axios": "^0.26.0",
     "react": "^17.0.2",
-    "react-chat-elements": "^11.0.1",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.2",
@@ -29,8 +26,6 @@
     "sass": "^1.49.9",
     "socket.io": "4.4.0",
     "socket.io-client": "^4.4.1",
-    "stream-chat": "^6.2.0",
-    "stream-chat-react": "^8.0.0",
     "typescript": "~4.1.5",
     "uuid": "8.3.2"
   },

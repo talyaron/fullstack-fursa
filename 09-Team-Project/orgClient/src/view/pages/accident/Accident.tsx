@@ -26,12 +26,11 @@ function Accident() {
         <div className="accidentHeader_settings"><img onClick={()=> nav('/accidents')} style={{ width: 50 }} src={settings} alt="" /></div>
       </div>
       <div className="accidentsContent">
-        {accidentsReducer.status === 'loading' ? <div>Loading...</div> :
+        {accidentsReducer.status === 'loading' ? <div>جاري التحميل...</div> :
           accidentsReducer.value.accidents.map((accident, index) => {
-            return (
-              // <AccidentComp key={index} connect={"connect"} emergency={accident.emergency} details={accident.description} notifications={accident.address} />
-              <AccidentComp key={index} accident={accident} />
-
+            return (  
+                        
+            <AccidentComp key={index} accident={accident} />
             );
           })
         }

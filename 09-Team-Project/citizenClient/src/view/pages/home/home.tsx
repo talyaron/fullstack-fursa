@@ -25,11 +25,11 @@ function Home() {
             <div className="home__content">
                 <div className="home__content__btn">
                     <Button value="emergency" style={{ backgroundColor: "#eb4034" }} variant="contained" startIcon={<CampaignIcon />} onClick={handleBtn}>
-                        Emergency
+                    طارئ
                     </Button>
-                    <Button value="harassment" style={{ borderColor: "#eb4034", color: "#eb655b" }} variant="outlined" onClick={handleBtn}>Harassment</Button>
-                    <Button value="homeViolence" style={{ borderColor: "#eb4034", color: "#eb655b" }} variant="outlined" onClick={handleBtn}>Home Violence</Button>
-                    <Button value="violenceEvent" style={{ borderColor: "#eb4034", color: "#eb655b" }} variant="outlined" onClick={handleBtn}>Violence Event</Button>
+                    <Button value="harassment" style={{ borderColor: "#eb4034", color: "#eb655b" }} variant="outlined" onClick={handleBtn}>تحرش</Button>
+                    <Button value="homeViolence" style={{ borderColor: "#eb4034", color: "#eb655b" }} variant="outlined" onClick={handleBtn}>العنف المنزلي</Button>
+                    <Button value="violenceEvent" style={{ borderColor: "#eb4034", color: "#eb655b" }} variant="outlined" onClick={handleBtn}>حدث عنف</Button>
                 </div>
             </div>
         </div>

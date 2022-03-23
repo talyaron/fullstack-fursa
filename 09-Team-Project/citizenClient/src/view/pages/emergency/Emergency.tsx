@@ -109,7 +109,7 @@ export function Emergency() {
             style={{ width: "50%", borderColor: "eb655", color: "#eb655b" }}
             select
             name="type"
-            label="Select accident type"
+            label="اختار صنف الحدث"
             value={type}
             onChange={handleChange}>
             {accidentType.map((option) => (
@@ -139,14 +139,14 @@ export function Emergency() {
               onClick={handleUpload}
               style={{ borderColor: "blue", color: "blue" }}
               variant="outlined">
-              upload picture
+              تحميل الصورة
             </Button>
           )}
           <Button
             startIcon={<ChatIcon></ChatIcon>}
             style={{ borderColor: "green", color: "green" }}
             variant="outlined">
-            chat{" "}
+            الدردشه{" "}
           </Button>
 
           <Button
@@ -154,7 +154,7 @@ export function Emergency() {
             type="submit"
             style={{ borderColor: "red", color: "red" }}
             variant="outlined">
-            report accident{" "}
+           تقرير عن حادث {" "}
           </Button>
         </form>
       </div>

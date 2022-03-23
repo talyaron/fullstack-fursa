@@ -13,7 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { Link, useNavigate } from 'react-router-dom'
 import { useAppSelector } from '../../../app/hooks';
-import { getloginState } from '../../../app/reducer/userReducer';
+import { getloginState, getRole } from '../../../app/reducer/userReducer';
 import './navbar.scss'
 
 
@@ -21,6 +21,7 @@ function Navbar() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
     const isLoggedIn = useAppSelector(getloginState)
+    const userRole = useAppSelector(getRole)
     const pages = ['Home', 'Info', 'Stories', 'Chat'];
     const navigate = useNavigate();
 
@@ -89,29 +90,21 @@ function Navbar() {
                             </Link>
                             <Link to="/info">
                                 <MenuItem key={"Info"} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">Info</Typography>
+                                    <Typography textAlign="center">المعلومات</Typography>
                                 </MenuItem>
                             </Link>
                             <Link to="/stories">
                                 <MenuItem key={"Stories"} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">Stories</Typography>
+                                    <Typography textAlign="center">القصص</Typography>
                                 </MenuItem>
                             </Link>
                             <Link to="/chat">
                                 <MenuItem key={"Chat"} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">Chat</Typography>
+                                    <Typography textAlign="center">الدردشه</Typography>
                                 </MenuItem>
                             </Link>
                         </Menu>
                     </Box>
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="div"
-                        sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
-                    >
-                        LOGO
-                    </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
                             <Button
@@ -149,17 +142,17 @@ function Navbar() {
                             >
                                 <Link to="/profile">
                                     <MenuItem key="profile" onClick={handleCloseUserMenu}>
-                                        <Typography textAlign="center">Profile</Typography>
+                                        <Typography textAlign="center">الصفحه الشخصيه</Typography>
                                     </MenuItem>
                                 </Link>
                                 <Link to="/previousAccidents">
                                     <MenuItem key="previousAccidents" onClick={handleCloseUserMenu}>
-                                        <Typography textAlign="center">Previous Accidents</Typography>
+                                        <Typography textAlign="center">الحوادث السابقة</Typography>
                                     </MenuItem>
                                 </Link>
                                 <Link to="/">
                                     <MenuItem key="profile" onClick={handleCloseUserMenu}>
-                                        <Typography textAlign="center">Log out</Typography>
+                                        <Typography textAlign="center">تسجيل الخروج</Typography>
                                     </MenuItem>
                                 </Link>
                             </Menu>

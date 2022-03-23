@@ -19,7 +19,7 @@ function StoriesComp(props: Props) {
             <div className="vicDesc">
                 {isReadMore ? props.description.slice(0, 150) : props.description}
                 <span onClick={toggleReadMore} className="read-or-hide">
-                    {isReadMore ? "...read more" : " show less"}
+                    {isReadMore ? "...المزيد" : "القليل"}
                 </span>
             </div>
         </div>

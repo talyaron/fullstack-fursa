@@ -1,15 +1,30 @@
 const express = require('express');
 const router = express.Router();
+import jwt from "jwt-simple";
 import Users from '../model/userModel'
 
 router.post("/get-user", async (req, res) => {
     try {
         const { email, password } = req.body;
-        console.log(email, password)
         if (!password || !email) throw ' invalid fields'
         const _user = await Users.findOne({ email: email });
         if (_user) {
             if (_user.password === password) {
+                const JWT_SECRET = process.env.JWT_SECRET;
+                const encodedJWT = jwt.encode(
+                    { userId: _user._id, role: _user.type },
+                    JWT_SECRET
+                );
+                if (_user.type == "admin" || _user.type == "org") {
+                    res.cookie('user', encodedJWT, {
+                        httpOnly: true,
+                        maxAge: 24 * 60 * 60 * 1000,
+                    })
+                } else {
+                    res.cookie('user', encodedJWT, {
+                        httpOnly: true,
+                    })
+                }
                 res.send({ ok: true, user: _user })
             }
             else {
@@ -40,6 +55,40 @@ router.post('/sign-up', async (req, res) => {
         res.send({ error });
     }
 
+})
+
+router.get('/get-authentication', async (req, res) => {
+    try {
+        const { user } = req.cookies;
+        if (user) {
+            const JWT_SECRET = process.env.JWT_SECRET;
+            const decodedJWT = jwt.decode(user, JWT_SECRET);
+            const { userId } = decodedJWT;
+            if (userId) {
+                const result = await Users.find({ "_id": userId });
+                if (result.length > 0) {
+                    res.send({ "log": true, "user": result[0] })
+                } else res.send({ "log": false })
+            }
+            else res.send({ "log": false })
+        }
+        else {
+            const JWT_SECRET = process.env.JWT_SECRET;
+            //add to db
+            const newUser = new Users({ "type": "anonymous", "email": Date.now().toString() })
+            const result = await newUser.save()
+            const encodedJWT = jwt.encode(
+                { userId: result._id, role: "anonymous" },
+                JWT_SECRET
+            );
+            res.cookie('user', encodedJWT, {
+                httpOnly: true,
+            })
+            res.send({ "log": true, "user": result })
+        }
+    } catch (error) {
+        res.send({ error });
+    }
 })
 
 
