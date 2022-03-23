@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Grid, Paper, Avatar, TextField } from '@material-ui/core'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ProminentAppBar from '../../Components/outsideHeader/header';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -13,6 +13,7 @@ const SignUp = () => {
     const avatarStyle = { backgroundColor: '#1bbd7e' }
     const marginTop = { marginTop: 5 }
 
+    const nav = useNavigate();
     const [email, setEmail] = useState("");
     const [fullName, setFullName] = useState("");
     const [password, setPassword] = useState("");
@@ -30,6 +31,7 @@ const SignUp = () => {
             const { data } = response;
             if (data.ok) {
                 console.log(data.message);
+                nav('/');
             }
         } catch (error) {
 
