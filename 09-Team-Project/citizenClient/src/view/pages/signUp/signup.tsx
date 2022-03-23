@@ -38,17 +38,17 @@ function SignUp() {
             <NavBar></NavBar>
             <div className="signup__main">
                 <div className="signup__main__title">
-                    <h3>Sign up</h3>
+                    <h3>إنشاء حساب جديد</h3>
                 </div>
                 <div className="signup__main__form">
                     <form onSubmit={handleSignup}>
-                        <TextField required name="name" label="Name" variant="standard" onChange={onChangeSignup} />
-                        <TextField required name="email" label="Email" variant="standard" onChange={onChangeSignup} />
-                        <TextField required name="password" label="Password" type="password" variant="standard" onChange={onChangeSignup} />
-                        <TextField required name="phone" label="Phone" variant="standard" onChange={onChangeSignup} />
-                        <TextField required name="location" label="Location" variant="standard" onChange={onChangeSignup} />
+                        <TextField required name="name" label="الاسم" variant="standard" onChange={onChangeSignup} />
+                        <TextField required name="email" label="البريد الالكتروني" variant="standard" onChange={onChangeSignup} />
+                        <TextField required name="password" label="كلمة المرور" type="password" variant="standard" onChange={onChangeSignup} />
+                        <TextField required name="phone" label="رقم الهاتف" variant="standard" onChange={onChangeSignup} />
+                        <TextField required name="location" label="موقع الحادث" variant="standard" onChange={onChangeSignup} />
                         <FormControl style={{ marginTop: '1rem' }} size="small" >
-                            <InputLabel id="gender"  >Gender</InputLabel>
+                            <InputLabel id="gender">الهوية الجنسية</InputLabel>
                             <Select MenuProps={{
                                 disableScrollLock: true,
                             }}
@@ -57,14 +57,14 @@ function SignUp() {
                                 defaultValue=''
                                 labelId="gender"
                                 id="demo-simple-select"
-                                label="Gender"
+                                label="الهوية الجنسية<"
                                 onChange={onChangeSignup}
                             >
-                                <MenuItem value='female'>Female</MenuItem>
-                                <MenuItem value='male'>Male</MenuItem>
+                                <MenuItem value='female'>انثى</MenuItem>
+                                <MenuItem value='male'>ذكر</MenuItem>
                             </Select>
                         </FormControl>
-                        <Button variant="contained" style={{ marginTop: '1rem' }} type="submit">Register</Button>
+                        <Button variant="contained" style={{ marginTop: '1rem' }} type="submit">تسجيل</Button>
                     </form>
                 </div>
             </div>

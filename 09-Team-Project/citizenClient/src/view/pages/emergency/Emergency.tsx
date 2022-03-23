@@ -1,9 +1,9 @@
 import { Button, MenuItem, TextField } from "@mui/material";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import { fetchUser, getName, userInfo } from "../../../app/reducer/userReducer";
+import { fetchUser, getloginState, getName, userInfo } from "../../../app/reducer/userReducer";
 import CampaignIcon from "@mui/icons-material/Campaign";
 import ChatIcon from "@mui/icons-material/Chat";
 import UploadIcon from "@mui/icons-material/Upload";
@@ -14,14 +14,18 @@ export function Emergency() {
   const [images, setImage] = useState<Array<any>>([]);
   const [isAmergency, setIsAmergency] = useState(false);
   const [upload, setUpload] = useState(false);
-  const [imageUrl, setImageUrl] = useState("");
+  const [{imageUrl,imagetype}, setImageUrl] = useState({imageUrl:'',imagetype:''});
   const dispatch = useAppDispatch();
   const user = useAppSelector(userInfo);
   const org = {};
   const { accidentName } = useParams();
-  console.log(accidentName)
+  let isLogged = useAppSelector(getloginState)
+  const navigate = useNavigate();
+
   useEffect(() => {
-    //dispatch(fetchUser({ email: "m.zmiro@hotmail.com", password: "123" }));
+    if (!isLogged) {
+      navigate("/");
+    }
   }, []);
 
   const accidentType = [

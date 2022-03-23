@@ -9,15 +9,15 @@ import { Emergency } from "./view/pages/emergency/Emergency";
 import SignUp from './view/pages/signUp/signup'
 import Stories from "./view/pages/stories/stories";
 import About from "./view/pages/about/about"
-import ChatPage from "./view/pages/chat/Chat"
+import Chat from "./view/pages/chat/Chat"
 
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<LogIn />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<LogIn />} />
         <Route path="/SignUp" element={<SignUp />}></Route>
         <Route path="/profile" element={<Profile />} />
         <Route path="/stories" element={<Stories />} />

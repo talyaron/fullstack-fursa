@@ -1,63 +1,64 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState, AppThunk } from '../store';
 import axios from 'axios'
-interface Media{
-    src:string,
-    type:string
+import { Console } from 'console';
+interface Media {
+    src: string,
+    type: string
 }
-interface Accident{
-    
-    _id:string,
+interface Accident {
+
+    _id: string,
     type: string,
     emergency: boolean,
     date: string,
     address: string,
-    media:[Media],
+    media: [Media],
     call: object,
     description: string
 }
-export interface Accidents{
-    accidentArr:Array<Accident>;
-    accidentId:string,
+export interface Accidents {
+    accidentArr: Array<Accident>;
+    accidentId: string,
 
     status: 'idle' | 'loading' | 'failed';
 
 }
 
-const initialState: Accidents={
-    accidentArr:[],
-    accidentId:'',
-    status:'idle'
-  
+const initialState: Accidents = {
+    accidentArr: [],
+    accidentId: '',
+    status: 'idle'
+
 }
-export const addAccident=createAsyncThunk(
+export const addAccident = createAsyncThunk(
     'accident/addAccident',
-    async(accident:any)=>{
-        try{
-            const response=await axios.post('http://localhost:3001/accidents/addNewAccident',{accident})
-             return response.data;
+    async (accident: any) => {
+        try {
+            const response = await axios.post('http://localhost:3001/accidents/addNewAccident', { accident })
+            return response.data;
         }
         catch (err: any) {
             console.log(err.message)
         }
 
     }
-    
+
 )
-export const fetchPreviousAccident=createAsyncThunk(
+export const fetchPreviousAccident = createAsyncThunk(
     'previousAccidents/fetchAccidentByUserId',
-    async(userEmail:any)=>{
-        try{
-            const response=await axios.post('http://localhost:3001/previousAccidents/getPreviousAccidents',{userEmail})
-            console.log(response);
-             return response.data;
+    async (userEmail: any) => {
+        try {
+            const { email } = userEmail
+            const response = await axios.post('http://localhost:3001/previousAccidents/getPreviousAccidents', { "email": email })
+            return response.data;
         }
         catch (err: any) {
             console.log(err.message)
         }
 
     }
-    
+
 )
 export const accidentReducer = createSlice({
     name: 'accident',
@@ -74,7 +75,7 @@ export const accidentReducer = createSlice({
             .addCase(fetchPreviousAccident.fulfilled, (state, action) => {
                 state.status = 'idle';
                 console.log(action);
-                state.accidentArr=action.payload.accident;
+                state.accidentArr = action.payload.accident;
             })
 
             .addCase(addAccident.pending, (state) => {
@@ -82,8 +83,9 @@ export const accidentReducer = createSlice({
             })
             .addCase(addAccident.fulfilled, (state, action) => {
                 state.status = 'idle';
-                state.accidentId=action.payload._id;
-              
+                state.accidentId = action.payload._id;
+                state.accidentArr.push(action.payload.accident);
+
             });
     },
 });

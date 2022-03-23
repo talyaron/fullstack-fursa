@@ -7,7 +7,7 @@
   .chatContainer {
     flex: auto;
     form {
-      margin: auto;
+      margin-left: 0;
       width: 30vw;
       .input {
         width: 30vw;
@@ -16,12 +16,12 @@
     .wrapper {
       display: flex;
       flex-direction: column;
-      margin: auto;
+      margin-left: 0;
       overflow-y: auto;
-      height: 73%;
+      height: 50%;
       max-width: 600px;
       .them {
-        right: 5%;
+        right: 5%;  
         width: fit-content;
         align-self: flex-start;
         background-color: #34495e;

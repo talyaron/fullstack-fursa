@@ -17,7 +17,7 @@ function LogIn() {
   useEffect(() => {
     if (isLoged) {
       console.log(isLoged);
-      navigate("/");
+      navigate("/home");
     }
   }, [isLoged])
   function hadleSubmit(e: any) {
