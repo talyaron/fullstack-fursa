@@ -25,20 +25,20 @@ const AdminPanel = () => {
       <h1>Admon Panel : Add new Users</h1>
 
       <form action="submit" method="get" id="UserInfo">
-        <label htmlFor="fname">First name:</label>
-        <input type="text" id="fname" name="fname" placeholder="First Name" value={Fname} onChange={(e:any) => setFname(e.target.value)}></input>
+        <label htmlFor="fname">الاسم الاول:</label>
+        <input type="text" id="fname" name="fname" placeholder="الاسم الاول" value={Fname} onChange={(e:any) => setFname(e.target.value)}></input>
         <br></br>
-        <label htmlFor="lname">Last name:</label>
-        <input type="text" id="lname" name="lname" placeholder="Last name"value={Lname}  onChange={(e:any) => setLname(e.target.value)}></input>
+        <label htmlFor="lname">اسم العائله:</label>
+        <input type="text" id="lname" name="lname" placeholder="اسم العائله" value={Lname}  onChange={(e:any) => setLname(e.target.value)}></input>
         <br></br>
-        <label htmlFor="Email">Email:</label>
-        <input type="text" id="Email" name="Email" placeholder="Email" value={Email}  onChange={(e:any) => setEmail(e.target.value)}></input>
+        <label htmlFor="Email">البريد الالكتروني:</label>
+        <input type="text" id="Email" name="Email" placeholder="البريد الالكتروني" value={Email}  onChange={(e:any) => setEmail(e.target.value)}></input>
         <br></br>
         <input type="checkbox" id="AdminUser" name="AdminUser" value="Admin"  onChange={(e:any) => setIsAdmin("AdminUser")}></input>
-        <label htmlFor="AdminUser"> New Admin User</label>
+        <label htmlFor="AdminUser"> اضافة مشرف جديد</label>
 
       </form>
-      <button type="submit" form="UserInfo" value="Submit"  onSubmit={handleSubmit}>Creat a new  User</button>
+      <button type="submit" form="UserInfo" value="Submit"  onSubmit={handleSubmit}>انشاء مستخدم جديد</button>
 
 
     </div>
