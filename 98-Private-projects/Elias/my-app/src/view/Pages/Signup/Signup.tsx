@@ -15,7 +15,8 @@ interface Userinfo {
 }
 
 function Signup(props: any) {
-    //const[username,setusername]=useState("");
+    const[Email,setEmail]=useState("");
+    const [Password,setPassword]=useState("");
    // const user_name:string = username;
 
     const user = useAppSelector(GetUser);
@@ -58,8 +59,8 @@ function Signup(props: any) {
                 <button className='googlebuttonText'>Google</button>
                 or
                 <form className='other' action="submit">
-                    <input type="text" className=' inputs username' placeholder='Email' />
-                    <input type="password" className='inputs password' placeholder='Password' />
+                    <input type="text" className=' inputs username' placeholder='Email' onChange={(e:any) => setEmail(e.target.value) }/>
+                    <input type="password" className='inputs password' placeholder='Password'  onChange={(e:any) => setPassword(e.target.value)}/>
 
                 </form>
 

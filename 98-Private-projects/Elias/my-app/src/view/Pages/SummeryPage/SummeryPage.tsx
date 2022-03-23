@@ -9,17 +9,17 @@ import './SummeryPage.scss';
 
 const SummeryPage = () => {
     const Weather = useAppSelector(getWeather);
-    const ads=useAppSelector(getAds);
+    const ads = useAppSelector(getAds);
     const dispatch = useAppDispatch();
 
 
 
-useEffect(() => {
-   // dispatch(getWeatherInfoAsync("New York"));
-    dispatch(getTravelAdsInfoAsync());
-    console.log(Weather);
-    console.log(ads);
-  }, []);
+    useEffect(() => {
+        // dispatch(getWeatherInfoAsync("New York"));
+        dispatch(getTravelAdsInfoAsync());
+        console.log(Weather);
+        console.log(ads);
+    }, []);
 
 
 
@@ -35,14 +35,14 @@ useEffect(() => {
                 </div>
 
             </div>
-                <h3 className="funthings" >Fun things th know about {PlaceOfTrip}</h3>
+            <h3 className="funthings" >Fun things th know about {PlaceOfTrip}</h3>
 
 
-                {ads.TravelAdsInfo.articles.map((element, index) => {
-                    return (
-                        <SummeryComp key={index}  element={element} />
-                    );
-                })}
+            {ads.TravelAdsInfo.articles.map((element, index) => {
+                return (
+                    <SummeryComp key={index} element={element} />
+                );
+            })}
         </div>
     )
 }
