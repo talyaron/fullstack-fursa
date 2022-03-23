@@ -26,7 +26,7 @@ function ProfileInfo() {
                     <p> :رقم الهاتف{accident_.value.user.phone}</p>
                 </div >
                 <br />
-                <button>اذهب الی الدردشة/button>
+                <button>اذهب الی الدردشة</button>
                 <Link to={`/${accidentId}`}>
                     <button>معلومات عن الحادث</button>
                 </Link>
