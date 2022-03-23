@@ -6,7 +6,7 @@ export { }
 import express from 'express';
 
 const router = express.Router();
-
+var CryptoJS = require("crypto-js");
 async function getOrganizations(): Promise<any> {
     try {
       const organizations = await Organizations.find({});
@@ -46,9 +46,10 @@ async function getOrganizations(): Promise<any> {
       const {newSharing} = req.body;
       //console.log(newSharing);
       if (!newSharing) throw new Error("No sharing in request");
+      var ciphertext = CryptoJS.AES.encrypt(JSON.stringify(newSharing.content), 'my-secret-key@123').toString();
       const event  = new Sharing({
         from: newSharing.from,
-        content:newSharing.content,
+        content:ciphertext,
         to:newSharing.to,
         chatId: "123",
         date:newSharing.date,
