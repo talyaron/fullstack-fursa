@@ -23,11 +23,11 @@ function LogIn() {
   function hadleSubmit(e: any) {
     e.preventDefault();
 
-    console.log("sumbit")
     dispatch(fetchUser({ "email": email, "password": password }));
-    if (isLoged) {
-      console.log(isLoged);
-      navigate("/profile");
+    if(isLoged)
+    {
+      console.log(isLoged)
+      navigate("/profile")
     }
 
 

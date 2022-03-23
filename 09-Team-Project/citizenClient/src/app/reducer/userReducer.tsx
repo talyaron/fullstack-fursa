@@ -122,4 +122,5 @@ export const userInfo = (state: RootState) => state.user.userInfo;
 export const getloginState = (state: RootState) => state.user.isLogIn;
 export const getUserEmail = (state: RootState) => state.user.userInfo.email;
 export const getRole = (state: RootState) => state.user.userInfo.type;
+export const getLocation = (state: RootState) => state.user.userInfo.location;
 export default userReducer.reducer;

@@ -13,6 +13,7 @@ import Chat from "./view/pages/chat/Chat"
 import { useEffect } from "react";
 import { useAppDispatch } from "./app/hooks";
 import { authenticate } from "./app/reducer/userReducer";
+import ChatRooms from './view/pages/chatRoams/chatRooms'
 
 function App() {
   const dispatch = useAppDispatch()
@@ -31,6 +32,7 @@ function App() {
         <Route path="/chat" element={<Chat />} />
         <Route path="/emergency/:accidentName" element={<Emergency />}></Route>
         <Route path="/previousAccidents" element={<PreviousAccident />} />
+        <Route path="/chatRoams" element={<ChatRooms/>} />
 
       </Routes>
     </Router>
