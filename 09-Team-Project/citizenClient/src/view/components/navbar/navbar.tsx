@@ -89,17 +89,17 @@ function Navbar() {
                             </Link>
                             <Link to="/info">
                                 <MenuItem key={"Info"} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">Info</Typography>
+                                    <Typography textAlign="center">المعلومات</Typography>
                                 </MenuItem>
                             </Link>
                             <Link to="/stories">
                                 <MenuItem key={"Stories"} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">Stories</Typography>
+                                    <Typography textAlign="center">القصص</Typography>
                                 </MenuItem>
                             </Link>
                             <Link to="/chat">
                                 <MenuItem key={"Chat"} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">Chat</Typography>
+                                    <Typography textAlign="center">الدردشه</Typography>
                                 </MenuItem>
                             </Link>
                         </Menu>
@@ -149,17 +149,17 @@ function Navbar() {
                             >
                                 <Link to="/profile">
                                     <MenuItem key="profile" onClick={handleCloseUserMenu}>
-                                        <Typography textAlign="center">Profile</Typography>
+                                        <Typography textAlign="center">الصفحه الشخصيه</Typography>
                                     </MenuItem>
                                 </Link>
                                 <Link to="/previousAccidents">
                                     <MenuItem key="previousAccidents" onClick={handleCloseUserMenu}>
-                                        <Typography textAlign="center">Previous Accidents</Typography>
+                                        <Typography textAlign="center">الحوادث السابقة</Typography>
                                     </MenuItem>
                                 </Link>
                                 <Link to="/">
                                     <MenuItem key="profile" onClick={handleCloseUserMenu}>
-                                        <Typography textAlign="center">Log out</Typography>
+                                        <Typography textAlign="center">تسجيل الخروج</Typography>
                                     </MenuItem>
                                 </Link>
                             </Menu>
