@@ -61,9 +61,6 @@ function AccidenstByLocation() {
   async function handleSearchByLocation(e: any) {
     e.preventDefault();
     let a: any = await axios.post("/accidents/getAccidenstByLocation", { location: location });
-    const v: any = await axios.get("/accidents/getAllAccidents");
-    console.log(a);
-    console.log(a.data.accidents);
     setAccidents(a.data.accidents);
   }
   return (
