@@ -2,22 +2,22 @@ td,
 th {
 	border: 1px solid #ddd;
 	padding: 8px;
-	width: 30%;
 	text-align: center;
 	//flex-wrap: wrap;
-	//   align-items: center;
-	//   justify-content:center;
+	text-align: left;
 
 	img{
-		width: 70px;
+		width: 120px;
 	}
 
-}
+	 .text{
+		width: 40%;
+		text-align: left;
+	 }
 
+}
 
 .btn {
-	//position: absolute;
-	margin-left: 0.5rem;
-	width: 5rem;
-	//left: 3rem;
+	width: 80px;
 }
+

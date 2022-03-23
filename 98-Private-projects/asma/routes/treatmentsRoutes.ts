@@ -40,8 +40,12 @@ async function getTreatments(name:string): Promise<any> {
   }
   
   router.get('/get-treatments', async (req, res) => {
-    const treatments = await getAllTreatments();
-    res.send(treatments);
+    try {
+      const treatments = await  getAllTreatments();
+      res.send({ ok: true, treatments: treatments });
+    } catch (error) {
+      res.send({ ok: false, treatments: [] });
+    }
   })
 
 

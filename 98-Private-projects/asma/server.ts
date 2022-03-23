@@ -1,5 +1,6 @@
 import express from 'express';
 import Product from './model/schema/productsModel';
+import Treatment from './model/schema/treatmentsModel';
 const multer = require('multer');
 //const path = require('path');
 
@@ -49,6 +50,39 @@ app.patch('/update-product',  upload.single('image'),async (req:any, res) => {
     const filter = { _id: id };
     //update the DB
     let doc = await Product.findOneAndUpdate(filter, update);
+    res.send({ ok: true, doc });
+  } catch (err) {
+    console.error(err);
+    res.status(400).send({ error: err.message });
+  }
+});
+
+app.post('/upload-treatment', upload.single('image'), (req:any, res) => {
+  try {
+    const {name,text} = req.body;
+    console.log(req.file)
+    const path = req.file.filename;
+    const event = new Treatment({ name: name, text: text,img: path });
+    event.save();    
+    res.send({message: req.body,ok:"upload"});
+  } catch (error) {
+    res.send({ error });
+  }
+})
+
+app.patch('/update-treatment',  upload.single('image'),async (req:any, res) => {
+  try {
+    const {id,name,text} = req.body;
+    let update={};
+    if (req.file){
+       const path = req.file.filename;
+      // console.log(req.file)
+       update = { name: name, text: text, img: path };
+    }
+    else{ update = { name: name, text: text};}
+    const filter = { _id: id };
+    //update the DB
+    let doc = await Treatment.findOneAndUpdate(filter, update);
     res.send({ ok: true, doc });
   } catch (err) {
     console.error(err);
