@@ -68,10 +68,6 @@ function AccidenstByLocation() {
   }
   return (
     <div>
-      {/* <div className='menu'>
-        <HomeIcon sx={{ paddingLeft: '20px', fontSize: 35, paddingTop: '10px' }} />
-        <SettingsIcon sx={{ float: 'right', fontSize: 35, paddingRight: '20px', paddingTop: '10px' }} />
-      </div> */}
       <MenuAppBar />
       <div className='SearchBar'>
 
@@ -87,10 +83,9 @@ function AccidenstByLocation() {
           <TableHead>
             <TableRow>
               <StyledTableCell align="center"> </StyledTableCell>
-              {/* <StyledTableCell align="center">ACCIDENT ID </StyledTableCell> */}
-              <StyledTableCell align="center"> ACCIDENT type</StyledTableCell>
-              <StyledTableCell align="center"> ACCIDENT DATE </StyledTableCell>
-              <StyledTableCell align="center"> ACCIDENT DESCRIPTION </StyledTableCell>
+              <StyledTableCell align="center">صنف الحدث</StyledTableCell>
+              <StyledTableCell align="center"> توقيت الحدث(ساعه + تاريخ) </StyledTableCell>
+              <StyledTableCell align="center">وصف الحدث </StyledTableCell>
 
             </TableRow>
           </TableHead>
@@ -113,18 +108,6 @@ function AccidenstByLocation() {
           </TableBody>
         </Table>
       </TableContainer>
-
-
-
-      {/* {accidents.map((accident, index) => {
-          return (
-            <div key={index}>
-            <p >id: {accident._id} type:{accident.type} date:{accident.date} description:{accident.description}  </p> 
-            </div>
-          );
-        })} */}
-
-
 
     </div>
 

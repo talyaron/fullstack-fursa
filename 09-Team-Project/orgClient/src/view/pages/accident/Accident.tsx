@@ -21,14 +21,9 @@ function Accident() {
 
   return (
     <div className='AccidentContainer'>
-      {/* <div className="accidentHeader">
-        <div className="accidentHeader_home"><img onClick={() => nav('/accidents')} style={{ width: 50 }} src={chatIcon} alt="" /></div>
-        <div className="accidentHeader_search"><img onClick={() => nav('/accidents')} style={{ width: 50 }} src={search} alt="" /></div>
-        <div className="accidentHeader_settings"><img onClick={() => nav('/accidents')} style={{ width: 50 }} src={settings} alt="" /></div>
-      </div> */}
       <MenuAppBar type="home" />
       <div className="accidentsContent">
-        {accidentsReducer.status === 'loading' ? <div>Loading...</div> :
+        {accidentsReducer.status === 'loading' ? <div>جاري التحميل...</div> :
           accidentsReducer.value.accidents.map((accident, index) => {
             return (
               <AccidentComp key={index} accident={accident} />

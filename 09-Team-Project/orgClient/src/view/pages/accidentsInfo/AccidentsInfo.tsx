@@ -26,20 +26,20 @@ function AccidentsInfo() {
       <MenuAppBar />
       <div className="content">
         <div className="accidentInfo">
-          <h3>Accident Info</h3>
-          <p>Accident Type : {accident_.value.type}</p>
-          <p>Date : {accident_.value.date}</p>
-          <p>Address : {accident_.value.address}</p>
-          <p>Description: {accident_.value.description}</p>
+          <h3>معلومات الحدث</h3>
+          <p>صنف الحدث: {accident_.value.type}</p>
+          <p>توقيت الحدث : {accident_.value.date}</p>
+          <p>عنوان الحدث : {accident_.value.address}</p>
+          <p>وصف الحدث: {accident_.value.description}</p>
         </div>
         <Link to={`/${accidentId.accidentId}/profileInfo`}>
-          <button>Profile Info</button>
+          <button>المعلومات الشخصيه</button>
         </Link>
         {/* <Link to={}> */}
-        <button>Go To Chat</button>
+        <button>الدردشه</button>
         {/* </Link> */}
         <Link to="/messagesBetweenOrg">
-          <button>Send to other user</button>
+          <button>ارسال لمستخدم اخر</button>
         </Link>
       </div>
       <PhoneIcon sx={{ paddingLeft: '40px', fontSize: 35 }} />
