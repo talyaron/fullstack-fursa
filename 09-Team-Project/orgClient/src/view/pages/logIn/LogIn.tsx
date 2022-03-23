@@ -49,9 +49,9 @@ const Login = () => {
                 </div>
 
                 <div className="form">
-                    <TextField fullWidth label='Email' required placeholder="ادخل البريد الالكتروني" onKeyUp={(e:any) => setEmail(e.target.value)} />
-                    <TextField fullWidth type="password" label='Password' required placeholder="ادخل كلمة المرور" onKeyUp={(e:any) => setPassword(e.target.value)} />
-                    <Button className="loginBtn" variant="contained" onClick={hadleSubmit}>Sign in</Button>
+                    <TextField fullWidth label='البريد الالكتروني' required placeholder="ادخل البريد الالكتروني" onKeyUp={(e:any) => setEmail(e.target.value)} />
+                    <TextField fullWidth type="password" label='كلمة المرور' required placeholder="ادخل كلمة المرور" onKeyUp={(e:any) => setPassword(e.target.value)} />
+                    <Button className="loginBtn" variant="contained" onClick={hadleSubmit}>تسجيل الدخول</Button>
                 </div>
 
                 <div className="loginLink">

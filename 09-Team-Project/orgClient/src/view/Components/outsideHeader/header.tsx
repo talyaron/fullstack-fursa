@@ -31,7 +31,7 @@ export default function ProminentAppBar() {
             component="div"
             sx={{ flexGrow: 1, alignSelf: 'flex-end' }}
           >
-            تسجيل الدخول للجامعية 
+            تسجيل الدخول للجمعية 
           </Typography>
 
 
