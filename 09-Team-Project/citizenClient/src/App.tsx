@@ -9,7 +9,8 @@ import { Emergency } from "./view/pages/emergency/Emergency";
 import SignUp from './view/pages/signUp/signup'
 import Stories from "./view/pages/stories/stories";
 import About from "./view/pages/about/about"
-import Chat from "./view/pages/chat/Chat"
+import ChatPage from "./view/pages/chat/Chat"
+
 
 function App() {
   return (
