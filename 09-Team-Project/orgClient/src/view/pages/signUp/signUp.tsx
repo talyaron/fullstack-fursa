@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Grid, Paper, Avatar, TextField } from '@material-ui/core'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ProminentAppBar from '../../Components/outsideHeader/header';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -13,6 +13,7 @@ const SignUp = () => {
     const avatarStyle = { backgroundColor: '#1bbd7e' }
     const marginTop = { marginTop: 5 }
 
+    const nav = useNavigate();
     const [email, setEmail] = useState("");
     const [fullName, setFullName] = useState("");
     const [password, setPassword] = useState("");
@@ -30,6 +31,7 @@ const SignUp = () => {
             const { data } = response;
             if (data.ok) {
                 console.log(data.message);
+                nav('/');
             }
         } catch (error) {
 
@@ -46,20 +48,20 @@ const SignUp = () => {
                         variant="h3"
                         component="div"
                     >
-                        SignUp
+                        التسجيل
                     </Typography>
                 </div>
 
                 <div className="form">
-                    <TextField fullWidth label='Full Name' required placeholder="Enter your full name" onKeyUp={(e: any) => setFullName(e.target.value)} />
-                    <TextField fullWidth label='Email' required placeholder="Enter your email" onKeyUp={(e: any) => setEmail(e.target.value)} />
-                    <TextField fullWidth type="password" label='Password' required placeholder="Enter your password" onKeyUp={(e: any) => setPassword(e.target.value)} />
-                    <TextField fullWidth type="password" label='Confirm Password' required placeholder="re-enter your password" />
-                    <TextField fullWidth label='Phone Number' required placeholder="Enter your phone number" onKeyUp={(e: any) => setPhone(e.target.value)} />
-                    <TextField fullWidth label='City' required placeholder="Enter your Address" onKeyUp={(e: any) => setCity(e.target.value)} />
-                    <TextField fullWidth label='Description' required placeholder="Enter a Description" onKeyUp={(e: any) => setDescription(e.target.value)} />
-                    <TextField fullWidth label='Web Url' placeholder="Enter your URL" onKeyUp={(e: any) => setUrl(e.target.value)} />
-                    <Button className="signupBtn" variant="contained" onClick={handleClick}>Sign up</Button>
+                    <TextField fullWidth label='الاسم الكامل' required placeholder="ادخل الاسم الكامل" onKeyUp={(e: any) => setFullName(e.target.value)} />
+                    <TextField fullWidth label='البريد الالكتروني' required placeholder="ادخل بريدك الالكتروني" onKeyUp={(e: any) => setEmail(e.target.value)} />
+                    <TextField fullWidth type="كلمة المرور" label='Password' required placeholder="ادخل كلمة المرور" onKeyUp={(e: any) => setPassword(e.target.value)} />
+                    <TextField fullWidth type="كلمة المرور" label='Confirm Password' required placeholder="تاكيد كلمة المرور" />
+                    <TextField fullWidth label='رقم الهاتف' required placeholder="ادخل رقم الهاتف" onKeyUp={(e: any) => setPhone(e.target.value)} />
+                    <TextField fullWidth label='العنوان' required placeholder="ادخل عنوانك" onKeyUp={(e: any) => setCity(e.target.value)} />
+                    <TextField fullWidth label='الوصف' required placeholder="ادخل وصف" onKeyUp={(e: any) => setDescription(e.target.value)} />
+                    <TextField fullWidth label='URL عنوان' placeholder="الخاص بك URL ادخل عنوان" onKeyUp={(e: any) => setUrl(e.target.value)} />
+                    <Button className="signupBtn" variant="contained" onClick={handleClick}>تسجيل</Button>
                 </div>
 
                 <div className="loginLink">
@@ -69,7 +71,7 @@ const SignUp = () => {
                         component="div"
                         align='center'
                     >
-                        <Link to='/login'>already have a account? login here</Link>
+                        <Link to='/login'>لديك حساب؟ تسجيل الدخول هنا</Link>
                     </Typography>
                 </div>
 
