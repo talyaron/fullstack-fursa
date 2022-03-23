@@ -31,7 +31,7 @@ function AccidentsInfo() {
           <p>توقيت الحدث : {accident_.value.date}</p>
           <p>عنوان الحدث : {accident_.value.address}</p>
           <p>وصف الحدث: {accident_.value.description}</p>
-        </div>
+        </div> 
         <Link to={`/${accidentId.accidentId}/profileInfo`}>
           <button>المعلومات الشخصيه</button>
         </Link>
