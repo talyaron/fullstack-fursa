@@ -9,7 +9,7 @@ export const UserSchema = new mongoose.Schema({
     phone: String,
     location: String,
     gender: String,
-    type: { type: String, enum: ['admin', 'org', 'public'], default: 'public' },
+    type: { type: String, enum: ['admin', 'org', 'public', 'anonymous'], default: 'public' },
     org: OrgSchema
 
 })

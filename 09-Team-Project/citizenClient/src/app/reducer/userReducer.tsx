@@ -22,6 +22,7 @@ const initialState: User = {
         phone: "",
         location: "",
         gender: "",
+        //role
     },
     isLogIn: false,
     status: 'idle',
@@ -57,6 +58,18 @@ export const signUpUser = createAsyncThunk(
 
     }
 );
+export const authenticate = createAsyncThunk(
+    'user/authenticate',
+    async () => {
+        try {
+            const response = await axios.get('/users/get-authentication')
+            return response.data
+        }
+        catch (err: any) {
+            console.log(err.message)
+        }
+    }
+);
 
 export const userReducer = createSlice({
     name: 'user',
@@ -86,7 +99,17 @@ export const userReducer = createSlice({
                     state.userInfo = action.payload.user;
                     state.isLogIn = true;
                 }
-            });
+            })
+            .addCase(authenticate.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(authenticate.fulfilled, (state, action) => {
+                if (action.payload.log == true) {
+                    state.status = 'idle';
+                    state.userInfo = action.payload.user;
+                    state.isLogIn = true;
+                }
+            })
     },
 });
 

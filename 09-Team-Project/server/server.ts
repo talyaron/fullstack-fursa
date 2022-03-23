@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3001;
+const port = 4000;
 const mongoose = require('mongoose');
 const nodemailer = require("nodemailer");
 
@@ -9,9 +9,11 @@ const cors = require('cors');
 
 const server = http.createServer(app);
 const socketIO = require("socket.io");
+const cookieParser = require('cookie-parser')
 
 // app.use(express.static("../citizenClient/build"));
 app.use(express.json());
+app.use(cookieParser())
 app.use(cors())
 require('dotenv').config();
 
