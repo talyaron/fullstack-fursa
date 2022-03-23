@@ -5,6 +5,7 @@ import Products from './model/schema/productSchema';
 const express = require("express");
 const cookieParser = require('cookie-parser'); 
 const app = express();
+const mysql = require('mysql');
 const port = 4000;
 require("dotenv").config();
 
@@ -14,6 +15,27 @@ require("dotenv").config();
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.static("client/build"));
+
+export const con = mysql.createConnection({
+  host: "localhost",
+  port: "3306",
+  user: "root",
+  password: "raneennm246"
+
+
+  // ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '12345678'
+});
+
+con.connect( (err)=> {
+  if (err) throw err;
+  console.log("Connected!");
+  // con.query("use test", (err, result, fields) => {
+  //     if (err) throw err;
+  //     console.log('Using test');
+
+  // });
+});
+
 
 //data
 // app.post('/sqlTest', async (req, res) => {
@@ -30,6 +52,7 @@ app.use(express.static("client/build"));
 //         res.send({ ok: false });
 //     }
 // })
+
 
 app.post('/users_LessThan', async (req, res) => {
     const { age } = req.body;
