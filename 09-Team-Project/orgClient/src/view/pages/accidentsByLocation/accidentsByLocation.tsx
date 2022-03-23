@@ -86,6 +86,7 @@ function AccidenstByLocation() {
             <StyledTableCell align="center">ACCIDENT ID </StyledTableCell>
             <StyledTableCell align="center"> ACCIDENT type</StyledTableCell>
             <StyledTableCell align="center"> ACCIDENT DATE </StyledTableCell>
+            <StyledTableCell align="center"> ACCIDENT HOUR </StyledTableCell>
             <StyledTableCell align="center"> ACCIDENT ESCRIPTION </StyledTableCell>
       
           </TableRow>
@@ -103,7 +104,8 @@ function AccidenstByLocation() {
               </StyledTableCell>
               
               <StyledTableCell align="center">{row.type}</StyledTableCell>
-              <StyledTableCell align="center">{row.date}</StyledTableCell>
+              <StyledTableCell align="center">{row.date.substring(0, 10)}</StyledTableCell>
+              <StyledTableCell align="center">{row.date.substring(11,19)}</StyledTableCell>
               <StyledTableCell align="center"> 
               {row.description}
               </StyledTableCell>
