@@ -1,6 +1,6 @@
 .signin{
-    width: 30vw;
-    height: 80vh;
+    width: 100vw;
+    height: 100vh;
     background-color: white;
     background-image: url(https://i.pinimg.com/736x/6b/52/7c/6b527c4762f95b65fff4e6e42cd06b44.jpg);
     background-repeat: no-repeat;
@@ -8,13 +8,13 @@
     color: black;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
-    padding: 30px;
-    margin: auto;
-    margin-top: 20px;
+    // padding: 30px;
+    // margin: auto;
+    // margin-top: 20px;
     border-style: double;
     font-size: large;
     position: relative;
-    top: 10px;
+    // top: 10px;
 
     .avatar{
         // position: relative;
@@ -37,7 +37,7 @@
     }
 
     .btn{
-        width:10vw;
+        width:18vw;
         color:black;
         font-weight: bold;
     }

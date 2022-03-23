@@ -46,7 +46,7 @@ const localizer = dateFnsLocalizer({
 function CalendarFun() {
 
     // const treatment = useAppSelector(selectTreatment);
-     const appointments = useAppSelector(selectAppointment);
+    const appointments = useAppSelector(selectAppointment);
 
     const [newEvent, setNewEvent] = useState({ title: "", start: new Date(), end: new Date(), name: "", phone: "" });
     const [registration, setRegistration] = useState({ name: "", start: new Date(), end: new Date(), course: "" });
@@ -54,20 +54,20 @@ function CalendarFun() {
 
     function handleAddEvent() {
 
-            const result: registration | undefined = appointments.find((appoint: registration) =>
-                appoint.start.getFullYear() === newEvent.start.getFullYear() &&
-                appoint.start.getMonth() === newEvent.start.getMonth() &&
-                appoint.start.getDate() === newEvent.start.getDate() &&
-                (appoint.start.getHours() === newEvent.start.getHours() ||
-                    (appoint.end.getHours() === newEvent.start.getHours() && appoint.end.getMinutes() > newEvent.start.getMinutes()) ||
-                    (appoint.start.getHours() === newEvent.end.getHours() && appoint.start.getMinutes() < newEvent.end.getMinutes()))
-            )
-            if (result)
-                alert("Date Is Not Available!!");
+        const result: registration | undefined = appointments.find((appoint: registration) =>
+            appoint.start.getFullYear() === newEvent.start.getFullYear() &&
+            appoint.start.getMonth() === newEvent.start.getMonth() &&
+            appoint.start.getDate() === newEvent.start.getDate() &&
+            (appoint.start.getHours() === newEvent.start.getHours() ||
+                (appoint.end.getHours() === newEvent.start.getHours() && appoint.end.getMinutes() > newEvent.start.getMinutes()) ||
+                (appoint.start.getHours() === newEvent.end.getHours() && appoint.start.getMinutes() < newEvent.end.getMinutes()))
+        )
+        if (result)
+            alert("Date Is Not Available!!");
 
-            else
-                dispatch(addAppointment(newEvent));
-        
+        else
+            dispatch(addAppointment(newEvent));
+
     }
 
 
@@ -77,7 +77,8 @@ function CalendarFun() {
                 <h1>Pick a time for you private lesson</h1>
                 <div>
                     <div className="info">
-                        <TextField required className="inputs" id="standard-basic" label="Add Name" variant="standard" value={newEvent.name} onChange={(e) => setNewEvent({ ...newEvent, name: e.target.value })} />
+                        <TextField required className="inputs" id="standard-basic" label="Add Name"
+                            variant="standard" value={newEvent.name} onChange={(e) => setNewEvent({ ...newEvent, name: e.target.value })} />
                         {/* <TextField required className="inputs" type="number" id="standard-basic" label="Add Phone Number" variant="standard" value={newEvent.phone} onChange={(e) => setNewEvent({ ...newEvent, phone: e.target.value })} /> */}
                         <Box className="box" sx={{ minWidth: 170 }}>
                             <FormControl fullWidth>

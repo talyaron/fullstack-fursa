@@ -4,15 +4,15 @@
     background-repeat: no-repeat;
     background-size: cover;
     font-size: small;
-    margin-top: 20px;
-    justify-content: center;
+    // margin-top: 20px;
+    // justify-content: center;
     border-style: double;
-    border-width: 10px;
-    width: 30vw;
-    height: 80vh;
+    // border-width: 10px;
+    width: 100vw;
+    height: 100vh;
     border-color: black;
     position: relative;
-    left: 500px;
+    // left: 25vw;
     color: white;
     // background-color: rgb(149, 127, 155);
 
@@ -29,17 +29,21 @@
     }
     
 .signupform{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
     position: relative;
+    align-items: center;
     top: 60px;
     .textfield{
-        width:20vw;
+        width:50vw;
         height:8vh;
         position: relative;
         text-align: center;
     }
     .subbtn{
         position: relative;
-        // bottom: -240px;
+        bottom: -200px;
         // width: 20vw;
     }
 

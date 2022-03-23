@@ -80,7 +80,8 @@ function Homepage() {
       {/* <p className="firstP">Our course duration is 10 weeks, one lesson a week .</p> */}
       {/* <div><button onClick={handleGetProducts}>get products</button></div> */}
       <Courses />
-      <div><button className='offerBtn' onClick={handleGetOffers}>get offers</button></div>
+      <div>
+        <button className='offerBtn' onClick={handleGetOffers}>get offers</button></div>
 
       <div className="offersDiv">
         {offers.status !== 'loading' ? offers.arrOffers.map((offer, index) => {

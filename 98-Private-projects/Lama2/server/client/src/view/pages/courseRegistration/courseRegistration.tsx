@@ -7,8 +7,8 @@ import 'react-calendar/dist/Calendar.css';
 import moment from 'moment'
 import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
-import "react-big-calendar/lib/css/react-big-calendar.css";
-import DatePicker from "react-datepicker";
+// import "react-big-calendar/lib/css/react-big-calendar.css";
+// import DatePicker from "react-datepicker";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -26,6 +26,10 @@ import "react-datepicker/dist/react-datepicker.css";
 import 'react-time-picker/dist/TimePicker.css';
 import { useAppSelector, useAppDispatch } from '../../../app/hooks';
 import axios from 'axios';
+import DatePicker from "react-datepicker";
+import { addAppointment, selectAppointment } from '../../../features/coursesRegistrations/registrationSlice'
+import { registration } from '../../../features/coursesRegistrations/registrationSlice';
+
 
 
 interface TimeManagement {
@@ -53,8 +57,9 @@ function CourseRegistration() {
   const [alertt, setAlert] = useState(false);
   const [course, setCourse] = React.useState('');
   const [dateState, setDateState] = useState(new Date())
-  const [startDate, setStateDate] = useState(new Date())
+  // const [startDate, setStateDate] = useState(new Date())
   const [date, setDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(new Date());
   const [value, onChange] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [registration, setRegistration] = useState({ name: "", start: new Date(), end: new Date(), course: "" });
@@ -65,6 +70,16 @@ function CourseRegistration() {
 
 
   const dispatch = useAppDispatch();
+
+  const filterDays = (date:any) => {
+    // Disable Weekends
+    if (date.getDay() === 0 || date.getDay() === 6) {
+
+        return false;
+    } else {
+        return true;
+    }
+}
   
   const changeDate = (e: any) => {
     setDateState(e)
@@ -92,12 +107,25 @@ function CourseRegistration() {
  
 
   const handleChoseCourse = (event: any) => {
+ 
     setCourse(event.target.value);
+    if(event.target.value==='private lessons'){
+      console.log('fat 3l if private lessons')
+      setAlert(true);
+    }
+   
   };
 
   const handleChoseLevel = (event: any) => {
     setLevel(event.target.value);
   };
+
+  function changeStartDate(date:any){
+    // date=>setStartDate(date)
+    setStartDate(date);
+    console.log(date.getHours.getMinutes)
+    setEndDate(date);
+  }
 
 
   const validate =  (event: any) => {
@@ -175,10 +203,32 @@ function CourseRegistration() {
           {/* <DateTimePicker className='DateTimePicker' onChange={onChange} value={value}
       //  includeDates={includeDatesArray} 
       /> */}
-           <input type="datetime-local" id="meeting-time"
-        name="meeting-time">
+           {/* <input type="datetime-local" id="meeting-time"
+        name="meeting-time"
+        // filterDate={filterDays}
+        > */}
+
+<DatePicker
+id="meeting-time"
+ isClearable
+ placeholderText="Select Start Date"
+ showTimeSelect
+ dateFormat="MMMM d, yyyy h:mmaa"
+ selected={startDate}
+ selectsStart
+ startDate={startDate}
+ endDate={endDate}
+//  includeDates={includeDatesArray}
+ filterDate={filterDays}
+ onChange={changeStartDate}
+  
+/> 
+  
+
         {/* // min="2022-06-07T00:00" max="2022-06-14T00:00"> */}
-        </input> 
+
+
+        {/* </input>  */}
    
 
            {/* <Register /> */}
@@ -192,6 +242,47 @@ function CourseRegistration() {
              <span role="img" aria-label="allowed">✅</span> Alphanumeric Characters
              <br />
              <span role="img" aria-label="not allowed">⛔️</span> *
+             <form>
+             <Box className='mybox' sx={{ minWidth: 120 }}>
+          <FormControl required fullWidth>
+ 
+            <InputLabel id="demo-simple-select-label">Course</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={course}
+              label="Course"
+              onChange={handleChoseCourse}
+            >
+              <MenuItem value={10}>Group lessons</MenuItem>
+              <MenuItem value={20}>Private lessons</MenuItem>
+              <MenuItem value={30}>single lesson</MenuItem>
+            </Select>
+          </FormControl>
+        </Box>
+
+        <Box className='mybox1' sx={{ minWidth: 120 }}>
+          <FormControl required fullWidth>
+ 
+            <InputLabel id="demo-simple-select-label">Level</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select1"
+              value={level}
+              label="Level"
+              onChange={handleChoseLevel}
+            >
+              <MenuItem value={1}>Beginner</MenuItem>
+              <MenuItem value={2}>Intermediate</MenuItem>
+              <MenuItem value={3}>Advanced</MenuItem>
+            </Select>
+          </FormControl>
+        </Box>
+
+             </form>
+
+
+
            </div>
          }
    

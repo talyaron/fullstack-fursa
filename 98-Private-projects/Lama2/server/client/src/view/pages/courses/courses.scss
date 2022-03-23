@@ -1,29 +1,38 @@
-.calbtn{
-    width: 20vw;
-    height: 5vh;
-    position: absolute;
-    top:10%;
-    left: 700px;
+// .calbtn{
+//     width: 20vw;
+//     height: 5vh;
+//     position: absolute;
+//     top:10%;
+//     left: 30vw;
 
-    // background-color: rgba(151, 144, 136, 0.705);
-}
+//     // background-color: rgba(151, 144, 136, 0.705);
+// }
+
 
 .maindiv{
     position: relative;
-    top: 10%;
+    // top: 10vw;
 
     // h3{
     //     position: absolute;
     //     left: 30%;
     //     top: 35%;
     // }
+
+    
+h3{
+    font-size: 1rem;
+    position: relative;
+    top: 5vw;
+}
     .courses{
+    align-items: center;
         position: absolute;
-        left: 27%;
-        top: 28%;
-        width: 50vw;
-        height: 200px;
+         left: 5vw;
+        top: 10vw;
+        // width: 90vw;
+        // height: 50vh;
         display: flex;
-    //     flex-direction: column;
+        flex-direction: row;
     }
 }
