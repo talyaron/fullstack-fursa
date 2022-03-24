@@ -1,3 +1,4 @@
+import chatRoom from "./model/chatRoomModel";
 import Messages from "./model/messageModel";
 
 const express = require('express');
@@ -10,7 +11,6 @@ const http = require('http');
 const cors = require('cors');
 
 const server = http.createServer(app);
-const socketIO = require("socket.io");
 const cookieParser = require('cookie-parser')
 
 // app.use(express.static("../citizenClient/build"));
@@ -75,7 +75,21 @@ io.on("connection", (socket) => {
     console.log("Client disconnected");
     clearInterval(interval);
   });
-  socket.on('message', (value) => handleMessage(value));
+  socket.on("getRooms", userid => {
+    //When user creation on server is complete, retrieve and save data to local storage
+    console.log("user id is " + userid)
+    
+  });
+  socket.on('message', (value) => {
+    console.log(value.from)
+    socket.emit("getRooms",getrooms(userId));
+    const message = new Messages(value)
+    message.save(function (err, Messages) {
+      if (err) return console.error(err);
+      console.log("message saved to users collection.");
+    });
+    console.log(value);
+  });
   socket.on("setUserData", userData => {
     //When user creation on server is complete, retrieve and save data to local storage
     console.log("user id is " + userData)
@@ -90,23 +104,23 @@ io.on("connection", (socket) => {
 
 const getApiAndEmit = async socket => {
   const messagesPreview = await Messages.find( { $or: [{from:userId,to:orgId},{to:userId,from:orgId}]}).sort({date:1})
-  console.log("check",userId,orgId,messagesPreview)
+  //console.log("check",userId,orgId,messagesPreview)
   const response = new Date();
   // Emitting a new message. Will be consumed by the client
   socket.emit("FromAPI", messagesPreview);
 };
 
 
-function handleMessage(value: any) {
-  
-  console.log(value.from)
 
-  const message = new Messages(value)
-  message.save(function (err, Messages) {
-    if (err) return console.error(err);
-    console.log("message saved to users collection.");
-  });
-  console.log(value);
- 
+const  getrooms =  async userId =>{
+  try{
+  console.log(userId)
+  const rooms = await chatRoom.find({});
+  console.log("roams"+rooms);
+  return rooms;
+  }catch(err:any)
+  {
+console.log(err)
+  }
 }
 /* end of saleem */

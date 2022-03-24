@@ -4,7 +4,7 @@ import Navbar from "../../components/navbar/navbar";
 import { DefaultEventsMap } from "socket.io/dist/typed-events";
 import "./Chat.scss";
 
-const ENDPOINT = "http://localhost:3001/";
+const ENDPOINT = "http://localhost:4000/";
 let socket: Socket<DefaultEventsMap, DefaultEventsMap>;
 
 function Chat() {
@@ -26,8 +26,8 @@ function Chat() {
     accidentId: String;
     orgId: String;
   }
-  let userId = "2";  
-  let orgId = "3";  
+  let userId = "1";  
+  let orgId = "2";  
 
   const [messages, setMessages] = useState({});
 
@@ -38,6 +38,9 @@ function Chat() {
     socket.on("FromAPI", (data: React.SetStateAction<string>) => {
       //setResponse(data);
       setMessages(data);
+    });
+    socket.on("getRooms",(value) => {
+      console.log(value);
     });
     /* set user id */
     socket.emit("setUserData", userId);

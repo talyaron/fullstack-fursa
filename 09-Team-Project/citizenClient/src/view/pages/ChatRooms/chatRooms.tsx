@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import socketIOClient,{ Socket } from "socket.io-client";
 import { DefaultEventsMap } from "socket.io/dist/typed-events";
 import './chatRooms.scss'
-const ENDPOINT = "http://localhost:3001/";
+const ENDPOINT = "http://localhost:4000/";
 let socket: Socket<DefaultEventsMap, DefaultEventsMap>;
 
 const user1 = "1";
@@ -19,7 +19,7 @@ function ChatRooms(){
   const [rooms,setRooms] = useState({});
   useEffect(() => {
     socket = socketIOClient(ENDPOINT);
-    socket.on("getRoams", (data: React.SetStateAction<string>) => {
+    socket.on("getRooms", (data: React.SetStateAction<string>) => {
       setRooms(data);
     });
     /* set user id */

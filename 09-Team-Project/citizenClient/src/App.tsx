@@ -34,7 +34,7 @@ function App() {
         <Route path="/chat" element={<Chat />} />
         <Route path="/emergency/:accidentName" element={<Emergency />}></Route>
         <Route path="/previousAccidents" element={<PreviousAccident />} />
-        <Route path="/chatRoams" element={<ChatRooms/>} />
+        <Route path="/chatRooms" element={<ChatRooms/>} />
 
       </Routes>
     </Router>
