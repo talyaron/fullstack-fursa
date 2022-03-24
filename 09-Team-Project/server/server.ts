@@ -2,7 +2,7 @@ import Messages from "./model/messageModel";
 
 const express = require('express');
 const app = express();
-const port = 4000;
+const port = 4001;
 const mongoose = require('mongoose');
 const nodemailer = require("nodemailer");
 
@@ -89,8 +89,8 @@ io.on("connection", (socket) => {
 });
 
 const getApiAndEmit = async socket => {
-  const messagesPreview = await Messages.find( { $or: [{from:userId,to:orgId},{to:userId,from:orgId}]}).sort({date:1})
-  console.log("check",userId,orgId,messagesPreview)
+  const messagesPreview = await Messages.find({ $or: [{ from: userId, to: orgId }, { to: userId, from: orgId }] }).sort({ date: 1 })
+  console.log("check", userId, orgId, messagesPreview)
   const response = new Date();
   // Emitting a new message. Will be consumed by the client
   socket.emit("FromAPI", messagesPreview);
@@ -98,7 +98,7 @@ const getApiAndEmit = async socket => {
 
 
 function handleMessage(value: any) {
-  
+
   console.log(value.from)
 
   const message = new Messages(value)
@@ -107,6 +107,6 @@ function handleMessage(value: any) {
     console.log("message saved to users collection.");
   });
   console.log(value);
- 
+
 }
 /* end of saleem */

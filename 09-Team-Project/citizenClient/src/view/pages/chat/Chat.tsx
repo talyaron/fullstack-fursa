@@ -26,8 +26,8 @@ function Chat() {
     accidentId: String;
     orgId: String;
   }
-  let userId = "2";  
-  let orgId = "3";  
+  let userId = "2";
+  let orgId = "3";
 
   const [messages, setMessages] = useState({});
 
@@ -64,34 +64,20 @@ function Chat() {
     <div className="chatPage">
       <Navbar />
 
-    <div className="container">
-      <time dateTime={response}>{response}</time>
-      <form onSubmit={submitForm}>
-        <input
-          autoFocus
-          value={value}
-          placeholder="اكتب رسالتك"
-          onChange={(e) => {
-            setValue(e.currentTarget.value);
-          }} />
-      </form>
-    </div>
-
-
       <div className="chatContainer">
         <div className="wrapper">
-        {Object.entries(messages).map(function (val: any, index) {
-          const new_message: messageFormat = val["1"];
-          {
-            
-            if(new_message.from == userId)
-              return <div className="you message">{new_message.message}</div>
-              else
-              return  <div className="them message">{new_message.message}</div>
+          {Object.entries(messages).map(function (val: any, index) {
+            const new_message: messageFormat = val["1"];
+            {
 
-          }
-        })}
-         </div>
+              if (new_message.from == userId)
+                return <div className="you message">{new_message.message}</div>
+              else
+                return <div className="them message">{new_message.message}</div>
+
+            }
+          })}
+        </div>
         <form onSubmit={submitForm}>
           <input
             autoFocus
@@ -101,7 +87,7 @@ function Chat() {
               setValue(e.currentTarget.value);
             }}
           />
-         
+
         </form>
       </div>
     </div>
