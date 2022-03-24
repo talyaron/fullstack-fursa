@@ -8,6 +8,6 @@ export const chatRoomSchema = new mongoose.Schema({
 
 
 
-const chatRoom = mongoose.model("chatRoom", chatRoomSchema);
+const chatRoom = mongoose.model("chatRooms", chatRoomSchema);
 
 export default chatRoom
