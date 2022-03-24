@@ -11,14 +11,19 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { Link } from 'react-router-dom'
-
+import { Link, useNavigate } from 'react-router-dom'
+import { useAppSelector } from '../../../app/hooks';
+import { getloginState, getRole } from '../../../app/reducer/userReducer';
 import './navbar.scss'
+
 
 function Navbar() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
+    const isLoggedIn = useAppSelector(getloginState)
+    const userRole = useAppSelector(getRole)
     const pages = ['Home', 'Info', 'Stories', 'Chat'];
+    const navigate = useNavigate();
 
 
     const handleOpenNavMenu = (event: any) => {
@@ -78,75 +83,84 @@ function Navbar() {
                                 display: { xs: 'block', md: 'none' },
                             }}
                         >
-                            {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page}</Typography>
+                            <Link to="/home">
+                                <MenuItem key={"Home"} onClick={handleCloseNavMenu}>
+                                    <Typography textAlign="center">Home</Typography>
                                 </MenuItem>
-                            ))}
+                            </Link>
+                            <Link to="/info">
+                                <MenuItem key={"Info"} onClick={handleCloseNavMenu}>
+                                    <Typography textAlign="center">المعلومات</Typography>
+                                </MenuItem>
+                            </Link>
+                            <Link to="/stories">
+                                <MenuItem key={"Stories"} onClick={handleCloseNavMenu}>
+                                    <Typography textAlign="center">القصص</Typography>
+                                </MenuItem>
+                            </Link>
+                            <Link to="/chat">
+                                <MenuItem key={"Chat"} onClick={handleCloseNavMenu}>
+                                    <Typography textAlign="center">الدردشه</Typography>
+                                </MenuItem>
+                            </Link>
                         </Menu>
                     </Box>
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="div"
-                        sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
-                    >
-                        LOGO
-                    </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
                             <Button
                                 key={page}
-                                onClick={handleCloseNavMenu}
+                                onClick={() => { handleCloseNavMenu(); navigate(`/${page}`) }}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                             >
                                 {page}
                             </Button>
                         ))}
                     </Box>
-
-                    <Box sx={{ flexGrow: 0 }}>
-                        <Tooltip title="Open settings">
-                            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                            </IconButton>
-                        </Tooltip>
-                        <Menu
-                            sx={{ mt: '45px' }}
-                            id="menu-appbar"
-                            anchorEl={anchorElUser}
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
-                        >
-                            <Link to="/profile">
-                                <MenuItem key="profile" onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">profile</Typography>
-                                </MenuItem>
-                            </Link>
-                            <Link to="/previousAccidents">
-                                <MenuItem key="previousAccidents" onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">previousAccidents</Typography>
-                                </MenuItem>
-                            </Link>
-                            <Link to="/">
-                                <MenuItem key="profile" onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">Log out</Typography>
-                                </MenuItem>
-                            </Link>
-                        </Menu>
-                    </Box>
+                    {!isLoggedIn ? (<div><Button variant="contained" style={{ marginRight: "1rem", backgroundColor: "#35b0d2" }} type="submit" onClick={() => { navigate('/signup') }}>Register</Button>
+                        <Button variant="contained" style={{ backgroundColor: "#35b0d2" }} type="submit" onClick={() => { navigate('/') }}>Log in</Button></div>) : (
+                        <Box sx={{ flexGrow: 0 }}>
+                            <Tooltip title="Open settings">
+                                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                    <Avatar alt="Remy Sharp" src="" />
+                                </IconButton>
+                            </Tooltip>
+                            <Menu
+                                sx={{ mt: '45px' }}
+                                id="menu-appbar"
+                                anchorEl={anchorElUser}
+                                anchorOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right',
+                                }}
+                                keepMounted
+                                transformOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right',
+                                }}
+                                open={Boolean(anchorElUser)}
+                                onClose={handleCloseUserMenu}
+                            >
+                                <Link to="/profile">
+                                    <MenuItem key="profile" onClick={handleCloseUserMenu}>
+                                        <Typography textAlign="center">الصفحه الشخصيه</Typography>
+                                    </MenuItem>
+                                </Link>
+                                <Link to="/previousAccidents">
+                                    <MenuItem key="previousAccidents" onClick={handleCloseUserMenu}>
+                                        <Typography textAlign="center">الحوادث السابقة</Typography>
+                                    </MenuItem>
+                                </Link>
+                                <Link to="/">
+                                    <MenuItem key="profile" onClick={handleCloseUserMenu}>
+                                        <Typography textAlign="center">تسجيل الخروج</Typography>
+                                    </MenuItem>
+                                </Link>
+                            </Menu>
+                        </Box>
+                    )}
                 </Toolbar>
             </Container>
-        </AppBar>
+        </AppBar >
     );
 }
 export default Navbar

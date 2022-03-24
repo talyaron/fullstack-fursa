@@ -29,13 +29,13 @@ const AdminPanel = () => {
         <input type="text" id="fname" name="fname" placeholder="الاسم الاول" value={Fname} onChange={(e:any) => setFname(e.target.value)}></input>
         <br></br>
         <label htmlFor="lname">اسم العائله:</label>
-        <input type="text" id="lname" name="lname" placeholder="اسم العائله"value={Lname}  onChange={(e:any) => setLname(e.target.value)}></input>
+        <input type="text" id="lname" name="lname" placeholder="اسم العائله" value={Lname}  onChange={(e:any) => setLname(e.target.value)}></input>
         <br></br>
-        <label htmlFor="Email">البريد الالكتروني :</label>
+        <label htmlFor="Email">البريد الالكتروني:</label>
         <input type="text" id="Email" name="Email" placeholder="البريد الالكتروني" value={Email}  onChange={(e:any) => setEmail(e.target.value)}></input>
         <br></br>
         <input type="checkbox" id="AdminUser" name="AdminUser" value="Admin"  onChange={(e:any) => setIsAdmin("AdminUser")}></input>
-        <label htmlFor="AdminUser"> مشرف جديد</label>
+        <label htmlFor="AdminUser"> اضافة مشرف جديد</label>
 
       </form>
       <button type="submit" form="UserInfo" value="Submit"  onSubmit={handleSubmit}>انشاء مستخدم جديد</button>

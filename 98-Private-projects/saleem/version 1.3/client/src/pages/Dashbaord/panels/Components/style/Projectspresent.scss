@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+    
+        
+        .flex-between {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .flex-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .text-muted {
+            color: #000000!important;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .page-wrapper {
+            padding-top: 20px;
+            padding-left: 30px;
+            overflow-x: hidden;
+            display: flex;
+        }
+        
+        .page-wrapper .wrapper {
+            padding: 2.5rem;
+        }
+        
+        .page-wrapper .content-wrapper {
+            background-color: hsl(0deg 0% 90%);
+            position: relative;
+            width: 70%;
+        }
+        
+        .page-wrapper .content-wrapper .search-area {
+            position: relative;
+        }
+        
+        .page-wrapper .wrapper nav .fas {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #7c7a7a;
+        }
+        
+        .page-wrapper .content-wrapper .search-box .search-field {
+            width: 250px;
+            padding: 6px;
+            padding-left: 45px;
+            border-radius: 20px;
+            font-size: 15px !important;
+            color: #000;
+            border: 0;
+            box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 10%);
+        }
+        
+        .page-wrapper .wrapper .chat-icons-area .icon {
+            background-color: #fff;
+            height: 25px;
+            width: 25px;
+            margin: 0 auto;
+            border-radius: 50%;
+            text-align: center;
+            margin-right: 10px;
+            padding: 5px;
+            font-size: 14px;
+        }
+        
+        .page-wrapper .menu-items-container {
+            padding: 2.5rem 0rem 0rem;
+            border-bottom: 1px solid #e0dbdb;
+            text-align: center;
+        }
+        
+        .page-wrapper .active {
+            border-bottom: 2px solid orange;
+        }
+        
+        .page-wrapper .menu-items-container p {
+            font-size: 15px;
+            font-weight: 500;
+        }
+        
+        .page-wrapper .menu-items-container .fas,
+        .far {
+            color: #979494;
+        }
+        
+        .page-wrapper .tasks-container {
+            padding: 2.5rem 0rem;
+        }
+        
+        .page-wrapper .tasks-container .card {
+            border-radius: 1rem;
+        }
+        .page-wrapper .card{
+            height:max-content;
+            padding-left: 20px;
+            padding-right: 20px;
+            min-width: 20px;
+            margin-left: 30px;
+            border-top-right-radius: 15px;
+            .editproject{
+                text-align: right;
+            }
+        }
+        
+        
+        .page-wrapper img.profile-image {
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .page-wrapper .tasks-container .name {
+            font-weight: 600;
+            font-size: 15px;
+        }
+        
+        .page-wrapper .tasks-container .days-left {
+            font-size: 12px;
+            padding-bottom: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .page-wrapper .pagination-container {
+            border-bottom: 2px solid orange;
+            position: absolute;
+            bottom: 50px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .page-wrapper .image-wrapper {
+            width: 30%;
+        }
+        
+        @media only screen and (max-width: 768px) {
+            .page-wrapper {
+                flex-wrap: wrap;
+            }
+            .text-muted {
+                font-size: 9px;
+            }
+            .page-wrapper .content-wrapper {
+                width: 100%;
+                padding: 1.5rem;
+            }
+            .page-wrapper .menu-items-container p {
+                font-size: 12px;
+            }
+            .page-wrapper .content-wrapper .tasks-container .name {
+                font-size: 13px;
+            }
+            .page-wrapper .pagination-container {
+                bottom: 5px;
+                font-size: 13px;
+            }
+            .page-wrapper .image-wrapper {
+                width: 100%;
+            }
+            .page-wrapper .content-wrapper .tasks-container .name {
+                font-size: 11px;
+            }
+            .page-wrapper .content-wrapper .tasks-container .days-left {
+                font-size: 12px;
+            }
+            .page-wrapper .image-wrapper {
+                width: 100%;
+            }
+        }
+        .Projectspresent{
+            padding-top: 20px;
+            padding-left: 30px;
+            h2{
+                color:rgba(57, 156, 196, 0.897)
+            }
+        }
+        
