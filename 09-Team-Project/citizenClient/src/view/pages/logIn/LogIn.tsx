@@ -17,15 +17,14 @@ function LogIn() {
   useEffect(() => {
     if (isLoged) {
       console.log(isLoged);
-      navigate("/home");
+      navigate("/");
     }
   }, [isLoged])
   function hadleSubmit(e: any) {
     e.preventDefault();
 
     dispatch(fetchUser({ "email": email, "password": password }));
-    if(isLoged)
-    {
+    if (isLoged) {
       console.log(isLoged)
       navigate("/profile")
     }
