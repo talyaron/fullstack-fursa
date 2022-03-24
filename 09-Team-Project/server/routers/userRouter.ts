@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 import jwt from "jwt-simple";
+import { isUser } from "../controllers/userController";
 import Users from '../model/userModel'
 
 router.post("/get-user", async (req, res) => {
@@ -90,6 +91,17 @@ router.get('/get-authentication', async (req, res) => {
         res.send({ error });
     }
 })
+router.get('/log-out', isUser, async (req, res) => {
+    try {
+        const role = req.role
+        if (role === "admin" || role === "org" || role === "public") {
+            res.clearCookie("user")
+                .status(200)
+        } else res.status(401).send({ error: "Not authorized" });
+    } catch (error) {
+        res.send({ error });
+    }
 
+})
 
 module.exports = router;
