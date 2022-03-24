@@ -12,12 +12,9 @@ function Home() {
     const navigate = useNavigate();
     let isLogged = useAppSelector(getloginState)
     function handleBtn(ev: any) {
-        if (!isLogged) {
-            navigate("/");
-        } else {
-            const type = ev.currentTarget.value;
-            navigate(`/emergency/${type}`);
-        }
+        const type = ev.currentTarget.value;
+        navigate(`/emergency/${type}`);
+
     }
     return (
         <div className="home">
@@ -25,7 +22,7 @@ function Home() {
             <div className="home__content">
                 <div className="home__content__btn">
                     <Button value="emergency" style={{ backgroundColor: "#eb4034" }} variant="contained" startIcon={<CampaignIcon />} onClick={handleBtn}>
-                    طارئ
+                        طارئ
                     </Button>
                     <Button value="harassment" style={{ borderColor: "#eb4034", color: "#eb655b" }} variant="outlined" onClick={handleBtn}>تحرش</Button>
                     <Button value="homeViolence" style={{ borderColor: "#eb4034", color: "#eb655b" }} variant="outlined" onClick={handleBtn}>العنف المنزلي</Button>

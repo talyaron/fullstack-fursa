@@ -14,19 +14,13 @@ export function Emergency() {
   const [images, setImage] = useState<Array<any>>([]);
   const [isAmergency, setIsAmergency] = useState(false);
   const [upload, setUpload] = useState(false);
-  const [{imageUrl,imagetype}, setImageUrl] = useState({imageUrl:'',imagetype:''});
+  const [{ imageUrl, imagetype }, setImageUrl] = useState({ imageUrl: '', imagetype: '' });
   const dispatch = useAppDispatch();
   const user = useAppSelector(userInfo);
   const org = {};
   const { accidentName } = useParams();
   let isLogged = useAppSelector(getloginState)
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!isLogged) {
-      navigate("/");
-    }
-  }, []);
 
   const accidentType = [
     {
@@ -154,7 +148,7 @@ export function Emergency() {
             type="submit"
             style={{ borderColor: "red", color: "red" }}
             variant="outlined">
-           تقرير عن حادث {" "}
+            تقرير عن حادث {" "}
           </Button>
         </form>
       </div>

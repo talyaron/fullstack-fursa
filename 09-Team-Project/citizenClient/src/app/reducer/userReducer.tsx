@@ -108,7 +108,9 @@ export const userReducer = createSlice({
                 if (action.payload.log == true) {
                     state.status = 'idle';
                     state.userInfo = action.payload.user;
-                    state.isLogIn = true;
+                    if (action.payload.user.type != "anonymous")
+                        state.isLogIn = true;
+                    else state.isLogIn = false;
                 }
             })
     },

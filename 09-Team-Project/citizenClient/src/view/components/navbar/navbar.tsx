@@ -83,7 +83,7 @@ function Navbar() {
                                 display: { xs: 'block', md: 'none' },
                             }}
                         >
-                            <Link to="/home">
+                            <Link to="/">
                                 <MenuItem key={"Home"} onClick={handleCloseNavMenu}>
                                     <Typography textAlign="center">Home</Typography>
                                 </MenuItem>
@@ -109,55 +109,58 @@ function Navbar() {
                         {pages.map((page) => (
                             <Button
                                 key={page}
-                                onClick={() => { handleCloseNavMenu(); navigate(`/${page}`) }}
+                                onClick={() => { handleCloseNavMenu(); if (page == "Home") navigate(`/`); else navigate(`/${page}`) }}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                             >
                                 {page}
                             </Button>
                         ))}
                     </Box>
-                    {!isLoggedIn ? (<div><Button variant="contained" style={{ marginRight: "1rem", backgroundColor: "#35b0d2" }} type="submit" onClick={() => { navigate('/signup') }}>Register</Button>
-                        <Button variant="contained" style={{ backgroundColor: "#35b0d2" }} type="submit" onClick={() => { navigate('/') }}>Log in</Button></div>) : (
-                        <Box sx={{ flexGrow: 0 }}>
-                            <Tooltip title="Open settings">
-                                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                    <Avatar alt="Remy Sharp" src="" />
-                                </IconButton>
-                            </Tooltip>
-                            <Menu
-                                sx={{ mt: '45px' }}
-                                id="menu-appbar"
-                                anchorEl={anchorElUser}
-                                anchorOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                                keepMounted
-                                transformOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                                open={Boolean(anchorElUser)}
-                                onClose={handleCloseUserMenu}
-                            >
+                    {userRole == "anonymous" ? (<div><Button variant="contained" style={{ marginRight: "1rem", backgroundColor: "#35b0d2" }} type="submit" onClick={() => { navigate('/signup') }}>Register</Button>
+                        <Button variant="contained" style={{ backgroundColor: "#35b0d2" }} type="submit" onClick={() => { navigate('/login') }}>Log in</Button></div>) : (<div></div>)}
+                    <Box sx={{ flexGrow: 0 }}>
+                        <Tooltip title="Open settings">
+                            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                <Avatar alt="" src="" />
+                            </IconButton>
+                        </Tooltip>
+                        <Menu
+                            sx={{ mt: '45px' }}
+                            id="menu-appbar"
+                            anchorEl={anchorElUser}
+                            anchorOrigin={{
+                                vertical: 'top',
+                                horizontal: 'right',
+                            }}
+                            keepMounted
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'right',
+                            }}
+                            open={Boolean(anchorElUser)}
+                            onClose={handleCloseUserMenu}
+                        >
+                            {userRole != "anonymous" ? (
                                 <Link to="/profile">
                                     <MenuItem key="profile" onClick={handleCloseUserMenu}>
                                         <Typography textAlign="center">الصفحه الشخصيه</Typography>
                                     </MenuItem>
-                                </Link>
-                                <Link to="/previousAccidents">
-                                    <MenuItem key="previousAccidents" onClick={handleCloseUserMenu}>
-                                        <Typography textAlign="center">الحوادث السابقة</Typography>
-                                    </MenuItem>
-                                </Link>
+                                </Link>) : (<div></div>)
+                            }
+                            <Link to="/previousAccidents">
+                                <MenuItem key="previousAccidents" onClick={handleCloseUserMenu}>
+                                    <Typography textAlign="center">الحوادث السابقة</Typography>
+                                </MenuItem>
+                            </Link>
+                            {userRole != "anonymous" ? (
                                 <Link to="/">
                                     <MenuItem key="profile" onClick={handleCloseUserMenu}>
                                         <Typography textAlign="center">تسجيل الخروج</Typography>
                                     </MenuItem>
-                                </Link>
-                            </Menu>
-                        </Box>
-                    )}
+                                </Link>) : (<div></div>)
+                            }
+                        </Menu>
+                    </Box>
                 </Toolbar>
             </Container>
         </AppBar >
