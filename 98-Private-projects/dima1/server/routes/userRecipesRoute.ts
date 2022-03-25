@@ -26,14 +26,15 @@ router.get('/get-user-recipes', async (req, res) => {
     }
 })
 
-router.post('/add-new-userRecipes', async (req, res) => {
+router.post('/add-new-userRecipe', async (req, res) => {
     try {
         const recipe = req.body;
+        delete recipe._id;
         const newRecipe = new userRecipes(recipe)
-        await newRecipe.save().then((res) => {
-            console.log(res);
-        });
-        res.send({ val: "OK" });
+        const add = await newRecipe.save();
+        if(add)
+            res.send({ ok : true });
+        else res.send({ ok : false });
     } catch (error: any) {
         res.status(400).send({ error: error.message });
     }

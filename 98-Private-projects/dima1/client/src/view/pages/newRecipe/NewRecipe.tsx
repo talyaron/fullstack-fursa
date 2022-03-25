@@ -1,4 +1,5 @@
 import './NewRecipe.scss';
+import GradeIcon from '@mui/icons-material/Grade';
 import Bagemenu from "../../components/menuBar/menu";
 import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
 import background from '../../images/background.jpg';
@@ -73,7 +74,7 @@ interface recipeInfo {
     ingredients: string;
     method: string;
     notes: string,
-    userName: String;
+    userName: string | undefined;
     types: Array<type>;
 }
 
@@ -83,17 +84,17 @@ export default function NewRecipe() {
     let navigate = useNavigate();
 
     const recipe_ = useAppSelector(selectedRecipe);
-    const pageName = useAppSelector(selectPage)
-
-    const [recipe, setRecipe] = useState<recipeInfo>(recipe_);
-    const [types_, setTypes] = useState<Array<type>>(recipe_.types);
+    const pageName = useAppSelector(selectPage);
 
     const { userName, recipeId } = useParams();
+
+    const [recipe, setRecipe] = useState<recipeInfo>({...recipe_, userName : userName});
+    const [types_, setTypes] = useState<Array<type>>(recipe_.types);
 
     useEffect(() => {
         dispatch(selectRecipeAsync(recipeId));
         setTypes(recipe_.types);
-        setRecipe(recipe_);
+        setRecipe({...recipe_, userName : userName});
     }, [])
 
     function handleChange(ev: any) {
@@ -125,15 +126,21 @@ export default function NewRecipe() {
         dispatch(updateRecipe(recipe))
     }
 
-    function handleSave(ev: any) {
+    async function handleSave(ev: any) {
         ev.preventDefault();
         if (!recipeId) {
-            axios.post('/userRecipes/add-new-userRecipe', recipe_);
+            const response = await axios.post('/userRecipes/add-new-userRecipe', {...recipe, useName : userName});
+            const data = response.data;
+            if(data.ok)
+                navigate(`/${userName}`);
+            else alert('Recipe has not been added');
         }
         else {
-            console.log(recipe)
-            axios.patch('/selectRecipe/edit-select-recipe', recipe);
-            navigate(`/${userName}/${recipeId}`)
+            const response = await axios.patch('/selectRecipe/edit-select-recipe', recipe);
+            const data = response.data;
+            if(data.ok)
+                navigate(`/${userName}/${recipeId}`);
+            else alert('Recipe has not been edited');
         }
     }
 
@@ -163,15 +170,15 @@ export default function NewRecipe() {
             <div className="content">
                 <img className='image' src={background} />
                 <div className='boxInfo'>
-                    <Link className='backTo' to={pageName}>
+                    {/* <Link className='backTo' to={pageName}>
                         <ArrowBackSharpIcon sx={{ color: '#b5739d', fontSize: 30 }} onClick={handleTo} />
-                    </Link>
+                    </Link> */}
 
                     <form className='box' onSubmit={handleSave}>
                         <div className="save">
                             <Tooltip title='save'>
                                 <button type='submit'>
-                                    <BookmarkAddIcon sx={{
+                                    <GradeIcon sx={{
                                         color: '#b5739d', fontSize: 35
                                     }} />
                                 </button>

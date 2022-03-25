@@ -36,7 +36,7 @@ export interface RecipeState {
     ingredients: string;
     method: string;
     notes: string;
-    userName: String;
+    userName: string;
     types: Array<type>;
   };
   status: 'idle' | 'loading' | 'failed'

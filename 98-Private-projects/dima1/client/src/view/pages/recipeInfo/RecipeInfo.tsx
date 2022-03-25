@@ -1,5 +1,6 @@
 import './RecipeInfo.scss';
-import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
+import DeleteIcon from '@mui/icons-material/Delete';
 import Bagemenu from '../../components/menuBar/menu';
 import background from '../../images/background.jpg';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -8,20 +9,30 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import PeopleIcon from '@mui/icons-material/People';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import { useState, useEffect } from 'react';
-import { TextField } from '@mui/material';
-import { styled } from '@mui/material/styles';
 import Tooltip from '@mui/material/Tooltip';
-import { Link, useParams } from 'react-router-dom';
-import axios from 'axios';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { selectedRecipe, selectRecipeAsync } from '../../../app/reducers/itemSlice';
 import { selectPage, updateName } from '../../../app/reducers/NamePageSlice';
 import { Text, StyleSheet } from 'react-native';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+import axios from 'axios';
 
 export default function RecipeInfo() {
     const [like, setLike] = useState(0);
     const { userName, recipeId } = useParams();
     const [isTrue, setIsTrue] = useState(false);
+    const [open, setOpen] = useState(false);
+    const navigate = useNavigate();
+    const theme = useTheme();
+    const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
     //Redux toolkit
     const dispatch = useAppDispatch();
@@ -38,6 +49,21 @@ export default function RecipeInfo() {
         setLike(like + 1);
     }
 
+    function handleClickOpen() {
+        setOpen(true);
+    };
+
+    async function handleClose(ev: any) {
+        setOpen(false);
+        if (ev.target.name === 'delete') {
+            const response = await axios.post('/selectRecipe/delete-recipe', {id : recipeId});
+            const data = response.data;
+            if (data.ok)
+                navigate(`/${userName}`);
+            else alert('Recipe has not been deleted');
+        }
+    };
+
     function handleTo() {
         dispatch(updateName(`/${userName}/RecipeInfo`));
     }
@@ -48,14 +74,21 @@ export default function RecipeInfo() {
             <div className="content">
                 <img className='image' src={background} />
                 <div className='boxInfo'>
-                    <Link className='backTo' to={pageName}>
+                    {/* <Link className='backTo' to={pageName}>
                         <ArrowBackSharpIcon sx={{ color: '#b5739d', fontSize: 30 }} onClick={handleTo} />
-                    </Link>
+                    </Link> */}
                     <div className='box'>
-                        <div className="edit">
+                        <div className="edit-delete">
+                            <Tooltip title='delete recipe' hidden={!(userName === recipe_.userName)}>
+                                <DeleteIcon sx={{
+                                    color: '#b5739d', fontSize: 35
+                                }} onClick={handleClickOpen} />
+                            </Tooltip>
+                        </div>
+                        <div className="edit-delete">
                             <Tooltip title='edit recipe' hidden={!(userName === recipe_.userName)}>
                                 <Link to={`/${userName}/${recipeId}/EditRecipe`}>
-                                    <AutoAwesomeIcon sx={{
+                                    <AutoFixHighIcon sx={{
                                         color: '#b5739d', fontSize: 35
                                     }} />
                                 </Link>
@@ -64,7 +97,7 @@ export default function RecipeInfo() {
                         <div className='types'>
                             <h3>Filed under : </h3>
                             {recipe_.types.map((type, index) => {
-                                if(type.isTrue)
+                                if (type.isTrue)
                                     return (
                                         <div className='type' key={index} >{type.name}</div>
                                     )
@@ -135,6 +168,30 @@ export default function RecipeInfo() {
                     </div>
                 </div>
             </div>
+            <Dialog
+                fullScreen={fullScreen}
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="responsive-dialog-title"
+            >
+                <DialogContent style={{ backgroundColor: '#e6d0de', color: '#b5739d' }}>
+                    <DialogTitle id="responsive-dialog-title">
+                        {"Delete Recipe"}
+                    </DialogTitle>
+                    <DialogContentText>
+                        Are you sure you want to delete this recipe ?
+                    </DialogContentText>
+                    <br />
+                    <DialogActions>
+                        <Button name='delete' onClick={handleClose} sx={{ color: '#b5739d' }}>
+                            Delete
+                        </Button>
+                        <Button onClick={handleClose} name='cancle' sx={{ color: '#b5739d' }}>
+                            Cancle
+                        </Button>
+                    </DialogActions>
+                </DialogContent>
+            </Dialog>
         </div>
     );
 }

@@ -25,7 +25,6 @@ export interface RecipeState {
         userName: String;
         types: Array<any>;
     };
-    //status: 'idle' | 'loading' | 'failed'
 }
 
 interface recipesByType {
