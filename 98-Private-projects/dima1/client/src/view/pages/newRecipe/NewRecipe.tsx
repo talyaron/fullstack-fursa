@@ -205,40 +205,40 @@ export default function NewRecipe() {
                             </div>
                             <h2 className='by'>By : {userName}</h2>
                             <div className='item'>
-                                <FavoriteBorderIcon sx={{ fontSize: 40, color: '#b5739d', paddingTop: '10px' }} />
+                                <FavoriteBorderIcon sx={{ fontSize: 45, color: '#b5739d', paddingTop: '10px' }} />
                                 <p>0</p>
                             </div>
                             <div className='item'>
-                                <AccessTimeIcon sx={{ fontSize: 40, color: '#b5739d', paddingTop: '10px' }} />
+                                <AccessTimeIcon sx={{ fontSize: 45, color: '#b5739d', paddingTop: '10px' }} />
                                 <Standard id="standard-basic" variant="standard"
                                     focused
                                     required
                                     placeholder=""
-                                    size="small" sx={{ width: '20ch' }}
+                                    size="small" sx={{ width: '20ch', justifyContent: 'center' }}
                                     name='time'
                                     value={recipe.time}
                                     onChange={handleChange}
                                 />
                             </div>
                             <div className='item'>
-                                <PeopleIcon sx={{ fontSize: 40, color: '#b5739d', paddingTop: '10px' }} />
+                                <PeopleIcon sx={{ fontSize: 45, color: '#b5739d', paddingTop: '10px' }} />
                                 <Standard id="standard-basic" variant="standard"
                                     focused
                                     required
                                     placeholder=""
-                                    size="small" sx={{ width: '20ch' }}
+                                    size="small" sx={{ width: '20ch', justifyContent: 'center' }}
                                     name='people'
                                     value={recipe.people}
                                     onChange={handleChange}
                                 />
                             </div>
                             <div className='item'>
-                                <LocalFireDepartmentIcon sx={{ fontSize: 40, color: '#b5739d', paddingTop: '10px' }} />
+                                <LocalFireDepartmentIcon sx={{ fontSize: 45, color: '#b5739d', paddingTop: '10px' }} />
                                 <Standard id="standard-basic" variant="standard"
                                     focused
                                     required
                                     placeholder=""
-                                    size="small" sx={{ width: '20ch' }}
+                                    size="small" sx={{ width: '20ch', justifyContent: 'center' }}
                                     name='cal'
                                     value={recipe.calories}
                                     onChange={handleChange}

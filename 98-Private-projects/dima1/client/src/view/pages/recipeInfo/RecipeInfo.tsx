@@ -78,8 +78,8 @@ export default function RecipeInfo() {
                         <ArrowBackSharpIcon sx={{ color: '#b5739d', fontSize: 30 }} onClick={handleTo} />
                     </Link> */}
                     <div className='box'>
-                        <div className="edit-delete">
-                            <Tooltip title='delete recipe' hidden={!(userName === recipe_.userName)}>
+                        <div className="edit-delete" hidden={!(userName === recipe_.userName)}>
+                            <Tooltip title='delete recipe'>
                                 <DeleteIcon sx={{
                                     color: '#b5739d', fontSize: 35
                                 }} onClick={handleClickOpen} />
@@ -114,19 +114,19 @@ export default function RecipeInfo() {
                             </div>
                             <h2 className='by'>By : {recipe_.userName}</h2>
                             <div className='item'>
-                                <FavoriteBorderIcon onClick={handleLike} sx={{ fontSize: 40, color: '#b5739d', paddingTop: '15px' }} />
+                                <FavoriteBorderIcon onClick={handleLike} sx={{ fontSize: 45, color: '#b5739d', paddingTop: '15px' }} />
                                 <p>{like}</p>
                             </div>
                             <div className='item'>
-                                <AccessTimeIcon sx={{ fontSize: 40, color: '#b5739d', paddingTop: '15px' }} />
+                                <AccessTimeIcon sx={{ fontSize: 45, color: '#b5739d', paddingTop: '15px' }} />
                                 <p>{recipe_.time}</p>
                             </div>
                             <div className='item'>
-                                <PeopleIcon sx={{ fontSize: 40, color: '#b5739d', paddingTop: '15px' }} />
+                                <PeopleIcon sx={{ fontSize: 45, color: '#b5739d', paddingTop: '15px' }} />
                                 <p>{recipe_.people}</p>
                             </div>
                             <div className='item'>
-                                <LocalFireDepartmentIcon sx={{ fontSize: 40, color: '#b5739d', paddingTop: '15px' }} />
+                                <LocalFireDepartmentIcon sx={{ fontSize: 45, color: '#b5739d', paddingTop: '15px' }} />
                                 <p>{recipe_.calories}</p>
                             </div>
                         </div>
