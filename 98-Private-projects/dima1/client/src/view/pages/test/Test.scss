@@ -1,32 +1,32 @@
-.wrapper {
-    .content {
+.test {
+    padding-top: 50px;
+    width: 40vw;
+    height: 50vh;
+    margin: auto;
+
+    .wrapper {
+        background: linear-gradient(to bottom, #ebf8f8 0, #fefefe 100%);
+        padding: 42px 20px 7px 20px;
         position: relative;
-        overflow: hidden;
-        margin: auto;
-        width: 100vw;
-
-        .image {
-            opacity: 40%;
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .content1 {
-            position: relative;
-
-            button{
-                background-color: aqua;
-            }
-        }
-
-
+        margin-left: -20px;
+        margin-right: -20px;
     }
 
-    .slider{
-        width: 20px;
-        height:20px;
+    .wrapper::before {
+        content: 'Recipe';
+        border: 1.25px dashed #3d9f9e;
+        font-family: Roboto, Helvetica, sans-serif;
+        font-weight: 700;
+        font-size: .875rem;
+        line-height: 1.1428;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        letter-spacing: .0625rem;
+        text-transform: uppercase;
+        color: #222;
+        position: absolute;
+        top: -13px;
+        padding: 10px 19px;
     }
 }

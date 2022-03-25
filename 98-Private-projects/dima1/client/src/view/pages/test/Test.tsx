@@ -33,24 +33,18 @@ function Test() {
 
 
     return (
-        <div className='wrapper'>
-            <Bagemenu userName={'dima'} />
-            <div className='content'>
-                <img className='image' src={background} />
-                <div className='content1'>
-                    {types.map((type, index) => {
-                        return (
-                            <button key={index} onClick={(ev) => handleClick(ev, index)}>{type.name}</button>
-                        )
-                    })}
-                </div>
+        <div className='test'>
+            <div className='wrapper'>
+                Extra firm tofu works best for stir-fry.
+                The curd is pressed for longer when manufacturing,
+                which yields a more compact soy protein product.
+
+                It’s still soft but it doesn’t crumble with gentle pressure.
+                This prevents the tofu from falling apart as it fries in the hot oil and makes it easier to flip.
+                When added back to the pan to toss with the sauce, the protein keeps its cube shape.
             </div>
-            <Slider {...settings}>
-                <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" alt="" />
-                <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" alt="" />
-                <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" alt="" />
-            </Slider>
         </div>
+
     );
 
 }
