@@ -34,10 +34,8 @@ function CalendarFun() {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-
         dispatch(getAppointmentsAsyn());
         //axios.get('http://localhost:3004/AppointmentData').then(({data})=>console.log(data));
-
     }, []);
 
 

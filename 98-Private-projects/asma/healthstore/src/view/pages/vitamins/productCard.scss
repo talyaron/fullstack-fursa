@@ -1,21 +1,30 @@
 .card {
-    &__item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__item {
         display: flex;
         flex-direction: column;
         align-items: center;
-        
-        &__title{
+
+        &__title {
             font-size: 20px;
             color: rgb(12, 70, 35);
-       }
+            margin-bottom: 1rem;
+        }
+
         img {
-            max-width: 12rem;
-            max-height: 12rem;
-            margin: 3px;
+            width: 12.5rem;
+            height: 16rem;
+            margin: 2.5px;
+        }
+
+        &__text {
+            font-size: 14px;
+            width: 14rem;
+            margin-bottom: 2rem;
+            text-align: center;
         }
     }
-
-    a {
-        text-decoration: none;
-    } 
 }

@@ -1,3 +1,5 @@
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import './home.scss';
 
 //components
@@ -24,6 +26,22 @@ interface Image {
 }
 
 function Home() {
+  const [treatments, setTreatments] = useState([]);
+
+  
+  useEffect(() => {
+    // axios.get("/products/get-products").then(({ data }) => {
+    //     console.log('get',data);
+    //     setProducts(data.products);
+    // });
+    axios.get("/treatments/get-treatments").then(({ data }) => {
+        console.log('get',data);
+        setTreatments(data.treatments);
+    });
+
+}, []);
+
+
   return (
     <div className="home">
       <header className="App-header">
@@ -39,7 +57,7 @@ function Home() {
         </div>
         <div className="row">
           <div className="text"> Treatments</div>
-          {row2.map((item, index) => {
+          {treatments.map((item, index) => {
             const { name, img } = item; //deconstractor 
             return <Card key={index} info={{ name, img }} />
           })}

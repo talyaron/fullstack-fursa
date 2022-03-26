@@ -9,6 +9,8 @@
     //background-color: #282c34;
     color: rgb(6, 77, 71);
     padding-top: 20px;
+    max-width: 70%;
+    flex-wrap: wrap;
     .header-image{
       img{
         width: 30rem;
@@ -21,6 +23,7 @@
       flex-direction: row;
       align-items: center;
       justify-content: center;
+      flex-wrap: wrap;
       position: relative;
       margin: 5rem;
       //min-width: 70vw;

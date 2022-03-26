@@ -61,6 +61,28 @@ router.get('/get-products', isAdmin, async (req, res) => {
 })
 
 
+async function getProductsByCategory(category): Promise<any> {
+  try {
+    const products = await Product.find({category:category});
+    //console.log(products,'products in server');
+    return products;
+  } catch (err: any) {
+    console.error(err)
+    return false;
+  }
+}
+
+router.post('/get-productsByCategory', async (req, res) => {
+  try {
+    const {category} = req.body;
+    // console.log(category,' in server');
+    const products = await getProductsByCategory(category);
+    res.send({ ok: true, products: products });
+  } catch (error) {
+    res.send({ ok: false, products: [] });
+  }
+})
+
 
 router.post('/delete-product', async (req, res) => {
   try {
