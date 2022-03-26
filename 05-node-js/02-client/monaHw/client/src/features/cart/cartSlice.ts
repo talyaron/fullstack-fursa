@@ -43,7 +43,22 @@ export const getCartAsync = createAsyncThunk(
 
   }
 );
+export const deleteCartAsync = createAsyncThunk(
+  'deletrorder/deleteOrders',
+  async (_, thunkApi) => {
+    
+    try {
+      const response = await axios.post('/order/delete-all-user-orders')
+      const data = response.data
+      return data
 
+    }
+    catch (err: any) {
+      thunkApi.rejectWithValue(err.response.data)
+    }
+
+  }
+);
 
 export const cartSlice = createSlice({
   name: 'order',
@@ -60,6 +75,13 @@ export const cartSlice = createSlice({
         state.status = 'loading'
       })
       .addCase(getCartAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        state.orders = action.payload;
+      })
+      .addCase(deleteCartAsync.pending, (state) => {
+        state.status = 'loading'
+      })
+      .addCase(deleteCartAsync.fulfilled, (state, action) => {
         state.status = 'idle';
         state.orders = action.payload;
       })

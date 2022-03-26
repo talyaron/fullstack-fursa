@@ -119,7 +119,7 @@ export function ShowOrders(){
 
                         </TableRow>
                       </TableHead>
-                      <TableBody>
+                      <TableBody >
                         {order.order.map((historyRow:any) => (
                           <TableRow key={historyRow._id}>
                             <TableCell component="th" scope="row">
@@ -153,9 +153,9 @@ export function ShowOrders(){
              
         <div className="orderHistory_body">
  {orders.status!=='loading' ?
-             
-            <TableContainer component={Paper}>
-            <Table aria-label="collapsible table">
+              <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+            <TableContainer component={Paper} sx={{ maxHeight: 440 }}>
+            <Table aria-label="collapsible table"  >
               <TableHead>
                 <TableRow>
                   <TableCell />
@@ -173,7 +173,7 @@ export function ShowOrders(){
                 ))}
               </TableBody>
             </Table>
-          </TableContainer>
+          </TableContainer></Paper>
                :  <div><CircularProgress color="secondary" />
                 </div>}
                 </div>

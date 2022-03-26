@@ -3,9 +3,10 @@ import Button from '@mui/material/Button';
 import {Link} from 'react-router-dom';
 import { useState,useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import { getCartAsync, selectorders } from "../../../features/cart/cartSlice";
+import { deleteCartAsync, getCartAsync, selectorders } from "../../../features/cart/cartSlice";
 import { getUser } from "../../../features/user/userReducer";
 import axios from 'axios'
+
 export default function ChekOutOrder()
 {
   const[orderCollection,setOrderCollection]=useState('');
@@ -38,7 +39,7 @@ function handlepick()
  function handleChekOut()
  {
   axios.post('/order/checkOut',{order:orders.orders,userId:user._id,date:new Date(),paymentMethod:paymentMethod,orderCollection:orderCollection,orderStatus:'pending'})
-  .then((res) => console.log(res) 
+  .then((res) => console.log(res)
   )
   .catch((err) => console.error(err));
  }
@@ -63,8 +64,10 @@ function handlepick()
             <img onClick={handlepick} src="https://cdn1.iconfinder.com/data/icons/miscellaneous-343-solid/128/receive_get_obtain_gain_enlist_accept_collect_pick-up_take_accept-512.png"></img>
 
             </div>
-          
+            <p style={{color:'green'}}>checkout details:  {orderCollection}  {paymentMethod}</p>
+
           </div>
+
           {/* <input placeholder="toatal price"></input> */}
             <Button variant="contained" style={{backgroundColor: 'rgb(47, 143, 90)'}} size="medium" onClick={handleChekOut}>
        checkout  

@@ -26,7 +26,7 @@ function HomePage() {
     ev.preventDefault();
     const form = ev.target;
     // axios.post('http://localhost:3004/woods',{"name":form[0].value, "imgurl":form[1].value,"pricePerMeter":form[2].value}).then(({data})=>console.log(data));
-    axios.post('/add-Raw-Material', { name: form[0].value, imageUrl: form[1].value, pricePerMeter: form[2].value })
+    axios.post('/raw/add-Raw-Material', { name: form[0].value, imageUrl: form[1].value, pricePerMeter: form[2].value })
       .then(data => {
         console.log(data);
       }).catch(err => {
@@ -53,9 +53,9 @@ function HomePage() {
         <div className="homepage_body_add">
           <h1>add Raw Material type</h1>
           <form onSubmit={handleSubmit}>
-            <input type="text" name="type" placeholder='product name'></input>
-            <input type="text" name="imageUrl" placeholder='image Url'></input>
-            <input type='number' name="price" placeholder='price per meter'></input>
+            <input required type="text" name="type" placeholder='product name'></input>
+            <input required type="text" name="imageUrl" placeholder='image Url'></input>
+            <input required type='number' name="price" placeholder='price per meter'></input>
             <Button type="submit" variant="contained" style={{ backgroundColor: 'rgb(47, 143, 90)' }} size="medium">add
             </Button>
           </form>
@@ -75,8 +75,8 @@ function HomePage() {
         <div className="homepage_body_products">
           <h1>Wood Products</h1>
           <form onSubmit={handleProductSubmit}>
-            <input type="text" name="name" placeholder='product name'></input>
-            <input type="text" name="imageUrl" placeholder='image Url'></input>
+            <input required type="text" name="name" placeholder='product name'></input>
+            <input required type="text" name="imageUrl" placeholder='image Url'></input>
             <Button type="submit" variant="contained" style={{ backgroundColor: 'rgb(47, 143, 90)' }} size="medium">add
             </Button>
           </form>

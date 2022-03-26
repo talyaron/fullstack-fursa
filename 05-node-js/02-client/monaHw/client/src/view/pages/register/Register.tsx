@@ -42,10 +42,11 @@ export function Register()
                     <Button variant="contained" type='submit' size='medium' style={{ backgroundColor: 'rgb(245, 202, 9)' }} sx={{ m: 1, width: '20%', marginLeft: '40%' }}>
                        Register
                     </Button>
-                    <Alert  sx={{ display:show }}  severity="error">email already exist!</Alert>
-                    <Link href="login" underline="hover">
+                    <Link href="login" underline="hover" >
                              already have account?login
                          </Link>
+                    <Alert  sx={{ display:show }}  severity="error">email already exist!</Alert>
+                    
 
         </Box>
         </form>

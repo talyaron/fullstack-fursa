@@ -9,11 +9,13 @@ interface Raw{
 }
 export interface rawState{
     raws:Array<Raw>;
+    rawsBynName:string;
     status: 'idle' | 'loading' | 'failed';
 
 }
 const initialState: rawState = {
     raws: [],
+    rawsBynName:'',
     status: 'idle'
   }
   export const getRawAsync = createAsyncThunk(
@@ -73,5 +75,6 @@ const initialState: rawState = {
     }
   });
 export const selectRow = (state: RootState) => state.raw;
+export const selectRawByName = (state: RootState) => state.raw.rawsBynName;
 
 export default rawSlice.reducer;

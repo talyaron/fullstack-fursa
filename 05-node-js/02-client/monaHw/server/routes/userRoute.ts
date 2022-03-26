@@ -34,12 +34,24 @@ router.post('/login' ,async (req,res)=>{
       if(user){
         console.log('found')
         const JWT_SECRET = process.env.JWT_SECRET;
-        const encodedJWT = jwt.encode( { userId: user._id, role: "public" },JWT_SECRET);
+        if(email==='mona_arabiya@hotmail.com')
+        {const encodedJWT = jwt.encode( { userId: user._id, role: "admin" },JWT_SECRET);
         res.cookie("login",encodedJWT,{
           httpOnly: true,
           maxAge: 60 * 60 * 1000,
         })
         res.status(200).send({ok:true})
+      }
+        else{
+          const encodedJWT = jwt.encode( { userId: user._id, role: "public" },JWT_SECRET);
+          res.cookie("login",encodedJWT,{
+            httpOnly: true,
+            maxAge: 60 * 60 * 1000,
+          })
+          res.status(200).send({ok:true})
+
+        }
+        
       }
       else{
         console.log('not found')

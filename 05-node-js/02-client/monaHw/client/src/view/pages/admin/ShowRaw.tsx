@@ -1,3 +1,4 @@
+import Paper from '@mui/material/Paper';
 import { raw } from "express";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
@@ -13,7 +14,8 @@ export function ShowRaw() {
     const raws = useAppSelector(selectRow);
     const [edit, setEdit] = useState(false)
     return (
-        <div className="showRaw">
+
+        <div className="showRaw" style={{ maxHeight: 440 }}>
             {raws.raws.map((raw:any)=>{
                 return(
                 <RawCard key={raw._id} raw={raw}></RawCard>

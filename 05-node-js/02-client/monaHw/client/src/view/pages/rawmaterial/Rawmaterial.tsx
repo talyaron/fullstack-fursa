@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 import Navbar from '../../components/navbar/Navbar';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getRawAsync, getRawByName, selectRow } from '../../../features/raw/Raw';
+import { getRawAsync, getRawByName, selectRawByName, selectRow } from '../../../features/raw/Raw';
 import { useAppSelector } from '../../../app/hooks';
 import { CircularProgress, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, TextField } from '@mui/material';
 
@@ -18,11 +18,7 @@ const woodLogo:string="https://cdn2.iconfinder.com/data/icons/lightly-icons/30/s
 function Rawmaterial(){
   const [wood,setWood]=useState([]);
   const dispatch=useDispatch()
-//   useEffect(()=>{
-//     dispatch(getRawAsync())
 
-// },[])
-// const raws=useAppSelector(selectRow);
 const [type, setType] = useState('All');
 useEffect(()=>{
       dispatch(getRawAsync())
@@ -36,16 +32,14 @@ useEffect(()=>{
  function handleChange(ev:any ) {
   setType(ev.target.value);
     if(ev.target.value==="All")
-       {dispatch(getRawAsync())}
+       dispatch(getRawAsync())
       else{
         dispatch(getRawByName(ev.target.value))
+        
       }
-
-
-
-
 };
 const raws=useAppSelector(selectRow);
+
     return(
         <div className="RawMaterial">
       <header className='RawMaterial_header'>
@@ -62,7 +56,7 @@ const raws=useAppSelector(selectRow);
         <div className='searching'>
         {/* <Wood title={woodLogo} ></Wood> */}
         <FormControl sx={{ m: 1, minWidth: 200 }}>
-        <InputLabel id="demo-simple-select-autowidth-label" style={{color:'wheat'}}>search types</InputLabel>
+        <InputLabel id="demo-simple-select-autowidth-label" style={{color:'white'}}>search type</InputLabel>
         <Select
           labelId="demo-simple-select-autowidth-label"
           id="demo-simple-select-autowidth"

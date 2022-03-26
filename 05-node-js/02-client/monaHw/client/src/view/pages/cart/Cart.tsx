@@ -87,7 +87,7 @@ function Cart(){
                 }):  <div><CircularProgress color="secondary" />
                 </div>}
 
-                <Button variant="contained"   onClick={handleToggle} style={{ backgroundColor: 'rgb(47, 143, 90)'}} size="medium">
+                <Button variant="contained"   onClick={handleToggle} style={{ backgroundColor: 'rgb(47, 143, 90)' ,display:'flex',justifyContent:'center',alignItems:'center'}} size="medium">
                     {/* <Link to="/cart/checkOutOrder"> order </Link> */}order
                 </Button>
                 <Backdrop

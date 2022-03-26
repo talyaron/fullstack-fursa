@@ -18,46 +18,13 @@ import { getCartAsync } from '../../../features/cart/cartSlice';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { fetchUser, getUser } from '../../../features/user/userReducer';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-// const woods = [{name:'pine wood',height:70,width:70, thick:70,cardImg:'https://d2kxk2c617i0nn.cloudfront.net/image_resize/crop/mw1500/mh750/products/23_001--yellow_pine_softwood-s.jpg'},
-// {name:'insulation wood',height:70,width:70, thick:70,cardImg:'https://www.greenspec.co.uk/images/web/materials/boards/board.jpg'},
-// {name:'multiLayer wood',height:70,width:70, thick:70,cardImg:'https://user-assets.sxlcdn.com/images/609056/FkbWNKuLffuq6lYY2qFlQ5bAGYJY.jpg?imageMogr2/strip/auto-orient/thumbnail/1200x9000%3E/quality/90!/interlace/1/format/jpg'}];
 
-// const currencies = [
-//     {
-//       value: 'm',
-//       label: 'm',
-//     },
-//     {
-//       value: 'mm',
-//       label: 'mm',
-//     },
-//     {
-//       value: 'cm',
-//       label: 'cm',
-//     },
-  
-//   ];
-// interface orderProsps {
-//     product: any;
-//     setProduct: any;
-// }
 function Order() {
-  const dispatch=useAppDispatch();
-// useEffect(() => {
-//   dispatch(fetchUser({ email: "mona_arabiya@hotmail.com", password: "123" }))
-// }, [])
-const user=useAppSelector(getUser)
-    // const { product, setProduct } = props;
-    const [currency, setCurrency] = React.useState('cm');
-  //  useEffect(()=>{
-  //   dispatch(getCartAsync());
-  // },[])
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setCurrency(event.target.value);
-  };
-
-    const { name,pricePerMeter } = useParams();
-    const [show,setShow]=useState('none')
+   
+  
+  const user=useAppSelector(getUser);
+  const { name,pricePerMeter } = useParams();
+  const [show,setShow]=useState('none')
   
     function handleSubmit(ev: any) {
         ev.preventDefault();
@@ -71,6 +38,7 @@ const user=useAppSelector(getUser)
                 obj[form[i].name] = form[i].value;
             }
         }
+
         // let copy = Object.assign([], product);
         // copy.push(obj);
         // setProduct(copy);
