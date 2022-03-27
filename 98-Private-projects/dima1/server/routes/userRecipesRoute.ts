@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 import userRecipes from '../schemas/userRecipeModel';
 import User from '../schemas/userModel';
+import likeModel from '../schemas/likeModel';
 import jwt from "jwt-simple";
 import { isUser } from '../controllers/userController';
 
@@ -30,10 +31,14 @@ router.post('/add-new-userRecipe', async (req, res) => {
     try {
         const recipe = req.body;
         delete recipe._id;
-        const newRecipe = new userRecipes(recipe)
+        const newRecipe = new userRecipes(recipe);
         const add = await newRecipe.save();
-        if(add)
+        const newLikes = new likeModel({"recipeId": add._id, users : []});
+        const likes = await newLikes.save();
+        if(add && likes){
+            console.log("yes");
             res.send({ ok : true });
+        }
         else res.send({ ok : false });
     } catch (error: any) {
         res.status(400).send({ error: error.message });

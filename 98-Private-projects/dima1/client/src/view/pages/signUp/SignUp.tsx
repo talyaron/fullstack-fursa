@@ -40,7 +40,7 @@ export default function SignUp() {
     }
 
     function handleCheckPhone(ev:any){
-        const phoneno = /^\05?([0-9]{1})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+        const phoneno = /^\05?([0-9]{1})\)?[-.]?([0-9]{3})[-.]?([0-9]{4})$/;
         if(!ev.target.value.match(phoneno)){
             alert("You have entered an invalid phone number!");
         }

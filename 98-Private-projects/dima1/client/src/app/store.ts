@@ -1,5 +1,6 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import itemReducer from './reducers/itemSlice';
+import likeReducer from './reducers/LikeReducer';
 import myRecipesReducer from './reducers/MyRecipesSlice';
 import pageReducer from './reducers/NamePageSlice';
 import recentRecipesReducer from './reducers/RecentRecipesSlice';
@@ -15,7 +16,8 @@ export const store = configureStore({
     recentRecipes : recentRecipesReducer,
     pageName : pageReducer,
     user : userReducer,
-    recipes : recipesReducer
+    recipes : recipesReducer,
+    likes : likeReducer
   },
 });
 

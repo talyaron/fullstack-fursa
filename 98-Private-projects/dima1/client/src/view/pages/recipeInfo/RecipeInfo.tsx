@@ -1,4 +1,5 @@
 import './RecipeInfo.scss';
+
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Bagemenu from '../../components/menuBar/menu';
@@ -24,34 +25,55 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import axios from 'axios';
+import { getRecipeLikes, recipeLikes } from '../../../app/reducers/LikeReducer';
 
 export default function RecipeInfo() {
-    const [like, setLike] = useState(0);
     const { userName, recipeId } = useParams();
     const [isTrue, setIsTrue] = useState(false);
     const [open, setOpen] = useState(false);
     const navigate = useNavigate();
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
-
+    
     //Redux toolkit
     const dispatch = useAppDispatch();
     const recipe_ = useAppSelector(selectedRecipe);
-    const pageName = useAppSelector(selectPage);
+    const likes_ = useAppSelector(recipeLikes);
+    const [like, setLike] = useState(CheckLike());
 
     useEffect(() => {
         dispatch(selectRecipeAsync(recipeId));
-        if (recipe_.notes) setIsTrue(true)
+        dispatch(getRecipeLikes(recipeId));
+        if (recipe_.notes) setIsTrue(true);
         else setIsTrue(false)
     }, [])
 
-    function handleLike() {
-        setLike(like + 1);
+    async function handleLike() {
+        setLike(!like);
+        if(like){
+            const result = await axios.post('/selectRecipe/like-dislike', {name : userName, like : true, id : recipeId});
+            if(result.data.ok) console.log('like');
+            else console.log('failed to like');
+        } else{
+            const result = await axios.post('/selectRecipe/like-dislike', {name : userName, like : false, id : recipeId});
+            if(result.data.ok) console.log('dislike');
+            else console.log('failed to dislike');
+        }
+        dispatch(getRecipeLikes(recipeId));
     }
 
     function handleClickOpen() {
         setOpen(true);
     };
+
+    function CheckLike() : boolean{
+        let isLike = false;
+        if(userName){
+            isLike = likes_.users.includes(userName);
+        }
+        console.log(isLike);
+        return isLike;
+    }
 
     async function handleClose(ev: any) {
         setOpen(false);
@@ -63,10 +85,6 @@ export default function RecipeInfo() {
             else alert('Recipe has not been deleted');
         }
     };
-
-    function handleTo() {
-        dispatch(updateName(`/${userName}/RecipeInfo`));
-    }
 
     return (
         <div className='info'>
@@ -114,8 +132,8 @@ export default function RecipeInfo() {
                             </div>
                             <h2 className='by'>By : {recipe_.userName}</h2>
                             <div className='item'>
-                                <FavoriteBorderIcon onClick={handleLike} sx={{ fontSize: 45, color: '#b5739d', paddingTop: '15px' }} />
-                                <p>{like}</p>
+                                <FavoriteBorderIcon onClick={handleLike} sx={{ fontSize: 45, color: like ? '#b5739d' : 'red', paddingTop: '15px' }} />
+                                <p>{likes_.users.length}</p>
                             </div>
                             <div className='item'>
                                 <AccessTimeIcon sx={{ fontSize: 45, color: '#b5739d', paddingTop: '15px' }} />

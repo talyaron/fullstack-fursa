@@ -7,7 +7,8 @@ router.post('/register', async (req, res) => {
     try {
         const { name, email, password, phone } = req.body;
         const userByEmail = await User.findOne({ email: email });
-        const userByName = await User.findOne({ name : name });
+        const userByName = await User.findOne({ name : {$regex: `^${name}$`, $options: 'i'} });
+        console.log(userByName)
         if (!userByEmail && !userByName) {
             const newUser = await new User({ name : name, email: email, password: password, phone : phone, description: '' });
             newUser.save();
