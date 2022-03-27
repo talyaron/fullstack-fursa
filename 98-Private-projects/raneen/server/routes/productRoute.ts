@@ -46,22 +46,45 @@ router.post("/add-product", async (req, res) => {
     // console.error(error.message);
     // res.send({ error: error.message });
   }
-});
-router.patch("/get-product", async (req, res) => {
-  try {
-    const { typeID } = req.body;
-    console.log(typeID);
-     console.log("typeID");
-    // const filter = { typeId: typeID };
+})
 
-    const products = await Products.find({ typeId: typeID });
+
+// router.get('/get-top10', isUser, async (req, res) => {
+//     try {
+//         const topRecipes = await top10.find({});
+//         res.status(200).send({ok:true, recipes:topRecipes});
+//     } catch (error: any) {
+//         res.status(400).send({ error: error.message });
+//     }
+// })
+
+// async function getKitens(): Promise<any> {
+//   try {
+//     const nameRegEx = new RegExp("hu", "i");
+//     const kittens = await Cats.find({});
+//     console.log(kittens);
+//     return kittens;
+//   } catch (err: any) {
+//     console.error(err);
+//     return false;
+//   }
+// }
+
+.get("/get-all-products", async (req, res) => {
+  try {
+    // await Adventure.findOne({ country: 'Croatia' }).exec();
+ console.log("inside product")
+ const products = await Products.find({typeId:"COATS"});
+    // const products = await Products.find({});
+    console.log("inside product")
     console.log(products);
-    return products;
+    res.send(products) ;
   } catch (err: any) {
     console.error(err);
     return false;
   }
-});
+  console.log("inside product")
+})
 
 // app.patch("/update-cat", async (req, res) => {
 //   try {

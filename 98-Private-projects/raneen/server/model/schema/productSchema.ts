@@ -7,6 +7,7 @@ const productSchema = new mongoose.Schema({
   price: Number,
   description: String,
   quantity: Number,
+ 
 });
 
 //the collection

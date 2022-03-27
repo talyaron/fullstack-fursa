@@ -14,6 +14,14 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Box from '@mui/material/Box';
+import { updateUser,selectUser } from '../../../app/reducers/userReducer';
+import { useAppSelector,useAppDispatch } from '../../../app/hooks';
+
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
@@ -30,16 +38,30 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
   }),
 }));
 
-export default function RecipeReviewCard() {
-  const [expanded, setExpanded] = React.useState(false);
+export default function RecipeReviewCard(props: any) {
 
+    const { key, name,typeId, url,price, description, quantity } = props;
+  const [expanded, setExpanded] = React.useState(false);
+const [item, setItem] = React.useState('');
+    const user = useAppSelector(selectUser);
+
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setItem(event.target.value as string);
+    if(!user._id){
+      
+    }
+
+
+  };
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
   return (
-    <Card className="container" sx={{ maxWidth: 345 }}>
+    <Card  sx={{ maxWidth: 345 }}>
       <CardHeader fontStyle="Apple Color Emoji"
+
         // avatar={
         //   <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
         //     R
@@ -50,7 +72,7 @@ export default function RecipeReviewCard() {
         //     <MoreVertIcon />
         //   </IconButton>
         // }
-        title="SATIN DRESS"
+        title={name}
         // subheader="September 14, 2016"
       />
       <CardMedia className="wrap"
@@ -63,29 +85,48 @@ export default function RecipeReviewCard() {
           ]}
  
         
-        image ="https://static.zara.net/photos///2022/V/0/1/p/2341/650/520/17/w/1500/2341650520_1_1_1.jpg?ts=1646390724222"
+        image ={url}
         alt="Paella dish"
       />
       <CardContent > 
         <Typography variant="body2" color="text.secondary"
           sx={{display: 'inline'}}
         >
-       Collared dress with a V-neckline, 
-       long sleeves and shoulder pads. Inside button fastening at the front.
+        {description}
+    
            
           
           
         </Typography>
       </CardContent>
-      <CardActions disableSpacing>
+      <CardActions >
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
-        <IconButton aria-label="share">
+        {/* <IconButton aria-label="share">
           <ShareIcon />
-        </IconButton>
-         <IconButton aria-label="share">
-          <img  width="40px"src="https://previews.123rf.com/images/dmvector/dmvector1909/dmvector190900060/131424750-icono-de-carrito-de-compras-icono-de-carro-.jpg" alt="" />
+        </IconButton> */}
+     
+         <IconButton aria-label="share" >
+ 
+          <Box sx={{ minWidth: 120 }}>
+      <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label" > {"    "}ADD TO CART</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={item}
+          label="item"
+          sx={{width:200}}
+          onChange={handleChange}
+        >
+          <MenuItem value={10}>small</MenuItem>
+          <MenuItem value={20}>medium</MenuItem>
+          <MenuItem value={30}>large</MenuItem>
+        </Select>
+      </FormControl>
+    </Box>
+          {/* <img  width="40px"src="https://previews.123rf.com/images/dmvector/dmvector1909/dmvector190900060/131424750-icono-de-carrito-de-compras-icono-de-carro-.jpg" alt="" /> */}
         </IconButton>
         <ExpandMore
           expand={expanded}

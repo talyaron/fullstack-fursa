@@ -1,27 +1,47 @@
-import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import * as React from "react";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+// import Link from "@mui/material/Link";
+import { useAppSelector,useAppDispatch } from '../../../app/hooks';
+import { updateUser,selectUser } from '../../../app/reducers/userReducer';
+import { Link } from 'react-router-dom';
+// import { updateUser } from '../../../app/reducers/userReducer';
+import Paper from "@mui/material/Paper";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useState } from 'react';
+import { useNavigate } from 'react-router';
+import axios from 'axios';
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 
-function Copyright(props: any) {
+
+
+ function Copyright(props: any) {
+
+
+
+
   return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
+    <Typography
+      variant="body2"
+      color="text.secondary"
+      align="center"
+      {...props}
+    >
+      {"Copyright © "}
+      {/* <Link color="inherit" href="https://mui.com/">
         Your Website
-      </Link>{' '}
+      </Link>{" "} */}
       {new Date().getFullYear()}
-      {'.'}
+      {"."}
     </Typography>
   );
 }
@@ -29,20 +49,66 @@ function Copyright(props: any) {
 const theme = createTheme();
 
 export default function Register() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    let nav = useNavigate();
+    const dispatch = useAppDispatch();
+
+    
+
+  const HandleSubmit = async(event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
     console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+      email: data.get("email"),
+       password: data.get("password"),
     });
+        const result = await axios.post('/users/logIn', {email:  data.get("email"), password: data.get("password")});
+        const data1 = result.data;
+        if(data1.ok){
+          console.log(data1.user)
+          console.log("signed in successfully")
+           console.log(data1.user)
+          dispatch(updateUser(data1.user))
+          successAlert();
+
+        //  const user = useAppSelector(selectUser);
+
+           nav(`/homePage`);
+        }
+        else{
+            alert('Wrong email or password, please try again.')
+        }
   };
 
+function successAlert(){
   return (
-    
-    <ThemeProvider theme={theme} >
-      <Grid container component="main" >
+    <Stack sx={{ width: '100%' }} spacing={2}>
+      <Alert onClose={() => {}}>This is a success alert — check it out!</Alert>
+      <Alert
+        action={
+          <Button color="inherit" size="small">
+            UNDO
+          </Button>
+        }
+      >
+        This is a success alert — check it out!
+      </Alert>
+    </Stack>
+  );
+}
+
+    function validateEmail(ev:any){
+     const reg = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+ if (!reg.test(ev.target.value)) {
+ let isValid = false;
+ alert("Invalid email, please try again")
+
+
+    }
+    }
+  return (
+    <ThemeProvider theme={theme}>
+      <Grid container component="main">  
         <CssBaseline />
         <Grid
           item
@@ -50,12 +116,15 @@ export default function Register() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: 'url(https://i.pinimg.com/originals/c4/6b/51/c46b517f8d507ecf74b007fbac1e2bd7.gif)',
-            backgroundRepeat: 'no-repeat',
+            backgroundImage:
+              "url(https://i.pinimg.com/originals/c4/6b/51/c46b517f8d507ecf74b007fbac1e2bd7.gif)",
+            backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
-              t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
+              t.palette.mode === "light"
+                ? t.palette.grey[50]
+                : t.palette.grey[900],
+            backgroundSize: "cover",
+            backgroundPosition: "center",
           }}
         />
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
@@ -63,18 +132,23 @@ export default function Register() {
             sx={{
               my: 8,
               mx: 4,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <Box
+              component="form"
+              noValidate
+              onSubmit={HandleSubmit}
+              sx={{ mt: 1 }}
+            >
               <TextField
                 margin="normal"
                 required
@@ -84,6 +158,7 @@ export default function Register() {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                        onBlur={validateEmail}
               />
               <TextField
                 margin="normal"
@@ -109,12 +184,12 @@ export default function Register() {
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="body2">
+                  {/* <Link href="#" variant="body2">
                     Forgot password?
-                  </Link>
+                  </Link> */}
                 </Grid>
                 <Grid item>
-                  <Link href="#" variant="body2">
+                  <Link to={`/SignUp`}>
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>
@@ -125,6 +200,5 @@ export default function Register() {
         </Grid>
       </Grid>
     </ThemeProvider>
-   
   );
 }

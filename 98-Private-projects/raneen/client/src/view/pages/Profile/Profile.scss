@@ -1,0 +1,24 @@
+.container{
+    display: flex;
+    // height: 500px;
+   // background-color: rgba(29, 4, 4, 0.185);
+    margin-top: 10vh;
+   padding-left: 25vw;
+   padding-right: 25vw;
+    justify-content:center;
+    // width:100vw;
+    width:50vw;
+    height:70vh;
+     align-items:center;
+    
+}
+
+.card-content{
+    width:80vw;
+    height:60vh;
+   // margin-top: 10vh;
+    padding-right: 25vw;
+    justify-content:center;
+    border-top: 1px solid;
+    background-color: rgba(29, 4, 4, 0.103);
+}

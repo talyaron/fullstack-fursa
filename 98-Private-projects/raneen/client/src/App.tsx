@@ -6,6 +6,7 @@ import "./App.scss";
 import Card from './view/components/card/Card';
  import Mainbar from './view/components/menu/menu';
  import Menu1 from './view/components/menu/menu';
+import Register from './view/components/register/Register';
 import { Counter } from "./features/counter/Counter";
 import TextShow from "./features/text/TextShow";
 import TextInput from "./features/text/TextInput";
@@ -20,6 +21,7 @@ import Help from "./view/pages/Help/Help";
 import Help1 from "./view/pages/Help/Help1";
 import SignUp from "./view/pages/SignUp/SignUp";
 import SignIn from "./view/pages/SignIn/SignIn";
+import Profile from "./view/pages/Profile/Profile";
 // import AboutUs from "./view/pages/AboutUs/AboutUs";
 // import Store from "./view/pages/Store/Store";
 // import Help from "./view/pages/Help/Help"
@@ -79,7 +81,8 @@ function App() {
        {/* <Mainbar></Mainbar>  */}
             
         <Route path="/" element={<HomePage />}/>
-        <Route path="Store/:coatsId" element={<Store />} />
+           <Route path="Store" element={<Store />} />
+        {/* <Route path="Store/:coatsId" element={<Store />} /> */}
          <Route path="Store/:jacketsId" element={<Store />} />
           <Route path="Store/:pantsId" element={<Store />} />
         {/* <Route path="Store/JACKETS" element={<Store />} /> */}
@@ -91,6 +94,8 @@ function App() {
        {/* <Route path="Mainbar" element={<Mainbar />} /> */}
         {/* <Route path="AboutUs" element={<AboutUs />} /> */}
         <Route path="HomePage" element={<HomePage /> }/>
+        <Route path="Register" element={<Register /> }/>
+        <Route path="Profile" element={<Profile /> }/>
        
     </Routes>
   </BrowserRouter>

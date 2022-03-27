@@ -2,34 +2,35 @@ import "./Store.scss";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import RecipeReviewCard from "../../components/productCard/productCard";
+ import { useState, useEffect } from 'react';
 
 async function add() {
-  const name = "WARM WOOL PREMIUM COAT - LIMITED EDITION";
-  const typeId = "COATS";
-  const url =
-    "https://static.zara.net/photos///2022/V/0/1/p/2584/747/436/2/w/1500/2584747436_2_3_1.jpg?ts=1642604108776";
-  const price = 750;
-  const description =
-    "Coat made of a top-quality warm wool blend. Lapel collar and long sleeves. Tied belt in the same fabric. Front pockets. Contrast interior lining. ";
-  const quantity = 100;
+  // const name = "WARM WOOL PREMIUM COAT - LIMITED EDITION";
+  // const typeId = "pants";
+  // const url =
+  //   "https://static.zara.net/photos///2022/V/0/1/p/2584/747/436/2/w/1500/2584747436_2_3_1.jpg?ts=1642604108776";
+  // const price = 750;
+  // const description =
+  //   "Coat made of a top-quality warm wool blend. Lapel collar and long sleeves. Tied belt in the same fabric. Front pockets. Contrast interior lining. ";
+  // const quantity = 100;
 
-  axios
-    .post("/products/add-product", {
-      name,
-      typeId,
-      url,
-      price,
-      description,
-      quantity,
-    })
-    .then(({ data }) => {
-      console.log(data);
-    });
-  console.log("aa");
+  // axios
+  //   .post("/products/add-product", {
+  //     name,
+  //     typeId,
+  //     url,
+  //     price,
+  //     description,
+  //     quantity,
+  //   })
+  //   .then(({ data }) => {
+  //     console.log(data);
+  //   });
+  // console.log("aa");
 
-
-   const { data } = await axios.patch("/products/get-product",  {typeId} );
-    console.log(data);
+  //      console.log(typeId+"raneen2134");
+  //  const { data } = await axios.patch("/products/get-product",  {typeId} );
+  //   console.log(data);
   }
 
 
@@ -41,49 +42,53 @@ function Store() {
   
 
   const { coatsId } = useParams();
-  add();
+    const [products, setProducts] = useState([]);
 
-  // axios.get('/user', {
-  //   params: {
-  //     ID: 12345
-  //   }
-  // })
-    // axios
-    // .patch("/products/get-product", {
-    //    coatsId,
-    // })
-    // .then(({ data }) => {
-    //   console.log(data);
-    // });
+  useEffect(() => {
+    getProducts().then((data: any) => {
+        //  console.log(data);
+      setProducts(data);
+    });
+  }, []);
 
-  console.log(coatsId);
+   function getProducts() {
+    return new Promise((resolve, reject) => {
+      axios
+        .get("/products/get-all-products")
+        .then(({ data }) => {
+          if (data) {
+            resolve(data);
+          } else {
+            reject("no data");
+          }
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
+//  add();
+
+
   return (
-    // <div >
-    // name:{coatsId}
-    // </div>
-    
-    <div className="wrapper">
+   
+   
+
+    <div className="wrapper"> 
+{/* name,
+      typeId,
+      url,
+      price,
+      description,
+      quantity, */}
+     {products.map((product: any, i) => {
+        const { key, name,typeId, url,price, description, quantity } = product;
+         return <RecipeReviewCard key={key} name={name} typeId={typeId}  price={price} quantity={quantity}  description={description} url={url} />
+      })}
+{/* 
       <div>
         <RecipeReviewCard />
-      </div>
-      <div>
-        <RecipeReviewCard />
-      </div>
-      <div>
-        <RecipeReviewCard />
-      </div>
-      <div>
-        <RecipeReviewCard />
-      </div>
-      <div>
-        <RecipeReviewCard />
-      </div>
-      <div>
-        <RecipeReviewCard />
-      </div>
-      <div>
-        <RecipeReviewCard />
-      </div>
+      </div> */}
     </div>
   );
 }
@@ -172,4 +177,4 @@ export default Store;
 // }
 
 // export default App;
-export {};
+

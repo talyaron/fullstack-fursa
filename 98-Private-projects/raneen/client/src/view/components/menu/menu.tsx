@@ -14,7 +14,7 @@ import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { useState, useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../../app/hooks";
 import { Link } from "react-router-dom";
-//import {update, getJokeAsync} from '../../../app/reducers/textSlice';
+import {update} from '../../../app/reducers/categorySlice';
 import {
   decrement,
   increment,
@@ -29,8 +29,13 @@ function Mainbar() {
   const jacketsId = "JACKETS";
   const pantsId = "PANTS";
 
+
+    // const [category, setCategory] = useState("");
+
+  
   const bag = useAppSelector(selectBag);
   const dispatch = useAppDispatch();
+
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -38,9 +43,11 @@ function Mainbar() {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
+  const handleClose = (category:any) => {
     setAnchorEl(null);
-    console.log("hi");
+    dispatch(update(category));
+    console.log(category);
+
   };
   return (
     <div className="navbar">
@@ -74,21 +81,22 @@ function Mainbar() {
             >
               {/* <Route path="/:coatsId" children={<Store />} /> */}
 
-              <Link to={`/Store/${coatsId}`}>
-                <MenuItem className="menuItem" onClick={handleClose}>
+              {/* <Link to={`/Store/${coatsId}`}> */}
+              <Link to={`/Store`}>
+                <MenuItem className="menuItem" onClick={()=>handleClose(coatsId)}>
                   <p>COATS</p>
                 </MenuItem>
               </Link>
-              <Link to={`/Store/${jacketsId}`}>
-                <MenuItem className="menuItem" onClick={handleClose}>
+              {/* <Link to={`/Store/${jacketsId}`}> */}
+                <MenuItem className="menuItem" onClick={()=>handleClose(jacketsId)} > 
                   <p>JACKETS</p>
                 </MenuItem>
-              </Link>
-              <Link to={`/Store/${pantsId}`}>
-                <MenuItem className="menuItem" onClick={handleClose}>
+              {/* </Link> */}
+              {/* <Link to={`/Store/${pantsId}`}> */}
+                <MenuItem className="menuItem" onClick={()=>handleClose(pantsId)}>
                   <p>PANTS</p>
                 </MenuItem>
-              </Link>
+              {/* </Link> */}
             </Menu>
           </div>
           <span>
