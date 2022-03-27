@@ -4,6 +4,9 @@ import axios from 'axios'
 
 interface Raw{
     name:string;
+    width:number;
+    thick:number;
+    lengths:Array<Number>;
     imageUrl:string;
     pricePerMeter:number;
 }
@@ -35,8 +38,9 @@ const initialState: rawState = {
   );
   export const getRawByName= createAsyncThunk(
     'rawbyname/fetshRawsByName',
-    async (name:string) => {
+    async (obj:any) => {
       try {
+        const {name}=obj;
         const response = await axios.post('/raw/get-Raw-Material-ByName',{name:name})
         const data = response.data
         return data

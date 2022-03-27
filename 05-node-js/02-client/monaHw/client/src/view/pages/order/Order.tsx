@@ -13,19 +13,27 @@ import axios from 'axios'
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import { height, width } from '@mui/system';
-import { useDispatch } from 'react-redux';
-import { getCartAsync } from '../../../features/cart/cartSlice';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { fetchUser, getUser } from '../../../features/user/userReducer';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { getRawByName, selectRow } from '../../../features/raw/Raw';
 
 function Order() {
    
-  
+  const dispatch=useAppDispatch();
   const user=useAppSelector(getUser);
   const { name,pricePerMeter } = useParams();
   const [show,setShow]=useState('none')
-  
+  const [length, setLength] = useState('')
+  useEffect(()=>{
+    dispatch(getRawByName({name:name}))
+
+},[]) 
+ const rawByName=useAppSelector(selectRow)
+  // console.log(rawByName)
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setLength(event.target.value);
+  };
     function handleSubmit(ev: any) {
         ev.preventDefault();
       //  console.dir(ev.target);
@@ -43,7 +51,10 @@ function Order() {
         // copy.push(obj);
         // setProduct(copy);
         // const orderObj={"woodName":name,"woodlength":form[0].value,"amount":form[1].value,"price":pricePerMeter};
-        axios.post('/order/add-order',{woodName:name,woodlength:form[0].value,amount:form[1].value,price:pricePerMeter,userId:user._id})
+       const length=form[0].value;
+       const amount=form[2].value;
+      
+        axios.post('/order/add-order',{woodName:name,woodlength:length,amount:amount,price:pricePerMeter,userId:user._id})
         .then((res) => setShow('block'))
         .catch((err) => console.error(err));
         // axios.post('http://localhost:3004/userOrder',{"woodName":name,"woodlength":form[0].value,"amount":form[1].value,"price":pricePerMeter}).then(({data})=>dispatch(getCartAsync()));
@@ -78,58 +89,12 @@ function Order() {
             <form onSubmit={handleSubmit}>
                 <div className="row">
                 <p>Length</p>
-                <input type="text" name="woodlength"  required placeholder="Length" />
-                {/* <TextField
-          id="outlined-select-currency"
-          select
-         
-          value={currency}
-          onChange={handleChange}
-          style={{width:'8vw'}}
-
-        >
-          {currencies.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField> */}
-                </div>
-                {/* <div className="row">
-                <p>Width</p>
-                <input type="text" name="width" required placeholder="Width" />
-                <TextField
-          id="outlined-select-currency"
-          select
-          value={currency}
-          onChange={handleChange}
-          style={{width:'8vw'}}
-
-        >
-          {currencies.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
-                </div> */}
-                {/* <div className="row">
-                <p>Thick</p>
-                <input type="text" name="thick" required placeholder="Thickness" />
-                <TextField
-          id="outlined-select-currency"
-          select
-          value={currency}
-          onChange={handleChange}
-          style={{width:'8vw'}}
-        >
-          {currencies.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
-                </div> */}
+                <TextField select name="length" required placeholder="select length" style={{ backgroundColor: 'white', margin: '5px', borderRadius: '8px', width: '90%' }} value={length} onChange={handleChange}> {rawByName.raws[0].lengths.map((len:any,index) => (
+              <MenuItem key={index} value={len}>
+                {len}
+              </MenuItem>
+            ))}</TextField>         
+                   </div>
                 <div className="row">
                 <p>Quantity</p>
                 <input type="number" name="amount" required placeholder="Quantity" />

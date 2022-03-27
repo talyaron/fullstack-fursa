@@ -3,33 +3,20 @@ import { RootState, AppThunk } from '../../app/store';
 import axios from 'axios'
  interface product{
     name:string,
-    imgurl:string
+    price:string,
+    type:string
 
 }
 export interface productState{
-    productArr:Array<product>;
+    productArray:Array<product>;
     status: 'idle' | 'loading' | 'failed';
 }
 
 const initialState:productState={
-    productArr:[],
+    productArray:[],
     status:'idle'
 }
-export const getProductAsync = createAsyncThunk(
-    'product/fetshProducts',
-    async (_, thunkApi) => {
-      try {
-        const response = await axios.get('/product/get-products')
-        const data = response.data
-        return data
-  
-      }
-      catch (err: any) {
-        thunkApi.rejectWithValue(err.response.data)
-      }
-  
-    }
-  );
+
   export const getProductByTypeAsync = createAsyncThunk(
     'productType/fetshProductsType',
     async (type:string) => {
@@ -45,7 +32,7 @@ export const getProductAsync = createAsyncThunk(
   
     }
   );
-  export const productSlice = createSlice({
+  export const relatedproductSlice = createSlice({
     name: 'product',
     initialState,
     reducers: {
@@ -54,19 +41,19 @@ export const getProductAsync = createAsyncThunk(
     },
     extraReducers: (builder) => {
       builder
-        .addCase(getProductAsync.pending, (state) => {
+        .addCase(getProductByTypeAsync.pending, (state) => {
           state.status = 'loading'
         })
-        .addCase(getProductAsync.fulfilled, (state, action) => {
+        .addCase(getProductByTypeAsync.fulfilled, (state, action) => {
           state.status = 'idle';
-          state.productArr = action.payload;
+          state.productArray = action.payload;
         })
-     
+       
         
     }
   });
-export const getProduct = (state: RootState) => state.product;
+export const getRelatedProduct = (state: RootState) => state.relatedProduct;
 
-export default productSlice.reducer;
+export default relatedproductSlice.reducer;
 
 

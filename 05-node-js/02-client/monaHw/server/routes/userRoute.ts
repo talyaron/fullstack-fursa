@@ -27,8 +27,8 @@ router.post('/register',async (req,res)=>{
 })
 router.post('/login' ,async (req,res)=>{
   try{
-    const {name,email,password}=req.body;
-    if(!name||!email||!password) throw 'ivalid field values'
+    const {email,password}=req.body;
+    if(!email||!password) throw 'ivalid field values'
     const filter={email:email,password:password}
     const user=await User.findOne({email:email,password:password})
       if(user){
@@ -40,7 +40,7 @@ router.post('/login' ,async (req,res)=>{
           httpOnly: true,
           maxAge: 60 * 60 * 1000,
         })
-        res.status(200).send({ok:true})
+        res.send({ ok: true, user: user })
       }
         else{
           const encodedJWT = jwt.encode( { userId: user._id, role: "public" },JWT_SECRET);
@@ -48,7 +48,7 @@ router.post('/login' ,async (req,res)=>{
             httpOnly: true,
             maxAge: 60 * 60 * 1000,
           })
-          res.status(200).send({ok:true})
+          res.send({ ok: true, user: user })
 
         }
         

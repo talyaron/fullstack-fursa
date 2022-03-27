@@ -33,14 +33,16 @@ function Login() {
         const name=form[0].value;
         const email=form[1].value;
         const password=form[2].value;
-        const {data}=await axios.post('/user/login',{name:name,email:email,password:password})
-        if(data.ok){
-         dispatch(fetchUser({ email: email, password: password }))
-          navigate("/store")
-        }
-        else{
-            alert('user not found')
-        }
+        dispatch(fetchUser({ "email": email, "password": password }))
+        navigate("/store")
+        // const {data}=await axios.post('/user/login',{name:name,email:email,password:password})
+        // if(data.ok){
+        //  dispatch(fetchUser({ email: email, password: password }))
+        //   navigate("/store")
+        // }
+        // else{
+        //     alert('user not found')
+        // }
         // const form = ev.target;
         // axios.post('http://localhost:3004/userInfo', { "name": form[0].value, "phone": form[1].value, "location": form[2].value }).then(({ data }) => dispatch(getUserAsync()));
         // if(form[0].value=='admin'){

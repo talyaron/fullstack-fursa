@@ -34,7 +34,7 @@ router.post('/add-Raw-Material',isAdmin,async (req,res)=>{
   router.post('/get-Raw-Material-ByName',async (req,res)=>{
     try{
       const {name}=req.body;
-      if(!name) throw 'invalid fields'
+      if(!name) throw 'invalid fields//'
     const Raws=await Raw.find({name:name});
     // console.log(Raws)
     res.status(200).send(Raws)

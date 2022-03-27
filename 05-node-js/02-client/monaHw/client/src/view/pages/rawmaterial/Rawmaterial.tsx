@@ -34,12 +34,11 @@ useEffect(()=>{
     if(ev.target.value==="All")
        dispatch(getRawAsync())
       else{
-        dispatch(getRawByName(ev.target.value))
+        dispatch(getRawByName({name:ev.target.value}))
         
       }
 };
 const raws=useAppSelector(selectRow);
-
     return(
         <div className="RawMaterial">
       <header className='RawMaterial_header'>

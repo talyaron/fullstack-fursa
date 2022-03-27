@@ -3,6 +3,7 @@ import Product from './Product';
 import Door from "../woodProduct/Door";
 import Closet from "../woodProduct/Closet";
 import BedFrame from '../woodProduct/BedFrame';
+import Screw from '../relatedProducts/Screw';
 
 const NavProduct = () => 
 {
@@ -24,10 +25,18 @@ const NavProduct = () =>
                   
             )
         }
-        else{
+
+        else if(woodproname=='Bed Frame') {
             return(
                 <div>
                     <BedFrame></BedFrame>
+                </div>
+            )
+        }
+        else  {
+            return(
+                <div>
+                   <Screw></Screw>
                 </div>
             )
         }
