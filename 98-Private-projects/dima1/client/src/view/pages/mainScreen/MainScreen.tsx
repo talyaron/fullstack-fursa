@@ -20,17 +20,24 @@ import { getTopRecipesAsync, topRecipes } from '../../../app/reducers/TopRecipes
 import { getRecentRecipesAsync, recentRecipes } from '../../../app/reducers/RecentRecipesSlice';
 import { updateName } from '../../../app/reducers/NamePageSlice';
 import { getUserAsync, user } from '../../../app/reducers/userReducer';
+import { getAllRecipes, recipes } from '../../../app/reducers/recipesReducer';
 
 
 export default function MainScreen() {
     //Redux
     const { userName } = useParams();
     const dispatch = useAppDispatch();
-    const top10 = useAppSelector(topRecipes);
-    const recent = useAppSelector(recentRecipes);
+    const top10 = useAppSelector(topRecipes); //to remove
+    const recent = useAppSelector(recentRecipes); // to remove
+    const recipes_ = useAppSelector(recipes); // to use 
     const user_ = useAppSelector(user);
+    //const [top10, setTop10] = useState([]); TODO
+    //const [recent, setRecent] = useState([]); TODO
 
     useEffect(() => {
+        dispatch(getAllRecipes());
+        //filterTopRecipes(); TODO
+        //filterRecentRecipes(); TODO
         dispatch(getUserAsync(userName))
         dispatch(getTopRecipesAsync());
         dispatch(getRecentRecipesAsync());
@@ -49,7 +56,16 @@ export default function MainScreen() {
         } catch (error) {
             console.error();
         }
-    } 
+    }
+    
+    //TODO: to write the code of the two functions => find the top recipes and the most recent recipes
+    // function filterTopRecipes(){
+
+    // }
+
+    // function filterRecentRecipes(){
+
+    // }
 
     return (
         <div className="wrapper">
@@ -84,7 +100,7 @@ export default function MainScreen() {
                             })}
                         </Swiper>
                     </div>
-                    <h1 className='title1'>Most Recent Recipe</h1>
+                    <h1 className='title1'>Most Recent Recipes</h1>
                     <div className='content1'>
                         <Swiper
                             slidesPerView={3}

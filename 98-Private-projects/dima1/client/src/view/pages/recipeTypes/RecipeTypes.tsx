@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { recipesByType, recipesByTypeAsync } from '../../../app/reducers/recipesReducer';
+import { recipes, recipesByTypeAsync } from '../../../app/reducers/recipesReducer';
 import Bagemenu from '../../components/menuBar/menu';
 import background from '../../images/background.jpg';
 import tools from '../../images/tools.jpg';
@@ -12,7 +12,7 @@ export default function RecipeTypes() {
     const { userName, type } = useParams();
     console.log(type)
     const dispatch = useAppDispatch();
-    const recipesByType_ = useAppSelector(recipesByType);
+    const recipesByType_ = useAppSelector(recipes);
 
     useEffect(() => {
         dispatch(recipesByTypeAsync(type))

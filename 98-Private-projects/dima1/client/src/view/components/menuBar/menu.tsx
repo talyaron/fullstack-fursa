@@ -39,6 +39,7 @@ function Bagemenu(props:any) {
                         <img src={logo} alt="" />
                     </Link>
                 </div>
+                {/* TODO : add a selector -> to select the search's category */}
                 <div className="searchbox">
                     <input type="text" placeholder="search for a recipe" />
                     <SearchIcon sx={{ fontSize: 30, color: '#b5739d' }} />

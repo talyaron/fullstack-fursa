@@ -52,6 +52,21 @@ export const recipesByTypeAsync = createAsyncThunk(
     }
 );
 
+export const getAllRecipes = createAsyncThunk(
+    'getAllRecipes/fetchGetAll',
+    async (_, thunkAPI) => {
+        try {
+            const response = await axios.get('/userRecipes/get-all-recipes');
+            const data = response.data;
+            if (data.ok)
+                return data.recipes;
+            else return thunkAPI.rejectWithValue("failed");
+        } catch (error: any) {
+            thunkAPI.rejectWithValue(error.response.data);
+        }
+    }
+);
+
 export const recipesReducer = createSlice({
     name: 'recipes',
     initialState,
@@ -71,9 +86,21 @@ export const recipesReducer = createSlice({
                 state.recipes = [];
                 state.status = 'failed'
             })
+            .addCase(getAllRecipes.pending, (state, action) => {
+                state.recipes = [];
+                state.status = 'loading';
+            })
+            .addCase(getAllRecipes.fulfilled, (state, action) => {
+                state.recipes = action.payload;
+                state.status = 'idle';
+            })
+            .addCase(getAllRecipes.rejected, (state, action) => {
+                state.recipes = [];
+                state.status = 'failed'
+            })
     }
 });
 
-export const recipesByType = (state: RootState) => state.recipes.recipes;
+export const recipes = (state: RootState) => state.recipes.recipes;
 
 export default recipesReducer.reducer;

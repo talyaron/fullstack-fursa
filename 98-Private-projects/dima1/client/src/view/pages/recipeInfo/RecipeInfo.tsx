@@ -1,11 +1,9 @@
 import './RecipeInfo.scss';
-
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Bagemenu from '../../components/menuBar/menu';
 import background from '../../images/background.jpg';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import ArrowBackSharpIcon from '@mui/icons-material/ArrowBackSharp';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import PeopleIcon from '@mui/icons-material/People';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
@@ -14,7 +12,6 @@ import Tooltip from '@mui/material/Tooltip';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { selectedRecipe, selectRecipeAsync } from '../../../app/reducers/itemSlice';
-import { selectPage, updateName } from '../../../app/reducers/NamePageSlice';
 import { Text, StyleSheet } from 'react-native';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';

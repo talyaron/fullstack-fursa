@@ -10,7 +10,8 @@ const userRecipe = new mongoose.Schema({
     method: String,
     notes: String,
     userName: String,
-    types: Array
+    types: Array,
+    //date: Date
 })
 
 const userRecipes = mongoose.model('Recipes', userRecipe);

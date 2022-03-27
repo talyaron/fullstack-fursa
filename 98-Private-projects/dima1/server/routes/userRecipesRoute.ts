@@ -72,4 +72,19 @@ router.post('/get-recipes-ByType', async (req, res) => {
     }
 })
 
+router.get('/get-all-recipes', async (req, res) => {
+    try {
+        const recipes = await userRecipes.find({});
+        console.log(recipes)
+        if (recipes) {
+            res.send({ ok: true, recipes: recipes });
+        }
+        else {
+            res.send({ ok: false });
+        }
+    } catch (error: any) {
+        res.send({ ok: false, error: error.message });
+    }
+})
+
 module.exports = router;
