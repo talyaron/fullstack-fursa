@@ -3,7 +3,7 @@ import { RootState, AppThunk } from '../../app/store';
 import axios from 'axios'
  interface product{
     name:string,
-    price:string,
+    price:number,
     type:string
 
 }
