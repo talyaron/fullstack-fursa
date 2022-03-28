@@ -1,10 +1,20 @@
+.nav{
+  position:fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  margin-bottom: 5rem;
+}
+
 .navbar {
     background-color: rgba(8, 128, 46, 0.788);
     height: 50px;
     display: flex;
     justify-content: end;
     align-items: center; 
-    
+    // position: fixed;
+    // width: 100%;
+    // overflow: hidden;
     img{
     max-width: 2.3rem;
     max-height: 2.5rem;

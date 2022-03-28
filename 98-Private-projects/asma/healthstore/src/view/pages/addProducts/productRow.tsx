@@ -12,12 +12,10 @@ import Paper from '@material-ui/core/Paper';
 
 
 function ProductRow(props: any) {
-    const product = props.product;
-    const treatment = props.treatment;
+    const item = props.item;
     const type = props.type;
     const [edit, setEdit] = useState(false);
-    const [newProduct, setProduct] = useState({ name: product.name, text: product.text, img: product.img, category: product.category });
-    const [newTreatment, setTreatment] = useState({ name: product.name, text: product.text, img: product.img,category: product.category });
+    const [newProduct, setProduct] = useState({ name: item.name, text: item.text, img: item.img, category: item.category });
 
     const [selected, setImage] = useState('');
 
@@ -42,7 +40,7 @@ function ProductRow(props: any) {
         const config = { headers: { 'content-type': 'multipart/form-data' } }
 
         //const { data } = await axios.patch(`/${type}s/update-${type}`, formData,config);
-    
+
         axios.patch(`/update-${type}`, formData, config)
             .then(({ data }) => {
                 console.log(data)
@@ -57,30 +55,29 @@ function ProductRow(props: any) {
     async function handleDelete(ev: any, id: any) {
         ev.preventDefault();
         const { data } = await axios.post(`/${type}s/delete-${type}`, { _id: id });
-        console.log(data)        
+        console.log(data)
     }
 
     return (
         <div className="productCard">
             {edit ? (
-                <form onSubmit={handleUpdate} id={product._id}>
+                <form onSubmit={handleUpdate} id={item._id}>
                     <input type="text" value={newProduct.name} placeholder="name" name="name" onChange={(e) => setProduct({ ...newProduct, name: e.target.value })} />
-                    <input type="text" value={newProduct.text} placeholder="text" name="text" onChange={(e) => setProduct({ ...newProduct, text: e.target.value })} />
-                    {type==='product' ?(<><input type="text" value={newProduct.category} placeholder="category" name="category" onChange={(e) => setProduct({ ...newProduct, category: e.target.value })} /><input type="file" onChange={(e) => handleAddImg(e)} /></>):( <input type="file" onChange={(e) => handleAddImg(e)} />)}
-                    {/* <input type="text" value={newProduct.img} placeholder="img" name="img" onChange={(e) => setProduct({ ...newProduct, img: e.target.value })} /> */}
-                    {/* <input type="file" onChange={(e) => handleAddImg(e)} /> */}
+                    {type != 'category' ? <input type="text" value={newProduct.text} placeholder="text" name="text" onChange={(e) => setProduct({ ...newProduct, text: e.target.value })} />:<></>}
+                    {type === 'product' ? <input type="text" value={newProduct.category} placeholder="category" name="category" onChange={(e) => setProduct({ ...newProduct, category: e.target.value })} />:<></>}
+                    <input type="file" onChange={(e) => handleAddImg(e)} />
                     <button type="submit">Update</button>
                 </form>
             ) : (
                 <table >
-
                     <tbody>
-                        <tr key={product._id} >
-                            <td>{product.name}</td>
-                            <td>{product.text}</td>
-                            {type==='product' ? (<><td>{product.category}</td><td><img src={product.img}></img></td></>):(<td><img src={product.img}></img></td>)}
+                        <tr key={item._id} >
+                            <td>{item.name}</td>
+                            {type != 'category' ? <td>{item.text}</td>:<></>}
+                            {type === 'product' ? <td>{item.category}</td>:<></>}
+                            <td><img src={item.img}></img></td>
                             <td><button className="btn" onClick={handleEdit}>Edit</button></td>
-                            <td><button className="btn" onClick={(e) => handleDelete(e, product._id)}>Delete</button></td>
+                            <td><button className="btn" onClick={(e) => handleDelete(e, item._id)}>Delete</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -113,9 +110,6 @@ function ProductRow(props: any) {
                 //         </TableBody>
                 //     </Table>
                 // </TableContainer> */}
-
-
-
             )}
         </div>
     );

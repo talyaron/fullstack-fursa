@@ -36,7 +36,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="vitamins" element={<Vitamins />}>
+        <Route path="supplements" element={<Vitamins />}>
           <Route path=":productId" element={<Product products={vitaminsProducts} />} />
         </Route>
         <Route path="cosmetics" element={<Cosmetics />}>
@@ -47,7 +47,7 @@ function App() {
         </Route>
         <Route path="cupping%20therapy" element={<Treatment title="CuppingTherapy" />} />
         <Route path="facial%20treatment" element={<Treatment title="FacialTreatment" />} />
-        <Route path="hopi%20candles" element={<Treatment title="HopiEarCandles" />} />
+        <Route path="hopi%20ear%20candles" element={<Treatment title="HopiEarCandles" />} />
         <Route path="calendar" element={<CalendarFun />} />
         <Route path="logIn" element={<LogIn />} />
         <Route path="addProducts" element={<AddProducts />} />

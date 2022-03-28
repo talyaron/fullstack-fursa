@@ -1,8 +1,8 @@
 import express from 'express';
+import Category from './model/schema/categoriesModel';
 import Product from './model/schema/productsModel';
 import Treatment from './model/schema/treatmentsModel';
 const multer = require('multer');
-//const path = require('path');
 
 const cookieParser = require('cookie-parser');
 const app = express();
@@ -90,6 +90,40 @@ app.patch('/update-treatment',  upload.single('image'),async (req:any, res) => {
   }
 });
 
+app.post('/upload-category', upload.single('image'), (req:any, res) => {
+  try {
+    const {name} = req.body;
+    console.log(req.file)
+    const path = req.file.filename;
+    const event = new Category({ name: name,img: path });
+    event.save();    
+    res.send({message: req.body,ok:"upload"});
+  } catch (error) {
+    res.send({ error });
+  }
+})
+
+
+app.patch('/update-category',  upload.single('image'),async (req:any, res) => {
+  try {
+    const {id,name} = req.body;
+    let update={};
+    if (req.file){
+       const path = req.file.filename;
+      // console.log(req.file)
+       update = { name: name, img: path };
+    }
+    else{ update = { name: name};}
+    const filter = { _id: id };
+    //update the DB
+    let doc = await Category.findOneAndUpdate(filter, update);
+    res.send({ ok: true, doc });
+  } catch (err) {
+    console.error(err);
+    res.status(400).send({ error: err.message });
+  }
+});
+
 
 const mongoose = require('mongoose');
 
@@ -105,36 +139,6 @@ db.once("open", () => {
   console.log("connected to DB!");
 });
 
-// const facial = {
-//   name: 'Facial Treatment', img: 'https://5.imimg.com/data5/VW/YX/GLADMIN-63916043/herbal-face-clean-up-treatment-500x500.png',
-//   text: "Skin care is the range of practices that support skin integrity, enhance its appearance and relieve skin conditions. Practices that enhance appearance include the use of cosmetics, botulinum, exfoliation, fillers, laser resurfacing, microdermabrasion, peels, retinol therapy and ultrasonic skin treatment."
-// };
-
-
-// const treatmentSchema = new mongoose.Schema({
-//   title: String,
-//   text: String,
-//   img: String
-// });
-
-
-//const Treatment = mongoose.model('treatments', treatmentSchema);
-// const hopiCandles = new Treatment({
-//   title: 'Hopi Ear Candles', img: 'https://saltandcrystal.com/wp-content/uploads/2019/03/viber-image-3_E.jpg',
-//   text: "Do you suffer from conditions related to your ear, nose or throat? Hopi ear candles are an ancient and natural therapy that can offer relief from issues such as sinus problems, compacted ear wax, tinnitus and headaches. Hopi ear candle treatments can also help to reduce inflammation in the ears and sinuses, relieve the symptoms of hay fever, rebalance your body’s natural flow, and generally calm and relax you when life is stressful. "
-// });
-// const cupping =new Treatment({
-//   title: 'Cupping Therapy', img: 'https://media.wsimag.com/attachments/193b9b637c3a7dfcb27b91a14ed0d47878d88ca1/store/fill/1090/613/4621d5afb058b57330ba40e4d8ba23534743e5c727f3e6d06d5eceda4452/Cupping-therapy.jpg',
-//   text: "Cupping therapy is an ancient form of alternative medicine in which a therapist puts special cups on your skin for a few minutes to create suction. People get it for many purposes, including to help with pain, inflammation, blood flow, relaxation and well-being, and as a type of deep-tissue massage."
-// });
-
-// const facial= new Treatment({
-//   title: 'Facial Treatment', img: 'https://5.imimg.com/data5/VW/YX/GLADMIN-63916043/herbal-face-clean-up-treatment-500x500.png',
-//   text: "Skin care is the range of practices that support skin integrity, enhance its appearance and relieve skin conditions. Practices that enhance appearance include the use of cosmetics, botulinum, exfoliation, fillers, laser resurfacing, microdermabrasion, peels, retinol therapy and ultrasonic skin treatment."
-// });
-
-// cupping.save();
-
 
 const appointmentsRoutes = require('./routes/appointmentsRoutes')
 app.use('/appointments', appointmentsRoutes);
@@ -144,6 +148,9 @@ app.use('/treatments', treatmentsRoutes);
 
 const productsRoutes = require('./routes/productsRoutes')
 app.use('/products', productsRoutes);
+
+const categoriesRoutes = require('./routes/categoriesRoutes')
+app.use('/categorys', categoriesRoutes);
 
 const usersRoutes = require('./routes/usersRoutes')
 app.use('/users', usersRoutes);
