@@ -89,7 +89,7 @@ function Order() {
             <form onSubmit={handleSubmit}>
                 <div className="row">
                 <p>Length</p>
-                <TextField select name="length" required placeholder="select length" style={{ backgroundColor: 'white', margin: '5px', borderRadius: '8px', width: '90%' }} value={length} onChange={handleChange}> {rawByName.raws[0].lengths.map((len:any,index) => (
+                <TextField select name="length" required placeholder="select length" style={{ backgroundColor: 'white', margin: '5px', borderRadius: '8px', width: '20ch' }} value={length} onChange={handleChange}> {rawByName.raws[0].lengths.map((len:any,index) => (
               <MenuItem key={index} value={len}>
                 {len}
               </MenuItem>

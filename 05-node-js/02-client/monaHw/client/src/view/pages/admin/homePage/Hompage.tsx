@@ -1,11 +1,22 @@
 import './HomePage.scss'
 import axios from 'axios';
 import Button from '@mui/material/Button';
-import { Alert, Backdrop, Box, CircularProgress } from '@mui/material';
+import { Alert, Backdrop, Box, CircularProgress, Modal, Paper, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { ShowRaw } from '../ShowRaw';
 import { ShowOrders } from '../ShowOrders';
 import AddIcon from '@mui/icons-material/Add';
+const style = {
+  position: 'absolute' as 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
 function HomePage() {
   const [showF, setShowF] = useState('none')
   const [showS, setShowS] = useState('none')
@@ -14,6 +25,7 @@ function HomePage() {
   const [orderOpen, setOrderOpen] = useState(false);
   const [lengths, setLength] = useState<Array<Number>>([]);
   const [currentLen, setCurrentLength] = useState(0);
+  const handleOpen = () => setOpen(true);
 
   const handleClose = () => {
     setOpen(false);
@@ -88,17 +100,37 @@ function RelatedProductSubmit(ev:any){
           </form>
           <Box sx={{ display: showF }}>
             <Alert severity="success">item added successfully — check it out!</Alert></Box>
-          <Button variant="contained" style={{ backgroundColor: 'rgb(47, 143, 90)' }} size="medium" onClick={handleToggle}>existing raw material</Button>
+          {/* <Button variant="contained" style={{ backgroundColor: 'rgb(47, 143, 90)' }} size="medium" onClick={handleToggle}>existing raw material</Button> */}
+          <Button variant="contained" style={{ backgroundColor: 'rgb(47, 143, 90)' }} size="medium" onClick={handleOpen}>existing raw material</Button>
+
         </div>
-        <Backdrop
+        {/* <Backdrop
           sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
           open={open}
-        // onClick={handleClose}
         >
-          {/* <CircularProgress color="inherit" /> */}
           <button onClick={handleClose}>close</button>
           <ShowRaw></ShowRaw>
-        </Backdrop>
+        </Backdrop> */}
+        <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+          existing raw material
+          </Typography>
+          <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+          <Typography id="modal-modal-description" component={Paper} sx={{ mt: 2,maxHeight: 440}}>
+          <ShowRaw></ShowRaw>
+          </Typography>
+          </Paper>
+        </Box>
+      </Modal>
+
+
+
         
         <div className="homepage_body_products">
           <h1>Add To Store Products</h1>

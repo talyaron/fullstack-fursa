@@ -16,11 +16,11 @@ function ProductCard(props:ProductCardProp)
    
     return(
         <div className="proCard">
+          <div className="proCard_image">
           <img src={imgurl} alt="" />
+          </div>
           <div className="proCard_link">
-         
             <Link to={`/woodProduct/${name}`} >{name}</Link>
-            
           </div>
         </div>
 

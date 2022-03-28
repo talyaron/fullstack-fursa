@@ -39,10 +39,10 @@ function addLengthHandler(ev:any)
     return(
         <div className="rawCard">
             {edit?(<form onSubmit={handleUpdate} id={raw._id}>
-                <input type="text" placeholder={raw.name}  name="name" />
-                <input type="text" placeholder={raw.pricePerMeter} name="price"></input>
-                <input type="text" placeholder={raw.lengths} name="lengths"  onChange={(ev: any) => setCurrentLength(ev.target.value)}></input>
-                <Button startIcon={<AddIcon></AddIcon>} onClick={addLengthHandler} variant="contained" style={{ backgroundColor: 'rgb(252, 154, 26)' }} size="small">updtae length in stock </Button>
+                <input required type="text" placeholder={raw.name}  name="name" />
+                <input required type="text" placeholder={raw.pricePerMeter} name="price"></input>
+                <input required type="text" placeholder={raw.lengths} name="lengths"  onChange={(ev: any) => setCurrentLength(ev.target.value)}></input>
+                <Button startIcon={<AddIcon></AddIcon>} onClick={addLengthHandler} variant="contained" style={{ backgroundColor: 'rgb(252, 154, 26)', width:'auto'}} size="small">update length in stock </Button>
                 <button type="submit">Update</button>
                 <button onClick={()=>handelDelete(raw._id)}>Delete</button>
 
