@@ -30,11 +30,13 @@ function Login() {
     async function UserLoginHandler(ev: any) {
         ev.preventDefault();
         const form=ev.target;
-        const name=form[0].value;
-        const email=form[1].value;
-        const password=form[2].value;
+        // const name=form[0].value;
+        const email=form[0].value;
+        const password=form[1].value;
         dispatch(fetchUser({ "email": email, "password": password }))
-        navigate("/store")
+        if(email==="mona_arabiya@hotmail.com")
+           {navigate("/homepage")}
+        else {navigate("/store")}
         // const {data}=await axios.post('/user/login',{name:name,email:email,password:password})
         // if(data.ok){
         //  dispatch(fetchUser({ email: email, password: password }))
@@ -61,7 +63,7 @@ function Login() {
             <form onSubmit={UserLoginHandler}>
                 <Box sx={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'column', alignitems: 'center', width: '30%', margin: 'auto', border: 'solid', backgroundColor: 'white', borderRadius: '10px', padding: '20px', boxShadow: '2px 2px 10px rgb(245, 202, 9)' }}
                 >
-                    <TextField id="outlined-basic1" label="Name" required variant="standard" color="warning"  sx={{ margin: '5px' }} />
+                    {/* <TextField id="outlined-basic1" label="Name" required variant="standard" color="warning"  sx={{ margin: '5px' }} /> */}
                     <TextField type='email' id="outlined-basic2" label="Email" required variant="standard" color="warning" sx={{ margin: '5px' }} />
                     <TextField  type='password' id="outlined-basic3" label="Password" required variant="standard" color="warning" sx={{ margin: '5px' }} />
                     

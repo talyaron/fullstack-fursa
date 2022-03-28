@@ -42,7 +42,7 @@ const Store = () => {
       </div>
 
       <div className="store_footer">
-        aaaa
+        
       </div>
 
   </div>

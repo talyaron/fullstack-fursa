@@ -49,10 +49,10 @@ router.post('/add-Raw-Material',isAdmin,async (req,res)=>{
   router.patch('/update-raw',isAdmin,async(req,res)=>{
     try{
       console.log(req.body)
-      const{name,pricePerMeter,id}=req.body;
+      const{name,pricePerMeter,lengths,id}=req.body;
       const filter={_id:id};
       console.log(pricePerMeter)
-      const update={name:name,pricePerMeter:pricePerMeter}
+      const update={name:name,pricePerMeter:pricePerMeter,lengths:lengths}
       let doc = await Raw.findOneAndUpdate(filter, update);
       res.send({ ok: true, doc });
     } catch (err) {

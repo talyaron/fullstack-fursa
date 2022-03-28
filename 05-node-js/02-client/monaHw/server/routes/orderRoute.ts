@@ -237,4 +237,30 @@ router.post('/checkOut',async(req,res)=>{
     }
     
   })
+  router.post('/add-order-relatedPro',async(req,res)=>{
+    try{
+      const {woodName,amount,price}=req.body;
+      console.log(woodName,amount,price)
+      // console.log(woodName,woodlength,amount,userId,thick,width)
+      if(!woodName||!amount||!price ) throw 'invalid fields'
+
+      const { login } = req.cookies;
+      const JWT_SECRET = process.env.JWT_SECRET;
+      const decodedJWT = jwt.decode(login, JWT_SECRET);
+      const { userId } = decodedJWT;
+      const user=await User.findOne({_id:userId})
+      if(user){
+
+      const newOrder=new Order({
+        woodName,amount,userId,price
+      });
+      await newOrder.save().then((res)=>{
+        console.log(res);
+      });
+      res.send({val:"OK"})}    
+
+    }catch(error:any){
+      res.status(400).send({error:error.message})
+    }
+  })
   module.exports=router;

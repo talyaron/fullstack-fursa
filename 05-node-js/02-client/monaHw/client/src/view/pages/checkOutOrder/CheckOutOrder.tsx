@@ -6,11 +6,14 @@ import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { deleteCartAsync, getCartAsync, selectorders } from "../../../features/cart/cartSlice";
 import { getUser } from "../../../features/user/userReducer";
 import axios from 'axios'
+import { Box } from "@mui/system";
+import { Alert } from "@mui/material";
 
 export default function ChekOutOrder()
 {
   const[orderCollection,setOrderCollection]=useState('');
   const[paymentMethod,setPaymentMethod]=useState('');
+  const [show,setShow]=useState('none')
   const user=useAppSelector(getUser)
   const dispatch = useAppDispatch();
     useEffect(()=>{
@@ -39,7 +42,8 @@ function handlepick()
  function handleChekOut()
  {
   axios.post('/order/checkOut',{order:orders.orders,userId:user._id,date:new Date(),paymentMethod:paymentMethod,orderCollection:orderCollection,orderStatus:'pending'})
-  .then((res) => console.log(res)
+  .then((res) => {console.log(res)
+    setShow('block')}
   )
   .catch((err) => console.error(err));
  }
@@ -71,9 +75,11 @@ function handlepick()
           {/* <input placeholder="toatal price"></input> */}
             <Button variant="contained" style={{backgroundColor: 'rgb(47, 143, 90)'}} size="medium" onClick={handleChekOut}>
        checkout  
-       
        </Button> 
-      
+       <Box sx={{ display:show }}>
+            <Alert severity="success" >checked out successfully — check it out!</Alert>
+
+       </Box>
        </div>  
         </div>
     )

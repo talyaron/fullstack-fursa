@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { getRawAsync, selectRow } from "../../../features/raw/Raw";
 import { RawCard } from "../../components/rawCard/RawCard";
+
 import './ShowRaw.scss'
 export function ShowRaw() {
     const dispatch = useAppDispatch()
@@ -15,14 +16,15 @@ export function ShowRaw() {
     const [edit, setEdit] = useState(false)
     return (
 
-        <div className="showRaw" style={{ maxHeight: 440 }}>
+        <div  className="showRaw" style={{ maxHeight: 440 }}>
+
             {raws.raws.map((raw:any)=>{
                 return(
                 <RawCard key={raw._id} raw={raw}></RawCard>
                 
                 );
             })}
-       
+
         </div>
     )
 

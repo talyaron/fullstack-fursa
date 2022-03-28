@@ -114,6 +114,11 @@ export function ShowOrders(){
                         <TableRow>
                           <TableCell style={{color:'green' }}>product name</TableCell>
                           <TableCell style={{color:'green'}}>length</TableCell>
+                          <TableCell style={{color:'green'}}>width</TableCell>
+                          <TableCell style={{color:'green'}}>thick</TableCell>
+                          <TableCell style={{color:'green'}}>color</TableCell>
+                          <TableCell style={{color:'green'}}>details</TableCell>
+
                           <TableCell style={{color:'green'}}>amount</TableCell>
 
 
@@ -126,7 +131,10 @@ export function ShowOrders(){
                               {historyRow.woodName}
                             </TableCell>
                             <TableCell>{historyRow.woodlength}</TableCell>
-
+                            <TableCell>{historyRow.width}</TableCell>
+                            <TableCell>{historyRow.thick}</TableCell>
+                            <TableCell>{historyRow.color}</TableCell>
+                            <TableCell>{historyRow.details}</TableCell>
                             <TableCell>{historyRow.amount}</TableCell>
 
                             {/* <TableCell>{historyRow.customerId}</TableCell>

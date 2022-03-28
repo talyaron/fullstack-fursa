@@ -7,7 +7,9 @@ import { ShowRaw } from '../ShowRaw';
 import { ShowOrders } from '../ShowOrders';
 import AddIcon from '@mui/icons-material/Add';
 function HomePage() {
-  const [show, setShow] = useState('none')
+  const [showF, setShowF] = useState('none')
+  const [showS, setShowS] = useState('none')
+  const [showT, setShowT] = useState('none')
   const [open, setOpen] = useState(false);
   const [orderOpen, setOrderOpen] = useState(false);
   const [lengths, setLength] = useState<Array<Number>>([]);
@@ -36,17 +38,17 @@ function HomePage() {
     axios.post('/raw/add-Raw-Material', { name: form[0].value,"width":width,"thick":thick,lengths:lengths, imageUrl: form[5].value, pricePerMeter:price })
       .then(data => {
         console.log(data);
+        setShowF('block');
       }).catch(err => {
         console.error(err);
       })
-    setShow('block')
 
   }
   function handleProductSubmit(ev: any) {
     ev.preventDefault();
     const form = ev.target;
     
-    axios.post('/product/add-product', { "name": form[0].value, "imgurl": form[1].value }).then(({ data }) => console.log(data));
+    axios.post('/product/add-product', { "name": form[0].value, "imgurl": form[1].value }).then(({ data }) => {console.log(data); setShowS('block')});
   }
  
  
@@ -62,7 +64,7 @@ function RelatedProductSubmit(ev:any){
   const type=form[0].value;
   const name=form[1].value;
   const price=form[2].value;
-  axios.post('/product/add-related-product', { "name":name,"price":price,"type":type }).then(({ data }) => console.log(data));
+  axios.post('/product/add-related-product', { "name":name,"price":price,"type":type }).then(({ data }) => {console.log(data); setShowT('block')});
 
 }
   return (
@@ -84,7 +86,7 @@ function RelatedProductSubmit(ev:any){
             <Button type="submit" variant="contained" style={{ backgroundColor: 'rgb(47, 143, 90)' }} size="medium">add
             </Button>
           </form>
-          <Box sx={{ display: show }}>
+          <Box sx={{ display: showF }}>
             <Alert severity="success">item added successfully — check it out!</Alert></Box>
           <Button variant="contained" style={{ backgroundColor: 'rgb(47, 143, 90)' }} size="medium" onClick={handleToggle}>existing raw material</Button>
         </div>
@@ -97,15 +99,21 @@ function RelatedProductSubmit(ev:any){
           <button onClick={handleClose}>close</button>
           <ShowRaw></ShowRaw>
         </Backdrop>
+        
         <div className="homepage_body_products">
-          <h1>Wood Products</h1>
+          <h1>Add To Store Products</h1>
           <form onSubmit={handleProductSubmit}>
             <input required type="text" name="name" placeholder='product name'></input>
             <input required type="text" name="imageUrl" placeholder='image Url'></input>
             <Button type="submit" variant="contained" style={{ backgroundColor: 'rgb(47, 143, 90)' }} size="medium">add
             </Button>
           </form>
+          <Box sx={{ display:showS }}>
+            <Alert severity="success" >item added successfully — check it out!</Alert>
+
+            </Box>
         </div>
+
         <div className="homepage_body_delivery">
           <h1>Manage Orders</h1>
 
@@ -118,6 +126,7 @@ function RelatedProductSubmit(ev:any){
             <ShowOrders></ShowOrders>
           </Backdrop>
         </div>
+
         <div className="homepage_body_relatedProduct">
           <h1>add Products</h1>
           <form onSubmit={RelatedProductSubmit}>
@@ -127,7 +136,10 @@ function RelatedProductSubmit(ev:any){
             <Button type="submit" variant="contained" style={{ backgroundColor: 'rgb(47, 143, 90)' }} size="medium">add
             </Button>
           </form>
-         
+          <Box sx={{ display:showT }}>
+            <Alert severity="success" >item added successfully — check it out!</Alert>
+
+            </Box>
         </div>
 
 
