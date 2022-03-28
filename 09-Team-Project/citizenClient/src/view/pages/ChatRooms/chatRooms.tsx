@@ -20,6 +20,7 @@ function ChatRooms(){
   useEffect(() => {
     socket = socketIOClient(ENDPOINT);
     socket.on("getRooms", (data: React.SetStateAction<string>) => {
+      console.log(data);
       setRooms(data);
     });
     /* set user id */

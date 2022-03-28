@@ -39,8 +39,11 @@ function Chat() {
       //setResponse(data);
       setMessages(data);
     });
-    socket.on("getRooms",(value) => {
-      console.log(value);
+    socket.on("getRooms", (data: React.SetStateAction<string>) => {
+      Object.entries(data).map(function (val: any, index) {
+        console.log(val)
+      });
+      console.log(data);
     });
     /* set user id */
     socket.emit("setUserData", userId);

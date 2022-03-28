@@ -76,18 +76,19 @@ io.on("connection", (socket) => {
   });
   socket.on("getRooms", userid => {
     //When user creation on server is complete, retrieve and save data to local storage
-    console.log("user id is " + userid)
+    
+    return getrooms(userId);
     
   });
-  socket.on('message', (value) => {
-    console.log(value.from)
-    socket.emit("getRooms",getrooms(userId));
+  socket.on('message', async (value) => {
+    const rooms = await getrooms(userId);
+    socket.emit("getRooms",(rooms));
+    console.log(userId+"\n"+rooms);
     const message = new Messages(value)
     message.save(function (err, Messages) {
       if (err) return console.error(err);
       console.log("message saved to users collection.");
     });
-    console.log(value);
   });
   socket.on("setUserData", userData => {
     //When user creation on server is complete, retrieve and save data to local storage
@@ -113,9 +114,7 @@ const getApiAndEmit = async socket => {
 
 const  getrooms =  async userId =>{
   try{
-  console.log(userId)
   const rooms = await chatRoom.find({});
-  console.log("roams"+rooms);
   return rooms;
   }catch(err:any)
   {
