@@ -1,11 +1,19 @@
 .home {
     display: flex;
+    flex-direction: column;
     text-align: center;
     align-items: center;
     justify-content: center;
-    margin-top: 3rem;
-    //min-height: 200vh;
+    margin-top: 3.1rem;
+    video{
+    object-fit: cover; 
+    width: 100%;
+    height: 95vh;
+    //position:fixed;
+    //z-index: -1;
+   }
   }
+
   .App-header {
     //background-color: #282c34;
     color: rgb(6, 77, 71);
