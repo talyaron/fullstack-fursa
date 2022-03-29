@@ -11,7 +11,7 @@ const userRecipe = new mongoose.Schema({
     notes: String,
     userName: String,
     types: Array,
-    //date: Date
+    date: String
 })
 
 const userRecipes = mongoose.model('Recipes', userRecipe);

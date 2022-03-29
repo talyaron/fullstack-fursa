@@ -24,6 +24,7 @@ export interface RecipeState {
         notes: string;
         userName: String;
         types: Array<any>;
+        date: Date;
     };
 }
 

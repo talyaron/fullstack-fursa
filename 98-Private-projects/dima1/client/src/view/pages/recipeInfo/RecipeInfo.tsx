@@ -46,8 +46,7 @@ export default function RecipeInfo() {
     }, [])
 
     async function handleLike() {
-        setLike(!like);
-        if(like){
+        if(!like){
             const result = await axios.post('/selectRecipe/like-dislike', {name : userName, like : true, id : recipeId});
             if(result.data.ok) console.log('like');
             else console.log('failed to like');
@@ -56,6 +55,7 @@ export default function RecipeInfo() {
             if(result.data.ok) console.log('dislike');
             else console.log('failed to dislike');
         }
+        setLike(!like);
         dispatch(getRecipeLikes(recipeId));
     }
 
@@ -68,7 +68,6 @@ export default function RecipeInfo() {
         if(userName){
             isLike = likes_.users.includes(userName);
         }
-        console.log(isLike);
         return isLike;
     }
 
@@ -129,7 +128,7 @@ export default function RecipeInfo() {
                             </div>
                             <h2 className='by'>By : {recipe_.userName}</h2>
                             <div className='item'>
-                                <FavoriteBorderIcon onClick={handleLike} sx={{ fontSize: 45, color: like ? '#b5739d' : 'red', paddingTop: '15px' }} />
+                                <FavoriteBorderIcon onClick={handleLike} sx={{ fontSize: 45, color: like ? 'red' : 'false', paddingTop: '15px' }} />
                                 <p>{likes_.users.length}</p>
                             </div>
                             <div className='item'>

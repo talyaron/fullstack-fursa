@@ -76,6 +76,7 @@ interface recipeInfo {
     notes: string,
     userName: string | undefined;
     types: Array<type>;
+    date: string;
 }
 
 export default function NewRecipe() {
@@ -84,17 +85,17 @@ export default function NewRecipe() {
     let navigate = useNavigate();
 
     const recipe_ = useAppSelector(selectedRecipe);
-    const pageName = useAppSelector(selectPage);
+    //const pageName = useAppSelector(selectPage);
 
     const { userName, recipeId } = useParams();
 
-    const [recipe, setRecipe] = useState<recipeInfo>({...recipe_, userName : userName});
+    const [recipe, setRecipe] = useState<recipeInfo>({ ...recipe_, userName: userName });
     const [types_, setTypes] = useState<Array<type>>(recipe_.types);
 
     useEffect(() => {
         dispatch(selectRecipeAsync(recipeId));
         setTypes(recipe_.types);
-        setRecipe({...recipe_, userName : userName});
+        setRecipe({ ...recipe_, userName: userName });
     }, [])
 
     function handleChange(ev: any) {
@@ -129,25 +130,29 @@ export default function NewRecipe() {
     async function handleSave(ev: any) {
         ev.preventDefault();
         if (!recipeId) {
-            const response = await axios.post('/userRecipes/add-new-userRecipe', {...recipe, useName : userName});
+            const today = new Date();
+            const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+            const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+            //console.log(date, time);
+            const response = await axios.post('/userRecipes/add-new-userRecipe', { ...recipe, useName: userName, date: date + ' ' + time });
             const data = response.data;
-            if(data.ok)
+            if (data.ok)
                 navigate(`/${userName}`);
             else alert('Recipe has not been added');
         }
         else {
             const response = await axios.patch('/selectRecipe/edit-select-recipe', recipe);
             const data = response.data;
-            if(data.ok)
+            if (data.ok)
                 navigate(`/${userName}/${recipeId}`);
             else alert('Recipe has not been edited');
         }
     }
 
     function handleSelectType(name: any) {
-        let newTypes:Array<type> = Object.assign([], types_);
-        newTypes = types_.map((type_:type) => {
-            if(type_.name === name){
+        let newTypes: Array<type> = Object.assign([], types_);
+        newTypes = types_.map((type_: type) => {
+            if (type_.name === name) {
                 const newType = Object.assign({}, type_);
                 newType.isTrue = !newType.isTrue;
                 return newType;
@@ -155,12 +160,12 @@ export default function NewRecipe() {
             else return type_;
         })
         setTypes(newTypes)
-        setRecipe({...recipe, types: newTypes});
+        setRecipe({ ...recipe, types: newTypes });
     }
 
-    function handleTo() {
-        dispatch(updateName('/NewRecipe'));
-    }
+    // function handleTo() {
+    //     dispatch(updateName('/NewRecipe'));
+    // }
 
     return (
         <div className='new'>

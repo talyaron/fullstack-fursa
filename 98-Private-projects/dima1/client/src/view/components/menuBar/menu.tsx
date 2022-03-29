@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
@@ -9,11 +9,153 @@ import PersonIcon from '@mui/icons-material/Person';
 import logo from '../../images/logo.jpg';
 import SideBar from '../sidebar/SideBar';
 import './menu.scss';
+import SelectUnstyled, {
+    SelectUnstyledProps,
+    selectUnstyledClasses,
+} from '@mui/base/SelectUnstyled';
+import OptionUnstyled, { optionUnstyledClasses } from '@mui/base/OptionUnstyled';
+import PopperUnstyled from '@mui/base/PopperUnstyled';
+import { styled } from '@mui/system';
 
-function Bagemenu(props:any) {
+const blue = {
+    100: '#DAECFF',
+    200: '#99CCF3',
+    400: '#3399FF',
+    500: '#007FFF',
+    600: '#0072E5',
+    900: '#003A75',
+};
+
+const grey = {
+    100: '#E7EBF0',
+    200: '#E0E3E7',
+    300: '#CDD2D7',
+    400: '#B2BAC2',
+    500: '#A0AAB4',
+    600: '#6F7E8C',
+    700: '#3E5060',
+    800: '#2D3843',
+    900: '#1A2027',
+};
+
+const StyledButton = styled('button')(
+    ({ theme }) => `
+    font-family: IBM Plex Sans, sans-serif;
+    font-size: 0.865rem;
+    box-sizing: border-box;
+    height: 4.8vh;
+    min-width: 80px;
+    padding-left:8px;
+    background: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
+    border: 1px solid ${theme.palette.mode === 'dark' ? grey[800] : grey[300]};
+    border-radius: 15px;
+    text-align: left;
+    line-height: 1.5;
+    color: ${theme.palette.mode === 'dark' ? grey[300] : grey[900]};
+    background: #e6d0de;
+  
+    &:hover {
+      background: ${theme.palette.mode === 'dark' ? '' : grey[100]};
+      border-color: ${theme.palette.mode === 'dark' ? grey[700] : grey[400]};
+    }
+  
+    &.${selectUnstyledClasses.focusVisible} {
+      outline: 3px solid ${theme.palette.mode === 'dark' ? blue[600] : blue[100]};
+    }
+  
+    &.${selectUnstyledClasses.expanded} {
+      &::after {
+        content: '▴';
+      }
+    }
+  
+    &::after {
+      content: '▾';
+      float: right;
+    }
+    `,
+);
+
+const StyledListbox = styled('ul')(
+    ({ theme }) => `
+    font-family: IBM Plex Sans, sans-serif;
+    font-size: 0.875rem;
+    box-sizing: border-box;
+    padding: 5px;
+    margin: 10px 0;
+    min-width: 200px;
+    height: 100px;
+    background: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
+    border: 1px solid ${theme.palette.mode === 'dark' ? grey[800] : grey[300]};
+    border-radius: 0.75em;
+    color: ${theme.palette.mode === 'dark' ? grey[300] : grey[900]};
+    overflow: auto;
+    outline: 0px;
+    `,
+);
+
+const StyledOption = styled(OptionUnstyled)(
+    ({ theme }) => `
+    list-style: none;
+    padding: 8px;
+    border-radius: 0.45em;
+    cursor: default;
+  
+    &:last-of-type {
+      border-bottom: none;
+    }
+  
+    &.${optionUnstyledClasses.selected} {
+      background-color: ${theme.palette.mode === 'dark' ? blue[900] : blue[100]};
+      color: ${theme.palette.mode === 'dark' ? blue[100] : blue[900]};
+    }
+  
+    &.${optionUnstyledClasses.highlighted} {
+      background-color: ${theme.palette.mode === 'dark' ? grey[800] : grey[100]};
+      color: ${theme.palette.mode === 'dark' ? grey[300] : grey[900]};
+    }
+  
+    &.${optionUnstyledClasses.highlighted}.${optionUnstyledClasses.selected} {
+      background-color: ${theme.palette.mode === 'dark' ? blue[900] : blue[100]};
+      color: ${theme.palette.mode === 'dark' ? blue[100] : blue[900]};
+    }
+  
+    &.${optionUnstyledClasses.disabled} {
+      color: ${theme.palette.mode === 'dark' ? grey[700] : grey[400]};
+    }
+  
+    &:hover:not(.${optionUnstyledClasses.disabled}) {
+      background-color: ${theme.palette.mode === 'dark' ? grey[800] : grey[100]};
+      color: ${theme.palette.mode === 'dark' ? grey[300] : grey[900]};
+    }
+    `,
+);
+
+const StyledPopper = styled(PopperUnstyled)`
+    z-index: 1;
+  `;
+
+const CustomSelect = React.forwardRef(function CustomSelect<TValue>(
+    props: SelectUnstyledProps<TValue>,
+    ref: React.ForwardedRef<HTMLUListElement>,
+) {
+    const components: SelectUnstyledProps<TValue>['components'] = {
+        Root: StyledButton,
+        Listbox: StyledListbox,
+        Popper: StyledPopper,
+        ...props.components,
+    };
+    return <SelectUnstyled {...props} ref={ref} components={components} />;
+}) as <TValue>(
+        props: SelectUnstyledProps<TValue> & React.RefAttributes<HTMLUListElement>,
+    ) => JSX.Element;
+
+function Bagemenu(props: any) {
 
     const { userName } = props;
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [anchorEl, setAnchorEl] = useState(null);
+    const [select, setSelect] = useState('Name');
+    const [search, setSearch] = useState('');
     const open = Boolean(anchorEl);
 
     const handleClick = (event: any) => {
@@ -27,23 +169,45 @@ function Bagemenu(props:any) {
         setAnchorEl(null);
     };
 
+    function handleSearch(){
+        if(search){
+            console.log("yes")
+        }
+        else alert('you should write what are you looking for');
+    }
+
+    function handleSelect(ev:any){
+        setSelect(ev);
+    }
+
     return (
         <div className="menu" id="outer-container">
             <div className="left">
                 <div className='sideBar'>
-                    <SideBar userName = {userName}/>
+                    <SideBar userName={userName} />
                 </div>
-                
+
                 <div className='logo'>
                     <Link to={`/${userName}/MainScreen`}>
                         <img src={logo} alt="" />
                     </Link>
                 </div>
                 {/* TODO : add a selector -> to select the search's category */}
+                {/* https://plantpot.works/3083 */}
                 <div className="searchbox">
-                    <input type="text" placeholder="search for a recipe" />
-                    <SearchIcon sx={{ fontSize: 30, color: '#b5739d' }} />
+                    <div className='container'>
+                        <input type="text" placeholder="search for a recipe" onChange={(ev:any) => {setSearch(ev.target.value); console.log(ev.target.value)}}/>
+                        <CustomSelect className='select' defaultValue={'Name'} onChange={handleSelect}>
+                            <StyledOption value={'Name'}>Name</StyledOption>
+                            <StyledOption value={'Time'}>Time</StyledOption>
+                            <StyledOption value={'Calory'}>Calory</StyledOption>
+                            <StyledOption value={'Serving'}>Serving</StyledOption>
+                            <StyledOption value={'Ingredient'}>Ingredient</StyledOption>
+                        </CustomSelect>
+                        <SearchIcon sx={{ fontSize: 30, color: '#b5739d' }} onClick={handleSearch}/>
+                    </div>
                 </div>
+
             </div>
             <div className="right">
                 <Button

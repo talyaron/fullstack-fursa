@@ -22,7 +22,8 @@ const empty = {
   method: '',
   notes: '',
   userName: '',
-  types: types_
+  types: types_,
+  date: '2014-12-15 15:34:55'
 };
 
 export interface RecipeState {
@@ -38,6 +39,7 @@ export interface RecipeState {
     notes: string;
     userName: string;
     types: Array<type>;
+    date: string
   };
   status: 'idle' | 'loading' | 'failed'
 }
@@ -54,7 +56,8 @@ const initialState: RecipeState = {
     method: '',
     notes: '',
     userName: '',
-    types: types_
+    types: types_,
+    date: '2014-12-15 15:34:55'
   },
   status: 'idle'
 }
@@ -106,6 +109,7 @@ export const itemReducer = createSlice({
     builder
       .addCase(selectRecipeAsync.pending, (state) => {
         state.info = empty;
+        console.log(state.info.date);
         state.status = 'loading';
       })
       .addCase(selectRecipeAsync.fulfilled, (state, action) => {
