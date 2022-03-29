@@ -18,19 +18,19 @@ function TypeList() {
 
     const [typeList, setTypeList] = useState([
         {
-            imgUrl: "https://s3-alpha-sig.figma.com/img/b8ad/5cc8/ff415d03e31dd677c1a719427aebc57c?Expires=1645401600&Signature=gXKaJFmuYA~3aEosuuz4DvsFEZAsHGBWoAn73i7cOx-Z3ark8-~THXjjqyALxpzM6PCyBEv~8sGIemGnev66HvvoNnqAak0AzQk-bnw2qJ~RlzrEgaOO~4T0rkVUycYlWmlbBDio6AYlRbWEa2-vRpXHYMc1JgGdmMBL1oe3jptoxhXesv4wZ-tJJzLjVnwTk37kpbCfYSHSh0cUG1aE4PDstlrKELcnPc-BGI9b3FvbentnasmNQi8XVxnASqkAqLBh5zliCQ1Xy5OlQcOqpX3yGmlHM6T-btJAgP1YHfhX5xhQ8I9k1PFJuOH-3AUYFIb1~u~jI~CN6J3OrrVJyA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+            imgUrl: "https://s3-alpha-sig.figma.com/img/b8ad/5cc8/ff415d03e31dd677c1a719427aebc57c?Expires=1649635200&Signature=SBhI2VDdmVEp4~MmJN7mrQeyvLI1Vqw31ModgakO-nS0D0Gr5xYj~iHhpNwMMCpf6Y-p4wLkr~NIh~rYiWKgI9v20XnxKS8eFuHtAAPqLt5qM2heVaBdxsXrTlWWZ4CPvtaBuI~fyPOdKZxEfwtQqfkZoOQt4U~tfFdnHck96~ksBmComYbwri1ieipbR~tAkz9fTka8BSqd8ob~GKGx3OGLtax0tkj0kJhHpchZmIMzptYG3ZkVpDuyVv1YfP0jZgO3QWsWkVhqUp94PJV4UnAEOXYjaJt5lDop1yWg7ZLjfbg-KYXqaW2~hLnI8Mq8cGmVrMYYf3w1uoDW7ChCfQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
             title: "Empty list",
             data: "Let friends write down what they bring",
             redirectTo: "/choosefriends"
         },
         {
-            imgUrl: "https://s3-alpha-sig.figma.com/img/2cee/be77/1751c9e0130cbc24dd88af91cc510813?Expires=1645401600&Signature=aaCLCsguLAKMMs73FOi9KXOz1-8zD-BO~T7QjjZa4B-u2guJQpiJLw1iD-TJuQMeB3m2phwbC0tg30m2CweV0VZZ3Qf~iuEiu8TYv0K-MadRJDD3sMxo21xJVjeCYji6bLjCE8wbUx8qTaMBzCRvZPVPWZkUSuJ77WiO5Ft~yoQi5rT~0HlC7fA~j4oCOxYAw-1tRSxMBiLbHSIyiLnX9KWELmk~NhiVOlIUfAdw--HiRBZakjazTIAfXBHqiTcRASrFyCn~jBBQ7M7yz6nixzXrKWjBQw7pW2cpd7XcT~ys3lahwcPfiBjDW5Nt-gRxxpPY1RVKEg4rW4o8MSizIA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+            imgUrl: "https://s3-alpha-sig.figma.com/img/2cee/be77/1751c9e0130cbc24dd88af91cc510813?Expires=1649635200&Signature=hGKjodF8yL8PiFe7KVOFND1op89QopXA2qNytRashRVRu4VI3pBacBEV~DQ2eQzg7BZ48nlgrxNebxAPEQmzRqvl-h-pkgpRHa65Z7tTlz4pysStkDhy5r30Y5471dqC7FDvIKBat-pbhmwCACYSCjyMaCQFqcXzllAVMOX1aplXqfr0zASpw3mGeh7NlDAmzaTuPbH5gYOq-sFZYfWVpOOnsMB6kr0gPFeSM~KOQYpb5NGm91voJe71fTu~2fOw3hBJyWqSBPDMQSyowqyPuwanb6LSL~dJhDB9U4HHVFVe5LMIozl9LTvsS37r8nmg-zClUKCXFk2zKSK-cEOb-A__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
             title: "Manual list",
             data: "Write your own list",
             redirectTo: "/choosefriends"
         },
         {
-            imgUrl: "https://s3-alpha-sig.figma.com/img/697c/fdd9/43724849ea5ca7e754b304927de585fd?Expires=1645401600&Signature=bvRJF5OId0mW-vyZU--rcxR7VXSeO8oVR2~vFPh~jflk1g1ARA8YJtlNCWEOzJjJwEeXl9eAy-PhbWGHH69xpn6Po39U1VlC0xO64T6m~B1UHNA6DagVsZyvArlQVT8ehjT17L6ao3rqDh~87Or5Bzi2HcBx9b79mOuoPg63iMvB8zGS4ShCNFxdCLhuU2qE-s~OdNFJWZdboYCL-OhtO8aPEhjTOcBYbfM2JDSa6s7x2jo6iZP3eXp47fHNfeejlDtzb6vGTC8gwtT5L3wIz7mPriqoVO60Rq6WzmWOt~UWt3eCiUSyEgV3eZbDtysADIh8uNRNj6cVw-XzFYvnVQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+            imgUrl: "https://s3-alpha-sig.figma.com/img/697c/fdd9/43724849ea5ca7e754b304927de585fd?Expires=1649635200&Signature=VBE5sJA-xR4GLh0hoV-uI75bFE1X5GH3UxflY-kLLIqI4gCt7EbV6tjLHX0x~iGHiJ7VZXfU8hoZYEBX55dK~~hT4WvhwXbWvy~7PnVB8vw8nfYgM8EkJEJUsg6QWiryNfBnqizY~~sHSi6jYdONOetXjtWaSpAbu7OOMOuE5Hgy6VHJ7V1PR9t43L0yiOwb67bkJqAXUFO-ImOfB9eYIBPwB02LmxoPaUqxgn3LY1O~otlanuI9NUjN751VMBM5VlmF01zF74GLY0~sPvbb28nyqB5HoZ1wOD3Vq4-PFs2DPye7GiSiyS50NUazKbT-AefKigu9o13A-XbRhmXMKQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
             title: "Smart list",
             data: "Let IBring make a pefect list for you",
             redirectTo: "/choosefriends"

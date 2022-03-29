@@ -40,7 +40,7 @@ function Contact() {
 
     function handleTypeList(ev: any) {
         ev.preventDefault();
-        if (userLogin && listInfo != undefined) {
+        if (userLogin && listInfo != undefined && JSON.stringify(listInfo.meetingDetails) !== JSON.stringify({})) {
             const listData = {
                 email: userLogin.value.email,
                 allUsers: selectedFriends,
@@ -57,6 +57,8 @@ function Contact() {
                 handleSendInvitation(data.data.id);
                 nav(`/list/${data.data.id}`);
             });
+        } else {
+            alert(`You can't add list with empty details!`);
         }
     }
 
