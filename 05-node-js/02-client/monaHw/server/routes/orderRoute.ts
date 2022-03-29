@@ -165,16 +165,21 @@ router.post('/add-product-order',async(req,res)=>{
 
 router.post('/checkOut',async(req,res)=>{
     try{
-      const {order,date,userId,paymentMethod,orderCollection,orderStatus}=req.body;
-      if(!order||!date||!userId||!paymentMethod||!orderCollection||!orderStatus) throw 'invalid fields'
-      
+      const {order,date,paymentMethod,orderCollection,orderStatus}=req.body;
+      if(!order||!date||!paymentMethod||!orderCollection||!orderStatus) throw 'invalid fields'
+      const { login } = req.cookies;
+      const JWT_SECRET = process.env.JWT_SECRET;
+      const decodedJWT = jwt.decode(login, JWT_SECRET);
+      const { userId } = decodedJWT;
+      const user=await User.findOne({_id:userId})
+        if(user){
       const newOrder=new userOrder({
         order,date,userId,paymentMethod,orderCollection,orderStatus
       });
       await newOrder.save().then((res)=>{
       });
       res.send({val:"OK"})
-    }catch(error:any){
+    }}catch(error:any){
       res.status(400).send({error:error.message})
     }
   })

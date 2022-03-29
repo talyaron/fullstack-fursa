@@ -2,8 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import { useAppDispatch } from "../../../app/hooks";
 import { getRawAsync } from "../../../features/raw/Raw";
-import { Button } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
+import { Alert, Box, Button } from "@mui/material";
 
 export function RawCard(props:any){
     const dispatch=useAppDispatch();
@@ -11,6 +11,7 @@ export function RawCard(props:any){
     const[edit,setEdit]=useState(false);
     const [lengths, setLength] = useState<Array<Number>>([]);
     const [currentLen, setCurrentLength] = useState(0);
+    const [show,setShow]=useState('none')
     const [name,setName]=useState('')
     async function handleUpdate(ev:any){
         ev.preventDefault();
@@ -22,7 +23,8 @@ export function RawCard(props:any){
        const {data} = await axios.patch('/raw/update-raw',{name, pricePerMeter,lengths, id});
        console.log(data)
        axios.patch('/raw/update-raw-stock',{name:name,amount:amount})
-
+       setShow('block')
+     
     }
     function handleEdit() {
         setEdit(!edit);
@@ -40,7 +42,7 @@ function addLengthHandler(ev:any)
 
 }
     return(
-        <div className="rawCard">
+        <div className="rawCard" style={{display:'flex',flexDirection:'column'}}>
             {edit?(<form onSubmit={handleUpdate} id={raw._id}>
                 <input required type="text" placeholder={raw.name}   name="name" />
                 <input required type="number" placeholder={raw.pricePerMeter}    name="price"></input>
@@ -50,6 +52,9 @@ function addLengthHandler(ev:any)
                 <button type="submit">Update</button>
                 <button onClick={()=>handelDelete(raw._id)}>Delete</button>
                 <button onClick={()=>setEdit(false)}>close</button>
+                <Box sx={{ display: show }}>
+       <Alert severity="success" >raw updated!</Alert>
+     </Box>
 
 
                 </form>):
