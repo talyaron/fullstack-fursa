@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { ShowRaw } from '../ShowRaw';
 import { ShowOrders } from '../ShowOrders';
 import AddIcon from '@mui/icons-material/Add';
+import { ShowProducts } from '../ShowProducts';
 const style = {
   position: 'absolute' as 'absolute',
   top: '50%',
@@ -23,10 +24,11 @@ function HomePage() {
   const [showT, setShowT] = useState('none')
   const [open, setOpen] = useState(false);
   const [orderOpen, setOrderOpen] = useState(false);
+  const[productsOpen,setProductsOpen]=useState(false);
   const [lengths, setLength] = useState<Array<Number>>([]);
   const [currentLen, setCurrentLength] = useState(0);
   const handleOpen = () => setOpen(true);
-
+  
   const handleClose = () => {
     setOpen(false);
   };
@@ -39,15 +41,22 @@ function HomePage() {
   const handleOrderToggle = () => {
     setOrderOpen(!orderOpen);
   };
+  const handleProductsClose = () => {
+    setProductsOpen(false);
+  };
+  const handleProductsToggle = () => {
+    setProductsOpen(!orderOpen);
+  };
   function handleSubmit(ev: any) {
     ev.preventDefault();
     const form = ev.target;
     const width=form[1].value;
     const thick=form[2].value;
     const pricePerMeter=form[6].value;
+    const amount=form[7].value;
     const price=(pricePerMeter)*(width/100)*(thick/100)
     // axios.post('http://localhost:3004/woods',{"name":form[0].value, "imgurl":form[1].value,"pricePerMeter":form[2].value}).then(({data})=>console.log(data));
-    axios.post('/raw/add-Raw-Material', { name: form[0].value,"width":width,"thick":thick,lengths:lengths, imageUrl: form[5].value, pricePerMeter:price })
+    axios.post('/raw/add-Raw-Material', { name: form[0].value,"width":width,"thick":thick,lengths:lengths, imageUrl: form[5].value, pricePerMeter:price,amount:amount })
       .then(data => {
         console.log(data);
         setShowF('block');
@@ -76,7 +85,8 @@ function RelatedProductSubmit(ev:any){
   const type=form[0].value;
   const name=form[1].value;
   const price=form[2].value;
-  axios.post('/product/add-related-product', { "name":name,"price":price,"type":type }).then(({ data }) => {console.log(data); setShowT('block')});
+  const amount=form[3].value;
+  axios.post('/product/add-related-product', { "name":name,"price":price,"type":type,"amount":amount}).then(({ data }) => {console.log(data); setShowT('block')});
 
 }
   return (
@@ -95,6 +105,7 @@ function RelatedProductSubmit(ev:any){
             <Button startIcon={<AddIcon></AddIcon>} onClick={addLengthHandler} variant="contained" style={{ backgroundColor: 'rgb(252, 154, 26)' }} size="small">add length to stock </Button>
             <input required type="text" name="imageUrl" placeholder='image Url'></input>
             <input required type='number' name="price" placeholder='price per meter'></input>
+            <input required type='number' name="amount" placeholder='amount'></input>
             <Button type="submit" variant="contained" style={{ backgroundColor: 'rgb(47, 143, 90)' }} size="medium">add
             </Button>
           </form>
@@ -165,12 +176,22 @@ function RelatedProductSubmit(ev:any){
           <input required type="text" name="type" placeholder='product type'></input>
             <input required type="text" name="name" placeholder='product name'></input>
             <input required type="number" name="price" placeholder='price'></input>
+            <input required type="number" name="amount" placeholder='amount'></input>
+
             <Button type="submit" variant="contained" style={{ backgroundColor: 'rgb(47, 143, 90)' }} size="medium">add
             </Button>
           </form>
+          
+          <Button variant="contained" style={{ backgroundColor: 'rgb(47, 143, 90)' }} size="medium" onClick={handleProductsToggle}>show products</Button>
+          <Backdrop sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+            open={productsOpen}
+          >
+            {/* <CircularProgress color="inherit" /> */}
+            <button onClick={handleProductsClose}>close</button>
+            <ShowProducts></ShowProducts>
+          </Backdrop>
           <Box sx={{ display:showT }}>
             <Alert severity="success" >item added successfully — check it out!</Alert>
-
             </Box>
         </div>
 

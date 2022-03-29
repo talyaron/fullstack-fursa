@@ -17,9 +17,12 @@ export function RawCard(props:any){
         const id = ev.target.id
         console.log(id)
         const name = ev.target.elements.name.value;
-        const pricePerMeter = ev.target.elements.price.value;    
+        const amount=ev.target.elements.amount.value
+        const pricePerMeter = ev.target.elements.price.value*(raw.width/100)*(raw.thick/100);    
        const {data} = await axios.patch('/raw/update-raw',{name, pricePerMeter,lengths, id});
        console.log(data)
+       axios.patch('/raw/update-raw-stock',{name:name,amount:amount})
+
     }
     function handleEdit() {
         setEdit(!edit);
@@ -39,12 +42,15 @@ function addLengthHandler(ev:any)
     return(
         <div className="rawCard">
             {edit?(<form onSubmit={handleUpdate} id={raw._id}>
-                <input required type="text" placeholder={raw.name}  name="name" />
-                <input required type="text" placeholder={raw.pricePerMeter} name="price"></input>
-                <input required type="text" placeholder={raw.lengths} name="lengths"  onChange={(ev: any) => setCurrentLength(ev.target.value)}></input>
+                <input required type="text" placeholder={raw.name}   name="name" />
+                <input required type="number" placeholder={raw.pricePerMeter}    name="price"></input>
+                <input required type="text" placeholder={raw.lengths} name="lengths"   onChange={(ev: any) => setCurrentLength(ev.target.value)}></input>
                 <Button startIcon={<AddIcon></AddIcon>} onClick={addLengthHandler} variant="contained" style={{ backgroundColor: 'rgb(252, 154, 26)', width:'auto'}} size="small">update length in stock </Button>
+                <input required type="number" placeholder={raw.amount} name="amount" ></input>
                 <button type="submit">Update</button>
                 <button onClick={()=>handelDelete(raw._id)}>Delete</button>
+                <button onClick={()=>setEdit(false)}>close</button>
+
 
                 </form>):
             (<p key={raw._id}>{raw.name}, {raw.pricePerMeter}₪  <button onClick={handleEdit}>edit</button></p>)}

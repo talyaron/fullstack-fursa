@@ -33,9 +33,9 @@ router.get('/get-products',async (req,res)=>{
   })
   router.post('/add-related-product',isAdmin,async (req,res)=>{
     try{
-       const {type,name,price}=req.body;
-        if(!name||!price||!type) throw 'invalid fields';
-        const product=new RelatedProduct({type,name,price});
+       const {type,name,price,amount}=req.body;
+        if(!name||!price||!type||!amount) throw 'invalid fields';
+        const product=new RelatedProduct({type,name,price,amount});
         await product.save().then((res)=>{
             console.log(res);
         });
@@ -59,4 +59,31 @@ catch (error) {
 }
 
 })
-module.exports=router;;
+router.get('/get-all-RelatedProducts',async (req,res)=>{
+  try{
+  const products=await RelatedProduct.find({});
+  res.status(200).send(products)
+}
+catch (error) {
+  console.info(error);
+  res.send({ error });
+}
+
+})
+
+//update product amount in stock
+router.patch('/update-product-stock',async(req,res)=>{
+  try{
+  const {name,amount}=req.body;
+  const filter={name:name};
+  const update={amount:amount};
+ 
+  let doc = await RelatedProduct.findOneAndUpdate(filter, update);
+  res.send({ ok: true, doc });
+  }catch(error){
+    console.info(error);
+    res.send({error});
+  }
+
+})
+module.exports=router;

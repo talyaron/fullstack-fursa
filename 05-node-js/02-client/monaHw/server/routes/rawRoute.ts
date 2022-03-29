@@ -73,4 +73,19 @@ router.post('/add-Raw-Material',isAdmin,async (req,res)=>{
       res.status(400).send({error:err.message})
     }
   });
+  //update product amount in stock
+router.patch('/update-raw-stock',async(req,res)=>{
+  try{
+  const {name,amount}=req.body;
+  const filter={name:name};
+  const update={amount:amount};
+ 
+  let doc = await Raw.findOneAndUpdate(filter, update);
+  res.send({ ok: true, doc });
+  }catch(error){
+    console.info(error);
+    res.send({error});
+  }
+
+})
   module.exports=router;;

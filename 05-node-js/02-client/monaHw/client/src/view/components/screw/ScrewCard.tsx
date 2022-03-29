@@ -5,19 +5,31 @@ import axios from 'axios'
 export interface CardProp {
   product: {
     name: string,
-    price: number
+    price: number,
+    amount:number
   };
 }
 function ScrewCard(props: CardProp) {
-  const { name, price } = props.product;
+  const { name, price,amount } = props.product;
   const [editAmount, setAmount] = useState(1);
   const [show,setShow]=useState('none');
+  const [showF,setShowF]=useState('none')
   function orderHandler(ev: any) {
     ev.preventDefault();
     const form = ev.target;
-    axios.post('/order/add-order-relatedPro', { woodName: name, price: price, amount: form[0].value })
-      .then((res) => {console.log(res); setShow('block')})
+    if(amount>0&&(form[0].value)<=amount)
+    {
+      axios.post('/order/add-order-relatedPro', { woodName: name, price: price, amount: form[0].value })
+      .then((res) => {console.log(res); setShow('block')
+    
+      axios.patch('/product/update-product-stock',{name:name,amount:(amount-(form[0].value))})
+    })
       .catch((err) => console.error(err));
+    }
+    else {
+      setShowF('block')
+    }
+   
   }
   return (
     <div className="card">
@@ -30,7 +42,9 @@ function ScrewCard(props: CardProp) {
       <Box sx={{ display: show }}>
         <Alert severity="success" >item added successfully — check it out!</Alert>
       </Box>
-
+      <Box sx={{ display: showF }}>
+        <Alert severity="error" >product out of stock!</Alert>
+      </Box>
     </div>
   )
 }

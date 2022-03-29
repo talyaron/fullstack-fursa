@@ -22,9 +22,13 @@ function Order() {
    
   const dispatch=useAppDispatch();
   const user=useAppSelector(getUser);
-  const { name,pricePerMeter } = useParams();
+  const { name,pricePerMeter,amount } = useParams();
+  const amountStock=Number(amount)
+  const Price=Number(pricePerMeter)
   const [show,setShow]=useState('none')
   const [length, setLength] = useState('')
+  const [showF,setShowF]=useState('none')
+
   useEffect(()=>{
     dispatch(getRawByName({name:name}))
 
@@ -52,16 +56,21 @@ function Order() {
         // setProduct(copy);
         // const orderObj={"woodName":name,"woodlength":form[0].value,"amount":form[1].value,"price":pricePerMeter};
        const length=form[0].value;
-       const amount=form[2].value;
-      
-        axios.post('/order/add-order',{woodName:name,woodlength:length,amount:amount,price:pricePerMeter,userId:user._id})
-        .then((res) => setShow('block'))
-        .catch((err) => console.error(err));
-        // axios.post('http://localhost:3004/userOrder',{"woodName":name,"woodlength":form[0].value,"amount":form[1].value,"price":pricePerMeter}).then(({data})=>dispatch(getCartAsync()));
+       const amountorder=form[2].value;
+       const finalPrice=Price*(length/100)*amountorder;
+       if(amountStock>0&&(amountorder<=amountStock))
+        {
+           axios.post('/order/add-order',{woodName:name,woodlength:length,amount:amountorder,price:finalPrice,userId:user._id})
+           .then((res) => {setShow('block');
+           axios.patch('/raw/update-raw-stock',{name:name,amount:(amountStock-amountorder)})
 
-        // setShow('block')
-        // console.log(copy)
-        // console.log(product)
+          })
+            .catch((err) => console.error(err));
+        }
+        else{
+            setShowF('block')
+        }
+        
       
         
 
@@ -105,6 +114,9 @@ function Order() {
             </form>
             <Box sx={{ display:show }}>
             <Alert  severity="success">item added successfully — check it out!</Alert></Box>
+            <Box sx={{ display: showF }}>
+        <Alert severity="error" >Raw out of stock!</Alert>
+      </Box>
           </div>
             <img src="https://www.woodworkerssource.com/images/board_feet_example.jpg" alt="" />
 

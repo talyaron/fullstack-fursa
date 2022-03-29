@@ -9,6 +9,7 @@ interface Raw{
     lengths:Array<Number>;
     imageUrl:string;
     pricePerMeter:number;
+    amount:number;
 }
 export interface rawState{
     raws:Array<Raw>;

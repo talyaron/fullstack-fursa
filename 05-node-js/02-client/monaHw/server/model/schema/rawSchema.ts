@@ -7,7 +7,7 @@ const RawSchema=new mongoose.Schema({
     lengths:[Number],
     imageUrl:String,
     pricePerMeter:Number,
-    
+    amount:Number    
     });
 
 const Raw=mongoose.model('Raw',RawSchema);

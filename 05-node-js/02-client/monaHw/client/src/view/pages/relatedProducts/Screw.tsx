@@ -34,8 +34,8 @@ return(
      
       {products.status!=='loading'?
         products.productArray.map((product, index)=>{
-          const{name,price}=product;
-          return <ScrewCard key={index} product={{name,price}}/>
+          const{name,price,amount}=product;
+          return <ScrewCard key={index} product={{name,price,amount}}/>
           
         }):<div><CircularProgress color="secondary" />
         </div>}

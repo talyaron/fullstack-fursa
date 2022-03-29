@@ -4,16 +4,19 @@ import axios from 'axios'
  interface product{
     name:string,
     price:number,
-    type:string
+    type:string,
+    amount:number
 
 }
 export interface productState{
     productArray:Array<product>;
+    allProducts:Array<product>;
     status: 'idle' | 'loading' | 'failed';
 }
 
 const initialState:productState={
     productArray:[],
+    allProducts:[],
     status:'idle'
 }
 
@@ -29,6 +32,22 @@ const initialState:productState={
       catch (err: any) {
         console.log(err.message)
          }
+  
+    }
+  );
+  export const getProductsAsync = createAsyncThunk(
+    'allProducts/fetshAllProducts',
+    async (_,thunkApi) => {
+      try {
+        const response = await axios.get('/product/get-all-RelatedProducts')
+        const data = response.data
+        return data
+  
+      }
+      catch (err: any) {
+        thunkApi.rejectWithValue(err.response.data)
+      }
+  
   
     }
   );
@@ -48,11 +67,18 @@ const initialState:productState={
           state.status = 'idle';
           state.productArray = action.payload;
         })
-       
+        .addCase(getProductsAsync.pending, (state) => {
+          state.status = 'loading'
+        })
+        .addCase(getProductsAsync.fulfilled, (state, action) => {
+          state.status = 'idle';
+          state.allProducts = action.payload;
+        })
         
     }
   });
 export const getRelatedProduct = (state: RootState) => state.relatedProduct;
+export const getAllProducts = (state: RootState) => state.relatedProduct.allProducts;
 
 export default relatedproductSlice.reducer;
 

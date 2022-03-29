@@ -54,7 +54,7 @@ function App() {
         </Route>
         <Route path="woodProduct/:woodproname" element={<NavProduct  />} />
          
-        <Route path="order/:name/:pricePerMeter" element={<Order  />} />
+        <Route path="order/:name/:pricePerMeter/:amount" element={<Order  />} />
         <Route path="cart" element={<Cart />} >
           <Route path="checkOutOrder" element={<ChekOutOrder />} />
 

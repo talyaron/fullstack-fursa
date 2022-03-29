@@ -10,14 +10,15 @@ export interface CardProp {
   wood: {
     name: string,
     imageUrl: string,
-    pricePerMeter: number
+    pricePerMeter: number,
+    amount:number
   };
 }
 
 function Card(prop: CardProp) {
   //onst [randomname,setrandomName]=useState('suzan')
   //const names:Array<string>=['mona',"suzan","Tal","suzan2",'mona2','Tal2'];
-  const { name, imageUrl, pricePerMeter } = prop.wood;
+  const { name, imageUrl, pricePerMeter ,amount} = prop.wood;
   const [text, setText] = useState('')
   const [isLiked, setlike] = useState('like')
   const [color, setcolor] = useState('')
@@ -56,7 +57,8 @@ function Card(prop: CardProp) {
     setcolor('rgba(73, 48, 24, 1)')
   }
    function orderHandler(){
-      navigate(`/order/${name}/${pricePerMeter}`)
+     
+      navigate(`/order/${name}/${pricePerMeter}/${amount}`)
    }
   return (
     <div id='card' className="card" onMouseOver={handlerMouseOver} onMouseOut={handlerMouseOut} style={{ backgroundColor: color }}
