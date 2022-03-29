@@ -133,7 +133,7 @@ function AddProducts() {
     return (
         <div className="container">
             <TabContext value={value}>
-                <Box sx={{ width: '100%' }}>
+                <Box sx={{ width: '100%' ,color:'black'}}>
                     <TabList onChange={handleChange} aria-label="lab API tabs example">
                         <Tab label="Products" value="1" />
                         <Tab label="Treatments" value="2" />

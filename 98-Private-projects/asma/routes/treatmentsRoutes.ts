@@ -4,30 +4,25 @@ const express = require('express');
 const router = express.Router();
 
 
-async function getTreatments(name:string): Promise<any> {
+async function getTreatment(name:string): Promise<any> {
     try {
-      const treatments = await Treatment.find({name:name});
-      return treatments;
+      const treatment = await Treatment.find({name:name});
+      return treatment;
     } catch (err: any) {
       console.error(err)
       return false;
     }
   }
 
-  
-  router.get('/get-CuppingTherapy', async (req, res) => {
-    const treatments = await getTreatments("Cupping Therapy");
-    res.send(treatments);
+  router.post('/get-treatmentByName', async (req, res) => {
+    try {
+      const name = req.body.treatment;
+      const treatment = await getTreatment(name);
+      res.send({ ok: true, treatment: treatment });
+    } catch (error) {
+      res.send({ ok: false, treatment: [] });
+    }
   })
-  router.get('/get-FacialTreatment', async (req, res) => {
-    const treatments = await getTreatments("Facial Treatment");
-    res.send(treatments);
-  })
-  router.get('/get-HopiEarCandles', async (req, res) => {
-    const treatments = await getTreatments("Hopi Ear Candles");
-    res.send(treatments);
-  })
-
 
   async function getAllTreatments(): Promise<any> {
     try {

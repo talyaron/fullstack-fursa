@@ -1,19 +1,17 @@
 import './Card.scss';
 import { useState } from "react";
-import React from 'react'
-
 import { Link } from 'react-router-dom';
-
 
 interface CardProp {
   info: {
     name: string;
     img: string;
+    isTreatment:boolean;
   };
 }
 
 function Card(prop: CardProp) {
-  const { name, img } = prop.info;
+  const { name, img ,isTreatment } = prop.info;
   let [text, settext] = useState('');
   function showName(e: any) {
       try {
@@ -27,12 +25,17 @@ function Card(prop: CardProp) {
       }
   }
 
+
   return (
     <div className="card">
-      <img onClick={showName} src={img} alt="" />   
-      <Link to={`/${text}`}> 
+      <img onClick={showName} src={img} alt="" />  
+      {isTreatment? 
+      (<Link to={`treatment/${text}`}> 
         <h4 className="name"> {text}</h4>
-      </Link>
+      </Link>):
+      (<Link to={`/${text}`}> 
+      <h4 className="name"> {text}</h4>
+    </Link>)}
     </div>
   );
 }

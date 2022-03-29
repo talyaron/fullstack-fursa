@@ -31,21 +31,9 @@ const style = {
 };
 
 
-
 function ProductCard(props: ProductProps) {
+
     const { name, id, img, text } = props;
-    // let [discription, setDiscription] = useState('');
-    // function showText(e: any) {
-    //     try {
-    //         if (discription == '')
-    //             discription = text;
-    //         else
-    //             discription = '';
-    //         setDiscription(discription)
-    //     } catch (error) {
-    //         console.error(error)
-    //     }
-    // }
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -54,12 +42,10 @@ function ProductCard(props: ProductProps) {
     return (
         <div>
             <div className="card">
-                {/* <Link to={`/vitamins/${name}`}> */}
                 <div className="card__item" onClick={handleOpen}>
                     <img src={img}></img>
                     <span className="card__item__title">{name}</span>
                 </div>
-                {/* </Link> */}
                 <Modal
                     open={open}
                     onClose={handleClose}
@@ -76,9 +62,7 @@ function ProductCard(props: ProductProps) {
                     </Box>
                 </Modal>
             </div>
-            {/* <div className="card__item__text">{discription}</div> */}
         </div>
-
     )
 }
 

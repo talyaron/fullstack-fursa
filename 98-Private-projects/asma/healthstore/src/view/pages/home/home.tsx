@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './home.scss';
 
 //components
@@ -34,14 +34,16 @@ function Home() {
           <div className="text">Products</div>
           {categories.map((item, index) => {
             const { name, img } = item; //deconstractor 
-            return <Card key={index} info={{ name, img }} />
+            const isTreatment=false;
+            return <Card key={index} info={{ name, img, isTreatment }} />
           })}
         </div>
         <div className="row">
           <div className="text"> Treatments</div>
           {treatments.map((item, index) => {
             const { name, img } = item; //deconstractor 
-            return <Card key={index} info={{ name, img }} />
+            const isTreatment=true;
+            return <Card key={index} info={{ name, img, isTreatment }} />
           })}
         </div>
       </header>

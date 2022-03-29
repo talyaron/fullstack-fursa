@@ -11,32 +11,32 @@ export const SidebarData = [
   },
   {
     title: 'Cupping Therapy',
-    path: '/cupping%20therapy',
+    path: '/treatment/Cupping%20Therapy',
     cName: 'nav-text'
   },
   {
     title: 'Facial Treatment',
-    path: '/facial%20treatment',
+    path: '/treatment/Facial%20Treatment',
     cName: 'nav-text'
   },
   {
     title: 'Hopi Candles',
-    path: '/hopi%20candles',
+    path: '/treatment/Hopi%20Ear%20Candles',
     cName: 'nav-text'
   },
   {
-    title: 'Vitamins',
-    path: '/vitamins',
+    title: 'Supplements',
+    path: '/Supplements',
     cName: 'nav-text'
   },
   {
     title: 'Cosmetics',
-    path: '/cosmetics',
+    path: '/Cosmetics',
     cName: 'nav-text'
   },
   {
-    title: 'Sugerfree',
-    path: '/sugerfree',
+    title: 'SugerFree',
+    path: '/SugerFree',
     cName: 'nav-text'
   }
 ];
