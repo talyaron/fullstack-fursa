@@ -20,7 +20,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import 'react-time-picker/dist/TimePicker.css';
 import { useAppSelector, useAppDispatch } from '../../../app/hooks';
 //import { selectTreatment } from '../../../features/treatment/treatmentSlice';
-import { addAppointmentAsyn , getAppointmentsAsyn, selectAppointment } from '../../../features/appointment/appointmentsSlice';
+import { addAppointmentAsyn, getAppointmentsAsyn, selectAppointment } from '../../../features/appointment/appointmentsSlice';
 import { appointment } from '../../../features/appointment/appointmentsSlice';
 import axios from 'axios';
 
@@ -39,33 +39,36 @@ function CalendarFun() {
     }, []);
 
 
-    async function handleDeleteEvent(){
+    async function handleDeleteEvent() {
         //missing info
         if (newEvent.name === "" || newEvent.phone === "" || newEvent.title === "") { alert("Your Info Is Incomplete!!"); return; }
-        
+
         const result: appointment | undefined = appointments.find((appoint: appointment) =>
             (new Date(appoint.start)).getFullYear() === newEvent.start.getFullYear() &&
             (new Date(appoint.start)).getMonth() === newEvent.start.getMonth() &&
             (new Date(appoint.start)).getDate() === newEvent.start.getDate() &&
-            (new Date(appoint.start)).getHours() === newEvent.start.getHours() && 
-            (new Date(appoint.end)).getMinutes() === newEvent.start.getMinutes()&&
+            (new Date(appoint.start)).getHours() === newEvent.start.getHours() &&
+            (new Date(appoint.end)).getMinutes() === newEvent.start.getMinutes() &&
             appoint.name === newEvent.name &&
             appoint.phone === newEvent.phone &&
-            appoint.title === newEvent.title )
-            
+            appoint.title === newEvent.title)
+
         if (!result)
             alert("There Is No Matching Appointment!!");
 
         else {
             alert("An Appointment Found!!");
             console.log('deleted')
-            const {data} = await axios.post('/appointments/delete-appointment',{ title: newEvent.title, start: newEvent.start, end: newEvent.end, name: newEvent.name, phone: newEvent.phone });
+            //   const {data} = await axios.post('/appointments/delete-appointment',{ title: newEvent.title, start: newEvent.start, end: newEvent.end, name: newEvent.name, phone: newEvent.phone });
+            const params = { title: newEvent.title, start: newEvent.start, end: newEvent.end, name: newEvent.name, phone: newEvent.phone };
+            const { data } = await axios.delete('/appointments/delete-appointment', { data: params });
+
             console.log(data);
             dispatch(getAppointmentsAsyn());
         }
     }
 
-    function handleAddEvent() {  
+    function handleAddEvent() {
 
         //missing info
         if (newEvent.name === "" || newEvent.phone === "" || newEvent.title === "") { alert("Your Info Is Incomplete!!"); return; }
@@ -92,7 +95,7 @@ function CalendarFun() {
             alert("Date Is Not Available!!");
 
         else {
-            dispatch(addAppointmentAsyn ({ title: newEvent.title, start: newEvent.start.toJSON(), end: newEvent.end.toJSON(), name: newEvent.name, phone: newEvent.phone }));
+            dispatch(addAppointmentAsyn({ title: newEvent.title, start: newEvent.start.toJSON(), end: newEvent.end.toJSON(), name: newEvent.name, phone: newEvent.phone }));
             // let data= { id:appointments.length+1 ,title:newEvent.title, start: newEvent.start.toJSON(),end:newEvent.end.toJSON(), name: newEvent.name, phone:newEvent.phone};
             // axios.post('http://localhost:3004/AppointmentData',data);
         }

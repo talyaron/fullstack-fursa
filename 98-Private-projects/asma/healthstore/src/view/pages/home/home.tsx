@@ -26,7 +26,7 @@ function Home() {
 
   return (
     <div className="home">
-       <video src='/video/healthstore.mp4' autoPlay controls loop/>
+       <video src='/video/video1.mp4' autoPlay controls loop/>
        {/* <h1>Welcome To Our HealthStore</h1> */}
       <header className="App-header">
         

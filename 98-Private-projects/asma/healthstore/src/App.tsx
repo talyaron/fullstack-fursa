@@ -9,7 +9,6 @@ import AddProducts from "./view/pages/addProducts/addProducts";
 
 
 function App() {
-
   return (
     <BrowserRouter>
       <Navbar />

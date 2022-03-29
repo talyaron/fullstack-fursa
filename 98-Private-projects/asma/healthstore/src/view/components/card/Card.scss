@@ -1,4 +1,6 @@
-.card{    
+.card{
+    text-decoration: none; 
+
     img{
         width: 15rem;
         height: 15rem;
@@ -14,6 +16,8 @@
     .name{
         color: rgb(6, 77, 71);
         font-size: 18px;
+        text-decoration:none; 
+
     }
     .name:hover{
         color: rgb(19, 41, 29);

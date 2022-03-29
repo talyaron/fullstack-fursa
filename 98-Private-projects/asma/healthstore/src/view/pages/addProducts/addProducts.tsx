@@ -7,6 +7,15 @@ import Tab from '@material-ui/core/Tab';
 import TabContext from '@material-ui/lab/TabContext';
 import TabList from '@material-ui/lab/TabList';
 import TabPanel from '@material-ui/lab/TabPanel';
+
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+
 import './addProducts.scss'
 
 function AddProducts() {
@@ -17,6 +26,7 @@ function AddProducts() {
     const [treatments, setTreatments] = useState([]);
     const [category, setCategory] = useState({ name: "", text: "", category: "", img: "" });
     const [categories, setCategories] = useState([]);
+    const [appointments, setAppointments] = useState([]);
 
     const [productImage, setImage] = useState('');
     const [treatmentImage, setTreatmentImage] = useState('');
@@ -128,16 +138,22 @@ function AddProducts() {
             console.log('get', data);
             setCategories(data.categories);
         });
+        axios.get("/appointments/get-appointments").then(({ data }) => {
+            console.log('get', data);
+            setAppointments(data);
+        });
+
     }, []);
 
     return (
         <div className="container">
             <TabContext value={value}>
-                <Box sx={{ width: '100%' ,color:'black'}}>
+                <Box sx={{ width: '100%', color: 'black' }}>
                     <TabList onChange={handleChange} aria-label="lab API tabs example">
                         <Tab label="Products" value="1" />
                         <Tab label="Treatments" value="2" />
                         <Tab label="Product-Categories" value="3" />
+                        <Tab label="Appointments" value="4" />
                     </TabList >
                 </Box>
                 <TabPanel value="1">
@@ -189,7 +205,7 @@ function AddProducts() {
                     </div>
                 </TabPanel>
                 <TabPanel value="3">
-                <h2>Products Categories</h2>
+                    <h2>Products Categories</h2>
                     <div >
                         {categories.map((category: any, i) => {
                             return <ProductRow key={category._id} item={category} type="category" />;
@@ -208,6 +224,38 @@ function AddProducts() {
                             <Button color="secondary" variant="contained" component="span">Upload Image</Button>
                         </label>
                         <Button className="button" onClick={handleAddCategory} variant="contained" >Add Category</Button>
+                    </div>
+                </TabPanel>
+                <TabPanel value="4">
+                    <h2>Appointments</h2>
+                    <div >
+                        <TableContainer component={Paper}>
+                            <Table>
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell align="center">Name</TableCell>
+                                        <TableCell align="center">Phone Number</TableCell>
+                                        <TableCell align="center">Date</TableCell>
+                                        <TableCell align="center">Time</TableCell>
+                                        <TableCell align="center">Treatment</TableCell>
+
+                                    </TableRow>
+                                </TableHead>
+                                {appointments.map((appointment: any,i) => {
+                                    return (
+                                        <TableBody>
+                                            <TableRow key={appointment._id} >
+                                                <TableCell align="center">{appointment.name}</TableCell>
+                                                <TableCell align="center">{appointment.phone}</TableCell>
+                                                <TableCell align="center">{new Date(appointment.start).toDateString() }</TableCell>
+                                                <TableCell align="center">{new Date(appointment.start).getHours()+':'+new Date(appointment.start).getMinutes() }</TableCell>
+                                                <TableCell align="center">{appointment.title}</TableCell>
+                                            </TableRow>
+                                        </TableBody>
+                                    )
+                                })}
+                            </Table>
+                        </TableContainer>
                     </div>
                 </TabPanel>
             </TabContext>

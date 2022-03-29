@@ -33,8 +33,9 @@ router.post('/add-appointment', (req, res) => {
   }
 });
 
-router.post('/delete-appointment', async (req, res) => {
+router.delete('/delete-appointment', async (req, res) => {
   try {
+    // console.log(req.body ,'/////////////////////////////');
     const appointment = req.body;
     if (!appointment) throw new Error("No appointment in request");
     const filter = { title: appointment.title, start: appointment.start, end: appointment.end, name: appointment.name, phone: appointment.phone };
