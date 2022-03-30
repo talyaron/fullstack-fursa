@@ -25,7 +25,6 @@ export const getRecipeLikes = createAsyncThunk(
         try {
             const response = await axios.post('/selectRecipe/get-recipe-likes', {id : id});
             const data = response.data;
-            console.log(data);
             if(data.ok)
                 return data.info;
             else return thunkAPI.rejectWithValue("failed");

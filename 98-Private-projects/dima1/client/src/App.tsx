@@ -8,9 +8,9 @@ import NewRecipe from './view/pages/newRecipe/NewRecipe';
 import RecipeInfo from "./view/pages/recipeInfo/RecipeInfo";
 import { styled } from '@mui/material/styles';
 import { TextField } from "@mui/material";
-import { useState } from 'react';
 import RecipeTypes from "./view/pages/recipeTypes/RecipeTypes";
 import Test from "./view/pages/test/Test";
+import Search from "./view/pages/search/Search";
 
 export const CssTextField = styled(TextField)({
   '& label.Mui-focused': {
@@ -50,6 +50,7 @@ function App(){
       <Routes>
         <Route path="/" element={<LogIn />} />
         <Route path="/:userName/:type/RecipeTypes" element={<RecipeTypes />} />
+        <Route path="/:userName/:category/:text" element={<Search />} />
         <Route path="/:userName" element={<User />} />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/test" element={<Test />} />

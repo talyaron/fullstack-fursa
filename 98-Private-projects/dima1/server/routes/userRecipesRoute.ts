@@ -33,13 +33,13 @@ router.post('/add-new-userRecipe', async (req, res) => {
         delete recipe._id;
         const newRecipe = new userRecipes(recipe);
         const add = await newRecipe.save();
-        const newLikes = new likeModel({"recipeId": add._id, users : []});
+        const newLikes = new likeModel({ "recipeId": add._id, users: [] });
         const likes = await newLikes.save();
-        if(add && likes){
+        if (add && likes) {
             console.log("yes");
-            res.send({ ok : true });
+            res.send({ ok: true });
         }
-        else res.send({ ok : false });
+        else res.send({ ok: false });
     } catch (error: any) {
         res.status(400).send({ error: error.message });
     }
@@ -75,7 +75,39 @@ router.post('/get-recipes-ByType', async (req, res) => {
 router.get('/get-all-recipes', async (req, res) => {
     try {
         const recipes = await userRecipes.find({});
-        console.log(recipes)
+        if (recipes) {
+            res.send({ ok: true, recipes: recipes });
+        }
+        else {
+            res.send({ ok: false });
+        }
+    } catch (error: any) {
+        res.send({ ok: false, error: error.message });
+    }
+})
+
+router.post('/get-search-recipes', async (req, res) => {
+    try {
+        const { select, searchText } = req.body;
+        let filter;
+        switch (select) {
+            case 'name':
+                filter = { name: {"$regex" : `.*${searchText}.*`, $options: 'i'} };
+                break;
+            case 'time':
+                filter = { time: {"$regex" : `.*${searchText}.*`, $options: 'i'} };
+                break;
+            case 'calories':
+                filter = { calories: {"$regex" : `.*${searchText}.*`, $options: 'i'} };
+                break;
+            case 'ingredients':
+                filter = { ingredients: {"$regex" : `.*${searchText}.*`, $options: 'i'} };
+                break;
+            case 'servings':
+                filter = { servings: {"$regex" : `.*${searchText}.*`, $options: 'i'} };
+                break;
+        }
+        const recipes = await userRecipes.find(filter);
         if (recipes) {
             res.send({ ok: true, recipes: recipes });
         }

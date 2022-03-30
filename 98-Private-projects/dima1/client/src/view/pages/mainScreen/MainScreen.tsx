@@ -2,7 +2,6 @@ import './MainScreen.scss';
 import Bagemenu from '../../components/menuBar/menu';
 import background from '../../images/background.jpg';
 import React, { useEffect, useState } from "react";
-import axios from 'axios';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -20,52 +19,54 @@ import { getTopRecipesAsync, topRecipes } from '../../../app/reducers/TopRecipes
 import { getRecentRecipesAsync, recentRecipes } from '../../../app/reducers/RecentRecipesSlice';
 import { updateName } from '../../../app/reducers/NamePageSlice';
 import { getUserAsync, user } from '../../../app/reducers/userReducer';
-import { getAllRecipes, recipes } from '../../../app/reducers/recipesReducer';
+import { allRecipes, getAllRecipes, RecipeState } from '../../../app/reducers/recipesReducer';
 
 
 export default function MainScreen() {
     //Redux
     const { userName } = useParams();
     const dispatch = useAppDispatch();
-    const top10 = useAppSelector(topRecipes); //to remove
-    const recent = useAppSelector(recentRecipes); // to remove
-    const recipes_ = useAppSelector(recipes); // to use 
     const user_ = useAppSelector(user);
-    //const [top10, setTop10] = useState([]); TODO
-    //const [recent, setRecent] = useState([]); TODO
+    const allRecipes_ = useAppSelector(allRecipes);
 
     useEffect(() => {
+        dispatch(getUserAsync(userName));
         dispatch(getAllRecipes());
-        //filterTopRecipes(); TODO
-        //filterRecentRecipes(); TODO
-        dispatch(getUserAsync(userName))
-        dispatch(getTopRecipesAsync());
-        dispatch(getRecentRecipesAsync());
-        dispatch(updateName(`/${user_.name}/MainScreen`));
+        filterTopRecipes();
+        filterRecentRecipes();
     }, []);
 
-    function imageClick(recipe:any, row:number){
-        let from = '';
-        let isNew_ = false;
-        if(row == 1)
-            from = 'top10'
-        else from = 'recent'
+    function imageClick(recipe:any){
         try {
-            console.log(recipe._id)
             dispatch(getSelectAsync({name : recipe.name}))
         } catch (error) {
             console.error();
         }
     }
     
-    //TODO: to write the code of the two functions => find the top recipes and the most recent recipes
-    // function filterTopRecipes(){
+    function filterTopRecipes() : Array<RecipeState>{
+        const sorted:Array<RecipeState> = Object.assign([], allRecipes_);
+        sorted.sort((recipe1:RecipeState, recipe2:RecipeState) => {
+            return recipe2.likes - recipe1.likes;
+        })
+        if(sorted.length < 10)
+            return sorted;
+        else {
+            return sorted.slice(0,10);
+        }
+    }
 
-    // }
-
-    // function filterRecentRecipes(){
-
-    // }
+    function filterRecentRecipes(){
+        const sorted:Array<RecipeState> = Object.assign([], allRecipes_);
+        sorted.sort((recipe1:RecipeState, recipe2:RecipeState) => {
+            return new Date(recipe2.date).getTime() - new Date(recipe1.date).getTime();
+        })
+        if(sorted.length < 10)
+            return sorted;
+        else {
+            return sorted.slice(0,10);
+        }
+    }
 
     return (
         <div className="wrapper">
@@ -81,8 +82,8 @@ export default function MainScreen() {
                             slidesPerView={3}
                             spaceBetween={20}
                             slidesPerGroup={1}
-                            loop={true}
-                            loopFillGroupWithBlank={true}
+                            loop={false}
+                            loopFillGroupWithBlank={false}
                             pagination={{
                                 clickable: true
                             }}
@@ -90,8 +91,8 @@ export default function MainScreen() {
                             modules={[Pagination, Navigation]}
                             className="mySwiper"
                         >
-                            {top10.map((recipe:any, index:number) => {
-                                return(<SwiperSlide key={index} onClick={() => imageClick(recipe, 1)}>
+                            {filterTopRecipes().map((recipe:any, index:number) => {
+                                return(<SwiperSlide key={index} onClick={() => imageClick(recipe)}>
                                     <Link to={`/${user_.name}/${recipe._id}`}>
                                         <img src={recipe.image} alt=''/>
                                     </Link>
@@ -106,8 +107,8 @@ export default function MainScreen() {
                             slidesPerView={3}
                             spaceBetween={20}
                             slidesPerGroup={1}
-                            loop={true}
-                            loopFillGroupWithBlank={true}
+                            loop={false}
+                            loopFillGroupWithBlank={false}
                             pagination={{
                                 clickable: true
                             }}
@@ -115,9 +116,9 @@ export default function MainScreen() {
                             modules={[Pagination, Navigation]}
                             className="mySwiper"
                         >
-                            {recent.map((recipe:any, index:number) => {
+                            {filterRecentRecipes().map((recipe:any, index:number) => {
                                 return(
-                                    <SwiperSlide key={index}  onClick={(ev:any) => imageClick(recipe, 2)}>
+                                    <SwiperSlide key={index}  onClick={(ev:any) => imageClick(recipe)}>
                                         <Link to={`/${user_.name}/${recipe._id}`}>
                                             <img src={recipe.image} alt=''/>
                                         </Link>

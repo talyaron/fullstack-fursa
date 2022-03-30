@@ -8,6 +8,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useAppDispatch } from '../../../app/hooks';
 import { updateUser } from '../../../app/reducers/userReducer';
+import { getAllRecipes } from '../../../app/reducers/recipesReducer';
 
 function LogIn() {
     let navigate = useNavigate();
@@ -20,7 +21,8 @@ function LogIn() {
         const result = await axios.post('/user/LogIn', {email: email, password: password});
         const data = result.data;
         if(data.ok){
-            dispatch(updateUser(data.user))
+            dispatch(updateUser(data.user));
+            dispatch(getAllRecipes());
             navigate(`/${data.user.name}/MainScreen`);
         }
         else{

@@ -8,8 +8,6 @@ import { useParams } from 'react-router-dom';
 import { getUserAsync, user } from '../../../app/reducers/userReducer';
 import { useEffect } from 'react';
 
-const userInfo: Array<info> = [{ name: "Dima Abbas", phone: "0525041028", email: "dimaabbas25@gmail.com" }];
-
 interface info {
   name: string;
   phone: string;

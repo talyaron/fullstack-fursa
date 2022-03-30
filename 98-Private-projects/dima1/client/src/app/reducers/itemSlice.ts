@@ -16,14 +16,15 @@ const empty = {
   image: '',
   name: '',
   time: '',
-  people: '',
+  servings: '',
   calories: '',
   ingredients: '',
   method: '',
   notes: '',
   userName: '',
   types: types_,
-  date: '2014-12-15 15:34:55'
+  date: '2014-12-15 15:34:55',
+  likes : 0
 };
 
 export interface RecipeState {
@@ -32,14 +33,15 @@ export interface RecipeState {
     image: any;
     name: string;
     time: string;
-    people: string;
+    servings: string;
     calories: string;
     ingredients: string;
     method: string;
     notes: string;
     userName: string;
     types: Array<type>;
-    date: string
+    date: string,
+    likes : number
   };
   status: 'idle' | 'loading' | 'failed'
 }
@@ -50,14 +52,15 @@ const initialState: RecipeState = {
     image: '',
     name: '',
     time: '',
-    people: '',
+    servings: '',
     calories: '',
     ingredients: '',
     method: '',
     notes: '',
     userName: '',
     types: types_,
-    date: '2014-12-15 15:34:55'
+    date: '2014-12-15 15:34:55',
+    likes : 0
   },
   status: 'idle'
 }
@@ -103,13 +106,15 @@ export const itemReducer = createSlice({
     newRecipe: (state) => {
       console.log("yes")
       state.info = empty;
+    },
+    updateLikeNumber: (state, action) => {
+      state.info.likes = action.payload;
     }
   },
   extraReducers: (builder) => {
     builder
       .addCase(selectRecipeAsync.pending, (state) => {
         state.info = empty;
-        console.log(state.info.date);
         state.status = 'loading';
       })
       .addCase(selectRecipeAsync.fulfilled, (state, action) => {
@@ -133,7 +138,7 @@ export const itemReducer = createSlice({
   }
 });
 
-export const { updateRecipe, newRecipe } = itemReducer.actions;
+export const { updateRecipe, newRecipe, updateLikeNumber } = itemReducer.actions;
 
 export const selectedRecipe = (state: RootState) => state.item.info;
 

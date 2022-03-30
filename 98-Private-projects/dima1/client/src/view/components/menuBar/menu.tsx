@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -16,6 +16,8 @@ import SelectUnstyled, {
 import OptionUnstyled, { optionUnstyledClasses } from '@mui/base/OptionUnstyled';
 import PopperUnstyled from '@mui/base/PopperUnstyled';
 import { styled } from '@mui/system';
+import { useAppDispatch } from '../../../app/hooks';
+import { getAllRecipes, getSearchRecipes, updateRecipes } from '../../../app/reducers/recipesReducer';
 
 const blue = {
     100: '#DAECFF',
@@ -154,9 +156,11 @@ function Bagemenu(props: any) {
 
     const { userName } = props;
     const [anchorEl, setAnchorEl] = useState(null);
-    const [select, setSelect] = useState('Name');
+    const [select, setSelect] = useState('name');
     const [search, setSearch] = useState('');
+    const navigate = useNavigate();
     const open = Boolean(anchorEl);
+    const dispatch = useAppDispatch();
 
     const handleClick = (event: any) => {
         setAnchorEl(event.currentTarget);
@@ -171,7 +175,9 @@ function Bagemenu(props: any) {
 
     function handleSearch(){
         if(search){
-            console.log("yes")
+            //console.log(search)
+            dispatch(getSearchRecipes({select : select, searchText : search}));
+            navigate(`/${userName}/${select}/${search}`);
         }
         else alert('you should write what are you looking for');
     }
@@ -188,21 +194,17 @@ function Bagemenu(props: any) {
                 </div>
 
                 <div className='logo'>
-                    <Link to={`/${userName}/MainScreen`}>
-                        <img src={logo} alt="" />
-                    </Link>
+                    <img src={logo} alt="" onClick={() => {dispatch(getAllRecipes()); navigate(`/${userName}/MainScreen`)}}/>
                 </div>
-                {/* TODO : add a selector -> to select the search's category */}
-                {/* https://plantpot.works/3083 */}
                 <div className="searchbox">
                     <div className='container'>
-                        <input type="text" placeholder="search for a recipe" onChange={(ev:any) => {setSearch(ev.target.value); console.log(ev.target.value)}}/>
-                        <CustomSelect className='select' defaultValue={'Name'} onChange={handleSelect}>
-                            <StyledOption value={'Name'}>Name</StyledOption>
-                            <StyledOption value={'Time'}>Time</StyledOption>
-                            <StyledOption value={'Calory'}>Calory</StyledOption>
-                            <StyledOption value={'Serving'}>Serving</StyledOption>
-                            <StyledOption value={'Ingredient'}>Ingredient</StyledOption>
+                        <input type="text" placeholder="search for a recipe" onChange={(ev:any) => setSearch(ev.target.value)}/>
+                        <CustomSelect className='select' defaultValue={'name'} onChange={handleSelect}>
+                            <StyledOption value={'name'}>name</StyledOption>
+                            <StyledOption value={'time'}>time</StyledOption>
+                            <StyledOption value={'calories'}>calories</StyledOption>
+                            <StyledOption value={'servings'}>servings</StyledOption>
+                            <StyledOption value={'ingredients'}>ingredients</StyledOption>
                         </CustomSelect>
                         <SearchIcon sx={{ fontSize: 30, color: '#b5739d' }} onClick={handleSearch}/>
                     </div>

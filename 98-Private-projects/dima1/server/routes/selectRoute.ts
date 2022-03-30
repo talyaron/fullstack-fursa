@@ -63,7 +63,6 @@ router.post('/get-recipe-likes', async (req, res) => {
   try {
     const { id } = req.body;
     const likes_ = await likes.findOne({ recipeId: id });
-    console.log(likes_);
     if (likes_) res.status(200).send({ ok: true, info: { recipeId: likes_.recipeId, users: likes_.users } });
     else res.status(200).send({ ok: false, info: {} });
   } catch (error) {
@@ -73,17 +72,17 @@ router.post('/get-recipe-likes', async (req, res) => {
 
 router.post('/like-dislike', async (req, res) => {
   try {
-    console.log('add-like');
     const { name, like, id } = req.body;
-    console.log(name, like);
     if (like) {
-      const like = await likes.findOneAndUpdate({ recipeId: id }, { $push: { "users": name } })
-      if (like)
+      const like = await likes.findOneAndUpdate({ recipeId: id }, { $push: { "users": name } });
+      const like1 = await userRecipes.findOneAndUpdate({ _id: id }, {$inc: { "likes": 1} });
+      if (like && like1)
         res.status(200).send({ ok: true });
       else res.status(200).send({ ok: false });
     } else {
-      const dislike = await likes.findOneAndUpdate({ recipeId: id }, { $pull: { "users": name } })
-      if (dislike)
+      const dislike = await likes.findOneAndUpdate({ recipeId: id }, { $pull: { "users": name } });
+      const dislike1 = await userRecipes.findOneAndUpdate({ _id: id }, {$inc: { "likes": -1} });
+      if (dislike && dislike1)
         res.status(200).send({ ok: true });
       else res.status(200).send({ ok: false });
     }

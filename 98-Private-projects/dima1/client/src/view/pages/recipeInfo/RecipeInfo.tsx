@@ -25,37 +25,38 @@ import axios from 'axios';
 import { getRecipeLikes, recipeLikes } from '../../../app/reducers/LikeReducer';
 
 export default function RecipeInfo() {
-    const { userName, recipeId } = useParams();
+    let { userName, recipeId } = useParams();
     const [isTrue, setIsTrue] = useState(false);
     const [open, setOpen] = useState(false);
     const navigate = useNavigate();
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
-    
+
     //Redux toolkit
     const dispatch = useAppDispatch();
     const recipe_ = useAppSelector(selectedRecipe);
     const likes_ = useAppSelector(recipeLikes);
-    const [like, setLike] = useState(CheckLike());
 
     useEffect(() => {
         dispatch(selectRecipeAsync(recipeId));
         dispatch(getRecipeLikes(recipeId));
+
         if (recipe_.notes) setIsTrue(true);
         else setIsTrue(false)
     }, [])
 
-    async function handleLike() {
-        if(!like){
-            const result = await axios.post('/selectRecipe/like-dislike', {name : userName, like : true, id : recipeId});
-            if(result.data.ok) console.log('like');
+    async function handleLike(ev: any) {
+        const like = CheckLike();
+        let result;
+        if (!like) {
+            result = await axios.post('/selectRecipe/like-dislike', { name: userName, like: true, id: recipeId });
+            if (result.data.ok) console.log('like');
             else console.log('failed to like');
-        } else{
-            const result = await axios.post('/selectRecipe/like-dislike', {name : userName, like : false, id : recipeId});
-            if(result.data.ok) console.log('dislike');
+        } else {
+            result = await axios.post('/selectRecipe/like-dislike', { name: userName, like: false, id: recipeId });
+            if (result.data.ok) console.log('dislike');
             else console.log('failed to dislike');
         }
-        setLike(!like);
         dispatch(getRecipeLikes(recipeId));
     }
 
@@ -63,9 +64,9 @@ export default function RecipeInfo() {
         setOpen(true);
     };
 
-    function CheckLike() : boolean{
+    function CheckLike(): boolean {
         let isLike = false;
-        if(userName){
+        if (userName) {
             isLike = likes_.users.includes(userName);
         }
         return isLike;
@@ -74,7 +75,7 @@ export default function RecipeInfo() {
     async function handleClose(ev: any) {
         setOpen(false);
         if (ev.target.name === 'delete') {
-            const response = await axios.post('/selectRecipe/delete-recipe', {id : recipeId});
+            const response = await axios.post('/selectRecipe/delete-recipe', { id: recipeId });
             const data = response.data;
             if (data.ok)
                 navigate(`/${userName}`);
@@ -128,7 +129,7 @@ export default function RecipeInfo() {
                             </div>
                             <h2 className='by'>By : {recipe_.userName}</h2>
                             <div className='item'>
-                                <FavoriteBorderIcon onClick={handleLike} sx={{ fontSize: 45, color: like ? 'red' : 'false', paddingTop: '15px' }} />
+                                <FavoriteBorderIcon onClick={handleLike} sx={{ fontSize: 45, color: CheckLike() ? 'red' : 'false', paddingTop: '15px' }} />
                                 <p>{likes_.users.length}</p>
                             </div>
                             <div className='item'>
@@ -137,7 +138,7 @@ export default function RecipeInfo() {
                             </div>
                             <div className='item'>
                                 <PeopleIcon sx={{ fontSize: 45, color: '#b5739d', paddingTop: '15px' }} />
-                                <p>{recipe_.people}</p>
+                                <p>{recipe_.servings}</p>
                             </div>
                             <div className='item'>
                                 <LocalFireDepartmentIcon sx={{ fontSize: 45, color: '#b5739d', paddingTop: '15px' }} />

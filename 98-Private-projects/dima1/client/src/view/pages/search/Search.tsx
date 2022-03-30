@@ -1,27 +1,26 @@
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { recipesByType, recipesByTypeAsync, RecipeState } from '../../../app/reducers/recipesReducer';
+import { getSearchRecipes, recipes } from '../../../app/reducers/recipesReducer';
 import Bagemenu from '../../components/menuBar/menu';
 import background from '../../images/background.jpg';
 import tools from '../../images/tools.jpg';
-import './RecipeTypes.scss';
+import './Search.scss';
 import { Link, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 
-export default function RecipeTypes() {
+export default function Search() {
 
-    const { userName, type } = useParams();
+    const { userName, category, text } = useParams();
     const dispatch = useAppDispatch();
 
-    const recipesByType_ = useAppSelector(recipesByType);
+    const searchRecipes_ = useAppSelector(recipes);
+    console.log(searchRecipes_);
 
     useEffect(() => {
-        dispatch(recipesByTypeAsync(type)); 
+        dispatch(getSearchRecipes({select : category, searchText: text}));
     }, [])
 
-    console.log(recipesByType_);
-
     return (
-        <div className='recipeTypes'>
+        <div className='Search'>
             <div className='menuBar' id="outer-container">
                 <Bagemenu userName={userName} />
             </div>
@@ -30,14 +29,14 @@ export default function RecipeTypes() {
                 <div className='content1'>
                     <div className='title'>
                         <img src={tools} alt="Food" />
-                        <h1>{type}</h1>
+                        <h1>{text}</h1>
                     </div>
                     <br />
                     <br />
                     <br />
                     <div className='recipes'>
                         <div className='grid1'>
-                            {recipesByType_.slice(0, 3).map((recipe: any, index) => {
+                            {searchRecipes_.slice(0, 3).map((recipe: any, index) => {
                                 return (
                                     <div key={index} className={`item${index}`}>
                                         <Link to={`/${userName}/${recipe._id}`}>
@@ -49,7 +48,7 @@ export default function RecipeTypes() {
                             })}
                         </div>
                         <div className='grid2'>
-                            {recipesByType_.slice(3).map((recipe: any, index) => {
+                            {searchRecipes_.slice(4).map((recipe: any, index) => {
                                 return (
                                     <div key={index} className='item'>
                                         <Link to={`/${userName}/${recipe._id}`}>

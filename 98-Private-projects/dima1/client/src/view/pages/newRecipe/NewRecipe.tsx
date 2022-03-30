@@ -69,7 +69,7 @@ interface recipeInfo {
     name: string;
     image: string;
     time: string;
-    people: string;
+    servings: string;
     calories: string;
     ingredients: string;
     method: string;
@@ -106,8 +106,8 @@ export default function NewRecipe() {
             case 'time':
                 setRecipe({ ...recipe, time: ev.target.value })
                 break;
-            case 'people':
-                setRecipe({ ...recipe, people: ev.target.value });
+            case 'servings':
+                setRecipe({ ...recipe, servings: ev.target.value });
                 break;
             case 'cal':
                 setRecipe({ ...recipe, calories: ev.target.value });
@@ -232,8 +232,8 @@ export default function NewRecipe() {
                                     required
                                     placeholder=""
                                     size="small" sx={{ width: '20ch', justifyContent: 'center' }}
-                                    name='people'
-                                    value={recipe.people}
+                                    name='servings'
+                                    value={recipe.servings}
                                     onChange={handleChange}
                                 />
                             </div>
